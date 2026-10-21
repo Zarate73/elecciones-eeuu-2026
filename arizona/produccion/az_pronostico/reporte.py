@@ -1,0 +1,140 @@
+"""Escritura de salidas: resumen.txt, reporte.json, CSV, gráfica, historial."""
+from __future__ import annotations
+
+import json
+import shutil
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+
+def _pct(x) -> str:
+    return '—' if x is None else f'{x:.1%}'
+
+
+def texto_resumen(r: dict, cfg) -> str:
+    m, e, mk = r['modelo'], cfg.eleccion, r['mercados']
+    f = m['final']
+    v = f['ventana']
+    lin = [f"{e.estado} {e.cargo} {cfg.dia_eleccion.year} · corte {cfg.corte} ({cfg.dias_a_eleccion} días a la elección)",
+           '=' * 78,
+           f"  {e.nombre_d} (D): {f['pct_D']:.1f}%   [IC80 {f['pct_D_IC80'][0]:.1f}–{f['pct_D_IC80'][1]:.1f}]",
+           f"  {e.nombre_r} (R): {f['pct_R']:.1f}%   [IC80 {f['pct_R_IC80'][0]:.1f}–{f['pct_R_IC80'][1]:.1f}]",
+           f"  Terceros: {f['pct_terceros']:.1f}%   [IC80 {f['pct_terceros_IC80'][0]:.1f}–{f['pct_terceros_IC80'][1]:.1f}]",
+           f"  Margen D−R: {f['margen']:+.1f} pp (σ {f['sd']:.1f}) · IC95 [{f['IC95'][0]:+.1f}, {f['IC95'][1]:+.1f}]",
+           f"  P(gana {e.candidato_d}) = {f['P_D']:.1%}   P(gana {e.candidato_r}) = {1 - f['P_D']:.1%}   "
+           f"P(recuento automático) = {f['P_recuento']:.1%}",
+           f"  Solo encuestas: {f['P_D_encuestas']:.1%} · Kalshi {_pct(mk['kalshi'].get('p_D'))} ({mk['kalshi']['estado'][:30]}) · "
+           f"Polymarket {_pct(mk['polymarket'].get('p_D'))} ({mk['polymarket']['estado'][:30]}) · peso mercados {f['peso_mercados_aplicado']}",
+           f"  Ventana: {len(m['ventana'])} encuestas de {f['k']} encuestadoras desde {v['desde']}"
+           + (f" (AMPLIADA, regla {v['regla']})" if v['ampliada'] else '')
+           + (f" · deriva por {f['dias_extra_encuestas']} días de antigüedad" if f['dias_extra_encuestas'] else '')]
+    a = r.get('anticipado', {})
+    if a.get('disponible'):
+        lin += ['', f"VOTO ANTICIPADO (civicAPI, diagnóstico, {a['estado'][:30]}, al {a['fecha']}): {a['devueltas']:,} devueltas · "
+                    f"D {a['pct_dev_D']:.1f}% · R {a['pct_dev_R']:.1f}% · otros {a['pct_dev_otros']:.1f}% · "
+                    f"tasa de devolución D {a['tasa_dev_D']:.1f}% / R {a['tasa_dev_R']:.1f}% · Maricopa {a['maricopa_pct_dev']:.1f}% del total"]
+    lin += ['', 'FUENTES: ' + ' · '.join(f'{k}={str(x)[:40]}' for k, x in r['estados_fuentes'].items())]
+    if r['avisos']:
+        lin += ['AVISOS: ' + ' | '.join(r['avisos'])]
+    return '\n'.join(lin)
+
+
+def _serializable(o):
+    if isinstance(o, (np.floating, np.integer)):
+        return o.item()
+    if isinstance(o, (pd.Timestamp, datetime)):
+        return o.isoformat()
+    if isinstance(o, pd.DataFrame):
+        return o.to_dict('records')
+    return str(o)
+
+
+def reporte_json(r: dict, cfg) -> dict:
+    m, mk, a = r['modelo'], r['mercados'], r['anticipado']
+    return {'corte': str(cfg.corte), 'dias_a_eleccion': cfg.dias_a_eleccion, 'estados_fuentes': r['estados_fuentes'],
+            'avisos': r['avisos'], 'conteos_encuestas': r['conteos'],
+            'gobernador': {**m['final'], 'n_encuestas': len(m['encuestas'])},
+            'escenarios': m['escenarios'],
+            'mercados': {'kalshi': mk['kalshi'], 'polymarket': mk['polymarket'], 'promedio_D': mk['promedio_D'],
+                         'dif_pp': mk['dif_pp'], 'rangos': {k: v for k, v in mk['rangos'].items() if k != 'tabla'}},
+            'anticipado': {k: v for k, v in a.items() if k != 'condados'},
+            'calibracion': {k: v for k, v in r['calibracion'].items() if k not in ('efectos_casa', 'errores_az')}}
+
+
+def escribir(r: dict, cfg) -> Path:
+    ts = datetime.now().strftime('%Y-%m-%d_%H%M%S')
+    base = cfg.dir_salidas / 'corridas' / ts
+    base.mkdir(parents=True, exist_ok=True)
+    m, e = r['modelo'], cfg.eleccion
+    f = m['final']
+    pd.DataFrame([
+        {'corte': str(cfg.corte), 'candidato': e.nombre_d, 'partido': 'D', 'pct': f['pct_D'],
+         'pct_IC80_bajo': f['pct_D_IC80'][0], 'pct_IC80_alto': f['pct_D_IC80'][1], 'P_ganar': f['P_D']},
+        {'corte': str(cfg.corte), 'candidato': e.nombre_r, 'partido': 'R', 'pct': f['pct_R'],
+         'pct_IC80_bajo': f['pct_R_IC80'][0], 'pct_IC80_alto': f['pct_R_IC80'][1], 'P_ganar': 1 - f['P_D']},
+        {'corte': str(cfg.corte), 'candidato': 'Terceros (Hourihan, Lombardo, otros)', 'partido': 'otros',
+         'pct': f['pct_terceros'], 'pct_IC80_bajo': f['pct_terceros_IC80'][0],
+         'pct_IC80_alto': f['pct_terceros_IC80'][1], 'P_ganar': 0.0}]
+    ).to_csv(base / 'pronostico_gobernador.csv', index=False, encoding='utf-8-sig')
+    m['escenarios'].to_csv(base / 'escenarios_gobernador.csv', index=False, encoding='utf-8-sig')
+    cols = ['fin', 'inicio', 'pollster', 'clave', 'pop', 'n', 'D', 'R', 'otros', 'indecisos', 'margin_poll',
+            'efecto_casa', 'margen_corregido', 'partidista', 'origen', 'tambien_en', 'en_ventana']
+    m['encuestas'][cols].sort_values('fin', ascending=False).to_csv(base / 'encuestas_gobernador.csv', index=False,
+                                                                     encoding='utf-8-sig')
+    m['ventana'][['fin', 'pollster', 'n', 'D', 'R', 'margin_poll', 'efecto_casa', 'margen_corregido', 'patrocinador',
+                  'efecto_partidista', 'peso']].to_csv(base / 'encuestas_ventana_pesos.csv', index=False, encoding='utf-8-sig')
+    if r['anticipado'].get('disponible'):
+        r['anticipado']['condados'].to_csv(base / 'voto_anticipado_condados.csv', index=False, encoding='utf-8-sig')
+    if 'tabla' in r['mercados']['rangos']:
+        r['mercados']['rangos']['tabla'].to_csv(base / 'polymarket_rangos_margen.csv', index=False, encoding='utf-8-sig')
+    (base / 'resumen.txt').write_text(r['resumen_texto'], encoding='utf-8')
+    (base / 'reporte.json').write_text(json.dumps(reporte_json(r, cfg), ensure_ascii=False, indent=2,
+                                                  default=_serializable), encoding='utf-8')
+    if cfg.ejecucion.graficas:
+        grafica(r, cfg, base / 'pronostico.png')
+    ult = cfg.dir_salidas / 'ultimo'
+    if ult.exists():
+        shutil.rmtree(ult)
+    shutil.copytree(base, ult)
+    mk = r['mercados']
+    hist = cfg.dir_salidas / 'historial_pronosticos.csv'
+    pd.DataFrame([{'ejecutado': datetime.now().isoformat(timespec='seconds'), 'corte': str(cfg.corte),
+                   'dias': cfg.dias_a_eleccion, 'pct_D': f['pct_D'], 'pct_R': f['pct_R'], 'pct_terceros': f['pct_terceros'],
+                   'margen': f['margen'], 'sd': f['sd'], 'P_D': f['P_D'], 'P_D_encuestas': f['P_D_encuestas'],
+                   'P_D_kalshi': mk['kalshi'].get('p_D'), 'P_D_polymarket': mk['polymarket'].get('p_D'),
+                   'peso_mercados': f['peso_mercados_aplicado'], 'P_recuento': f['P_recuento'],
+                   'n_encuestas': len(m['encuestas']), 'k_ventana': f['k'],
+                   'devueltas_anticipado': r['anticipado'].get('devueltas'),
+                   'fuentes_degradadas': ';'.join(r['degradadas'])}]
+                 ).to_csv(hist, mode='a', header=not hist.exists(), index=False, encoding='utf-8-sig')
+    corr = sorted((cfg.dir_salidas / 'corridas').iterdir())
+    for viejo in corr[:-int(cfg.ejecucion.conservar_corridas)]:
+        shutil.rmtree(viejo, ignore_errors=True)
+    return base
+
+
+def grafica(r: dict, cfg, ruta: Path) -> None:
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    ink, acc, warm = '#1f2933', '#2563eb', '#d97706'
+    m, e = r['modelo'], cfg.eleccion
+    f = m['final']
+    fig, ax = plt.subplots(1, 2, figsize=(13, 4.6))
+    a = ax[0]
+    a.hist(m['sim'].M, bins=120, range=(-20, 30), color=acc, alpha=.75, density=True)
+    a.axvline(0, color=ink, lw=.8)
+    a.set_title(f"Margen {e.candidato_d} − {e.candidato_r} · P({e.candidato_d}) = {f['P_D']:.0%}", loc='left', color=ink)
+    a.set_yticks([]); a.spines[['top', 'right', 'left']].set_visible(False); a.set_xlabel('pp')
+    b = ax[1]
+    p = m['encuestas']
+    b.scatter(p.fin, p.margen_corregido, s=np.sqrt(p.n) * 1.6, color=np.where(p.en_ventana, acc, '#9aa5b1'),
+              alpha=.8, label='Encuestas (corregidas por casa; azul = en la ventana)')
+    b.axhline(0, color=ink, lw=.8)
+    b.axhline(f['margen'], color=warm, ls='--', lw=1, label=f"Pronóstico: {f['margen']:+.1f}")
+    b.legend(frameon=False, fontsize=8.5, loc='upper left'); b.spines[['top', 'right']].set_visible(False)
+    b.set_title('Encuestas desde la primaria', loc='left', color=ink); b.set_ylabel('margen D−R (pp)')
+    fig.autofmt_xdate(); fig.tight_layout(); fig.savefig(ruta, dpi=140); plt.close(fig)

@@ -1,0 +1,57 @@
+# =====================================================================================
+# Arizona 2026 · configuración de producción (modelo general: V11 sin sesgo estatal + terceros + mercados)
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "Arizona"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2026-07-21"        # primaria: solo cuentan encuestas que terminan después
+candidato_d = "Hobbs"
+candidato_r = "Biggs"
+nombre_d = "Katie Hobbs"
+nombre_r = "Andy Biggs"
+zona_horaria = "America/Phoenix"
+recuento_pp = 0.5                      # recuento automático si |margen| <= 0.5 pp (ley de AZ)
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+# Encuestas verificadas a mano (opcional). Excel con la hoja «Gobernador Arizona» o CSV con columnas
+# pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
+encuestas_base = "data/encuestas_verificadas_az.csv"
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_Arizona_gubernatorial_election"
+t270_url = "https://www.270towin.com/2026-governor-polls/arizona"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "GOVPARTYAZ-26"
+kalshi_ticker_d = "GOVPARTYAZ-26-D"
+kalshi_ticker_r = "GOVPARTYAZ-26-R"
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_evento_ganador = "arizona-governor-winner-2026"
+polymarket_evento_margen = "arizona-governor-margin-of-victory-2026"
+mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+civicapi = "https://civicapi.org/api/v2/early-vote"
+civicapi_estado = "AZ"
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 5                # menos encuestas web que esto => fuente degradada
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan en los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos: los 21 días previos a la encuesta más reciente
+vida_media_dias = 14.0
+contraccion_casa = 8.0
+sesgo_estatal = false                  # backtest AZ: sin sesgo estatal (CRPS 2.471 vs 2.630)
+peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+sigma_dia_pp = 0.25                    # deriva diaria si las encuestas son más viejas que el horizonte calibrado
+n_simulaciones = 200000
+semilla = 20261021
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60

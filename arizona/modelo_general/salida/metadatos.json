@@ -1,0 +1,104 @@
+{
+  "config": {
+    "corte": "2026-10-21",
+    "eleccion": "2026-11-03",
+    "ventana_dias_eleccion": "21",
+    "min_encuestadoras": "2",
+    "vida_media_dias": "14.0",
+    "contraccion_casa": "8.0",
+    "sesgo_estatal": "False",
+    "peso_mercados": "0.3",
+    "terceros_a": "None",
+    "recuento_pp": "0.5",
+    "civicapi_en_vivo": "True",
+    "sigma_dia_pp": "0.25",
+    "n_sim": "200000",
+    "semilla": "20261021",
+    "salida": "salida"
+  },
+  "ventana": {
+    "ventana_desde": "2026-09-17",
+    "ampliada": true,
+    "regla": "desplazada"
+  },
+  "horizonte_calibrado": 13,
+  "dias_extra_encuestas": 13,
+  "var_deriva": 0.8125,
+  "parametros": {
+    "horizonte_dias": 13,
+    "tau": 3.0500000000000003,
+    "s": 8.0,
+    "nu": 12.700000000000001,
+    "n_contiendas": 782,
+    "terceros_a": 1.8733441844221381,
+    "terceros_c": 0.6922392385348782,
+    "terceros_sd": 1.9033502352611622,
+    "sesgo_az_bruto": 1.6367557604606868,
+    "sesgo_az_contraido": 1.4274939210789261
+  },
+  "margen_encuestas": 7.8543910361624585,
+  "otros_encuestas": 3.16581711355775,
+  "k": 4,
+  "mu": 7.8543910361624585,
+  "sd": 5.110283749460494,
+  "nu": 12.700000000000001,
+  "terceros_media": 4.0648470124520415,
+  "mercados": {
+    "fecha": "2026-10-21",
+    "kalshi_D": 0.9064211050273768,
+    "polymarket_D": 0.935,
+    "promedio_D": 0.9207105525136885,
+    "dif_pp": -2.8578894972623226,
+    "polymarket_rangos_margen_media": 8.977929584866,
+    "polymarket_rangos_margen_sd": 6.206469978717629,
+    "polymarket_rangos_P_D": 0.9248554913294795
+  },
+  "resultado": {
+    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+    "margen_media": 7.8345488242626224,
+    "sd": 5.10883473865902,
+    "IC80_margen": [
+      1.5017668663032493,
+      14.168108487778083
+    ],
+    "IC95_margen": [
+      -2.306665792956708,
+      17.984910858719278
+    ],
+    "Hobbs": 51.87830403997274,
+    "Hobbs_IC80": [
+      48.47998434165876,
+      55.27774904789503
+    ],
+    "Biggs": 44.04375521571012,
+    "Biggs_IC80": [
+      40.64226289011185,
+      47.43550754614722
+    ],
+    "Terceros": 4.077940744317134,
+    "Terceros_IC80": [
+      1.622505713480624,
+      6.503601241762344
+    ],
+    "P_Hobbs_modelo": 0.940715,
+    "P_Hobbs": 0.9352700269252432,
+    "P_recuento": 0.02108,
+    "P_Hobbs_>50": 0.76598
+  },
+  "voto_anticipado": {
+    "disponible": true,
+    "estado": "snapshot guardado (ProxyError: HTTPSConnectionPool(host='civicapi.org', port=443): Max retries exceeded with ur)",
+    "fuente": "civicAPI (civicapi.org), autoridades electorales de AZ",
+    "fecha": "2026-10-21",
+    "devueltas": 642253,
+    "solicitadas": 3262834,
+    "pct_dev_D": 39.172724767342466,
+    "pct_dev_R": 38.22527882314291,
+    "pct_dev_otros": 22.60199640951463,
+    "margen_dev_DR_pp": 0.94744594419956,
+    "tasa_dev_D": 24.024346341412176,
+    "tasa_dev_R": 21.32902066674312,
+    "tasa_dev_otros": 13.635548124386498,
+    "maricopa_pct_dev": 59.71587520805664
+  }
+}

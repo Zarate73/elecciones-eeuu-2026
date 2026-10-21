@@ -7,6 +7,7 @@ Modelos de pronóstico, backtests y versiones de producción para las contiendas
 |---|---|---|---|
 | Georgia | Gobernador: Bottoms 49.2% · Jackson 50.8% · P(Bottoms) 37% (corte 2026-10-21) | **Producción (V11)**, actualización automática | [`georgia/`](georgia/) |
 | California | Gobernador: Becerra 61.1% · Hilton 38.9% · P(Becerra) 99% (corte 2026-10-21) | **Producción (M5)**, actualización automática | [`california/`](california/) |
+| Arizona | Gobernador: Hobbs 51.9% · Biggs 44.0% · P(Hobbs) 94% (corte 2026-10-21) | **Producción (general)**, actualización automática | [`arizona/`](arizona/) |
 | … | | pendiente | |
 
 ## Estructura por estado
@@ -36,6 +37,8 @@ Python 3.10+. Cada `produccion/` trae `requirements.txt` y `scripts\instalar.bat
 | [Civiq – California ballot returns](https://abev.civiq.vote/) API pública | Diagnóstico de voto anticipado (CA) | Términos de Civiq |
 | [GDELT DOC 2.0](https://www.gdeltproject.org/) | Tono de cobertura (diagnóstico, CA) | Uso libre con atribución |
 | [Kalshi](https://kalshi.com) API pública | Precio de mercado | Términos de Kalshi |
+| [Polymarket](https://polymarket.com) API Gamma pública | Precio de mercado (AZ, promediado con Kalshi) | Términos de Polymarket |
+| [civicAPI](https://civicapi.org) voto anticipado | Diagnóstico de voto anticipado por partido y condado (AZ) | Uso libre con atribución |
 | Wikipedia, 270toWin, medios citados en cada CSV | Encuestas publicadas (cifras de resumen) | Cada fila lleva su URL de origen |
 | G-Ratings | Encuesta propia (solo resultados de resumen) | Publicados por el autor |
 
