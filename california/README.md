@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Xavier Becerra (D)** y **Steve Hilton (R)**, los dos primeros de la primaria *top-two* del 2 de junio.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-21** (13 días a la elección) · actualizado automáticamente 2026-10-21 00:52 PT · fuentes en vivo 6/7
+**Pronóstico al 2026-10-21** (13 días a la elección) · actualizado automáticamente 2026-10-21 00:54 PT · fuentes en vivo 6/7
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
