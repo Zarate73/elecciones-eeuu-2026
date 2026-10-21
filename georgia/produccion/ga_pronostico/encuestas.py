@@ -353,6 +353,10 @@ def _con_cache(cfg, nombre: str, funcion):
             df = pd.read_csv(ruta)
             for c in ('inicio', 'fin'):
                 df[c] = pd.to_datetime(df[c]).dt.date
+            sin_firma = df.pollster.isna() | (df.pollster.astype(str).str.strip() == '')
+            if sin_firma.any():                      # caché de una versión anterior del parser
+                log.warning('Encuestas %s: %d filas de caché sin encuestadora descartadas', nombre, int(sin_firma.sum()))
+                df = df[~sin_firma].reset_index(drop=True)
             log.warning('Encuestas %s: uso caché (%s)', nombre, err)
             return df, f'cache ({err})'
         log.warning('Encuestas %s: sin datos ni caché (%s)', nombre, err)

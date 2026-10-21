@@ -157,3 +157,16 @@ def test_combinar_mismas_cifras_con_fecha_de_publicacion():
     out = E.combinar(w, t)
     assert len(out) == 2                                   # la de mismas cifras a 9 días se descarta; la distinta a 19 días no
     assert set(out.origen) == {'wikipedia', '270towin'}
+
+
+def test_cache_vieja_sin_firma_no_tumba_la_corrida(tmp_path):
+    from types import SimpleNamespace
+    from ga_pronostico import encuestas as E
+    cfg = SimpleNamespace(dir_cache=tmp_path)
+    pd.DataFrame({'pollster': [np.nan, 'UGA'], 'clave_538': ['desconocida', 'universityofge'],
+                  'inicio': ['2026-10-07'] * 2, 'fin': ['2026-10-15'] * 2, 'n': [1000, 1000], 'pop': ['LV'] * 2,
+                  'D': [45, 45], 'R': [46, 46]}).to_csv(tmp_path / 'encuestas_gob_270towin.csv', index=False)
+    def falla():
+        raise ConnectionError('sin red')
+    df, estado = E._con_cache(cfg, 'gob_270towin', falla)
+    assert estado.startswith('cache') and list(df.pollster) == ['UGA']
