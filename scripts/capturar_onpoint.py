@@ -59,12 +59,16 @@ for r in sorted(rutas_c):
     u = r if r.startswith('http') else CV + r
     if '$' not in u and '{' not in u:
         get(u)
-for g in ('/api/v2/early-vote/US/AZ/', '/api/v2/early-vote/US/AZ', '/api/v2/early-vote/US/?state=AZ',
-          '/api/v2/early-vote/US/?state=AZ&year=2026', '/api/v2/early-vote/US/?year=2026', '/api/v2/early-vote/US/2026/',
-          '/api/v2/early-vote/US/2026/AZ', '/api/v2/early-vote/historical/?state=AZ',
-          '/api/v2/early-vote/historical/US/AZ', '/api/v2/early-vote/historical/?country=US&state=AZ',
-          '/api/v2/early-vote/US/GA/', '/api/v2/early-vote/US/CA/'):
-    get(CV + g)
-
+EV = CV + '/api/v2/early-vote'
+for cat in ('returned', 'inperson', 'requested', 'total'):
+    get(f'{EV}/US/{cat}')
+for st in ('AZ', 'GA', 'CA'):
+    get(f'{EV}/{st}/capabilities')
+    for cat in ('returned', 'inperson', 'requested', 'total'):
+        get(f'{EV}/{st}/{cat}')
+        get(f'{EV}/{st}/{cat}/demographics?by=party')
+    for fecha_el, dia in (('2022-11-08', '2022-10-21'), ('2024-11-05', '2024-10-22'), ('2020-11-03', '2020-10-20')):
+        for cat in ('returned', 'inperson'):
+            get(f'{EV}/historical/{fecha_el}/{st}/{cat}?date={dia}')
 (OUT / 'log.txt').write_text('\n'.join(log))
 print('\n'.join(log))
