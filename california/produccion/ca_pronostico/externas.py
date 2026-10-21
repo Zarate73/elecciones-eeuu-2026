@@ -91,7 +91,13 @@ def actualizar_gdelt(cfg) -> tuple[pd.DataFrame, str]:
     ruta = cfg.dir_cache / 'gdelt_tono_diario.csv'
     cache = pd.read_csv(ruta, parse_dates=['fecha']) if ruta.exists() else pd.DataFrame()
     n_cache = cache.groupby('candidato').size().to_dict() if not cache.empty else {}
-    fresca = ruta.exists() and (time.time() - ruta.stat().st_mtime) < f.gdelt_horas_cache * 3600
+    # La hora de la última consulta se guarda aparte: la fecha del archivo no sirve en un checkout de git
+    marca = cfg.dir_cache / 'gdelt_ultima_consulta.txt'
+    try:
+        ultima = float(marca.read_text().strip())
+    except (OSError, ValueError):
+        ultima = ruta.stat().st_mtime if ruta.exists() else 0.0
+    fresca = ruta.exists() and (time.time() - ultima) < f.gdelt_horas_cache * 3600
     consultas = {'BECERRA': f.gdelt_consulta_d, 'HILTON': f.gdelt_consulta_r}
     pendientes = [c for c in sorted(consultas, key=lambda c: n_cache.get(c, 0))
                   if not (fresca and n_cache.get(c, 0) >= 30)]
@@ -112,6 +118,8 @@ def actualizar_gdelt(cfg) -> tuple[pd.DataFrame, str]:
     if partes:
         cache = pd.concat([cache, *partes]).drop_duplicates(['fecha', 'candidato'], keep='last')
         cache.sort_values(['candidato', 'fecha']).to_csv(ruta, index=False, encoding='utf-8-sig')
+        if not errores:
+            marca.write_text(f'{time.time():.0f}\n')
     estado = 'en_vivo' if not errores else ('parcial: ' if partes else 'cache: ') + '; '.join(errores)
     return cache, estado
 
