@@ -96,7 +96,7 @@ def actualizar_gdelt(cfg) -> tuple[pd.DataFrame, str]:
     try:
         ultima = float(marca.read_text().strip())
     except (OSError, ValueError):
-        ultima = ruta.stat().st_mtime if ruta.exists() else 0.0
+        ultima = 0.0                                   # sin marca: se trata como vieja
     fresca = ruta.exists() and (time.time() - ultima) < f.gdelt_horas_cache * 3600
     consultas = {'BECERRA': f.gdelt_consulta_d, 'HILTON': f.gdelt_consulta_r}
     pendientes = [c for c in sorted(consultas, key=lambda c: n_cache.get(c, 0))
