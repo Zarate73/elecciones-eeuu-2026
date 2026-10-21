@@ -35,23 +35,22 @@ get('https://en.wikipedia.org/w/api.php?action=parse&page=2024_United_States_Sen
 
 # --- Kalshi (actual + históricos)
 K = 'https://api.elections.kalshi.com/trade-api/v2'
-fin = int(time.time()); ini = fin - 400 * 86400
-for ev in ('GOVPARTYAZ-26', 'KXGOVAZ-26'):
+fin = int(time.time())
+def mercados(ev):
     e = js(f'{K}/events/{ev}?with_nested_markets=true', f'kalshi_evento_{ev}.json')
-    if e and e.get('markets'):
-        serie = e['event'].get('series_ticker', ev.split('-')[0])
-        for m in e['markets']:
-            js(f"{K}/series/{serie}/markets/{m['ticker']}/candlesticks?start_ts={ini}&end_ts={fin}&period_interval=1440",
-               f"kalshi_velas_{m['ticker']}.json")
-for ev in ('PRESPARTYAZ-24', 'GOVPARTYAZ-22', 'SENATEAZ-24', 'KXSENATEAZ-24'):
-    e = js(f'{K}/historical/events/{ev}?with_nested_markets=true', f'kalshi_hist_{ev}.json') or js(f'{K}/events/{ev}?with_nested_markets=true', f'kalshi_ev_{ev}.json')
-    if e and e.get('markets'):
-        serie = e['event'].get('series_ticker', ev.split('-')[0])
-        for m in e['markets']:
-            for base in (f'{K}/historical/markets/{m["ticker"]}/candlesticks', f'{K}/series/{serie}/markets/{m["ticker"]}/candlesticks'):
-                r = js(f'{base}?start_ts={fin - 1500*86400}&end_ts={fin}&period_interval=1440', f"kalshi_velas_{m['ticker']}.json")
-                if r and r.get('candlesticks'):
-                    break
+    ms = ((e or {}).get('event') or {}).get('markets') or (e or {}).get('markets') or []
+    if not ms:
+        h = js(f'{K}/historical/markets?event_ticker={ev}&limit=50', f'kalshi_histmk_{ev}.json')
+        ms = (h or {}).get('markets') or []
+    return ms
+for ev, dias in (('GOVPARTYAZ-26', 700), ('PRESPARTYAZ-24', 1100), ('SENATEAZ-24', 1100), ('GOVPARTYAZ-22', 1600)):
+    serie = ev.split('-')[0]
+    for m in mercados(ev):
+        t = m['ticker']
+        for base in (f'{K}/series/{serie}/markets/{t}/candlesticks', f'{K}/historical/markets/{t}/candlesticks'):
+            r = js(f'{base}?start_ts={fin - dias*86400}&end_ts={fin}&period_interval=1440', f'kalshi_velas_{t}.json')
+            if r and r.get('candlesticks'):
+                break
 
 # --- Polymarket
 G = 'https://gamma-api.polymarket.com'
