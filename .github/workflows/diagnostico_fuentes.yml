@@ -1,11 +1,12 @@
 name: Diagnóstico de fuentes
 
-# Guarda las respuestas crudas de las fuentes de encuestas como artefacto (para revisar cambios de formato).
+# Guarda las respuestas crudas de las fuentes de encuestas en la rama 'diagnostico-fuentes' (no toca main),
+# para revisar cambios de formato de las páginas.
 on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   capturar:
@@ -21,8 +22,12 @@ jobs:
           curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_Georgia_gubernatorial_election&prop=text&format=json&formatversion=2&redirects=1" -o crudo/wikipedia_gob.json
           curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_United_States_Senate_election_in_Georgia&prop=text&format=json&formatversion=2&redirects=1" -o crudo/wikipedia_sen.json
           ls -la crudo
-      - uses: actions/upload-artifact@v4
-        with:
-          name: fuentes-crudas
-          path: crudo/
-          retention-days: 7
+      - name: Publicar en la rama diagnostico-fuentes
+        run: |
+          cd crudo
+          git init -q -b diagnostico-fuentes
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Fuentes crudas $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" diagnostico-fuentes
