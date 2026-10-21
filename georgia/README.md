@@ -1,7 +1,11 @@
 # Georgia 2026 · Gobernador (y Senado)
 
+<!-- PRONOSTICO:INICIO -->
 **Pronóstico al 20-oct-2026:** Bottoms 49.3% · Jackson 50.7% · P(Bottoms) = 0.39 · P(segunda vuelta) ≈ 0.2%.
 **Senado:** Ossoff 54.1% · Collins 45.9% · P(Ossoff) = 0.91.
+<!-- PRONOSTICO:FIN -->
+
+El bloque anterior lo actualiza GitHub Actions dos veces al día ([flujo](../.github/workflows/pronostico_georgia.yml)).
 
 | Carpeta | Contenido |
 |---|---|

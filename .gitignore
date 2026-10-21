@@ -5,9 +5,10 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 venv/
-# Salidas y registros de corridas (se regeneran)
-**/produccion/salidas/*
-!**/produccion/salidas/.gitkeep
+# Salidas de producción: se publican ultimo/, historial y cachés ligeras (las escribe GitHub Actions);
+# no se publican las carpetas por corrida ni la copia descargada de FiveThirtyEight (2.6 MB, se re-descarga)
+**/produccion/salidas/corridas/
+**/produccion/salidas/cache/fte_raw_polls_2023.csv
 **/produccion/logs/*
 !**/produccion/logs/.gitkeep
 **/salida/cache/

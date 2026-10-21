@@ -9,7 +9,14 @@ Requisito: Python 3.10 o superior, en Windows con internet.
 1. Doble clic en `scripts\instalar.bat`. Crea `.venv`, instala dependencias, corre las pruebas sin red y prueba cada fuente en vivo.
 2. Opcional: en `config\georgia.toml` → `[rutas] encuestas_propias` pon la ruta local de tus Excel G-Ratings (separados por `;`). Sin Excel, sus resultados se toman de `data\ajustes_encuestas.csv`.
 
-## Uso diario
+## En GitHub (automático)
+El flujo [`.github/workflows/pronostico_georgia.yml`](../../.github/workflows/pronostico_georgia.yml) corre todos los días a las 08:07 y 20:07 hora de Georgia. También se puede lanzar a mano desde la pestaña **Actions → Pronóstico Georgia → Run workflow**. En cada corrida:
+1. instala dependencias y corre las pruebas sin red;
+2. ejecuta `python -m ga_pronostico correr` con todas las fuentes en vivo;
+3. `scripts/actualizar_readme.py` reescribe el bloque de pronóstico de `georgia/README.md` y la fila de Georgia del README principal, y dibuja `salidas/evolucion.png`;
+4. publica `salidas/ultimo/`, `salidas/historial_pronosticos.csv` y las cachés ligeras en un commit de `github-actions[bot]`.
+
+## Uso diario (Windows)
 | Acción | Comando |
 |---|---|
 | Correr el pronóstico | `scripts\correr_pronostico.bat` |
