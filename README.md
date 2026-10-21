@@ -5,7 +5,7 @@ Modelos de pronóstico, backtests y versiones de producción para las contiendas
 ## Estados
 | Estado | Carrera principal | Estado del modelo | Carpeta |
 |---|---|---|---|
-| Georgia | Gobernador: Bottoms 49.2% · Jackson 50.8% · P(Bottoms) 36% (corte 2026-10-21) | **Producción (V11)**, actualización automática | [`georgia/`](georgia/) |
+| Georgia | Gobernador: Bottoms 49.2% · Jackson 50.8% · P(Bottoms) 37% (corte 2026-10-21) | **Producción (V11)**, actualización automática | [`georgia/`](georgia/) |
 | California | Gobernador | Producción (M5), por subir | — |
 | … | | pendiente | |
 
