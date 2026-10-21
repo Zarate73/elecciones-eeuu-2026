@@ -1,0 +1,355 @@
+{
+  "corte": "2026-10-21",
+  "dias_a_eleccion": 13,
+  "estados_fuentes": {
+    "historico_538": "en_vivo",
+    "wikipedia_gob": "en_vivo",
+    "270towin_gob": "en_vivo",
+    "kalshi": "en_vivo",
+    "wikipedia_sen": "en_vivo",
+    "270towin_sen": "en_vivo",
+    "civicforge": "en_vivo"
+  },
+  "avisos": [],
+  "gobernador": {
+    "margen": -1.553110603455614,
+    "sd": 4.708197177676436,
+    "IC80": [
+      -7.358495040469763,
+      4.294852595917624
+    ],
+    "IC95": [
+      -10.926509259093867,
+      7.801923181603127
+    ],
+    "pct_D": 49.21820848109739,
+    "pct_R": 50.77131908455299,
+    "pct_D_IC80": [
+      46.31584890109814,
+      52.14260008623045
+    ],
+    "pct_R_IC80": [
+      47.847115633979044,
+      53.673526428777684
+    ],
+    "P_D": 0.36072,
+    "P_R": 0.63928,
+    "P_segunda_vuelta": 0.00184,
+    "p_D_encuestas": 0.30455368059235055,
+    "p_D_final": 0.36074963881231453,
+    "mu_encuestas": -2.261232148175624,
+    "mu_final": -1.5719338337927748,
+    "peso_kalshi_aplicado": 0.3,
+    "k": 5,
+    "ventana": {
+      "desde": "2026-10-13",
+      "ampliada": false
+    },
+    "margen_corregido_encuestas": -1.4491881610196702,
+    "tres_categorias": {
+      "n_encuestas": 6,
+      "D_encuesta": 46.34758529582641,
+      "R_encuesta": 47.63294386902306,
+      "otros_indecisos": 6.019470835150528
+    },
+    "n_encuestas": 25
+  },
+  "escenarios": [
+    {
+      "escenario": "FINAL",
+      "margen": -1.553110603455614,
+      "sd": 4.708197177676436,
+      "IC80": [
+        -7.358495040469763,
+        4.294852595917624
+      ],
+      "IC95": [
+        -10.926509259093867,
+        7.801923181603127
+      ],
+      "pct_D": 49.21820848109739,
+      "pct_R": 50.77131908455299,
+      "pct_D_IC80": [
+        46.31584890109814,
+        52.14260008623045
+      ],
+      "pct_R_IC80": [
+        47.847115633979044,
+        53.673526428777684
+      ],
+      "P_D": 0.36072,
+      "P_R": 0.63928,
+      "P_segunda_vuelta": 0.00184,
+      "p_D_encuestas": 0.30455368059235055,
+      "p_D_final": 0.36074963881231453,
+      "mu_encuestas": -2.261232148175624,
+      "mu_final": -1.5719338337927748,
+      "peso_kalshi_aplicado": 0.3
+    },
+    {
+      "escenario": "Solo encuestas (sin Kalshi)",
+      "margen": -2.2408956762026495,
+      "sd": 4.7125897461591535,
+      "IC80": [
+        -8.061573467974668,
+        3.628918537363889
+      ],
+      "IC95": [
+        -11.602287542748027,
+        7.160735941588545
+      ],
+      "pct_D": 48.8743043746863,
+      "pct_R": 51.11520005088894,
+      "pct_D_IC80": [
+        45.96389475111018,
+        51.809346013869316
+      ],
+      "pct_R_IC80": [
+        48.18067363405623,
+        54.02657265453244
+      ],
+      "P_D": 0.3053,
+      "P_R": 0.6947,
+      "P_segunda_vuelta": 0.00156,
+      "p_D_encuestas": NaN,
+      "p_D_final": NaN,
+      "mu_encuestas": NaN,
+      "mu_final": NaN,
+      "peso_kalshi_aplicado": NaN
+    },
+    {
+      "escenario": "Sin sesgo estatal GA",
+      "margen": -1.4288516890466958,
+      "sd": 4.712589746159154,
+      "IC80": [
+        -7.2495294808187145,
+        4.440962524519843
+      ],
+      "IC95": [
+        -10.790243555592072,
+        7.972779928744499
+      ],
+      "pct_D": 49.28032636826428,
+      "pct_R": 50.70917805731097,
+      "pct_D_IC80": [
+        46.369916744688155,
+        52.215368007447296
+      ],
+      "pct_R_IC80": [
+        47.77465164047825,
+        53.620550660954464
+      ],
+      "P_D": 0.37088,
+      "P_R": 0.62912,
+      "P_segunda_vuelta": 0.00178,
+      "p_D_encuestas": NaN,
+      "p_D_final": NaN,
+      "mu_encuestas": NaN,
+      "mu_final": NaN,
+      "peso_kalshi_aplicado": NaN
+    },
+    {
+      "escenario": "Distribución normal",
+      "margen": -1.5910136591393622,
+      "sd": 4.723935247621425,
+      "IC80": [
+        -7.6441980361479285,
+        4.45789945503923
+      ],
+      "IC95": [
+        -10.74448282037961,
+        7.726545577761725
+      ],
+      "pct_D": 49.19923906900007,
+      "pct_R": 50.79025272813944,
+      "pct_D_IC80": [
+        46.17236719010655,
+        52.223696668009325
+      ],
+      "pct_R_IC80": [
+        47.76564436787846,
+        53.81705995130417
+      ],
+      "P_D": 0.36782,
+      "P_R": 0.63218,
+      "P_segunda_vuelta": 0.00154,
+      "p_D_encuestas": NaN,
+      "p_D_final": NaN,
+      "mu_encuestas": NaN,
+      "mu_final": NaN,
+      "peso_kalshi_aplicado": NaN
+    },
+    {
+      "escenario": "Kalshi solo",
+      "margen": 0.07438307151564796,
+      "sd": 4.7125897461591535,
+      "IC80": [
+        -5.746294720256371,
+        5.944197285082187
+      ],
+      "IC95": [
+        -9.28700879502973,
+        9.476014689306842
+      ],
+      "pct_D": 50.031943748545444,
+      "pct_R": 49.95756067702979,
+      "pct_D_IC80": [
+        47.12153412496933,
+        52.966985387728464
+      ],
+      "pct_R_IC80": [
+        47.02303426019708,
+        52.86893328067329
+      ],
+      "P_D": 0.50492,
+      "P_R": 0.49508,
+      "P_segunda_vuelta": 0.00172,
+      "p_D_encuestas": NaN,
+      "p_D_final": NaN,
+      "mu_encuestas": NaN,
+      "mu_final": NaN,
+      "peso_kalshi_aplicado": NaN
+    },
+    {
+      "escenario": "Ventana 30 días",
+      "margen": -2.3990083611876054,
+      "sd": 4.305092315534755,
+      "IC80": [
+        -7.716372397169031,
+        2.9632432723303705
+      ],
+      "IC95": [
+        -10.950921079713684,
+        6.1896645790421765
+      ],
+      "pct_D": 48.79524803219382,
+      "pct_R": 51.19425639338143,
+      "pct_D_IC80": [
+        46.136753516993636,
+        51.47653847198301
+      ],
+      "pct_R_IC80": [
+        48.51348361758797,
+        53.853919149928224
+      ],
+      "P_D": 0.27576,
+      "P_R": 0.72424,
+      "P_segunda_vuelta": 0.002,
+      "p_D_encuestas": NaN,
+      "p_D_final": NaN,
+      "mu_encuestas": NaN,
+      "mu_final": NaN,
+      "peso_kalshi_aplicado": NaN
+    },
+    {
+      "escenario": "Ventana 45 días",
+      "margen": -2.4734356635540085,
+      "sd": 4.061074943299394,
+      "IC80": [
+        -7.489405651701218,
+        2.5848776436813417
+      ],
+      "IC95": [
+        -10.540616553768135,
+        5.62842183852564
+      ],
+      "pct_D": 48.75803438101062,
+      "pct_R": 51.231470044564624,
+      "pct_D_IC80": [
+        46.25038726135362,
+        51.28735839110626
+      ],
+      "pct_R_IC80": [
+        48.70264362440986,
+        53.740401874360124
+      ],
+      "P_D": 0.25866,
+      "P_R": 0.74134,
+      "P_segunda_vuelta": 0.00148,
+      "p_D_encuestas": NaN,
+      "p_D_final": NaN,
+      "mu_encuestas": NaN,
+      "mu_final": NaN,
+      "peso_kalshi_aplicado": NaN
+    }
+  ],
+  "senado": {
+    "margen": 6.871937244930471,
+    "sd": 5.530422799288838,
+    "IC80": [
+      0.0073202405422169185,
+      13.70125437844248
+    ],
+    "IC95": [
+      -4.122789852575342,
+      17.89582475338829
+    ],
+    "pct_D": 53.43071639253796,
+    "pct_R": 46.55877914760748,
+    "pct_D_IC80": [
+      49.998405380618465,
+      56.84560826146023
+    ],
+    "pct_R_IC80": [
+      43.144800073922475,
+      49.991178547477126
+    ],
+    "P_D": 0.90028,
+    "P_R": 0.09972,
+    "P_segunda_vuelta": 0.00072,
+    "k": 3,
+    "ventana": {
+      "desde": "2026-10-13",
+      "ampliada": false
+    },
+    "mu_encuestas": 6.876667652597004,
+    "conjunto": {
+      "P_D_gob_y_D_sen": 0.34753,
+      "P_R_gob_y_D_sen": 0.55275,
+      "P_D_gob_y_R_sen": 0.01305,
+      "P_R_gob_y_R_sen": 0.08667,
+      "P_D_gob_si_gana_D_sen": 0.38602434798062824,
+      "P_D_gob_si_gana_R_sen": 0.13086642599277978,
+      "P_voto_dividido": 0.5658,
+      "rho": 0.42,
+      "corr_simulada": 0.42120614678868407
+    }
+  },
+  "kalshi": {
+    "p_d": 0.515,
+    "p_r": 0.505,
+    "p_d_normalizada": 0.5049019607843137,
+    "overround": 0.020000000000000018,
+    "fecha": "2026-10-21",
+    "antiguedad_dias": 0,
+    "estado": "en_vivo",
+    "usable_en_mezcla": true
+  },
+  "anticipado": {
+    "estado": "en_vivo",
+    "fecha_datos": "2026-10-19",
+    "delta_vs_2022": {
+      "pct_negro": 2.601357283220132,
+      "pct_65mas": 1.9435261926810767,
+      "boletas": 28642.0
+    },
+    "uso": "diagnóstico; no entra al pronóstico"
+  },
+  "calibracion": {
+    "horizonte_dias": 13,
+    "horizonte_recortado": false,
+    "tau": 3.0500000000000003,
+    "s": 8.0,
+    "nu": 12.600000000000001,
+    "n_contiendas": 780,
+    "sesgo_estado_bruto": 1.028956652355501,
+    "contraccion_sesgo": 0.7891916392172714,
+    "sesgo_estado": 0.8120439871559538,
+    "var_entre_estados": 10.748620161035198,
+    "estado_fuente": "en_vivo"
+  },
+  "ajustes_encuestas": [
+    "reemplazar bigdatapoll 2026-09-23: Agregadores publican la versión con indecisos reasignados (49.5/50.5); se usa la LV inicial",
+    "agregar gratings 2026-09-29: Encuesta propia; no probabilística; si encuestas_propias apunta al Excel se usa el Excel"
+  ]
+}

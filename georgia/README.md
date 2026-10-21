@@ -1,8 +1,22 @@
 # Georgia 2026 · Gobernador (y Senado)
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 20-oct-2026:** Bottoms 49.3% · Jackson 50.7% · P(Bottoms) = 0.39 · P(segunda vuelta) ≈ 0.2%.
-**Senado:** Ossoff 54.1% · Collins 45.9% · P(Ossoff) = 0.91.
+**Pronóstico al 2026-10-21** (13 días a la elección) · actualizado automáticamente 2026-10-21 03:14 ET · fuentes en vivo 7/7
+
+| Gobernador | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Keisha Lance **Bottoms** (D) | **49.2%** (46.3–52.1) | **36%** |
+| Rick **Jackson** (R) | **50.8%** (47.8–53.7) | **64%** |
+
+Margen D−R -1.6 pp (σ 4.7) · solo encuestas: P(Bottoms) 30% · con Kalshi (peso 0.3) · segunda vuelta 0.2% · 25 encuestas, 5 encuestadoras en la ventana
+
+**Senado:** Ossoff 53.4% · Collins 46.6% · P(Ossoff) 90% · Jackson+Ossoff 55% · Bottoms+Ossoff 35%
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 El bloque anterior lo actualiza GitHub Actions dos veces al día ([flujo](../.github/workflows/pronostico_georgia.yml)).
