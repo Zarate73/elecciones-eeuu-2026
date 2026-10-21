@@ -1,0 +1,264 @@
+{
+  "version": "1.0.0",
+  "generado": "2026-10-21T00:52:56-07:00",
+  "fecha_corte": "2026-10-21",
+  "dias_a_eleccion": 13,
+  "offline": false,
+  "config": "/home/runner/work/odiseo-elecciones-eeuu-2026/odiseo-elecciones-eeuu-2026/california/produccion/config/california.toml",
+  "pronostico": {
+    "candidato_d": "Becerra",
+    "candidato_r": "Hilton",
+    "pct_d": 60.185848004427854,
+    "pct_r": 39.814151995572146,
+    "margen_pp": 20.37169600885571,
+    "ic80_pct_d": [
+      56.37281038706622,
+      63.96695823144969
+    ],
+    "ic95_pct_d": [
+      53.54927327795382,
+      66.7964582653171
+    ],
+    "p_d_gana_modelo": 0.994625,
+    "p_d_gana_final": 0.9904383317298833
+  },
+  "estados_fuentes": {
+    "encuestas_wikipedia": "en_vivo",
+    "encuestas_270towin": "en_vivo",
+    "civiq": "Datos de Civiq vía api, validados (2026-10-20)",
+    "civiq_historia": "api_en_vivo (197 filas)",
+    "civiq_condados": "api_en_vivo (58 condados)",
+    "gdelt": "cache (< 12 h)",
+    "kalshi": "en_vivo"
+  },
+  "encuestas": {
+    "n": 12,
+    "por_origen": {
+      "wikipedia": 10,
+      "base": 2
+    },
+    "margen_legado_pp": 18.99706114896476,
+    "margen_m5_pp": 20.38410067047354,
+    "dispersion_pp": 6.959684174737092,
+    "n_efectivo": 8.250234526678558
+  },
+  "voto_temprano": {
+    "fecha_datos": "2026-10-20",
+    "estado": "actualizado",
+    "origen": "api",
+    "registrados": 23149787,
+    "devueltas": 1668959,
+    "tasa_devolucion_total_pct": 7.209392466548397,
+    "partidos": {
+      "Democratas": {
+        "registrados": 10395709,
+        "devueltas": 828488,
+        "cuota_registro_pct": 44.906283586972094,
+        "cuota_devoluciones_pct": 49.64100376342379,
+        "tasa_devolucion_pct": 7.969518962102537
+      },
+      "Republicanos": {
+        "registrados": 5762391,
+        "devueltas": 493892,
+        "cuota_registro_pct": 24.89176682273578,
+        "cuota_devoluciones_pct": 29.592818038070437,
+        "tasa_devolucion_pct": 8.570956049320499
+      },
+      "Otros/NPP": {
+        "registrados": 6991687,
+        "devueltas": 346579,
+        "cuota_registro_pct": 30.201949590292127,
+        "cuota_devoluciones_pct": 20.766178198505774,
+        "tasa_devolucion_pct": 4.957015381266353
+      }
+    },
+    "margen_dr_devueltas_pp": 20.04818572535335,
+    "margen_dr_registro_pp": 20.01451676423632,
+    "edades": {
+      "18-29": {
+        "registrados": 4387173,
+        "devueltas": 94890,
+        "porcentaje_de_devoluciones": 5.685580053194836
+      },
+      "30-45": {
+        "registrados": 6469885,
+        "devueltas": 205171,
+        "porcentaje_de_devoluciones": 12.293351724038757
+      },
+      "46-64": {
+        "registrados": 6472325,
+        "devueltas": 436594,
+        "porcentaje_de_devoluciones": 26.159660003631007
+      },
+      "65+": {
+        "registrados": 5820404,
+        "devueltas": 932304,
+        "porcentaje_de_devoluciones": 55.8614082191354
+      }
+    }
+  },
+  "participacion_m2": {
+    "por_edad": {
+      "disponible": true,
+      "margen_dr_devueltas_pp": 20.04818572535335,
+      "margen_dr_registro_pp": 20.01451676423632,
+      "margen_dr_esperado_por_edad_pp": 17.215898696585295,
+      "delta_m2_pp": 2.8322870287680537
+    },
+    "historico": {
+      "disponible": true,
+      "dias_comparados": 14,
+      "referencias": [
+        "2022 General",
+        "2024 General"
+      ],
+      "margen_actual_pp": 20.04818572535335,
+      "margen_referencias_mismo_dia_pp": {
+        "2022 General": 19.45624507264332,
+        "2024 General": 18.751893508096995
+      },
+      "delta_vs_referencias_pp": 0.9441164349831936,
+      "corrimiento_dia_a_final_pp": {
+        "2022 General": 0.7219900746692147,
+        "2024 General": 1.1546036048298447
+      },
+      "composicion_final_proyectada_pp": 20.98648256510288,
+      "composicion_a_resultado": {
+        "disponible": true,
+        "pendiente": 2.1024469820554668,
+        "intercepto": -21.369070146818963,
+        "n": 4,
+        "rmse_loo_pp": 4.223595885799315,
+        "error_primaria_2026_pp": 4.307928221859708,
+        "margen_resultado_implicito_pp": 22.753896786141254
+      },
+      "diagnostico_retrospectivo": [
+        {
+          "eleccion": "2021 Special",
+          "delta_vs_otras_pp": 9.71,
+          "error_encuestas_pp": 6.51
+        },
+        {
+          "eleccion": "2022 General",
+          "delta_vs_otras_pp": -4.78,
+          "error_encuestas_pp": -4.99
+        },
+        {
+          "eleccion": "2024 General",
+          "delta_vs_otras_pp": -5.72,
+          "error_encuestas_pp": -5.47
+        },
+        {
+          "eleccion": "2025 Special",
+          "delta_vs_otras_pp": 0.78,
+          "error_encuestas_pp": 10.73
+        }
+      ],
+      "correlacion_delta_error": 0.7290776825178704
+    },
+    "w_m2": 0.0
+  },
+  "pdi_contraste": {
+    "disponible": true,
+    "fecha": "2026-10-19",
+    "devueltas": 1214420,
+    "dem_pct": 48.661830338762535,
+    "rep_pct": 30.250160570478087,
+    "margen_dr_pp": 18.411669768284447,
+    "fuente": "politicaldata.com/early-vote-counts (captura manual)"
+  },
+  "sentimiento": {
+    "odiseo": {
+      "activa": false,
+      "corte": "2026-10-21",
+      "ruta": "/home/runner/work/odiseo-elecciones-eeuu-2026/odiseo-elecciones-eeuu-2026/california/CALIFORNIA_2026_NOTEBOOK_COMPLETO/entrega_odiseo/serie_sentimiento_diaria.csv",
+      "fecha_ultima_senal": null,
+      "brechas_7d": {
+        "NOTICIA": null,
+        "RED_SOCIAL": null
+      },
+      "puntajes_fuente": {
+        "NOTICIA": 0.0,
+        "RED_SOCIAL": 0.0
+      },
+      "n_referencias": {
+        "NOTICIA": 0,
+        "RED_SOCIAL": 0
+      },
+      "factores_cobertura": {
+        "NOTICIA": 0.0,
+        "RED_SOCIAL": 0.0
+      },
+      "puntuacion_ponderada": 0.0,
+      "multiplicador_lambda": 1.0,
+      "tasa_base_semanal": 0.15,
+      "tasa_condicional_semanal": 0.15,
+      "eventos_contextuales": [],
+      "advertencias": [
+        "Datos de sentimiento no disponibles o inválidos: FileNotFoundError: No existe /home/runner/work/odiseo-elecciones-eeuu-2026/odiseo-elecciones-eeuu-2026/california/CALIFORNIA_2026_NOTEBOOK_COMPLETO/entrega_odiseo/serie_sentimiento_diaria.csv",
+        "NOTICIA: falta señal reciente con cobertura suficiente.",
+        "RED_SOCIAL: falta señal reciente con cobertura suficiente."
+      ],
+      "metodo": "anomalia_retrospectiva_en_brecha_7d_no_voto"
+    },
+    "gdelt": {
+      "disponible": true,
+      "fecha": "2026-10-04",
+      "brecha_7d": 0.6214499999999998,
+      "innovacion_7d": 0.7575533333333332,
+      "z_innovacion": 1.2016063265671821,
+      "k_sent_candidato": 1.5228174647466208
+    },
+    "k_sent_candidato": 1.5228174647466208,
+    "k_sent_aplicado": 1.0,
+    "validado": false
+  },
+  "kalshi": {
+    "p_d": 0.963,
+    "p_r": 0.036000000000000004,
+    "p_d_normalizada": 0.9639639639639639,
+    "overround": -0.0010000000000000009,
+    "fecha": "2026-10-21",
+    "antiguedad_dias": 0,
+    "estado": "en_vivo",
+    "usable_en_mezcla": true
+  },
+  "calibracion": {
+    "dias_ref": 14,
+    "n_elecciones": 4,
+    "rmse_historico_pp": 6.439807554763783,
+    "sesgo_medio_pp": -2.8469637480849954,
+    "sigma_sis_pp": 6.1415354794049835,
+    "errores": {
+      "GOB2018": 7.11,
+      "GOB2022": -5.57,
+      "PRES2024": -5.86,
+      "SEN2024": -7.07
+    }
+  },
+  "m5": {
+    "media_pp": 20.38410067047354,
+    "sigma_pp": 6.663480124263843,
+    "k_sent_aplicado": 1.0,
+    "delta_m2_aplicado_pp": 0.0,
+    "p_modelo": 0.994625,
+    "p_final": 0.9904383317298833,
+    "p_kalshi_usada": 0.9639639639639639,
+    "w_kalshi": 0.3,
+    "cuantiles_margen_pp": {
+      "2.5": 7.098546555907648,
+      "10": 12.745620774132439,
+      "50": 20.37169600885571,
+      "90": 27.93391646289937,
+      "97.5": 33.59291653063419
+    },
+    "componentes_varianza_pp2": {
+      "sistematico": 37.7184580447902,
+      "muestreo_encuestas": 5.8710093216690815,
+      "deriva_hasta_eleccion": 0.8125,
+      "participacion_m2": 0.0
+    }
+  },
+  "avisos": [],
+  "duracion_s": 6.1
+}

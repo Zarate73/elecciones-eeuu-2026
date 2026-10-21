@@ -6,7 +6,7 @@ Modelos de pronóstico, backtests y versiones de producción para las contiendas
 | Estado | Carrera principal | Estado del modelo | Carpeta |
 |---|---|---|---|
 | Georgia | Gobernador: Bottoms 49.2% · Jackson 50.8% · P(Bottoms) 37% (corte 2026-10-21) | **Producción (V11)**, actualización automática | [`georgia/`](georgia/) |
-| California | Gobernador: Becerra vs Hilton (primera corrida automática pendiente) | **Producción (M5)**, actualización automática | [`california/`](california/) |
+| California | Gobernador: Becerra 60.2% · Hilton 39.8% · P(Becerra) 99% (corte 2026-10-21) | **Producción (M5)**, actualización automática | [`california/`](california/) |
 | … | | pendiente | |
 
 ## Estructura por estado
