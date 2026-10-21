@@ -1,4 +1,5 @@
 from datetime import date
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -128,3 +129,31 @@ def test_sin_nada_es_error_fatal(cfg):
     cfg.rutas['encuestas_propias'] = ''
     with pytest.raises(ErrorFatal):
         ejecutar(cfg)
+
+
+def test_270towin_real_lee_firma_de_source_colspan():
+    """Página real (21-oct-2026): 'Source' tiene colspan=2 (logo vacío + nombre). Antes salía NaN -> 'desconocida'."""
+    from ga_pronostico import encuestas as E
+    al = pd.read_csv(Path(__file__).parents[1] / 'data' / 'alias_encuestadoras.csv')
+    for k, (d, r) in {'gob': ('Bottoms', 'Jackson'), 'sen': ('Ossoff', 'Collins')}.items():
+        html = (Path(__file__).parent / 'fixtures' / 'reales' / f't270_{k}_2026-10-21.html').read_text(encoding='utf-8')
+        df = E.parse_tabla_270(html, d, r, 2026, al)
+        assert len(df) >= 8
+        assert df.pollster.str.len().gt(0).all()
+        assert not (df.clave_538 == 'desconocida').any()
+        assert not df.pollster.str.contains('Average', case=False).any()
+    uga = E.parse_tabla_270((Path(__file__).parent / 'fixtures' / 'reales' / 't270_gob_2026-10-21.html').read_text(encoding='utf-8'),
+                            'Bottoms', 'Jackson', 2026, al)
+    assert (uga.clave_538 == 'universityofge').sum() >= 1
+
+
+def test_combinar_mismas_cifras_con_fecha_de_publicacion():
+    from ga_pronostico import encuestas as E
+    from datetime import date
+    base = dict(inicio=date(2026, 7, 29), n=815.0, pop='LV', otros=0.0, indecisos=9.0, tipo_pregunta='', fuente='', nota='')
+    w = pd.DataFrame([dict(base, pollster='Quantus Insights (R)', clave_538='quantusinsight', fin=date(2026, 8, 1), D=46.0, R=45.0, origen='wikipedia')])
+    t = pd.DataFrame([dict(base, pollster='Quantus Insights', clave_538='quantusinsight', fin=date(2026, 8, 10), D=46.0, R=45.0, origen='270towin'),
+                      dict(base, pollster='Quantus Insights', clave_538='quantusinsight', fin=date(2026, 8, 20), D=44.0, R=47.0, origen='270towin')])
+    out = E.combinar(w, t)
+    assert len(out) == 2                                   # la de mismas cifras a 9 días se descarta; la distinta a 19 días no
+    assert set(out.origen) == {'wikipedia', '270towin'}

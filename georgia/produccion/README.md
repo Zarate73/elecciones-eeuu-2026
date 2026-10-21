@@ -84,9 +84,9 @@ Parámetros en `config\georgia.toml` → `[modelo]`:
 - **Si una fuente cambia de formato:** el reporte la marca como `cache (...)` y el log explica el motivo. `python -m ga_pronostico verificar` prueba cada fuente por separado.
 - **Encuesta propia nueva:** agrega la ruta del Excel en `encuestas_propias`.
 - **Corrección de una encuesta:** agrega una fila en `data\ajustes_encuestas.csv`, con fuente y motivo.
-- **Después de cambiar código:** corre `.venv\Scripts\python -m pytest -q`. Las 15 pruebas no usan red.
+- **Después de cambiar código:** corre `.venv\Scripts\python -m pytest -q`. Las pruebas no usan red.
 
 ## Limitaciones
-- **Parsers sin prueba en vivo desde aquí.** Los de Wikipedia y 270toWin se probaron con tablas en el formato estándar de esas páginas, porque desde el entorno de desarrollo no hay acceso a esos sitios. La primera corrida en tu equipo (`verificar`) confirma que leen las páginas reales; si no, quedan en caché y se avisa.
+- **Parsers probados con las páginas reales** (21-oct-2026, vía GitHub Actions). El flujo `diagnostico_fuentes.yml` guarda las respuestas crudas en la rama `diagnostico-fuentes` para revisar cambios de formato.
 - **Fechas de 270toWin.** 270toWin da la fecha de publicación, no la de campo. Por eso Wikipedia tiene prioridad y existen los ajustes verificados.
 - **Peso de Kalshi.** El 0.30 no está validado con historia.

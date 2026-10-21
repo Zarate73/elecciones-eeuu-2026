@@ -120,6 +120,16 @@ def _buscar(cols, *claves):
     return None
 
 
+def _columna_firma(t: pd.DataFrame, cols):
+    """270toWin usa 'Source' con colspan=2: la 1ª columna es el logo (vacía) y el nombre va en 'Source.1'.
+    Entre las columnas tipo source/pollster se elige la que tiene más texto no vacío."""
+    cands = [c for c in cols if any(k in c.lower() for k in ('source', 'pollster'))]
+    if not cands:
+        return None
+    llenas = {c: t[c].map(lambda v: bool(limpiar(v)) and not re.search(r'average of', limpiar(v), re.I)).sum() for c in cands}
+    return max(cands, key=lambda c: llenas[c])
+
+
 # ----------------------------------------------------------------------------------- parsers
 def parse_tabla_wikipedia(html: str, cand_d: str, cand_r: str, anio: int, alias=None) -> pd.DataFrame:
     """Tablas de encuestas con columnas de AMBOS candidatos (descarta hipotéticas con otros D/R y agregadores)."""
@@ -170,7 +180,7 @@ def parse_tabla_270(html: str, cand_d: str, cand_r: str, anio: int, alias=None) 
         cols = list(t.columns)
         cd = next((c for c in cols if cand_d.lower() in c.lower()), None)
         cr = next((c for c in cols if cand_r.lower() in c.lower()), None)
-        fuente = _buscar(cols, 'source', 'pollster')
+        fuente = _columna_firma(t, cols)
         fecha = _buscar(cols, 'date')
         if not (cd and cr and fuente and fecha):
             continue
@@ -183,10 +193,13 @@ def parse_tabla_270(html: str, cand_d: str, cand_r: str, anio: int, alias=None) 
             ini, fin = parse_fechas(r[fecha], anio)
             if fin is None:
                 continue
+            firma = limpiar(r[fuente])
+            if not firma or re.search(r'average of', firma, re.I):
+                continue                                   # sin firma no se puede deduplicar ni corregir casa
             texto_fila = ' '.join(limpiar(x) for x in r.values)
             n, pop = parse_muestra(r[muestra]) if muestra else (np.nan, None)
             pop = pop or next((p for p in ('LV', 'RV') if re.search(rf'\b{p}\b', texto_fila)), 'LV')
-            filas.append({'pollster': limpiar(r[fuente]), 'inicio': ini, 'fin': fin, 'n': n, 'pop': pop, 'D': D, 'R': R,
+            filas.append({'pollster': firma, 'inicio': ini, 'fin': fin, 'n': n, 'pop': pop, 'D': D, 'R': R,
                           'otros': np.nan, 'indecisos': a_numero(r[c_otro]) if c_otro else np.nan, 'origen': '270towin'})
     df = pd.DataFrame(filas, columns=[c for c in COLUMNAS if c not in ('clave_538', 'tipo_pregunta', 'fuente', 'nota')])
     return _completar(df, alias)
@@ -251,17 +264,20 @@ def elegir_versiones(df: pd.DataFrame) -> pd.DataFrame:
     return elegidas.drop(columns=['_pop', '_ind']).reset_index(drop=True)
 
 
-def combinar(*fuentes: pd.DataFrame, tolerancia_dias: int = 7) -> pd.DataFrame:
+def combinar(*fuentes: pd.DataFrame, tolerancia_dias: int = 7, tolerancia_mismas_cifras: int = 21) -> pd.DataFrame:
     """Une fuentes en orden de prioridad; una encuesta de menor prioridad se descarta si ya existe la misma
-    firma con fin a <= tolerancia_dias."""
+    firma con fin a <= tolerancia_dias, o con las mismas cifras D/R a <= tolerancia_mismas_cifras
+    (270toWin fecha por publicación, que puede ir 1-3 semanas después del fin de campo)."""
     base = pd.DataFrame(columns=COLUMNAS)
     for f in fuentes:
         if f is None or f.empty:
             continue
         nuevas = []
         for _, r in f.iterrows():
+            dias = pd.to_datetime(base.fin).sub(pd.Timestamp(r.fin)).abs().dt.days
+            mismas = ((pd.to_numeric(base.D) - r.D).abs() < 0.51) & ((pd.to_numeric(base.R) - r.R).abs() < 0.51)
             ya = base[(base.clave_538 == r.clave_538) &
-                      (pd.to_datetime(base.fin).sub(pd.Timestamp(r.fin)).abs().dt.days <= tolerancia_dias)]
+                      ((dias <= tolerancia_dias) | (mismas & (dias <= tolerancia_mismas_cifras)))]
             if ya.empty:
                 nuevas.append(r)
         if nuevas:
