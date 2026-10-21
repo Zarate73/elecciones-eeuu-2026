@@ -1,5 +1,5 @@
 @echo off
-REM ODISEO Georgia - corrida. Acepta las opciones de la CLI:
+REM Georgia - corrida. Acepta las opciones de la CLI:
 REM   correr_pronostico.bat              (normal, fuentes en vivo)
 REM   correr_pronostico.bat --offline    (solo caches)
 REM   correr_pronostico.bat --estricto   (codigo 2 si alguna fuente no estuvo en vivo)

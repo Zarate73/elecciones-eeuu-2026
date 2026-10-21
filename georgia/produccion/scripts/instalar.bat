@@ -1,5 +1,5 @@
 @echo off
-REM ODISEO Georgia - instalacion (una sola vez)
+REM Georgia - instalacion (una sola vez)
 setlocal
 cd /d "%~dp0.."
 where py >nul 2>&1 && (set PY=py -3) || (set PY=python)

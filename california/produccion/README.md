@@ -1,4 +1,4 @@
-# ODISEO · California 2026 · Producción (modelo M5)
+# California 2026 · Producción (modelo M5)
 
 Versión de producción del notebook M5 ([`../modelo_m5/`](../modelo_m5/)): paquete de Python, línea de comandos, configuración en un solo archivo, registros, pruebas y tarea programada de Windows. Con las mismas encuestas da los mismos números que el notebook, y una prueba lo verifica.
 
@@ -9,7 +9,7 @@ Requisito: Python 3.10 o superior.
 1. Doble clic en `scripts\instalar.bat`. Crea `.venv`, instala dependencias, revisa rutas y corre las pruebas.
 2. Revisa `config\california.toml` → `[rutas]`:
    - `encuestas_base`: base verificada a mano. Puede ser el Excel `CALIFORNIA_GOBERNADOR-v3.xlsx` o su exportación `data\encuestas_verificadas.csv` (la que usa el repositorio).
-   - `carpeta_sentimiento`: `entrega_odiseo` (opcional, solo diagnóstico).
+   - `carpeta_sentimiento`: `entrega_sentimiento` (opcional, solo diagnóstico).
 
 ## Uso diario
 | Acción | Comando |
@@ -35,7 +35,7 @@ Códigos de salida: `0` OK · `1` error fatal (ninguna encuesta: ni base, ni en 
   - `comparacion_modelos.csv`: M5 frente a M1–M4 legados.
   - `encuestas_pesos.csv`, `distribucion_margen.png`, `componentes_varianza.png`.
 - `corridas\AAAA-MM-DD_HHMMSS\`: una carpeta por corrida. Se conservan las últimas 60 (`ejecucion.conservar_corridas`).
-- `historial_pronosticos.csv`: una fila por corrida. Es la serie de tiempo del pronóstico, para el panel ODISEO.
+- `historial_pronosticos.csv`: una fila por corrida. Es la serie de tiempo del pronóstico, para el panel.
 - `cache\`: últimos datos de cada fuente. Se usan si una fuente falla, y el reporte lo indica.
 
 Registro de ejecución: `logs\pronostico.log`, con rotación de 5 × 5 MB.
@@ -50,7 +50,7 @@ Registro de ejecución: `logs\pronostico.log`, con rotación de 5 × 5 MB.
 | Civiq historia y condados | API pública | caché | comparación al mismo día; base del módulo de conteo |
 | Kalshi | API pública | último snapshot → histórico | mezcla de la probabilidad (`w_kalshi = 0.30`); se descarta si tiene más de 3 días o en `--modo-conteo` |
 | GDELT | API DOC 2.0 | caché (12 h) | diagnóstico; solo entra con `validado_sentimiento = true` |
-| Sentimiento ODISEO | `entrega_odiseo\` | se omite | diagnóstico (y M4 legado) |
+| Sentimiento propio | `entrega_sentimiento\` | se omite | diagnóstico (y M4 legado) |
 | PDI | `data\pdi_retornos_manual.csv` (manual) | se omite | contraste |
 | Backtest 2018–2025 | `data\generales_*.csv` | — | calibra σ en cada corrida |
 
@@ -77,7 +77,7 @@ ca_pronostico/
   civiq.py             API de Civiq, caché, historia, condados y diagnósticos de participación
   civiq_navegador.py   respaldo con Brave/Playwright
   externas.py          Kalshi, GDELT, PDI
-  sentimiento_odiseo.py  señal M4
+  sentimiento_propio.py  señal M4
   modelo.py            calibración de σ, simulación M5, porcentajes, conteo
   legado.py            M1–M4 originales (comparación)
   reporte.py           escritura de salidas y gráficas

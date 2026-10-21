@@ -42,4 +42,4 @@ M5 toma de cada versión anterior (M1–M4) solo lo que el backtest respalda:
 | [`backtest/`](backtest/) | Backtest M1–M4 + Kalshi: σ empírica, primarias 2018/2024/2026, conteo de la primaria y mercados |
 | [`docs/`](docs/) | Hallazgos del backtest y decisiones del modelo |
 
-No se publica la serie de sentimiento propia de ODISEO (`entrega_odiseo/`): en producción es opcional y solo de diagnóstico.
+No se publica la serie de sentimiento propia (`entrega_sentimiento/`): en producción es opcional y solo de diagnóstico.

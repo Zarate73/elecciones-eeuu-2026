@@ -1,5 +1,5 @@
 """
-ODISEO · California · Backtesting de M1–M4 + Kalshi
+California · Backtesting de M1–M4 + Kalshi
 ===================================================
 Ejecutar:  python backtest_california.py  (desde la carpeta que contiene data/ y el Excel)
 

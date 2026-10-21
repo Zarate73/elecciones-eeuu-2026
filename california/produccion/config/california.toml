@@ -1,5 +1,5 @@
 # =====================================================================================
-# ODISEO · California 2026 · configuración de producción (modelo M5)
+# California 2026 · configuración de producción (modelo M5)
 # Rutas relativas = relativas a la carpeta PRODUCCION_CALIFORNIA.
 # =====================================================================================
 
@@ -17,7 +17,7 @@ zona_horaria = "America/Los_Angeles"
 # Base verificada a mano (.xlsx del notebook o su exportación .csv). Se combina con las encuestas en vivo.
 encuestas_base = "data/encuestas_verificadas.csv"
 hoja_encuestas = "Gobernador California"   # solo si encuestas_base es .xlsx
-carpeta_sentimiento = "../CALIFORNIA_2026_NOTEBOOK_COMPLETO/entrega_odiseo"
+carpeta_sentimiento = "data/sentimiento"   # opcional: serie de sentimiento propia (no se publica)
 datos = "data"                 # backtest, Kalshi histórico, PDI manual
 salidas = "salidas"
 logs = "logs"
@@ -74,7 +74,7 @@ tasa_shocks_semanal = 0.15
 magnitud_shock_sd_pp = 3.0
 shock_t_gl = 5.0
 
-[sentimiento_odiseo]
+[sentimiento_propio]
 usar = true
 peso_noticias = 0.80
 peso_redes = 0.20

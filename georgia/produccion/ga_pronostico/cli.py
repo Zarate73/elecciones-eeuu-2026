@@ -105,7 +105,7 @@ def _cmd_verificar(a) -> int:
 
 
 def main(argv=None) -> int:
-    p = argparse.ArgumentParser(prog='ga_pronostico', description='ODISEO · pronóstico Georgia (V11)')
+    p = argparse.ArgumentParser(prog='ga_pronostico', description='pronóstico Georgia (V11)')
     p.add_argument('--config', default=None, help='ruta a un .toml (por defecto config/georgia.toml)')
     sub = p.add_subparsers(dest='cmd', required=True)
     c = sub.add_parser('correr', help='ejecuta el pronóstico')

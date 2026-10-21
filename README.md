@@ -1,4 +1,4 @@
-# ODISEO · Elecciones generales de EE.UU. 2026
+# Elecciones generales de EE.UU. 2026
 
 Modelos de pronóstico, backtests y versiones de producción para las contiendas de 2026 en **14 estados**. Cada estado vive en su propia carpeta y sigue la misma estructura.
 
@@ -37,7 +37,7 @@ Python 3.10+. Cada `produccion/` trae `requirements.txt` y `scripts\instalar.bat
 | [GDELT DOC 2.0](https://www.gdeltproject.org/) | Tono de cobertura (diagnóstico, CA) | Uso libre con atribución |
 | [Kalshi](https://kalshi.com) API pública | Precio de mercado | Términos de Kalshi |
 | Wikipedia, 270toWin, medios citados en cada CSV | Encuestas publicadas (cifras de resumen) | Cada fila lleva su URL de origen |
-| G-Ratings (Odysseus) | Encuesta propia (solo resultados de resumen) | Publicados por el autor |
+| G-Ratings | Encuesta propia (solo resultados de resumen) | Publicados por el autor |
 
 ## Autor
 Saúl Zárate Feliciano · ingeniero matemático · análisis de datos, encuestas y modelos de pronóstico ([@Zarate73](https://github.com/Zarate73)).

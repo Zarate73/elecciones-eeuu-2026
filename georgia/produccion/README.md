@@ -1,6 +1,6 @@
-# ODISEO · Georgia 2026 · Producción (modelo V11)
+# Georgia 2026 · Producción (modelo V11)
 
-Versión de producción de `ODISEO_Georgia_2026_Modelo_Final_v11`. Es un paquete de Python con línea de comandos, configuración en un solo archivo, registros, pruebas y tarea programada de Windows.
+Versión de producción de `Modelo_Final_v11` (carpeta `modelo_v11/`). Es un paquete de Python con línea de comandos, configuración en un solo archivo, registros, pruebas y tarea programada de Windows.
 
 **Todas las fuentes se consultan en vivo en cada corrida.** No hay que mantener a mano ningún CSV de encuestas. Con las mismas encuestas da los mismos números que el notebook V11, y una prueba lo verifica.
 

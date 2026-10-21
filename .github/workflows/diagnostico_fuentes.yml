@@ -16,7 +16,7 @@ jobs:
       - name: Descargar fuentes
         run: |
           mkdir crudo
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36 ODISEO-pronostico/1.0"
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36 pronostico-elecciones/1.0"
           curl -sSL -A "$UA" "https://www.270towin.com/2026-governor-polls/georgia" -o crudo/t270_gob.html
           curl -sSL -A "$UA" "https://www.270towin.com/2026-senate-polls/georgia" -o crudo/t270_sen.html
           curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_Georgia_gubernatorial_election&prop=text&format=json&formatversion=2&redirects=1" -o crudo/wikipedia_gob.json

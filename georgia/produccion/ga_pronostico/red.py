@@ -7,7 +7,7 @@ import time
 log = logging.getLogger(__name__)
 
 UA = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-      'Chrome/131.0 Safari/537.36 ODISEO-pronostico/1.0')
+      'Chrome/131.0 Safari/537.36 pronostico-elecciones/1.0')
 
 
 class SinRed(ConnectionError):

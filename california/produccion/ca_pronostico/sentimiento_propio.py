@@ -1,4 +1,4 @@
-"""Señal de sentimiento ODISEO (M4): anomalía retrospectiva de la brecha 7d."""
+"""Señal de sentimiento propia (M4): anomalía retrospectiva de la brecha 7d."""
 from __future__ import annotations
 
 import json, re, time, unicodedata
@@ -26,7 +26,7 @@ DIAS_MAX_REZAGO_SENAL = 2
 def configurar(cfg) -> None:
     global USAR_SENTIMIENTO_PARA_SHOCKS, PESO_NOTICIAS, PESO_REDES, GAMMA_SENTIMIENTO
     global CAP_MULTIPLICADOR_SHOCK, MIN_HISTORICO_SENAL, DIAS_HISTORICO_SENAL, DIAS_SEÑAL_RECIENTE, DIAS_MAX_REZAGO_SENAL
-    s = cfg.sentimiento_odiseo
+    s = cfg.sentimiento_propio
     USAR_SENTIMIENTO_PARA_SHOCKS, PESO_NOTICIAS, PESO_REDES = s.usar, s.peso_noticias, s.peso_redes
     GAMMA_SENTIMIENTO, CAP_MULTIPLICADOR_SHOCK = s.gamma, s.cap_multiplicador
     MIN_HISTORICO_SENAL, DIAS_HISTORICO_SENAL = s.min_historico, s.dias_historico

@@ -33,7 +33,7 @@ class Config:
     fuentes: Seccion
     modelo: Seccion
     legado: Seccion
-    sentimiento_odiseo: Seccion
+    sentimiento_propio: Seccion
     ejecucion: Seccion
     archivo: Path
     offline: bool = False
@@ -82,12 +82,12 @@ def cargar_config(ruta: str | Path | None = None, *, offline: bool = False,
     with open(ruta, 'rb') as f:
         crudo = tomllib.load(f)
     secciones = {k: Seccion(crudo.get(k, {})) for k in
-                 ('eleccion', 'rutas', 'fuentes', 'modelo', 'legado', 'sentimiento_odiseo', 'ejecucion')}
+                 ('eleccion', 'rutas', 'fuentes', 'modelo', 'legado', 'sentimiento_propio', 'ejecucion')}
     cfg = Config(**secciones, archivo=ruta, offline=offline,
                  corte_manual=date.fromisoformat(corte) if corte else None)
     if modo_conteo is not None:
         cfg.ejecucion['modo_conteo'] = modo_conteo
-    if os.environ.get('ODISEO_SIN_NAVEGADOR') == '1':        # GitHub Actions: sin Brave/Playwright
+    if os.environ.get('PRONOSTICO_SIN_NAVEGADOR') == '1':        # GitHub Actions: sin Brave/Playwright
         cfg.fuentes['civiq_usar_navegador_respaldo'] = False
     validar(cfg)
     return cfg

@@ -12,7 +12,7 @@ import pandas as pd
 
 def texto_resumen(r: dict, cfg) -> str:
     f, e = r['gobernador']['final'], cfg.eleccion
-    lin = [f"ODISEO · {e.estado} {e.cargo} {cfg.dia_eleccion.year} · corte {cfg.corte} ({cfg.dias_a_eleccion} días a la elección)",
+    lin = [f"{e.estado} {e.cargo} {cfg.dia_eleccion.year} · corte {cfg.corte} ({cfg.dias_a_eleccion} días a la elección)",
            '=' * 78,
            f"GOBERNADOR (pronóstico principal)",
            f"  {e.nombre_d} (D): {f['pct_D']:.1f}%   [IC80 {f['pct_D_IC80'][0]:.1f}–{f['pct_D_IC80'][1]:.1f}]",

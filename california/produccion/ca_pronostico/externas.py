@@ -140,7 +140,7 @@ def senal_gdelt(cfg, df: pd.DataFrame, corte: date) -> dict:
     hist, ultimo = innov.iloc[:-7], innov.iloc[-1]
     mad = 1.4826 * float(np.median(np.abs(hist - hist.median())))
     z = float((ultimo - hist.median()) / max(mad, 1e-6))
-    s = cfg.sentimiento_odiseo
+    s = cfg.sentimiento_propio
     return {'disponible': True, 'fecha': str(innov.index[-1].date()), 'brecha_7d': float(brecha7.iloc[-1]),
             'innovacion_7d': float(ultimo), 'z_innovacion': z,
             'k_sent_candidato': float(min(cfg.modelo.k_sent_max, np.exp(s.gamma * min(abs(z), 3))))}

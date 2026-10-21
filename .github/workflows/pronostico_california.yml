@@ -34,7 +34,7 @@ jobs:
       - name: Correr pronóstico (fuentes en vivo)
         env:
           PYTHONIOENCODING: utf-8
-          ODISEO_SIN_NAVEGADOR: '1'
+          PRONOSTICO_SIN_NAVEGADOR: '1'
         run: python -m ca_pronostico correr
       - name: Actualizar README
         run: python scripts/actualizar_readme.py

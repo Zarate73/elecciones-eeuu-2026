@@ -11,7 +11,7 @@ from zoneinfo import ZoneInfo
 import numpy as np
 import pandas as pd
 
-from . import civiq, externas, legado, modelo, reporte, sentimiento_odiseo
+from . import civiq, externas, legado, modelo, reporte, sentimiento_propio
 from . import encuestas_web
 from .encuestas import cargar_encuestas_base, resumir, resumir_mejorado, tabla_encuestas
 
@@ -98,8 +98,8 @@ def _ejecutar(cfg) -> dict:
     pdi = externas.cargar_pdi(cfg)
 
     # 3) Sentimiento ---------------------------------------------------------------------
-    sentimiento_odiseo.configurar(cfg)
-    sent, _, _ = sentimiento_odiseo.calcular_senal_sentimiento(cfg.ruta('carpeta_sentimiento'), corte,
+    sentimiento_propio.configurar(cfg)
+    sent, _, _ = sentimiento_propio.calcular_senal_sentimiento(cfg.ruta('carpeta_sentimiento'), corte,
                                                               cfg.legado.tasa_shocks_semanal)
     gd_df, estados['gdelt'] = externas.actualizar_gdelt(cfg)
     gd = externas.senal_gdelt(cfg, gd_df, corte)
@@ -157,7 +157,7 @@ def _ejecutar(cfg) -> dict:
         'voto_temprano': civiq.resumen_participacion(dato) if dato else None,
         'participacion_m2': {'por_edad': m2e, 'historico': m2h, 'w_m2': m.w_m2},
         'pdi_contraste': pdi,
-        'sentimiento': {'odiseo': sent.to_dict(), 'gdelt': gd, 'k_sent_candidato': k_cand,
+        'sentimiento': {'propio': sent.to_dict(), 'gdelt': gd, 'k_sent_candidato': k_cand,
                         'k_sent_aplicado': k_sent, 'validado': m.validado_sentimiento},
         'kalshi': kal, 'calibracion': cal,
         'm5': {k: v for k, v in m5.items() if k != 'simulacion'},
@@ -193,7 +193,7 @@ def resumen_texto(cfg, r: dict) -> str:
     p, m5 = rep['pronostico'], rep['m5']
     ed, hi = rep['participacion_m2']['por_edad'], rep['participacion_m2']['historico']
     lineas = [
-        f"ODISEO · {e.estado} · {e.cargo} · corte {rep['fecha_corte']} ({rep['dias_a_eleccion']} días)",
+        f"{e.estado} · {e.cargo} · corte {rep['fecha_corte']} ({rep['dias_a_eleccion']} días)",
         '',
         f"PRONÓSTICO M5: {e.candidato_d} {p['pct_d']:.1f}%  ·  {e.candidato_r} {p['pct_r']:.1f}%   (margen {p['margen_pp']:+.1f} pp)",
         f"  IC 80% {e.candidato_d}: {p['ic80_pct_d'][0]:.1f}–{p['ic80_pct_d'][1]:.1f}%   IC 95%: {p['ic95_pct_d'][0]:.1f}–{p['ic95_pct_d'][1]:.1f}%",

@@ -1,7 +1,7 @@
-# ODISEO · California · Modelo híbrido M5
+# California · Modelo híbrido M5
 
 ## Cómo correrlo
-1. Esta carpeta debe estar junto a `CALIFORNIA_2026_NOTEBOOK_COMPLETO/`. De ahí se leen el Excel, `entrega_odiseo/` y el último snapshot de Civiq. Si prefieres que sea autónoma, copia esos archivos dentro de esta carpeta: siempre se busca aquí primero.
+1. Esta carpeta debe estar junto a `CALIFORNIA_2026_NOTEBOOK_COMPLETO/`. De ahí se leen el Excel, `entrega_sentimiento/` y el último snapshot de Civiq. Si prefieres que sea autónoma, copia esos archivos dentro de esta carpeta: siempre se busca aquí primero.
 2. `python -m pip install -r requirements.txt` y, si Civiq lo pide, `python -m playwright install chromium`.
 3. Abre `CALIFORNIA_Modelo_Hibrido_M5.ipynb` y ejecuta todo. Para actualizar, vuelve a correr la celda `resultado = await actualizar_m5(...)`.
 4. Sin red: define la variable de entorno `CALIFORNIA_NOTEBOOK_OFFLINE=1`. En ese modo usa las cachés y lo indica en el reporte.
@@ -11,7 +11,7 @@
 |---|---|---|
 | Excel de encuestas | archivo local | media (agregado corregido) |
 | Civiq | Brave/Playwright (igual que el original) | M2 corregido por edad; ahora guarda la historia diaria y la tabla partido×edad |
-| Sentimiento ODISEO | `entrega_odiseo/serie_sentimiento_diaria.csv` | candidato a k_sent (no se aplica sin validar) |
+| Sentimiento propio | `entrega_sentimiento/serie_sentimiento_diaria.csv` | candidato a k_sent (no se aplica sin validar) |
 | GDELT DOC 2.0 | API pública | acumula tono diario; candidato a k_sent (no se aplica sin validar) |
 | Kalshi | API pública `trade-api/v2` | mezcla logit con W_KALSHI = 0.30 |
 | PDI | captura manual en `data/pdi_retornos_manual.csv` | solo contraste de Civiq |

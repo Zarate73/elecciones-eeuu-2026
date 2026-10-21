@@ -1,4 +1,4 @@
-# ODISEO · Georgia Gobernador 2026 · Modelo final (v11)
+# Georgia Gobernador 2026 · Modelo final (v11)
 
 **Lo mejor de V5 a V10, validado por backtest.** Se probó cada componente de las versiones anteriores en el mismo marco *leave-one-year-out* (980 contiendas de 1998 a 2024, a 15 días de la elección; ver `../BACKTEST_GEORGIA/backtest_componentes_versiones.py`). Solo se quedaron los que mejoran el CRPS fuera de muestra.
 

@@ -230,7 +230,7 @@ def parse_gratings(ruta: Path, cfg) -> dict[str, pd.DataFrame]:
         R = next((v for t, v in bloque if cr.lower() in t.lower()), np.nan)
         if np.isnan(D) or np.isnan(R):
             continue
-        out[carrera] = _completar(pd.DataFrame([{'pollster': 'G-Ratings (Odysseus)', 'inicio': ini, 'fin': fin, 'n': n,
+        out[carrera] = _completar(pd.DataFrame([{'pollster': 'G-Ratings', 'inicio': ini, 'fin': fin, 'n': n,
                                                  'pop': pop, 'D': D, 'R': R, 'otros': np.nan,
                                                  'indecisos': 100 - D - R, 'origen': f'propia:{ruta.name}'}]), None)
     return out

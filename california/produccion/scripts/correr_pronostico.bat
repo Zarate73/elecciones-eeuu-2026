@@ -1,5 +1,5 @@
 @echo off
-REM ODISEO California M5 - corrida. Acepta las mismas opciones que la CLI:
+REM California M5 - corrida. Acepta las mismas opciones que la CLI:
 REM   correr_pronostico.bat                 (normal)
 REM   correr_pronostico.bat --offline       (solo caches)
 REM   correr_pronostico.bat --modo-conteo   (noche electoral)

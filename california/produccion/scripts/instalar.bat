@@ -1,5 +1,5 @@
 @echo off
-REM ODISEO California M5 - instalacion (una sola vez)
+REM California M5 - instalacion (una sola vez)
 setlocal
 cd /d "%~dp0.."
 where py >nul 2>&1 && (set PY=py -3) || (set PY=python)
