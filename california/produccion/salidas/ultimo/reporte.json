@@ -1,26 +1,26 @@
 {
   "version": "1.0.0",
-  "generado": "2026-10-21T00:57:39-07:00",
+  "generado": "2026-10-21T10:18:05-07:00",
   "fecha_corte": "2026-10-21",
   "dias_a_eleccion": 13,
   "offline": false,
-  "config": "/home/runner/work/odiseo-elecciones-eeuu-2026/odiseo-elecciones-eeuu-2026/california/produccion/config/california.toml",
+  "config": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/config/california.toml",
   "pronostico": {
     "candidato_d": "Becerra",
     "candidato_r": "Hilton",
-    "pct_d": 60.185848004427854,
-    "pct_r": 39.814151995572146,
-    "margen_pp": 20.37169600885571,
+    "pct_d": 61.0992459292274,
+    "pct_r": 38.9007540707726,
+    "margen_pp": 22.1984918584548,
     "ic80_pct_d": [
-      56.37281038706622,
-      63.96695823144969
+      57.26870790797736,
+      64.89771002546316
     ],
     "ic95_pct_d": [
-      53.54927327795382,
-      66.7964582653171
+      54.43221182894072,
+      67.74019639682943
     ],
-    "p_d_gana_modelo": 0.994625,
-    "p_d_gana_final": 0.9904383317298833
+    "p_d_gana_modelo": 0.996175,
+    "p_d_gana_final": 0.9923663375994406
   },
   "estados_fuentes": {
     "encuestas_wikipedia": "en_vivo",
@@ -32,78 +32,78 @@
     "kalshi": "en_vivo"
   },
   "encuestas": {
-    "n": 12,
+    "n": 13,
     "por_origen": {
-      "wikipedia": 10,
+      "wikipedia": 11,
       "base": 2
     },
-    "margen_legado_pp": 18.99706114896476,
-    "margen_m5_pp": 20.38410067047354,
-    "dispersion_pp": 6.959684174737092,
-    "n_efectivo": 8.250234526678558
+    "margen_legado_pp": 20.680658604685107,
+    "margen_m5_pp": 22.210953452788804,
+    "dispersion_pp": 7.232943608059628,
+    "n_efectivo": 8.331124570886304
   },
   "voto_temprano": {
     "fecha_datos": "2026-10-20",
     "estado": "actualizado",
     "origen": "api",
     "registrados": 23149787,
-    "devueltas": 1668959,
-    "tasa_devolucion_total_pct": 7.209392466548397,
+    "devueltas": 1707161,
+    "tasa_devolucion_total_pct": 7.37441342332869,
     "partidos": {
       "Democratas": {
         "registrados": 10395709,
-        "devueltas": 828488,
+        "devueltas": 847984,
         "cuota_registro_pct": 44.906283586972094,
-        "cuota_devoluciones_pct": 49.64100376342379,
-        "tasa_devolucion_pct": 7.969518962102537
+        "cuota_devoluciones_pct": 49.67217503211472,
+        "tasa_devolucion_pct": 8.157057878399636
       },
       "Republicanos": {
         "registrados": 5762391,
-        "devueltas": 493892,
+        "devueltas": 504463,
         "cuota_registro_pct": 24.89176682273578,
-        "cuota_devoluciones_pct": 29.592818038070437,
-        "tasa_devolucion_pct": 8.570956049320499
+        "cuota_devoluciones_pct": 29.54981984710288,
+        "tasa_devolucion_pct": 8.754404204782356
       },
       "Otros/NPP": {
         "registrados": 6991687,
-        "devueltas": 346579,
+        "devueltas": 354714,
         "cuota_registro_pct": 30.201949590292127,
-        "cuota_devoluciones_pct": 20.766178198505774,
-        "tasa_devolucion_pct": 4.957015381266353
+        "cuota_devoluciones_pct": 20.7780051207824,
+        "tasa_devolucion_pct": 5.073367843840836
       }
     },
-    "margen_dr_devueltas_pp": 20.04818572535335,
+    "margen_dr_devueltas_pp": 20.12235518501184,
     "margen_dr_registro_pp": 20.01451676423632,
     "edades": {
       "18-29": {
         "registrados": 4387173,
-        "devueltas": 94890,
-        "porcentaje_de_devoluciones": 5.685580053194836
+        "devueltas": 97833,
+        "porcentaje_de_devoluciones": 5.730742443155625
       },
       "30-45": {
         "registrados": 6469885,
-        "devueltas": 205171,
-        "porcentaje_de_devoluciones": 12.293351724038757
+        "devueltas": 209945,
+        "porcentaje_de_devoluciones": 12.297902775426572
       },
       "46-64": {
         "registrados": 6472325,
-        "devueltas": 436594,
-        "porcentaje_de_devoluciones": 26.159660003631007
+        "devueltas": 448122,
+        "porcentaje_de_devoluciones": 26.24954529771943
       },
       "65+": {
         "registrados": 5820404,
-        "devueltas": 932304,
-        "porcentaje_de_devoluciones": 55.8614082191354
+        "devueltas": 951261,
+        "porcentaje_de_devoluciones": 55.72180948369837
       }
     }
   },
   "participacion_m2": {
     "por_edad": {
       "disponible": true,
-      "margen_dr_devueltas_pp": 20.04818572535335,
+      "margen_dr_devueltas_pp": 20.12235518501184,
       "margen_dr_registro_pp": 20.01451676423632,
-      "margen_dr_esperado_por_edad_pp": 17.215898696585295,
-      "delta_m2_pp": 2.8322870287680537
+      "margen_dr_esperado_por_edad_pp": 17.221093564627115,
+      "delta_m2_pp": 2.9012616203847266
     },
     "historico": {
       "disponible": true,
@@ -112,17 +112,17 @@
         "2022 General",
         "2024 General"
       ],
-      "margen_actual_pp": 20.04818572535335,
+      "margen_actual_pp": 20.12235518501184,
       "margen_referencias_mismo_dia_pp": {
         "2022 General": 19.45624507264332,
         "2024 General": 18.751893508096995
       },
-      "delta_vs_referencias_pp": 0.9441164349831936,
+      "delta_vs_referencias_pp": 1.0182858946416857,
       "corrimiento_dia_a_final_pp": {
         "2022 General": 0.7219900746692147,
         "2024 General": 1.1546036048298447
       },
-      "composicion_final_proyectada_pp": 20.98648256510288,
+      "composicion_final_proyectada_pp": 21.06065202476137,
       "composicion_a_resultado": {
         "disponible": true,
         "pendiente": 2.1024469820554668,
@@ -130,7 +130,7 @@
         "n": 4,
         "rmse_loo_pp": 4.223595885799315,
         "error_primaria_2026_pp": 4.307928221859708,
-        "margen_resultado_implicito_pp": 22.753896786141254
+        "margen_resultado_implicito_pp": 22.909834142760936
       },
       "diagnostico_retrospectivo": [
         {
@@ -171,7 +171,7 @@
     "propio": {
       "activa": false,
       "corte": "2026-10-21",
-      "ruta": "/home/runner/work/odiseo-elecciones-eeuu-2026/odiseo-elecciones-eeuu-2026/california/CALIFORNIA_2026_NOTEBOOK_COMPLETO/entrega_sentimiento/serie_sentimiento_diaria.csv",
+      "ruta": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/data/sentimiento/serie_sentimiento_diaria.csv",
       "fecha_ultima_senal": null,
       "brechas_7d": {
         "NOTICIA": null,
@@ -195,7 +195,7 @@
       "tasa_condicional_semanal": 0.15,
       "eventos_contextuales": [],
       "advertencias": [
-        "Datos de sentimiento no disponibles o inválidos: FileNotFoundError: No existe /home/runner/work/odiseo-elecciones-eeuu-2026/odiseo-elecciones-eeuu-2026/california/CALIFORNIA_2026_NOTEBOOK_COMPLETO/entrega_sentimiento/serie_sentimiento_diaria.csv",
+        "Datos de sentimiento no disponibles o inválidos: FileNotFoundError: No existe /home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/data/sentimiento/serie_sentimiento_diaria.csv",
         "NOTICIA: falta señal reciente con cobertura suficiente.",
         "RED_SOCIAL: falta señal reciente con cobertura suficiente."
       ],
@@ -214,10 +214,10 @@
     "validado": false
   },
   "kalshi": {
-    "p_d": 0.963,
-    "p_r": 0.036000000000000004,
-    "p_d_normalizada": 0.9639639639639639,
-    "overround": -0.0010000000000000009,
+    "p_d": 0.9635,
+    "p_r": 0.0375,
+    "p_d_normalizada": 0.9625374625374624,
+    "overround": 0.001000000000000112,
     "fecha": "2026-10-21",
     "antiguedad_dias": 0,
     "estado": "en_vivo",
@@ -237,28 +237,28 @@
     }
   },
   "m5": {
-    "media_pp": 20.38410067047354,
-    "sigma_pp": 6.663480124263843,
+    "media_pp": 22.210953452788804,
+    "sigma_pp": 6.694062983700117,
     "k_sent_aplicado": 1.0,
     "delta_m2_aplicado_pp": 0.0,
-    "p_modelo": 0.994625,
-    "p_final": 0.9904383317298833,
-    "p_kalshi_usada": 0.9639639639639639,
+    "p_modelo": 0.996175,
+    "p_final": 0.9923663375994406,
+    "p_kalshi_usada": 0.9625374625374624,
     "w_kalshi": 0.3,
     "cuantiles_margen_pp": {
-      "2.5": 7.098546555907648,
-      "10": 12.745620774132439,
-      "50": 20.37169600885571,
-      "90": 27.93391646289937,
-      "97.5": 33.59291653063419
+      "2.5": 8.864423657881451,
+      "10": 14.537415815954718,
+      "50": 22.1984918584548,
+      "90": 29.795420050926314,
+      "97.5": 35.48039279365887
     },
     "componentes_varianza_pp2": {
       "sistematico": 37.7184580447902,
-      "muestreo_encuestas": 5.8710093216690815,
+      "muestreo_encuestas": 6.279521184953913,
       "deriva_hasta_eleccion": 0.8125,
       "participacion_m2": 0.0
     }
   },
   "avisos": [],
-  "duracion_s": 80.4
+  "duracion_s": 88.4
 }
