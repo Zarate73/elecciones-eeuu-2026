@@ -1,0 +1,53 @@
+name: Pronóstico California
+
+on:
+  schedule:
+    - cron: '17 12 * * *'   # 05:17 PT (PDT) · 06:17 Ciudad de México
+    - cron: '17 0 * * *'    # 17:17 PT
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pronostico-repo        # mismo grupo que Georgia: los commits de resultados no chocan
+  cancel-in-progress: false
+
+jobs:
+  pronostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: california/produccion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: california/produccion/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Pruebas (sin red)
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Correr pronóstico (fuentes en vivo)
+        env:
+          PYTHONIOENCODING: utf-8
+          ODISEO_SIN_NAVEGADOR: '1'
+        run: python -m ca_pronostico correr
+      - name: Actualizar README
+        run: python scripts/actualizar_readme.py
+      - name: Publicar resultados
+        working-directory: .
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add california/produccion/salidas california/README.md README.md
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Pronóstico California $(TZ=America/Los_Angeles date +'%Y-%m-%d %H:%M') PT"
+            git pull --rebase -q
+            git push
+          fi

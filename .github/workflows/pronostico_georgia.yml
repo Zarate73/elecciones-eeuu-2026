@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: pronostico-georgia
+  group: pronostico-repo        # mismo grupo que California: los commits de resultados no chocan
   cancel-in-progress: false
 
 jobs:
@@ -47,5 +47,6 @@ jobs:
             echo "Sin cambios"
           else
             git commit -m "Pronóstico Georgia $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET"
+            git pull --rebase -q
             git push
           fi

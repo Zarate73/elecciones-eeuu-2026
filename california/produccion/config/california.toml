@@ -1,0 +1,91 @@
+# =====================================================================================
+# ODISEO · California 2026 · configuración de producción (modelo M5)
+# Rutas relativas = relativas a la carpeta PRODUCCION_CALIFORNIA.
+# =====================================================================================
+
+[eleccion]
+estado = "California"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+inicio_voto = "2026-10-05"
+fecha_primaria = "2026-06-02"
+candidato_d = "Becerra"
+candidato_r = "Hilton"
+zona_horaria = "America/Los_Angeles"
+
+[rutas]
+# Base verificada a mano (.xlsx del notebook o su exportación .csv). Se combina con las encuestas en vivo.
+encuestas_base = "data/encuestas_verificadas.csv"
+hoja_encuestas = "Gobernador California"   # solo si encuestas_base es .xlsx
+carpeta_sentimiento = "../CALIFORNIA_2026_NOTEBOOK_COMPLETO/entrega_odiseo"
+datos = "data"                 # backtest, Kalshi histórico, PDI manual
+salidas = "salidas"
+logs = "logs"
+
+[fuentes]
+encuestas_en_vivo = true               # Wikipedia + 270toWin; false = solo la base verificada
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_California_gubernatorial_election"
+t270_url = "https://www.270towin.com/2026-governor-polls/california"
+civiq_api = "https://abev.civiq.vote/api"
+civiq_distrito = "CALIFORNIA STATEWIDE"
+civiq_url_tablero = "https://abev.civiq.vote/"
+civiq_usar_navegador_respaldo = true   # Brave/Playwright solo si la API falla
+civiq_max_dias_rezago = 4               # más viejo => 'fuente_rezagada', no entra
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "KXGOVCA-26"
+kalshi_ticker_d = "KXGOVCA-26-XBEC"
+kalshi_ticker_r = "KXGOVCA-26-SHIL"
+kalshi_max_dias_antiguedad = 3
+gdelt_api = "https://api.gdeltproject.org/api/v2/doc/doc"
+gdelt_consulta_d = '"Xavier Becerra"'
+gdelt_consulta_r = '"Steve Hilton" California'
+gdelt_pausa_s = 15
+gdelt_reintentos = 3
+gdelt_horas_cache = 12
+timeout_http_s = 30
+
+[modelo]
+vida_media_dias = 30.0
+penal_interna = 0.5            # peso de encuestas de campaña o partidistas (D)/(R)
+dias_campo_default = 3         # fechas 'hasta X'
+sigma_dia_pp = 0.25
+sigma_sis_min_pp = 4.0
+sigma_sis_pp = ""              # vacío = calibrar con data/generales_*.csv en cada corrida
+dias_calibracion = 14
+nu_colas = 5.0
+w_m2 = 0.0                     # participación: 0 hasta validar
+sigma_m2_pp = 3.0
+m2_referencias = ["2022 General", "2024 General"]
+validado_sentimiento = false   # k_sent = 1 mientras sea false
+k_sent_max = 1.75
+w_kalshi = 0.30
+n_simulaciones = 200000
+semilla = 42
+usar_encuestas_preprimaria = false
+
+[legado]                       # M1–M4 del notebook original, solo para comparación
+comparar = true
+sigma_normal_pp = 4.5
+max_ajuste_participacion_pp = 2.0
+escala_senal_pp = 10.0
+tasa_final_referencia = 0.60
+tasa_shocks_semanal = 0.15
+magnitud_shock_sd_pp = 3.0
+shock_t_gl = 5.0
+
+[sentimiento_odiseo]
+usar = true
+peso_noticias = 0.80
+peso_redes = 0.20
+gamma = 0.35
+cap_multiplicador = 1.75
+min_historico = 5
+dias_historico = 14
+dias_recientes = 7
+dias_max_rezago = 2
+
+[ejecucion]
+modo_conteo = false            # noche electoral: apaga Kalshi en la mezcla
+graficas = true
+conservar_corridas = 60        # cuántas carpetas de corridas guardar

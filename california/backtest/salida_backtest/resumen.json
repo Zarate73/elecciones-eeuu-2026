@@ -1,0 +1,50 @@
+{
+  "calibracion_primarias": {
+    "sigma_bloque": 4.069968958995369,
+    "sigma_individual": 2.7578148221494927,
+    "sesgo_por_partido": {
+      "D": 1.9002953003087815,
+      "R": 4.000489943228878
+    },
+    "prima_lider": 5.6469429582051065,
+    "prima_no_lider": -0.27120637539747117,
+    "sigma_individual_tras_prima": 1.409419385886272,
+    "medias_2026_por_modelo": {
+      "M1 notebook (sigma 4.5 indiv, sin bloque)": {
+        "Becerra": 21.0,
+        "Hilton": 21.75,
+        "Steyer": 18.4,
+        "Bianco": 11.56
+      },
+      "M1 + choque de bloque calibrado 2018/2024": {
+        "Becerra": 21.0,
+        "Hilton": 21.75,
+        "Steyer": 18.4,
+        "Bianco": 11.56
+      },
+      "M1 + bloque + sesgo por partido 2018/2024": {
+        "Becerra": 22.9,
+        "Hilton": 25.76,
+        "Steyer": 20.31,
+        "Bianco": 15.56
+      },
+      "M1 + bloque + prima de líder top-two 2018/2024": {
+        "Becerra": 26.64,
+        "Hilton": 27.4,
+        "Steyer": 18.13,
+        "Bianco": 11.29
+      }
+    }
+  },
+  "kalshi_general": {
+    "fecha": "2026-10-18",
+    "p_becerra_kalshi": 0.9564999999999999,
+    "p_hilton_kalshi": 0.046,
+    "p_becerra_normalizada": 0.9541147132169575,
+    "margen_implicito_sigma_4_5": 7.5875894230535135,
+    "margen_implicito_sigma_empirica": 10.912423501617171,
+    "sigma_implicita_dado_margen_encuestas": 10.32541372915658,
+    "p_modelo_sigma_4_5": 0.9999453337760824,
+    "p_modelo_sigma_empirica": 0.9964284988383115
+  }
+}

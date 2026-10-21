@@ -1,0 +1,256 @@
+{
+  "fecha_corte": "2026-10-19",
+  "dias_a_eleccion": 15,
+  "encuestas": {
+    "n": 10,
+    "margen_legado_pp": 17.41173581310575,
+    "margen_m5_pp": 18.72610606933492,
+    "dispersion_pp": 7.52691457709602,
+    "n_efectivo": 6.5512554566372385
+  },
+  "voto_temprano": {
+    "estado": "Datos consultados del sitio y validados",
+    "resumen": {
+      "fecha_datos": "2026-10-19",
+      "estado": "actualizado",
+      "url": "https://abev.civiq.vote/",
+      "registrados": 23149787,
+      "devueltas": 1291697,
+      "tasa_devolucion_total_pct": 5.579736003618521,
+      "partidos": {
+        "Democratas": {
+          "registrados": 10395709,
+          "devueltas": 640042,
+          "cuota_registro_pct": 44.906283586972094,
+          "cuota_devoluciones_pct": 49.55047507271442,
+          "tasa_devolucion_pct": 6.156790267984608
+        },
+        "Republicanos": {
+          "registrados": 5762391,
+          "devueltas": 382680,
+          "cuota_registro_pct": 24.89176682273578,
+          "cuota_devoluciones_pct": 29.626142973158565,
+          "tasa_devolucion_pct": 6.64099329601202
+        },
+        "Otros/NPP": {
+          "registrados": 6991687,
+          "devueltas": 268975,
+          "cuota_registro_pct": 30.201949590292127,
+          "cuota_devoluciones_pct": 20.82338195412701,
+          "tasa_devolucion_pct": 3.8470686688348605
+        }
+      },
+      "ventaja_dem_republicana_devoluciones_pp": 19.924332099555855,
+      "ventaja_dem_republicana_registro_pp": 20.01451676423632,
+      "edades": {
+        "18-29": {
+          "registrados": 4387173,
+          "devueltas": 71182,
+          "porcentaje_de_devoluciones": 5.510735102736942
+        },
+        "30-45": {
+          "registrados": 6469885,
+          "devueltas": 156762,
+          "porcentaje_de_devoluciones": 12.136127899964155
+        },
+        "46-64": {
+          "registrados": 6472325,
+          "devueltas": 334863,
+          "porcentaje_de_devoluciones": 25.9242686171757
+        },
+        "65+": {
+          "registrados": 5820404,
+          "devueltas": 728890,
+          "porcentaje_de_devoluciones": 56.428868380123205
+        }
+      }
+    }
+  },
+  "m2_corregido": {
+    "disponible": true,
+    "delta_m2_pp": 2.739692943980671,
+    "nota": "",
+    "fecha_datos": "2026-10-19",
+    "estado_dato": "actualizado",
+    "margen_dr_devueltas_pp": 19.924332099555855,
+    "margen_dr_registro_pp": 20.01451676423632,
+    "margen_dr_esperado_por_edad_pp": 17.184639155575184,
+    "desviacion_estandarizada_edad_pp": 2.739692943980671,
+    "desviacion_vs_2022_General_pp": 1.0874003386036364,
+    "desviacion_vs_2024_General_pp": 1.5842673541983352,
+    "dias_antes_eleccion": 15,
+    "composicion": {
+      "disponible": true,
+      "pendiente": 2.102446982055463,
+      "intercepto": -21.36907014681888,
+      "n": 4,
+      "rmse_loo_pp": 4.223595885799316,
+      "error_primaria_2026_pp": 4.307928221859704,
+      "margen_implicito_si_composicion_actual_fuera_final_pp": 20.52078174536312,
+      "nota": "Composición actual es parcial (pocas boletas); no es la final. Solo diagnóstico."
+    },
+    "efecto_en_media_pp": 0.0
+  },
+  "m2_historico": {
+    "disponible": true,
+    "dias_comparados": 15,
+    "referencias": [
+      "2022 General",
+      "2024 General"
+    ],
+    "margen_actual_pp": 19.924332099555855,
+    "margen_referencias_mismo_dia_pp": {
+      "2022 General": 18.83693176095222,
+      "2024 General": 18.34006474535752
+    },
+    "delta_vs_referencias_pp": 1.3358338464009876,
+    "corrimiento_dia_a_final_pp": {
+      "2022 General": 1.341303386360316,
+      "2024 General": 1.5664323675693197
+    },
+    "composicion_final_proyectada_pp": 21.378199976520673,
+    "diagnostico_retrospectivo": [
+      {
+        "eleccion": "2021 Special",
+        "delta_vs_otras_pp": 10.42,
+        "error_encuestas_pp": 6.51
+      },
+      {
+        "eleccion": "2022 General",
+        "delta_vs_otras_pp": -5.26,
+        "error_encuestas_pp": -4.99
+      },
+      {
+        "eleccion": "2024 General",
+        "delta_vs_otras_pp": -5.92,
+        "error_encuestas_pp": -5.47
+      },
+      {
+        "eleccion": "2025 Special",
+        "delta_vs_otras_pp": 0.75,
+        "error_encuestas_pp": 10.73
+      }
+    ],
+    "correlacion_delta_error": 0.7242076090070703
+  },
+  "civiq_api": {
+    "historia": [
+      197,
+      "api_en_vivo"
+    ],
+    "condados": [
+      58,
+      "api_en_vivo"
+    ]
+  },
+  "m2_legado_delta_pp": -0.0018334429608808471,
+  "pdi_contraste": {
+    "disponible": true,
+    "fecha": "2026-10-19",
+    "devueltas": 1214420,
+    "dem_pct": 48.661830338762535,
+    "rep_pct": 30.250160570478087,
+    "margen_dr_pp": 18.411669768284447,
+    "fuente": "politicaldata.com/early-vote-counts (captura manual)"
+  },
+  "sentimiento": {
+    "odiseo_M4": {
+      "activa": false,
+      "corte": "2026-10-19",
+      "ruta": "..\\CALIFORNIA_2026_NOTEBOOK_COMPLETO\\entrega_odiseo\\serie_sentimiento_diaria.csv",
+      "fecha_ultima_senal": null,
+      "brechas_7d": {
+        "NOTICIA": null,
+        "RED_SOCIAL": null
+      },
+      "puntajes_fuente": {
+        "NOTICIA": 0.0,
+        "RED_SOCIAL": 0.0
+      },
+      "n_referencias": {
+        "NOTICIA": 0,
+        "RED_SOCIAL": 0
+      },
+      "factores_cobertura": {
+        "NOTICIA": 0.0,
+        "RED_SOCIAL": 0.0
+      },
+      "puntuacion_ponderada": 0.0,
+      "multiplicador_lambda": 1.0,
+      "tasa_base_semanal": 0.15,
+      "tasa_condicional_semanal": 0.15,
+      "eventos_contextuales": [],
+      "advertencias": [
+        "NOTICIA: falta señal reciente con cobertura suficiente.",
+        "RED_SOCIAL: falta señal reciente con cobertura suficiente."
+      ],
+      "metodo": "anomalia_retrospectiva_en_brecha_7d_no_voto"
+    },
+    "gdelt": {
+      "disponible": true,
+      "fecha": "2026-10-04",
+      "brecha_7d": 0.16439999999999988,
+      "innovacion_7d": 0.7575533333333332,
+      "z_innovacion": 1.2016063265671821,
+      "k_sent_candidato": 1.5228174647466208
+    },
+    "k_sent_candidato": 1.5228174647466208,
+    "k_sent_aplicado": 1.0,
+    "validado": false
+  },
+  "kalshi": {
+    "p_d": 0.955,
+    "p_r": 0.0435,
+    "p_d_normalizada": 0.956434651977967,
+    "overround": -0.0015000000000000568,
+    "fecha": "2026-10-19",
+    "antiguedad_dias": 0,
+    "estado": "en_vivo",
+    "usable_en_mezcla": true,
+    "nota": "Precios <10¢ suelen estar inflados (sesgo favorito–longshot); por eso el mercado entra con peso fijo W_KALSHI y no como verdad."
+  },
+  "calibracion": {
+    "dias_ref": 14,
+    "n_elecciones": 4,
+    "rmse_historico_pp": 6.439807554763783,
+    "sesgo_medio_pp": -2.8469637480849954,
+    "sigma_sis_pp": 6.1415354794049835,
+    "errores": {
+      "GOB2018": 7.11,
+      "GOB2022": -5.57,
+      "PRES2024": -5.86,
+      "SEN2024": -7.07
+    }
+  },
+  "m5": {
+    "media_pp": 18.72610606933492,
+    "sigma_pp": 6.877778258472492,
+    "k_sent_aplicado": 1.0,
+    "p_modelo": 0.991485,
+    "p_final": 0.9860310009474624,
+    "p_kalshi_usada": 0.956434651977967,
+    "cuantiles_pp": {
+      "2.5": 5.01328731143162,
+      "10": 10.841971956360734,
+      "50": 18.71330247265754,
+      "90": 26.51872463264987,
+      "97.5": 32.35971866350711
+    },
+    "componentes_varianza_pp2": {
+      "sistematico": 37.7184580447902,
+      "muestreo_encuestas": 8.647875727926705,
+      "deriva_hasta_eleccion": 0.9375,
+      "participacion_m2": 0.0
+    }
+  },
+  "parametros_m5": {
+    "PENAL_INTERNA": 0.5,
+    "SIGMA_DIA_PP": 0.25,
+    "NU_COLAS": 5.0,
+    "W_M2": 0.0,
+    "W_KALSHI": 0.3,
+    "VALIDADO_SENTIMIENTO": false,
+    "MODO_CONTEO": false
+  },
+  "avisos": []
+}

@@ -6,14 +6,14 @@ Modelos de pronóstico, backtests y versiones de producción para las contiendas
 | Estado | Carrera principal | Estado del modelo | Carpeta |
 |---|---|---|---|
 | Georgia | Gobernador: Bottoms 49.2% · Jackson 50.8% · P(Bottoms) 37% (corte 2026-10-21) | **Producción (V11)**, actualización automática | [`georgia/`](georgia/) |
-| California | Gobernador | Producción (M5), por subir | — |
+| California | Gobernador: Becerra vs Hilton (primera corrida automática pendiente) | **Producción (M5)**, actualización automática | [`california/`](california/) |
 | … | | pendiente | |
 
 ## Estructura por estado
 ```
 <estado>/
   produccion/        paquete de Python con CLI, fuentes en vivo, pruebas y tarea programada de Windows
-  modelo_vNN/        notebook final ejecutado + módulo del modelo (referencia y análisis)
+  modelo_*/          notebook final ejecutado + módulo del modelo (referencia y análisis)
   backtest/          scripts de backtest y selección de modelo, con sus datos y resultados
   docs/              revisiones, decisiones de modelo y resultados documentados
 ```
@@ -32,7 +32,9 @@ Python 3.10+. Cada `produccion/` trae `requirements.txt` y `scripts\instalar.bat
 | Fuente | Uso | Licencia / condiciones |
 |---|---|---|
 | [FiveThirtyEight pollster ratings – raw polls](https://github.com/fivethirtyeight/data/tree/master/pollster-ratings) | Calibración histórica (1998–2022) | CC BY 4.0 |
-| [Civic Forge – Georgia early vote](https://www.civicforge.solutions/data/ga-2026-general) | Diagnóstico de voto anticipado | CC BY 4.0 |
+| [Civic Forge – Georgia early vote](https://www.civicforge.solutions/data/ga-2026-general) | Diagnóstico de voto anticipado (GA) | CC BY 4.0 |
+| [Civiq – California ballot returns](https://abev.civiq.vote/) API pública | Diagnóstico de voto anticipado (CA) | Términos de Civiq |
+| [GDELT DOC 2.0](https://www.gdeltproject.org/) | Tono de cobertura (diagnóstico, CA) | Uso libre con atribución |
 | [Kalshi](https://kalshi.com) API pública | Precio de mercado | Términos de Kalshi |
 | Wikipedia, 270toWin, medios citados en cada CSV | Encuestas publicadas (cifras de resumen) | Cada fila lleva su URL de origen |
 | G-Ratings (Odysseus) | Encuesta propia (solo resultados de resumen) | Publicados por el autor |
