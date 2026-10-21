@@ -21,6 +21,12 @@ jobs:
           curl -sSL -A "$UA" "https://www.270towin.com/2026-senate-polls/georgia" -o crudo/t270_sen.html
           curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_Georgia_gubernatorial_election&prop=text&format=json&formatversion=2&redirects=1" -o crudo/wikipedia_gob.json
           curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_United_States_Senate_election_in_Georgia&prop=text&format=json&formatversion=2&redirects=1" -o crudo/wikipedia_sen.json
+          curl -sSL -A "$UA" "https://www.270towin.com/2026-governor-polls/california" -o crudo/ca_t270_gob.html
+          curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_California_gubernatorial_election&prop=text&format=json&formatversion=2&redirects=1" -o crudo/ca_wikipedia_gob.json
+          curl -sS -A "$UA" -w "civiq historical %{http_code}\n" "https://abev.civiq.vote/api/historical-elections/CALIFORNIA%20STATEWIDE" -o crudo/ca_civiq_historical.json || true
+          curl -sS -A "$UA" -w "civiq returns %{http_code}\n" "https://abev.civiq.vote/api/ballot-returns/CALIFORNIA%20STATEWIDE" -o crudo/ca_civiq_returns.json || true
+          curl -sS -w "kalshi %{http_code}\n" "https://api.elections.kalshi.com/trade-api/v2/markets?event_ticker=KXGOVCA-26" -o crudo/ca_kalshi.json || true
+          curl -sS -A "$UA" -w "gdelt %{http_code}\n" "https://api.gdeltproject.org/api/v2/doc/doc?query=%22Xavier%20Becerra%22&mode=timelinetone&format=json&timespan=7d" -o crudo/ca_gdelt.json || true
           ls -la crudo
       - name: Publicar en la rama diagnostico-fuentes
         run: |
