@@ -48,6 +48,6 @@ jobs:
             echo "Sin cambios"
           else
             git commit -m "Pronóstico California $(TZ=America/Los_Angeles date +'%Y-%m-%d %H:%M') PT"
-            git pull --rebase -q
+            git pull --rebase --autostash -q
             git push
           fi
