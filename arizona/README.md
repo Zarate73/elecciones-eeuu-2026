@@ -3,13 +3,23 @@
 Elección general del 3 de noviembre de 2026 entre **Katie Hobbs (D, gobernadora en funciones)** y **Andy Biggs (R)**, con candidatos de terceros en la boleta.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-21** (13 días a la elección) · modelo del notebook; GitHub Actions reemplaza este bloque en la primera corrida
+**Pronóstico al 2026-10-21** (13 días a la elección) · actualizado automáticamente 2026-10-21 15:56 MST · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Katie **Hobbs** (D) | **51.9%** (48.5–55.3) | **94%** |
-| Andy **Biggs** (R) | **44.0%** (40.6–47.4) | **6%** |
+| Katie **Hobbs** (D) | **51.9%** (48.5–55.3) | **93%** |
+| Andy **Biggs** (R) | **44.0%** (40.6–47.4) | **7%** |
 | Terceros | 4.1% (1.6–6.5) | — |
+
+Margen D−R +7.8 pp (σ 5.1) · solo encuestas: P(Hobbs) 94% · Kalshi 90% · Polymarket 92% (peso de mercados 0.3) · recuento automático 2.1% · 15 encuestas, 4 encuestadoras en la ventana
+
+**Voto anticipado** (civicAPI, diagnóstico, al 2026-10-21): 642,253 boletas devueltas · D 39.2% · R 38.2% · otros 22.6% · Maricopa 60% del total
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_arizona.yml)).
