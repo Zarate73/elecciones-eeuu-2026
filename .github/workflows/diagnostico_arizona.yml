@@ -1,0 +1,29 @@
+name: Diagnóstico Arizona
+
+# Captura cruda de las fuentes de Arizona en la rama 'diagnostico-arizona' (no toca main).
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  capturar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Capturar fuentes
+        run: python scripts/capturar_arizona.py
+      - name: Publicar en la rama diagnostico-arizona
+        run: |
+          cd crudo
+          git init -q -b diagnostico-arizona
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Fuentes Arizona $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" diagnostico-arizona
