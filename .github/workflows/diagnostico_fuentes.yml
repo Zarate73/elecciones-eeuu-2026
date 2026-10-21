@@ -1,0 +1,28 @@
+name: Diagnóstico de fuentes
+
+# Guarda las respuestas crudas de las fuentes de encuestas como artefacto (para revisar cambios de formato).
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  capturar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Descargar fuentes
+        run: |
+          mkdir crudo
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36 ODISEO-pronostico/1.0"
+          curl -sSL -A "$UA" "https://www.270towin.com/2026-governor-polls/georgia" -o crudo/t270_gob.html
+          curl -sSL -A "$UA" "https://www.270towin.com/2026-senate-polls/georgia" -o crudo/t270_sen.html
+          curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_Georgia_gubernatorial_election&prop=text&format=json&formatversion=2&redirects=1" -o crudo/wikipedia_gob.json
+          curl -sSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=parse&page=2026_United_States_Senate_election_in_Georgia&prop=text&format=json&formatversion=2&redirects=1" -o crudo/wikipedia_sen.json
+          ls -la crudo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fuentes-crudas
+          path: crudo/
+          retention-days: 7
