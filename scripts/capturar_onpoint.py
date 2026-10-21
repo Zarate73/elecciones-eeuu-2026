@@ -30,7 +30,7 @@ def descubrir(base, paginas, max_js=40):
             textos.append(t)
             js |= {urllib.parse.urljoin(base + p, s) for s in re.findall(r'src="([^"]+\.js[^"]*)"', t)}
     for u in sorted(js)[:max_js]:
-        t = get(u, guardar=False)
+        t = get(u, guardar='civicapi' in u)
         if t:
             textos.append(t)
     rutas = set()
@@ -59,7 +59,11 @@ for r in sorted(rutas_c):
     u = r if r.startswith('http') else CV + r
     if '$' not in u and '{' not in u:
         get(u)
-for g in ('/api/early-vote', '/api/early-vote/AZ', '/api/early-vote?state=AZ', '/api/v1/early-vote/AZ', '/api/earlyvote/AZ'):
+for g in ('/api/v2/early-vote/US/AZ/', '/api/v2/early-vote/US/AZ', '/api/v2/early-vote/US/?state=AZ',
+          '/api/v2/early-vote/US/?state=AZ&year=2026', '/api/v2/early-vote/US/?year=2026', '/api/v2/early-vote/US/2026/',
+          '/api/v2/early-vote/US/2026/AZ', '/api/v2/early-vote/historical/?state=AZ',
+          '/api/v2/early-vote/historical/US/AZ', '/api/v2/early-vote/historical/?country=US&state=AZ',
+          '/api/v2/early-vote/US/GA/', '/api/v2/early-vote/US/CA/'):
     get(CV + g)
 
 (OUT / 'log.txt').write_text('\n'.join(log))
