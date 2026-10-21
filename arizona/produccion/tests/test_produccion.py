@@ -149,3 +149,13 @@ def test_offline_usa_caches_y_estricto_da_codigo_2(cfg, red_simulada, monkeypatc
     monkeypatch.setattr(cli, 'cargar_config', lambda *a, **k: cfg)
     assert cli.main(['correr', '--offline', '--estricto', '--sin-graficas']) == 2
     assert cli.main(['correr', '--offline', '--sin-graficas']) == 0
+
+
+def test_excel_verificado_contiene_al_csv_publicado():
+    """En la copia local la base es tu Excel: debe contener todas las encuestas del CSV publicado (puede tener más)."""
+    from az_pronostico.config import RAIZ, cargar_config
+    ruta = cargar_config().ruta_encuestas_base
+    if ruta is None or ruta.suffix.lower() != '.xlsx' or not ruta.exists():
+        pytest.skip('la configuración no apunta a un Excel local')
+    clave = lambda d: set(zip(d.pollster, pd.to_datetime(d.fin).dt.date, d.D.astype(float), d.R.astype(float)))
+    assert clave(encuestas.cargar_base(RAIZ / 'data' / 'encuestas_verificadas_az.csv')) <= clave(encuestas.cargar_base(ruta))

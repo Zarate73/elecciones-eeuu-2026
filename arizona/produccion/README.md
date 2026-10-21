@@ -56,7 +56,7 @@ Si un mercado no tiene precio usable, sale de la mezcla. Si no hay ninguno, el p
 `resumen.txt` · `reporte.json` · `pronostico_gobernador.csv` · `escenarios_gobernador.csv` · `encuestas_gobernador.csv` · `encuestas_ventana_pesos.csv` · `voto_anticipado_condados.csv` · `polymarket_rangos_margen.csv` · `pronostico.png`. Además: `salidas\historial_pronosticos.csv`, `salidas\civicapi_historial_az.csv` (serie diaria propia del voto anticipado) y `salidas\evolucion.png`.
 
 ## Pruebas
-`python -m pytest -q` (14 pruebas, sin red, con respuestas reales del 21-oct-2026). Cubren:
+`python -m pytest -q` (15 pruebas, sin red, con respuestas reales del 21-oct-2026; una solo corre si la base es un Excel local). Cubren:
 - los parsers y la deduplicación;
 - Kalshi, Polymarket y sus rangos;
 - civicAPI;
