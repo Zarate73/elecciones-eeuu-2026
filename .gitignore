@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+# Salidas y registros de corridas (se regeneran)
+**/produccion/salidas/*
+!**/produccion/salidas/.gitkeep
+**/produccion/logs/*
+!**/produccion/logs/.gitkeep
+**/salida/cache/
+**/salida_backtest/predicciones_h*.csv
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

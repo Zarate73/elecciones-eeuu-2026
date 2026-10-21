@@ -1,0 +1,61 @@
+# =====================================================================================
+# ODISEO · Georgia 2026 · configuración de producción (modelo V11)
+# Rutas relativas = relativas a la carpeta PRODUCCION_GEORGIA.
+# =====================================================================================
+
+[eleccion]
+estado = "Georgia"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2026-06-16"        # segunda vuelta republicana: encuestas anteriores no entran
+candidato_d = "Bottoms"
+candidato_r = "Jackson"
+nombre_d = "Keisha Lance Bottoms"
+nombre_r = "Rick Jackson"
+zona_horaria = "America/New_York"
+writein_pp_min = 0.001                 # write-ins: 7 certificados (SOS 15-sep-2026), 0 terceros en boleta
+writein_pp_max = 0.02                  # histórico GA: 81 votos (2018), 25 (2022)
+
+[senado]
+activar = true                         # se modela en paralelo; NO cambia el pronóstico de gobernador
+candidato_d = "Ossoff"
+candidato_r = "Collins"
+rho_gob_sen = 0.42                     # corr. errores Gob–Sen mismo estado-año (120 pares, IC95 0.23–0.58)
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+encuestas_propias = ""                 # opcional: ruta local a uno o varios Excel G-Ratings (separados por ;); sin Excel se usan sus resultados de data/ajustes_encuestas.csv
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina_gob = "2026_Georgia_gubernatorial_election"
+wikipedia_pagina_sen = "2026_United_States_Senate_election_in_Georgia"
+t270_url_gob = "https://www.270towin.com/2026-governor-polls/georgia"
+t270_url_sen = "https://www.270towin.com/2026-senate-polls/georgia"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "GOVPARTYGA-26"
+kalshi_ticker_d = "GOVPARTYGA-26-D"
+kalshi_ticker_r = "GOVPARTYGA-26-R"
+kalshi_max_dias_antiguedad = 3
+civicforge_api = "https://www.civicforge.solutions/api/ga-2026-general"
+civicforge_anios = [2018, 2020, 2022, 2024]
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 5                # menos encuestas en vivo que esto => se considera fuente degradada
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan dentro de los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos, se amplía la ventana a la encuesta más reciente de cada firma
+vida_media_dias = 14.0
+vida_media_sesgo_anios = 4.0
+contraccion_casa = 8.0
+colas_t = true                         # Student-t (validado); false = normal
+w_kalshi = 0.30                        # no validado; 0 = solo encuestas
+n_simulaciones = 100000
+semilla = 20261019
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60

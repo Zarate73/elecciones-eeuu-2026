@@ -1,0 +1,41 @@
+# ODISEO · Elecciones generales de EE.UU. 2026
+
+Modelos de pronóstico, backtests y versiones de producción para las contiendas de 2026 en **14 estados**. Cada estado vive en su propia carpeta y sigue la misma estructura.
+
+## Estados
+| Estado | Carrera principal | Estado del modelo | Carpeta |
+|---|---|---|---|
+| Georgia | Gobernador (Bottoms D vs Jackson R) + Senado (Ossoff D vs Collins R) | **Producción (V11)** | [`georgia/`](georgia/) |
+| California | Gobernador | Producción (M5), por subir | — |
+| … | | pendiente | |
+
+## Estructura por estado
+```
+<estado>/
+  produccion/        paquete de Python con CLI, fuentes en vivo, pruebas y tarea programada de Windows
+  modelo_vNN/        notebook final ejecutado + módulo del modelo (referencia y análisis)
+  backtest/          scripts de backtest y selección de modelo, con sus datos y resultados
+  docs/              revisiones, decisiones de modelo y resultados documentados
+```
+
+## Estándares comunes (aprendidos en Georgia y California)
+- **Validación:** *leave-one-year-out* sobre el histórico de FiveThirtyEight (980 contiendas 1998–2024); métrica principal CRPS, más la cobertura de los intervalos del 80% y 95%.
+- **Incertidumbre:** σ empírica `√(τ² + s²/k)` calibrada a la distancia de la elección; nada de pisos fijos sin calibrar.
+- **Componentes:** se agregan solo si mejoran el CRPS fuera de muestra; lo no validable queda como diagnóstico.
+- **Producción:** todas las fuentes en vivo, con caché y degradación explícita (`--estricto` → código 2).
+- **Pruebas:** sin red, con fixtures que reproducen el formato de cada fuente.
+
+## Requisitos
+Python 3.10+. Cada `produccion/` trae `requirements.txt` y `scripts\instalar.bat`.
+
+## Fuentes de datos y licencias
+| Fuente | Uso | Licencia / condiciones |
+|---|---|---|
+| [FiveThirtyEight pollster ratings – raw polls](https://github.com/fivethirtyeight/data/tree/master/pollster-ratings) | Calibración histórica (1998–2022) | CC BY 4.0 |
+| [Civic Forge – Georgia early vote](https://www.civicforge.solutions/data/ga-2026-general) | Diagnóstico de voto anticipado | CC BY 4.0 |
+| [Kalshi](https://kalshi.com) API pública | Precio de mercado | Términos de Kalshi |
+| Wikipedia, 270toWin, medios citados en cada CSV | Encuestas publicadas (cifras de resumen) | Cada fila lleva su URL de origen |
+| G-Ratings (Odysseus) | Encuesta propia (solo resultados de resumen) | Publicados por el autor |
+
+## Autor
+Saúl Zárate Feliciano · ingeniero matemático · análisis de datos, encuestas y modelos de pronóstico ([@Zarate73](https://github.com/Zarate73)).

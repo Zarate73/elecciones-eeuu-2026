@@ -1,0 +1,101 @@
+{
+  "config": {
+    "corte": "2026-10-20",
+    "eleccion": "2026-11-03",
+    "peso_kalshi": 0.3,
+    "kalshi_en_vivo": false,
+    "kalshi_max_dias": 3,
+    "sobreprecio_kalshi": 0.01,
+    "ventana_dias_eleccion": 21,
+    "min_encuestadoras": 2,
+    "vida_media_dias": 14.0,
+    "vida_media_sesgo_anios": 4.0,
+    "contraccion_casa": 8.0,
+    "writein_pp": [
+      0.001,
+      0.02
+    ],
+    "colas_t": true,
+    "senado": true,
+    "rho_gob_sen": 0.42,
+    "n_sim": 100000,
+    "semilla": 20261019,
+    "salida": "salida"
+  },
+  "calibracion": {
+    "horizonte_dias": 14,
+    "horizonte_recortado": false,
+    "tau": 3.25,
+    "s": 7.5,
+    "nu": 11.8,
+    "n_contiendas": 752,
+    "sesgo_estado_bruto": 0.8921237816553691,
+    "contraccion_sesgo": 0.7493415634852824,
+    "sesgo_estado": 0.6685054293680369,
+    "var_entre_estados": 9.581701424960348
+  },
+  "ventana": {
+    "ventana_desde": "2026-10-13",
+    "ampliada": false
+  },
+  "encuestas_en_ventana": 3,
+  "k_encuestadoras": 3,
+  "encuestas_excluidas_posteriores_al_corte": 0,
+  "avisos_validacion_encuestas": [],
+  "margen_promedio_corregido": -1.301941395675819,
+  "mu_encuestas": -1.9704468250438558,
+  "sd": 5.414101956926928,
+  "nu": 11.8,
+  "p_encuestas": 0.348380184709193,
+  "tres_categorias_encuestas": {
+    "n_encuestas": 3,
+    "Bottoms_encuesta": 46.13927459479629,
+    "Jackson_encuesta": 47.639631013920905,
+    "Otros_ninguno_indecisos": 6.221094391282804,
+    "nota": "Porcentajes de respuesta; el residual se reparte 50/50 en el pronóstico (validado) y no hay terceros en boleta."
+  },
+  "senado": {
+    "margen_promedio_corregido": 8.85636296854428,
+    "mu": 8.187857539176242,
+    "sd": 6.219927652312364,
+    "k": 2,
+    "ventana": {
+      "ventana_desde": "2026-10-09",
+      "ampliada": true
+    },
+    "encuestas_en_ventana": 2,
+    "P_Ossoff": 0.912686164688884,
+    "IC80": [
+      0.4927393108345841,
+      15.882975767517902
+    ],
+    "avisos_validacion": []
+  },
+  "conjunto_gob_sen": {
+    "P_Ossoff": 0.91212,
+    "P_Bottoms": 0.38831,
+    "P_Bottoms_y_Ossoff": 0.37571,
+    "P_Jackson_y_Ossoff": 0.53641,
+    "P_Bottoms_y_Collins": 0.0126,
+    "P_Jackson_y_Collins": 0.07528,
+    "P_Bottoms_si_gana_Ossoff": 0.4119085208086655,
+    "P_Bottoms_si_gana_Collins": 0.14337733272644515,
+    "P_Ossoff_si_gana_Bottoms": 0.9675516983853107,
+    "P_division_de_voto": 0.54901,
+    "rho": 0.42,
+    "corr_simulada": 0.420069824277664
+  },
+  "kalshi": {
+    "p_D": 0.4900990099009901,
+    "fecha": "2026-10-20",
+    "fuente": "caché (consulta en vivo desactivada)",
+    "mid_D": 0.495,
+    "mid_R": 0.515,
+    "usable": true,
+    "antiguedad_dias": 0
+  },
+  "peso_kalshi_aplicado": 0.3,
+  "p_final": 0.3893133141696758,
+  "mu_final": -1.4191136385997116,
+  "nota": "Pronóstico probabilístico calibrado con backtest LOYO; peso de Kalshi no validado."
+}
