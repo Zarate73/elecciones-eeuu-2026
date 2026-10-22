@@ -1,0 +1,36 @@
+name: Diagnóstico (captura cruda)
+
+# Corre un script de captura y publica crudo/ en una rama propia (no toca main).
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: 'script en scripts/'
+        required: true
+      rama:
+        description: 'rama destino'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  capturar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Capturar
+        run: python scripts/${{ inputs.script }}
+      - name: Publicar en la rama
+        run: |
+          cd crudo
+          git init -q -b "${{ inputs.rama }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Captura ${{ inputs.script }} $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "${{ inputs.rama }}"
