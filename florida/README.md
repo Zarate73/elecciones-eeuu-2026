@@ -3,13 +3,13 @@
 Elección general del 3 de noviembre de 2026 entre **David Jolly (D)** y **Byron Donalds (R)**, con candidatos de terceros en la boleta. El gobernador Ron DeSantis no puede reelegirse.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 03:51 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 05:00 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| David **Jolly** (D) | **44.8%** (41.5–48.2) | **5%** |
-| Byron **Donalds** (R) | **53.1%** (49.8–56.5) | **95%** |
-| Terceros | 2.0% (0.1–4.3) | — |
+| David **Jolly** (D) | **44.8%** (41.4–48.1) | **5%** |
+| Byron **Donalds** (R) | **53.1%** (49.7–56.4) | **95%** |
+| Terceros | 2.1% (0.1–4.4) | — |
 
 Margen D−R -8.3 pp (σ 5.1) · solo encuestas: P(Jolly) 3% · Kalshi 22% · Polymarket 20% (peso de mercados 0.3) · recuento por máquina 1.9% · 16 encuestas, 4 encuestadoras en la ventana
 
