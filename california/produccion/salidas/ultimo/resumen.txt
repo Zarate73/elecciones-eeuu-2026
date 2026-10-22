@@ -1,10 +1,10 @@
-California · Gobernador · corte 2026-10-21 (13 días)
+California · Gobernador · corte 2026-10-22 (12 días)
 
 PRONÓSTICO M5: Becerra 61.1%  ·  Hilton 38.9%   (margen +22.3 pp)
-  IC 80% Becerra: 57.3–64.9%   IC 95%: 54.5–67.7%
+  IC 80% Becerra: 57.3–64.9%   IC 95%: 54.6–67.7%
   P(Becerra gana): modelo 0.996 · con Kalshi 0.993
-  Última encuesta: Emerson College, terminó el 2026-10-19 (2 días antes del corte)
-  σ 6.61 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
+  Última encuesta: Emerson College, terminó el 2026-10-19 (3 días antes del corte)
+  σ 6.60 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
 
 FUENTES
   encuestas_wikipedia: en_vivo
@@ -12,24 +12,24 @@ FUENTES
   civiq: Datos de Civiq vía api, validados (2026-10-21)
   civiq_historia: api_en_vivo (197 filas)
   civiq_condados: api_en_vivo (58 condados)
-  gdelt: cache (< 12 h)
+  gdelt: parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429
   kalshi: en_vivo
   encuestas: 14 (wikipedia 12, base 2) · margen legado +20.87 → M5 +22.27
 
 PARTICIPACIÓN (diagnóstico; w_m2 = 0.00)
-  devueltas D−R +19.51 · esperado por edad +17.23 → Δ +2.28 pp
-  mismo día (T−13): +19.5 vs 2022 General +19.7, 2024 General +18.7 → Δ +0.3
-  composición final proyectada +20.3 → margen implícito +21.3 pp (RMSE LOO 4.2)
+  devueltas D−R +19.36 · esperado por edad +17.23 → Δ +2.13 pp
+  mismo día (T−13): +19.4 vs 2022 General +19.7, 2024 General +18.7 → Δ +0.1
+  composición final proyectada +20.2 → margen implícito +21.0 pp (RMSE LOO 4.2)
   corr(Δ temprano, error de encuestas) = +0.75 (n=4)
 
 SENTIMIENTO: k candidato 1.52 · aplicado 1.00 · GDELT z=1.20
-KALSHI: 0.966 (en_vivo) · en mezcla True
+KALSHI: 0.967 (en_vivo) · en mezcla True
 PDI (contraste, 2026-10-19): D−R +18.4 en 1,214,420 boletas
 
 MODELOS
                        modelo  mediana_margen_pp  ic95_inf_pp  ic95_sup_pp  de_pp  p_d_gana  p_final_con_kalshi
-                 M5 · híbrido             22.253        9.095       35.359  6.613     0.996               0.993
+                 M5 · híbrido             22.253        9.104       35.350  6.608     0.996               0.993
       M1 · encuestas (legado)             20.877       12.023       29.680  4.495     1.000                 NaN
-M2 · + participación (legado)             20.864       12.011       29.668  4.495     1.000                 NaN
-       M3 · + shocks (legado)             20.865       11.504       30.202  4.766     1.000                 NaN
-  M4 · + sentimiento (legado)             20.865       11.504       30.202  4.766     1.000                 NaN
+M2 · + participación (legado)             20.860       12.007       29.664  4.495     1.000                 NaN
+       M3 · + shocks (legado)             20.861       11.516       30.183  4.751     1.000                 NaN
+  M4 · + sentimiento (legado)             20.861       11.516       30.183  4.751     1.000                 NaN
