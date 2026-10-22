@@ -36,6 +36,7 @@ import base_georgia as bt  # noqa: E402
 SAL = BASE / 'salida'
 SAL.mkdir(exist_ok=True)
 H = 13
+VENTANA = 21          # producción: encuestas que terminan en los últimos 21 días (538 solo publica esos)
 RNG = np.random.default_rng(20261021)
 NSIM = 4000
 AZ24 = {'2024_Pres-G_AZ': (46.69, 52.22), '2024_Sen-G_AZ': (50.06, 47.65)}
@@ -131,7 +132,7 @@ def construir(d: pd.DataFrame, casa: dict, metodo: str) -> pd.DataFrame:
     filas = []
     for race, p in d.groupby('race'):
         y = int(p.year.iloc[0])
-        q = p[p.days >= H]
+        q = p[(p.days >= H) & (p.days <= VENTANA)]          # misma ventana que producción: 21 días a la elección
         a = agregar(q, casa[y][0], metodo)
         if a is None:
             continue

@@ -98,7 +98,7 @@ La diferencia principal entre el modelo y los mercados es el sesgo estatal. Los 
 | H2 · indecisos proporcionales | 3.650 | 2.383 | 2.323 | 0.16 |
 
 **Error de las encuestas en Florida** (promedio V11, + = sobreestimó al demócrata)
-- Pro-D en 19 de 23 contiendas.
+- Pro-D en 18 de 23 contiendas.
 - 2018: Gob +3.9, Sen +2.0.
 - 2020: Pres +4.3.
 - 2022: Gob +8.2, Sen +8.3.
@@ -115,7 +115,7 @@ La diferencia principal entre el modelo y los mercados es el sesgo estatal. Los 
 - los pesos ∝ n y el motor Dirichlet también empeoran el error;
 - el prior bayesiano de fundamentales no se puede validar (en Georgia, los fundamentales empeoraron el CRPS).
 
-**Terceros calibrados** (`real = 1.85 + 0.64 · otros en encuestas`): bajan el error del % de Jolly de 2.10 a 1.49 pp en Florida.
+**Terceros calibrados** (`real = 1.85 + 0.64 · otros en encuestas`): bajan el error del % de Jolly de 2.10 a 1.49 pp en Florida. Desde la v1.1.0, «no reportado» ≠ 0 %: `real = 0.81 + 0.73 · otros reportados`, o 1.92 pp si ninguna encuesta los reporta ([revisión del 22-oct](02_revision_externa_2026-10-22.md)).
 
 ## 5. Mercados
 - **Hoy:** Kalshi 22.3 %, Polymarket 20.0 %, promedio 21.1 %.

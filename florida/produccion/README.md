@@ -2,7 +2,14 @@
 
 Versión de producción del modelo de `../modelo_general/` (notebook `FLORIDA_2026_MODELO_FINAL.ipynb`). Es un paquete de Python (`fl_pronostico`) con línea de comandos, configuración en un solo archivo, registros, pruebas y tarea programada de Windows. Comparte estructura con la producción de Arizona; la diferencia de modelo es que **Florida usa sesgo estatal** (el backtest lo respalda: CRPS de FL 2.200 con sesgo contraído contra 2.643 sin él).
 
-**Todas las fuentes se consultan en vivo en cada corrida:** encuestas, mercados, voto ya emitido e histórico de calibración. Con las mismas encuestas y la misma semilla da exactamente los números del notebook (margen −8.31, P(Jolly) 5.0 % al 22-oct), y una prueba lo verifica.
+**Todas las fuentes se consultan en vivo en cada corrida:** encuestas, mercados, voto ya emitido e histórico de calibración. Con las mismas encuestas y la misma semilla da el margen y la probabilidad del notebook (−8.31, P(Jolly) 5.0 % al 22-oct), y una prueba lo verifica.
+
+**Versión 1.1.0** (revisión externa del 22-oct, [detalle](../docs/02_revision_externa_2026-10-22.md)):
+- en terceros, «no reportado» ya no se trata como 0 %;
+- la calibración usa la ventana explícita de 21 días;
+- los escenarios cruzan sesgo y mercados, y hay escenarios de sensibilidad.
+
+La salida de la v1.0.0 se conserva en `salidas/versiones/v1.0.0_2026-10-22/`, y el historial registra `version_modelo` en cada corrida.
 
 ## Instalación (una vez)
 Requisito: Python 3.10 o superior, en Windows con internet.
@@ -35,7 +42,7 @@ Códigos de salida: `0` OK · `1` error fatal (sin encuestas o con encuestas inv
 ## Fuentes (todas en vivo)
 | Fuente | Vía | Si falla | Uso |
 |---|---|---|---|
-| **Wikipedia** | API MediaWiki `action=parse` → tabla de encuestas (se normalizan los `rowspan="2;"` de la página de FL) | caché | encuestas, fuente principal (trae n, población y terceros) |
+| **Wikipedia** | API MediaWiki `action=parse` → tabla de encuestas (se normalizan los `rowspan="2;"` de la página de FL; «—» en terceros = no reportado, no 0 %) | caché | encuestas, fuente principal (trae n, población y terceros) |
 | **270toWin** | página HTML | caché | encuestas que Wikipedia aún no tiene |
 | Base verificada | Excel (hoja «Gobernador Florida») o `data\encuestas_verificadas_fl.csv` | se omite | encuestas revisadas a mano (se excluye la columna del promedio) |
 | **Kalshi** `GOVPARTYFL-26` | API pública, punto medio bid/ask | último precio guardado (≤ 3 días) | mezcla (peso 0.30, promediado con Polymarket) |
@@ -56,14 +63,20 @@ Si un mercado no tiene precio usable, sale de la mezcla. Si no hay ninguno, el p
 ### Sesgo estatal
 Se recalcula en cada corrida con el histórico (vida media de 4 años, contracción por Bayes empírico): al 22-oct, bruto +5.42 pp pro-D, contraído +4.83 (contracción 0.89). El pronóstico resta el contraído al promedio de encuestas. Siempre se reportan los escenarios **sin sesgo estatal** (regla de Arizona) y **sesgo sin contraer**.
 
+### Terceros y escenarios
+- **Terceros:** `real = a + c·(otros)`, con «otros» promediado solo entre las encuestas que reportan terceros. Si ninguna de la ventana los reporta, se usa la media histórica de las contiendas sin reporte (hoy 1.92 pp).
+- **Escenarios:** cada escenario simulado trae `P_D` (sin mercados) y `P_D_con_mercados` (la misma mezcla que el final). El cruce sesgo × mercados aparece explícito.
+- **Sensibilidad:** sesgo a la mitad y sin contraer; efectos de casa con k = 4 y k = 16; deriva al doble.
+
 ## Salidas (`salidas\ultimo\`)
 `resumen.txt` · `reporte.json` · `pronostico_gobernador.csv` · `escenarios_gobernador.csv` · `encuestas_gobernador.csv` · `encuestas_ventana_pesos.csv` · `voto_anticipado_condados.csv` · `polymarket_rangos_margen.csv` · `pronostico.png`. Además: `salidas\historial_pronosticos.csv`, `salidas\civicapi_historial_fl.csv` (serie diaria propia del voto ya emitido) y `salidas\evolucion.png`.
 
 ## Pruebas
-`python -m pytest -q` (19 pruebas, sin red, con respuestas reales del 22-oct-2026; una solo corre si la base es un Excel local). Cubren:
+`python -m pytest -q` (23 pruebas, sin red, con respuestas reales del 22-oct-2026; una solo corre si la base es un Excel local). Cubren:
 - los parsers, la deduplicación y el Excel;
 - Kalshi, Polymarket y sus rangos;
 - civicAPI de Florida (correo, en persona, NPA);
-- el sesgo estatal y sus escenarios;
+- el sesgo estatal, los escenarios cruzados con mercados y la sensibilidad;
+- terceros no reportados ≠ 0 % y el registro de versión;
 - caídas de fuentes, cachés viejas y modo offline;
 - la equivalencia exacta con el notebook.

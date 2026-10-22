@@ -29,17 +29,18 @@ Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas us
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_florida.yml)).
 
 ## Modelo general (elegido por backtest)
-Base: el modelo V11 de Georgia. Se validó con un backtest *leave-one-year-out* de 848 contiendas (1998–2024, 23 de Florida) a 12 días de la elección, donde ganó el menor CRPS. Del modelo de la primaria de Florida no se adoptó nada: todas sus piezas empeoraron el error en la general.
+Base: el modelo V11 de Georgia. Se validó con un backtest *leave-one-year-out* de 848 contiendas (1998–2024, 23 de Florida) a 12 días de la elección, con la misma ventana que producción (encuestas de los últimos 21 días; verificado contienda por contienda con el código de producción), donde ganó el menor CRPS. Del modelo de la primaria de Florida no se adoptó nada: todas sus piezas empeoraron el error en la general.
 
 | Pieza | Cómo entra | Por qué |
 |---|---|---|
 | Promedio de encuestas | V11: efecto de casa contraído (k = 8), √n, vida media de 14 días, cada firma pesa ~1 | Mejor CRPS nacional (3.374) |
-| Sesgo estatal | **Sí**, contraído por Bayes empírico (vida media de 4 años): hoy −4.8 pp hacia Donalds | Las encuestas de FL sobreestimaron al demócrata en 19 de 23 contiendas (2022 Gob +8.2, 2024 Pres +6.6, Sen +8.4). Quitarlo sube el CRPS de FL de 2.200 a 2.643 (P = 0.06 de que quitarlo mejore). Sin contraer da 2.168 en FL pero empeora a nivel nacional (P = 0.03). Ambos quedan como escenario |
-| Terceros | `real = 1.85 + 0.64 · (otros en encuestas)`, calibrado | El MAE del % de Jolly bajó de 2.10 a 1.49 en FL |
+| Sesgo estatal | **Sí**, contraído por Bayes empírico (vida media de 4 años): hoy −4.8 pp hacia Donalds | Las encuestas de FL sobreestimaron al demócrata en 18 de 23 contiendas (2022 Gob +8.2, 2024 Pres +6.6, Sen +8.4). Quitarlo sube el CRPS de FL de 2.200 a 2.643 (P = 0.06 de que quitarlo mejore). Sin contraer da 2.168 en FL pero empeora a nivel nacional (P = 0.03). En validación estrictamente cronológica (todo estimado con años anteriores, 2004–2024) también gana: FL 2.136 vs 2.660 (P = 0.09), gobernadores del país 3.165 vs 3.244 (P = 0.23). Ambos quedan como escenario |
+| Terceros | `real = 0.81 + 0.73 · (otros en las encuestas que los reportan)`; si ninguna los reporta (hoy), media histórica de contiendas sin reporte: 1.92 pp. «No reportado» ≠ 0 % (v1.1.0) | Frente a no modelar terceros, el MAE conjunto de % D y % R baja de 1.88 a 1.68 en FL (% D 2.10 → 1.51, aunque % R sube 1.65 → 1.86). A nivel nacional, distinguir «no reportado» mejora un poco (MAE conjunto 2.458 → 2.449) |
 | Indecisos | 50/50 | La cuota R estimada (0.55) no mejora (2.209); el reparto de la primaria FIX v8 empeora (2.351) |
 | σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día si las encuestas son más viejas que ese horizonte | Cobertura del 80 % correcta en el backtest |
 | Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30. La distribución del margen se desplaza para que P(margen > 0) sea igual a la probabilidad publicada | En FL los niveles se mueven juntos (0.86) pero los cambios diarios no (0.20). Peso estimado con 40 contiendas de 2024 ([detalle](../arizona/docs/03_peso_mercados.md)) |
 | Recuento | P(\|margen\| ≤ 0.5 pp) | Recuento por máquina según la ley de FL |
+| Escenarios | Cada uno con su probabilidad sin y con la misma mezcla de mercados; 2 × 2 sesgo × mercados explícito; sensibilidad a la contracción del sesgo (mitad, sin contraer), a la de los efectos de casa (k = 4 y 16) y a la deriva (doble) | Revisión externa del 22-oct ([detalle](docs/02_revision_externa_2026-10-22.md)) |
 | Voto ya emitido (civicAPI) | Diagnóstico, peso 0 | Es registro de partido, no intención de voto, y no hay histórico al mismo día para calibrarlo |
 
 ## Carpetas

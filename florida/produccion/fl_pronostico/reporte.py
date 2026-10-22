@@ -23,7 +23,8 @@ def texto_resumen(r: dict, cfg) -> str:
            '=' * 78,
            f"  {e.nombre_d} (D): {f['pct_D']:.1f}%   [IC80 {f['pct_D_IC80'][0]:.1f}–{f['pct_D_IC80'][1]:.1f}]",
            f"  {e.nombre_r} (R): {f['pct_R']:.1f}%   [IC80 {f['pct_R_IC80'][0]:.1f}–{f['pct_R_IC80'][1]:.1f}]",
-           f"  Terceros: {f['pct_terceros']:.1f}%   [IC80 {f['pct_terceros_IC80'][0]:.1f}–{f['pct_terceros_IC80'][1]:.1f}]",
+           f"  Terceros: {f['pct_terceros']:.1f}%   [IC80 {f['pct_terceros_IC80'][0]:.1f}–{f['pct_terceros_IC80'][1]:.1f}]"
+           + (f"   ({f['terceros_regimen']})" if f.get('terceros_regimen') else ''),
            f"  Margen D−R: {f['margen']:+.1f} pp (σ {f['sd']:.1f}) · IC95 [{f['IC95'][0]:+.1f}, {f['IC95'][1]:+.1f}]",
            f"  P(gana {e.candidato_d}) = {f['P_D']:.1%}   P(gana {e.candidato_r}) = {1 - f['P_D']:.1%}   "
            f"P(recuento, |margen| ≤ {cfg.eleccion.recuento_pp} pp) = {f['P_recuento']:.1%}",
@@ -85,14 +86,15 @@ def json_estricto(obj) -> str:
 
 def reporte_json(r: dict, cfg) -> dict:
     m, mk, a = r['modelo'], r['mercados'], r['anticipado']
-    return {'corte': str(cfg.corte), 'dias_a_eleccion': cfg.dias_a_eleccion, 'estados_fuentes': r['estados_fuentes'],
+    from . import __version__
+    return {'version_modelo': __version__, 'corte': str(cfg.corte), 'dias_a_eleccion': cfg.dias_a_eleccion, 'estados_fuentes': r['estados_fuentes'],
             'avisos': r['avisos'], 'conteos_encuestas': r['conteos'], 'ultima_encuesta': r['ultima_encuesta'],
             'gobernador': {**m['final'], 'n_encuestas': len(m['encuestas'])},
             'escenarios': m['escenarios'],
             'mercados': {'kalshi': mk['kalshi'], 'polymarket': mk['polymarket'], 'promedio_D': mk['promedio_D'],
                          'dif_pp': mk['dif_pp'], 'rangos': {k: v for k, v in mk['rangos'].items() if k != 'tabla'}},
             'anticipado': {k: v for k, v in a.items() if k != 'condados'},
-            'calibracion': {k: v for k, v in r['calibracion'].items() if k not in ('efectos_casa',)}}
+            'calibracion': {k: v for k, v in r['calibracion'].items() if not k.startswith('efectos_casa')}}
 
 
 def escribir(r: dict, cfg) -> Path:
@@ -131,7 +133,8 @@ def escribir(r: dict, cfg) -> Path:
     shutil.copytree(base, ult)
     mk = r['mercados']
     hist = cfg.dir_salidas / 'historial_pronosticos.csv'
-    fila = pd.DataFrame([{'ejecutado': datetime.now().isoformat(timespec='seconds'), 'corte': str(cfg.corte),
+    from . import __version__
+    fila = pd.DataFrame([{'ejecutado': datetime.now().isoformat(timespec='seconds'), 'version_modelo': __version__.split()[0], 'corte': str(cfg.corte),
                    'dias': cfg.dias_a_eleccion, 'pct_D': f['pct_D'], 'pct_R': f['pct_R'], 'pct_terceros': f['pct_terceros'],
                    'margen': f['margen'], 'sd': f['sd'], 'P_D': f['P_D'], 'P_D_encuestas': f['P_D_encuestas'],
                    'P_D_kalshi': mk['kalshi'].get('p_D'), 'P_D_polymarket': mk['polymarket'].get('p_D'),

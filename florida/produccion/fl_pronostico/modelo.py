@@ -4,11 +4,13 @@
              1/firma; sesgo estatal con vida media de 4 años, contraído por Bayes empírico)
   ventana  últimos 21 días; si hay < 2 encuestadoras, los 21 días previos a la encuesta más reciente
   σ        = √(τ² + s²/k + 0.25²·días que las encuestas son más viejas que el horizonte calibrado); t de Student
-  terceros T ~ N(a + c·otros_encuestas, sd), mínimo 0.1 pp;   indecisos 50/50
+  terceros T ~ N(a + c·otros, sd) con «otros» promediado solo entre encuestas que reportan terceros; si ninguna los
+           reporta, T ~ N(media histórica sin reporte, sd); mínimo 0.1 pp;   indecisos 50/50
+  escenarios: cada uno trae su probabilidad sin y con la misma mezcla de mercados (2 × 2 sesgo × mercados explícito)
   Jolly    = (100 − T + margen)/2 ;  Donalds = (100 − T − margen)/2 ;  recuento por máquina si |margen| ≤ 0.5
   final    = logit⁻¹((1 − w)·logit(P_encuestas) + w·logit(promedio Kalshi/Polymarket)),  w = 0.30; la distribución
              se desplaza para que P(margen > 0) = final (coherente con margen, intervalos y recuento)
-  CON sesgo estatal (al revés que Arizona): las encuestas de FL sobreestimaron al demócrata en 19 de 23 contiendas;
+  CON sesgo estatal (al revés que Arizona): las encuestas de FL sobreestimaron al demócrata en 18 de 23 contiendas;
   CRPS de FL 2.200 con sesgo contraído vs 2.643 sin él (P(sin sesgo mejor) = 0.06). Sin sesgo y sesgo sin contraer
   quedan como escenarios.
 """
@@ -88,45 +90,84 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     mu = mu_enc - sesgo
     sd = float(np.sqrt(par['tau'] ** 2 + par['s'] ** 2 / max(k, 1) + var_deriva))
     dist = Dist(sd, par['nu'])
-    a, c, tsd = par['terceros_a'], par['terceros_c'], par['terceros_sd']
-    t_media = max(a + c * otros_enc, 0.1)
+    def terceros(o: float) -> tuple[float, float]:
+        """«No reportado» ≠ 0 %: con encuestas que reportan terceros, a + c·o; si ninguna, media histórica sin reporte."""
+        if np.isfinite(o):
+            return max(par['terceros_a'] + par['terceros_c'] * o, 0.1), par['terceros_sd']
+        return max(par['terceros_sin_reporte'], 0.1), par['terceros_sin_reporte_sd']
+
+    t_media, tsd = terceros(otros_enc)
     base = simular(mu, dist, t_media, tsd, n, rng)
     p_mod = float((base.M > 0).mean())
     w_m = m.peso_mercados if mk.get('promedio_D') is not None else 0.0
-    p_final = p_mod if w_m == 0 else float(expit((1 - w_m) * logit(np.clip(p_mod, 1e-4, 1 - 1e-4))
-                                                 + w_m * logit(np.clip(mk['promedio_D'], 1e-4, 1 - 1e-4))))
+
+    def mezclar(s_: pd.DataFrame) -> tuple[float, float]:
+        """Mismo ajuste por mercados que el final: (probabilidad mezclada, desplazamiento del margen simulado)."""
+        p0 = float((s_.M > 0).mean())
+        if w_m == 0:
+            return p0, 0.0
+        pf = float(expit((1 - w_m) * logit(np.clip(p0, 1e-4, 1 - 1e-4))
+                         + w_m * logit(np.clip(mk['promedio_D'], 1e-4, 1 - 1e-4))))
+        return pf, float(-np.quantile(s_.M, 1 - pf))
+
     # La probabilidad mezclada se traslada a la distribución: se desplaza el margen simulado lo justo para que
     # P(margen > 0) = p_final (mismo tratamiento que Georgia, con el cuantil empírico de la propia simulación).
     # Así margen, intervalos, % de voto y recuento son coherentes con la probabilidad publicada.
-    desplaz = 0.0 if w_m == 0 else float(-np.quantile(base.M, 1 - p_final))
-    M_f = base.M + desplaz
-    sim_final = pd.DataFrame({'D': (100 - base['T'] + M_f) / 2, 'R': (100 - base['T'] - M_f) / 2, 'T': base['T'], 'M': M_f})
+    p_final, desplaz = mezclar(base)
+
+    def desplazar(s_: pd.DataFrame, dz: float) -> pd.DataFrame:
+        M_ = s_.M + dz
+        return pd.DataFrame({'D': (100 - s_['T'] + M_) / 2, 'R': (100 - s_['T'] - M_) / 2, 'T': s_['T'], 'M': M_})
+
+    sim_final = desplazar(base, desplaz)
     final = resumen(sim_final, 'FINAL: encuestas + mercados (Kalshi y Polymarket)', rec)
     final.update({'P_D_encuestas': p_mod, 'P_D_mezcla_objetivo': p_final, 'desplazamiento_mercados_pp': desplaz,
                   'peso_mercados_aplicado': w_m, 'margen_encuestas': mu_enc, 'k': k, 'ventana': nota,
-                  'dias_extra_encuestas': edad_extra, 'terceros_media': t_media, 'sesgo_estatal_aplicado': sesgo,
-                  'sesgo_estatal_bruto': par['sesgo_bruto'], 'contraccion_sesgo': par.get('contraccion')})
+                  'dias_extra_encuestas': edad_extra, 'terceros_media': t_media,
+                  'terceros_reportados_encuestas': otros_enc if np.isfinite(otros_enc) else None,
+                  'terceros_regimen': 'reportado en encuestas' if np.isfinite(otros_enc) else 'ninguna encuesta de la ventana los reporta',
+                  'sesgo_estatal_aplicado': sesgo,
+                  'sesgo_estatal_bruto': par['sesgo_bruto'], 'contraccion_sesgo': par.get('contraccion'),
+                  'P_D_con_mercados': p_final, 'margen_con_mercados': float(sim_final.M.mean())})
 
-    esc = [final, resumen(base, 'Solo encuestas (sin mercados)', rec)]
+    def fila(s_: pd.DataFrame, nombre: str) -> dict:
+        """Escenario sin mercados + la misma mezcla con mercados del final (columnas *_con_mercados)."""
+        r_ = resumen(s_, nombre, rec)
+        pf, dz = mezclar(s_)
+        r_.update({'P_D_con_mercados': pf, 'margen_con_mercados': float(s_.M.mean() + dz)})
+        return r_
+
     sim = lambda mu_, d_=dist, tm=t_media, ts=tsd: simular(mu_, d_, tm, ts, n, rng)
     sb, sr = par['sesgo_contraido'], par['sesgo_bruto']
-    if m.sesgo_estatal:
-        esc.append(resumen(sim(mu_enc), 'Sin sesgo estatal (regla de Arizona)', rec))
-    else:
-        esc.append(resumen(sim(mu_enc - sb), f'Con sesgo estatal contraído ({-sb:+.2f} pp)', rec))
-    esc.append(resumen(sim(mu_enc - sr), f'Sesgo estatal sin contraer ({-sr:+.2f} pp)', rec))
-    esc.append(resumen(sim(mu, Dist(sd, None)), 'Distribución normal', rec))
-    esc.append(resumen(sim(mu, dist, 0.1, 0.0), 'Sin terceros', rec))
-    esc.append(resumen(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva)), par['nu'])), 'Sin deriva por encuestas viejas', rec))
+    # 2 × 2 sesgo × mercados: cada efecto se aísla manteniendo fijo el otro
+    esc = [final, fila(base, 'Con sesgo estatal, sin mercados (solo encuestas)')]
+    s_alt = sim(mu_enc - sb) if not m.sesgo_estatal else sim(mu_enc)
+    nom_alt = 'Con sesgo estatal' if not m.sesgo_estatal else 'Sin sesgo estatal'
+    esc.append(fila(s_alt, f'{nom_alt}, sin mercados'))
+    pf_alt, dz_alt = mezclar(s_alt)
+    r_alt = resumen(desplazar(s_alt, dz_alt), f'{nom_alt}, con mercados (mismo ajuste que el final)', rec)
+    r_alt.update({'P_D_con_mercados': r_alt['P_D'], 'margen_con_mercados': r_alt['margen']})
+    esc.append(r_alt)
+    # sensibilidad (cada fila trae también su probabilidad con mercados)
+    esc.append(fila(sim(mu_enc - sr), f'Sesgo estatal sin contraer ({-sr:+.2f} pp)'))
+    esc.append(fila(sim(mu_enc - 0.5 * sb), f'Sesgo estatal a la mitad ({-0.5 * sb:+.2f} pp)'))
+    esc.append(fila(sim(mu, Dist(sd, None)), 'Distribución normal'))
+    esc.append(fila(sim(mu, dist, 0.1, 0.0), 'Sin terceros'))
+    esc.append(fila(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva)), par['nu'])), 'Sin deriva por encuestas viejas'))
+    esc.append(fila(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva + 3 * var_deriva)), par['nu'])),
+                    f'Deriva al doble (0.50 pp/día, {edad_extra} días)'))
     for nom, kw in (('Regla literal V11 (última encuesta de cada firma)', {'regla': 'v11'}),
                     ('Ventana 45 días', {'dias': 45}), ('Ventana 60 días', {'dias': 60})):
         qq, _ = seleccionar_ventana(p, cfg, **kw)
         m2, o2, k2, _ = promedio(qq, house, m.vida_media_dias)
         ed2 = max((pd.Timestamp(cfg.dia_eleccion) - qq.fin.max()).days - h, 0)
         s2 = float(np.sqrt(par['tau'] ** 2 + par['s'] ** 2 / max(k2, 1) + m.sigma_dia_pp ** 2 * ed2))
-        esc.append(resumen(sim(m2 - sesgo, Dist(s2, par['nu']), max(a + c * o2, .1)), f'{nom} ({k2} encuestadoras)', rec))
+        esc.append(fila(sim(m2 - sesgo, Dist(s2, par['nu']), *terceros(o2)), f'{nom} ({k2} encuestadoras)'))
     sin_casa, *_ = promedio(q, {}, m.vida_media_dias)
-    esc.append(resumen(sim(sin_casa - sesgo), 'Sin efectos de casa', rec))
+    esc.append(fila(sim(sin_casa - sesgo), 'Sin efectos de casa'))
+    for kk in (4, 16):
+        m_k, *_ = promedio(q, par.get(f'efectos_casa_k{kk}', house), m.vida_media_dias)
+        esc.append(fila(sim(m_k - sesgo), f'Efectos de casa con contracción k = {kk} (base 8)'))
     ep = par.get('efectos_partidistas', {})
     lado = q.pollster.map(lado_partidista)
     casa_solo = {kk: (ep.get(ll, 0.0) if ll else 0.0) for kk, ll in zip(q.pollster_key, lado)}
@@ -134,7 +175,7 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     for nom, mp in (('Ajuste partidista (patrocinador D/R)', casa_solo),
                     ('Efecto de casa + partidista si la firma no tiene historia', casa_mix)):
         m_p, *_ = promedio(q, mp, m.vida_media_dias)
-        esc.append(resumen(sim(m_p - sesgo), f"{nom} [D {ep.get('D', 0):+.1f}, R {ep.get('R', 0):+.1f}]", rec))
+        esc.append(fila(sim(m_p - sesgo), f"{nom} [D {ep.get('D', 0):+.1f}, R {ep.get('R', 0):+.1f}]"))
     for nom in ('kalshi', 'polymarket'):
         x = mk.get(nom, {})
         if x.get('usable'):

@@ -151,7 +151,9 @@ def parse_tabla_wikipedia(html: str, cand_d: str, cand_r: str, anio: int, alias=
             n, pop = parse_muestra(r[muestra])
             if fin is None:
                 continue
-            otros = sum(np.nan_to_num(a_numero(r[c])) for c in terceros) + (np.nan_to_num(a_numero(r[c_otro])) if c_otro else 0)
+            # «—» = la encuesta no reporta terceros: NaN, no 0 % (revisión del 22-oct: no reportado ≠ 0)
+            vals = [a_numero(r[c]) for c in terceros] + ([a_numero(r[c_otro])] if c_otro else [])
+            otros = float(np.nansum(vals)) if any(np.isfinite(v) for v in vals) else np.nan
             filas.append({'pollster': limpiar(r[fuente]), 'inicio': ini, 'fin': fin, 'n': n, 'pop': pop or 'LV',
                           'D': D, 'R': R, 'otros': otros,
                           'indecisos': a_numero(r[c_ind]) if c_ind else np.nan, 'origen': 'wikipedia'})

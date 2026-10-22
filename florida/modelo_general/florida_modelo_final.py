@@ -3,7 +3,7 @@
 Selección por backtest (../backtest, leave-one-year-out, 848 contiendas 1998–2024, 23 de Florida, H = 12 días):
   - Base: modelo de Georgia V11 (promedio con efectos de casa, √n, vida media 14 d, cada firma pesa ~1;
     σ = √(τ² + s²/k) calibrada; colas Student-t) CON sesgo estatal contraído por Bayes empírico.
-  - CON sesgo estatal (al revés que Arizona): las encuestas de Florida sobreestiman al demócrata en 19 de 23
+  - CON sesgo estatal (al revés que Arizona): las encuestas de Florida sobreestiman al demócrata en 18 de 23
     contiendas (+8.2 en 2022 Gob, +6.6 en 2024 Pres, +8.4 en 2024 Sen). Quitarlo sube el CRPS de FL de 2.200 a 2.643
     (P(sin sesgo mejor) = 0.06). El sesgo sin contraer da 2.168 en FL pero empeora a nivel nacional (P = 0.03): no
     se adopta; queda como escenario.

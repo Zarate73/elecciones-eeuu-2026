@@ -4,7 +4,8 @@
 Calibra al horizonte del corte (días a la elección, tope 21), leave-one-year-out:
   - efectos de casa por encuestadora (contraídos, k = 8);
   - errores fuera de muestra -> τ, s de σ(k) = √(τ² + s²/k) y ν de la t de Student;
-  - terceros: real = a + c·(otros en encuestas), con su desviación residual;
+  - terceros: real = a + c·(otros en las encuestas que los REPORTAN); si ninguna los reporta, media histórica de las
+    contiendas sin reporte (no reportado ≠ 0 %; revisión del 22-oct). Cada régimen con su desviación residual;
   - sesgo estatal del estado (en FL entra al pronóstico: backtest CRPS 2.200 con sesgo vs 2.643 sin él).
 """
 from __future__ import annotations
@@ -58,19 +59,20 @@ def preparar(raw: pd.DataFrame, cfg) -> pd.DataFrame:
     a = pd.read_csv(cfg.dir_datos / 'az2024_encuestas_finales.csv', parse_dates=['polldate', 'electiondate'])
     a['rk'] = a['pop'].map({'LV': 0, 'RV': 1, 'A': 2}).fillna(3)
     a = a.sort_values('rk').drop_duplicates(['race', 'pollster', 'polldate'])
-    a = a.assign(samplesize=a.n, cand1_pct=a.D, cand2_pct=a.R, cand3_pct=a.otros,
+    # capturas de Wikipedia 2024: el analizador anterior escribía 0 para «—» (no reportado) → se trata como faltante
+    a = a.assign(samplesize=a.n, cand1_pct=a.D, cand2_pct=a.R, cand3_pct=a.otros.where(a.otros > 0),
                  cand1_actual=a.race.map(lambda r: AZ24[r][0]), cand2_actual=a.race.map(lambda r: AZ24[r][1]))
     w = pd.read_csv(cfg.dir_datos / 'encuestas_2024_wiki.csv', parse_dates=['polldate', 'electiondate'])
     w['rk'] = w['pop'].map({'LV': 0, 'RV': 1, 'A': 2}).fillna(3)
     w = w.sort_values('rk').drop_duplicates(['race', 'pollster', 'polldate'])
-    w = w.assign(samplesize=w.n, cand1_pct=w.D, cand2_pct=w.R, cand3_pct=w.otros)
+    w = w.assign(samplesize=w.n, cand1_pct=w.D, cand2_pct=w.R, cand3_pct=w.otros.where(w.otros > 0))
     d = pd.concat([d, g.reindex(columns=KEEP), a.reindex(columns=KEEP), w.reindex(columns=KEEP)], ignore_index=True)
     d['days'] = (d.electiondate - d.polldate).dt.days
     d['margin_poll'] = d.cand1_pct - d.cand2_pct
     d['margin_actual'] = d.cand1_actual - d.cand2_actual
     d['n'] = pd.to_numeric(d.samplesize, errors='coerce').fillna(600).clip(100, 3000)
     d['pollster_key'] = d.pollster.str.lower().str.replace(r'[^a-z]', '', regex=True).str[:14]
-    d['cand3_pct'] = pd.to_numeric(d.cand3_pct, errors='coerce').fillna(0.0)
+    d['cand3_pct'] = pd.to_numeric(d.cand3_pct, errors='coerce')        # NaN = la encuesta no reporta terceros
     d['otros_real'] = (100 - d.cand1_actual - d.cand2_actual).clip(lower=0)
     return d
 
@@ -94,14 +96,18 @@ def efectos_partidistas(d: pd.DataFrame, k: float) -> dict:
 
 
 def promedio(p: pd.DataFrame, house: dict, vida_media: float) -> tuple[float, float, int, pd.Series]:
-    """(margen corregido por casa, % otros ponderado, k encuestadoras, pesos).
-    Peso = 2^(−Δdías/vida_media) · √n / (encuestas de la misma firma en la ventana)."""
+    """(margen corregido por casa, % otros, k encuestadoras, pesos).
+    Peso = 2^(−Δdías/vida_media) · √n / (encuestas de la misma firma en la ventana).
+    % otros = promedio con esos pesos SOLO entre las encuestas que reportan terceros; NaN si ninguna los reporta."""
     m = p.margin_poll.to_numpy(float) - p.pollster_key.map(house).fillna(0).to_numpy(float)
     dt = (p.days - p.days.min()).to_numpy(float)
     w = np.exp(-np.log(2) * dt / vida_media) * np.sqrt(p.n.to_numpy(float))
     w = w / p.pollster_key.map(p.pollster_key.value_counts()).to_numpy(float)
     w = w / w.sum()
-    return float(w @ m), float(w @ p.otros.fillna(0).to_numpy(float)), int(p.pollster_key.nunique()), pd.Series(w, p.index)
+    o = p.otros.to_numpy(float)
+    rep = np.isfinite(o)
+    otros = float(np.average(o[rep], weights=w[rep])) if rep.any() and w[rep].sum() > 0 else float('nan')
+    return float(w @ m), otros, int(p.pollster_key.nunique()), pd.Series(w, p.index)
 
 
 def ajustar_sigma(err, k) -> tuple[float, float]:
@@ -119,7 +125,7 @@ def calibrar(cfg, h: int) -> dict:
     # la caché también depende de los históricos 2024 del paquete (si se corrigen, se recalibra)
     firma += hashlib.md5(b''.join((cfg.dir_datos / x).read_bytes() for x in
                                   ('ga_pres2024_polls.csv', 'az2024_encuestas_finales.csv', 'encuestas_2024_wiki.csv'))).hexdigest()[:6]
-    cache = cfg.dir_cache / f'calibracion_h{h}_k{m.contraccion_casa}_vm{m.vida_media_dias}_{firma}.json'
+    cache = cfg.dir_cache / f'calibracion_v11_h{h}_k{m.contraccion_casa}_vm{m.vida_media_dias}_{firma}.json'
     if cache.exists():
         par = json.loads(cache.read_text(encoding='utf-8'))
         par['estado_fuente'] = estado
@@ -129,7 +135,7 @@ def calibrar(cfg, h: int) -> dict:
     for y in sorted(d.year.unique()):
         house = efectos_casa(d[d.year != y], m.contraccion_casa)
         for race, p in d[d.year == y].groupby('race'):
-            q = p[p.days >= h].rename(columns={'cand3_pct': 'otros'})
+            q = p[(p.days >= h) & (p.days <= m.ventana_dias_eleccion)].rename(columns={'cand3_pct': 'otros'})   # = ventana de producción
             if q.empty:
                 continue
             mu, o, k, _ = promedio(q, house, m.vida_media_dias)
@@ -140,9 +146,11 @@ def calibrar(cfg, h: int) -> dict:
     z = b.e / np.sqrt(tau ** 2 + s ** 2 / np.maximum(b.k, 1))
     nus = np.linspace(2.5, 60, 576)
     nu = float(nus[int(np.argmax([np.sum(student_t.logpdf(z, v, scale=np.sqrt((v - 2) / v))) for v in nus]))])
-    A = np.c_[np.ones(len(b)), b.otros_enc]
-    coef = np.linalg.lstsq(A, b.otros_real, rcond=None)[0]
-    sd_t = float(np.std(b.otros_real - A @ coef, ddof=2))
+    con = b[b.otros_enc.notna()]
+    A = np.c_[np.ones(len(con)), con.otros_enc]
+    coef = np.linalg.lstsq(A, con.otros_real, rcond=None)[0]
+    sd_t = float(np.std(con.otros_real - A @ coef, ddof=2))
+    sin = b[b.otros_enc.isna()].otros_real
     b['w'] = 0.5 ** ((cfg.dia_eleccion.year - b.year) / 4.0)
     st = b.groupby('location').apply(lambda g: pd.Series({
         'm': np.average(g.e, weights=g.w), 'neff': g.w.sum() ** 2 / (g.w ** 2).sum(),
@@ -154,8 +162,11 @@ def calibrar(cfg, h: int) -> dict:
     contr = vs / (vs + r.v / r.neff) if vs > 0 else 0.0
     par = {'horizonte_dias': h, 'tau': tau, 's': s, 'nu': nu, 'n_contiendas': len(b),
            'terceros_a': float(coef[0]), 'terceros_c': float(coef[1]), 'terceros_sd': sd_t,
+           'terceros_sin_reporte': float(sin.mean()), 'terceros_sin_reporte_sd': float(sin.std(ddof=1)),
+           'n_con_reporte': len(con), 'n_sin_reporte': len(sin),
            'sesgo_bruto': float(r.m), 'sesgo_contraido': float(contr * r.m), 'contraccion': float(contr),
            'efectos_casa': efectos_casa(d, m.contraccion_casa),
+           'efectos_casa_k4': efectos_casa(d, 4.0), 'efectos_casa_k16': efectos_casa(d, 16.0),   # sensibilidad
            'efectos_partidistas': efectos_partidistas(d, m.contraccion_casa),
            'errores_estado': b[b.location == est].drop(columns='w').round(3).to_dict('records')}
     cache.write_text(json.dumps(par, ensure_ascii=False), encoding='utf-8')

@@ -1,0 +1,38 @@
+[4] Errores de FL: 18 pro-D de 23 (no 19 de 23).
+
+[1] Ventana. Encuestas del histórico con > 21 días a la elección: 3 (de 7715; FiveThirtyEight solo publica los últimos 21 días).
+    Contiendas: 848 · |dif| máx 0.0000 pp · contiendas con dif > 0.01: 0 · k distinto: 0 · ampliadas: 248
+Empty DataFrame
+Columns: [race, mu_bt, mu_prod, dif, k, k_prod, n_fuera_21]
+Index: []
+
+[2] Validación estrictamente cronológica (evaluación 2004–2024; todo se estima con años anteriores):
+      ambito                                modelo     n  CRPS   MAE  sesgo  Cob80
+    Nacional                           G con sesgo 674.0 3.202 4.409  1.176  0.810
+    Nacional                          H8 sin sesgo 674.0 3.395 4.703  1.667  0.777
+    Nacional P(sin sesgo mejor), bootstrap por año   NaN 0.002   NaN    NaN    NaN
+Nacional_Gob                           G con sesgo 199.0 3.165 4.383  0.880  0.814
+Nacional_Gob                          H8 sin sesgo 199.0 3.244 4.521  1.405  0.804
+Nacional_Gob P(sin sesgo mejor), bootstrap por año   NaN 0.225   NaN    NaN    NaN
+          FL                           G con sesgo  18.0 2.136 3.182  1.404  0.889
+          FL                          H8 sin sesgo  18.0 2.660 3.861  2.792  0.667
+          FL P(sin sesgo mejor), bootstrap por año   NaN 0.085   NaN    NaN    NaN
+      FL_Gob                           G con sesgo   5.0 1.891 2.794  1.941  0.800
+      FL_Gob                          H8 sin sesgo   5.0 2.300 3.134  3.038  0.800
+      FL_Gob P(sin sesgo mejor), bootstrap por año   NaN 0.097   NaN    NaN    NaN
+    FL_2016+                           G con sesgo   9.0 2.311 3.700  3.700  0.889
+    FL_2016+                          H8 sin sesgo   9.0 3.591 5.350  5.350  0.444
+    FL_2016+ P(sin sesgo mejor), bootstrap por año   NaN 0.002   NaN    NaN    NaN
+
+[3] Terceros. Contiendas sin ninguna encuesta que reporte terceros: 435 de 848 (FL: 7 de 23).
+                             ambito                                         regla   n  MAE_%D  MAE_%R  MAE_conjunto  MAE_terceros  sesgo_terceros
+                           Nacional                               T0 terceros = 0 848   2.996   2.490         2.743         2.724          -2.724
+                           Nacional                      T2 actual (faltante = 0) 848   2.474   2.441         2.458         1.475          -0.001
+                           Nacional T4 faltante ≠ 0 (solo encuestas que reportan) 848   2.468   2.430         2.449         1.427          -0.004
+                                 FL                               T0 terceros = 0  23   2.102   1.649         1.876         1.693          -1.693
+                                 FL                      T2 actual (faltante = 0)  23   1.493   1.834         1.664         1.214           0.790
+                                 FL T4 faltante ≠ 0 (solo encuestas que reportan)  23   1.509   1.856         1.683         1.237           0.827
+Nacional, sin reporte en la ventana                               T0 terceros = 0 435   2.861   2.572         2.716         1.920          -1.920
+Nacional, sin reporte en la ventana                      T2 actual (faltante = 0) 435   2.675   2.534         2.605         1.444          -0.070
+Nacional, sin reporte en la ventana T4 faltante ≠ 0 (solo encuestas que reportan) 435   2.675   2.536         2.605         1.454          -0.003
+    T4 (todas las contiendas): real = 0.81 + 0.73·reportado; sin reporte → 1.91
