@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generado": "2026-10-21T17:34:11-07:00",
+  "generado": "2026-10-21T17:44:42-07:00",
   "fecha_corte": "2026-10-21",
   "dias_a_eleccion": 13,
   "offline": false,
@@ -8,19 +8,19 @@
   "pronostico": {
     "candidato_d": "Becerra",
     "candidato_r": "Hilton",
-    "pct_d": 59.39324659163728,
-    "pct_r": 40.60675340836272,
-    "margen_pp": 18.786493183274562,
+    "pct_d": 61.1264075285376,
+    "pct_r": 38.8735924714624,
+    "margen_pp": 22.25281505707519,
     "ic80_pct_d": [
-      55.61325325739722,
-      63.14158922248154
+      57.34641419429753,
+      64.87475015938186
     ],
     "ic95_pct_d": [
-      52.81418529047554,
-      65.94656843867176
+      54.547346227375854,
+      67.67972937557207
     ],
     "p_d_gana_modelo": 0.99647,
-    "p_d_gana_final": 0.99284
+    "p_d_gana_final": 0.9928419513917257
   },
   "estados_fuentes": {
     "encuestas_wikipedia": "en_vivo",
@@ -28,7 +28,7 @@
     "civiq": "Datos de Civiq vía api, validados (2026-10-20)",
     "civiq_historia": "api_en_vivo (197 filas)",
     "civiq_condados": "api_en_vivo (58 condados)",
-    "gdelt": "parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
+    "gdelt": "en_vivo",
     "kalshi": "en_vivo"
   },
   "ultima_encuesta": {
@@ -211,7 +211,7 @@
     "gdelt": {
       "disponible": true,
       "fecha": "2026-10-04",
-      "brecha_7d": 0.17646666666666655,
+      "brecha_7d": 0.12235714285714273,
       "innovacion_7d": 0.7575533333333332,
       "z_innovacion": 1.2016063265671821,
       "k_sent_candidato": 1.5228174647466208
@@ -245,22 +245,22 @@
   },
   "m5": {
     "media_pp": 22.265112218271657,
-    "media_final_pp": 18.79879034447103,
-    "desplazamiento_kalshi_pp": -3.4663218738006254,
+    "media_final_pp": 22.265112218271657,
+    "desplazamiento_kalshi_pp": 0.0,
     "p_mezcla_objetivo": 0.9928419513917257,
     "sigma_pp": 6.605733533252371,
     "k_sent_aplicado": 1.0,
     "delta_m2_aplicado_pp": 0.0,
     "p_modelo": 0.99647,
-    "p_final": 0.99284,
+    "p_final": 0.9928419513917257,
     "p_kalshi_usada": 0.9635364635364636,
     "w_kalshi": 0.3,
     "cuantiles_margen_pp": {
-      "2.5": 5.628370580951073,
-      "10": 11.226506514794432,
-      "50": 18.786493183274562,
-      "90": 26.283178444963088,
-      "97.5": 31.893136877343522
+      "2.5": 9.0946924547517,
+      "10": 14.692828388595057,
+      "50": 22.25281505707519,
+      "90": 29.74950031876371,
+      "97.5": 35.359458751144146
     },
     "componentes_varianza_pp2": {
       "sistematico": 37.718458044790175,
@@ -270,5 +270,5 @@
     }
   },
   "avisos": [],
-  "duracion_s": 143.2
+  "duracion_s": 48.3
 }
