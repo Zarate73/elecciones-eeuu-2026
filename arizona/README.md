@@ -32,7 +32,7 @@ Base: el modelo V11 de Georgia, más lo que el backtest respaldó del modelo de 
 | Pieza | Cómo entra | Por qué |
 |---|---|---|
 | Promedio de encuestas | V11: efecto de casa contraído (k = 8), √n, vida media de 14 días, cada firma pesa ~1 | Mejor CRPS nacional (3.495) |
-| Sesgo estatal | **No se usa** | En AZ el error no persiste entre ciclos (autocorrelación −0.11 frente a +0.22 nacional); quitarlo bajó el CRPS de AZ de 2.630 a 2.471 |
+| Sesgo estatal | **No se usa** (escenario: con sesgo, P(Hobbs) ≈ 90 %) | Evidencia débil pero en la misma dirección: en AZ quitarlo baja el CRPS de 2.630 a 2.471 (22 contiendas, P = 0.85 por bootstrap de años) y en gobernadores de todo el país de 3.677 a 3.629 (256 contiendas, P = 0.65). En todas las contiendas nacionales el sesgo sí ayuda (P = 0.16 de que quitarlo mejore), por Presidente y Senado. No es concluyente: el escenario con sesgo se reporta siempre |
 | Terceros | `real = 1.87 + 0.69 · (otros en encuestas)`, calibrado | El MAE del % demócrata bajó de 2.53 a 1.94 en AZ |
 | Indecisos | 50/50 | Los escenarios por facción, el reparto proporcional y la cuota R estimada empeoran el CRPS |
 | σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día si las encuestas son más viejas que ese horizonte | Cobertura del 80 % correcta en el backtest |
