@@ -26,7 +26,7 @@ def texto_resumen(r: dict, cfg) -> str:
            f"  Terceros: {f['pct_terceros']:.1f}%   [IC80 {f['pct_terceros_IC80'][0]:.1f}–{f['pct_terceros_IC80'][1]:.1f}]",
            f"  Margen D−R: {f['margen']:+.1f} pp (σ {f['sd']:.1f}) · IC95 [{f['IC95'][0]:+.1f}, {f['IC95'][1]:+.1f}]",
            f"  P(gana {e.candidato_d}) = {f['P_D']:.1%}   P(gana {e.candidato_r}) = {1 - f['P_D']:.1%}   "
-           f"P(recuento automático) = {f['P_recuento']:.1%}",
+           f"P(recuento, |margen| ≤ {cfg.eleccion.recuento_pp} pp) = {f['P_recuento']:.1%}",
            f"  Solo encuestas: {f['P_D_encuestas']:.1%} · Kalshi {_pct(mk['kalshi'].get('p_D'))} ({mk['kalshi']['estado'][:30]}) · "
            f"Polymarket {_pct(mk['polymarket'].get('p_D'))} ({mk['polymarket']['estado'][:30]}) · peso mercados {f['peso_mercados_aplicado']}",
            f"  Ventana: {len(m['ventana'])} encuestas de {f['k']} encuestadoras desde {v['desde']}"

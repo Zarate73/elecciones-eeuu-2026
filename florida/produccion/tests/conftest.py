@@ -1,4 +1,5 @@
 """Fixtures sin red: respuestas reales (22-oct-2026) de Wikipedia, 270toWin, Kalshi, Polymarket, civicAPI y GitHub."""
+import datetime as _dt
 import json
 from pathlib import Path
 
@@ -10,6 +11,15 @@ from fl_pronostico import red
 FIX = Path(__file__).parent / 'fixtures'
 RAIZ = Path(__file__).parent.parent
 MODULOS_JSON = ('fl_pronostico.encuestas', 'fl_pronostico.mercados', 'fl_pronostico.anticipado')
+CORTE = '2026-10-22'                       # fecha de los fixtures: las pruebas no dependen del día en que corren
+
+
+class RelojFijo(_dt.datetime):
+    """«Ahora» = mediodía del corte de los fixtures (los mercados fechan sus snapshots con la hora real)."""
+
+    @classmethod
+    def now(cls, tz=None):
+        return cls(2026, 10, 22, 12, 0, tzinfo=tz)
 
 
 def _archivo_json(url: str, params: dict) -> str:
@@ -58,12 +68,13 @@ def red_simulada(monkeypatch):
     monkeypatch.setattr('fl_pronostico.encuestas.get_text', r.get_text)
     monkeypatch.setattr('fl_pronostico.historico.get_text', r.get_text)
     monkeypatch.setattr('time.sleep', lambda s: None)
+    monkeypatch.setattr('fl_pronostico.mercados.datetime', RelojFijo)
     return r
 
 
 @pytest.fixture
 def cfg(tmp_path):
-    c = cfgmod.cargar_config(corte='2026-10-22')
+    c = cfgmod.cargar_config(corte=CORTE)
     c.rutas['salidas'] = str(tmp_path / 'salidas')
     c.rutas['logs'] = str(tmp_path / 'logs')
     c.rutas['encuestas_base'] = str(RAIZ / 'data' / 'encuestas_verificadas_fl.csv')
