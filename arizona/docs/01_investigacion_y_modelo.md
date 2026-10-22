@@ -8,19 +8,21 @@ Carpetas:
 ## 1. Pronóstico
 | Candidato | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| **Katie Hobbs (D)** | **51.9 %** (48.5–55.3) | **93.5 %** |
-| Andy Biggs (R) | 44.0 % (40.6–47.4) | 6.5 % |
+| **Katie Hobbs (D)** | **51.8 %** (48.4–55.2) | **93.5 %** |
+| Andy Biggs (R) | 44.2 % (40.8–47.6) | 6.5 % |
 | Terceros (Hourihan, No Labels; Lombardo, Green; otros) | 4.1 % (1.6–6.5) | — |
 
-- **Margen Hobbs − Biggs:** +7.8 pp (σ 5.1; IC95 −2.3 a +18.0).
+- **Margen Hobbs − Biggs:** +7.6 pp (σ 5.1; IC95 −2.6 a +17.7). Solo con encuestas sería +7.8; los mercados lo bajan 0.25 pp.
 - **Solo encuestas:** P = 94.1 %. **Mercados:** 92.1 % (Kalshi 90.6 %, Polymarket 93.5 %).
-- **P(recuento automático, margen ≤ 0.5 pp):** 2.1 %.
+- **P(recuento automático, margen ≤ 0.5 pp):** 2.3 %.
+- **Coherencia probabilística (corrección del 21-oct):** la probabilidad mezclada con los mercados se traslada a la distribución. El margen simulado se desplaza para que P(margen > 0) sea igual a la probabilidad publicada, de modo que margen, intervalos, % de voto y recuento salen de la misma distribución. Antes se publicaba la probabilidad mezclada junto a la distribución de solo encuestas (+7.8).
 
 **Sensibilidad.** Todos los escenarios dan P(Hobbs) entre 0.90 y 0.96:
 
 | Escenario | Margen | P(Hobbs) |
 |---|---|---|
-| Final | +7.8 | 0.935 |
+| Final | +7.6 | 0.935 |
+| Solo encuestas | +7.8 | 0.941 |
 | Con sesgo estatal V11 (+1.4 a favor de Biggs) | +6.4 | 0.903 |
 | Regla literal de V11 (solo GrayHouse y HighGround) | +11.0 | 0.956 |
 | Ventana de 60 días | +7.9 | 0.959 |

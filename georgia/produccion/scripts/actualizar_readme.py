@@ -80,6 +80,11 @@ def main() -> int:
         f"con Kalshi (peso {g['peso_kalshi_aplicado']}) · segunda vuelta {g['P_segunda_vuelta']:.1%} · "
         f"{g['n_encuestas']} encuestas, {g['k']} encuestadoras en la ventana",
     ]
+    u = rep.get('ultima_encuesta')
+    if u:
+        lineas += ['', f"**Encuesta más reciente:** {u['encuestadora']}, terminó el {u['fin']} "
+                       f"(**{u['dias_desde_fin']} días** antes del corte). Las fuentes se consultan en vivo, pero el promedio "
+                       f"solo puede ser tan reciente como la última encuesta publicada."]
     if s:
         c = s['conjunto']
         lineas += ['', f"**Senado:** Ossoff {s['pct_D']:.1f}% · Collins {s['pct_R']:.1f}% · P(Ossoff) {s['P_D']:.0%} · "

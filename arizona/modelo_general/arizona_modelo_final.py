@@ -432,7 +432,14 @@ def ejecutar(cfg: Config | None = None, guardar: bool = True) -> dict:
     p_mod = float((base.Margen > 0).mean())
     p_final = p_mod if cfg.peso_mercados == 0 else float(expit(
         (1 - cfg.peso_mercados) * logit(np.clip(p_mod, 1e-4, 1 - 1e-4)) + cfg.peso_mercados * logit(mk['promedio_D'])))
-    final = resumen(base, 'FINAL: encuestas + mercados (Kalshi y Polymarket)', p_final)
+    # la probabilidad mezclada se traslada a la distribución: se desplaza el margen simulado para que
+    # P(margen > 0) = p_final; así margen, intervalos, % de voto y recuento son coherentes con la probabilidad
+    desplaz = 0.0 if cfg.peso_mercados == 0 else float(-np.quantile(base.Margen, 1 - p_final))
+    M_f = base.Margen + desplaz
+    sim_final = pd.DataFrame({'Hobbs': (100 - base.Terceros + M_f) / 2, 'Biggs': (100 - base.Terceros - M_f) / 2,
+                              'Terceros': base.Terceros, 'Margen': M_f})
+    final = resumen(sim_final, 'FINAL: encuestas + mercados (Kalshi y Polymarket)')
+    final.update({'P_Hobbs_modelo': p_mod, 'P_Hobbs_mezcla_objetivo': p_final, 'desplazamiento_mercados_pp': desplaz})
 
     esc = [final, resumen(base, 'Solo encuestas (sin mercados)')]
     sb = par['sesgo_az_contraido']
@@ -480,7 +487,7 @@ def ejecutar(cfg: Config | None = None, guardar: bool = True) -> dict:
          'margen_encuestas': mu_enc, 'otros_encuestas': otros_enc, 'k': k, 'mu': mu, 'sd': sd, 'nu': par['nu'],
          'terceros_media': t_media, 'mercados': mk, 'resultado': final,
          'escenarios': pd.DataFrame(esc), 'encuestas_ventana': tabla, 'encuestas_todas': todas,
-         'errores_az': pd.DataFrame(par['errores_az']), 'diagnostico': diag, 'voto_anticipado': anticipado, 'simulacion': base}
+         'errores_az': pd.DataFrame(par['errores_az']), 'diagnostico': diag, 'voto_anticipado': anticipado, 'simulacion': sim_final}
     if guardar:
         guardar_salidas(r, cfg)
     return r

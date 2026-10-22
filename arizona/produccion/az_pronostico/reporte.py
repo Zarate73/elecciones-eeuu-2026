@@ -2,8 +2,9 @@
 from __future__ import annotations
 
 import json
+import math
 import shutil
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 import numpy as np
@@ -30,7 +31,9 @@ def texto_resumen(r: dict, cfg) -> str:
            f"Polymarket {_pct(mk['polymarket'].get('p_D'))} ({mk['polymarket']['estado'][:30]}) · peso mercados {f['peso_mercados_aplicado']}",
            f"  Ventana: {len(m['ventana'])} encuestas de {f['k']} encuestadoras desde {v['desde']}"
            + (f" (AMPLIADA, regla {v['regla']})" if v['ampliada'] else '')
-           + (f" · deriva por {f['dias_extra_encuestas']} días de antigüedad" if f['dias_extra_encuestas'] else '')]
+           + (f" · deriva por {f['dias_extra_encuestas']} días de antigüedad" if f['dias_extra_encuestas'] else ''),
+           f"  Última encuesta: {r['ultima_encuesta']['encuestadora']}, terminó el {r['ultima_encuesta']['fin']} "
+           f"({r['ultima_encuesta']['dias_desde_fin']} días antes del corte). Fuentes en vivo ≠ encuestas recientes."]
     a = r.get('anticipado', {})
     if a.get('disponible'):
         lin += ['', f"VOTO ANTICIPADO (civicAPI, diagnóstico, {a['estado'][:30]}, al {a['fecha']}): {a['devueltas']:,} devueltas · "
@@ -42,20 +45,43 @@ def texto_resumen(r: dict, cfg) -> str:
     return '\n'.join(lin)
 
 
-def _serializable(o):
-    if isinstance(o, (np.floating, np.integer)):
-        return o.item()
-    if isinstance(o, (pd.Timestamp, datetime)):
-        return o.isoformat()
+def _limpio(o):
+    """Convierte a tipos JSON estándar: NaN/±inf -> null, numpy -> nativos, fechas -> ISO, tablas -> registros."""
+    if isinstance(o, dict):
+        return {str(k): _limpio(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple, set)):
+        return [_limpio(x) for x in o]
     if isinstance(o, pd.DataFrame):
-        return o.to_dict('records')
+        return _limpio(o.to_dict('records'))
+    if isinstance(o, pd.Series):
+        return _limpio(o.to_dict())
+    if o is None or isinstance(o, (bool, np.bool_)):
+        return None if o is None else bool(o)
+    if isinstance(o, (int, np.integer)):
+        return int(o)
+    if isinstance(o, (float, np.floating)):
+        return float(o) if math.isfinite(o) else None
+    if isinstance(o, (pd.Timestamp, datetime, date)):
+        return None if pd.isna(o) else o.isoformat()
+    if isinstance(o, str):
+        return o
+    try:
+        if pd.isna(o):
+            return None
+    except (TypeError, ValueError):
+        pass
     return str(o)
+
+
+def json_estricto(obj) -> str:
+    """JSON válido según el estándar (RFC 8259): sin NaN ni Infinity; falla si quedara alguno."""
+    return json.dumps(_limpio(obj), ensure_ascii=False, indent=2, allow_nan=False)
 
 
 def reporte_json(r: dict, cfg) -> dict:
     m, mk, a = r['modelo'], r['mercados'], r['anticipado']
     return {'corte': str(cfg.corte), 'dias_a_eleccion': cfg.dias_a_eleccion, 'estados_fuentes': r['estados_fuentes'],
-            'avisos': r['avisos'], 'conteos_encuestas': r['conteos'],
+            'avisos': r['avisos'], 'conteos_encuestas': r['conteos'], 'ultima_encuesta': r['ultima_encuesta'],
             'gobernador': {**m['final'], 'n_encuestas': len(m['encuestas'])},
             'escenarios': m['escenarios'],
             'mercados': {'kalshi': mk['kalshi'], 'polymarket': mk['polymarket'], 'promedio_D': mk['promedio_D'],
@@ -91,8 +117,7 @@ def escribir(r: dict, cfg) -> Path:
     if 'tabla' in r['mercados']['rangos']:
         r['mercados']['rangos']['tabla'].to_csv(base / 'polymarket_rangos_margen.csv', index=False, encoding='utf-8-sig')
     (base / 'resumen.txt').write_text(r['resumen_texto'], encoding='utf-8')
-    (base / 'reporte.json').write_text(json.dumps(reporte_json(r, cfg), ensure_ascii=False, indent=2,
-                                                  default=_serializable), encoding='utf-8')
+    (base / 'reporte.json').write_text(json_estricto(reporte_json(r, cfg)), encoding='utf-8')
     if cfg.ejecucion.graficas:
         grafica(r, cfg, base / 'pronostico.png')
     ult = cfg.dir_salidas / 'ultimo'
@@ -101,15 +126,19 @@ def escribir(r: dict, cfg) -> Path:
     shutil.copytree(base, ult)
     mk = r['mercados']
     hist = cfg.dir_salidas / 'historial_pronosticos.csv'
-    pd.DataFrame([{'ejecutado': datetime.now().isoformat(timespec='seconds'), 'corte': str(cfg.corte),
+    fila = pd.DataFrame([{'ejecutado': datetime.now().isoformat(timespec='seconds'), 'corte': str(cfg.corte),
                    'dias': cfg.dias_a_eleccion, 'pct_D': f['pct_D'], 'pct_R': f['pct_R'], 'pct_terceros': f['pct_terceros'],
                    'margen': f['margen'], 'sd': f['sd'], 'P_D': f['P_D'], 'P_D_encuestas': f['P_D_encuestas'],
                    'P_D_kalshi': mk['kalshi'].get('p_D'), 'P_D_polymarket': mk['polymarket'].get('p_D'),
                    'peso_mercados': f['peso_mercados_aplicado'], 'P_recuento': f['P_recuento'],
                    'n_encuestas': len(m['encuestas']), 'k_ventana': f['k'],
+                   'ultima_encuesta_fin': r['ultima_encuesta']['fin'], 'dias_desde_ultima_encuesta': r['ultima_encuesta']['dias_desde_fin'],
                    'devueltas_anticipado': r['anticipado'].get('devueltas'),
-                   'fuentes_degradadas': ';'.join(r['degradadas'])}]
-                 ).to_csv(hist, mode='a', header=not hist.exists(), index=False, encoding='utf-8-sig')
+                   'fuentes_degradadas': ';'.join(r['degradadas'])}])
+    # se reescribe completo: si cambian las columnas (versión nueva) el CSV sigue siendo rectangular
+    if hist.exists():
+        fila = pd.concat([pd.read_csv(hist), fila], ignore_index=True)
+    fila.to_csv(hist, index=False, encoding='utf-8-sig')
     corr = sorted((cfg.dir_salidas / 'corridas').iterdir())
     for viejo in corr[:-int(cfg.ejecucion.conservar_corridas)]:
         shutil.rmtree(viejo, ignore_errors=True)

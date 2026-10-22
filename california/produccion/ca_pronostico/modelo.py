@@ -68,11 +68,17 @@ def pronostico_m5(cfg, agregado: dict, dias: int, sigma_sis: float, delta_m2: fl
     escala = sigma * np.sqrt((m.nu_colas - 2) / m.nu_colas)
     sim = mu + escala * np.random.default_rng(m.semilla).standard_t(m.nu_colas, m.n_simulaciones)
     p_mod = float(np.mean(sim > 0))
-    p_fin = p_mod
+    p_obj, desplaz = p_mod, 0.0
     if p_kalshi is not None and np.isfinite(p_kalshi):
-        p_fin = float(1 / (1 + np.exp(-((1 - m.w_kalshi) * _logit(p_mod) + m.w_kalshi * _logit(p_kalshi)))))
+        p_obj = float(1 / (1 + np.exp(-((1 - m.w_kalshi) * _logit(p_mod) + m.w_kalshi * _logit(p_kalshi)))))
+        # la probabilidad mezclada se traslada a la distribución (como Georgia): se desplaza el margen simulado
+        # para que P(margen > 0) = p_obj; así margen, intervalos y % de voto son coherentes con la probabilidad
+        desplaz = float(-np.quantile(sim, 1 - p_obj))
+    sim_modelo, sim = sim, sim + desplaz
+    p_fin = float(np.mean(sim > 0))
     q = np.quantile(sim, [.025, .1, .5, .9, .975])
-    return {'simulacion': sim, 'media_pp': float(mu), 'sigma_pp': sigma, 'k_sent_aplicado': k,
+    return {'simulacion': sim, 'simulacion_modelo': sim_modelo, 'media_pp': float(mu), 'media_final_pp': float(mu + desplaz),
+            'desplazamiento_kalshi_pp': desplaz, 'p_mezcla_objetivo': p_obj, 'sigma_pp': sigma, 'k_sent_aplicado': k,
             'delta_m2_aplicado_pp': float(m.w_m2 * d2), 'p_modelo': p_mod, 'p_final': p_fin,
             'p_kalshi_usada': p_kalshi, 'w_kalshi': m.w_kalshi if p_kalshi is not None else 0.0,
             'cuantiles_margen_pp': dict(zip(['2.5', '10', '50', '90', '97.5'], [float(x) for x in q])),

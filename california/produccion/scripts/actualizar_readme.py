@@ -81,6 +81,11 @@ def main() -> int:
         f"Kalshi {kal['p_d_normalizada']:.1%} (peso {m5.get('w_kalshi', 0.3):.2f}) · "
         f"{enc['n']} encuestas ({origen}) · promedio M5 {enc['margen_m5_pp']:+.1f}",
     ]
+    u = rep.get('ultima_encuesta')
+    if u:
+        lineas += ['', f"**Encuesta más reciente:** {u['encuestadora']}, terminó el {u['fin']} "
+                       f"(**{u['dias_desde_fin']} días** antes del corte). Las fuentes se consultan en vivo, pero el promedio "
+                       f"solo puede ser tan reciente como la última encuesta publicada."]
     hi = rep['participacion_m2']['historico']
     if hi.get('disponible'):
         refs = ', '.join(f'{k} {v:+.1f}' for k, v in hi['margen_referencias_mismo_dia_pp'].items())

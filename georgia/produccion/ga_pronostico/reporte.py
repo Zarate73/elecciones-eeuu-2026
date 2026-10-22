@@ -2,8 +2,9 @@
 from __future__ import annotations
 
 import json
+import math
 import shutil
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 import numpy as np
@@ -29,6 +30,9 @@ def texto_resumen(r: dict, cfg) -> str:
                 f"  {cfg.senado.candidato_d}: {s['pct_D']:.1f}% · {cfg.senado.candidato_r}: {s['pct_R']:.1f}% · margen {s['margen']:+.1f} · P({cfg.senado.candidato_d}) = {s['P_D']:.1%}",
                 f"  Conjunto: {e.candidato_r}+{cfg.senado.candidato_d} {c['P_R_gob_y_D_sen']:.1%} · {e.candidato_d}+{cfg.senado.candidato_d} {c['P_D_gob_y_D_sen']:.1%} · "
                 f"{e.candidato_r}+{cfg.senado.candidato_r} {c['P_R_gob_y_R_sen']:.1%} · {e.candidato_d}+{cfg.senado.candidato_r} {c['P_D_gob_y_R_sen']:.1%}"]
+    u = r.get('reporte', {}).get('ultima_encuesta')
+    if u:
+        lin += [f"  Última encuesta: {u['encuestadora']}, terminó el {u['fin']} ({u['dias_desde_fin']} días antes del corte)"]
     a = r.get('anticipado', {})
     if a.get('delta_vs_2022'):
         d = a['delta_vs_2022']
@@ -40,14 +44,30 @@ def texto_resumen(r: dict, cfg) -> str:
     return '\n'.join(lin)
 
 
-def _serializable(o):
-    if isinstance(o, (np.floating, np.integer)):
-        return o.item()
-    if isinstance(o, (pd.Timestamp, datetime)):
-        return o.isoformat()
+def _limpio(o):
+    """Tipos JSON estándar: NaN/±inf -> null, numpy -> nativos, fechas -> ISO, tablas -> registros."""
+    if isinstance(o, dict):
+        return {str(k): _limpio(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple, set, np.ndarray)):
+        return [_limpio(x) for x in o]
     if isinstance(o, pd.DataFrame):
-        return o.to_dict('records')
+        return _limpio(o.to_dict('records'))
+    if o is None or isinstance(o, (bool, np.bool_)):
+        return None if o is None else bool(o)
+    if isinstance(o, (int, np.integer)):
+        return int(o)
+    if isinstance(o, (float, np.floating)):
+        return float(o) if math.isfinite(o) else None
+    if isinstance(o, (pd.Timestamp, datetime, date)):
+        return None if pd.isna(o) else o.isoformat()
+    if isinstance(o, str):
+        return o
     return str(o)
+
+
+def json_estricto(obj) -> str:
+    """JSON válido según el estándar (RFC 8259): sin NaN ni Infinity."""
+    return json.dumps(_limpio(obj), ensure_ascii=False, indent=2, allow_nan=False)
 
 
 def escribir(r: dict, cfg) -> Path:
@@ -76,7 +96,7 @@ def escribir(r: dict, cfg) -> Path:
         r['anticipado']['tabla'].to_csv(base / 'voto_anticipado_diagnostico.csv', index=False, encoding='utf-8-sig')
     (base / 'resumen.txt').write_text(r['resumen_texto'], encoding='utf-8')
     rep = {k: v for k, v in r['reporte'].items()}
-    (base / 'reporte.json').write_text(json.dumps(rep, ensure_ascii=False, indent=2, default=_serializable), encoding='utf-8')
+    (base / 'reporte.json').write_text(json_estricto(rep), encoding='utf-8')
     if cfg.ejecucion.graficas:
         grafica(r, cfg, base / 'pronostico.png')
     ult = cfg.dir_salidas / 'ultimo'

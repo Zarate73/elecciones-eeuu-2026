@@ -5,7 +5,8 @@
   σ        = √(τ² + s²/k + 0.25²·días que las encuestas son más viejas que el horizonte calibrado); t de Student
   terceros T ~ N(a + c·otros_encuestas, sd), mínimo 0.1 pp;   indecisos 50/50
   Hobbs    = (100 − T + margen)/2 ;  Biggs = (100 − T − margen)/2 ;  recuento si |margen| ≤ 0.5
-  final    = logit⁻¹((1 − w)·logit(P_encuestas) + w·logit(promedio Kalshi/Polymarket)),  w = 0.30
+  final    = logit⁻¹((1 − w)·logit(P_encuestas) + w·logit(promedio Kalshi/Polymarket)),  w = 0.30; la distribución
+             se desplaza para que P(margen > 0) = final (coherente con margen, intervalos y recuento)
   SIN sesgo estatal (en AZ el error no persiste entre ciclos: CRPS 2.471 vs 2.630).
 """
 from __future__ import annotations
@@ -51,15 +52,15 @@ def simular(mu, dist: Dist, t_media, t_sd, n, rng) -> pd.DataFrame:
     return pd.DataFrame({'D': (100 - T + M) / 2, 'R': (100 - T - M) / 2, 'T': T, 'M': M})
 
 
-def resumen(s: pd.DataFrame, nombre: str, recuento: float, p_final: float | None = None) -> dict:
+def resumen(s: pd.DataFrame, nombre: str, recuento: float) -> dict:
+    """Todo sale de la misma simulación: P_D es siempre la fracción de simulaciones con margen > 0."""
     q = lambda c, x: float(s[c].quantile(x))
-    p_mod = float((s.M > 0).mean())
     return {'escenario': nombre, 'margen': float(s.M.mean()), 'sd': float(s.M.std()),
             'IC80': (q('M', .1), q('M', .9)), 'IC95': (q('M', .025), q('M', .975)),
             'pct_D': float(s.D.mean()), 'pct_D_IC80': (q('D', .1), q('D', .9)),
             'pct_R': float(s.R.mean()), 'pct_R_IC80': (q('R', .1), q('R', .9)),
             'pct_terceros': float(s['T'].mean()), 'pct_terceros_IC80': (q('T', .1), q('T', .9)),
-            'P_D_encuestas': p_mod, 'P_D': p_final if p_final is not None else p_mod,
+            'P_D': float((s.M > 0).mean()),
             'P_recuento': float((s.M.abs() <= recuento).mean()), 'P_D_mas_50': float((s.D > 50).mean())}
 
 
@@ -91,8 +92,15 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     w_m = m.peso_mercados if mk.get('promedio_D') is not None else 0.0
     p_final = p_mod if w_m == 0 else float(expit((1 - w_m) * logit(np.clip(p_mod, 1e-4, 1 - 1e-4))
                                                  + w_m * logit(np.clip(mk['promedio_D'], 1e-4, 1 - 1e-4))))
-    final = resumen(base, 'FINAL: encuestas + mercados (Kalshi y Polymarket)', rec, p_final)
-    final.update({'peso_mercados_aplicado': w_m, 'margen_encuestas': mu_enc, 'k': k, 'ventana': nota,
+    # La probabilidad mezclada se traslada a la distribución: se desplaza el margen simulado lo justo para que
+    # P(margen > 0) = p_final (mismo tratamiento que Georgia, con el cuantil empírico de la propia simulación).
+    # Así margen, intervalos, % de voto y recuento son coherentes con la probabilidad publicada.
+    desplaz = 0.0 if w_m == 0 else float(-np.quantile(base.M, 1 - p_final))
+    M_f = base.M + desplaz
+    sim_final = pd.DataFrame({'D': (100 - base['T'] + M_f) / 2, 'R': (100 - base['T'] - M_f) / 2, 'T': base['T'], 'M': M_f})
+    final = resumen(sim_final, 'FINAL: encuestas + mercados (Kalshi y Polymarket)', rec)
+    final.update({'P_D_encuestas': p_mod, 'P_D_mezcla_objetivo': p_final, 'desplazamiento_mercados_pp': desplaz,
+                  'peso_mercados_aplicado': w_m, 'margen_encuestas': mu_enc, 'k': k, 'ventana': nota,
                   'dias_extra_encuestas': edad_extra, 'terceros_media': t_media})
 
     esc = [final, resumen(base, 'Solo encuestas (sin mercados)', rec)]
@@ -136,4 +144,4 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
                  efecto_casa=p.pollster_key.map(house).fillna(0.0))
     p['margen_corregido'] = p.margin_poll - p.efecto_casa
     return {'final': final, 'escenarios': pd.DataFrame(esc), 'ventana': tabla, 'encuestas': p, 'mu': mu,
-            'sd': sd, 'nu': par['nu'], 'sim': base}
+            'mu_final': mu + desplaz, 'sd': sd, 'nu': par['nu'], 'sim': sim_final}

@@ -112,6 +112,16 @@ def test_corrida_completa(cfg, red_simulada):
         assert (cfg.dir_salidas / 'ultimo' / arch).exists()
     ant = r['anticipado']
     assert abs(ant['delta_vs_2022']['pct_negro'] - 2.6) < 0.1
+    import json
+    def prohibido(c):
+        raise ValueError(f'constante no estándar en JSON: {c}')
+    rep = json.loads((cfg.dir_salidas / 'ultimo' / 'reporte.json').read_text(encoding='utf-8'), parse_constant=prohibido)
+    u = rep['ultima_encuesta']
+    assert u['fin'] <= rep['corte'] and u['dias_desde_fin'] >= 0
+    # la probabilidad publicada sale de la misma simulación que margen e intervalos (margen equivalente con Kalshi)
+    M = r['gobernador']['sim'][0]
+    assert f['P_D'] == pytest.approx(float(np.mean(M > 0)), abs=1e-3)
+    assert f['P_D'] == pytest.approx(f['p_D_final'], abs=0.01)
 
 
 def test_fuentes_caidas_usan_cache(cfg, red_simulada):

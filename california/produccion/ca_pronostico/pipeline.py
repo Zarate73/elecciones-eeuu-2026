@@ -83,6 +83,11 @@ def _ejecutar(cfg) -> dict:
     tabla_enc = tabla_encuestas(todas, incluidas, ag['pesos']).rename(columns={'Peso': 'Peso M5'})
     tabla_enc['Peso legado'] = tabla_encuestas(todas, incluidas, ag_leg['pesos'])['Peso'].to_numpy()
     log.info('Encuestas: %d · margen legado %+.2f · M5 %+.2f', len(incluidas), ag_leg['margen'], ag['margen'])
+    u = max(incluidas, key=lambda x: x.fin)            # fuentes en vivo ≠ encuestas recientes: se reporta su antigüedad
+    ultima = {'encuestadora': u.encuestadora, 'fin': u.fin.isoformat(), 'dias_desde_fin': (corte - u.fin).days,
+              'dias_antes_eleccion': (cfg.dia_eleccion - u.fin).days, 'origen': u.origen}
+    if ultima['dias_desde_fin'] > 7:
+        avisos.append(f"la encuesta más reciente terminó hace {ultima['dias_desde_fin']} días ({ultima['fin']})")
 
     # 2) Voto anticipado ----------------------------------------------------------------
     dato, estados['civiq'] = civiq.obtener_voto_temprano(cfg, corte)
@@ -114,7 +119,7 @@ def _ejecutar(cfg) -> dict:
     # 5) M5 ------------------------------------------------------------------------------
     m5 = modelo.pronostico_m5(cfg, ag, dias, cal['sigma_sis_pp'], delta_m2=m2e.get('delta_m2_pp', 0.0),
                               k_sent=k_sent, p_kalshi=kal['p_d_normalizada'] if kal['usable_en_mezcla'] else None)
-    sims = {'M5 · híbrido': m5['simulacion']}
+    sims = {'M5 · híbrido': m5['simulacion']}            # ya incluye el desplazamiento por Kalshi (coherente con p_final)
 
     # 6) Legado M1–M4 (comparación) -------------------------------------------------------
     if cfg.legado.comparar:
@@ -152,6 +157,7 @@ def _ejecutar(cfg) -> dict:
                        'ic95_pct_d': [pct.ic95_inf.iloc[0], pct.ic95_sup.iloc[0]],
                        'p_d_gana_modelo': m5['p_modelo'], 'p_d_gana_final': m5['p_final']},
         'estados_fuentes': estados,
+        'ultima_encuesta': ultima,
         'encuestas': {'n': len(incluidas), 'por_origen': origenes, 'margen_legado_pp': ag_leg['margen'], 'margen_m5_pp': ag['margen'],
                       'dispersion_pp': ag['dispersion_encuestas'], 'n_efectivo': ag['n_efectivo']},
         'voto_temprano': civiq.resumen_participacion(dato) if dato else None,
@@ -160,7 +166,7 @@ def _ejecutar(cfg) -> dict:
         'sentimiento': {'propio': sent.to_dict(), 'gdelt': gd, 'k_sent_candidato': k_cand,
                         'k_sent_aplicado': k_sent, 'validado': m.validado_sentimiento},
         'kalshi': kal, 'calibracion': cal,
-        'm5': {k: v for k, v in m5.items() if k != 'simulacion'},
+        'm5': {k: v for k, v in m5.items() if not k.startswith('simulacion')},
         'avisos': avisos,
         'duracion_s': round(time.monotonic() - t0, 1),
     }
@@ -180,6 +186,7 @@ def _ejecutar(cfg) -> dict:
         'delta_m2_edad': round(m2e.get('delta_m2_pp', np.nan), 2) if m2e.get('disponible') else '',
         'delta_m2_historico': round(m2h.get('delta_vs_referencias_pp', np.nan), 2) if m2h.get('disponible') else '',
         'estado_civiq': estados['civiq'][:80], 'estado_kalshi': kal['estado'][:40], 'estado_gdelt': estados['gdelt'][:40],
+        'ultima_encuesta_fin': ultima['fin'], 'dias_desde_ultima_encuesta': ultima['dias_desde_fin'],
         'carpeta': carpeta.name})
     reporte.podar_corridas(cfg)
     res['carpeta'] = carpeta
@@ -198,6 +205,8 @@ def resumen_texto(cfg, r: dict) -> str:
         f"PRONÓSTICO M5: {e.candidato_d} {p['pct_d']:.1f}%  ·  {e.candidato_r} {p['pct_r']:.1f}%   (margen {p['margen_pp']:+.1f} pp)",
         f"  IC 80% {e.candidato_d}: {p['ic80_pct_d'][0]:.1f}–{p['ic80_pct_d'][1]:.1f}%   IC 95%: {p['ic95_pct_d'][0]:.1f}–{p['ic95_pct_d'][1]:.1f}%",
         f"  P({e.candidato_d} gana): modelo {p['p_d_gana_modelo']:.3f} · con Kalshi {p['p_d_gana_final']:.3f}",
+        f"  Última encuesta: {rep['ultima_encuesta']['encuestadora']}, terminó el {rep['ultima_encuesta']['fin']} "
+        f"({rep['ultima_encuesta']['dias_desde_fin']} días antes del corte)",
         f"  σ {m5['sigma_pp']:.2f} pp (sistemático calibrado {rep['calibracion']['sigma_sis_pp']:.2f}; "
         f"RMSE histórico {rep['calibracion']['rmse_historico_pp']:.2f}, n={rep['calibracion']['n_elecciones']})",
         '',

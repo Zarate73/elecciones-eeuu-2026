@@ -62,7 +62,10 @@ def test_resultado_consistente():
     # la mezcla con mercados queda entre el modelo y el promedio de mercados
     lo, hi = sorted([f['P_Hobbs_modelo'], r['mercados']['promedio_D']])
     assert lo - 1e-9 <= f['P_Hobbs'] <= hi + 1e-9
-    assert abs(f['margen_media'] - r['mu']) < 0.15
+    assert abs(f['margen_media'] - f['desplazamiento_mercados_pp'] - r['mu']) < 0.15
+    # P publicada = fracción de simulaciones con margen > 0 (distribución coherente con la mezcla de mercados)
+    assert f['P_Hobbs'] == float((s.Margen > 0).mean())
+    assert abs(f['P_Hobbs'] - f['P_Hobbs_mezcla_objetivo']) < 2 / len(s)
 
 
 def test_sin_mercados_y_sesgo_estatal():

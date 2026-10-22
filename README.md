@@ -1,6 +1,10 @@
 # Elecciones generales de EE.UU. 2026
 
-Modelos de pronóstico, backtests y versiones de producción para las contiendas de 2026 en **14 estados**. Cada estado vive en su propia carpeta y sigue la misma estructura.
+[![CI](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml/badge.svg)](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml)
+
+**Sistema de pronósticos electorales para 14 estados: 3 implementados y automatizados (Georgia, California y Arizona), 11 pendientes.**
+
+Cada estado tiene su modelo elegido por backtest, una versión de producción que consulta todas sus fuentes en vivo y un flujo de GitHub Actions que actualiza el pronóstico dos veces al día. Cada estado vive en su propia carpeta y sigue la misma estructura.
 
 ## Estados
 | Estado | Carrera principal | Estado del modelo | Carpeta |
@@ -19,12 +23,14 @@ Modelos de pronóstico, backtests y versiones de producción para las contiendas
   docs/              revisiones, decisiones de modelo y resultados documentados
 ```
 
-## Estándares comunes (aprendidos en Georgia y California)
+## Estándares comunes (aprendidos en Georgia, California y Arizona)
 - **Validación:** *leave-one-year-out* sobre el histórico de FiveThirtyEight (980 contiendas 1998–2024); métrica principal CRPS, más la cobertura de los intervalos del 80% y 95%.
 - **Incertidumbre:** σ empírica `√(τ² + s²/k)` calibrada a la distancia de la elección; nada de pisos fijos sin calibrar.
 - **Componentes:** se agregan solo si mejoran el CRPS fuera de muestra; lo no validable queda como diagnóstico.
-- **Producción:** todas las fuentes en vivo, con caché y degradación explícita (`--estricto` → código 2).
-- **Pruebas:** sin red, con fixtures que reproducen el formato de cada fuente.
+- **Producción:** todas las fuentes en vivo, con caché y degradación explícita (`--estricto` → código 2). Que las fuentes estén en vivo no significa que las encuestas sean recientes: cada reporte trae la fecha y la antigüedad de la encuesta más reciente (`ultima_encuesta`).
+- **Coherencia probabilística:** la probabilidad publicada es la fracción de simulaciones con margen > 0. Cuando se mezcla con mercados, la distribución del margen se desplaza para que margen, intervalos y probabilidad sean coherentes.
+- **Salidas para tableros:** `salidas/ultimo/reporte.json` es JSON estricto (RFC 8259, sin `NaN` ni `Infinity`; los valores faltantes son `null`).
+- **Pruebas:** sin red, con fixtures que reproducen el formato de cada fuente; el flujo [CI](.github/workflows/ci.yml) las corre en cada push y pull request.
 
 ## Requisitos
 Python 3.10+. Cada `produccion/` trae `requirements.txt` y `scripts\instalar.bat`.

@@ -2,27 +2,44 @@
 from __future__ import annotations
 
 import json
+import math
 import shutil
+from datetime import date, datetime
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 
-def _json_default(o):
-    if isinstance(o, (np.integer,)):
+def _limpio(o):
+    """Tipos JSON estándar: NaN/±inf -> null, numpy -> nativos, fechas -> ISO."""
+    if isinstance(o, dict):
+        return {str(k): _limpio(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple, set, np.ndarray)):
+        return [_limpio(x) for x in o]
+    if isinstance(o, pd.DataFrame):
+        return _limpio(o.to_dict('records'))
+    if o is None or isinstance(o, (bool, np.bool_)):
+        return None if o is None else bool(o)
+    if isinstance(o, (int, np.integer)):
         return int(o)
-    if isinstance(o, (np.floating,)):
-        return float(o)
-    if isinstance(o, np.ndarray):
-        return o.tolist()
+    if isinstance(o, (float, np.floating)):
+        return float(o) if math.isfinite(o) else None
+    if isinstance(o, (date, datetime, pd.Timestamp)):
+        return o.isoformat()
+    if isinstance(o, str):
+        return o
     return str(o)
+
+
+def json_estricto(obj) -> str:
+    """JSON válido según el estándar (RFC 8259): sin NaN ni Infinity."""
+    return json.dumps(_limpio(obj), ensure_ascii=False, indent=2, allow_nan=False)
 
 
 def escribir_corrida(cfg, carpeta: Path, r: dict) -> None:
     carpeta.mkdir(parents=True, exist_ok=True)
-    (carpeta / 'reporte.json').write_text(json.dumps(r['reporte'], ensure_ascii=False, indent=2,
-                                                     default=_json_default), encoding='utf-8')
+    (carpeta / 'reporte.json').write_text(json_estricto(r['reporte']), encoding='utf-8')
     r['tabla_modelos'].to_csv(carpeta / 'comparacion_modelos.csv', index=False, encoding='utf-8-sig')
     r['tabla_porcentajes'].to_csv(carpeta / 'pronostico_porcentajes.csv', index=False, encoding='utf-8-sig')
     r['tabla_encuestas'].to_csv(carpeta / 'encuestas_pesos.csv', index=False, encoding='utf-8-sig')

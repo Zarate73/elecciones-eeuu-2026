@@ -82,6 +82,11 @@ def main() -> int:
         f"(peso de mercados {g['peso_mercados_aplicado']}) · recuento automático {g['P_recuento']:.1%} · "
         f"{g['n_encuestas']} encuestas, {g['k']} encuestadoras en la ventana",
     ]
+    u = rep.get('ultima_encuesta')
+    if u:
+        lineas += ['', f"**Encuesta más reciente:** {u['encuestadora']}, terminó el {u['fin']} "
+                       f"(**{u['dias_desde_fin']} días** antes del corte). Las fuentes se consultan en vivo, pero el promedio "
+                       f"solo puede ser tan reciente como la última encuesta publicada."]
     if a.get('disponible'):
         lineas += ['', f"**Voto anticipado** (civicAPI, diagnóstico, al {a['fecha']}): {a['devueltas']:,} boletas devueltas · "
                        f"D {a['pct_dev_D']:.1f}% · R {a['pct_dev_R']:.1f}% · otros {a['pct_dev_otros']:.1f}% · "

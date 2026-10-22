@@ -34,7 +34,7 @@ Base: el modelo V11 de Georgia, más lo que el backtest respaldó del modelo de 
 | Terceros | `real = 1.87 + 0.69 · (otros en encuestas)`, calibrado | El MAE del % demócrata bajó de 2.53 a 1.94 en AZ |
 | Indecisos | 50/50 | Los escenarios por facción, el reparto proporcional y la cuota R estimada empeoran el CRPS |
 | σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día si las encuestas son más viejas que ese horizonte | Cobertura del 80 % correcta en el backtest |
-| Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30 | No son el mismo precio: la correlación de los cambios diarios es 0.16 y la diferencia media es de 3.3 pp |
+| Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30. La distribución del margen se desplaza para que P(margen > 0) sea igual a la probabilidad publicada | No son el mismo precio: la correlación de los cambios diarios es 0.16 y la diferencia media es de 3.3 pp |
 | Recuento | P(\|margen\| ≤ 0.5 pp) | Recuento automático según la ley de AZ |
 | Voto anticipado (civicAPI) | Diagnóstico, peso 0 | Sin histórico al mismo día para validarlo |
 | Ajuste partidista | Solo escenario | No mejora el CRPS (3.579 frente a 3.545) |

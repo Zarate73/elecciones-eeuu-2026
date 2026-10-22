@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/produccion/salidas/**'     # los commits de resultados del bot no vuelven a probar todo
+      - '**.md'
+  pull_request:
+  workflow_dispatch: {}
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pruebas:
+    name: Pruebas ${{ matrix.estado }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        estado: [georgia, california, arizona]
+    defaults:
+      run:
+        working-directory: ${{ matrix.estado }}/produccion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: ${{ matrix.estado }}/produccion/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Pruebas (sin red)
+        env:
+          PYTHONIOENCODING: utf-8
+          PRONOSTICO_SIN_NAVEGADOR: '1'
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Fin de línea de scripts de Windows
+        working-directory: .
+        run: |
+          git ls-files --eol -- '*.bat' '*.ps1' | awk '$1 != "i/lf" {print; bad=1} END {exit bad}'

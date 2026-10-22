@@ -19,6 +19,14 @@ class ErrorFatal(RuntimeError):
     pass
 
 
+def ultima_encuesta(p, cfg) -> dict:
+    """Antigüedad de la observación más reciente: que las fuentes se consulten en vivo no implica encuestas recientes."""
+    u = p.loc[p.fin.idxmax()]
+    fin = u.fin.date()
+    return {'encuestadora': str(u.pollster), 'fin': fin.isoformat(), 'dias_desde_fin': (cfg.corte - fin).days,
+            'dias_antes_eleccion': (cfg.dia_eleccion - fin).days, 'origen': str(u.origen)}
+
+
 def vivo(estado) -> bool:
     return str(estado).startswith(('en_vivo', 'archivo'))
 
@@ -48,11 +56,14 @@ def ejecutar(cfg, escribir_salidas: bool = True) -> dict:
     if mk['n_usables'] == 0:
         avisos.append('ningún mercado usable: pronóstico solo con encuestas')
     r = pronosticar(e['encuestas'], par, mk, cfg)
+    ult = ultima_encuesta(e['encuestas'], cfg)
+    if ult['dias_desde_fin'] > 7:
+        avisos.append(f"la encuesta más reciente terminó hace {ult['dias_desde_fin']} días ({ult['fin']})")
     ant = obtener_anticipado(cfg)
     estados['civicapi'] = ant['estado']
     degradadas = [k for k, v in estados.items() if not vivo(v)]
     res = {'modelo': r, 'mercados': mk, 'anticipado': ant, 'calibracion': par, 'estados_fuentes': estados,
-           'avisos': avisos, 'degradadas': degradadas, 'conteos': e['conteos']}
+           'avisos': avisos, 'degradadas': degradadas, 'conteos': e['conteos'], 'ultima_encuesta': ult}
     res['resumen_texto'] = texto_resumen(res, cfg)
     if escribir_salidas:
         res['carpeta'] = escribir(res, cfg)

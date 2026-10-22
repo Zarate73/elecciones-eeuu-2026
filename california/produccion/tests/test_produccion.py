@@ -1,3 +1,4 @@
+import json
 import numpy as np
 import pandas as pd
 import pytest
@@ -79,6 +80,18 @@ def test_kalshi_mueve_hacia_el_mercado(cfg):
     assert b['p_final'] < a['p_modelo']
 
 
+def test_probabilidad_coherente_con_la_distribucion(cfg):
+    """Con Kalshi, la simulación publicada se desplaza: P(gana) publicada = fracción de simulaciones con margen > 0
+    y coincide con la mezcla logit; sin Kalshi no hay desplazamiento."""
+    a = modelo.pronostico_m5(cfg, _agregado(), 15, 6.0)
+    b = modelo.pronostico_m5(cfg, _agregado(), 15, 6.0, p_kalshi=0.90)
+    assert a['desplazamiento_kalshi_pp'] == 0 and a['p_final'] == float(np.mean(a['simulacion'] > 0))
+    assert b['p_final'] == float(np.mean(b['simulacion'] > 0))
+    assert b['p_final'] == pytest.approx(b['p_mezcla_objetivo'], abs=2 / len(b['simulacion']))
+    assert b['desplazamiento_kalshi_pp'] < 0 and np.median(b['simulacion']) < np.median(b['simulacion_modelo'])
+    assert b['p_modelo'] == float(np.mean(b['simulacion_modelo'] > 0))
+
+
 def test_porcentajes_suman_100(cfg):
     sim = modelo.pronostico_m5(cfg, _agregado(), 15, 6.0)['simulacion']
     t = modelo.porcentajes(cfg, {'M5': sim})
@@ -135,6 +148,13 @@ def test_corrida_completa(cfg, red_simulada):
     assert (cfg.dir_salidas / 'ultimo' / 'reporte.json').exists()
     assert (cfg.dir_salidas / 'historial_pronosticos.csv').exists()
     assert r['reporte']['participacion_m2']['historico']['disponible']
+    txt = (cfg.dir_salidas / 'ultimo' / 'reporte.json').read_text(encoding='utf-8')
+    def prohibido(c):
+        raise ValueError(f'constante no estándar en JSON: {c}')
+    rep = json.loads(txt, parse_constant=prohibido)                 # JSON estricto: sin NaN ni Infinity
+    assert rep['ultima_encuesta']['dias_desde_fin'] >= 0 and rep['ultima_encuesta']['fin'] <= rep['fecha_corte']
+    tm = r['tabla_modelos'].set_index('modelo')                    # la fila M5 ya es coherente con p_final
+    assert tm.loc['M5 · híbrido', 'p_d_gana'] == pytest.approx(p['p_d_gana_final'], abs=1e-12)
 
 
 def test_corrida_offline_sin_cache_no_falla(cfg):

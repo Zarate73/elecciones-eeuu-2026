@@ -117,10 +117,43 @@ def test_corrida_completa_en_vivo(cfg, red_simulada):
 def test_igual_al_modelo_del_notebook(cfg, red_simulada):
     """Mismas encuestas y semilla que ARIZONA_2026_MODELO_FINAL.ipynb (21-oct): promedio +7.854, simulado +7.835."""
     cfg.modelo['n_simulaciones'] = 200_000
-    f = ejecutar(cfg, escribir_salidas=False)['modelo']['final']
+    r = ejecutar(cfg, escribir_salidas=False)['modelo']
+    f, solo = r['final'], r['escenarios'].iloc[1]
     assert f['margen_encuestas'] == pytest.approx(7.854, abs=0.001)
-    assert f['margen'] == pytest.approx(7.835, abs=0.001) and f['pct_D'] == pytest.approx(51.878, abs=0.001)
-    assert f['P_D_encuestas'] == pytest.approx(0.940715, abs=1e-6)
+    assert solo['escenario'].startswith('Solo encuestas')
+    assert solo['margen'] == pytest.approx(7.835, abs=0.001) and solo['pct_D'] == pytest.approx(51.878, abs=0.001)
+    assert f['P_D_encuestas'] == pytest.approx(0.940715, abs=1e-6) == solo['P_D']
+
+
+def test_probabilidad_coherente_con_la_distribucion(cfg, red_simulada):
+    """P_D publicado = fracción de simulaciones con margen > 0, en el FINAL y en cada escenario simulado;
+    el FINAL reproduce la mezcla con mercados y su margen se mueve hacia el lado de los mercados."""
+    r = ejecutar(cfg, escribir_salidas=False)['modelo']
+    f, sim = r['final'], r['sim']
+    assert f['P_D'] == pytest.approx(float((sim.M > 0).mean()), abs=1e-12)
+    assert f['P_D'] == pytest.approx(f['P_D_mezcla_objetivo'], abs=2 / len(sim))
+    assert f['P_recuento'] == pytest.approx(float((sim.M.abs() <= 0.5).mean()), abs=1e-12)
+    assert np.allclose(sim.D + sim.R + sim['T'], 100)
+    assert np.sign(f['desplazamiento_mercados_pp']) == np.sign(f['P_D_mezcla_objetivo'] - f['P_D_encuestas'])
+    e = r['escenarios']
+    simulados = e[e.pct_D.notna()]
+    assert len(simulados) >= 10
+    # sin mercados el desplazamiento es 0 y el FINAL es idéntico al de solo encuestas
+    cfg.modelo['peso_mercados'] = 0.0
+    g = ejecutar(cfg, escribir_salidas=False)['modelo']
+    assert g['final']['desplazamiento_mercados_pp'] == 0 and g['final']['margen'] == g['escenarios'].iloc[1]['margen']
+
+
+def test_reporte_es_json_estricto_y_trae_antiguedad(cfg, red_simulada):
+    ejecutar(cfg)
+    txt = (cfg.dir_salidas / 'ultimo' / 'reporte.json').read_text(encoding='utf-8')
+    def prohibido(c):
+        raise ValueError(f'constante no estándar en JSON: {c}')
+    rep = json.loads(txt, parse_constant=prohibido)
+    u = rep['ultima_encuesta']
+    assert u['fin'] == '2026-10-08' and u['dias_desde_fin'] == 13 and u['dias_antes_eleccion'] == 26
+    assert any('encuesta más reciente' in a for a in rep['avisos'])
+    assert 'Última encuesta' in (cfg.dir_salidas / 'ultimo' / 'resumen.txt').read_text(encoding='utf-8')
 
 
 def test_escenario_partidista_no_toca_el_final(cfg, red_simulada):
@@ -128,7 +161,7 @@ def test_escenario_partidista_no_toca_el_final(cfg, red_simulada):
     e = r['escenarios'].set_index('escenario')
     fila = [i for i in e.index if i.startswith('Ajuste partidista')]
     assert len(fila) == 1 and e.loc[fila[0], 'margen'] > r['mu']
-    assert e.iloc[0]['margen'] == r['final']['margen']
+    assert e.iloc[0]['margen'] == r['final']['margen'] and r['final']['margen'] < r['mu']   # mercados < encuestas hoy
     assert modelo.lado_partidista('Fabrizio Ward (R)/ Impact Research (D)') is None
 
 

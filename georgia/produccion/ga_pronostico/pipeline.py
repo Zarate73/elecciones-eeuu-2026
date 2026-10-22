@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import logging
 
+import pandas as pd
+
 from . import encuestas as enc
 from .externas import obtener_anticipado, obtener_kalshi
 from .historico import calibrar
@@ -60,8 +62,14 @@ def ejecutar(cfg, escribir_salidas: bool = True) -> dict:
     r = {'gobernador': gob, 'senado': sen, 'kalshi': kal, 'anticipado': ant, 'calibracion': par,
          'estados_fuentes': estados, 'avisos': avisos, 'degradadas': degradadas,
          'ajustes_encuestas': eg['ajustes']}
-    r['resumen_texto'] = texto_resumen(r, cfg)
-    r['reporte'] = {
+    p_g = gob['encuestas']
+    u = p_g.loc[pd.to_datetime(p_g.fin).idxmax()]
+    fin_u = pd.Timestamp(u.fin).date()
+    ultima = {'encuestadora': str(u.pollster), 'fin': fin_u.isoformat(), 'dias_desde_fin': (cfg.corte - fin_u).days,
+              'dias_antes_eleccion': (cfg.dia_eleccion - fin_u).days, 'origen': str(u.origen)}
+    if ultima['dias_desde_fin'] > 7:
+        avisos.append(f"la encuesta más reciente terminó hace {ultima['dias_desde_fin']} días ({ultima['fin']})")
+    r['reporte'] = {'ultima_encuesta': ultima,
         'corte': str(cfg.corte), 'dias_a_eleccion': cfg.dias_a_eleccion, 'estados_fuentes': estados, 'avisos': avisos,
         'gobernador': {**gob['final'], 'k': gob['k'], 'ventana': gob['nota_ventana'],
                        'margen_corregido_encuestas': gob['margen_corregido'], 'tres_categorias': gob['tres_categorias'],
@@ -71,6 +79,7 @@ def ejecutar(cfg, escribir_salidas: bool = True) -> dict:
         'kalshi': kal, 'anticipado': {k: v for k, v in ant.items() if k != 'tabla'},
         'calibracion': {k: v for k, v in par.items() if k not in ('efectos_casa', 'errores_estado')},
         'ajustes_encuestas': eg['ajustes']}
+    r['resumen_texto'] = texto_resumen(r, cfg)
     if escribir_salidas:
         r['carpeta'] = escribir(r, cfg)
     f = gob['final']
