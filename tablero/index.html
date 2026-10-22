@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pronósticos EE.UU. 2026</title>
+<meta name="description" content="Pronósticos electorales 2026 por estado: probabilidad, % de voto, encuestas, mercados y voto anticipado. Se actualiza dos veces al día.">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<div class="pagina">
+  <header class="cabecera">
+    <div>
+      <p class="sobretitulo">Elecciones generales · 3 de noviembre de 2026</p>
+      <h1>Pronósticos por estado</h1>
+      <p class="sub">Sistema para 14 estados: <strong id="n-implementados">3</strong> implementados y automatizados. Cada pronóstico se recalcula dos veces al día con encuestas, mercados de predicción y voto anticipado en vivo.</p>
+    </div>
+    <div class="cabecera-acciones">
+      <button id="tema" class="boton-tema" type="button" aria-label="Cambiar tema claro u oscuro">◐ Tema</button>
+      <p class="actualizado" id="actualizado">Cargando…</p>
+    </div>
+  </header>
+
+  <nav class="estados" id="estados" aria-label="Estados"></nav>
+
+  <main id="contenido" aria-live="polite">
+    <p class="cargando">Cargando datos…</p>
+  </main>
+
+  <footer class="pie">
+    <p><strong>Cómo leerlo.</strong> La probabilidad es la fracción de 200,000 simulaciones en que gana cada candidato. El % de voto y el margen salen de la misma distribución que la probabilidad, salvo donde el panel de distribución indique que los mercados solo ajustan la probabilidad. Los intervalos son del 80 %: en 8 de cada 10 elecciones el resultado cae dentro. Los mercados (Kalshi, Polymarket) entran con peso 0.30 en escala logit; el voto anticipado es solo diagnóstico.</p>
+    <p>Código, modelos y backtests: <a href="https://github.com/Zarate73/elecciones-eeuu-2026">github.com/Zarate73/elecciones-eeuu-2026</a> · Datos: FiveThirtyEight (CC BY 4.0), Wikipedia, 270toWin, Kalshi, Polymarket, civicAPI, Civiq, Civic Forge.</p>
+    <p>Saúl Zárate Feliciano · <a href="https://github.com/Zarate73">@Zarate73</a></p>
+  </footer>
+</div>
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

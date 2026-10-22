@@ -4,6 +4,8 @@
 
 **Sistema de pronósticos electorales para 14 estados: 3 implementados y automatizados (Georgia, California y Arizona), 11 pendientes.**
 
+**Tablero:** [zarate73.github.io/elecciones-eeuu-2026](https://zarate73.github.io/elecciones-eeuu-2026/) · se actualiza solo con cada corrida.
+
 Cada estado tiene su modelo elegido por backtest, una versión de producción que consulta todas sus fuentes en vivo y un flujo de GitHub Actions que actualiza el pronóstico dos veces al día. Cada estado vive en su propia carpeta y sigue la misma estructura.
 
 ## Estados
@@ -22,6 +24,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
   backtest/          scripts de backtest y selección de modelo, con sus datos y resultados
   docs/              revisiones, decisiones de modelo y resultados documentados
 ```
+`tablero/` es la página pública (GitHub Pages); `scripts/exportar_tablero.py` lleva los resultados de cada estado a `tablero/datos/`.
 
 ## Estándares comunes (aprendidos en Georgia, California y Arizona)
 - **Validación:** *leave-one-year-out* sobre el histórico de FiveThirtyEight (980 contiendas 1998–2024); métrica principal CRPS, más la cobertura de los intervalos del 80% y 95%.
