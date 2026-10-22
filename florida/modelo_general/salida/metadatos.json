@@ -1,0 +1,110 @@
+{
+  "config": {
+    "corte": "2026-10-22",
+    "eleccion": "2026-11-03",
+    "ventana_dias_eleccion": "21",
+    "min_encuestadoras": "2",
+    "vida_media_dias": "14.0",
+    "contraccion_casa": "8.0",
+    "sesgo_estatal": "True",
+    "peso_mercados": "0.3",
+    "terceros_a": "None",
+    "recuento_pp": "0.5",
+    "civicapi_en_vivo": "True",
+    "sigma_dia_pp": "0.25",
+    "n_sim": "200000",
+    "semilla": "20261022",
+    "salida": "salida"
+  },
+  "ventana": {
+    "ventana_desde": "2026-10-13",
+    "ampliada": false,
+    "regla": "normal"
+  },
+  "horizonte_calibrado": 12,
+  "dias_extra_encuestas": 2,
+  "var_deriva": 0.125,
+  "parametros": {
+    "horizonte_dias": 12,
+    "tau": 3.4000000000000004,
+    "s": 7.6000000000000005,
+    "nu": 13.4,
+    "n_contiendas": 848,
+    "terceros_a": 1.8514809301530932,
+    "terceros_c": 0.6402249775953961,
+    "terceros_sd": 1.9405363453891167,
+    "sesgo_bruto": 5.418095333351126,
+    "sesgo_contraido": 4.829404651463725,
+    "contraccion": 0.8913473009115009
+  },
+  "margen_encuestas": -5.253232103282229,
+  "otros_encuestas": 0.0,
+  "k": 4,
+  "mu": -10.082636754745954,
+  "sd": 5.111262075065219,
+  "nu": 13.4,
+  "terceros_media": 1.8514809301530932,
+  "mercados": {
+    "fecha": "2026-10-22",
+    "kalshi_D": 0.2227722772277227,
+    "polymarket_D": 0.2,
+    "promedio_D": 0.21138613861386135,
+    "dif_pp": 2.277227722772268,
+    "polymarket_rangos_margen_media": -4.755023183925808,
+    "polymarket_rangos_margen_sd": 7.216504051004486,
+    "polymarket_rangos_P_D": 0.2127769191138588
+  },
+  "resultado": {
+    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+    "margen_media": -8.31069442751378,
+    "sd": 5.0972818731855325,
+    "IC80_margen": [
+      -14.650558372836628,
+      -1.9715791469272668
+    ],
+    "IC95_margen": [
+      -18.434505869904317,
+      1.8377434639903527
+    ],
+    "Jolly": 44.822623924642095,
+    "Jolly_IC80": [
+      41.47776093264181,
+      48.156525080004165
+    ],
+    "Donalds": 53.133318352155875,
+    "Donalds_IC80": [
+      49.78233219865423,
+      56.463776604885965
+    ],
+    "Terceros": 2.0440577232020445,
+    "Terceros_IC80": [
+      0.1,
+      4.3387394013823775
+    ],
+    "P_Jolly_modelo": 0.02553,
+    "P_Jolly": 0.050005,
+    "P_recuento": 0.018505,
+    "P_Jolly_>50": 0.027115,
+    "P_Jolly_mezcla_objetivo": 0.05000162635952372,
+    "desplazamiento_mercados_pp": 1.7871260150521593
+  },
+  "voto_anticipado": {
+    "disponible": true,
+    "estado": "snapshot guardado (ProxyError: HTTPSConnectionPool(host='civicapi.org', port=443): Max retries exceeded with ur)",
+    "fuente": "civicAPI (civicapi.org), División de Elecciones de Florida",
+    "fecha": "2026-10-22",
+    "emitidos": 1676291,
+    "por_correo": 1124045,
+    "en_persona": 552246,
+    "correo_solicitado": 1384754,
+    "pct_D": 41.25465089295355,
+    "pct_R": 38.17362259894016,
+    "pct_NPA": 18.14583506085757,
+    "pct_Otros": 2.4258914472487176,
+    "margen_DR_pp": 3.0810282940133904,
+    "margen_DR_correo_pp": 6.7371857888251805,
+    "margen_DR_persona_pp": -4.360737787145584,
+    "miami_dade_pct": 9.630905373828291,
+    "miami_dade_margen_pp": 7.722897387296986
+  }
+}

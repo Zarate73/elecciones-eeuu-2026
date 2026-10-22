@@ -212,10 +212,67 @@ def arizona() -> dict | None:
     }
 
 
+# ------------------------------------------------------------------------------------ Florida
+def florida() -> dict | None:
+    s = RAIZ / 'florida/produccion/salidas'
+    if not (s / 'ultimo/reporte.json').exists():
+        return None
+    r = json.loads((s / 'ultimo/reporte.json').read_text(encoding='utf-8'))
+    g, mk, a = r['gobernador'], r['mercados'], r.get('anticipado') or {}
+    enc = pd.read_csv(s / 'ultimo/encuestas_gobernador.csv', encoding='utf-8-sig')
+    pesos = s / 'ultimo/encuestas_ventana_pesos.csv'
+    if pesos.exists():
+        w = pd.read_csv(pesos, encoding='utf-8-sig')[['fin', 'pollster', 'peso']]
+        enc = enc.merge(w, on=['fin', 'pollster'], how='left')
+    rg = mk.get('rangos') or {}
+    sesgo = g.get('sesgo_estatal_aplicado')
+    return {
+        'clave': 'florida', 'estado': 'Florida', 'cargo': 'Gobernador', 'modelo': 'General (V11 con sesgo estatal)',
+        'candidatos': {'D': 'David Jolly', 'R': 'Byron Donalds'}, 'corte': r['corte'], 'dias_a_eleccion': r['dias_a_eleccion'],
+        'pronostico': {'P_D': _num(g['P_D']), 'pct_D': _num(g['pct_D'], 2), 'pct_D_IC80': [_num(x, 2) for x in g['pct_D_IC80']],
+                       'pct_R': _num(g['pct_R'], 2), 'pct_R_IC80': [_num(x, 2) for x in g['pct_R_IC80']],
+                       'pct_terceros': _num(g.get('pct_terceros'), 2),
+                       'pct_terceros_IC80': [_num(x, 2) for x in g.get('pct_terceros_IC80', [None, None])],
+                       'margen': _num(g['margen'], 3), 'margen_IC80': [_num(x, 2) for x in g['IC80']],
+                       'margen_IC95': [_num(x, 2) for x in g['IC95']], 'sd': _num(g['sd'], 3),
+                       'nu': _num(r['calibracion'].get('nu'), 2), 'P_D_encuestas': _num(g['P_D_encuestas']),
+                       'peso_mercados': _num(g['peso_mercados_aplicado'], 2), 'mercado_en_distribucion': True,
+                       'extra': [{'etiqueta': 'Recuento por máquina (|margen| ≤ 0.5)', 'valor': _num(g['P_recuento'])}]},
+        'mercados': [{'nombre': 'Kalshi', 'P_D': _num(mk['kalshi'].get('p_D')), 'estado': mk['kalshi'].get('estado')},
+                     {'nombre': 'Polymarket', 'P_D': _num(mk['polymarket'].get('p_D')), 'estado': mk['polymarket'].get('estado')}],
+        'ultima_encuesta': r.get('ultima_encuesta'),
+        'encuestas': _encuestas(enc, 'fin', 'pollster', 'D', 'R', 'en_ventana', 'origen', 'peso' if 'peso' in enc else None),
+        'n_encuestas_ventana': g.get('k'),
+        'historial': _historial(s / 'historial_pronosticos.csv', 'corte',
+                                {'P_D': 'P_D', 'P_D_encuestas': 'P_D_encuestas', 'P_kalshi': 'P_D_kalshi',
+                                 'P_polymarket': 'P_D_polymarket', 'pct_D': 'pct_D', 'margen': 'margen'}),
+        'escenarios': _escenarios(r.get('escenarios', [])),
+        'anticipado': ({'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
+                        'metricas': [{'etiqueta': 'Votos ya emitidos (correo + en persona)', 'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'},
+                                     {'etiqueta': 'Emitidos por demócratas registrados', 'valor': _num(a.get('pct_D'), 2), 'formato': 'pct'},
+                                     {'etiqueta': 'Emitidos por republicanos registrados', 'valor': _num(a.get('pct_R'), 2), 'formato': 'pct'},
+                                     {'etiqueta': 'Emitidos por sin partido (NPA)', 'valor': _num(a.get('pct_NPA'), 2), 'formato': 'pct'},
+                                     {'etiqueta': 'Margen D−R por correo', 'valor': _num(a.get('margen_DR_correo_pp'), 2), 'formato': 'pp'},
+                                     {'etiqueta': 'Margen D−R en persona', 'valor': _num(a.get('margen_DR_persona_pp'), 2), 'formato': 'pp'}]}
+                       if a.get('disponible') else None),
+        'rangos_poly': ({'P_D': _num(rg.get('P_D')), 'margen': _num(rg.get('margen_media'), 2)}
+                        if rg.get('margen_media') is not None else None),
+        'adicional': ({'titulo': 'Sesgo estatal de Florida', 'P_D': None, 'margen': _num(-sesgo, 2),
+                       'etiqueta_margen': 'corrección al margen D−R',
+                       'nota': (f"Las encuestas de FL han sobreestimado al demócrata: el modelo corrige {-sesgo:+.1f} pp "
+                                f"(promedio de encuestas {g['margen_encuestas']:+.1f}). "
+                                + (f"Polymarket por rangos: margen implícito {rg['margen_media']:+.1f} pp."
+                                   if rg.get('margen_media') is not None else ''))}
+                      if sesgo else None),
+        'fuentes': _fuentes(r['estados_fuentes']), 'avisos': r.get('avisos', []),
+        'carpeta': 'florida',
+    }
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona):
+    for f in (georgia, california, arizona, florida):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás

@@ -213,8 +213,8 @@ function comparacion(d) {
   ];
   const col = { Kalshi: 'var(--s-kalshi)', Polymarket: 'var(--s-poly)' };
   for (const m of d.mercados) if (m.P_D != null) filas.push({ n: m.nombre, v: m.P_D, c: col[m.nombre] || 'var(--otros)' });
-  if (d.adicional && d.adicional.titulo && d.adicional.titulo.startsWith('Polymarket') && d.adicional.P_D != null)
-    filas.push({ n: 'Polymarket (rangos)', v: d.adicional.P_D, c: 'var(--s-poly)' });
+  const rg = d.rangos_poly || (d.adicional && d.adicional.titulo && d.adicional.titulo.startsWith('Polymarket') ? d.adicional : null);
+  if (rg && rg.P_D != null) filas.push({ n: 'Polymarket (rangos)', v: rg.P_D, c: 'var(--s-poly)' });
   const W = Math.round(mitad()), izq = Math.min(132, W * 0.34), der = 46, alto = 30, H = filas.length * alto + 24;
   const x = v => izq + v * (W - izq - der);
   const s = sv('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `Probabilidad de que gane ${d.candidatos.D} según cada fuente` });
@@ -439,9 +439,9 @@ function vista(d) {
   }
   if (d.adicional && !d.adicional.titulo.startsWith('Polymarket')) {
     const a = d.adicional;
-    const m = el('div', { class: 'metricas' },
-      el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: pct(a.P_D) }), el('div', { class: 'm-e', text: 'P(demócrata)' })),
-      el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: pp(a.margen) + ' pp' }), el('div', { class: 'm-e', text: 'margen' })));
+    const m = el('div', { class: 'metricas' });
+    if (a.P_D != null) m.append(el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: pct(a.P_D) }), el('div', { class: 'm-e', text: 'P(demócrata)' })));
+    m.append(el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: pp(a.margen) + ' pp' }), el('div', { class: 'm-e', text: a.etiqueta_margen || 'margen' })));
     lado.push(panel(a.titulo, a.nota, m));
   }
   if (lado.length) fila.push(el('div', { style: 'display:grid;gap:14px;align-content:start' }, ...lado));

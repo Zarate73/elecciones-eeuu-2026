@@ -1,0 +1,132 @@
+Contiendas (H=12): 848 · FL: 23 · 2024: 41
+
+== Nacional
+                                modelo   n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+      G  Georgia V11 (sesgo contraído) 848 3.374 4.662  0.935  0.795  0.952  0.081     6.247
+            H6 V11 con vida media 10 d 848 3.380 4.673  0.937  0.800  0.952  0.081     6.247
+    H7 V11 con pesos ∝ n (primaria FL) 848 3.386 4.675  0.922  0.801  0.952  0.081     6.269
+H3 V11 + cuota R de indecisos estimada 848 3.393 4.669  0.457  0.797  0.948  0.082     6.177
+           H4 V11 + Dirichlet y shocks 848 3.410 4.662  0.935  0.838  0.955  0.082     6.444
+    H8 V11 sin sesgo estatal (Arizona) 848 3.468 4.811  1.154  0.778  0.956  0.080     6.247
+H1 V11 + escenarios de indecisos de AZ 848 3.475 4.771  0.777  0.791  0.945  0.081     6.289
+     F1 V11 sesgo estatal sin contraer 848 3.502 4.830  0.855  0.791  0.941  0.086     6.247
+               F3 F2 sin sesgo estatal 848 3.579 4.944  1.098  0.782  0.950  0.081     6.450
+  F2 V11 + indecisos de la primaria FL 848 3.581 4.923  1.038  0.796  0.945  0.082     6.450
+     H2 V11 + indecisos proporcionales 848 3.650 5.013  1.052  0.792  0.942  0.082     6.572
+
+== Nacional_Gob
+                                modelo   n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+    H8 V11 sin sesgo estatal (Arizona) 267 3.478 4.854  0.957  0.779  0.955  0.094     6.336
+      G  Georgia V11 (sesgo contraído) 267 3.515 4.865  0.715  0.779  0.948  0.096     6.336
+            H6 V11 con vida media 10 d 267 3.516 4.875  0.718  0.787  0.948  0.096     6.336
+    H7 V11 con pesos ∝ n (primaria FL) 267 3.527 4.871  0.687  0.794  0.951  0.097     6.359
+           H4 V11 + Dirichlet y shocks 267 3.531 4.865  0.715  0.820  0.955  0.096     6.450
+H3 V11 + cuota R de indecisos estimada 267 3.545 4.864  0.153  0.779  0.940  0.097     6.260
+H1 V11 + escenarios de indecisos de AZ 267 3.661 5.010  0.392  0.779  0.929  0.096     6.375
+               F3 F2 sin sesgo estatal 267 3.678 5.040  0.748  0.768  0.948  0.094     6.540
+  F2 V11 + indecisos de la primaria FL 267 3.775 5.141  0.613  0.775  0.925  0.096     6.540
+     F1 V11 sesgo estatal sin contraer 267 3.781 5.213  0.561  0.757  0.936  0.104     6.336
+     H2 V11 + indecisos proporcionales 267 3.842 5.216  0.592  0.775  0.921  0.096     6.670
+
+== FL_todas
+                                modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+     F1 V11 sesgo estatal sin contraer 23 2.168 3.208  0.927  0.826  1.000  0.152     4.382
+      G  Georgia V11 (sesgo contraído) 23 2.200 3.193  1.485  0.783  1.000  0.166     4.382
+            H6 V11 con vida media 10 d 23 2.202 3.207  1.481  0.783  1.000  0.166     4.382
+    H7 V11 con pesos ∝ n (primaria FL) 23 2.206 3.194  1.488  0.826  1.000  0.165     4.369
+H3 V11 + cuota R de indecisos estimada 23 2.209 3.267  1.241  0.826  1.000  0.158     4.456
+H1 V11 + escenarios de indecisos de AZ 23 2.271 3.366  1.539  0.783  1.000  0.164     4.342
+  F2 V11 + indecisos de la primaria FL 23 2.351 3.489  1.786  0.826  0.957  0.171     4.339
+           H4 V11 + Dirichlet y shocks 23 2.362 3.193  1.485  1.000  1.000  0.152     6.439
+     H2 V11 + indecisos proporcionales 23 2.383 3.536  1.837  0.826  0.957  0.173     4.303
+    H8 V11 sin sesgo estatal (Arizona) 23 2.643 3.751  2.785  0.696  1.000  0.183     4.382
+               F3 F2 sin sesgo estatal 23 2.772 4.011  2.979  0.696  0.957  0.188     4.339
+
+== FL_2016+
+                                modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+     F1 V11 sesgo estatal sin contraer  9 2.144 3.402  3.402  0.889    1.0  0.182     4.147
+      G  Georgia V11 (sesgo contraído)  9 2.265 3.605  3.605  0.778    1.0  0.187     4.147
+            H6 V11 con vida media 10 d  9 2.270 3.618  3.618  0.778    1.0  0.187     4.147
+H1 V11 + escenarios de indecisos de AZ  9 2.290 3.640  3.640  0.778    1.0  0.190     4.140
+  F2 V11 + indecisos de la primaria FL  9 2.297 3.671  3.671  0.889    1.0  0.195     4.097
+    H7 V11 con pesos ∝ n (primaria FL)  9 2.311 3.644  3.644  0.778    1.0  0.179     4.148
+     H2 V11 + indecisos proporcionales  9 2.323 3.711  3.711  0.889    1.0  0.200     4.026
+H3 V11 + cuota R de indecisos estimada  9 2.339 3.697  3.697  0.778    1.0  0.183     4.277
+           H4 V11 + Dirichlet y shocks  9 2.422 3.605  3.605  1.000    1.0  0.157     6.421
+               F3 F2 sin sesgo estatal  9 3.448 5.158  5.158  0.556    1.0  0.241     4.097
+    H8 V11 sin sesgo estatal (Arizona)  9 3.521 5.246  5.246  0.556    1.0  0.232     4.147
+
+== FL_Gob
+                                modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+            H6 V11 con vida media 10 d  7 2.196 3.243  2.129  0.714    1.0  0.167     4.470
+    H7 V11 con pesos ∝ n (primaria FL)  7 2.213 3.314  1.977  0.714    1.0  0.158     4.451
+      G  Georgia V11 (sesgo contraído)  7 2.218 3.266  2.137  0.714    1.0  0.167     4.470
+  F2 V11 + indecisos de la primaria FL  7 2.221 3.399  1.946  0.714    1.0  0.175     4.439
+H1 V11 + escenarios de indecisos de AZ  7 2.231 3.360  1.877  0.714    1.0  0.165     4.433
+     F1 V11 sesgo estatal sin contraer  7 2.232 3.318  1.835  0.714    1.0  0.161     4.470
+     H2 V11 + indecisos proporcionales  7 2.234 3.444  1.945  0.714    1.0  0.180     4.410
+H3 V11 + cuota R de indecisos estimada  7 2.319 3.436  1.882  0.714    1.0  0.155     4.553
+           H4 V11 + Dirichlet y shocks  7 2.387 3.266  2.137  1.000    1.0  0.144     6.421
+               F3 F2 sin sesgo estatal  7 2.631 3.816  2.861  0.714    1.0  0.203     4.439
+    H8 V11 sin sesgo estatal (Arizona)  7 2.643 3.646  3.109  0.714    1.0  0.196     4.470
+
+== Bootstrap por año: P(variante con menor CRPS que G)
+ambito                                  FL_todas  Nacional  Nacional_Gob
+variante                                                                
+F1 V11 sesgo estatal sin contraer          0.665     0.029         0.012
+F2 V11 + indecisos de la primaria FL       0.141     0.000         0.000
+F3 F2 sin sesgo estatal                    0.030     0.006         0.092
+H1 V11 + escenarios de indecisos de AZ     0.176     0.040         0.034
+H2 V11 + indecisos proporcionales          0.156     0.000         0.002
+H3 V11 + cuota R de indecisos estimada     0.406     0.347         0.386
+H4 V11 + Dirichlet y shocks                0.016     0.000         0.244
+H6 V11 con vida media 10 d                 0.398     0.047         0.418
+H7 V11 con pesos ∝ n (primaria FL)         0.394     0.102         0.165
+H8 V11 sin sesgo estatal (Arizona)         0.063     0.100         0.588
+
+== Errores de las encuestas en FL (V11 sin sesgo; + = pro-D)
+          race  year   tipo  k     D     R  actual  error_pp
+ 1998_Gov-G_FL  1998  Gov-G  4 40.75 52.94  -10.55     -1.63
+ 1998_Sen-G_FL  1998  Sen-G  5 60.22 28.95   24.94      6.33
+2000_Pres-G_FL  2000 Pres-G  5 45.82 44.92   -0.01      0.90
+ 2000_Sen-G_FL  2000  Sen-G  4 44.27 39.30    4.85      0.12
+ 2002_Gov-G_FL  2002  Gov-G  6 44.21 49.33  -12.85      7.73
+2004_Pres-G_FL  2004 Pres-G  9 47.21 47.64   -5.01      4.59
+ 2004_Sen-G_FL  2004  Sen-G  8 45.84 44.56   -1.11      2.39
+ 2006_Gov-G_FL  2006  Gov-G  8 41.16 48.48   -7.07     -0.25
+ 2006_Sen-G_FL  2006  Sen-G  5 57.57 33.32   22.20      2.05
+2008_Pres-G_FL  2008 Pres-G 10 47.94 46.01    2.81     -0.88
+ 2010_Gov-G_FL  2010  Gov-G  8 45.42 44.07   -1.15      2.51
+2012_Pres-G_FL  2012 Pres-G 12 46.80 47.99    0.88     -2.07
+ 2012_Sen-G_FL  2012  Sen-G  7 48.48 41.76   13.00     -6.28
+ 2014_Gov-G_FL  2014  Gov-G  7 43.70 43.43   -1.07      1.34
+2016_Pres-G_FL  2016 Pres-G 18 45.97 43.95   -1.20      3.22
+ 2016_Sen-G_FL  2016  Sen-G 18 42.98 48.21   -7.67      2.44
+ 2018_Gov-G_FL  2018  Gov-G 15 47.84 44.34   -0.40      3.90
+ 2018_Sen-G_FL  2018  Sen-G 14 47.24 45.40   -0.12      1.96
+2020_Pres-G_FL  2020 Pres-G 14 48.50 47.55   -3.36      4.31
+ 2022_Gov-G_FL  2022  Gov-G  5 42.47 53.70  -19.40      8.17
+ 2022_Sen-G_FL  2022  Sen-G  4 43.80 51.95  -16.41      8.26
+2024_Pres-G_FL  2024 Pres-G  9 44.83 51.33  -13.10      6.60
+ 2024_Sen-G_FL  2024  Sen-G  7 44.55 48.98  -12.78      8.35
+
+Error relativo FL por año (FL − nacional): {1998: 6.43, 2000: 1.5, 2002: 4.67, 2004: 1.8, 2006: 2.92, 2008: -1.65, 2010: 2.95, 2012: -2.25, 2014: -2.07, 2016: -1.66, 2018: 3.04, 2020: -1.37, 2022: 6.38, 2024: 4.74}  autocorrelación: 0.04
+
+== Terceros
+  ambito                             modelo                                               regla   n  MAE_%D  MAE_%R  MAE_terceros  sesgo_terceros
+Nacional   G  Georgia V11 (sesgo contraído)                           T0 terceros = 0 (Georgia) 848    3.00    2.49          2.72           -2.72
+Nacional   G  Georgia V11 (sesgo contraído) T1 terceros = lo que dicen las encuestas (primaria) 848    2.64    2.44          1.82           -1.36
+Nacional   G  Georgia V11 (sesgo contraído)        T2 terceros calibrados a + c·encuesta (LOYO) 848    2.47    2.44          1.47           -0.00
+Nacional   G  Georgia V11 (sesgo contraído)   T3 terceros = media histórica del estado (pasado) 848    2.66    2.46          1.84           -0.00
+Nacional H8 V11 sin sesgo estatal (Arizona)                           T0 terceros = 0 (Georgia) 848    3.07    2.53          2.72           -2.72
+Nacional H8 V11 sin sesgo estatal (Arizona) T1 terceros = lo que dicen las encuestas (primaria) 848    2.70    2.52          1.82           -1.36
+Nacional H8 V11 sin sesgo estatal (Arizona)        T2 terceros calibrados a + c·encuesta (LOYO) 848    2.52    2.54          1.47           -0.00
+Nacional H8 V11 sin sesgo estatal (Arizona)   T3 terceros = media histórica del estado (pasado) 848    2.71    2.54          1.84           -0.00
+FL_todas   G  Georgia V11 (sesgo contraído)                           T0 terceros = 0 (Georgia)  23    2.10    1.65          1.69           -1.69
+FL_todas   G  Georgia V11 (sesgo contraído) T1 terceros = lo que dicen las encuestas (primaria)  23    1.72    1.72          1.08           -0.73
+FL_todas   G  Georgia V11 (sesgo contraído)        T2 terceros calibrados a + c·encuesta (LOYO)  23    1.49    1.83          1.21            0.79
+FL_todas   G  Georgia V11 (sesgo contraído)   T3 terceros = media histórica del estado (pasado)  23    1.72    1.84          1.37           -0.12
+FL_todas H8 V11 sin sesgo estatal (Arizona)                           T0 terceros = 0 (Georgia)  23    2.53    1.75          1.69           -1.69
+FL_todas H8 V11 sin sesgo estatal (Arizona) T1 terceros = lo que dicen las encuestas (primaria)  23    2.08    1.87          1.08           -0.73
+FL_todas H8 V11 sin sesgo estatal (Arizona)        T2 terceros calibrados a + c·encuesta (LOYO)  23    1.66    2.17          1.21            0.79
+FL_todas H8 V11 sin sesgo estatal (Arizona)   T3 terceros = media histórica del estado (pasado)  23    2.07    2.04          1.37           -0.12
