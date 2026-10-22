@@ -32,7 +32,7 @@ PROD = BASE.parent / 'produccion'
 sys.path.insert(0, str(PROD))
 from az_pronostico import encuestas_web as W          # noqa: E402
 from az_pronostico.config import cargar_config         # noqa: E402
-from az_pronostico.historico import calibrar, efectos_casa, obtener_raw_polls, preparar, promedio  # noqa: E402
+from az_pronostico.historico import ajustar_sigma, efectos_casa, obtener_raw_polls, preparar, promedio  # noqa: E402
 
 DATOS = BASE / 'data' / 'mercados_2024'
 SAL = BASE / 'salida'
@@ -192,6 +192,28 @@ def construir(crudo: Path) -> pd.DataFrame:
 
 
 # ------------------------------------------------------------------------------------ predicción de encuestas
+def calibrar_fuera_de_muestra(d: pd.DataFrame, h: int, cfg) -> dict:
+    """Misma calibración que historico.calibrar (LOYO dentro de la muestra), pero con el histórico que se le pasa.
+    Aquí d llega filtrado a ≤ 2022: las 3 contiendas de 2024 del histórico de producción (Pres AZ, Pres GA, Sen AZ)
+    también están entre las 40 evaluadas, y usarlas para calibrar τ, s, ν sería fuga de información."""
+    k_casa, vm = cfg.modelo.contraccion_casa, cfg.modelo.vida_media_dias
+    filas = []
+    for y in sorted(d.year.unique()):
+        house = efectos_casa(d[d.year != y], k_casa)
+        for race, p in d[d.year == y].groupby('race'):
+            q = p[p.days >= h].rename(columns={'cand3_pct': 'otros'})
+            if q.empty:
+                continue
+            mu, _, k, _ = promedio(q, house, vm)
+            filas.append({'k': k, 'e': mu - float(p.margin_actual.iloc[0])})
+    b = pd.DataFrame(filas)
+    tau, s = ajustar_sigma(b.e, b.k)
+    z = b.e / np.sqrt(tau ** 2 + s ** 2 / np.maximum(b.k, 1))
+    nus = np.linspace(2.5, 60, 576)
+    nu = float(nus[int(np.argmax([np.sum(student_t.logpdf(z, v, scale=np.sqrt((v - 2) / v))) for v in nus]))])
+    return {'tau': tau, 's': s, 'nu': nu, 'n_contiendas': len(b), 'anio_max': int(d.year.max())}
+
+
 def k_firmas(q: pd.DataFrame) -> int:
     return int(q.pollster_key.nunique())
 
@@ -203,7 +225,7 @@ def predicciones(t: pd.DataFrame) -> pd.DataFrame:
     d = preparar(raw, cfg)
     d = d[d.year <= 2022]                                  # fuera de muestra para 2024
     house = efectos_casa(d, cfg.modelo.contraccion_casa)
-    par = calibrar(cfg, H)                                 # τ, s, ν a 13 días (histórico 1998–2024 sin estas contiendas)
+    par = calibrar_fuera_de_muestra(d, H, cfg)            # τ, s, ν a 13 días SOLO con 1998–2022 (sin ninguna contienda de 2024)
     enc = pd.read_csv(DATOS / 'encuestas_2024_hasta_corte.csv', parse_dates=['fin'])
     out = []
     for r in t.itertuples():
@@ -296,6 +318,7 @@ def main(crudo: str | None = None):
     else:
         t = pd.read_csv(DATOS / 'contiendas_2024.csv')
     x = predicciones(t)
+    x.attrs = {}
     x.to_csv(DATOS / 'predicciones_h13_2024.csv', index=False)
     g = perfil(x)
     g.to_csv(SAL / 'peso_mercados_perfil.csv')
