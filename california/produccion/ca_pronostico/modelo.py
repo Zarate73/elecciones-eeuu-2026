@@ -71,11 +71,13 @@ def pronostico_m5(cfg, agregado: dict, dias: int, sigma_sis: float, delta_m2: fl
     p_obj, desplaz = p_mod, 0.0
     if p_kalshi is not None and np.isfinite(p_kalshi):
         p_obj = float(1 / (1 + np.exp(-((1 - m.w_kalshi) * _logit(p_mod) + m.w_kalshi * _logit(p_kalshi)))))
-        # la probabilidad mezclada se traslada a la distribución (como Georgia): se desplaza el margen simulado
-        # para que P(margen > 0) = p_obj; así margen, intervalos y % de voto son coherentes con la probabilidad
-        desplaz = float(-np.quantile(sim, 1 - p_obj))
+        # Opcional ([modelo] trasladar_mercado_a_distribucion = true): desplazar el margen simulado para que
+        # P(margen > 0) = p_obj. Apagado en California por decisión del 21-oct: aquí Kalshi solo ajusta la
+        # probabilidad publicada (ajuste externo) y margen, intervalos y % de voto son los del modelo.
+        if m.get('trasladar_mercado_a_distribucion', False):
+            desplaz = float(-np.quantile(sim, 1 - p_obj))
     sim_modelo, sim = sim, sim + desplaz
-    p_fin = float(np.mean(sim > 0))
+    p_fin = p_obj if desplaz == 0.0 else float(np.mean(sim > 0))
     q = np.quantile(sim, [.025, .1, .5, .9, .975])
     return {'simulacion': sim, 'simulacion_modelo': sim_modelo, 'media_pp': float(mu), 'media_final_pp': float(mu + desplaz),
             'desplazamiento_kalshi_pp': desplaz, 'p_mezcla_objetivo': p_obj, 'sigma_pp': sigma, 'k_sent_aplicado': k,

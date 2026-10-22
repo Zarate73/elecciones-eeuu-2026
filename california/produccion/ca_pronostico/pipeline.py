@@ -119,7 +119,7 @@ def _ejecutar(cfg) -> dict:
     # 5) M5 ------------------------------------------------------------------------------
     m5 = modelo.pronostico_m5(cfg, ag, dias, cal['sigma_sis_pp'], delta_m2=m2e.get('delta_m2_pp', 0.0),
                               k_sent=k_sent, p_kalshi=kal['p_d_normalizada'] if kal['usable_en_mezcla'] else None)
-    sims = {'M5 · híbrido': m5['simulacion']}            # ya incluye el desplazamiento por Kalshi (coherente con p_final)
+    sims = {'M5 · híbrido': m5['simulacion']}            # sin desplazamiento por Kalshi (p_final es un ajuste externo)
 
     # 6) Legado M1–M4 (comparación) -------------------------------------------------------
     if cfg.legado.comparar:

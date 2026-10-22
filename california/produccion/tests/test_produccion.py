@@ -80,17 +80,17 @@ def test_kalshi_mueve_hacia_el_mercado(cfg):
     assert b['p_final'] < a['p_modelo']
 
 
-def test_probabilidad_coherente_con_la_distribucion(cfg):
-    """Con Kalshi, la simulación publicada se desplaza: P(gana) publicada = fracción de simulaciones con margen > 0
-    y coincide con la mezcla logit; sin Kalshi no hay desplazamiento."""
-    a = modelo.pronostico_m5(cfg, _agregado(), 15, 6.0)
+def test_kalshi_ajusta_solo_la_probabilidad_y_desplazamiento_opcional(cfg):
+    """California: por defecto Kalshi ajusta solo la probabilidad publicada (la simulación no se mueve);
+    con trasladar_mercado_a_distribucion = true la simulación se desplaza y queda coherente con p_final."""
     b = modelo.pronostico_m5(cfg, _agregado(), 15, 6.0, p_kalshi=0.90)
-    assert a['desplazamiento_kalshi_pp'] == 0 and a['p_final'] == float(np.mean(a['simulacion'] > 0))
-    assert b['p_final'] == float(np.mean(b['simulacion'] > 0))
-    assert b['p_final'] == pytest.approx(b['p_mezcla_objetivo'], abs=2 / len(b['simulacion']))
-    assert b['desplazamiento_kalshi_pp'] < 0 and np.median(b['simulacion']) < np.median(b['simulacion_modelo'])
-    assert b['p_modelo'] == float(np.mean(b['simulacion_modelo'] > 0))
-
+    assert b['desplazamiento_kalshi_pp'] == 0 and np.array_equal(b['simulacion'], b['simulacion_modelo'])
+    assert b['p_final'] == b['p_mezcla_objetivo'] < b['p_modelo'] == float(np.mean(b['simulacion'] > 0))
+    cfg.modelo['trasladar_mercado_a_distribucion'] = True
+    c = modelo.pronostico_m5(cfg, _agregado(), 15, 6.0, p_kalshi=0.90)
+    assert c['p_final'] == float(np.mean(c['simulacion'] > 0))
+    assert c['p_final'] == pytest.approx(c['p_mezcla_objetivo'], abs=2 / len(c['simulacion']))
+    assert c['desplazamiento_kalshi_pp'] < 0
 
 def test_porcentajes_suman_100(cfg):
     sim = modelo.pronostico_m5(cfg, _agregado(), 15, 6.0)['simulacion']
@@ -153,8 +153,8 @@ def test_corrida_completa(cfg, red_simulada):
         raise ValueError(f'constante no estándar en JSON: {c}')
     rep = json.loads(txt, parse_constant=prohibido)                 # JSON estricto: sin NaN ni Infinity
     assert rep['ultima_encuesta']['dias_desde_fin'] >= 0 and rep['ultima_encuesta']['fin'] <= rep['fecha_corte']
-    tm = r['tabla_modelos'].set_index('modelo')                    # la fila M5 ya es coherente con p_final
-    assert tm.loc['M5 · híbrido', 'p_d_gana'] == pytest.approx(p['p_d_gana_final'], abs=1e-12)
+    tm = r['tabla_modelos'].set_index('modelo')                    # la fila M5 es la del modelo (sin Kalshi)
+    assert tm.loc['M5 · híbrido', 'p_d_gana'] == pytest.approx(p['p_d_gana_modelo'], abs=1e-12)
 
 
 def test_corrida_offline_sin_cache_no_falla(cfg):

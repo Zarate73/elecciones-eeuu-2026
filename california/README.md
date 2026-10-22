@@ -32,7 +32,7 @@ M5 toma de cada versión anterior (M1–M4) solo lo que el backtest respalda:
 |---|---|---|
 | Promedio de encuestas | vida media de 30 días; cada encuestadora cuenta ~1 vez (peso / √n); encuestas de campaña o partidistas a 0.5 | M1 corregido |
 | σ | sistemática calibrada con el error histórico de las encuestas en California (2018–2025, RMSE ≈ 6.4 pp) + muestreo + deriva hasta la elección; colas t (ν = 5) | σ = 4.5 fija dejaba fuera la mitad de los casos al 80 % |
-| Kalshi | mezcla logit, peso 0.30; la simulación se desplaza para que P(margen > 0) sea igual a la probabilidad publicada | igual que Georgia; no validado con historia |
+| Kalshi | mezcla logit, peso 0.30; ajusta solo la probabilidad publicada (margen, intervalos y % de voto son los del modelo) | no validado con historia; en Georgia y Arizona, en cambio, la distribución se desplaza hacia el mercado |
 | Participación (Civiq) | diagnóstico, peso 0 | falló fuera de muestra en la primaria |
 | Sentimiento (GDELT) | diagnóstico, k = 1 | sin serie histórica para validarlo |
 
