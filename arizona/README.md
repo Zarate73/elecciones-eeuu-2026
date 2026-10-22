@@ -36,7 +36,7 @@ Base: el modelo V11 de Georgia, más lo que el backtest respaldó del modelo de 
 | Terceros | `real = 1.87 + 0.69 · (otros en encuestas)`, calibrado | El MAE del % demócrata bajó de 2.53 a 1.94 en AZ |
 | Indecisos | 50/50 | Los escenarios por facción, el reparto proporcional y la cuota R estimada empeoran el CRPS |
 | σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día si las encuestas son más viejas que ese horizonte | Cobertura del 80 % correcta en el backtest |
-| Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30. La distribución del margen se desplaza para que P(margen > 0) sea igual a la probabilidad publicada | No son el mismo precio: la correlación de los cambios diarios es 0.16 y la diferencia media es de 3.3 pp |
+| Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30. La distribución del margen se desplaza para que P(margen > 0) sea igual a la probabilidad publicada | No son el mismo precio (correlación de cambios diarios 0.16). Peso por máxima verosimilitud con 40 contiendas de 2024: 0.65 (IC95 0.25–1.00), pero 0.25 (IC95 0–0.65) al descontar el error común de 2024; 0.30 es compatible con ambos ([detalle](docs/03_peso_mercados.md)) |
 | Recuento | P(\|margen\| ≤ 0.5 pp) | Recuento automático según la ley de AZ |
 | Voto anticipado (civicAPI) | Diagnóstico, peso 0 | Sin histórico al mismo día para validarlo |
 | Ajuste partidista | Solo escenario | No mejora el CRPS (3.579 frente a 3.545) |
@@ -47,4 +47,4 @@ Base: el modelo V11 de Georgia, más lo que el backtest respaldó del modelo de 
 | [`produccion/`](produccion/) | Paquete `az_pronostico`. Todas las fuentes en vivo: Wikipedia, 270toWin, Kalshi, Polymarket, civicAPI y FiveThirtyEight. Incluye CLI, pruebas sin red y tarea programada de Windows. Ver su README. |
 | [`modelo_general/`](modelo_general/) | Notebook final ejecutado (corte 21-oct-2026), el módulo del modelo, datos y salidas |
 | [`backtest/`](backtest/) | Backtest de variantes (Georgia V11, primaria AZ, H1–H8), comparación Kalshi frente a Polymarket e ideas de On Point Politics (OP1–OP5) |
-| [`docs/`](docs/) | Investigación del electorado, decisiones del modelo y revisión de On Point Politics |
+| [`docs/`](docs/) | Investigación del electorado, decisiones del modelo, revisión de On Point Politics y estimación del peso de los mercados |
