@@ -1,0 +1,60 @@
+# =====================================================================================
+# Nevada 2026 · configuración (modelo general: V11 + sesgo estatal contraído + terceros + mercados)
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "Nevada"
+abrev = "NV"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2026-06-09"        # primarias: solo cuentan encuestas que terminan después
+candidato_d = "Aaron Ford"                # nombre completo: hay otra candidata «Danielle Ford» (independiente)
+candidato_r = "Lombardo"
+nombre_d = "Aaron Ford"
+nombre_r = "Joe Lombardo"
+terceros = "Terceros (Danielle Ford, I; otros) y «None of these candidates»"
+condado_principal = "Clark"
+zona_horaria = "America/Los_Angeles"
+recuento_pp = 0.5                      # NV no tiene recuento automático: se reporta P(|margen| <= 0.5 pp) como «resultado muy estrecho»
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+# Encuestas verificadas a mano (opcional). Excel con la hoja «Gobernador Nevada» (NEVADA_GOBERNADOR-v2.xlsx) o CSV
+# con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
+encuestas_base = "data/encuestas_verificadas_nv.csv"
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_Nevada_gubernatorial_election"
+t270_url = "https://www.270towin.com/2026-governor-polls/nevada"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "GOVPARTYNV-26"
+kalshi_ticker_d = "GOVPARTYNV-26-D"
+kalshi_ticker_r = "GOVPARTYNV-26-R"
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_evento_ganador = "nevada-governor-winner-2026"
+polymarket_evento_margen = "nevada-governor-margin-of-victory-2026"
+mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+civicapi = "https://civicapi.org/api/v2/early-vote"
+civicapi_estado = "NV"
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 3                # menos encuestas web que esto => fuente degradada (NV tiene pocas encuestas públicas)
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan en los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos: los 21 días previos a la encuesta más reciente
+vida_media_dias = 14.0
+contraccion_casa = 8.0
+sesgo_estatal = true                   # se decide con el backtest de NV (ver docs)
+peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+sigma_dia_pp = 0.25                    # deriva diaria si las encuestas son más viejas que el horizonte calibrado
+n_simulaciones = 200000
+semilla = 20261022
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60
