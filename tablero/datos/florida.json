@@ -1,0 +1,417 @@
+{
+ "clave": "florida",
+ "estado": "Florida",
+ "cargo": "Gobernador",
+ "modelo": "General (V11 con sesgo estatal)",
+ "candidatos": {
+  "D": "David Jolly",
+  "R": "Byron Donalds"
+ },
+ "corte": "2026-10-22",
+ "dias_a_eleccion": 12,
+ "pronostico": {
+  "P_D": 0.0503,
+  "pct_D": 44.83,
+  "pct_D_IC80": [
+   41.48,
+   48.16
+  ],
+  "pct_R": 53.13,
+  "pct_R_IC80": [
+   49.78,
+   56.46
+  ],
+  "pct_terceros": 2.04,
+  "pct_terceros_IC80": [
+   0.1,
+   4.34
+  ],
+  "margen": -8.299,
+  "margen_IC80": [
+   -14.64,
+   -1.96
+  ],
+  "margen_IC95": [
+   -18.42,
+   1.85
+  ],
+  "sd": 5.097,
+  "nu": 13.4,
+  "P_D_encuestas": 0.0255,
+  "peso_mercados": 0.3,
+  "mercado_en_distribucion": true,
+  "extra": [
+   {
+    "etiqueta": "Recuento por máquina (|margen| ≤ 0.5)",
+    "valor": 0.0186
+   }
+  ]
+ },
+ "mercados": [
+  {
+   "nombre": "Kalshi",
+   "P_D": 0.225,
+   "estado": "en_vivo"
+  },
+  {
+   "nombre": "Polymarket",
+   "P_D": 0.204,
+   "estado": "en_vivo"
+  }
+ ],
+ "ultima_encuesta": {
+  "encuestadora": "co/efficient (R)",
+  "fin": "2026-10-20",
+  "dias_desde_fin": 2,
+  "dias_antes_eleccion": 14,
+  "origen": "wikipedia"
+ },
+ "encuestas": [
+  {
+   "fin": "2026-10-20",
+   "encuestadora": "co/efficient (R)",
+   "D": 40.0,
+   "R": 49.0,
+   "margen": -9.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.29
+  },
+  {
+   "fin": "2026-10-19",
+   "encuestadora": "ActiVote",
+   "D": 48.0,
+   "R": 52.0,
+   "margen": -4.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1733
+  },
+  {
+   "fin": "2026-10-19",
+   "encuestadora": "University of North Florida",
+   "D": 47.0,
+   "R": 49.0,
+   "margen": -2.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.3324
+  },
+  {
+   "fin": "2026-10-15",
+   "encuestadora": "Univision/YouGov",
+   "D": 42.0,
+   "R": 50.0,
+   "margen": -8.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.2042
+  },
+  {
+   "fin": "2026-10-11",
+   "encuestadora": "Fabrizio, Lee & Associates (R)",
+   "D": 43.0,
+   "R": 49.0,
+   "margen": -6.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-10",
+   "encuestadora": "Change Research (D)",
+   "D": 47.0,
+   "R": 47.0,
+   "margen": 0.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-10",
+   "encuestadora": "MDW Communications",
+   "D": 44.0,
+   "R": 46.0,
+   "margen": -2.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-09",
+   "encuestadora": "Stetson University",
+   "D": 41.0,
+   "R": 52.0,
+   "margen": -11.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-07",
+   "encuestadora": "St. Pete Polls",
+   "D": 45.0,
+   "R": 45.0,
+   "margen": 0.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-05",
+   "encuestadora": "YouGov",
+   "D": 45.0,
+   "R": 47.0,
+   "margen": -2.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-04",
+   "encuestadora": "Targoz Market Research",
+   "D": 42.0,
+   "R": 52.0,
+   "margen": -10.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-01",
+   "encuestadora": "Mason-Dixon",
+   "D": 41.0,
+   "R": 48.0,
+   "margen": -7.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-27",
+   "encuestadora": "Change Research (D)",
+   "D": 48.0,
+   "R": 46.0,
+   "margen": 2.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-21",
+   "encuestadora": "Stetson University",
+   "D": 39.0,
+   "R": 51.0,
+   "margen": -12.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-17",
+   "encuestadora": "St. Pete Polls",
+   "D": 43.0,
+   "R": 44.0,
+   "margen": -1.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-09",
+   "encuestadora": "Change Research (D)",
+   "D": 47.0,
+   "R": 44.0,
+   "margen": 3.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  }
+ ],
+ "n_encuestas_ventana": 4,
+ "historial": [
+  {
+   "corte": "2026-10-22",
+   "P_D": 0.0503,
+   "P_D_encuestas": 0.0255,
+   "P_kalshi": 0.225,
+   "P_polymarket": 0.204,
+   "pct_D": 44.8285,
+   "margen": -8.2989
+  }
+ ],
+ "escenarios": [
+  {
+   "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+   "margen": -8.299,
+   "P_D": 0.0503
+  },
+  {
+   "escenario": "Solo encuestas (sin mercados)",
+   "margen": -10.098,
+   "P_D": 0.0255
+  },
+  {
+   "escenario": "Sin sesgo estatal (regla de Arizona)",
+   "margen": -5.245,
+   "P_D": 0.1433
+  },
+  {
+   "escenario": "Sesgo estatal sin contraer (-5.42 pp)",
+   "margen": -10.665,
+   "P_D": 0.0206
+  },
+  {
+   "escenario": "Distribución normal",
+   "margen": -10.085,
+   "P_D": 0.0242
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": -10.082,
+   "P_D": 0.0256
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": -10.076,
+   "P_D": 0.0253
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (4 encuestadoras)",
+   "margen": -10.065,
+   "P_D": 0.0263
+  },
+  {
+   "escenario": "Ventana 45 días (11 encuestadoras)",
+   "margen": -9.219,
+   "P_D": 0.0145
+  },
+  {
+   "escenario": "Ventana 60 días (11 encuestadoras)",
+   "margen": -9.414,
+   "P_D": 0.0134
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": -10.432,
+   "P_D": 0.0217
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
+   "margen": -9.682,
+   "P_D": 0.0297
+  },
+  {
+   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
+   "margen": -10.087,
+   "P_D": 0.0253
+  },
+  {
+   "escenario": "Solo Kalshi (probabilidad)",
+   "margen": -3.669,
+   "P_D": 0.225
+  },
+  {
+   "escenario": "Solo Polymarket (probabilidad)",
+   "margen": -4.027,
+   "P_D": 0.204
+  },
+  {
+   "escenario": "Polymarket por rangos de margen",
+   "margen": -4.752,
+   "P_D": 0.2156
+  }
+ ],
+ "anticipado": {
+  "fuente": "civicAPI",
+  "fecha": "2026-10-22",
+  "estado": "en_vivo",
+  "metricas": [
+   {
+    "etiqueta": "Votos ya emitidos (correo + en persona)",
+    "valor": 1676291.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Emitidos por demócratas registrados",
+    "valor": 41.25,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Emitidos por republicanos registrados",
+    "valor": 38.17,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Emitidos por sin partido (NPA)",
+    "valor": 18.15,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Margen D−R por correo",
+    "valor": 6.74,
+    "formato": "pp"
+   },
+   {
+    "etiqueta": "Margen D−R en persona",
+    "valor": -4.36,
+    "formato": "pp"
+   }
+  ]
+ },
+ "rangos_poly": {
+  "P_D": 0.2156,
+  "margen": -4.75
+ },
+ "adicional": {
+  "titulo": "Sesgo estatal de Florida",
+  "P_D": null,
+  "margen": -4.83,
+  "etiqueta_margen": "corrección al margen D−R",
+  "nota": "Las encuestas de FL han sobreestimado al demócrata: el modelo corrige -4.8 pp (promedio de encuestas -5.3). Polymarket por rangos: margen implícito -4.8 pp."
+ },
+ "fuentes": [
+  {
+   "nombre": "historico_538",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "wikipedia",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "270towin",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "base_verificada",
+   "estado": "archivo (encuestas_verificadas_fl.csv, 25 encuestas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "kalshi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket_rangos",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "civicapi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  }
+ ],
+ "avisos": [],
+ "carpeta": "florida"
+}
