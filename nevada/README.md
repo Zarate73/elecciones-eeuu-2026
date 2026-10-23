@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Aaron Ford (D, fiscal general)** y **Joe Lombardo (R, gobernador en funciones)**. En la boleta también aparecen Danielle Ford (independiente) y la opción «None of these candidates».
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 20:46 PT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 21:25 PT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|

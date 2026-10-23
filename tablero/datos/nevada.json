@@ -192,64 +192,104 @@
    "P_D": 0.3371
   },
   {
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.11 pp)",
+   "margen": -2.357,
+   "P_D": 0.3476
+  },
+  {
    "escenario": "Distribución normal",
-   "margen": -2.814,
-   "P_D": 0.3302
+   "margen": -2.812,
+   "P_D": 0.3306
   },
   {
    "escenario": "Sin terceros",
-   "margen": -2.823,
-   "P_D": 0.32
+   "margen": -2.808,
+   "P_D": 0.3203
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": -2.808,
-   "P_D": 0.3191
+   "margen": -2.81,
+   "P_D": 0.3202
   },
   {
    "escenario": "Deriva al doble (0.50 pp/día, 9 días)",
-   "margen": -2.809,
-   "P_D": 0.3237
+   "margen": -2.831,
+   "P_D": 0.3223
   },
   {
    "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
    "margen": -2.831,
-   "P_D": 0.3201
-  },
-  {
-   "escenario": "Ventana 45 días (2 encuestadoras)",
-   "margen": -2.832,
    "P_D": 0.3189
   },
   {
+   "escenario": "Ventana 45 días (2 encuestadoras)",
+   "margen": -2.858,
+   "P_D": 0.3183
+  },
+  {
    "escenario": "Ventana 60 días (3 encuestadoras)",
-   "margen": -2.29,
-   "P_D": 0.3323
+   "margen": -2.271,
+   "P_D": 0.3332
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": -1.892,
-   "P_D": 0.3762
+   "margen": -1.87,
+   "P_D": 0.3779
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": -3.006,
-   "P_D": 0.3092
+   "margen": -3.02,
+   "P_D": 0.3101
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": -2.591,
-   "P_D": 0.3345
+   "margen": -2.597,
+   "P_D": 0.3347
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": -3.698,
-   "P_D": 0.2715
+   "margen": -3.689,
+   "P_D": 0.273
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": -2.828,
-   "P_D": 0.3217
+   "margen": -2.793,
+   "P_D": 0.3213
+  },
+  {
+   "escenario": "Sin Global Strategy Group (D) (pesa 70%) → ventana desde 2026-09-05: Emerson College, Noble Predictive Insights",
+   "margen": -1.089,
+   "P_D": 0.4287
+  },
+  {
+   "escenario": "Sin Noble Predictive Insights (pesa 30%) → ventana desde 2026-09-22: Global Strategy Group",
+   "margen": -2.966,
+   "P_D": 0.3537
+  },
+  {
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-09-05: Emerson College, Noble Predictive Insights",
+   "margen": -1.09,
+   "P_D": 0.4298
+  },
+  {
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 5.2 %)",
+   "margen": -2.833,
+   "P_D": 0.3206
+  },
+  {
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 3.0 %)",
+   "margen": -2.8,
+   "P_D": 0.321
+  },
+  {
+   "escenario": "Peso de mercados 0.15 (base 0.30)",
+   "margen": -2.043,
+   "P_D": 0.3666
+  },
+  {
+   "escenario": "Peso de mercados 0.50 (base 0.30)",
+   "margen": -0.16,
+   "P_D": 0.4894
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
@@ -263,8 +303,8 @@
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 1.137,
-   "P_D": 0.5646
+   "margen": 1.209,
+   "P_D": 0.5693
   }
  ],
  "anticipado": {
@@ -305,15 +345,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.5646,
-  "margen": 1.14
+  "P_D": 0.5693,
+  "margen": 1.21
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nevada (pequeño)",
   "P_D": null,
   "margen": -0.58,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.6 pp (promedio de encuestas -2.2). Polymarket por rangos: margen implícito +1.1 pp."
+  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.6 pp (promedio de encuestas -2.2). Polymarket por rangos: margen implícito +1.2 pp."
  },
  "fuentes": [
   {
