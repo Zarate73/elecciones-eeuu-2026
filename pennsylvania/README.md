@@ -3,7 +3,27 @@
 Elección general del 3 de noviembre de 2026 entre **Josh Shapiro (D, gobernador en funciones)** y **Stacy Garrity (R, tesorera estatal)**. En la boleta también aparece Ken Krawchuk (libertario).
 
 <!-- PRONOSTICO:INICIO -->
-Pendiente de la primera corrida automática.
+**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 16:34 ET · fuentes en vivo 8/8
+
+| Gobernador | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Josh **Shapiro** (D, gobernador) | **58.3%** (54.1–62.5) | **>99%** |
+| Stacy **Garrity** (R) | **39.5%** (35.3–43.8) | **<1%** |
+| Terceros | 2.1% (0.1–4.5) | — |
+
+Margen D−R +18.8 pp (σ 6.5) · solo encuestas: P(Shapiro) >99% · Kalshi 97% · Polymarket 98% (peso de mercados 0.3) · recuento automático 0.1% · 18 encuestas, 2 encuestadoras en la ventana
+
+Cómo se llega: promedio de encuestas +22.3 · sesgo estatal de Pennsylvania -1.0 · mercados -2.4
+
+**Encuesta más reciente:** ActiVote, terminó el 2026-10-21 (**2 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+
+**Boletas por correo devueltas** (civicAPI, diagnóstico, al 2026-10-23): 720,664 · registrados D 67.0% · R 24.1% · sin partido y otros 8.9%. PA no tiene voto anticipado en persona y el correo es muy demócrata por hábito: no indica el resultado y no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_pennsylvania.yml)).
