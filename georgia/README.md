@@ -1,18 +1,18 @@
 # Georgia 2026 · Gobernador (y Senado)
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 13:00 ET · fuentes en vivo 7/7
+**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 00:33 ET · fuentes en vivo 7/7
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Keisha Lance **Bottoms** (D) | **49.4%** (46.3–52.6) | **41%** |
-| Rick **Jackson** (R) | **50.5%** (47.4–53.7) | **59%** |
+| Keisha Lance **Bottoms** (D) | **49.5%** (46.2–52.8) | **42%** |
+| Rick **Jackson** (R) | **50.5%** (47.2–53.8) | **58%** |
 
-Margen D−R -1.1 pp (σ 5.1) · solo encuestas: P(Bottoms) 33% · con Kalshi (peso 0.3) · segunda vuelta 0.2% · 15 encuestas, 4 encuestadoras en la ventana
+Margen D−R -1.0 pp (σ 5.2) · solo encuestas: P(Bottoms) 34% · con Kalshi (peso 0.3) · segunda vuelta 0.2% · 15 encuestas, 4 encuestadoras en la ventana
 
-**Encuesta más reciente:** ActiVote, terminó el 2026-10-20 (**2 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** ActiVote, terminó el 2026-10-20 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Senado:** Ossoff 53.5% · Collins 46.5% · P(Ossoff) 90% · Jackson+Ossoff 51% · Bottoms+Ossoff 39%
+**Senado:** Ossoff 53.6% · Collins 46.4% · P(Ossoff) 90% · Jackson+Ossoff 50% · Bottoms+Ossoff 40%
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
