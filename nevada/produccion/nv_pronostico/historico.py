@@ -125,7 +125,7 @@ def calibrar(cfg, h: int) -> dict:
     # la caché también depende de los históricos 2024 del paquete (si se corrigen, se recalibra)
     firma += hashlib.md5(b''.join((cfg.dir_datos / x).read_bytes() for x in
                                   ('ga_pres2024_polls.csv', 'az2024_encuestas_finales.csv', 'encuestas_2024_wiki.csv'))).hexdigest()[:6]
-    cache = cfg.dir_cache / f'calibracion_v11_h{h}_k{m.contraccion_casa}_vm{m.vida_media_dias}_{firma}.json'
+    cache = cfg.dir_cache / f'calibracion_v12_h{h}_k{m.contraccion_casa}_vm{m.vida_media_dias}_{firma}.json'
     if cache.exists():
         par = json.loads(cache.read_text(encoding='utf-8'))
         par['estado_fuente'] = estado
@@ -151,26 +151,33 @@ def calibrar(cfg, h: int) -> dict:
     coef = np.linalg.lstsq(A, con.otros_real, rcond=None)[0]
     sd_t = float(np.std(con.otros_real - A @ coef, ddof=2))
     sin = b[b.otros_enc.isna()].otros_real
-    b['w'] = 0.5 ** ((cfg.dia_eleccion.year - b.year) / 4.0)
-    st = b.groupby('location').apply(lambda g: pd.Series({
-        'm': np.average(g.e, weights=g.w), 'neff': g.w.sum() ** 2 / (g.w ** 2).sum(),
-        'v': g.e.var() if len(g) > 1 else np.nan}), include_groups=False)
-    st = st[st.neff >= 1.5]
-    vs = max(float(st.m.var()) - float(np.nanmean(st.v / st.neff)), 0.0)
+
+    def sesgo_estado(bb: pd.DataFrame) -> tuple[float, float]:
+        """(bruto, contracción) del sesgo del estado: vida media de 4 años y Bayes empírico entre estados."""
+        bb = bb.assign(w=0.5 ** ((cfg.dia_eleccion.year - bb.year) / 4.0))
+        st = bb.groupby('location').apply(lambda g: pd.Series({
+            'm': np.average(g.e, weights=g.w), 'neff': g.w.sum() ** 2 / (g.w ** 2).sum(),
+            'v': g.e.var() if len(g) > 1 else np.nan}), include_groups=False)
+        st = st[st.neff >= 1.5]
+        vs = max(float(st.m.var()) - float(np.nanmean(st.v / st.neff)), 0.0)
+        r_ = st.loc[cfg.eleccion.abrev]
+        return float(r_.m), (vs / (vs + r_.v / r_.neff) if vs > 0 else 0.0)
+
     est = cfg.eleccion.abrev
-    r = st.loc[est]
-    contr = vs / (vs + r.v / r.neff) if vs > 0 else 0.0
+    bruto, contr = sesgo_estado(b)
+    bruto_k2, contr_k2 = sesgo_estado(b[b.k >= 2])     # escenario: sin contiendas de una sola encuestadora (NV 2014)
     par = {'horizonte_dias': h, 'tau': tau, 's': s, 'nu': nu, 'n_contiendas': len(b),
            'terceros_a': float(coef[0]), 'terceros_c': float(coef[1]), 'terceros_sd': sd_t,
            'terceros_sin_reporte': float(sin.mean()), 'terceros_sin_reporte_sd': float(sin.std(ddof=1)),
            'n_con_reporte': len(con), 'n_sin_reporte': len(sin),
-           'sesgo_bruto': float(r.m), 'sesgo_contraido': float(contr * r.m), 'contraccion': float(contr),
+           'sesgo_bruto': bruto, 'sesgo_contraido': float(contr * bruto), 'contraccion': float(contr),
+           'sesgo_bruto_k2': bruto_k2, 'sesgo_contraido_k2': float(contr_k2 * bruto_k2),
            'efectos_casa': efectos_casa(d, m.contraccion_casa),
            'efectos_casa_k4': efectos_casa(d, 4.0), 'efectos_casa_k16': efectos_casa(d, 16.0),   # sensibilidad
            'efectos_partidistas': efectos_partidistas(d, m.contraccion_casa),
-           'errores_estado': b[b.location == est].drop(columns='w').round(3).to_dict('records')}
+           'errores_estado': b[b.location == est].round(3).to_dict('records')}
     cache.write_text(json.dumps(par, ensure_ascii=False), encoding='utf-8')
     par['estado_fuente'] = estado
     log.info('Calibración h=%d: τ=%.2f s=%.2f ν=%.1f · terceros %.2f + %.2f·enc · sesgo %s %+.2f (bruto %+.2f) · %d contiendas',
-             h, tau, s, nu, coef[0], coef[1], est, contr * r.m, r.m, len(b))
+             h, tau, s, nu, coef[0], coef[1], est, contr * bruto, bruto, len(b))
     return par

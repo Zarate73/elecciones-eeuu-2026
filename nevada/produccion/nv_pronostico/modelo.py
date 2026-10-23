@@ -13,7 +13,9 @@
   Sesgo estatal: en NV el error cambia de signo entre ciclos (8 de 23 contiendas pro-D, autocorrelación −0.11) y
   quitarlo no es mejor ni peor de forma clara (P = 0.62 LOYO, 0.55 cronológico); se conserva la regla nacional (con
   sesgo contraído, que en NV es pequeño). «Sin sesgo» se reporta siempre (2 × 2 con mercados).
-  escenarios: cada uno trae su probabilidad sin y con la misma mezcla de mercados
+  escenarios: cada uno trae su probabilidad sin y con la misma mezcla de mercados. v1.1.0 (revisión del 22-oct): influencia
+  de cada encuesta (se quita y se reconstruye la ventana), sin encuestas partidistas, sesgo sin contiendas de una sola
+  encuestadora, terceros con reducción moderada/pronunciada y peso de mercados 0.15/0.50.
 """
 from __future__ import annotations
 
@@ -102,13 +104,14 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     p_mod = float((base.M > 0).mean())
     w_m = m.peso_mercados if mk.get('promedio_D') is not None else 0.0
 
-    def mezclar(s_: pd.DataFrame) -> tuple[float, float]:
+    def mezclar(s_: pd.DataFrame, w: float | None = None) -> tuple[float, float]:
         """Mismo ajuste por mercados que el final: (probabilidad mezclada, desplazamiento del margen simulado)."""
+        w = w_m if w is None else w
         p0 = float((s_.M > 0).mean())
-        if w_m == 0:
+        if w == 0 or mk.get('promedio_D') is None:
             return p0, 0.0
-        pf = float(expit((1 - w_m) * logit(np.clip(p0, 1e-4, 1 - 1e-4))
-                         + w_m * logit(np.clip(mk['promedio_D'], 1e-4, 1 - 1e-4))))
+        pf = float(expit((1 - w) * logit(np.clip(p0, 1e-4, 1 - 1e-4))
+                         + w * logit(np.clip(mk['promedio_D'], 1e-4, 1 - 1e-4))))
         return pf, float(-np.quantile(s_.M, 1 - pf))
 
     # La probabilidad mezclada se traslada a la distribución: se desplaza el margen simulado lo justo para que
@@ -152,6 +155,9 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     # sensibilidad (cada fila trae también su probabilidad con mercados)
     esc.append(fila(sim(mu_enc - sr), f'Sesgo estatal sin contraer ({-sr:+.2f} pp)'))
     esc.append(fila(sim(mu_enc - 0.5 * sb), f'Sesgo estatal a la mitad ({-0.5 * sb:+.2f} pp)'))
+    if 'sesgo_contraido_k2' in par:                         # NV 2014 (una encuestadora, error +22.8) domina el sesgo
+        sk2 = par['sesgo_contraido_k2']
+        esc.append(fila(sim(mu_enc - sk2), f'Sesgo estimado sin contiendas de una sola encuestadora ({-sk2:+.2f} pp)'))
     esc.append(fila(sim(mu, Dist(sd, None)), 'Distribución normal'))
     esc.append(fila(sim(mu, dist, 0.1, 0.0), 'Sin terceros'))
     esc.append(fila(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva)), par['nu'])), 'Sin deriva por encuestas viejas'))
@@ -177,6 +183,37 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
                     ('Efecto de casa + partidista si la firma no tiene historia', casa_mix)):
         m_p, *_ = promedio(q, mp, m.vida_media_dias)
         esc.append(fila(sim(m_p - sesgo), f"{nom} [D {ep.get('D', 0):+.1f}, R {ep.get('R', 0):+.1f}]"))
+    # --- revisión del 22-oct (NV): dependencia de una sola encuesta, terceros y peso de mercados
+    def con_encuestas(pp: pd.DataFrame, nombre: str) -> None:
+        """Reconstruye el promedio con otro conjunto de encuestas, con la misma regla de ventana (y ampliación)."""
+        if pp.empty:
+            return
+        q2, nt = seleccionar_ventana(pp, cfg)
+        m2, o2, k2, _ = promedio(q2, house, m.vida_media_dias)
+        ed2 = max((pd.Timestamp(cfg.dia_eleccion) - q2.fin.max()).days - h, 0)
+        s2 = float(np.sqrt(par['tau'] ** 2 + par['s'] ** 2 / max(k2, 1) + m.sigma_dia_pp ** 2 * ed2))
+        firmas = ', '.join(q2.sort_values('fin').pollster.str.split(r' [\(—]').str[0].unique())
+        esc.append(fila(sim(m2 - sesgo, Dist(s2, par['nu']), *terceros(o2)),
+                        f'{nombre} → ventana desde {nt["desde"]}: {firmas}'))
+
+    pesos = w.sort_values(ascending=False)
+    for idx in pesos.index[:3]:                              # influencia de cada una de las encuestas con más peso
+        fila_q = q.loc[idx]
+        con_encuestas(p[p.pollster_key != fila_q.pollster_key],
+                      f'Sin {fila_q.pollster} (pesa {pesos[idx]:.0%})')
+    lado_p = p.pollster.map(lado_partidista)
+    if lado_p.notna().any():
+        con_encuestas(p[lado_p.isna()], 'Sin encuestas de patrocinio partidista')
+    t_rep = otros_enc if np.isfinite(otros_enc) else None
+    for f_, nom_f in ((0.6, 'reducción moderada'), (0.3, 'reducción pronunciada')):
+        tm, ts = terceros(otros_enc * f_) if t_rep is not None else (max(t_media * f_, 0.1), tsd)
+        esc.append(fila(sim(mu, dist, tm, ts), f'Terceros: {nom_f} (apoyo × {f_:.1f}; media {tm:.1f} %)'))
+    for w_alt in (0.15, 0.50):
+        if w_m > 0:
+            pf, dz = mezclar(base, w_alt)
+            r_w = resumen(desplazar(base, dz), f'Peso de mercados {w_alt:.2f} (base {w_m:.2f})', rec)
+            r_w.update({'P_D_con_mercados': r_w['P_D'], 'margen_con_mercados': r_w['margen']})
+            esc.append(r_w)
     for nom in ('kalshi', 'polymarket'):
         x = mk.get(nom, {})
         if x.get('usable'):

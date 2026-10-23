@@ -41,7 +41,7 @@ Carpetas:
 - **Encuestas (31.8 %):** solo hay dos encuestadoras en la ventana ampliada.
   - Noble Predictive Insights, 22–26 sep: Lombardo +2.
   - Global Strategy Group, 8–13 oct, interna de la campaña de Ford: Lombardo +1. Con su efecto de casa (+1.4 pro-D) queda en −2.4.
-- **Mercados (66.5 %):** subieron de 51.5 % a 66.5 % entre el 13 y el 21-oct, en coincidencia con los reportes de voto anticipado con ventaja demócrata (Ralston, 21-oct). El modelo no usa el voto anticipado directamente, pero los mercados sí lo incorporan, y entran con peso 0.30.
+- **Mercados (66.5 %):** subieron de 51.5 % a 66.5 % entre el 13 y el 21-oct. La subida coincide en el tiempo con los reportes de voto anticipado con ventaja demócrata (Ralston, 21-oct), pero esa coincidencia es descriptiva: no muestra que esas noticias hayan movido los precios. El modelo no usa el voto anticipado; los mercados entran con peso 0.30.
 
 ## 2. Fuentes
 | Fuente | Qué aporta | Uso |
@@ -129,6 +129,7 @@ Carpetas:
 **Decisión: G** (la regla de Florida y la nacional).
 - En NV, quitar el sesgo no es claramente mejor ni peor (P = 0.62 en LOYO y 0.55 cronológico, contra 0.85 en Arizona).
 - El sesgo contraído de NV es pequeño (+0.58 pp pro-D).
+- **Actualización ([revisión del 22-oct](02_revision_externa_2026-10-22.md)):** la ventaja aparente de «sin sesgo» venía de 2014 (una sola encuestadora, error +22.8). Sin 2014, el sesgo mejora el CRPS en NV (2.521 vs 2.585; cronológico 2.443 vs 2.572). El valor de hoy, en cambio, depende de esa contienda: sin ella sería −0.11 en lugar de −0.58 (queda como escenario).
 - Sin evidencia estatal clara se usa la regla que gana a nivel nacional. «Sin sesgo» se reporta siempre (44.7 % con mercados).
 - **Encuestas internas de campaña:** ninguna alternativa mejora (P1, P2 y P3 son peores en NV). Se mantiene el efecto de casa de la firma; el ajuste por patrocinador queda como escenario.
 - **Terceros:** «no reportado» ≠ 0 % (T4) da 2.311 de MAE conjunto en NV, contra 2.302 de la regla anterior; es una diferencia nula. Se mantiene T4 por consistencia con Florida.
@@ -136,9 +137,9 @@ Carpetas:
 ## 5. Mercados
 - **Hoy:** Kalshi 66.5 % y Polymarket 66.5 %.
 - **Serie desde junio:**
-  - Correlación de niveles 0.75 y de cambios diarios −0.03; diferencia media 3.1 pp. No son el mismo precio, así que se promedian.
+  - Correlación de niveles 0.75 y de cambios diarios −0.03; diferencia media 3.1 pp. No cotizan exactamente igual, pero eso no las hace dos señales independientes: probablemente reaccionan a la misma información, y sus diferencias diarias parecen ruido. Por eso se promedian en una sola señal, y el peso 0.30 es de ese promedio (no 0.30 a cada una).
   - Subieron 15 pp en nueve días (13 al 22-oct), sobre todo el 21-oct (Kalshi de 57.5 % a 66.2 %).
-- **Peso:** 0.30, estimado por máxima verosimilitud con 40 contiendas de 2024, entre ellas NV Presidente y Senado.
+- **Peso:** 0.30, estimado por máxima verosimilitud con 40 contiendas de 2024, entre ellas NV Presidente y Senado. En las contiendas de 2024 con pocas encuestadoras (k ≤ 2, n = 11) el peso óptimo es 0.80 (IC95 0.05–1.00): 0.30 queda dentro del intervalo y del lado conservador, pero con 11 contiendas no está validado para este régimen. Escenarios con 0.15 y 0.50 ([revisión del 22-oct](02_revision_externa_2026-10-22.md)).
 
 ## 6. Limitaciones
 - **Pocas encuestas, viejas y una interna.** En los 21 días previos a la elección solo hay una encuesta (interna de Ford). El promedio usa dos encuestadoras, la más reciente terminó el 13-oct, y la σ incluye 9 días de deriva.

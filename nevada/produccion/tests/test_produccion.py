@@ -162,3 +162,36 @@ def test_excel_verificado_contiene_al_csv_publicado():
         pytest.skip('la configuración no apunta a un Excel local')
     clave = lambda d: set(zip(d.pollster, pd.to_datetime(d.fin).dt.date, d.D.astype(float), d.R.astype(float)))
     assert clave(encuestas.cargar_base(RAIZ / 'data' / 'encuestas_verificadas_nv.csv')) <= clave(encuestas.cargar_base(ruta))
+
+
+# ----------------------------------------------------------------------------------- revisión del 22-oct (v1.1.0)
+def test_influencia_de_cada_encuesta(cfg, red_simulada):
+    """Quitar la encuesta interna (GSG, ~70 % del peso) reconstruye la ventana con NPI y Emerson; no es el escenario base."""
+    r = ejecutar(cfg, escribir_salidas=False)['modelo']
+    e, f = r['escenarios'], r['final']
+    sin_gsg = e[e.escenario.str.startswith('Sin Global Strategy Group')].iloc[0]
+    assert '(pesa 70%)' in sin_gsg.escenario and 'Emerson College' in sin_gsg.escenario
+    assert sin_gsg.margen > e.iloc[1].margen                       # sin la interna, el promedio es MÁS favorable a Ford
+    sin_part = e[e.escenario.str.startswith('Sin encuestas de patrocinio partidista')].iloc[0]
+    assert np.isfinite(sin_part.P_D_con_mercados) and 'Emerson College' in sin_part.escenario and f['k'] == 2
+
+
+def test_sesgo_sin_contiendas_de_una_encuestadora(cfg, red_simulada):
+    par = ejecutar(cfg, escribir_salidas=False)['calibracion']
+    assert 0 < par['sesgo_contraido_k2'] < par['sesgo_contraido']       # sin NV 2014 el sesgo casi desaparece
+    assert par['sesgo_contraido_k2'] == pytest.approx(0.108, abs=0.01)
+
+
+def test_escenarios_de_terceros_no_mueven_el_margen(cfg, red_simulada):
+    r = ejecutar(cfg, escribir_salidas=False)['modelo']
+    e = r['escenarios'].set_index('escenario')
+    base = e.iloc[1]
+    ter = e[e.index.str.startswith('Terceros:')]
+    assert len(ter) == 2 and (ter.pct_terceros < base.pct_terceros).all()
+    assert np.allclose(ter.margen, base.margen, atol=0.1) and (ter.pct_D > base.pct_D).all() and (ter.pct_R > base.pct_R).all()
+
+
+def test_peso_de_mercados_monotono(cfg, red_simulada):
+    e = ejecutar(cfg, escribir_salidas=False)['modelo']['escenarios'].set_index('escenario')
+    p15, p50 = e.loc['Peso de mercados 0.15 (base 0.30)', 'P_D'], e.loc['Peso de mercados 0.50 (base 0.30)', 'P_D']
+    assert e.iloc[1].P_D < p15 < e.iloc[0].P_D < p50 < 0.665                # encuestas < 0.15 < final (0.30) < 0.50 < mercados
