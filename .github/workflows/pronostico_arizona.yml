@@ -37,19 +37,6 @@ jobs:
         run: python -m az_pronostico correr
       - name: Actualizar README
         run: python scripts/actualizar_readme.py
-      - name: Datos del tablero
+      - name: Publicar resultados (README, tablero y salidas)
         working-directory: .
-        run: python scripts/exportar_tablero.py
-      - name: Publicar resultados
-        working-directory: .
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tablero/datos arizona/produccion/salidas arizona/README.md README.md
-          if git diff --cached --quiet; then
-            echo "Sin cambios"
-          else
-            git commit -m "Pronóstico Arizona $(TZ=America/Phoenix date +'%Y-%m-%d %H:%M') MST"
-            git pull --rebase --autostash -q
-            git push
-          fi
+        run: bash scripts/publicar.sh arizona "Pronóstico Arizona $(TZ=America/Phoenix date +'%Y-%m-%d %H:%M') MST"
