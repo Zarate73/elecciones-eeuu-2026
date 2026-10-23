@@ -3,7 +3,27 @@
 Elección general del 3 de noviembre de 2026 entre **Aaron Ford (D, fiscal general)** y **Joe Lombardo (R, gobernador en funciones)**. En la boleta también aparecen Danielle Ford (independiente) y la opción «None of these candidates».
 
 <!-- PRONOSTICO:INICIO -->
-Pendiente de la primera corrida automática.
+**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 20:46 PT · fuentes en vivo 8/8
+
+| Gobernador | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Aaron **Ford** (D) | **45.3%** (41.2–49.5) | **42%** |
+| Joe **Lombardo** (R, gobernador) | **46.6%** (42.4–50.7) | **58%** |
+| Terceros | 8.1% (5.8–10.4) | — |
+
+Margen D−R -1.2 pp (σ 6.4) · solo encuestas: P(Ford) 32% · Kalshi 66% · Polymarket 66% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 6.5% · 8 encuestas, 2 encuestadoras en la ventana
+
+Cómo se llega: promedio de encuestas -2.2 · sesgo estatal de Nevada -0.6 · mercados +1.6
+
+**Encuesta más reciente:** Global Strategy Group (D), terminó el 2026-10-13 (**9 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-22): 260,402 (178,222 por correo, 82,180 en persona) · registrados D 39.9% · R 35.0% · otros e independientes 25.1% (correo D+9.4, en persona R+4.7). Es registro de partido, no intención de voto: no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_nevada.yml)).
