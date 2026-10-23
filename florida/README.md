@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **David Jolly (D)** y **Byron Donalds (R)**, con candidatos de terceros en la boleta. El gobernador Ron DeSantis no puede reelegirse.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 11:36 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-22** (12 días a la elección) · actualizado automáticamente 2026-10-22 20:55 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
 | David **Jolly** (D) | **45.1%** (41.9–48.3) | **5%** |
-| Byron **Donalds** (R) | **52.8%** (49.6–55.9) | **95%** |
+| Byron **Donalds** (R) | **52.8%** (49.6–56.0) | **95%** |
 | Terceros | 2.1% (0.1–4.4) | — |
 
-Margen D−R -7.7 pp (σ 4.8) · solo encuestas: P(Jolly) 3% · Kalshi 22% · Polymarket 20% (peso de mercados 0.3) · recuento por máquina 2.1% · 17 encuestas, 5 encuestadoras en la ventana
+Margen D−R -7.7 pp (σ 4.8) · solo encuestas: P(Jolly) 3% · Kalshi 20% · Polymarket 20% (peso de mercados 0.3) · recuento por máquina 2.0% · 17 encuestas, 5 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas -4.4 · sesgo estatal de Florida -4.8 (las encuestas de FL han sobreestimado al demócrata) · mercados +1.6
+Cómo se llega: promedio de encuestas -4.4 · sesgo estatal de Florida -4.8 (las encuestas de FL han sobreestimado al demócrata) · mercados +1.5
 
 **Encuesta más reciente:** Univ. of North Florida, terminó el 2026-10-21 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-22): 1,774,765 (1,165,882 por correo, 608,883 en persona) · registrados D 41.1% · R 38.4% · NPA 18.1% (correo D+6.9, en persona R+5.4). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-22): 1,976,009 (1,212,343 por correo, 763,666 en persona) · registrados D 40.6% · R 39.0% · NPA 18.1% (correo D+6.8, en persona R+6.6). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
