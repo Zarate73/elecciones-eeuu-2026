@@ -11,7 +11,7 @@ on:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false     # cada push termina su CI: una corrida cancelada se muestra como fallo en la insignia
 
 jobs:
   pruebas:
