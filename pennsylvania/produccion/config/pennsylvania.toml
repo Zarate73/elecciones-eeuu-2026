@@ -25,6 +25,9 @@ logs = "logs"
 # Encuestas verificadas a mano (opcional). Excel con la hoja «Gobernador Pennsylvania» (PENNSYLVANIA_GOBERNADOR-v1.xlsx) o CSV
 # con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
 encuestas_base = "data/encuestas_verificadas_pa.csv"
+# Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
+# Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
+correcciones_n = "data/correcciones_tamano_muestra.csv"
 
 [fuentes]
 timeout_http_s = 30

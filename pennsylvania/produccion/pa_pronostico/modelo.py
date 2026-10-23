@@ -220,9 +220,9 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
             esc.append({'escenario': f'Solo {nom.capitalize()} (probabilidad)', 'P_D': x['p_D'],
                         'margen': float(dist.sc * student_t.ppf(x['p_D'], par['nu']))})
     rg = mk.get('rangos', {})
-    if 'P_D' in rg:
-        esc.append({'escenario': 'Polymarket por rangos de margen', 'P_D': rg['P_D'], 'margen': rg['margen_media'],
-                    'sd': rg['margen_sd']})
+    if 'P_D' in rg:                     # solo con partición completa (incluye el contrato del lado perdedor)
+        esc.append({'escenario': 'Polymarket por rangos de margen (normal ajustada a la partición completa; '
+                                 'P de los contratos)', 'P_D': rg['P_D'], 'margen': rg['margen_media'], 'sd': rg['margen_sd']})
 
     tabla = q.assign(efecto_casa=q.pollster_key.map(house).fillna(0.0), peso=w.values,
                      patrocinador=lado.fillna('—'), efecto_partidista=lado.map(ep).fillna(0.0))

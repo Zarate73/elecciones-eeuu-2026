@@ -6,6 +6,8 @@ Corte: 23-oct-2026, 11 días antes de la elección del 3-nov.
 - [`../backtest/`](../backtest/): backtest, datos y resultados.
 
 ## 1. Pronóstico
+> Cifras de v1.0.0 (23-oct). En v1.1.0, al corregir el n de F&M (600 imputado → 433 LV), el promedio de encuestas pasa de +22.30 a +22.40 y el margen final de +18.80 a +18.84; probabilidades y % sin cambio visible ([revisión del 23-oct](02_revision_externa_2026-10-23.md)).
+
 | Candidato | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
 | **Josh Shapiro (D, gobernador)** | **58.3 %** (54.1–62.5) | **99.7 %** |
@@ -36,7 +38,7 @@ Corte: 23-oct-2026, 11 días antes de la elección del 3-nov.
 | Ventana de 45 o 60 días (7 encuestadoras) | +21.9 | 99.9 % |
 | Ajuste por patrocinador (Z to A D, Susquehanna R, NPA R) | +21.9 | 99.7 % |
 | Peso de mercados 0.15 / 0.50 | +20.1 / +17.2 | 99.8 % / 99.4 % |
-| Polymarket por rangos de margen | +24.3 | ≈100 % |
+| Polymarket por rangos de margen (normal ajustada a la partición completa; ver [revisión del 23-oct](02_revision_externa_2026-10-23.md)) | +23.9 (captura de la mañana del 23-oct) | 97.3 % |
 
 **Lectura.** La pregunta de quién gana está resuelta por todas las fuentes: ningún escenario baja P(Shapiro) de 99 %. La incertidumbre real está en el **tamaño** del margen, que va de +17 a +24 según el escenario. Ahí el modelo y los mercados por rangos no coinciden (ver §5).
 
@@ -48,14 +50,14 @@ Corte: 23-oct-2026, 11 días antes de la elección del 3-nov.
 | Tu Excel (`PENNSYLVANIA_GOBERNADOR-v1.xlsx`, hoja «Gobernador Pennsylvania») | 20 encuestas generales | Pronóstico (se deduplica) |
 | **Kalshi** `GOVPARTYPA-26` | Shapiro 97.3 % | Mezcla con peso 0.30 (promediado con Polymarket) |
 | **Polymarket** `pennsylvania-governor-winner-2026` | Shapiro 97.7 % | Mezcla con peso 0.30 |
-| Polymarket `margin-of-victory` (rangos) | Margen implícito +24.3 (σ 8.0) | Escenario |
+| Polymarket `margin-of-victory` (rangos) | 8 contratos: «Republican wins» + 7 rangos D. Mañana del 23-oct: P(D) 97.3 %, margen ajustado +23.9 (σ 9.6), E[M \| D] +24.3 | Escenario (diagnóstico) |
 | **civicAPI (PA)** | Boletas por correo solicitadas y devueltas, por partido y condado | Diagnóstico |
 | Departamento de Estado de PA (registro) | Registro por partido | Contexto (prensa; sin API estable) |
 
 **Particularidades de Pennsylvania resueltas en el código**
 - **Encuestadoras con varios nombres:** PennLive y Bravo Group son la misma serie (Bravo Group hace la encuesta de PennLive). NYT/Inquirer/Siena aparece de cuatro formas. Todas se normalizan a una clave para deduplicar y para los efectos de casa.
 - **Versiones LV y RV de la misma encuesta:** se prefiere LV y la RV se descarta (columna `nota_version`). Antes el modelo podía contar dos veces la misma encuesta.
-- **Polymarket por rangos:** el rango abierto «X % or more» tenía cota superior arbitraria. Ahora es max(30, X + 10). Con un margen de +20 la cota importa.
+- **Polymarket por rangos** (corregido el 23-oct, v1.1.0): el evento de PA tiene un contrato «Republican wins» sin rango que antes se descartaba, así que P(D) salía 1 por construcción y la «media» era en realidad E[M | D]. Ahora se incluye como el intervalo (−∞, 0), se ajusta una normal por máxima verosimilitud con censura por intervalos (el «30 % o más» queda abierto, sin cota inventada) y se publica E[M | D] por separado. Detalle en [`02_revision_externa_2026-10-23.md`](02_revision_externa_2026-10-23.md).
 - **PA no tiene voto anticipado en persona**, solo por correo. `anticipado.py` trata la columna en persona como opcional.
 - **Terceros:** la ventana no los reporta (F&M y ActiVote solo dan D/R). Con la regla T4 («no reportado ≠ 0»), entra la media histórica (2.1 %).
 
@@ -82,7 +84,7 @@ Corte: 23-oct-2026, 11 días antes de la elección del 3-nov.
 | Encuestadora | Fechas | Población | Shapiro | Garrity | Margen |
 |---|---|---|---|---|---|
 | ActiVote | 21-oct | LV, n 400 | 62 | 39 | +23 |
-| Franklin & Marshall | 7–18 oct | LV, n 600 | 59 | 36 | +23 |
+| Franklin & Marshall | 7–18 oct | LV, n 433 (muestra completa 808 RV) | 59 | 36 | +23 |
 | PennLive / Bravo Group | 5–11 oct | RV | 58 | 28 | +30 |
 | Quinnipiac | 1–5 oct | LV, n 1,159 | 59 | 34 | +25 |
 | Z to A Research (D) | 28 sep–1 oct | LV | 53 | 34 | +19 |
@@ -149,11 +151,11 @@ Corte: 23-oct-2026, 11 días antes de la elección del 3-nov.
   - Cerca de 1 los precios casi no se mueven, así que las variaciones diarias son ruido de liquidez.
   - Se promedian en una sola señal: el peso 0.30 es del promedio, no de cada plataforma.
 - **Peso en régimen extremo:** en las 18 contiendas de 2024 con mercado < 0.1 o > 0.9, el peso óptimo por máxima verosimilitud es 0.30 (IC95 0–0.80). Se mantiene 0.30.
-- **Advertencia sobre el margen.** Una probabilidad de 97 % «implica» un margen de +13, muy por debajo de las encuestas (+21) y de Polymarket por rangos (+24).
+- **Advertencia sobre el margen.** Una probabilidad de 97 % «implica» un margen de +13, muy por debajo de las encuestas (+21) y de Polymarket por rangos (+21 a +24 según la hora de la captura del 23-oct).
   - Por eso la mezcla **baja** el margen en 2.4 pp aunque los mercados también den ganador a Shapiro.
   - La causa probable es el sesgo favorito–longshot: los contratos a 97 ¢ rinden poco y los apostadores compran a Garrity barato. No es información sobre el margen.
   - Efecto en la probabilidad: casi nulo (99.9 → 99.7 %). En el margen y en los % sí pesa: Shapiro pasa de 59.5 a 58.3 %.
-  - No se cambia la regla (está validada nacionalmente y en régimen extremo), pero **para el margen, el escenario «sin mercados» (+21.2) o Polymarket por rangos (+24.3) son lecturas igualmente defendibles.**
+  - No se cambia la regla (está validada nacionalmente y en régimen extremo), pero **para el margen, el escenario «sin mercados» (+21.2) o Polymarket por rangos (+23.9 en la captura de la mañana del 23-oct; varía con cada corrida) son lecturas igualmente defendibles.**
 
 ## 6. Limitaciones
 - **Solo dos encuestadoras en la ventana**, cada una pesa ~50 %. ActiVote es un panel en línea con n = 400, y su suma D + R da 101 (redondeo). Sin ella, la ventana se amplía y el margen sube a +22.7: la dependencia no cambia el ganador.

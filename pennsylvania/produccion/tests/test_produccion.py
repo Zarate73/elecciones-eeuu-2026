@@ -58,8 +58,24 @@ def test_kalshi_y_polymarket_en_vivo(cfg, red_simulada):
     assert k['estado'] == p['estado'] == 'en_vivo' and k['usable'] and p['usable']
     assert k['p_d'] == pytest.approx(0.973) and p['p_d'] == pytest.approx(0.9765)
     rg = mk['rangos']
-    assert len(rg['tabla']) == 7 and rg['tabla'].hasta.max() == 40      # «30 % o más» → 30–40, no 30–30
-    assert rg['margen_media'] == pytest.approx(24.33, abs=0.05)
+    t = rg['tabla']
+    # 8 contratos: «Republican wins» (lado R completo, −∞ a 0) + 7 rangos D; «30 % o más» queda abierto (sin cota inventada)
+    assert len(t) == 8 and rg['completo'] and np.isneginf(t.desde.min()) and np.isposinf(t.hasta.max())
+    assert (t.contrato == 'lado_completo').sum() == 1
+    # P(D) sale de la partición completa, ya no es 1 por construcción
+    assert rg['P_D'] == pytest.approx(1 - 0.0245 / 0.923, abs=1e-6) and rg['P_D'] < 0.99
+    assert rg['suma_precios'] == pytest.approx(0.923)
+    assert rg['margen_cond_D'] == pytest.approx(24.33, abs=0.05)         # E[M | D]: el valor que antes se publicaba como media
+    assert rg['margen_media'] == pytest.approx(23.88, abs=0.05) and rg['margen_sd'] == pytest.approx(9.64, abs=0.05)
+
+
+def test_rangos_incompletos_no_dan_probabilidad():
+    """Sin el contrato del lado perdedor no hay P(D) ni margen incondicional: solo E[M | D]."""
+    t = pd.DataFrame({'desde': [0, 5, 10, 15, 20, 25, 30], 'hasta': [5, 10, 15, 20, 25, 30, np.inf],
+                      'p': [.09, .0465, .1505, .26, .245, .115, .24], 'contrato': ['rango'] * 6 + ['abierto']})
+    r = mercados.resumen_rangos(t)
+    assert not r['completo'] and 'P_D' not in r and 'margen_media' not in r
+    assert r['suma_precios'] == pytest.approx(1.147) and r['margen_cond_D'] == pytest.approx(20.99, abs=0.05)
 
 
 # ----------------------------------------------------------------------------------- civicAPI
@@ -96,10 +112,10 @@ def test_cifras_del_23_oct(cfg, red_simulada):
     cfg.modelo['n_simulaciones'] = 200_000
     r = ejecutar(cfg, escribir_salidas=False)
     f, par = r['modelo']['final'], r['calibracion']
-    assert f['margen_encuestas'] == pytest.approx(22.30, abs=0.01)
+    assert f['margen_encuestas'] == pytest.approx(22.40, abs=0.01)   # F&M con n = 433 (LV), no 600 imputado
     assert par['sesgo_contraido'] == pytest.approx(1.049, abs=0.002)
-    assert f['margen'] == pytest.approx(18.80, abs=0.03) and f['P_D'] == pytest.approx(0.997, abs=0.002)
-    assert f['desplazamiento_mercados_pp'] == pytest.approx(-2.44, abs=0.05)   # mercados (97 %) por debajo del modelo
+    assert f['margen'] == pytest.approx(18.84, abs=0.03) and f['P_D'] == pytest.approx(0.997, abs=0.002)
+    assert f['desplazamiento_mercados_pp'] == pytest.approx(-2.48, abs=0.05)   # mercados (97 %) por debajo del modelo
 
 
 def test_escenarios_de_revision(cfg, red_simulada):
@@ -146,3 +162,15 @@ def test_excel_verificado_contiene_al_csv_publicado():
         pytest.skip('la configuración no apunta a un Excel local')
     clave = lambda d: set(zip(d.pollster, pd.to_datetime(d.fin).dt.date, d.D.astype(float), d.R.astype(float)))
     assert clave(encuestas.cargar_base(RAIZ / 'data' / 'encuestas_verificadas_pa.csv')) <= clave(encuestas.cargar_base(ruta))
+
+
+def test_correccion_n_franklin_marshall(cfg, red_simulada):
+    """F&M oct (LV 59–36): Wikipedia solo da 808 RV de la muestra completa; el n de la versión LV (433) viene del archivo
+    de correcciones. Sin corrección, el n faltante se imputa en 600 y queda marcado."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    fm = p[(p.clave == 'franklinmarsha') & (p.fin == '2026-10-18')].iloc[0]
+    assert fm['pop'] == 'LV' and fm['n'] == 433 and fm.n_fuente.startswith('corregido') and not fm.n_imputado
+    cfg.rutas['correcciones_n'] = ''
+    p2 = encuestas.obtener_encuestas(cfg)['encuestas']
+    fm2 = p2[(p2.clave == 'franklinmarsha') & (p2.fin == '2026-10-18')].iloc[0]
+    assert fm2['n'] == 600 and fm2.n_imputado and fm2.n_fuente == 'imputado (600)'

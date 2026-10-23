@@ -1,0 +1,6 @@
+# Tamaños de muestra verificados. clave = clave normalizada de la encuestadora (columna «clave» de encuestas_gobernador.csv).
+# F&M oct-2026: la muestra completa es de 808 RV (±4.1 con efecto de diseño); los resultados 59–36 son de votantes probables,
+# con margen de error ±5.6. Con el mismo efecto de diseño (deff = 808·(4.1/98)² ≈ 1.41), n_LV = 0.25·deff·(1.96/0.056)² ≈ 433,
+# que coincide con lo que reporta PoliticsPA. Fuente: fandmpoll.org, «Franklin & Marshall College Poll Release: October 2026».
+clave,fin,pop,n,fuente
+franklinmarsha,2026-10-18,LV,433,F&M oct-2026 (MoE LV ±5.6; PoliticsPA)

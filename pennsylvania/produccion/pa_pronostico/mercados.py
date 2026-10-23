@@ -93,32 +93,97 @@ def ganador_poly(ev: dict) -> tuple[float, float]:
 
 
 def rangos_poly(ev: dict) -> pd.DataFrame:
-    """Mercado de margen por rangos -> tabla (desde, hasta, p, p_norm) en margen D−R (pp)."""
+    """Mercado de margen por rangos -> tabla (desde, hasta, p, p_norm, contrato) en margen D−R (pp).
+
+    Reconoce tres tipos de contrato:
+      - «<Partido> Party candidate win ... by X%–Y%»    → intervalo [X, Y] (con signo según el partido);
+      - «<Partido> Party candidate win ... by X% or more» → intervalo abierto [X, ∞);
+      - «Will the <Partido> Party candidate win ...?» sin rango → todo el lado de ese partido, (−∞, 0) o (0, ∞).
+    El tercero existe en PA («Republican wins»): sin él, la partición solo tiene márgenes positivos y P(D) sale 1
+    por construcción. Se ignoran los contratos cerrados o inactivos (p. ej., «Person A», «a candidate not listed»).
+    """
     filas = []
     for m in ev.get('markets', []):
+        if m.get('closed') or m.get('active') is False:
+            continue
         q = m.get('question') or ''
         par = re.search(r'(Republican|Democratic) Party candidate win .*? by (\d+(?:\.\d+)?)%\s*(?:-|–|to)\s*(\d+(?:\.\d+)?)%', q)
         mas = re.search(r'(Republican|Democratic) Party candidate win .*? by (\d+(?:\.\d+)?)% or more', q)
+        lado_solo = re.search(r'(Republican|Democratic) Party candidate win [^?]*?election\?\s*$', q)
         if par:
-            lado, a, b = par.group(1), float(par.group(2)), float(par.group(3))
+            lado, a, b, tipo = par.group(1), float(par.group(2)), float(par.group(3)), 'rango'
         elif mas:
-            lado, a, b = mas.group(1), float(mas.group(2)), max(30.0, float(mas.group(2)) + 10)   # «X % o más»
+            lado, a, b, tipo = mas.group(1), float(mas.group(2)), np.inf, 'abierto'
+        elif lado_solo and ' by ' not in q:
+            lado, a, b, tipo = lado_solo.group(1), 0.0, np.inf, 'lado_completo'
         else:
             continue
-        lo, hi = (a, b) if lado == 'Democratic' else (-b, -a)
-        filas.append({'desde': lo, 'hasta': hi, 'p': precio_poly(m)})
-    t = pd.DataFrame(filas).sort_values('desde').reset_index(drop=True)
+        lo, hi = (a, b) if lado == 'Democratic' else (-b, 0.0 if a == 0 else -a)
+        filas.append({'desde': lo, 'hasta': hi, 'p': precio_poly(m), 'contrato': tipo})
+    t = pd.DataFrame(filas)
     if len(t) < 4:
         raise LookupError('Polymarket: mercado de margen sin rangos reconocibles')
+    t = t.sort_values('desde').reset_index(drop=True)
     t['p_norm'] = t.p / t.p.sum()
     return t
 
 
+def _particion_completa(t: pd.DataFrame) -> bool:
+    """Los intervalos cubren toda la recta (−∞ a ∞) sin huecos ni traslapes."""
+    d, h = t.desde.to_numpy(float), t.hasta.to_numpy(float)
+    return bool(np.isneginf(d[0]) and np.isposinf(h[-1]) and np.allclose(h[:-1], d[1:]))
+
+
+def _ajuste_normal(t: pd.DataFrame) -> tuple[float, float]:
+    """Normal ajustada a los precios normalizados por máxima verosimilitud con censura por intervalos.
+
+    max_{μ,σ} Σ p̃_i · log[Φ((hasta_i − μ)/σ) − Φ((desde_i − μ)/σ)]
+    Usa los intervalos abiertos tal como son (sin inventar cotas para «X % o más» ni un margen medio del lado perdedor).
+    """
+    from scipy.optimize import minimize
+    from scipy.stats import norm
+    p = t.p_norm.to_numpy(float)
+    lo, hi = t.desde.to_numpy(float), t.hasta.to_numpy(float)
+    medio = np.where(np.isfinite(lo) & np.isfinite(hi), (lo + hi) / 2, np.where(np.isfinite(lo), lo + 5, hi - 5))
+    m0 = float(np.sum(p * medio))
+
+    def nll(th):
+        mu, sd = th[0], np.exp(th[1])
+        q = np.clip(norm.cdf(hi, mu, sd) - norm.cdf(lo, mu, sd), 1e-12, 1.0)
+        return -float(np.sum(p * np.log(q)))
+
+    r = minimize(nll, [m0, np.log(8.0)], method='Nelder-Mead', options={'xatol': 1e-4, 'fatol': 1e-8, 'maxiter': 2000})
+    return float(r.x[0]), float(np.exp(r.x[1]))
+
+
 def resumen_rangos(t: pd.DataFrame) -> dict:
-    medio = (t.desde + t.hasta) / 2
-    media = float(np.sum(t.p_norm * medio))
-    return {'margen_media': media, 'margen_sd': float(np.sqrt(np.sum(t.p_norm * (medio - media) ** 2))),
-            'P_D': float(t[t.desde >= 0].p_norm.sum())}
+    """Resumen del mercado por rangos.
+
+    - suma_precios: Σ p antes de normalizar (≠ 1 por diferenciales y cotizaciones no sincronizadas); la normalización
+      proporcional da una distribución, no garantiza que esté calibrada.
+    - Si la partición es completa: P_D = Σ p̃ de los intervalos con margen > 0 (directo de los contratos) y
+      margen_media / margen_sd de la normal ajustada (margen incondicional), con P_D_normal = Φ(μ/σ) como control.
+    - Siempre: margen_cond_D = E[M | D] con los intervalos positivos renormalizados (punto medio; «X % o más» → X + 5).
+    Sin partición completa no se publica P_D ni margen incondicional (solo el condicional).
+    """
+    from scipy.stats import norm
+    t = t.copy()
+    t['desde'] = pd.to_numeric(t.desde, errors='coerce')
+    t['hasta'] = pd.to_numeric(t.hasta, errors='coerce')
+    t = t.sort_values('desde').reset_index(drop=True)
+    t['p_norm'] = t.p / t.p.sum()
+    out = {'suma_precios': float(t.p.sum()), 'n_contratos': int(len(t)), 'completo': _particion_completa(t)}
+    tipo = t['contrato'] if 'contrato' in t else pd.Series('rango', index=t.index)
+    pos = t[(t.desde >= 0) & (tipo != 'lado_completo')]          # el lado D completo no informa sobre M | D
+    if len(pos):
+        w = pos.p / pos.p.sum()
+        med = np.where(np.isfinite(pos.hasta), (pos.desde + pos.hasta) / 2, pos.desde + 5)
+        out['margen_cond_D'] = float(np.sum(w * med))
+    if out['completo']:
+        mu, sd = _ajuste_normal(t)
+        out.update({'P_D': float(t[t.desde >= 0].p_norm.sum()), 'margen_media': mu, 'margen_sd': sd,
+                    'P_D_normal': float(1 - norm.cdf(0, mu, sd))})
+    return out
 
 
 # ==================================================================================== orquestación

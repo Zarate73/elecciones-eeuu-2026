@@ -202,7 +202,7 @@ def _completar(df: pd.DataFrame, alias) -> pd.DataFrame:
     if df.empty:
         return pd.DataFrame(columns=COLUMNAS)
     df['clave_538'] = [clave_firma(p, alias) for p in df.pollster]
-    df['n'] = pd.to_numeric(df.n, errors='coerce').fillna(600)
+    df['n'] = pd.to_numeric(df.n, errors='coerce')      # sin imputar aquí: encuestas.py corrige o imputa y lo marca
     df['tipo_pregunta'] = np.where((df.D + df.R) >= 99.5, 'reasignacion', 'general')
     df['fuente'] = df.origen
     df['nota'] = ''

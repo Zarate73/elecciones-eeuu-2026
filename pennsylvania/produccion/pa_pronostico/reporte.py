@@ -39,6 +39,16 @@ def texto_resumen(r: dict, cfg) -> str:
         lin.insert(9, f"  Sesgo estatal: {-f['sesgo_estatal_aplicado']:+.2f} pp (bruto {-f['sesgo_estatal_bruto']:+.2f}, "
                       f"contracción {f['contraccion_sesgo']:.2f}) · promedio de encuestas {f['margen_encuestas']:+.2f} · "
                       f"mercados desplazan {f['desplazamiento_mercados_pp']:+.2f} pp")
+    imp = m['ventana'][m['ventana'].get('n_imputado', pd.Series(False, index=m['ventana'].index)).astype(bool)]
+    if len(imp):
+        lin.append('  n imputado en 600 (la fuente no lo publica): ' + ', '.join(imp.pollster.astype(str)))
+    rg = mk.get('rangos', {})
+    if 'suma_precios' in rg:            # diagnóstico: no entra a la distribución publicada
+        lin += ['', f"POLYMARKET POR RANGOS (diagnóstico, {rg['estado'][:30]}): {rg['n_contratos']} contratos, "
+                    f"suma de precios {rg['suma_precios']:.3f} antes de normalizar · "
+                    + (f"P(D) {rg['P_D']:.1%} (partición completa) · margen ajustado {rg['margen_media']:+.1f} "
+                       f"(σ {rg['margen_sd']:.1f}) · " if rg.get('completo') else 'partición INCOMPLETA: sin P(D) ni margen incondicional · ')
+                    + (f"E[margen | gana D] {rg['margen_cond_D']:+.1f}" if 'margen_cond_D' in rg else '')]
     a = r.get('anticipado', {})
     if a.get('disponible'):
         lin += ['', f"VOTO YA EMITIDO (civicAPI, diagnóstico, {a['estado'][:30]}, al {a['fecha']}): {a['emitidos']:,} "
@@ -115,11 +125,11 @@ def escribir(r: dict, cfg) -> Path:
          'pct_IC80_alto': f['pct_terceros_IC80'][1], 'P_ganar': 0.0}]
     ).to_csv(base / 'pronostico_gobernador.csv', index=False, encoding='utf-8-sig')
     m['escenarios'].to_csv(base / 'escenarios_gobernador.csv', index=False, encoding='utf-8-sig')
-    cols = ['fin', 'inicio', 'pollster', 'clave', 'pop', 'n', 'D', 'R', 'otros', 'indecisos', 'margin_poll',
+    cols = ['fin', 'inicio', 'pollster', 'clave', 'pop', 'n', 'n_fuente', 'D', 'R', 'otros', 'indecisos', 'margin_poll',
             'efecto_casa', 'margen_corregido', 'partidista', 'origen', 'tambien_en', 'en_ventana']
     m['encuestas'][cols].sort_values('fin', ascending=False).to_csv(base / 'encuestas_gobernador.csv', index=False,
                                                                      encoding='utf-8-sig')
-    m['ventana'][['fin', 'pollster', 'n', 'D', 'R', 'margin_poll', 'efecto_casa', 'margen_corregido', 'patrocinador',
+    m['ventana'][['fin', 'pollster', 'n', 'n_fuente', 'D', 'R', 'margin_poll', 'efecto_casa', 'margen_corregido', 'patrocinador',
                   'efecto_partidista', 'peso']].to_csv(base / 'encuestas_ventana_pesos.csv', index=False, encoding='utf-8-sig')
     if r['anticipado'].get('disponible'):
         r['anticipado']['condados'].to_csv(base / 'voto_anticipado_condados.csv', index=False, encoding='utf-8-sig')

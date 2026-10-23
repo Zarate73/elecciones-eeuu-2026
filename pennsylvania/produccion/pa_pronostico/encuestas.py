@@ -174,6 +174,32 @@ def _con_cache(cfg, nombre: str, funcion):
         return pd.DataFrame(columns=COLS), f'no_disponible ({err})'
 
 
+def aplicar_correcciones_n(p: pd.DataFrame, cfg) -> tuple[pd.DataFrame, list[str]]:
+    """Reemplaza n con el tamaño verificado de data/correcciones_tamano_muestra.csv (clave, fin, pop, n, fuente).
+
+    La coincidencia es por clave de encuestadora, fecha de fin y población (LV/RV): una corrección de la versión LV no
+    toca la RV de la misma encuesta. Se usa cuando la fuente web no publica el n de esa versión (p. ej. Wikipedia da el
+    n de la muestra RV completa en una celda compartida con la fila LV).
+    """
+    txt = str(cfg.rutas.get('correcciones_n', '') or '').strip()
+    if not txt:
+        return p, []
+    ruta = cfg.ruta('correcciones_n')
+    if not ruta.exists():
+        return p, []
+    c = pd.read_csv(ruta, comment='#')
+    hechas = []
+    for _, r in c.iterrows():
+        m = ((p.clave == str(r.clave)) & (pd.to_datetime(p.fin) == pd.Timestamp(r.fin))
+             & (p['pop'].astype(str).str.upper() == str(r['pop']).upper()))
+        if m.any():
+            antes = p.loc[m, 'n'].iloc[0]
+            p.loc[m, 'n'] = float(r.n)
+            p.loc[m, 'n_fuente'] = f'corregido ({r.fuente})'
+            hechas.append(f"{r.clave} {r.fin} {r['pop']}: {('sin n' if pd.isna(antes) else int(antes))} → {int(r.n)}")
+    return p, hechas
+
+
 def obtener_encuestas(cfg) -> dict:
     f, e = cfg.fuentes, cfg.eleccion
     anio = cfg.dia_eleccion.year
@@ -216,7 +242,14 @@ def obtener_encuestas(cfg) -> dict:
     p = p[(pd.to_datetime(p.fin) > pd.Timestamp(cfg.fecha_nominacion)) &
           (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()
     p['partidista'] = p.pollster.str.contains(r'\((?:R|D)\)')
-    p['n'] = pd.to_numeric(p.n, errors='coerce').fillna(600).clip(100, 3000)
+    p['n'] = pd.to_numeric(p.n, errors='coerce')
+    p['n_fuente'] = np.where(p.n.notna(), 'reportado', '')
+    p, aplicadas = aplicar_correcciones_n(p, cfg)
+    if aplicadas:
+        log.info('Tamaños de muestra corregidos: %s', '; '.join(aplicadas))
+    p['n_imputado'] = p.n.isna()
+    p.loc[p.n_imputado, 'n_fuente'] = 'imputado (600)'
+    p['n'] = p.n.fillna(600).clip(100, 3000)
     p['fin'] = pd.to_datetime(p.fin)
     p['days'] = (pd.Timestamp(cfg.dia_eleccion) - p.fin).dt.days
     p['margin_poll'] = p.D - p.R

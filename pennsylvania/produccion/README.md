@@ -20,15 +20,16 @@ Paquete de Python del modelo de Pennsylvania: Josh Shapiro (D, gobernador) contr
 | Wikipedia | API MediaWiki | Encuestas |
 | 270toWin | Página HTML | Encuestas |
 | Base verificada | Excel «Gobernador Pennsylvania» o `data/encuestas_verificadas_pa.csv` | Encuestas |
-| Kalshi y Polymarket | APIs públicas | Mezcla (peso 0.30) y rangos de margen (escenario) |
+| Kalshi y Polymarket | APIs públicas | Mezcla (peso 0.30) y rangos de margen (escenario: partición completa con «Republican wins», normal ajustada y E[M \| D]) |
 | civicAPI | `early-vote/PA/{returned,requested}` (PA no tiene voto anticipado en persona) | Diagnóstico de las boletas por correo |
 | FiveThirtyEight raw-polls | GitHub | Calibración |
+| Correcciones de n | `data/correcciones_tamano_muestra.csv` | Tamaños verificados por versión LV/RV (p. ej. F&M oct: 433 LV); sin corrección, n faltante = 600 marcado en `n_imputado` |
 
 ## Uso
 ```
 python -m pa_pronostico correr             # fuentes en vivo
 python -m pa_pronostico correr --offline   # solo cachés
 python -m pa_pronostico verificar          # revisa cada fuente
-python -m pytest -q                        # 16 pruebas sin red (respuestas reales del 23-oct-2026)
+python -m pytest -q                        # 18 pruebas sin red (respuestas reales del 23-oct-2026)
 ```
 En Windows: `scripts\instalar.bat` y luego `scripts\correr_pronostico.bat`.
