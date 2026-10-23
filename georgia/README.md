@@ -1,7 +1,7 @@
 # Georgia 2026 · Gobernador (y Senado)
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 00:33 ET · fuentes en vivo 7/7
+**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 12:52 ET · fuentes en vivo 7/7
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
