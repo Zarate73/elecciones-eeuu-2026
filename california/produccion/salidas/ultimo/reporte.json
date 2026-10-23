@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generado": "2026-10-22T10:16:55-07:00",
+  "generado": "2026-10-22T22:02:43-07:00",
   "fecha_corte": "2026-10-22",
   "dias_a_eleccion": 12,
   "offline": false,
@@ -20,15 +20,15 @@
       67.67503889491431
     ],
     "p_d_gana_modelo": 0.99648,
-    "p_d_gana_final": 0.9930470234298397
+    "p_d_gana_final": 0.9931073981573579
   },
   "estados_fuentes": {
     "encuestas_wikipedia": "en_vivo",
     "encuestas_270towin": "en_vivo",
-    "civiq": "Datos de Civiq vía api, validados (2026-10-21)",
+    "civiq": "Datos de Civiq vía api, validados (2026-10-22)",
     "civiq_historia": "api_en_vivo (197 filas)",
     "civiq_condados": "api_en_vivo (58 condados)",
-    "gdelt": "parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
+    "gdelt": "parcial: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
     "kalshi": "en_vivo"
   },
   "ultima_encuesta": {
@@ -50,118 +50,118 @@
     "n_efectivo": 9.169362777124508
   },
   "voto_temprano": {
-    "fecha_datos": "2026-10-21",
+    "fecha_datos": "2026-10-22",
     "estado": "actualizado",
     "origen": "api",
     "registrados": 23149787,
-    "devueltas": 2018920,
-    "tasa_devolucion_total_pct": 8.721116958873099,
+    "devueltas": 2336131,
+    "tasa_devolucion_total_pct": 10.091371467046327,
     "partidos": {
       "Democratas": {
         "registrados": 10395709,
-        "devueltas": 995317,
+        "devueltas": 1171235,
         "cuota_registro_pct": 44.906283586972094,
-        "cuota_devoluciones_pct": 49.299476948071245,
-        "tasa_devolucion_pct": 9.574306091099702
+        "cuota_devoluciones_pct": 50.135673042307985,
+        "tasa_devolucion_pct": 11.266523524273332
       },
       "Republicanos": {
         "registrados": 5762391,
-        "devueltas": 604430,
+        "devueltas": 680093,
         "cuota_registro_pct": 24.89176682273578,
-        "cuota_devoluciones_pct": 29.93828383492164,
-        "tasa_devolucion_pct": 10.489222269019926
+        "cuota_devoluciones_pct": 29.11193764390781,
+        "tasa_devolucion_pct": 11.802270967034344
       },
       "Otros/NPP": {
         "registrados": 6991687,
-        "devueltas": 419173,
+        "devueltas": 484803,
         "cuota_registro_pct": 30.201949590292127,
-        "cuota_devoluciones_pct": 20.762239217007114,
-        "tasa_devolucion_pct": 5.995305567883688
+        "cuota_devoluciones_pct": 20.752389313784203,
+        "tasa_devolucion_pct": 6.93399175334937
       }
     },
-    "margen_dr_devueltas_pp": 19.361193113149604,
+    "margen_dr_devueltas_pp": 21.023735398400174,
     "margen_dr_registro_pp": 20.01451676423632,
     "edades": {
       "18-29": {
         "registrados": 4387173,
-        "devueltas": 118118,
-        "porcentaje_de_devoluciones": 5.850553761416995
+        "devueltas": 138653,
+        "porcentaje_de_devoluciones": 5.93515517751359
       },
       "30-45": {
         "registrados": 6469885,
-        "devueltas": 247972,
-        "porcentaje_de_devoluciones": 12.282408416381035
+        "devueltas": 289232,
+        "porcentaje_de_devoluciones": 12.380812548611358
       },
       "46-64": {
         "registrados": 6472325,
-        "devueltas": 535128,
-        "porcentaje_de_devoluciones": 26.505656489608306
+        "devueltas": 623832,
+        "porcentaje_de_devoluciones": 26.703639479121676
       },
       "65+": {
         "registrados": 5820404,
-        "devueltas": 1117702,
-        "porcentaje_de_devoluciones": 55.361381332593666
+        "devueltas": 1284414,
+        "porcentaje_de_devoluciones": 54.98039279475338
       }
     }
   },
   "participacion_m2": {
     "por_edad": {
       "disponible": true,
-      "margen_dr_devueltas_pp": 19.361193113149604,
+      "margen_dr_devueltas_pp": 21.023735398400174,
       "margen_dr_registro_pp": 20.01451676423632,
-      "margen_dr_esperado_por_edad_pp": 17.2327190735074,
-      "delta_m2_pp": 2.128474039642203
+      "margen_dr_esperado_por_edad_pp": 17.248615533873775,
+      "delta_m2_pp": 3.775119864526399
     },
     "historico": {
       "disponible": true,
-      "dias_comparados": 13,
+      "dias_comparados": 12,
       "referencias": [
         "2022 General",
         "2024 General"
       ],
-      "margen_actual_pp": 19.361193113149604,
+      "margen_actual_pp": 21.023735398400174,
       "margen_referencias_mismo_dia_pp": {
-        "2022 General": 19.731472074800536,
-        "2024 General": 18.741148879860596
+        "2022 General": 19.986484398416106,
+        "2024 General": 18.849684628210266
       },
-      "delta_vs_referencias_pp": 0.1248826358190378,
+      "delta_vs_referencias_pp": 1.6056508850869875,
       "corrimiento_dia_a_final_pp": {
-        "2022 General": 0.4467630725120024,
-        "2024 General": 1.1653482330662435
+        "2022 General": 0.19175074889643184,
+        "2024 General": 1.0568124847165734
       },
-      "composicion_final_proyectada_pp": 20.167248765938727,
+      "composicion_final_proyectada_pp": 21.648017015206676,
       "composicion_a_resultado": {
         "disponible": true,
-        "pendiente": 2.1024469820554668,
+        "pendiente": 2.1024469820554663,
         "intercepto": -21.369070146818963,
         "n": 4,
-        "rmse_loo_pp": 4.223595885799315,
-        "error_primaria_2026_pp": 4.307928221859708,
-        "margen_resultado_implicito_pp": 21.03150115749075
+        "rmse_loo_pp": 4.223595885799268,
+        "error_primaria_2026_pp": 4.307928221859722,
+        "margen_resultado_implicito_pp": 24.144737894287694
       },
       "diagnostico_retrospectivo": [
         {
           "eleccion": "2021 Special",
-          "delta_vs_otras_pp": 9.18,
+          "delta_vs_otras_pp": 8.83,
           "error_encuestas_pp": 6.51
         },
         {
           "eleccion": "2022 General",
-          "delta_vs_otras_pp": -4.46,
+          "delta_vs_otras_pp": -4.26,
           "error_encuestas_pp": -4.99
         },
         {
           "eleccion": "2024 General",
-          "delta_vs_otras_pp": -5.79,
+          "delta_vs_otras_pp": -5.78,
           "error_encuestas_pp": -5.47
         },
         {
           "eleccion": "2025 Special",
-          "delta_vs_otras_pp": 1.07,
+          "delta_vs_otras_pp": 1.22,
           "error_encuestas_pp": 10.73
         }
       ],
-      "correlacion_delta_error": 0.7495927019724751
+      "correlacion_delta_error": 0.760920455952405
     },
     "w_m2": 0.0
   },
@@ -211,7 +211,7 @@
     "gdelt": {
       "disponible": true,
       "fecha": "2026-10-04",
-      "brecha_7d": 0.14274999999999985,
+      "brecha_7d": 0.2403999999999999,
       "innovacion_7d": 0.7575533333333332,
       "z_innovacion": 1.2016063265671821,
       "k_sent_candidato": 1.5228174647466208
@@ -221,10 +221,10 @@
     "validado": false
   },
   "kalshi": {
-    "p_d": 0.9695,
-    "p_r": 0.0335,
-    "p_d_normalizada": 0.9666001994017945,
-    "overround": 0.0030000000000001137,
+    "p_d": 0.9684999999999999,
+    "p_r": 0.0325,
+    "p_d_normalizada": 0.9675324675324676,
+    "overround": 0.0009999999999998899,
     "fecha": "2026-10-22",
     "antiguedad_dias": 0,
     "estado": "en_vivo",
@@ -233,9 +233,9 @@
   "calibracion": {
     "dias_ref": 14,
     "n_elecciones": 4,
-    "rmse_historico_pp": 6.439807554763783,
-    "sesgo_medio_pp": -2.8469637480849954,
-    "sigma_sis_pp": 6.1415354794049835,
+    "rmse_historico_pp": 6.4398075547637825,
+    "sesgo_medio_pp": -2.8469637480849945,
+    "sigma_sis_pp": 6.141535479404982,
     "errores": {
       "GOB2018": 7.11,
       "GOB2022": -5.57,
@@ -247,28 +247,28 @@
     "media_pp": 22.265112218271653,
     "media_final_pp": 22.265112218271653,
     "desplazamiento_kalshi_pp": 0.0,
-    "p_mezcla_objetivo": 0.9930470234298397,
-    "sigma_pp": 6.601001099252664,
+    "p_mezcla_objetivo": 0.9931073981573579,
+    "sigma_pp": 6.601001099252662,
     "k_sent_aplicado": 1.0,
     "delta_m2_aplicado_pp": 0.0,
     "p_modelo": 0.99648,
-    "p_final": 0.9930470234298397,
-    "p_kalshi_usada": 0.9666001994017945,
+    "p_final": 0.9931073981573579,
+    "p_kalshi_usada": 0.9675324675324676,
     "w_kalshi": 0.3,
     "cuantiles_margen_pp": {
-      "2.5": 9.104127915925774,
+      "2.5": 9.104127915925776,
       "10": 14.698253271883278,
       "50": 22.252823866922483,
-      "90": 29.744138405126794,
+      "90": 29.74413840512679,
       "97.5": 35.35007778982861
     },
     "componentes_varianza_pp2": {
-      "sistematico": 37.7184580447902,
+      "sistematico": 37.718458044790175,
       "muestreo_encuestas": 5.10475746754468,
       "deriva_hasta_eleccion": 0.75,
       "participacion_m2": 0.0
     }
   },
   "avisos": [],
-  "duracion_s": 140.4
+  "duracion_s": 136.0
 }
