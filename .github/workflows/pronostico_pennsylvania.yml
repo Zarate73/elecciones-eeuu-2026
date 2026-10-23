@@ -1,0 +1,42 @@
+name: Pronóstico Pennsylvania
+
+on:
+  schedule:
+    - cron: '34 10 * * *'   # 06:34 ET (05:34 desde el 1-nov, fin del horario de verano)
+    - cron: '34 22 * * *'   # 18:34 ET
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pronostico-repo        # mismo grupo que los demás estados: los commits de resultados no chocan
+  cancel-in-progress: false
+
+jobs:
+  pronostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pennsylvania/produccion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: pennsylvania/produccion/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Pruebas (sin red)
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Correr pronóstico (fuentes en vivo)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python -m pa_pronostico correr
+      - name: Actualizar README
+        run: python scripts/actualizar_readme.py
+      - name: Publicar resultados (README, tablero y salidas)
+        working-directory: .
+        run: bash scripts/publicar.sh pennsylvania "Pronóstico Pennsylvania $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET"

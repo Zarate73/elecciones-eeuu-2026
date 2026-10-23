@@ -62,7 +62,14 @@ def _ventaja(x: float) -> str:
 
 
 def _p(x) -> str:
-    return '—' if x is None else f'{x:.0%}'
+    """Probabilidad redondeada sin mostrar 0 % ni 100 % cuando no lo son (99.7 % → «>99%», 0.3 % → «<1%»)."""
+    if x is None:
+        return '—'
+    if 0.995 <= x < 1:
+        return '>99%'
+    if 0 < x < 0.005:
+        return '<1%'
+    return f'{x:.0%}'
 
 
 def main() -> int:
@@ -77,11 +84,11 @@ def main() -> int:
         '',
         '| Gobernador | % de voto (IC80) | Probabilidad de ganar |',
         '|---|---|---|',
-        f"| Josh **Shapiro** (D, gobernador) | **{g['pct_D']:.1f}%** ({g['pct_D_IC80'][0]:.1f}–{g['pct_D_IC80'][1]:.1f}) | **{g['P_D']:.0%}** |",
-        f"| Stacy **Garrity** (R) | **{g['pct_R']:.1f}%** ({g['pct_R_IC80'][0]:.1f}–{g['pct_R_IC80'][1]:.1f}) | **{1 - g['P_D']:.0%}** |",
+        f"| Josh **Shapiro** (D, gobernador) | **{g['pct_D']:.1f}%** ({g['pct_D_IC80'][0]:.1f}–{g['pct_D_IC80'][1]:.1f}) | **{_p(g['P_D'])}** |",
+        f"| Stacy **Garrity** (R) | **{g['pct_R']:.1f}%** ({g['pct_R_IC80'][0]:.1f}–{g['pct_R_IC80'][1]:.1f}) | **{_p(1 - g['P_D'])}** |",
         f"| Terceros | {g['pct_terceros']:.1f}% ({g['pct_terceros_IC80'][0]:.1f}–{g['pct_terceros_IC80'][1]:.1f}) | — |",
         '',
-        f"Margen D−R {g['margen']:+.1f} pp (σ {g['sd']:.1f}) · solo encuestas: P(Shapiro) {g['P_D_encuestas']:.0%} · "
+        f"Margen D−R {g['margen']:+.1f} pp (σ {g['sd']:.1f}) · solo encuestas: P(Shapiro) {_p(g['P_D_encuestas'])} · "
         f"Kalshi {_p(mk['kalshi'].get('p_D'))} · Polymarket {_p(mk['polymarket'].get('p_D'))} "
         f"(peso de mercados {g['peso_mercados_aplicado']}) · recuento automático {g['P_recuento']:.1%} · "
         f"{g['n_encuestas']} encuestas, {g['k']} encuestadoras en la ventana",
@@ -109,7 +116,7 @@ def main() -> int:
                    "[voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · "
                    "[historial](produccion/salidas/historial_pronosticos.csv)"]
     README_EST.write_text(_reemplazar(README_EST.read_text(encoding='utf-8'), '\n'.join(lineas)), encoding='utf-8')
-    fila = (f"| Pennsylvania | Gobernador: Shapiro {g['pct_D']:.1f}% · Garrity {g['pct_R']:.1f}% · P(Shapiro) {g['P_D']:.0%} "
+    fila = (f"| Pennsylvania | Gobernador: Shapiro {g['pct_D']:.1f}% · Garrity {g['pct_R']:.1f}% · P(Shapiro) {_p(g['P_D'])} "
             f"(corte {rep['corte']}) | **Producción (general)**, actualización automática | [`pennsylvania/`](pennsylvania/) |")
     raiz = README_RAIZ.read_text(encoding='utf-8')
     if re.search(r'^\| Pennsylvania \|', raiz, re.M):

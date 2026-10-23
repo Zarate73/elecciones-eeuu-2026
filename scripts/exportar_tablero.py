@@ -270,8 +270,8 @@ def florida() -> dict | None:
 
 
 # ------------------------------------------------------------------------------------ Nevada
-def nevada() -> dict | None:
-    s = RAIZ / 'nevada/produccion/salidas'
+def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesgo: str, solo_correo: bool = False) -> dict | None:
+    s = RAIZ / f'{carpeta}/produccion/salidas'
     if not (s / 'ultimo/reporte.json').exists():
         return None
     r = json.loads((s / 'ultimo/reporte.json').read_text(encoding='utf-8'))
@@ -284,8 +284,8 @@ def nevada() -> dict | None:
     rg = mk.get('rangos') or {}
     sesgo = g.get('sesgo_estatal_aplicado')
     return {
-        'clave': 'nevada', 'estado': 'Nevada', 'cargo': 'Gobernador', 'modelo': 'General (V11, sesgo estatal contraído)',
-        'candidatos': {'D': 'Aaron Ford', 'R': 'Joe Lombardo'}, 'corte': r['corte'], 'dias_a_eleccion': r['dias_a_eleccion'],
+        'clave': carpeta, 'estado': estado, 'cargo': 'Gobernador', 'modelo': 'General (V11, sesgo estatal contraído)',
+        'candidatos': cand, 'corte': r['corte'], 'dias_a_eleccion': r['dias_a_eleccion'],
         'pronostico': {'P_D': _num(g['P_D']), 'pct_D': _num(g['pct_D'], 2), 'pct_D_IC80': [_num(x, 2) for x in g['pct_D_IC80']],
                        'pct_R': _num(g['pct_R'], 2), 'pct_R_IC80': [_num(x, 2) for x in g['pct_R_IC80']],
                        'pct_terceros': _num(g.get('pct_terceros'), 2),
@@ -305,31 +305,44 @@ def nevada() -> dict | None:
                                  'P_polymarket': 'P_D_polymarket', 'pct_D': 'pct_D', 'margen': 'margen'}),
         'escenarios': _escenarios(r.get('escenarios', [])),
         'anticipado': ({'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
-                        'metricas': [{'etiqueta': 'Votos ya emitidos (correo + en persona)', 'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'},
+                        'metricas': [{'etiqueta': ('Boletas por correo devueltas' if solo_correo else 'Votos ya emitidos (correo + en persona)'),
+                                      'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'},
                                      {'etiqueta': 'Emitidos por demócratas registrados', 'valor': _num(a.get('pct_D'), 2), 'formato': 'pct'},
                                      {'etiqueta': 'Emitidos por republicanos registrados', 'valor': _num(a.get('pct_R'), 2), 'formato': 'pct'},
                                      {'etiqueta': 'Emitidos por otros y no partidistas', 'valor': _num((a.get('pct_Otros') or 0) + (a.get('pct_NPA') or 0), 2), 'formato': 'pct'},
-                                     {'etiqueta': 'Margen D−R por correo', 'valor': _num(a.get('margen_DR_correo_pp'), 2), 'formato': 'pp'},
-                                     {'etiqueta': 'Margen D−R en persona', 'valor': _num(a.get('margen_DR_persona_pp'), 2), 'formato': 'pp'}]}
+                                     {'etiqueta': 'Margen D−R por correo', 'valor': _num(a.get('margen_DR_correo_pp'), 2), 'formato': 'pp'}]
+                                    + ([] if solo_correo else
+                                       [{'etiqueta': 'Margen D−R en persona', 'valor': _num(a.get('margen_DR_persona_pp'), 2), 'formato': 'pp'}])}
                        if a.get('disponible') else None),
         'rangos_poly': ({'P_D': _num(rg.get('P_D')), 'margen': _num(rg.get('margen_media'), 2)}
                         if rg.get('margen_media') is not None else None),
-        'adicional': ({'titulo': 'Sesgo estatal de Nevada (pequeño)', 'P_D': None, 'margen': _num(-sesgo, 2),
+        'adicional': ({'titulo': titulo_sesgo, 'P_D': None, 'margen': _num(-sesgo, 2),
                        'etiqueta_margen': 'corrección al margen D−R',
-                       'nota': (f"El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige {-sesgo:+.1f} pp "
+                       'nota': (f"{nota_sesgo}; el sesgo contraído corrige {-sesgo:+.1f} pp "
                                 f"(promedio de encuestas {g['margen_encuestas']:+.1f}). "
                                 + (f"Polymarket por rangos: margen implícito {rg['margen_media']:+.1f} pp."
                                    if rg.get('margen_media') is not None else ''))}
                       if sesgo else None),
         'fuentes': _fuentes(r['estados_fuentes']), 'avisos': r.get('avisos', []),
-        'carpeta': 'nevada',
+        'carpeta': carpeta,
     }
+
+
+def nevada() -> dict | None:
+    return _general('nevada', 'Nevada', {'D': 'Aaron Ford', 'R': 'Joe Lombardo'}, 'Sesgo estatal de Nevada (pequeño)',
+                    'El error de las encuestas en NV cambia de signo entre ciclos')
+
+
+# ------------------------------------------------------------------------------------ Pennsylvania
+def pennsylvania() -> dict | None:
+    return _general('pennsylvania', 'Pennsylvania', {'D': 'Josh Shapiro', 'R': 'Stacy Garrity'}, 'Sesgo estatal de Pennsylvania',
+                    'Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022)', solo_correo=True)
 
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona, florida, nevada):
+    for f in (georgia, california, arizona, florida, nevada, pennsylvania):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás
