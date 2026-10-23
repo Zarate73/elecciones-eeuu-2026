@@ -1,11 +1,14 @@
 /* Tablero de pronósticos EE.UU. 2026 · sin dependencias.
    Datos: tablero/datos/*.json (los escribe scripts/exportar_tablero.py en cada corrida automática).
-   Se leen de la rama main en GitHub para estar siempre al día; si falla, de la copia publicada junto a la página. */
+   Se leen del último commit de main en GitHub para estar siempre al día; si falla, de la copia publicada junto a la página.
+   Por qué por SHA: raw.githubusercontent.com guarda en caché unos minutos a qué commit apunta «main» (aunque cambie el
+   parámetro ?t=), así que leer .../main/ puede devolver la corrida anterior. Una URL con SHA es inmutable y nunca está vieja. */
 'use strict';
 
-const RAW = 'https://raw.githubusercontent.com/Zarate73/elecciones-eeuu-2026/main/tablero/datos/';
+const REPO = 'Zarate73/elecciones-eeuu-2026';
+const RAW_MAIN = `https://raw.githubusercontent.com/${REPO}/main/tablero/datos/`;
+let RAW_SHA = null;            // https://raw.githubusercontent.com/<repo>/<sha>/tablero/datos/ (se resuelve una vez)
 const NS = 'http://www.w3.org/2000/svg';
-const PENDIENTES = 11;
 const tt = document.getElementById('tooltip');
 let indice = null;
 let ANCHO = 1100;              // ancho útil del contenido; las gráficas se dibujan a su tamaño real
@@ -14,10 +17,24 @@ const completo = () => ANCHO - 42;
 const cache = {};
 
 /* ---------------------------------------------------------------- utilidades */
+async function resolverSha() {
+  if (RAW_SHA !== null) return RAW_SHA;
+  RAW_SHA = '';
+  try {                        // API pública: 60 consultas/hora por visitante, se usa una vez por carga de página
+    const r = await fetch(`https://api.github.com/repos/${REPO}/commits/main`, { headers: { Accept: 'application/vnd.github.sha' }, cache: 'no-store' });
+    const sha = r.ok ? (await r.text()).trim() : '';
+    if (/^[0-9a-f]{40}$/.test(sha)) RAW_SHA = `https://raw.githubusercontent.com/${REPO}/${sha}/tablero/datos/`;
+  } catch (e) { /* sin API: se usa main */ }
+  return RAW_SHA;
+}
+
 async function cargar(nombre) {
-  for (const base of [RAW, 'datos/']) {
+  const sha = await resolverSha();
+  const bases = [sha, RAW_MAIN, 'datos/'].filter(Boolean);
+  for (const base of bases) {
     try {
-      const r = await fetch(base + nombre + (base === RAW ? '?t=' + Math.floor(Date.now() / 300000) : ''), { cache: 'no-cache' });
+      const url = base === RAW_MAIN ? base + nombre + '?t=' + Math.floor(Date.now() / 300000) : base + nombre;
+      const r = await fetch(url, { cache: 'no-cache' });
       if (r.ok) return await r.json();
     } catch (e) { /* siguiente origen */ }
   }
@@ -105,7 +122,7 @@ function tarjetas(activo) {
     nav.append(b);
   }
   const p = el('div', { class: 'tarjeta-estado pendiente' },
-    el('div', { class: 'nombre', text: `${PENDIENTES} estados más` }),
+    el('div', { class: 'nombre', text: `${(indice.estados_totales || 14) - indice.estados.length} estados más` }),
     el('div', { class: 'detalle', text: 'En preparación. Se agregan con el mismo estándar de backtest y producción.' }));
   nav.append(p);
 }
