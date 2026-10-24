@@ -1,0 +1,32 @@
+[1] Validación estrictamente cronológica (2004–2024) de la regla del sesgo estatal
+      ambito    modelo   n  CRPS   MAE  Cob80  P(mejor que G todas)
+    Nacional     G k≥2 739 3.210 4.455  0.811                 0.514
+    Nacional   G todas 739 3.211 4.444  0.801                   NaN
+    Nacional sin sesgo 739 3.434 4.779  0.769                 0.006
+Nacional_Gob     G k≥2 211 3.230 4.525  0.820                 0.368
+Nacional_Gob   G todas 211 3.221 4.487  0.806                   NaN
+Nacional_Gob sin sesgo 211 3.317 4.629  0.796                 0.191
+          ME     G k≥2   9 2.797 3.833  0.778                 1.000
+          ME   G todas   9 2.834 3.901  0.778                   NaN
+          ME sin sesgo   9 3.265 4.664  0.667                 0.018
+      ME_Gob     G k≥2   1 1.810 2.980  1.000                   NaN
+      ME_Gob   G todas   1 1.824 3.007  1.000                   NaN
+      ME_Gob sin sesgo   1 2.067 3.445  1.000                   NaN
+
+[2] Régimen de ventana ampliada (emulación a escala 9/21: nominal 3–9 días; ampliada ≤ 18 días). 274 contiendas ampliadas de 1023; en ellas k medio 2.13 (k efectivo 2.12), antigüedad de la más reciente 7.4 d y ponderada 9.3 d sobre el horizonte
+                                                  ambito                                               modelo   n  CRPS   MAE  Cob80  Cob95  sd_media  k_medio  P(mejor que A1)
+Contiendas con ventana ampliada (y con encuesta nominal)                              A0 solo ventana nominal 113 3.670 5.024  0.832  0.973     7.272    1.000            0.123
+Contiendas con ventana ampliada (y con encuesta nominal) A1 producción: k = firmas, deriva de la más reciente 113 3.397 4.786  0.761  0.947     5.628    2.611              NaN
+Contiendas con ventana ampliada (y con encuesta nominal)                                  A2 k efectivo 1/Σw² 113 3.391 4.786  0.770  0.947     5.656    2.594            0.740
+Contiendas con ventana ampliada (y con encuesta nominal)                   A3 deriva por antigüedad ponderada 113 3.397 4.786  0.761  0.956     5.647    2.611            0.666
+Contiendas con ventana ampliada (y con encuesta nominal)                     A4 k efectivo + deriva ponderada 113 3.391 4.786  0.770  0.947     5.675    2.594            0.734
+                                  Contiendas sin ampliar                              A0 solo ventana nominal 749 2.938 4.126  0.796  0.943     5.130    4.072            0.077
+                                  Contiendas sin ampliar A1 producción: k = firmas, deriva de la más reciente 749 2.888 4.047  0.822  0.955     5.510    4.072              NaN
+                                  Contiendas sin ampliar                                  A2 k efectivo 1/Σw² 749 2.887 4.047  0.821  0.957     5.507    4.085            0.738
+                                  Contiendas sin ampliar                   A3 deriva por antigüedad ponderada 749 2.888 4.047  0.822  0.955     5.520    4.072            0.468
+                                  Contiendas sin ampliar                     A4 k efectivo + deriva ponderada 749 2.887 4.047  0.821  0.957     5.517    4.085            0.726
+                                                   Todas                              A0 solo ventana nominal 862 3.034 4.243  0.800  0.947     5.411    3.669            0.042
+                                                   Todas A1 producción: k = firmas, deriva de la más reciente 862 2.955 4.144  0.814  0.954     5.525    3.881              NaN
+                                                   Todas                                  A2 k efectivo 1/Σw² 862 2.953 4.144  0.814  0.956     5.527    3.889            0.820
+                                                   Todas                   A3 deriva por antigüedad ponderada 862 2.955 4.144  0.814  0.955     5.536    3.881            0.507
+                                                   Todas                     A4 k efectivo + deriva ponderada 862 2.953 4.144  0.814  0.956     5.537    3.889            0.815

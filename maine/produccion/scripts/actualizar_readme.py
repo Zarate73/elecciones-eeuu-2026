@@ -97,6 +97,12 @@ def main() -> int:
         lineas += ['', f"Cómo se llega: promedio de encuestas {g['margen_encuestas']:+.1f} · sesgo estatal de Maine "
                        f"{-g['sesgo_estatal_aplicado']:+.1f} · "
                        f"mercados {g['desplazamiento_mercados_pp']:+.1f}"]
+    if 'P_D_gana_3' in g:
+        pi = mk.get('rangos', {}).get('P_independiente')
+        lineas += ['', f"**Con independiente** (mayoría simple): P(Pingree gana) {_p(g['P_D_gana_3'])} · P(Bennett u otro tercero gana) "
+                       f"en el modelo {_p(g['P_tercero_gana_cota'])} (cota: los terceros se simulan como un total) · en los mercados "
+                       f"Kalshi {_p(mk.get('kalshi_independiente'))} y Polymarket {_p(pi)}. La probabilidad de los mercados que entra a "
+                       f"la mezcla es D / (D + R), condicional a que gane un partido principal."]
     u = rep.get('ultima_encuesta')
     if u:
         lineas += ['', f"**Encuesta más reciente:** {u['encuestadora']}, terminó el {u['fin']} "

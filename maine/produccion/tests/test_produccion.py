@@ -186,5 +186,18 @@ def test_n_imputado_marcado(cfg, red_simulada):
     assert set(p.n_fuente) <= {'reportado', 'imputado (600)'} or p.n_fuente.str.startswith('corregido').any()
 
 
+def test_probabilidad_a_tres_bandas_y_bennett(cfg, red_simulada):
+    """Mayoría simple con independiente: P(gana) exige superar a R y a los terceros; los mercados de Bennett se reportan."""
+    r = ejecutar(cfg, escribir_salidas=False)
+    f = r['modelo']['final']
+    assert f['P_D_gana_3'] <= f['P_D'] and 0 <= f['P_tercero_gana_cota'] < 0.01
+    assert r['mercados']['kalshi_independiente'] == pytest.approx(0.02)
+    assert 'Con independiente (mayoría simple)' in r['resumen_texto']
+    e = r['modelo']['escenarios']
+    assert e.escenario.str.startswith('Incertidumbre con k efectivo').any()
+    poly = e[e.escenario.str.startswith('Polymarket por rangos')].iloc[0]
+    assert 'condicional a que gane un partido principal' in poly.escenario
+
+
 # valores fijados con la corrida de referencia del 24-oct (ver notebook)
 MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 10.30, 2.427, 8.05, 0.9535, 6.80   # sesgo regla k ≥ 2 (+2.43 pp pro-D)

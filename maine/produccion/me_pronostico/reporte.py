@@ -39,6 +39,10 @@ def texto_resumen(r: dict, cfg) -> str:
         lin.insert(9, f"  Sesgo estatal: {-f['sesgo_estatal_aplicado']:+.2f} pp (bruto {-f['sesgo_estatal_bruto']:+.2f}, "
                       f"contracción {f['contraccion_sesgo']:.2f}) · promedio de encuestas {f['margen_encuestas']:+.2f} · "
                       f"mercados desplazan {f['desplazamiento_mercados_pp']:+.2f} pp")
+    rg0 = mk.get('rangos', {})
+    lin.append(f"  Con independiente (mayoría simple): P(Pingree gana) = {f['P_D_gana_3']:.1%} · P(supera a Charles) = {f['P_D']:.1%} · "
+               f"P(un tercero gana), cota del modelo = {f['P_tercero_gana_cota']:.2%} · mercados: Kalshi Bennett "
+               f"{_pct(mk.get('kalshi_independiente'))}, Polymarket «gana un independiente» {_pct(rg0.get('P_independiente'))}")
     imp = m['ventana'][m['ventana'].get('n_imputado', pd.Series(False, index=m['ventana'].index)).astype(bool)]
     if len(imp):
         lin.append('  n imputado en 600 (la fuente no lo publica): ' + ', '.join(imp.pollster.astype(str)))
@@ -47,7 +51,7 @@ def texto_resumen(r: dict, cfg) -> str:
         lin += ['', f"POLYMARKET POR RANGOS (diagnóstico, {rg['estado'][:30]}): {rg['n_contratos']} contratos, "
                     f"suma de precios {rg['suma_precios']:.3f} antes de normalizar · "
                     + (f"P(D) {rg['P_D']:.1%} (partición completa) · margen ajustado {rg['margen_media']:+.1f} "
-                       f"(σ {rg['margen_sd']:.1f}) · " if rg.get('completo') else 'partición INCOMPLETA: sin P(D) ni margen incondicional · ')
+                       f"(σ {rg['margen_sd']:.1f}; condicional a que gane un partido principal) · " if rg.get('completo') else 'partición INCOMPLETA: sin P(D) ni margen incondicional · ')
                     + (f"E[margen | gana D] {rg['margen_cond_D']:+.1f}" if 'margen_cond_D' in rg else '')]
     a = r.get('anticipado', {})
     if a.get('disponible'):
@@ -104,6 +108,7 @@ def reporte_json(r: dict, cfg) -> dict:
             'gobernador': {**m['final'], 'n_encuestas': len(m['encuestas'])},
             'escenarios': m['escenarios'],
             'mercados': {'kalshi': mk['kalshi'], 'polymarket': mk['polymarket'], 'promedio_D': mk['promedio_D'],
+                         'kalshi_independiente': mk.get('kalshi_independiente'),
                          'dif_pp': mk['dif_pp'], 'rangos': {k: v for k, v in mk['rangos'].items() if k != 'tabla'}},
             'anticipado': {k: v for k, v in a.items() if k != 'condados'},
             'calibracion': {k: v for k, v in r['calibracion'].items() if not k.startswith('efectos_casa')}}

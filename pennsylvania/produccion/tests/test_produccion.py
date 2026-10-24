@@ -113,7 +113,7 @@ def test_cifras_del_23_oct(cfg, red_simulada):
     r = ejecutar(cfg, escribir_salidas=False)
     f, par = r['modelo']['final'], r['calibracion']
     assert f['margen_encuestas'] == pytest.approx(22.40, abs=0.01)   # F&M con n = 433 (LV), no 600 imputado
-    assert par['sesgo_contraido'] == pytest.approx(1.049, abs=0.002)
+    assert par['sesgo_contraido'] == pytest.approx(1.045, abs=0.002)   # 1.049 antes de quitar Axis Research (ME-02) del histórico 2024
     assert f['margen'] == pytest.approx(18.84, abs=0.03) and f['P_D'] == pytest.approx(0.997, abs=0.002)
     assert f['desplazamiento_mercados_pp'] == pytest.approx(-2.48, abs=0.05)   # mercados (97 %) por debajo del modelo
 

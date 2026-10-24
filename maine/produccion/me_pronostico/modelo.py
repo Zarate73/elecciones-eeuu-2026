@@ -73,6 +73,11 @@ def resumen(s: pd.DataFrame, nombre: str, recuento: float) -> dict:
             'pct_R': float(s.R.mean()), 'pct_R_IC80': (q('R', .1), q('R', .9)),
             'pct_terceros': float(s['T'].mean()), 'pct_terceros_IC80': (q('T', .1), q('T', .9)),
             'P_D': float((s.M > 0).mean()),
+            # Maine (mayoría simple, con independiente): P_D es P(D > R). Para ganar, D también debe superar a T.
+            # T es TODO el voto de terceros (Bennett + otros), así que P(T > max(D, R)) es una cota superior de
+            # P(gana Bennett) en el espacio que simula el modelo (no modela a Bennett por separado).
+            'P_D_gana_3': float(((s.D > s.R) & (s.D > s['T'])).mean()),
+            'P_tercero_gana_cota': float((s['T'] > np.maximum(s.D, s.R)).mean()),
             'P_recuento': float((s.M.abs() <= recuento).mean()), 'P_D_mas_50': float((s.D > 50).mean())}
 
 
@@ -167,6 +172,14 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
         sk2 = par['sesgo_contraido_k2']
         esc.append(fila(sim(mu_enc - sk2), f'Sesgo estimado sin contiendas de una sola encuestadora ({-sk2:+.2f} pp)'))
     esc.append(fila(sim(mu, Dist(sd, None)), 'Distribución normal'))
+    # revisión del 24-oct: ventana ampliada (la mayor parte del peso tiene > 21 días). Escenario, no regla: en la emulación
+    # del backtest k efectivo + deriva ponderada mejora apenas (CRPS 3.391 vs 3.397, P = 0.73) y no es significativo.
+    wn = np.asarray(w, float) / float(np.sum(w))
+    k_ef = 1.0 / float(np.sum(wn ** 2))
+    edad_pond = float(np.sum(wn * (pd.Timestamp(cfg.dia_eleccion) - q.fin).dt.days.to_numpy(float))) - h
+    sd_ef = float(np.sqrt(par['tau'] ** 2 + par['s'] ** 2 / max(k_ef, 1) + m.sigma_dia_pp ** 2 * max(edad_pond, 0)))
+    esc.append(fila(sim(mu, Dist(sd_ef, par['nu'])), f'Incertidumbre con k efectivo {k_ef:.1f} (no {k} firmas) y deriva por '
+                                                      f'antigüedad ponderada ({max(edad_pond, 0):.0f} días)'))
     esc.append(fila(sim(mu, dist, 0.1, 0.0), 'Sin terceros'))
     esc.append(fila(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva)), par['nu'])), 'Sin deriva por encuestas viejas'))
     esc.append(fila(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva + 3 * var_deriva)), par['nu'])),
@@ -229,8 +242,8 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
                         'margen': float(dist.sc * student_t.ppf(x['p_D'], par['nu']))})
     rg = mk.get('rangos', {})
     if 'P_D' in rg:                     # solo con partición completa (incluye el contrato del lado perdedor)
-        esc.append({'escenario': 'Polymarket por rangos de margen (normal ajustada a la partición completa; '
-                                 'P de los contratos)', 'P_D': rg['P_D'], 'margen': rg['margen_media'], 'sd': rg['margen_sd']})
+        esc.append({'escenario': 'Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane '
+                                 'un partido principal; P de los contratos, con el independiente en el denominador)', 'P_D': rg['P_D'], 'margen': rg['margen_media'], 'sd': rg['margen_sd']})
 
     tabla = q.assign(efecto_casa=q.pollster_key.map(house).fillna(0.0), peso=w.values,
                      patrocinador=lado.fillna('—'), efecto_partidista=lado.map(ep).fillna(0.0))

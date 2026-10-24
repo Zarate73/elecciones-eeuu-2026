@@ -131,7 +131,7 @@ def test_sesgo_estatal_de_florida(cfg, red_simulada):
     """Las encuestas de FL han sobreestimado al demócrata: el sesgo (contraído) corrige hacia Donalds."""
     r = ejecutar(cfg, escribir_salidas=False)
     par, f = r['calibracion'], r['modelo']['final']
-    assert par['n_contiendas'] == 848 and any(e['race'] == '2024_Pres-G_FL' for e in par['errores_estado'])
+    assert par['n_contiendas'] == 847 and any(e['race'] == '2024_Pres-G_FL' for e in par['errores_estado'])
     assert 3 < par['sesgo_contraido'] <= par['sesgo_bruto'] < 8 and par['contraccion'] > 0.6
     assert f['sesgo_estatal_aplicado'] == pytest.approx(par['sesgo_contraido'])
     assert r['modelo']['mu'] == pytest.approx(f['margen_encuestas'] - par['sesgo_contraido'])
@@ -144,13 +144,15 @@ def test_sesgo_estatal_de_florida(cfg, red_simulada):
 
 def test_igual_al_modelo_del_notebook(cfg, red_simulada):
     """Mismas encuestas y semilla que FLORIDA_2026_MODELO_FINAL.ipynb (22-oct): promedio −5.25, final −8.31, P 5.0 %.
-    Desde la versión 1.1.0 los terceros distinguen «no reportado» de 0 % (2.0 → 2.1 %); margen y probabilidad no cambian."""
+    Desde la versión 1.1.0 los terceros distinguen «no reportado» de 0 % (2.0 → 2.1 %); margen y probabilidad no cambian.
+    24-oct: se quitó del histórico 2024 la encuesta Axis Research (distrito 2 de Maine, no estatal): recalibración nacional;
+    final −8.311 → −8.266 y P 5.00 → 5.09 %."""
     cfg.modelo['n_simulaciones'] = 200_000
     r = ejecutar(cfg, escribir_salidas=False)['modelo']
     f, solo = r['final'], r['escenarios'].iloc[1]
     assert f['margen_encuestas'] == pytest.approx(-5.253, abs=0.001)
-    assert 'solo encuestas' in solo['escenario'] and solo['margen'] == pytest.approx(-10.098, abs=0.001)
-    assert f['margen'] == pytest.approx(-8.311, abs=0.001) and f['P_D'] == pytest.approx(0.050, abs=0.0005)
+    assert 'solo encuestas' in solo['escenario'] and solo['margen'] == pytest.approx(-10.024, abs=0.001)
+    assert f['margen'] == pytest.approx(-8.266, abs=0.001) and f['P_D'] == pytest.approx(0.0509, abs=0.0005)
     assert f['pct_R'] == pytest.approx(53.1, abs=0.05) and f['pct_D'] == pytest.approx(44.8, abs=0.05)
 
 

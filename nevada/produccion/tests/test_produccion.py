@@ -109,9 +109,9 @@ def test_cifras_del_22_oct(cfg, red_simulada):
     r = ejecutar(cfg, escribir_salidas=False)
     f, par = r['modelo']['final'], r['calibracion']
     assert f['margen_encuestas'] == pytest.approx(-2.25, abs=0.01)
-    assert par['sesgo_contraido'] == pytest.approx(0.583, abs=0.002)
+    assert par['sesgo_contraido'] == pytest.approx(0.563, abs=0.002)   # 0.583 antes de quitar Axis Research (ME-02) del histórico 2024
     assert f['P_D_encuestas'] == pytest.approx(0.318, abs=0.003) and f['P_D'] == pytest.approx(0.419, abs=0.003)
-    assert f['margen'] == pytest.approx(-1.24, abs=0.02)
+    assert f['margen'] == pytest.approx(-1.22, abs=0.02)
 
 
 def test_probabilidad_coherente_y_2x2(cfg, red_simulada):

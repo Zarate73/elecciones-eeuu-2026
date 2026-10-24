@@ -56,6 +56,17 @@ def kalshi_vivo(cfg) -> tuple[float, float]:
     return precio_kalshi(mk[f.kalshi_ticker_d]), precio_kalshi(mk[f.kalshi_ticker_r])
 
 
+def kalshi_independiente(cfg) -> float | None:
+    """Precio del contrato del independiente en Kalshi (Maine: GOVPARTYME-26-RBEN, Rick Bennett). Solo diagnóstico."""
+    t = str(cfg.fuentes.get('kalshi_ticker_i', '') or '')
+    if not t:
+        return None
+    js = get_json(f'{cfg.fuentes.kalshi_api}/markets', params={'event_ticker': cfg.fuentes.kalshi_evento},
+                  offline=cfg.offline, timeout=cfg.fuentes.timeout_http_s)
+    ms = {m['ticker']: m for m in (js.get('markets') or [])}
+    return precio_kalshi(ms[t]) if t in ms else None
+
+
 # ==================================================================================== Polymarket
 def _evento_poly(cfg, slug: str) -> dict:
     f = cfg.fuentes
@@ -166,8 +177,10 @@ def resumen_rangos(t: pd.DataFrame) -> dict:
 
     - suma_precios: Σ p antes de normalizar (≠ 1 por diferenciales y cotizaciones no sincronizadas); la normalización
       proporcional da una distribución, no garantiza que esté calibrada.
-    - Si la partición es completa: P_D = Σ p̃ de los intervalos con margen > 0 (directo de los contratos) y
-      margen_media / margen_sd de la normal ajustada (margen incondicional), con P_D_normal = Φ(μ/σ) como control.
+    - Si la partición es completa: P_D = Σ p̃ de los intervalos con margen > 0 (directo de los contratos, con el
+      contrato «gana un independiente» en el denominador) y margen_media / margen_sd de la normal ajustada a los rangos
+      D/R, con P_D_normal = Φ(μ/σ) como control. En Maine la normal es CONDICIONAL a que gane un partido principal
+      (el contrato independiente no tiene margen D−R): es diagnóstico, no un resumen de toda la incertidumbre.
     - Siempre: margen_cond_D = E[M | D] con los intervalos positivos renormalizados (punto medio; «X % o más» → X + 5).
     Sin partición completa no se publica P_D ni margen incondicional (solo el condicional).
     """
@@ -237,6 +250,11 @@ def obtener_mercados(cfg) -> dict:
     res = {'kalshi': k, 'polymarket': p, 'n_usables': len(usables),
            'promedio_D': float(np.mean(usables)) if usables else None,
            'dif_pp': (100 * (k['p_D'] - p['p_D'])) if k.get('usable') and p.get('usable') else None}
+    try:                            # P(D)/(P(D)+P(R)) es una probabilidad CONDICIONAL a que gane un partido principal
+        res['kalshi_independiente'] = kalshi_independiente(cfg)
+    except Exception as exc:        # noqa: BLE001
+        res['kalshi_independiente'] = None
+        log.info('Kalshi independiente no disponible: %s', exc)
     ruta = cfg.dir_cache / 'polymarket_rangos.csv'
     try:
         t = rangos_poly(_evento_poly(cfg, f.polymarket_evento_margen))
