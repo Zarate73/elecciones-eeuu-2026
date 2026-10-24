@@ -339,10 +339,17 @@ def pennsylvania() -> dict | None:
                     'Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022)', solo_correo=True)
 
 
+# ------------------------------------------------------------------------------------ Maine
+def maine() -> dict | None:
+    return _general('maine', 'Maine', {'D': 'Hannah Pingree', 'R': 'Bobby Charles'}, 'Sesgo estatal de Maine',
+                    'En ME las encuestas sobreestimaron al demócrata en 8 de 13 contiendas (estimado sin contiendas de una '
+                    'sola encuestadora)')
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona, florida, nevada, pennsylvania):
+    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás

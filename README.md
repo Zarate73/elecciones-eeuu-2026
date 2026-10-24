@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml/badge.svg)](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml)
 
-**Sistema de pronósticos electorales para 14 estados: 6 implementados y automatizados (Georgia, California, Arizona, Florida, Nevada y Pennsylvania), 8 pendientes.**
+**Sistema de pronósticos electorales para 14 estados: 7 implementados y automatizados (Georgia, California, Arizona, Florida, Nevada, Pennsylvania y Maine), 7 pendientes.**
 
 **Tablero:** [zarate73.github.io/elecciones-eeuu-2026](https://zarate73.github.io/elecciones-eeuu-2026/) · se actualiza solo con cada corrida.
 
@@ -29,13 +29,13 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 ```
 `tablero/` es la página pública (GitHub Pages); `scripts/exportar_tablero.py` lleva los resultados de cada estado a `tablero/datos/`.
 
-## Estándares comunes (aprendidos en Georgia, California, Arizona, Florida, Nevada y Pennsylvania)
+## Estándares comunes (aprendidos en Georgia, California, Arizona, Florida, Nevada, Pennsylvania y Maine)
 - **Validación:** *leave-one-year-out* sobre el histórico de FiveThirtyEight (980 contiendas 1998–2024); métrica principal CRPS, más la cobertura de los intervalos del 80% y 95%.
 - **Incertidumbre:** σ empírica `√(τ² + s²/k)` calibrada a la distancia de la elección; nada de pisos fijos sin calibrar.
 - **Componentes:** se agregan solo si mejoran el CRPS fuera de muestra; lo no validable queda como diagnóstico.
-- **Sesgo estatal:** se decide por estado con el backtest y siempre se reporta el escenario contrario. Georgia y Florida lo usan (en FL las encuestas sobreestimaron al demócrata en 18 de 23 contiendas); Arizona no (su error cambia de signo entre ciclos); en Nevada y Pennsylvania la evidencia estatal es nula (P ≈ 0.5) y se usa la regla nacional (sesgo contraído).
+- **Sesgo estatal:** se decide por estado con el backtest y siempre se reporta el escenario contrario. Georgia y Florida lo usan (en FL las encuestas sobreestimaron al demócrata en 18 de 23 contiendas); Arizona no (su error cambia de signo entre ciclos); en Nevada y Pennsylvania la evidencia estatal es nula (P ≈ 0.5) y se usa la regla nacional (sesgo contraído); en Maine el sesgo ayuda (cronológico P = 0.014) y se estima sin contiendas de una sola encuestadora.
 - **Producción:** todas las fuentes en vivo, con caché y degradación explícita (`--estricto` → código 2). Que las fuentes estén en vivo no significa que las encuestas sean recientes: cada reporte trae la fecha y la antigüedad de la encuesta más reciente (`ultima_encuesta`).
-- **Mercados:** en Georgia, Arizona, Florida, Nevada y Pennsylvania la mezcla con mercados desplaza la distribución del margen, así que la probabilidad publicada es la fracción de simulaciones con margen > 0 (en AZ 2024 esto bajó el error del margen en las dos contiendas con historia de mercados). En California Kalshi ajusta solo la probabilidad publicada: margen, intervalos y % de voto son los del modelo.
+- **Mercados:** en Georgia, Arizona, Florida, Nevada, Pennsylvania y Maine la mezcla con mercados desplaza la distribución del margen, así que la probabilidad publicada es la fracción de simulaciones con margen > 0 (en AZ 2024 esto bajó el error del margen en las dos contiendas con historia de mercados). En California Kalshi ajusta solo la probabilidad publicada: margen, intervalos y % de voto son los del modelo.
 - **Salidas para tableros:** `salidas/ultimo/reporte.json` es JSON estricto (RFC 8259, sin `NaN` ni `Infinity`; los valores faltantes son `null`).
 - **Pruebas:** sin red, con fixtures que reproducen el formato de cada fuente; el flujo [CI](.github/workflows/ci.yml) las corre en cada push y pull request.
 

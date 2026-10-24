@@ -113,7 +113,7 @@ def main() -> int:
     lineas += ['', "Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · "
                    "[encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · "
                    "[escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · "
-                   "[voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · "
+                   "[voto ausente por municipio](produccion/salidas/ultimo/voto_anticipado_condados.csv) · "
                    "[historial](produccion/salidas/historial_pronosticos.csv)"]
     README_EST.write_text(_reemplazar(README_EST.read_text(encoding='utf-8'), '\n'.join(lineas)), encoding='utf-8')
     fila = (f"| Maine | Gobernador: Pingree {g['pct_D']:.1f}% · Charles {g['pct_R']:.1f}% · P(Pingree) {_p(g['P_D'])} "
