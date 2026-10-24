@@ -10,7 +10,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: pronostico-repo        # mismo grupo que Georgia y California: los commits de resultados no chocan
+  group: pronostico-arizona             # uno por estado: con un grupo compartido, GitHub cancela las corridas en espera
+                                   # (solo admite una pendiente por grupo); publicar.sh ya resuelve los choques al publicar
   cancel-in-progress: false
 
 jobs:
