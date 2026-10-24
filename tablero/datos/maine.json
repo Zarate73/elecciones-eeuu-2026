@@ -10,30 +10,30 @@
  "corte": "2026-10-24",
  "dias_a_eleccion": 10,
  "pronostico": {
-  "P_D": 0.9538,
-  "pct_D": 50.64,
+  "P_D": 0.9522,
+  "pct_D": 50.59,
   "pct_D_IC80": [
-   47.43,
-   53.85
+   47.39,
+   53.81
   ],
-  "pct_R": 42.57,
+  "pct_R": 42.61,
   "pct_R_IC80": [
-   39.35,
-   45.78
+   39.39,
+   45.83
   ],
   "pct_terceros": 6.8,
   "pct_terceros_IC80": [
    4.62,
    8.97
   ],
-  "margen": 8.067,
+  "margen": 7.984,
   "margen_IC80": [
-   2.03,
-   14.12
+   1.95,
+   14.03
   ],
   "margen_IC95": [
-   -1.42,
-   17.53
+   -1.51,
+   17.45
   ],
   "sd": 4.788,
   "nu": 25.6,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0188
+    "valor": 0.0193
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9579,
+   "P_D": 0.9525,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9651,
+   "P_D": 0.9608,
    "estado": "en_vivo"
   }
  ],
@@ -232,19 +232,19 @@
  "historial": [
   {
    "corte": "2026-10-24",
-   "P_D": 0.9538,
+   "P_D": 0.9522,
    "P_D_encuestas": 0.9501,
-   "P_kalshi": 0.9579,
-   "P_polymarket": 0.9651,
-   "pct_D": 50.6351,
-   "margen": 8.0671
+   "P_kalshi": 0.9525,
+   "P_polymarket": 0.9608,
+   "pct_D": 50.5933,
+   "margen": 7.9835
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 8.067,
-   "P_D": 0.9538
+   "margen": 7.984,
+   "P_D": 0.9522
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -258,8 +258,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 9.753,
-   "P_D": 0.9781
+   "margen": 9.672,
+   "P_D": 0.9772
   },
   {
    "escenario": "Sesgo estatal sin contraer (-3.93 pp)",
@@ -373,28 +373,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 7.976,
-   "P_D": 0.952
+   "margen": 7.928,
+   "P_D": 0.9512
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 8.197,
-   "P_D": 0.9562
+   "margen": 8.047,
+   "P_D": 0.9535
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 8.27,
-   "P_D": 0.9579
+   "margen": 7.979,
+   "P_D": 0.9525
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 8.715,
-   "P_D": 0.9651
+   "margen": 8.441,
+   "P_D": 0.9608
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 11.511,
-   "P_D": 0.9186
+   "margen": 11.693,
+   "P_D": 0.9106
   }
  ],
  "anticipado": {
@@ -435,15 +435,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9186,
-  "margen": 11.51
+  "P_D": 0.9106,
+  "margen": 11.69
  },
  "adicional": {
   "titulo": "Sesgo estatal de Maine",
   "P_D": null,
   "margen": -2.43,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En ME las encuestas sobreestimaron al demócrata en 8 de 13 contiendas (estimado sin contiendas de una sola encuestadora); el sesgo contraído corrige -2.4 pp (promedio de encuestas +10.3). Polymarket por rangos: margen implícito +11.5 pp."
+  "nota": "En ME las encuestas sobreestimaron al demócrata en 8 de 13 contiendas (estimado sin contiendas de una sola encuestadora); el sesgo contraído corrige -2.4 pp (promedio de encuestas +10.3). Polymarket por rangos: margen implícito +11.7 pp."
  },
  "fuentes": [
   {

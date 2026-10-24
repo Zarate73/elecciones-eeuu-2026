@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presidenta de la Cámara estatal)** y **Bobby Charles (R)**, con **Rick Bennett (independiente)**. Elección abierta: Janet Mills no puede reelegirse. Gana la mayoría simple: la general de gobernador no usa voto preferencial.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 03:20 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 10:04 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -11,9 +11,9 @@ Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presi
 | Bobby **Charles** (R) | **42.6%** (39.4–45.8) | **5%** |
 | Terceros (Rick Bennett, I) | 6.8% (4.6–9.0) | — |
 
-Margen D−R +8.1 pp (σ 4.8) · solo encuestas: P(Pingree) 95% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 1.9% · 16 encuestas, 6 encuestadoras en la ventana
+Margen D−R +8.0 pp (σ 4.8) · solo encuestas: P(Pingree) 95% · Kalshi 95% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 1.9% · 16 encuestas, 6 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +10.3 · sesgo estatal de Maine -2.4 · mercados +0.2
+Cómo se llega: promedio de encuestas +10.3 · sesgo estatal de Maine -2.4 · mercados +0.1
 
 **Con independiente** (mayoría simple): P(Pingree gana) 95% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 2% y Polymarket 3%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
 
