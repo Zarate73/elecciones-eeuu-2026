@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Xavier Becerra (D)** y **Steve Hilton (R)**, los dos primeros de la primaria *top-two* del 2 de junio.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 21:47 PT · fuentes en vivo 6/7
+**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 09:03 PT · fuentes en vivo 6/7
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -12,7 +12,7 @@ Elección general del 3 de noviembre de 2026 entre **Xavier Becerra (D)** y **St
 
 Margen D−R +22.3 pp (σ 6.6) · solo modelo: P(Becerra) 99.6% · Kalshi 97.0% (peso 0.30) · 14 encuestas (12 wikipedia, 2 base) · promedio M5 +22.3
 
-**Encuesta más reciente:** Emerson College, terminó el 2026-10-19 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Emerson College, terminó el 2026-10-19 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
 **Voto anticipado (Civiq, diagnóstico):** boletas devueltas D−R +21.0 a T−11 contra 2022 General +20.4, 2024 General +18.8 al mismo día.
 
