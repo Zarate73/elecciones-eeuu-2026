@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Aaron Ford (D, fiscal general)** y **Joe Lombardo (R, gobernador en funciones)**. En la boleta también aparecen Danielle Ford (independiente) y la opción «None of these candidates».
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 10:32 PT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 22:06 PT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -17,7 +17,7 @@ Cómo se llega: promedio de encuestas -2.2 · sesgo estatal de Nevada -0.6 · me
 
 **Encuesta más reciente:** Global Strategy Group (D), terminó el 2026-10-13 (**10 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-23): 263,546 (181,366 por correo, 82,180 en persona) · registrados D 40.0% · R 34.8% · otros e independientes 25.1% (correo D+9.7, en persona R+4.7). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-23): 324,538 (206,041 por correo, 118,497 en persona) · registrados D 39.3% · R 35.7% · otros e independientes 25.0% (correo D+9.0, en persona R+5.7). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
