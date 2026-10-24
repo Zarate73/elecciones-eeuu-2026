@@ -29,14 +29,15 @@ Resultado: 274 de 1,023 contiendas se amplían; 113 tienen además alguna encues
 |---|---|---|---|---|---|
 | A0 · sin ampliar (solo la encuesta nominal) | 3.670 | 0.83 | 0.97 | 7.27 | 0.12 |
 | **A1 · producción** (k = firmas, deriva de la más reciente) | **3.397** | 0.76 | 0.95 | 5.63 | — |
-| A2 · k efectivo 1/Σw² | 3.391 | 0.77 | 0.95 | 5.66 | 0.74 |
+| A2 · k efectivo por firma 1/Σ_f W_f² | 3.394 | 0.77 | 0.95 | 5.69 | 0.67 |
 | A3 · deriva por antigüedad ponderada | 3.397 | 0.76 | 0.96 | 5.65 | 0.67 |
-| A4 · A2 + A3 | 3.391 | 0.77 | 0.95 | 5.68 | 0.73 |
+| A4 · A2 + A3 | 3.394 | 0.77 | 0.95 | 5.71 | 0.69 |
 
 - **Ampliar es mejor que no ampliar:** la ganancia es de 0.27 en CRPS. Las encuestas viejas sí informan.
-- **En el régimen ampliado, la cobertura del 80 % es 0.76**, un poco corta. El k efectivo la sube a 0.77 y mejora el CRPS en todos los ámbitos, pero sin significancia (P = 0.74; en todas las contiendas, 0.82). La deriva ponderada no cambia nada.
+- **En el régimen ampliado, la cobertura del 80 % es 0.76**, un poco corta. El k efectivo por firma la sube a 0.77, pero apenas cambia el CRPS (3.394 contra 3.397; P = 0.67; en todas las contiendas, 0.61). La deriva ponderada no cambia nada.
+- **Corrección posterior (k efectivo por firma).** La primera versión calculaba 1/Σw² sobre encuestas, así que contaba como independientes las encuestas repetidas de una misma firma y podía superar a k: en las contiendas sin ampliar daba 4.085 contra 4.072 firmas. Ahora se suman primero los pesos de cada firma (W_f = Σ w de sus encuestas) y k_ef = 1/Σ_f W_f², con 1 ≤ k_ef ≤ k. Con esa corrección la ventaja aparente bajó (P de 0.74 a 0.67): parte venía de contar de más. El escenario de producción usa la misma fórmula; hoy coincide con la anterior (seis encuestas de seis firmas): 4.8.
 - **Decisión:** no se cambia la σ publicada. Se agrega el escenario «Incertidumbre con k efectivo 4.8 (no 6 firmas) y deriva por antigüedad ponderada (14 días)»: σ 5.12 en lugar de 4.79, y P(Pingree) 94.7 % en lugar de 95.3 %. Es candidato a regla transversal si otro estado lo confirma.
-- **La emulación tiene un límite:** en ella el k efectivo casi coincide con el conteo de firmas (2.59 contra 2.61). En Maine hoy la diferencia es mayor (4.8 contra 6), así que el efecto real puede ser algo mayor que el medido.
+- **La emulación tiene un límite:** en ella el k efectivo por firma es 2.45 contra 2.61 firmas. En Maine hoy la diferencia es mayor (4.8 contra 6), así que el efecto real puede ser algo mayor que el medido.
 
 ## 2. Independiente y probabilidad de ganar
 - **El modelo simula el margen D−R y el total de terceros (T)** = Bennett + otros. «Ganar» con mayoría simple exige D > R **y** D > Bennett.

@@ -199,5 +199,21 @@ def test_probabilidad_a_tres_bandas_y_bennett(cfg, red_simulada):
     assert 'condicional a que gane un partido principal' in poly.escenario
 
 
+def test_k_efectivo_por_firma(cfg, red_simulada):
+    """k efectivo agrupa los pesos por firma (W_f = Σ w de sus encuestas): nunca supera al número de firmas, aunque una
+    firma tenga varias encuestas en la ventana (ventana de 60 días: Beacon/Shaw, UNH y Siena repiten)."""
+    import re
+    from me_pronostico import modelo as M
+    e = ejecutar(cfg, escribir_salidas=False)['modelo']['escenarios']
+    nom = e[e.escenario.str.startswith('Incertidumbre con k efectivo')].escenario.iloc[0]
+    k_ef, k = map(float, re.search(r'k efectivo ([\d.]+) \(no (\d+) firmas\)', nom).groups())
+    assert 1 <= k_ef <= k
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    q = p[p.fin >= '2026-08-01']
+    w = q.pollster_key.map(lambda x: 1.0)                                # caso límite: pesos iguales por encuesta
+    W_f = (w / w.sum()).groupby(q.pollster_key).sum()
+    assert 1 / (W_f ** 2).sum() <= q.pollster_key.nunique() + 1e-9 < len(q)   # por encuesta daría len(q) > k
+
+
 # valores fijados con la corrida de referencia del 24-oct (ver notebook)
 MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 10.30, 2.427, 8.05, 0.9535, 6.80   # sesgo regla k ≥ 2 (+2.43 pp pro-D)

@@ -9,7 +9,9 @@
    amplía a las encuestas de los 9 días previos a la más reciente (≤ 18 días). En las contiendas ampliadas se comparan:
      A0 solo la ventana nominal (sin ampliar)
      A1 producción: ampliada, k = número de encuestadoras, deriva por la antigüedad de la MÁS RECIENTE
-     A2 ampliada con k efectivo = 1/Σw² (no el conteo de firmas)
+     A2 ampliada con k efectivo POR FIRMA = 1/Σ_f W_f², W_f = suma de los pesos de las encuestas de la firma f
+        (revisión: la versión por encuesta, 1/Σw², contaba como independientes las encuestas repetidas de una firma
+        y podía superar a k)
      A3 ampliada con deriva por la antigüedad PONDERADA de todas las encuestas
      A4 A2 + A3
    τ, s y ν se ajustan fuera del año evaluado (LOYO) con los errores de cada variante.
@@ -92,6 +94,8 @@ def base_ventana(d, casa):
             w = np.exp(-np.log(2) * dt / 14.0) * np.sqrt(sel.n.to_numpy(float))
             w = w / sel.pollster_key.map(sel.pollster_key.value_counts()).to_numpy(float)
             w = w / w.sum()
+            W_f = pd.Series(w, index=sel.index).groupby(sel.pollster_key).sum()       # peso total de cada firma
+            a = {**a, 'neff_encuestas': a['neff'], 'neff': 1.0 / float(np.sum(W_f.to_numpy() ** 2))}   # 1 ≤ k_ef ≤ k
             filas.append({'race': race, 'year': y, 'location': p.location.iloc[0], 'tipo': p.type_simple.iloc[0],
                           'var': var, 'regimen_ampliado': ampliada, **a,
                           'edad_reciente': float(sel.days.min() - HN), 'edad_ponderada': float(w @ sel.days.to_numpy(float) - HN),
@@ -138,7 +142,7 @@ def ventana(d):
     P = pd.concat([
         evaluar_variante(nomb, 'k', 'edad_reciente', 'A0 solo ventana nominal'),
         evaluar_variante(prod, 'k', 'edad_reciente', 'A1 producción: k = firmas, deriva de la más reciente'),
-        evaluar_variante(prod, 'neff', 'edad_reciente', 'A2 k efectivo 1/Σw²'),
+        evaluar_variante(prod, 'neff', 'edad_reciente', 'A2 k efectivo por firma 1/Σ W_f²'),
         evaluar_variante(prod, 'k', 'edad_ponderada', 'A3 deriva por antigüedad ponderada'),
         evaluar_variante(prod, 'neff', 'edad_ponderada', 'A4 k efectivo + deriva ponderada'),
     ], ignore_index=True)
@@ -156,7 +160,7 @@ def ventana(d):
     T = pd.DataFrame(filas)
     a = B[B.race.isin(amp_races) & (B['var'] == 'ampliada')]
     info = (f'{len(amp_races)} contiendas ampliadas de {B.race.nunique()}; en ellas k medio {a.k.mean():.2f} '
-            f'(k efectivo {a.neff.mean():.2f}), antigüedad de la más reciente {a.edad_reciente.mean():.1f} d y '
+            f'(k efectivo por firma {a.neff.mean():.2f}; por encuesta {a.neff_encuestas.mean():.2f}), antigüedad de la más reciente {a.edad_reciente.mean():.1f} d y '
             f'ponderada {a.edad_ponderada.mean():.1f} d sobre el horizonte')
     return T, info
 

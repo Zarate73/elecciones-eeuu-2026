@@ -175,7 +175,8 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     # revisión del 24-oct: ventana ampliada (la mayor parte del peso tiene > 21 días). Escenario, no regla: en la emulación
     # del backtest k efectivo + deriva ponderada mejora apenas (CRPS 3.391 vs 3.397, P = 0.73) y no es significativo.
     wn = np.asarray(w, float) / float(np.sum(w))
-    k_ef = 1.0 / float(np.sum(wn ** 2))
+    W_f = pd.Series(wn, index=q.index).groupby(q.pollster_key).sum()      # peso total de cada firma (no por encuesta)
+    k_ef = 1.0 / float(np.sum(W_f.to_numpy() ** 2))                      # 1 ≤ k_ef ≤ k firmas
     edad_pond = float(np.sum(wn * (pd.Timestamp(cfg.dia_eleccion) - q.fin).dt.days.to_numpy(float))) - h
     sd_ef = float(np.sqrt(par['tau'] ** 2 + par['s'] ** 2 / max(k_ef, 1) + m.sigma_dia_pp ** 2 * max(edad_pond, 0)))
     esc.append(fila(sim(mu, Dist(sd_ef, par['nu'])), f'Incertidumbre con k efectivo {k_ef:.1f} (no {k} firmas) y deriva por '
