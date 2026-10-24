@@ -18,22 +18,22 @@
   ],
   "pct_R": 39.51,
   "pct_R_IC80": [
-   35.28,
-   43.74
+   35.29,
+   43.75
   ],
   "pct_terceros": 2.14,
   "pct_terceros_IC80": [
    0.1,
    4.52
   ],
-  "margen": 18.847,
+  "margen": 18.842,
   "margen_IC80": [
    10.66,
-   26.99
+   26.98
   ],
   "margen_IC95": [
-   5.94,
-   31.72
+   5.93,
+   31.71
   ],
   "sd": 6.51,
   "nu": 17.9,
@@ -55,7 +55,7 @@
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9775,
+   "P_D": 0.977,
    "estado": "en_vivo"
   }
  ],
@@ -255,15 +255,15 @@
    "P_D": 0.9967,
    "P_D_encuestas": 0.9986,
    "P_kalshi": 0.973,
-   "P_polymarket": 0.9775,
-   "pct_D": 58.3526,
-   "margen": 18.8467
+   "P_polymarket": 0.977,
+   "pct_D": 58.3501,
+   "margen": 18.8418
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 18.847,
+   "margen": 18.842,
    "P_D": 0.9967
   },
   {
@@ -278,7 +278,7 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 19.619,
+   "margen": 19.612,
    "P_D": 0.9977
   },
   {
@@ -388,23 +388,23 @@
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 17.249,
-   "P_D": 0.9941
+   "margen": 17.241,
+   "P_D": 0.994
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 12.652,
+   "margen": 12.654,
    "P_D": 0.973
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 13.22,
-   "P_D": 0.9775
+   "margen": 13.153,
+   "P_D": 0.977
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 21.098,
-   "P_D": 0.9781
+   "margen": 22.416,
+   "P_D": 0.9782
   }
  ],
  "anticipado": {
@@ -440,15 +440,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9781,
-  "margen": 21.1
+  "P_D": 0.9782,
+  "margen": 22.42
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",
   "P_D": null,
   "margen": -1.05,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -1.0 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +21.1 pp."
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -1.0 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +22.4 pp."
  },
  "fuentes": [
   {

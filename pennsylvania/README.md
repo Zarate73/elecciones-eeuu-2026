@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Josh Shapiro (D, gobernador en funciones)** y **Stacy Garrity (R, tesorera estatal)**. En la boleta también aparece Ken Krawchuk (libertario).
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 17:18 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-23** (11 días a la elección) · actualizado automáticamente 2026-10-23 20:57 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
