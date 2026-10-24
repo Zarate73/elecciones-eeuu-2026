@@ -1,0 +1,487 @@
+{
+ "clave": "maine",
+ "estado": "Maine",
+ "cargo": "Gobernador",
+ "modelo": "General (V11, sesgo estatal contraído)",
+ "candidatos": {
+  "D": "Hannah Pingree",
+  "R": "Bobby Charles"
+ },
+ "corte": "2026-10-24",
+ "dias_a_eleccion": 10,
+ "pronostico": {
+  "P_D": 0.9537,
+  "pct_D": 50.63,
+  "pct_D_IC80": [
+   47.43,
+   53.84
+  ],
+  "pct_R": 42.57,
+  "pct_R_IC80": [
+   39.36,
+   45.79
+  ],
+  "pct_terceros": 6.8,
+  "pct_terceros_IC80": [
+   4.62,
+   8.97
+  ],
+  "margen": 8.057,
+  "margen_IC80": [
+   2.02,
+   14.11
+  ],
+  "margen_IC95": [
+   -1.43,
+   17.52
+  ],
+  "sd": 4.788,
+  "nu": 25.6,
+  "P_D_encuestas": 0.9501,
+  "peso_mercados": 0.3,
+  "mercado_en_distribucion": true,
+  "extra": [
+   {
+    "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
+    "valor": 0.0188
+   }
+  ]
+ },
+ "mercados": [
+  {
+   "nombre": "Kalshi",
+   "P_D": 0.9559,
+   "estado": "en_vivo"
+  },
+  {
+   "nombre": "Polymarket",
+   "P_D": 0.9661,
+   "estado": "en_vivo"
+  }
+ ],
+ "ultima_encuesta": {
+  "encuestadora": "Beacon Research (D)/Shaw & Co. Research (R)",
+  "fin": "2026-10-20",
+  "dias_desde_fin": 4,
+  "dias_antes_eleccion": 14,
+  "origen": "wikipedia"
+ },
+ "encuestas": [
+  {
+   "fin": "2026-10-20",
+   "encuestadora": "Beacon Research (D)/Shaw & Co. Research (R)",
+   "D": 49.0,
+   "R": 39.0,
+   "margen": 10.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.3522
+  },
+  {
+   "fin": "2026-10-11",
+   "encuestadora": "Suffolk University",
+   "D": 49.0,
+   "R": 38.0,
+   "margen": 11.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1296
+  },
+  {
+   "fin": "2026-10-05",
+   "encuestadora": "The Washington Post/SSPG",
+   "D": 49.0,
+   "R": 36.0,
+   "margen": 13.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1218
+  },
+  {
+   "fin": "2026-10-04",
+   "encuestadora": "Marist University",
+   "D": 52.0,
+   "R": 40.0,
+   "margen": 12.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.159
+  },
+  {
+   "fin": "2026-10-01",
+   "encuestadora": "CBS/YouGov",
+   "D": 56.0,
+   "R": 44.0,
+   "margen": 12.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1189
+  },
+  {
+   "fin": "2026-09-30",
+   "encuestadora": "co/efficient (R)",
+   "D": 47.0,
+   "R": 38.0,
+   "margen": 9.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1184
+  },
+  {
+   "fin": "2026-09-22",
+   "encuestadora": "Fabrizio Ward (R)/ Impact Research (D)",
+   "D": 52.0,
+   "R": 39.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-22",
+   "encuestadora": "New York Times/Portland Press Herald/ Siena University",
+   "D": 47.0,
+   "R": 34.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-21",
+   "encuestadora": "University of New Hampshire",
+   "D": 48.0,
+   "R": 40.0,
+   "margen": 8.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-14",
+   "encuestadora": "University of Massachusetts/YouGov",
+   "D": 49.0,
+   "R": 38.0,
+   "margen": 11.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-08",
+   "encuestadora": "YouGov",
+   "D": 47.0,
+   "R": 36.0,
+   "margen": 11.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-06",
+   "encuestadora": "SSRS",
+   "D": 52.0,
+   "R": 39.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-10",
+   "encuestadora": "Beacon Research (D)/ Shaw & Co. Research (R)",
+   "D": 49.0,
+   "R": 38.0,
+   "margen": 11.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-20",
+   "encuestadora": "University of New Hampshire",
+   "D": 49.0,
+   "R": 35.0,
+   "margen": 14.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-06-27",
+   "encuestadora": "Beacon Research (D)/ Shaw & Co. Research (R)",
+   "D": 53.0,
+   "R": 42.0,
+   "margen": 11.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-06-26",
+   "encuestadora": "New York Times/Portland Press Herald/ Siena University",
+   "D": 50.0,
+   "R": 36.0,
+   "margen": 14.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  }
+ ],
+ "n_encuestas_ventana": 6,
+ "historial": [
+  {
+   "corte": "2026-10-24",
+   "P_D": 0.9537,
+   "P_D_encuestas": 0.9501,
+   "P_kalshi": 0.9559,
+   "P_polymarket": 0.9661,
+   "pct_D": 50.6299,
+   "margen": 8.0569
+  }
+ ],
+ "escenarios": [
+  {
+   "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+   "margen": 8.057,
+   "P_D": 0.9537
+  },
+  {
+   "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
+   "margen": 7.866,
+   "P_D": 0.9501
+  },
+  {
+   "escenario": "Sin sesgo estatal, sin mercados",
+   "margen": 10.287,
+   "P_D": 0.9828
+  },
+  {
+   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
+   "margen": 9.744,
+   "P_D": 0.978
+  },
+  {
+   "escenario": "Sesgo estatal sin contraer (-3.93 pp)",
+   "margen": 6.364,
+   "P_D": 0.9104
+  },
+  {
+   "escenario": "Sesgo estatal a la mitad (-1.21 pp)",
+   "margen": 9.074,
+   "P_D": 0.9701
+  },
+  {
+   "escenario": "Sesgo estimado con todas las contiendas, incluidas las de una sola encuestadora (-4.03 pp)",
+   "margen": 6.277,
+   "P_D": 0.9075
+  },
+  {
+   "escenario": "Distribución normal",
+   "margen": 7.89,
+   "P_D": 0.9497
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": 7.876,
+   "P_D": 0.9505
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 7.869,
+   "P_D": 0.9513
+  },
+  {
+   "escenario": "Deriva al doble (0.50 pp/día, 4 días)",
+   "margen": 7.855,
+   "P_D": 0.9476
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
+   "margen": 6.85,
+   "P_D": 0.8559
+  },
+  {
+   "escenario": "Ventana 45 días (9 encuestadoras)",
+   "margen": 7.931,
+   "P_D": 0.9632
+  },
+  {
+   "escenario": "Ventana 60 días (12 encuestadoras)",
+   "margen": 7.949,
+   "P_D": 0.9691
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": 8.497,
+   "P_D": 0.9619
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
+   "margen": 7.813,
+   "P_D": 0.9491
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
+   "margen": 7.964,
+   "P_D": 0.9524
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
+   "margen": 8.832,
+   "P_D": 0.9667
+  },
+  {
+   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
+   "margen": 8.171,
+   "P_D": 0.9567
+  },
+  {
+   "escenario": "Sin Beacon Research (D)/Shaw & Co. Research (R) (pesa 35%) → ventana desde 2026-09-20: University of New Hampshire, Fabrizio Ward, New York Times/Portland Press Herald/ Siena University, co/efficient, CBS/YouGov, Marist University, The Washington Post/SSPG, Suffolk University",
+   "margen": 8.419,
+   "P_D": 0.966
+  },
+  {
+   "escenario": "Sin Marist University (pesa 16%) → ventana desde 2026-09-29: co/efficient, CBS/YouGov, The Washington Post/SSPG, Suffolk University, Beacon Research",
+   "margen": 7.641,
+   "P_D": 0.9384
+  },
+  {
+   "escenario": "Sin Suffolk University (pesa 13%) → ventana desde 2026-09-29: co/efficient, CBS/YouGov, Marist University, The Washington Post/SSPG, Beacon Research",
+   "margen": 7.942,
+   "P_D": 0.9442
+  },
+  {
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-09-29: CBS/YouGov, Marist University, The Washington Post/SSPG, Suffolk University, Beacon Research",
+   "margen": 8.048,
+   "P_D": 0.9469
+  },
+  {
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 4.4 %)",
+   "margen": 7.852,
+   "P_D": 0.9499
+  },
+  {
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.6 %)",
+   "margen": 7.895,
+   "P_D": 0.951
+  },
+  {
+   "escenario": "Peso de mercados 0.15 (base 0.30)",
+   "margen": 7.97,
+   "P_D": 0.9519
+  },
+  {
+   "escenario": "Peso de mercados 0.50 (base 0.30)",
+   "margen": 8.179,
+   "P_D": 0.9559
+  },
+  {
+   "escenario": "Solo Kalshi (probabilidad)",
+   "margen": 8.16,
+   "P_D": 0.9559
+  },
+  {
+   "escenario": "Solo Polymarket (probabilidad)",
+   "margen": 8.779,
+   "P_D": 0.9661
+  },
+  {
+   "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
+   "margen": 12.474,
+   "P_D": 0.9146
+  }
+ ],
+ "anticipado": {
+  "fuente": "civicAPI",
+  "fecha": "2026-10-23",
+  "estado": "en_vivo",
+  "metricas": [
+   {
+    "etiqueta": "Votos ya emitidos (correo + en persona)",
+    "valor": 179532.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Emitidos por demócratas registrados",
+    "valor": 50.28,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Emitidos por republicanos registrados",
+    "valor": 21.22,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Emitidos por otros y no partidistas",
+    "valor": 28.5,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Margen D−R por correo",
+    "valor": 32.63,
+    "formato": "pp"
+   },
+   {
+    "etiqueta": "Margen D−R en persona",
+    "valor": 25.69,
+    "formato": "pp"
+   }
+  ]
+ },
+ "rangos_poly": {
+  "P_D": 0.9146,
+  "margen": 12.47
+ },
+ "adicional": {
+  "titulo": "Sesgo estatal de Maine",
+  "P_D": null,
+  "margen": -2.43,
+  "etiqueta_margen": "corrección al margen D−R",
+  "nota": "En ME las encuestas sobreestimaron al demócrata en 8 de 13 contiendas (estimado sin contiendas de una sola encuestadora); el sesgo contraído corrige -2.4 pp (promedio de encuestas +10.3). Polymarket por rangos: margen implícito +12.5 pp."
+ },
+ "fuentes": [
+  {
+   "nombre": "historico_538",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "wikipedia",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "270towin",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "base_verificada",
+   "estado": "archivo (encuestas_verificadas_me.csv, 14 encuestas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "kalshi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket_rangos",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "civicapi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  }
+ ],
+ "avisos": [],
+ "carpeta": "maine"
+}
