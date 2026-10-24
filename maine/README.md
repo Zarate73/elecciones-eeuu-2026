@@ -43,7 +43,8 @@ Base: el modelo de Pennsylvania v1.1.0 (Nevada / Florida / Georgia V11). Se vali
 | σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día si las encuestas son más viejas que ese horizonte | Cobertura del 80 % correcta en el backtest |
 | Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30. Kalshi tiene un contrato de Bennett: se usa D / (D + R) | Peso estimado con 40 contiendas de 2024 ([detalle](../arizona/docs/03_peso_mercados.md)) |
 | Resultado muy estrecho | P(\|margen\| ≤ 0.5 pp) | Maine no tiene recuento automático (lo pide un candidato) |
-| Escenarios | Cruce 2 × 2 de sesgo × mercados, sesgo con todas las contiendas, influencia de cada encuesta, terceros con reducción, peso de mercados 0.15/0.50, Polymarket por rangos (con «gana un independiente») | Igual que Pennsylvania |
+| Escenarios | Cruce 2 × 2 de sesgo × mercados, sesgo con todas las contiendas, influencia de cada encuesta, terceros con reducción, peso de mercados 0.15/0.50, **k efectivo y deriva por antigüedad ponderada** (ventana ampliada), Polymarket por rangos (condicional a que gane un partido principal) | Revisión del 24-oct ([detalle](docs/02_revision_externa_2026-10-24.md)) |
+| Probabilidad con independiente | P(gana) exige superar a R y a los terceros; se reporta una cota de P(gana un tercero) y las probabilidades de Bennett de Kalshi y Polymarket | Mayoría simple sin voto preferencial |
 | Voto ausente (civicAPI) | Diagnóstico, peso 0 | Es registro de partido; un tercio del padrón no está inscrito |
 
 ## Carpetas
