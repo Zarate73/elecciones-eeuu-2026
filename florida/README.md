@@ -3,11 +3,11 @@
 Elección general del 3 de noviembre de 2026 entre **David Jolly (D)** y **Byron Donalds (R)**, con candidatos de terceros en la boleta. El gobernador Ron DeSantis no puede reelegirse.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 03:19 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 10:07 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| David **Jolly** (D) | **44.8%** (41.5–48.2) | **5%** |
+| David **Jolly** (D) | **44.8%** (41.5–48.1) | **5%** |
 | Byron **Donalds** (R) | **53.1%** (49.7–56.4) | **95%** |
 | Terceros | 2.1% (0.1–4.5) | — |
 
@@ -17,7 +17,7 @@ Cómo se llega: promedio de encuestas -4.4 · sesgo estatal de Florida -5.3 (las
 
 **Encuesta más reciente:** Univ. of North Florida, terminó el 2026-10-21 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-24): 2,309,315 (1,304,765 por correo, 1,004,550 en persona) · registrados D 39.9% · R 39.6% · NPA 18.1% (correo D+6.7, en persona R+8.1). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-24): 2,352,288 (1,323,765 por correo, 1,028,523 en persona) · registrados D 39.9% · R 39.5% · NPA 18.1% (correo D+7.0, en persona R+8.1). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
