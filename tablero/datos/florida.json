@@ -10,13 +10,13 @@
  "corte": "2026-10-24",
  "dias_a_eleccion": 10,
  "pronostico": {
-  "P_D": 0.0484,
+  "P_D": 0.0485,
   "pct_D": 44.83,
   "pct_D_IC80": [
-   41.48,
+   41.49,
    48.15
   ],
-  "pct_R": 53.08,
+  "pct_R": 53.07,
   "pct_R_IC80": [
    49.74,
    56.4
@@ -26,9 +26,9 @@
    0.1,
    4.46
   ],
-  "margen": -8.25,
+  "margen": -8.244,
   "margen_IC80": [
-   -14.54,
+   -14.53,
    -1.95
   ],
   "margen_IC95": [
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Recuento por máquina (|margen| ≤ 0.5)",
-    "valor": 0.0192
+    "valor": 0.0193
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.1912,
+   "P_D": 0.1832,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.175,
+   "P_D": 0.1859,
    "estado": "en_vivo"
   }
  ],
@@ -260,19 +260,19 @@
   },
   {
    "corte": "2026-10-24",
-   "P_D": 0.0484,
+   "P_D": 0.0485,
    "P_D_encuestas": 0.0262,
-   "P_kalshi": 0.1912,
-   "P_polymarket": 0.175,
-   "pct_D": 44.8276,
-   "margen": -8.25
+   "P_kalshi": 0.1832,
+   "P_polymarket": 0.1859,
+   "pct_D": 44.8305,
+   "margen": -8.2441
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": -8.25,
-   "P_D": 0.0484
+   "margen": -8.244,
+   "P_D": 0.0485
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -286,8 +286,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": -4.383,
-   "P_D": 0.1851
+   "margen": -4.375,
+   "P_D": 0.1856
   },
   {
    "escenario": "Sesgo estatal sin contraer (-6.04 pp)",
@@ -361,18 +361,18 @@
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": -4.264,
-   "P_D": 0.1912
+   "margen": -4.411,
+   "P_D": 0.1832
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": -4.566,
-   "P_D": 0.175
+   "margen": -4.36,
+   "P_D": 0.1859
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": -5.747,
-   "P_D": 0.1883
+   "margen": -5.614,
+   "P_D": 0.1941
   }
  ],
  "anticipado": {
@@ -382,46 +382,46 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (correo + en persona)",
-    "valor": 2352288.0,
+    "valor": 2597285.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Emitidos por demócratas registrados",
-    "valor": 39.93,
+    "valor": 39.76,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por republicanos registrados",
-    "valor": 39.54,
+    "valor": 39.67,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por sin partido (NPA)",
-    "valor": 18.09,
+    "valor": 18.13,
     "formato": "pct"
    },
    {
     "etiqueta": "Margen D−R por correo",
-    "valor": 6.98,
+    "valor": 7.03,
     "formato": "pp"
    },
    {
     "etiqueta": "Margen D−R en persona",
-    "valor": -8.1,
+    "valor": -7.75,
     "formato": "pp"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.1883,
-  "margen": -5.75
+  "P_D": 0.1941,
+  "margen": -5.61
  },
  "adicional": {
   "titulo": "Sesgo estatal de Florida",
   "P_D": null,
   "margen": -5.34,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Las encuestas de FL han sobreestimado al demócrata: el modelo corrige -5.3 pp (promedio de encuestas -4.4). Polymarket por rangos: margen implícito -5.7 pp."
+  "nota": "Las encuestas de FL han sobreestimado al demócrata: el modelo corrige -5.3 pp (promedio de encuestas -4.4). Polymarket por rangos: margen implícito -5.6 pp."
  },
  "fuentes": [
   {
