@@ -1,0 +1,66 @@
+# =====================================================================================
+# Texas 2026 · configuración (modelo general: V11 + sesgo estatal contraído + terceros + mercados)
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "Texas"
+abrev = "TX"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2026-03-03"        # primarias: solo cuentan encuestas que terminan después
+candidato_d = "Hinojosa"
+candidato_r = "Abbott"
+nombre_d = "Gina Hinojosa"
+nombre_r = "Greg Abbott"
+terceros = "Terceros (Pat Dixon, L; otros)"
+condado_principal = "Harris"
+zona_horaria = "America/New_York"
+recuento_pp = 0.5                      # Texas no tiene recuento automático (lo pide un candidato): se reporta P(|margen| ≤ 0.5)
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+# Encuestas verificadas a mano (opcional). Excel con la hoja «Histórico encuestas» (TEXAS_GOBERNADOR.xlsx) o CSV
+# con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
+encuestas_base = "data/encuestas_verificadas_tx.csv"
+# Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
+# Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
+correcciones_n = "data/correcciones_tamano_muestra.csv"
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_Texas_gubernatorial_election"
+t270_url = "https://www.270towin.com/2026-governor-polls/texas"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "GOVPARTYTX-26"
+kalshi_ticker_d = "GOVPARTYTX-26-D"
+kalshi_ticker_r = "GOVPARTYTX-26-R"
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_evento_ganador = "texas-governor-winner-2026"
+polymarket_evento_margen = "texas-governor-margin-of-victory-2026"
+mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+civicapi = "https://civicapi.org/api/v2/early-vote"
+civicapi_estado = "TX"
+civicapi_por_partido = false            # Texas no tiene registro partidario: solo participación
+votos_totales_eleccion_previa = 8102908 # gobernador 2022 (Secretaría de Estado de Texas): referencia de volumen
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 5                # menos encuestas web que esto => fuente degradada
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan en los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos: los 21 días previos a la encuesta más reciente
+vida_media_dias = 14.0
+contraccion_casa = 8.0
+sesgo_estatal = true                   # backtest de TX: empate en TX (P = 0.49), gana a nivel nacional (P = 0.002)
+sesgo_regla = "todas"                  # cronológico de TX: «todas» 2.306 vs «k2» 2.562 (P = 0.07)
+peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+sigma_dia_pp = 0.25                    # deriva diaria si las encuestas son más viejas que el horizonte calibrado
+n_simulaciones = 200000
+semilla = 20261025
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60

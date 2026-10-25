@@ -18,6 +18,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Nevada | Gobernador: Ford 45.3% · Lombardo 46.6% · P(Ford) 42% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`nevada/`](nevada/) |
 | Pennsylvania | Gobernador: Shapiro 58.4% · Garrity 39.5% · P(Shapiro) >99% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`pennsylvania/`](pennsylvania/) |
 | Maine | Gobernador: Pingree 50.2% · Charles 43.0% · P(Pingree) 93% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`maine/`](maine/) |
+| Texas | Gobernador: Hinojosa 46.6% · Abbott 51.2% · P(Hinojosa) 15% (referencia 2026-10-25) | **Modelo general validado**; flujo automático pendiente | [`texas/`](texas/) |
 | … | | pendiente | |
 
 ## Estructura por estado
@@ -34,7 +35,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 - **Validación:** *leave-one-year-out* sobre el histórico de FiveThirtyEight (980 contiendas 1998–2024); métrica principal CRPS, más la cobertura de los intervalos del 80% y 95%.
 - **Incertidumbre:** σ empírica `√(τ² + s²/k)` calibrada a la distancia de la elección; nada de pisos fijos sin calibrar.
 - **Componentes:** se agregan solo si mejoran el CRPS fuera de muestra; lo no validable queda como diagnóstico.
-- **Sesgo estatal:** se decide por estado con el backtest y siempre se reporta el escenario contrario. Georgia y Florida lo usan (en FL las encuestas sobreestimaron al demócrata en 18 de 23 contiendas); Arizona no (su error cambia de signo entre ciclos); en Nevada y Pennsylvania la evidencia estatal es nula (P ≈ 0.5) y se usa la regla nacional (sesgo contraído); en Maine el sesgo ayuda (cronológico P = 0.014) y se estima sin contiendas de una sola encuestadora.
+- **Sesgo estatal:** se decide por estado con el backtest y siempre se reporta el escenario contrario. Georgia y Florida lo usan (en FL las encuestas sobreestimaron al demócrata en 18 de 23 contiendas); Arizona no (su error cambia de signo entre ciclos); en Nevada y Pennsylvania la evidencia estatal es nula (P ≈ 0.5) y se usa la regla nacional (sesgo contraído); en Maine el sesgo ayuda (cronológico P = 0.014) y se estima sin contiendas de una sola encuestadora; en Texas (14 de 20 contiendas pro-D) el estado empata y se usa la regla nacional con todas las contiendas.
 - **Producción:** todas las fuentes en vivo, con caché y degradación explícita (`--estricto` → código 2). Que las fuentes estén en vivo no significa que las encuestas sean recientes: cada reporte trae la fecha y la antigüedad de la encuesta más reciente (`ultima_encuesta`).
 - **Mercados:** en Georgia, Arizona, Florida, Nevada, Pennsylvania y Maine la mezcla con mercados desplaza la distribución del margen, así que la probabilidad publicada es la fracción de simulaciones con margen > 0 (en AZ 2024 esto bajó el error del margen en las dos contiendas con historia de mercados). En California Kalshi ajusta solo la probabilidad publicada: margen, intervalos y % de voto son los del modelo.
 - **Salidas para tableros:** `salidas/ultimo/reporte.json` es JSON estricto (RFC 8259, sin `NaN` ni `Infinity`; los valores faltantes son `null`).

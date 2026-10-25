@@ -1,0 +1,32 @@
+[1] Validación estrictamente cronológica (2004–2024) de la regla del sesgo estatal
+      ambito    modelo   n  CRPS   MAE  Cob80  P(mejor que G todas)
+    Nacional     G k≥2 757 3.137 4.326  0.810                 0.410
+    Nacional   G todas 757 3.132 4.307  0.798                   NaN
+    Nacional sin sesgo 757 3.369 4.686  0.773                 0.002
+Nacional_Gob     G k≥2 218 3.154 4.369  0.817                 0.366
+Nacional_Gob   G todas 218 3.147 4.343  0.807                   NaN
+Nacional_Gob sin sesgo 218 3.270 4.568  0.794                 0.131
+          TX     G k≥2  16 2.562 3.176  0.750                 0.071
+          TX   G todas  16 2.306 2.805  0.812                   NaN
+          TX sin sesgo  16 2.309 2.868  0.812                 0.485
+      TX_Gob     G k≥2   4 2.369 2.448  0.750                 0.335
+      TX_Gob   G todas   4 2.328 2.794  0.750                   NaN
+      TX_Gob sin sesgo   4 2.196 2.839  1.000                 0.684
+
+[2] Régimen de ventana ampliada (emulación a escala 9/21: nominal 3–9 días; ampliada ≤ 18 días). 274 contiendas ampliadas de 1023; en ellas k medio 2.13 (k efectivo por firma 2.03; por encuesta 2.12), antigüedad de la más reciente 7.4 d y ponderada 9.3 d sobre el horizonte
+                                                  ambito                                               modelo   n  CRPS   MAE  Cob80  Cob95  sd_media  k_medio  P(mejor que A1)
+Contiendas con ventana ampliada (y con encuesta nominal)                              A0 solo ventana nominal 113 3.670 5.024  0.832  0.973     7.272    1.000            0.142
+Contiendas con ventana ampliada (y con encuesta nominal) A1 producción: k = firmas, deriva de la más reciente 113 3.397 4.786  0.761  0.947     5.628    2.611              NaN
+Contiendas con ventana ampliada (y con encuesta nominal)                     A2 k efectivo por firma 1/Σ W_f² 113 3.394 4.786  0.770  0.947     5.693    2.450            0.672
+Contiendas con ventana ampliada (y con encuesta nominal)                   A3 deriva por antigüedad ponderada 113 3.397 4.786  0.761  0.956     5.647    2.611            0.666
+Contiendas con ventana ampliada (y con encuesta nominal)                     A4 k efectivo + deriva ponderada 113 3.394 4.786  0.770  0.947     5.711    2.450            0.697
+                                  Contiendas sin ampliar                              A0 solo ventana nominal 749 2.938 4.126  0.796  0.943     5.130    4.072            0.087
+                                  Contiendas sin ampliar A1 producción: k = firmas, deriva de la más reciente 749 2.888 4.047  0.822  0.955     5.510    4.072              NaN
+                                  Contiendas sin ampliar                     A2 k efectivo por firma 1/Σ W_f² 749 2.888 4.047  0.821  0.956     5.514    3.868            0.532
+                                  Contiendas sin ampliar                   A3 deriva por antigüedad ponderada 749 2.888 4.047  0.822  0.955     5.520    4.072            0.458
+                                  Contiendas sin ampliar                     A4 k efectivo + deriva ponderada 749 2.888 4.047  0.824  0.956     5.523    3.868            0.521
+                                                   Todas                              A0 solo ventana nominal 862 3.034 4.243  0.800  0.947     5.411    3.669            0.038
+                                                   Todas A1 producción: k = firmas, deriva de la más reciente 862 2.955 4.144  0.814  0.954     5.525    3.881              NaN
+                                                   Todas                     A2 k efectivo por firma 1/Σ W_f² 862 2.954 4.144  0.814  0.955     5.537    3.682            0.609
+                                                   Todas                   A3 deriva por antigüedad ponderada 862 2.955 4.144  0.814  0.955     5.536    3.881            0.505
+                                                   Todas                     A4 k efectivo + deriva ponderada 862 2.954 4.144  0.817  0.955     5.548    3.682            0.589
