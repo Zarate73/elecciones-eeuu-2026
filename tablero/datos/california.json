@@ -10,30 +10,30 @@
  "corte": "2026-10-24",
  "dias_a_eleccion": 10,
  "pronostico": {
-  "P_D": 0.9933,
-  "pct_D": 61.13,
+  "P_D": 0.9929,
+  "pct_D": 60.9,
   "pct_D_IC80": [
-   57.35,
-   64.87
+   57.16,
+   64.61
   ],
-  "pct_R": 38.87,
+  "pct_R": 39.1,
   "pct_R_IC80": [
-   35.13,
-   42.65
+   35.39,
+   42.84
   ],
   "pct_terceros": null,
-  "margen": 22.253,
+  "margen": 21.794,
   "margen_IC80": [
-   14.71,
-   29.73
+   14.31,
+   29.21
   ],
   "margen_IC95": [
-   9.12,
-   35.33
+   8.77,
+   34.77
   ],
-  "sd": 6.592,
+  "sd": 6.538,
   "nu": 5.0,
-  "P_D_encuestas": 0.9965,
+  "P_D_encuestas": 0.9963,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": false,
   "extra": []
@@ -41,18 +41,28 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9705,
+   "P_D": 0.9684,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "Emerson College",
-  "fin": "2026-10-19",
-  "dias_desde_fin": 5,
-  "dias_antes_eleccion": 15,
+  "encuestadora": "McLaughlin & Associates (R)",
+  "fin": "2026-10-20",
+  "dias_desde_fin": 4,
+  "dias_antes_eleccion": 14,
   "origen": "wikipedia"
  },
  "encuestas": [
+  {
+   "fin": "2026-10-20",
+   "encuestadora": "McLaughlin & Associates (R)",
+   "D": 55.0,
+   "R": 39.0,
+   "margen": 16.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.0876
+  },
   {
    "fin": "2026-10-19",
    "encuestadora": "Emerson College",
@@ -61,7 +71,7 @@
    "margen": 27.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1919
+   "peso": 0.1751
   },
   {
    "fin": "2026-10-16",
@@ -71,7 +81,7 @@
    "margen": 26.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1421
+   "peso": 0.1297
   },
   {
    "fin": "2026-10-14",
@@ -81,7 +91,7 @@
    "margen": 20.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1154
+   "peso": 0.1053
   },
   {
    "fin": "2026-10-01",
@@ -91,7 +101,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0591
+   "peso": 0.0539
   },
   {
    "fin": "2026-09-28",
@@ -101,7 +111,7 @@
    "margen": 10.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1128
+   "peso": 0.1029
   },
   {
    "fin": "2026-09-20",
@@ -111,7 +121,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0663
+   "peso": 0.0605
   },
   {
    "fin": "2026-09-20",
@@ -121,7 +131,7 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0938
+   "peso": 0.0856
   },
   {
    "fin": "2026-09-14",
@@ -131,7 +141,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0577
+   "peso": 0.0527
   },
   {
    "fin": "2026-09-10",
@@ -141,7 +151,7 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0526
+   "peso": 0.048
   },
   {
    "fin": "2026-08-09",
@@ -151,7 +161,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0251
+   "peso": 0.0229
   },
   {
    "fin": "2026-07-06",
@@ -161,7 +171,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0112
+   "peso": 0.0102
   },
   {
    "fin": "2026-06-17",
@@ -171,7 +181,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0107
+   "peso": 0.0098
   },
   {
    "fin": null,
@@ -181,7 +191,7 @@
    "margen": 5.6,
    "en_ventana": true,
    "origen": "base",
-   "peso": 0.0458
+   "peso": 0.0418
   },
   {
    "fin": null,
@@ -191,10 +201,10 @@
    "margen": 8.2,
    "en_ventana": true,
    "origen": "base",
-   "peso": 0.0155
+   "peso": 0.0141
   }
  ],
- "n_encuestas_ventana": 14,
+ "n_encuestas_ventana": 15,
  "historial": [
   {
    "corte": "2026-10-19",
@@ -230,37 +240,32 @@
   },
   {
    "corte": "2026-10-24",
-   "P_D": 0.9933,
-   "P_D_encuestas": 0.9965,
-   "P_kalshi": 0.9705,
-   "pct_D": 61.13,
-   "margen": 22.25
+   "P_D": 0.9929,
+   "P_D_encuestas": 0.9963,
+   "P_kalshi": 0.9684,
+   "pct_D": 60.9,
+   "margen": 21.79
   }
  ],
  "escenarios": [],
  "anticipado": {
   "fuente": "Civiq",
-  "fecha": "2026-10-23",
+  "fecha": "2026-10-24",
   "estado": "diagnóstico",
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 2618449.0,
+    "valor": 2701285.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Margen D−R de devueltas",
-    "valor": 21.02,
-    "formato": "pp"
-   },
-   {
-    "etiqueta": "2022 General al mismo día",
-    "valor": 20.4,
+    "valor": 21.11,
     "formato": "pp"
    },
    {
     "etiqueta": "2024 General al mismo día",
-    "valor": 18.85,
+    "valor": 18.38,
     "formato": "pp"
    }
   ]
@@ -279,7 +284,7 @@
   },
   {
    "nombre": "civiq",
-   "estado": "Datos de Civiq vía api, validados (2026-10-23)",
+   "estado": "Datos de Civiq vía api, validados (2026-10-24)",
    "en_vivo": true
   },
   {
@@ -294,8 +299,8 @@
   },
   {
    "nombre": "gdelt",
-   "estado": "parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 42",
-   "en_vivo": false
+   "estado": "en_vivo",
+   "en_vivo": true
   },
   {
    "nombre": "kalshi",

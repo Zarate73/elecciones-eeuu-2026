@@ -1,35 +1,35 @@
 California · Gobernador · corte 2026-10-24 (10 días)
 
-PRONÓSTICO M5: Becerra 61.1%  ·  Hilton 38.9%   (margen +22.3 pp)
-  IC 80% Becerra: 57.4–64.9%   IC 95%: 54.6–67.7%
+PRONÓSTICO M5: Becerra 60.9%  ·  Hilton 39.1%   (margen +21.8 pp)
+  IC 80% Becerra: 57.2–64.6%   IC 95%: 54.4–67.4%
   P(Becerra gana): modelo 0.996 · con Kalshi 0.993
-  Última encuesta: Emerson College, terminó el 2026-10-19 (5 días antes del corte)
-  σ 6.59 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
+  Última encuesta: McLaughlin & Associates (R), terminó el 2026-10-20 (4 días antes del corte)
+  σ 6.54 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
 
 FUENTES
   encuestas_wikipedia: en_vivo
   encuestas_270towin: en_vivo
-  civiq: Datos de Civiq vía api, validados (2026-10-23)
+  civiq: Datos de Civiq vía api, validados (2026-10-24)
   civiq_historia: api_en_vivo (197 filas)
   civiq_condados: api_en_vivo (58 condados)
-  gdelt: parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429
+  gdelt: en_vivo
   kalshi: en_vivo
-  encuestas: 14 (wikipedia 12, base 2) · margen legado +20.87 → M5 +22.27
+  encuestas: 15 (wikipedia 13, base 2) · margen legado +20.38 → M5 +21.81
 
 PARTICIPACIÓN (diagnóstico; w_m2 = 0.00)
-  devueltas D−R +21.02 · esperado por edad +17.27 → Δ +3.75 pp
-  mismo día (T−11): +21.0 vs 2022 General +20.4, 2024 General +18.8 → Δ +1.4
-  composición final proyectada +21.4 → margen implícito +23.7 pp (RMSE LOO 4.2)
-  corr(Δ temprano, error de encuestas) = +0.77 (n=4)
+  devueltas D−R +21.11 · esperado por edad +17.28 → Δ +3.84 pp
+  mismo día (T−10): +21.1 vs 2024 General +18.4 → Δ +2.7
+  composición final proyectada +22.6 → margen implícito +26.2 pp (RMSE LOO 4.2)
+  corr(Δ temprano, error de encuestas) = +0.75 (n=3)
 
 SENTIMIENTO: k candidato 1.52 · aplicado 1.00 · GDELT z=1.20
-KALSHI: 0.970 (en_vivo) · en mezcla True
+KALSHI: 0.968 (en_vivo) · en mezcla True
 PDI (contraste, 2026-10-19): D−R +18.4 en 1,214,420 boletas
 
 MODELOS
                        modelo  mediana_margen_pp  ic95_inf_pp  ic95_sup_pp  de_pp  p_d_gana  p_final_con_kalshi
-                 M5 · híbrido             22.253        9.123       35.331  6.598     0.996               0.993
-      M1 · encuestas (legado)             20.877       12.023       29.680  4.495     1.000                 NaN
-M2 · + participación (legado)             20.906       12.052       29.709  4.495     1.000                 NaN
-       M3 · + shocks (legado)             20.907       11.650       30.137  4.708     1.000                 NaN
-  M4 · + sentimiento (legado)             20.907       11.650       30.137  4.708     1.000                 NaN
+                 M5 · híbrido             21.794        8.772       34.765  6.544     0.996               0.993
+      M1 · encuestas (legado)             20.384       11.530       29.187  4.495     1.000                 NaN
+M2 · + participación (legado)             20.416       11.563       29.219  4.495     1.000                 NaN
+       M3 · + shocks (legado)             20.417       11.160       29.647  4.708     1.000                 NaN
+  M4 · + sentimiento (legado)             20.417       11.160       29.647  4.708     1.000                 NaN
