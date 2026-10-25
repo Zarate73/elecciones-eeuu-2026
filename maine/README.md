@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presidenta de la Cámara estatal)** y **Bobby Charles (R)**, con **Rick Bennett (independiente)**. Elección abierta: Janet Mills no puede reelegirse. Gana la mayoría simple: la general de gobernador no usa voto preferencial.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 10:04 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 20:23 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
