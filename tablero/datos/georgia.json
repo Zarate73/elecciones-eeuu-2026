@@ -10,26 +10,26 @@
  "corte": "2026-10-25",
  "dias_a_eleccion": 9,
  "pronostico": {
-  "P_D": 0.4116,
-  "pct_D": 49.44,
+  "P_D": 0.4148,
+  "pct_D": 49.46,
   "pct_D_IC80": [
-   46.11,
-   52.78
+   46.13,
+   52.8
   ],
-  "pct_R": 50.55,
+  "pct_R": 50.53,
   "pct_R_IC80": [
-   47.21,
-   53.87
+   47.19,
+   53.86
   ],
   "pct_terceros": null,
-  "margen": -1.11,
+  "margen": -1.071,
   "margen_IC80": [
-   -7.76,
-   5.57
+   -7.72,
+   5.61
   ],
   "margen_IC95": [
-   -11.61,
-   9.4
+   -11.57,
+   9.44
   ],
   "sd": 5.31,
   "nu": 18.6,
@@ -39,14 +39,14 @@
   "extra": [
    {
     "etiqueta": "Segunda vuelta (ninguno > 50 %)",
-    "valor": 0.0015
+    "valor": 0.0016
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.585,
+   "P_D": 0.595,
    "estado": "en_vivo"
   }
  ],
@@ -245,18 +245,18 @@
   },
   {
    "corte": "2026-10-25",
-   "P_D": 0.4116,
+   "P_D": 0.4148,
    "P_D_encuestas": 0.3408,
-   "P_kalshi": 0.585,
-   "pct_D": 49.4398,
-   "margen": -1.1099
+   "P_kalshi": 0.595,
+   "pct_D": 49.4595,
+   "margen": -1.0706
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL",
-   "margen": -1.11,
-   "P_D": 0.4116
+   "margen": -1.071,
+   "P_D": 0.4148
   },
   {
    "escenario": "Solo encuestas (sin Kalshi)",
@@ -270,13 +270,13 @@
   },
   {
    "escenario": "Distribución normal",
-   "margen": -1.148,
-   "P_D": 0.4144
+   "margen": -1.107,
+   "P_D": 0.4173
   },
   {
    "escenario": "Kalshi solo",
-   "margen": 1.129,
-   "P_D": 0.5867
+   "margen": 1.26,
+   "P_D": 0.5966
   },
   {
    "escenario": "Ventana 30 días",
@@ -291,12 +291,12 @@
  ],
  "anticipado": {
   "fuente": "Civic Forge",
-  "fecha": "2026-10-23",
+  "fecha": "2026-10-24",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Boletas vs 2022 (mismo día)",
-    "valor": 89824.0,
+    "valor": 109398.0,
     "formato": "entero_signo"
    },
    {
@@ -306,7 +306,7 @@
    },
    {
     "etiqueta": "% 65+ vs 2022",
-    "valor": 2.46,
+    "valor": 2.21,
     "formato": "pp"
    }
   ]
