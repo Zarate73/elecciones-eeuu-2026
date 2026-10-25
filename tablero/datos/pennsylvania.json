@@ -10,30 +10,30 @@
  "corte": "2026-10-24",
  "dias_a_eleccion": 10,
  "pronostico": {
-  "P_D": 0.9969,
-  "pct_D": 58.44,
+  "P_D": 0.997,
+  "pct_D": 58.45,
   "pct_D_IC80": [
-   54.13,
+   54.14,
    62.73
   ],
-  "pct_R": 39.47,
+  "pct_R": 39.46,
   "pct_R_IC80": [
-   35.18,
-   43.76
+   35.17,
+   43.75
   ],
   "pct_terceros": 2.09,
   "pct_terceros_IC80": [
    0.1,
    4.45
   ],
-  "margen": 18.965,
+  "margen": 18.983,
   "margen_IC80": [
-   10.65,
-   27.25
+   10.67,
+   27.27
   ],
   "margen_IC95": [
-   5.97,
-   31.94
+   5.99,
+   31.95
   ],
   "sd": 6.577,
   "nu": 25.6,
@@ -50,12 +50,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.973,
+   "P_D": 0.9745,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9775,
+   "P_D": 0.9779,
    "estado": "en_vivo"
   }
  ],
@@ -64,7 +64,7 @@
   "fin": "2026-10-21",
   "dias_desde_fin": 3,
   "dias_antes_eleccion": 13,
-  "origen": "270towin"
+  "origen": "wikipedia"
  },
  "encuestas": [
   {
@@ -74,7 +74,7 @@
    "R": 39.0,
    "margen": 23.0,
    "en_ventana": true,
-   "origen": "270towin",
+   "origen": "wikipedia",
    "peso": 0.5272
   },
   {
@@ -129,20 +129,20 @@
   },
   {
    "fin": "2026-09-22",
-   "encuestadora": "The New York Times/The Philadelphia Inquirer/Siena University",
-   "D": 58.0,
-   "R": 38.0,
-   "margen": 20.0,
+   "encuestadora": "PennLive",
+   "D": 55.0,
+   "R": 28.0,
+   "margen": 27.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
   },
   {
    "fin": "2026-09-22",
-   "encuestadora": "PennLive",
-   "D": 55.0,
-   "R": 28.0,
-   "margen": 27.0,
+   "encuestadora": "The New York Times/The Philadelphia Inquirer/Siena University",
+   "D": 58.0,
+   "R": 38.0,
+   "margen": 20.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -261,19 +261,19 @@
   },
   {
    "corte": "2026-10-24",
-   "P_D": 0.9969,
+   "P_D": 0.997,
    "P_D_encuestas": 0.9988,
-   "P_kalshi": 0.973,
-   "P_polymarket": 0.9775,
-   "pct_D": 58.4363,
-   "margen": 18.9646
+   "P_kalshi": 0.9745,
+   "P_polymarket": 0.9779,
+   "pct_D": 58.4454,
+   "margen": 18.9828
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 18.965,
-   "P_D": 0.9969
+   "margen": 18.983,
+   "P_D": 0.997
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -287,7 +287,7 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 19.704,
+   "margen": 19.731,
    "P_D": 0.9979
   },
   {
@@ -392,28 +392,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 20.178,
+   "margen": 20.183,
    "P_D": 0.998
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 17.312,
-   "P_D": 0.9944
+   "margen": 17.371,
+   "P_D": 0.9945
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 12.749,
-   "P_D": 0.973
+   "margen": 12.92,
+   "P_D": 0.9745
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 13.3,
-   "P_D": 0.9775
+   "margen": 13.363,
+   "P_D": 0.9779
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 21.641,
-   "P_D": 0.9778
+   "margen": 24.162,
+   "P_D": 0.9861
   }
  ],
  "anticipado": {
@@ -449,15 +449,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9778,
-  "margen": 21.64
+  "P_D": 0.9861,
+  "margen": 24.16
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",
   "P_D": null,
   "margen": -1.05,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -1.1 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +21.6 pp."
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -1.1 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +24.2 pp."
  },
  "fuentes": [
   {
