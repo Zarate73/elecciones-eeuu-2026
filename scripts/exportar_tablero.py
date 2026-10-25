@@ -197,7 +197,8 @@ def arizona() -> dict | None:
                                 {'P_D': 'P_D', 'P_D_encuestas': 'P_D_encuestas', 'P_kalshi': 'P_D_kalshi',
                                  'P_polymarket': 'P_D_polymarket', 'pct_D': 'pct_D', 'margen': 'margen'}),
         'escenarios': _escenarios(r.get('escenarios', [])),
-        'anticipado': ({'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
+        'anticipado': (_solo_participacion(a) if a.get('disponible') and a.get('por_partido') is False else
+                       {'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
                         'metricas': [{'etiqueta': 'Boletas devueltas', 'valor': _num(a.get('devueltas'), 0), 'formato': 'entero'},
                                      {'etiqueta': 'Devueltas por demócratas registrados', 'valor': _num(a.get('pct_dev_D'), 2), 'formato': 'pct'},
                                      {'etiqueta': 'Devueltas por republicanos registrados', 'valor': _num(a.get('pct_dev_R'), 2), 'formato': 'pct'},
@@ -247,7 +248,8 @@ def florida() -> dict | None:
                                 {'P_D': 'P_D', 'P_D_encuestas': 'P_D_encuestas', 'P_kalshi': 'P_D_kalshi',
                                  'P_polymarket': 'P_D_polymarket', 'pct_D': 'pct_D', 'margen': 'margen'}),
         'escenarios': _escenarios(r.get('escenarios', [])),
-        'anticipado': ({'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
+        'anticipado': (_solo_participacion(a) if a.get('disponible') and a.get('por_partido') is False else
+                       {'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
                         'metricas': [{'etiqueta': 'Votos ya emitidos (correo + en persona)', 'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'},
                                      {'etiqueta': 'Emitidos por demócratas registrados', 'valor': _num(a.get('pct_D'), 2), 'formato': 'pct'},
                                      {'etiqueta': 'Emitidos por republicanos registrados', 'valor': _num(a.get('pct_R'), 2), 'formato': 'pct'},
@@ -269,7 +271,18 @@ def florida() -> dict | None:
     }
 
 
-# ------------------------------------------------------------------------------------ Nevada
+# ------------------------------------------------------------------------------------ estados con modelo general
+def _solo_participacion(a: dict) -> dict:
+    """Estados sin registro partidario (Texas): solo volumen del voto ya emitido."""
+    return {'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
+            'nota': 'Sin registro partidario: solo volumen, no indica el resultado',
+            'metricas': [{'etiqueta': 'Votos ya emitidos (en persona + correo)', 'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'},
+                         {'etiqueta': 'En persona', 'valor': _num(a.get('en_persona'), 0), 'formato': 'entero'},
+                         {'etiqueta': 'Por correo', 'valor': _num(a.get('por_correo'), 0), 'formato': 'entero'},
+                         {'etiqueta': 'Del total de votos de la elección previa', 'valor': _num(a.get('pct_del_total_previo'), 1), 'formato': 'pct'},
+                         {'etiqueta': f"Peso de {a.get('condado_principal', 'el condado principal')}", 'valor': _num(a.get('condado_principal_pct'), 1), 'formato': 'pct'}]}
+
+
 def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesgo: str, solo_correo: bool = False) -> dict | None:
     s = RAIZ / f'{carpeta}/produccion/salidas'
     if not (s / 'ultimo/reporte.json').exists():
@@ -304,7 +317,8 @@ def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesg
                                 {'P_D': 'P_D', 'P_D_encuestas': 'P_D_encuestas', 'P_kalshi': 'P_D_kalshi',
                                  'P_polymarket': 'P_D_polymarket', 'pct_D': 'pct_D', 'margen': 'margen'}),
         'escenarios': _escenarios(r.get('escenarios', [])),
-        'anticipado': ({'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
+        'anticipado': (_solo_participacion(a) if a.get('disponible') and a.get('por_partido') is False else
+                       {'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
                         'metricas': [{'etiqueta': ('Boletas por correo devueltas' if solo_correo else 'Votos ya emitidos (correo + en persona)'),
                                       'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'},
                                      {'etiqueta': 'Emitidos por demócratas registrados', 'valor': _num(a.get('pct_D'), 2), 'formato': 'pct'},
@@ -328,6 +342,7 @@ def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesg
     }
 
 
+# ------------------------------------------------------------------------------------ Nevada
 def nevada() -> dict | None:
     return _general('nevada', 'Nevada', {'D': 'Aaron Ford', 'R': 'Joe Lombardo'}, 'Sesgo estatal de Nevada (pequeño)',
                     'El error de las encuestas en NV cambia de signo entre ciclos')
@@ -346,10 +361,16 @@ def maine() -> dict | None:
                     'sola encuestadora)')
 
 
+# ------------------------------------------------------------------------------------ Texas
+def texas() -> dict | None:
+    return _general('texas', 'Texas', {'D': 'Gina Hinojosa', 'R': 'Greg Abbott'}, 'Sesgo estatal de Texas',
+                    'En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024)')
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine):
+    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás

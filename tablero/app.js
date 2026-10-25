@@ -452,7 +452,7 @@ function vista(d) {
         : x.formato === 'pct' ? num(x.valor, 1) + '%' : pp(x.valor) + ' pp';
       m.append(el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: v }), el('div', { class: 'm-e', text: x.etiqueta })));
     }
-    lado.push(panel(`Voto anticipado (${d.anticipado.fuente})`, `Diagnóstico: no entra al pronóstico. Datos al ${fecha(d.anticipado.fecha)}.`, m));
+    lado.push(panel(`Voto anticipado (${d.anticipado.fuente})`, `Diagnóstico: no entra al pronóstico.${d.anticipado.nota ? ' ' + d.anticipado.nota + '.' : ''} Datos al ${fecha(d.anticipado.fecha)}.`, m));
   }
   if (d.adicional && !d.adicional.titulo.startsWith('Polymarket')) {
     const a = d.adicional;
