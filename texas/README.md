@@ -3,7 +3,27 @@
 Elección general del 3 de noviembre de 2026 entre **Greg Abbott (R, gobernador en funciones)** y **Gina Hinojosa (D, representante estatal por Austin)**, con Pat Dixon (libertario). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Se llena con la primera corrida del flujo automático.
+**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 19:53 ET · fuentes en vivo 8/8
+
+| Gobernador | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Gina **Hinojosa** (D) | **46.6%** (43.6–49.6) | **15%** |
+| Greg **Abbott** (R, gobernador) | **51.2%** (48.2–54.1) | **85%** |
+| Terceros (Pat Dixon, L; otros) | 2.2% (0.1–4.3) | — |
+
+Margen D−R -4.5 pp (σ 4.4) · solo encuestas: P(Hinojosa) 10% · Kalshi 33% · Polymarket 31% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 5.1% · 50 encuestas, 9 encuestadoras en la ventana
+
+Cómo se llega: promedio de encuestas -3.1 · sesgo estatal de Texas -2.5 · mercados +1.1
+
+**Encuesta más reciente:** Verasight/VoteHub, terminó el 2026-10-20 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-25): 4,132,879 (3,934,187 en persona, 198,692 por correo) · 51 % del total de votos de 2022. Texas no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_texas.yml)).
