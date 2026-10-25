@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Katie Hobbs (D, gobernadora en funciones)** y **Andy Biggs (R)**, con candidatos de terceros en la boleta.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-24** (10 días a la elección) · actualizado automáticamente 2026-10-24 22:03 MST · fuentes en vivo 8/8
+**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 09:36 MST · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -13,9 +13,9 @@ Elección general del 3 de noviembre de 2026 entre **Katie Hobbs (D, gobernadora
 
 Margen D−R +7.4 pp (σ 5.3) · solo encuestas: P(Hobbs) 93% · Kalshi 90% · Polymarket 91% (peso de mercados 0.3) · recuento automático 2.7% · 16 encuestas, 4 encuestadoras en la ventana
 
-**Encuesta más reciente:** GrayHouse (R), terminó el 2026-10-20 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** GrayHouse (R), terminó el 2026-10-20 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado** (civicAPI, diagnóstico, al 2026-10-24): 884,474 boletas devueltas · D 38.7% · R 38.4% · otros 22.9% · Maricopa 57% del total
+**Voto anticipado** (civicAPI, diagnóstico, al 2026-10-25): 884,474 boletas devueltas · D 38.7% · R 38.4% · otros 22.9% · Maricopa 57% del total
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
