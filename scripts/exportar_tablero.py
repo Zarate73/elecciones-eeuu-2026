@@ -367,10 +367,16 @@ def texas() -> dict | None:
                     'En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024)')
 
 
+# ------------------------------------------------------------------------------------ Illinois
+def illinois() -> dict | None:
+    return _general('illinois', 'Illinois', {'D': 'JB Pritzker', 'R': 'Darren Bailey'}, 'Sesgo estatal de Illinois',
+                    'En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata')
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas):
+    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás

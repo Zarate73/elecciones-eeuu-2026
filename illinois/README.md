@@ -3,8 +3,10 @@
 Elección general del 3 de noviembre de 2026 entre **JB Pritzker (D, gobernador en funciones)** y **Darren Bailey (R)**, revancha de 2022, con Collin Corbett (independiente). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Sin corrida automática todavía: el modelo está validado y empaquetado, pero el flujo de GitHub Actions no está activo. Pronóstico de referencia con las fuentes del 25-oct-2026 (pruebas sin red): **Pritzker 56.2 % · Bailey 38.6 % · P(Pritzker) 99.5 %** (margen +17.6, σ 6.6).
+Se llena con la primera corrida del flujo automático.
 <!-- PRONOSTICO:FIN -->
+
+GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_illinois.yml)).
 
 ## Modelo general (elegido por backtest)
 Base: el modelo de Texas v1.1.0 (Maine / Pennsylvania / Nevada / Florida / Georgia V11). Se validó con un backtest *leave-one-year-out* de 945 contiendas (1998–2024, 19 de Illinois) a 9 días de la elección, con la misma ventana que producción, más una validación estrictamente cronológica.
