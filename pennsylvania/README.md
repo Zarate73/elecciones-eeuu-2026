@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **Josh Shapiro (D, gobernador en funciones)** y **Stacy Garrity (R, tesorera estatal)**. En la boleta también aparece Ken Krawchuk (libertario).
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 20:35 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 12:54 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Josh **Shapiro** (D, gobernador) | **58.4%** (54.2–62.7) | **>99%** |
-| Stacy **Garrity** (R) | **39.5%** (35.2–43.7) | **<1%** |
+| Josh **Shapiro** (D, gobernador) | **58.4%** (54.1–62.7) | **>99%** |
+| Stacy **Garrity** (R) | **39.5%** (35.2–43.8) | **<1%** |
 | Terceros | 2.1% (0.1–4.5) | — |
 
-Margen D−R +19.0 pp (σ 6.5) · solo encuestas: P(Shapiro) >99% · Kalshi 97% · Polymarket 98% (peso de mercados 0.3) · recuento automático 0.1% · 18 encuestas, 2 encuestadoras en la ventana
+Margen D−R +18.9 pp (σ 6.6) · solo encuestas: P(Shapiro) >99% · Kalshi 97% · Polymarket 98% (peso de mercados 0.3) · recuento automático 0.1% · 18 encuestas, 2 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas +22.4 · sesgo estatal de Pennsylvania -0.9 · mercados -2.5
 
-**Encuesta más reciente:** ActiVote, terminó el 2026-10-21 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** ActiVote, terminó el 2026-10-21 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Boletas por correo devueltas** (civicAPI, diagnóstico, al 2026-10-25): 720,664 · registrados D 67.0% · R 24.1% · sin partido y otros 8.9%. PA no tiene voto anticipado en persona y el correo es muy demócrata por hábito: no indica el resultado y no entra al pronóstico.
+**Boletas por correo devueltas** (civicAPI, diagnóstico, al 2026-10-26): 829,477 · registrados D 66.4% · R 24.5% · sin partido y otros 9.2%. PA no tiene voto anticipado en persona y el correo es muy demócrata por hábito: no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
