@@ -3,17 +3,17 @@
 Elección general del 3 de noviembre de 2026 entre **JB Pritzker (D, gobernador en funciones)** y **Darren Bailey (R)**, revancha de 2022, con Collin Corbett (independiente). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 21:37 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 22:07 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| JB **Pritzker** (D, gobernador) | **56.2%** (52.0–60.5) | **99%** |
-| Darren **Bailey** (R) | **38.6%** (34.3–42.8) | **1%** |
+| JB **Pritzker** (D, gobernador) | **56.1%** (51.8–60.3) | **99%** |
+| Darren **Bailey** (R) | **38.8%** (34.5–43.0) | **1%** |
 | Terceros (Collin Corbett, I; otros) | 5.2% (3.0–7.3) | — |
 
-Margen D−R +17.6 pp (σ 6.6) · solo encuestas: P(Pritzker) >99% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.2% · 2 encuestas, 2 encuestadoras en la ventana
+Margen D−R +17.3 pp (σ 6.6) · solo encuestas: P(Pritzker) >99% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.2% · 2 encuestas, 2 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +18.7 · sesgo estatal de Illinois +1.2 · mercados -2.2
+Cómo se llega: promedio de encuestas +18.2 · sesgo estatal de Illinois +1.2 · mercados -2.1
 
 **Encuesta más reciente:** ActiVote, terminó el 2026-10-22 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 

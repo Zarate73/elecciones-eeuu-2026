@@ -10,40 +10,40 @@
  "corte": "2026-10-25",
  "dias_a_eleccion": 9,
  "pronostico": {
-  "P_D": 0.9949,
-  "pct_D": 56.23,
+  "P_D": 0.9944,
+  "pct_D": 56.07,
   "pct_D_IC80": [
-   51.97,
-   60.49
+   51.81,
+   60.33
   ],
-  "pct_R": 38.59,
+  "pct_R": 38.75,
   "pct_R_IC80": [
-   34.34,
-   42.84
+   34.5,
+   43.0
   ],
   "pct_terceros": 5.18,
   "pct_terceros_IC80": [
    3.02,
    7.35
   ],
-  "margen": 17.638,
+  "margen": 17.317,
   "margen_IC80": [
-   9.42,
-   25.87
+   9.1,
+   25.55
   ],
   "margen_IC95": [
-   4.68,
-   30.63
+   4.36,
+   30.31
   ],
   "sd": 6.553,
   "nu": 19.5,
-  "P_D_encuestas": 0.9977,
+  "P_D_encuestas": 0.9973,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0017
+    "valor": 0.002
    }
   ]
  },
@@ -70,9 +70,9 @@
   {
    "fin": "2026-10-22",
    "encuestadora": "ActiVote",
-   "D": 59.0,
-   "R": 41.0,
-   "margen": 18.0,
+   "D": 58.7,
+   "R": 41.3,
+   "margen": 17.4,
    "en_ventana": true,
    "origen": "wikipedia",
    "peso": 0.7034
@@ -92,154 +92,164 @@
  "historial": [
   {
    "corte": "2026-10-25",
-   "P_D": 0.9949,
-   "P_D_encuestas": 0.9977,
+   "P_D": 0.9944,
+   "P_D_encuestas": 0.9973,
    "P_kalshi": 0.9646,
    "P_polymarket": 0.9734,
-   "pct_D": 56.2303,
-   "margen": 17.6379
+   "pct_D": 56.0696,
+   "margen": 17.3166
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 17.638,
-   "P_D": 0.9949
+   "margen": 17.317,
+   "P_D": 0.9944
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
+   "margen": 19.422,
+   "P_D": 0.9973
+  },
+  {
+   "escenario": "Sin sesgo estatal, sin mercados",
+   "margen": 18.218,
+   "P_D": 0.996
+  },
+  {
+   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
+   "margen": 16.529,
+   "P_D": 0.9925
+  },
+  {
+   "escenario": "Sesgo estatal sin contraer (+1.60 pp)",
    "margen": 19.844,
    "P_D": 0.9977
   },
   {
-   "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": 18.64,
-   "P_D": 0.9966
-  },
-  {
-   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 16.903,
-   "P_D": 0.9934
-  },
-  {
-   "escenario": "Sesgo estatal sin contraer (+1.60 pp)",
-   "margen": 20.266,
-   "P_D": 0.998
-  },
-  {
    "escenario": "Sesgo estatal a la mitad (+0.60 pp)",
-   "margen": 19.242,
-   "P_D": 0.9972
+   "margen": 18.82,
+   "P_D": 0.9968
   },
   {
    "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (+0.56 pp)",
-   "margen": 19.226,
-   "P_D": 0.9972
+   "margen": 18.804,
+   "P_D": 0.9968
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2022_Gov-G_IL (+1.59 pp; rango al quitar una de 19: +0.59 a +1.59)",
+   "margen": 19.83,
+   "P_D": 0.9977
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2020_Pres-G_IL (+0.59 pp; rango al quitar una de 19: +0.59 a +1.59)",
+   "margen": 18.837,
+   "P_D": 0.9968
   },
   {
    "escenario": "Sesgo estimado solo con contiendas de gobernador (-0.29 pp)",
-   "margen": 18.376,
-   "P_D": 0.9961
+   "margen": 17.957,
+   "P_D": 0.9954
   },
   {
    "escenario": "Distribución normal",
-   "margen": 19.856,
-   "P_D": 0.9989
+   "margen": 19.442,
+   "P_D": 0.9986
   },
   {
    "escenario": "Incertidumbre con k efectivo 1.7 (no 2 firmas) y deriva por antigüedad ponderada (9 días)",
-   "margen": 19.876,
-   "P_D": 0.9967
+   "margen": 19.462,
+   "P_D": 0.9961
   },
   {
    "escenario": "Sin terceros",
-   "margen": 19.867,
-   "P_D": 0.9979
+   "margen": 19.419,
+   "P_D": 0.9973
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": 19.883,
-   "P_D": 0.9978
+   "margen": 19.446,
+   "P_D": 0.9974
   },
   {
    "escenario": "Deriva al doble (0.50 pp/día, 3 días)",
-   "margen": 19.841,
-   "P_D": 0.9976
-  },
-  {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
-   "margen": 19.868,
-   "P_D": 0.9978
-  },
-  {
-   "escenario": "Ventana 45 días (2 encuestadoras)",
-   "margen": 19.856,
-   "P_D": 0.9975
-  },
-  {
-   "escenario": "Ventana 60 días (2 encuestadoras)",
-   "margen": 19.84,
-   "P_D": 0.9978
-  },
-  {
-   "escenario": "Sin efectos de casa",
-   "margen": 19.79,
-   "P_D": 0.9978
-  },
-  {
-   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 19.881,
-   "P_D": 0.9977
-  },
-  {
-   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 19.804,
-   "P_D": 0.9976
-  },
-  {
-   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 19.03,
+   "margen": 19.433,
    "P_D": 0.997
   },
   {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
+   "margen": 19.418,
+   "P_D": 0.9974
+  },
+  {
+   "escenario": "Ventana 45 días (2 encuestadoras)",
+   "margen": 19.436,
+   "P_D": 0.9974
+  },
+  {
+   "escenario": "Ventana 60 días (2 encuestadoras)",
+   "margen": 19.431,
+   "P_D": 0.9973
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": 19.356,
+   "P_D": 0.9973
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
+   "margen": 19.472,
+   "P_D": 0.9975
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
+   "margen": 19.403,
+   "P_D": 0.9973
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
+   "margen": 19.384,
+   "P_D": 0.9972
+  },
+  {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 19.869,
-   "P_D": 0.9977
+   "margen": 19.418,
+   "P_D": 0.9974
   },
   {
    "escenario": "Sin ActiVote (pesa 70%) → ventana desde 2026-09-10: Public Policy Polling",
-   "margen": 20.368,
-   "P_D": 0.9897
+   "margen": 20.318,
+   "P_D": 0.9891
   },
   {
    "escenario": "Sin Public Policy Polling (D) (pesa 30%) → ventana desde 2026-10-01: ActiVote",
-   "margen": 19.627,
-   "P_D": 0.9875
+   "margen": 19.065,
+   "P_D": 0.9858
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-01: ActiVote",
-   "margen": 19.624,
-   "P_D": 0.9874
+   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-09-21: Public Policy Polling, ActiVote",
+   "margen": 19.557,
+   "P_D": 0.9973
   },
   {
    "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 3.4 %)",
-   "margen": 19.869,
-   "P_D": 0.9976
+   "margen": 19.445,
+   "P_D": 0.9973
   },
   {
    "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.1 %)",
-   "margen": 19.849,
-   "P_D": 0.9976
+   "margen": 19.451,
+   "P_D": 0.9974
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 18.834,
-   "P_D": 0.9966
+   "margen": 18.453,
+   "P_D": 0.9961
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 16.126,
-   "P_D": 0.9914
+   "margen": 15.909,
+   "P_D": 0.9908
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
@@ -253,8 +263,8 @@
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 20.583,
-   "P_D": 0.9732
+   "margen": 20.39,
+   "P_D": 0.9655
   }
  ],
  "anticipado": {
@@ -291,15 +301,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9732,
-  "margen": 20.58
+  "P_D": 0.9655,
+  "margen": 20.39
  },
  "adicional": {
   "titulo": "Sesgo estatal de Illinois",
   "P_D": null,
   "margen": 1.2,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +1.2 pp (promedio de encuestas +18.7). Polymarket por rangos: margen implícito +20.6 pp."
+  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +1.2 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.4 pp."
  },
  "fuentes": [
   {
