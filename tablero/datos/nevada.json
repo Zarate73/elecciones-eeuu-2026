@@ -10,40 +10,40 @@
  "corte": "2026-10-25",
  "dias_a_eleccion": 9,
  "pronostico": {
-  "P_D": 0.4211,
-  "pct_D": 45.33,
+  "P_D": 0.4169,
+  "pct_D": 45.94,
   "pct_D_IC80": [
-   41.04,
-   49.59
+   42.14,
+   49.72
   ],
-  "pct_R": 46.59,
+  "pct_R": 47.11,
   "pct_R_IC80": [
-   42.32,
-   50.85
+   43.33,
+   50.89
   ],
-  "pct_terceros": 8.09,
+  "pct_terceros": 6.95,
   "pct_terceros_IC80": [
-   5.93,
-   10.26
+   4.79,
+   9.11
   ],
-  "margen": -1.26,
+  "margen": -1.167,
   "margen_IC80": [
-   -9.5,
-   6.99
+   -8.41,
+   6.08
   ],
   "margen_IC95": [
-   -14.26,
-   11.75
+   -12.59,
+   10.26
   ],
-  "sd": 6.566,
+  "sd": 5.769,
   "nu": 19.5,
-  "P_D_encuestas": 0.3148,
+  "P_D_encuestas": 0.3095,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0625
+    "valor": 0.071
    }
   ]
  },
@@ -75,7 +75,17 @@
    "margen": -1.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.6976
+   "peso": 0.5248
+  },
+  {
+   "fin": "2026-09-30",
+   "encuestadora": "Concord Public Opinion Partners (D)",
+   "D": 42.0,
+   "R": 43.0,
+   "margen": -1.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.2477
   },
   {
    "fin": "2026-09-26",
@@ -85,7 +95,7 @@
    "margen": -2.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.3024
+   "peso": 0.2275
   },
   {
    "fin": "2026-09-08",
@@ -148,7 +158,7 @@
    "peso": null
   }
  ],
- "n_encuestas_ventana": 2,
+ "n_encuestas_ventana": 3,
  "historial": [
   {
    "corte": "2026-10-22",
@@ -179,159 +189,164 @@
   },
   {
    "corte": "2026-10-25",
-   "P_D": 0.4211,
-   "P_D_encuestas": 0.3148,
+   "P_D": 0.4169,
+   "P_D_encuestas": 0.3095,
    "P_kalshi": 0.675,
    "P_polymarket": 0.685,
-   "pct_D": 45.325,
-   "margen": -1.2602
+   "pct_D": 45.9421,
+   "margen": -1.1665
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": -1.26,
-   "P_D": 0.4211
+   "margen": -1.167,
+   "P_D": 0.4169
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": -3.048,
-   "P_D": 0.3148
+   "margen": -2.76,
+   "P_D": 0.3095
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": -2.23,
-   "P_D": 0.362
+   "margen": -1.947,
+   "P_D": 0.3627
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": -0.67,
-   "P_D": 0.4575
+   "margen": -0.581,
+   "P_D": 0.458
   },
   {
    "escenario": "Sesgo estatal sin contraer (-1.02 pp)",
-   "margen": -3.26,
-   "P_D": 0.3033
+   "margen": -2.976,
+   "P_D": 0.2965
   },
   {
    "escenario": "Sesgo estatal a la mitad (-0.39 pp)",
-   "margen": -2.645,
-   "P_D": 0.3382
+   "margen": -2.358,
+   "P_D": 0.3358
   },
   {
    "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.30 pp)",
-   "margen": -2.542,
-   "P_D": 0.3433
+   "margen": -2.257,
+   "P_D": 0.3417
   },
   {
    "escenario": "Distribución normal",
-   "margen": -2.998,
-   "P_D": 0.3245
+   "margen": -2.716,
+   "P_D": 0.3196
   },
   {
    "escenario": "Sin terceros",
-   "margen": -2.994,
-   "P_D": 0.3178
+   "margen": -2.712,
+   "P_D": 0.3125
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": -3.005,
-   "P_D": 0.3172
+   "margen": -2.722,
+   "P_D": 0.3116
   },
   {
    "escenario": "Deriva al doble (0.50 pp/día, 12 días)",
-   "margen": -3.015,
-   "P_D": 0.3207
+   "margen": -2.731,
+   "P_D": 0.3164
   },
   {
    "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
-   "margen": -3.033,
-   "P_D": 0.315
+   "margen": -2.768,
+   "P_D": 0.3305
   },
   {
-   "escenario": "Ventana 45 días (2 encuestadoras)",
-   "margen": -3.052,
-   "P_D": 0.3152
+   "escenario": "Ventana 45 días (3 encuestadoras)",
+   "margen": -2.763,
+   "P_D": 0.31
   },
   {
-   "escenario": "Ventana 60 días (3 encuestadoras)",
-   "margen": -2.448,
-   "P_D": 0.3295
+   "escenario": "Ventana 60 días (4 encuestadoras)",
+   "margen": -2.316,
+   "P_D": 0.3256
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": -2.056,
-   "P_D": 0.3721
+   "margen": -1.984,
+   "P_D": 0.3599
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": -3.213,
-   "P_D": 0.3079
+   "margen": -2.9,
+   "P_D": 0.3031
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": -2.794,
-   "P_D": 0.3302
+   "margen": -2.556,
+   "P_D": 0.3236
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": -3.883,
-   "P_D": 0.2717
+   "margen": -4.002,
+   "P_D": 0.2375
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": -2.984,
-   "P_D": 0.3181
+   "margen": -2.703,
+   "P_D": 0.313
   },
   {
-   "escenario": "Sin Global Strategy Group (D) (pesa 70%) → ventana desde 2026-09-05: Emerson College, Noble Predictive Insights",
-   "margen": -1.285,
-   "P_D": 0.4206
+   "escenario": "Sin Global Strategy Group (D) (pesa 52%) → ventana desde 2026-09-09: Noble Predictive Insights, Concord Public Opinion Partners",
+   "margen": -2.261,
+   "P_D": 0.3626
   },
   {
-   "escenario": "Sin Noble Predictive Insights (pesa 30%) → ventana desde 2026-09-22: Global Strategy Group",
-   "margen": -3.16,
-   "P_D": 0.3503
+   "escenario": "Sin Concord Public Opinion Partners (D) (pesa 25%) → ventana desde 2026-09-22: Noble Predictive Insights, Global Strategy Group",
+   "margen": -3.01,
+   "P_D": 0.3177
+  },
+  {
+   "escenario": "Sin Noble Predictive Insights (pesa 23%) → ventana desde 2026-09-22: Concord Public Opinion Partners, Global Strategy Group",
+   "margen": -2.761,
+   "P_D": 0.3321
   },
   {
    "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-09-05: Emerson College, Noble Predictive Insights",
-   "margen": -1.282,
-   "P_D": 0.4215
+   "margen": -1.278,
+   "P_D": 0.4212
   },
   {
-   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 5.2 %)",
-   "margen": -3.022,
-   "P_D": 0.3186
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 4.5 %)",
+   "margen": -2.709,
+   "P_D": 0.3132
   },
   {
-   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 3.0 %)",
-   "margen": -2.99,
-   "P_D": 0.3186
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.6 %)",
+   "margen": -2.759,
+   "P_D": 0.31
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": -2.158,
-   "P_D": 0.3663
+   "margen": -1.967,
+   "P_D": 0.3614
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": -0.051,
-   "P_D": 0.497
+   "margen": -0.089,
+   "P_D": 0.4939
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 2.875,
+   "margen": 2.526,
    "P_D": 0.675
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 3.053,
+   "margen": 2.682,
    "P_D": 0.685
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 2.356,
-   "P_D": 0.6582
+   "margen": 2.241,
+   "P_D": 0.6535
   }
  ],
  "anticipado": {
@@ -341,22 +356,22 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (correo + en persona)",
-    "valor": 357606.0,
+    "valor": 384853.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Emitidos por demócratas registrados",
-    "valor": 39.77,
+    "valor": 39.82,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por republicanos registrados",
-    "valor": 35.16,
+    "valor": 35.2,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por otros y no partidistas",
-    "valor": 25.06,
+    "valor": 24.98,
     "formato": "pct"
    },
    {
@@ -366,21 +381,21 @@
    },
    {
     "etiqueta": "Margen D−R en persona",
-    "valor": -5.45,
+    "valor": -4.0,
     "formato": "pp"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.6582,
-  "margen": 2.36
+  "P_D": 0.6535,
+  "margen": 2.24
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nevada (pequeño)",
   "P_D": null,
   "margen": -0.77,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.8 pp (promedio de encuestas -2.2). Polymarket por rangos: margen implícito +2.4 pp."
+  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.8 pp (promedio de encuestas -2.0). Polymarket por rangos: margen implícito +2.2 pp."
  },
  "fuentes": [
   {
