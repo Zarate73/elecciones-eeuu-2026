@@ -18,7 +18,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Nevada | Gobernador: Ford 45.3% · Lombardo 46.6% · P(Ford) 42% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`nevada/`](nevada/) |
 | Pennsylvania | Gobernador: Shapiro 58.4% · Garrity 39.5% · P(Shapiro) >99% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`pennsylvania/`](pennsylvania/) |
 | Maine | Gobernador: Pingree 50.2% · Charles 43.0% · P(Pingree) 93% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`maine/`](maine/) |
-| Texas | Gobernador: Hinojosa 46.6% · Abbott 51.2% · P(Hinojosa) 15% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`texas/`](texas/) |
+| Texas | Gobernador: Hinojosa 46.6% · Abbott 51.2% · P(Hinojosa) 14% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`texas/`](texas/) |
 | … | | pendiente | |
 
 ## Estructura por estado
