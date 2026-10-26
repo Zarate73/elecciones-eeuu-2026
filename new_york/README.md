@@ -3,8 +3,10 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Sin corrida automática todavía: el modelo está validado y empaquetado, pero el flujo de GitHub Actions no está activo. Pronóstico de referencia con las fuentes del 26-oct-2026 (pruebas sin red): **Hochul 56.3 % · Blakeman 43.5 % · P(Hochul) 97.3 %** (margen +12.8, σ 6.5).
+Se llena con la primera corrida automática.
 <!-- PRONOSTICO:FIN -->
+
+GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_new_york.yml)).
 
 ## Modelo general (elegido por backtest)
 Base: el modelo de Illinois v1.1.0 (Texas / Maine / Pennsylvania / Nevada / Florida / Georgia V11). Se validó con un backtest *leave-one-year-out* de 945 contiendas (1998–2024, 20 de Nueva York) a 9 días de la elección, con la misma ventana que producción, más una validación estrictamente cronológica.

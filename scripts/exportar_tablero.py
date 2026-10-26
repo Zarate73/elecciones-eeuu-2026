@@ -283,6 +283,16 @@ def _solo_participacion(a: dict) -> dict:
                          {'etiqueta': f"Peso de {a.get('condado_principal', 'el condado principal')}", 'valor': _num(a.get('condado_principal_pct'), 1), 'formato': 'pct'}]}
 
 
+def _nyc_checkins(a: dict) -> dict:
+    """Nueva York: check-ins de voto anticipado en persona de la Junta Electoral de NYC (solo la ciudad, sin partido)."""
+    return {'fuente': 'Junta Electoral de NYC', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
+            'nota': (f"Solo la Ciudad de Nueva York, solo en persona y sin partido (día {a.get('dia')} del voto anticipado): "
+                     'mide participación, no indica el resultado'),
+            'metricas': [{'etiqueta': 'Check-ins acumulados en la ciudad', 'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'}]
+                        + [{'etiqueta': c['condado'], 'valor': _num(c['emitidos'], 0), 'formato': 'entero'}
+                           for c in a.get('condados_lista', [])]}
+
+
 def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesgo: str, solo_correo: bool = False) -> dict | None:
     s = RAIZ / f'{carpeta}/produccion/salidas'
     if not (s / 'ultimo/reporte.json').exists():
@@ -317,7 +327,8 @@ def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesg
                                 {'P_D': 'P_D', 'P_D_encuestas': 'P_D_encuestas', 'P_kalshi': 'P_D_kalshi',
                                  'P_polymarket': 'P_D_polymarket', 'pct_D': 'pct_D', 'margen': 'margen'}),
         'escenarios': _escenarios(r.get('escenarios', [])),
-        'anticipado': (_solo_participacion(a) if a.get('disponible') and a.get('por_partido') is False else
+        'anticipado': (_nyc_checkins(a) if a.get('disponible') and a.get('tipo') == 'nyc_checkins' else
+                       _solo_participacion(a) if a.get('disponible') and a.get('por_partido') is False else
                        {'fuente': 'civicAPI', 'fecha': a.get('fecha'), 'estado': a.get('estado'),
                         'metricas': [{'etiqueta': ('Boletas por correo devueltas' if solo_correo else 'Votos ya emitidos (correo + en persona)'),
                                       'valor': _num(a.get('emitidos'), 0), 'formato': 'entero'},
@@ -373,10 +384,16 @@ def illinois() -> dict | None:
                     'En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata')
 
 
+# ------------------------------------------------------------------------------------ Nueva York
+def new_york() -> dict | None:
+    return _general('new_york', 'Nueva York', {'D': 'Kathy Hochul', 'R': 'Bruce Blakeman'}, 'Sesgo estatal de Nueva York',
+                    'Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3)')
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois):
+    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás
