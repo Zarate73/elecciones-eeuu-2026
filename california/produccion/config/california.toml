@@ -17,6 +17,8 @@ zona_horaria = "America/Los_Angeles"
 # Base verificada a mano (.xlsx del notebook o su exportación .csv). Se combina con las encuestas en vivo.
 encuestas_base = "data/encuestas_verificadas.csv"
 hoja_encuestas = "Gobernador California"   # solo si encuestas_base es .xlsx
+# Filas de las fuentes web que no son encuestas de la general (p. ej. la primaria del 2-jun); se aíslan antes de combinar.
+encuestas_excluidas = "data/encuestas_excluidas.csv"
 carpeta_sentimiento = "data/sentimiento"   # opcional: serie de sentimiento propia (no se publica)
 datos = "data"                 # backtest, Kalshi histórico, PDI manual
 salidas = "salidas"

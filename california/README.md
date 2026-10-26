@@ -43,6 +43,7 @@ M5 toma de cada versión anterior (M1–M4) solo lo que el backtest respalda:
 - M5 es una familia distinta del V11. La σ sistemática se calibra con el error histórico de las encuestas en California (2018–2025, RMSE ≈ 6.4 pp). Con tan pocas elecciones, la calibración de colas y la cobertura no se pueden validar con precisión.
 - Kalshi (peso 0.30) ajusta **solo la probabilidad publicada**. El margen, los intervalos y el % de voto son los del modelo, así que P(D) final y la distribución del margen no tienen por qué coincidir. En el V11 de los otros estados, en cambio, el mercado desplaza la distribución. No compare las dos familias en una misma tabla sin esta advertencia.
 - Identidad de encuestas: módulo común `ca_pronostico/identidad.py` (firma + periodo de campo), igual que en los otros nueve estados.
+- Encuestas aisladas: `data/encuestas_excluidas.csv` lista filas de las fuentes web que no son de la general (hoy: Berkeley IGS 29-may 25–21 de 270toWin, la primaria del 2-jun). Se separan antes de combinar y quedan en `salidas/encuestas_excluidas.csv`.
 
 ## Carpetas
 | Carpeta | Contenido |

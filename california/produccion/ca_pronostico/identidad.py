@@ -7,8 +7,12 @@ identidad se decide con el PERIODO DE CAMPO y, cuando una fuente solo da una fec
 
 Reglas (misma firma = misma clave de 14 letras tras ALIAS):
   1. Dos periodos de campo con rango:
-       - se solapan o se tocan → mismo estudio (versiones LV/RV o la misma encuesta en dos fuentes), salvo que vengan
-         de la MISMA fuente con márgenes a más de 3 pp: estudios paralelos (se conservan los dos y se registra);
+       - MISMO periodo (mismo inicio y mismo fin) → mismo estudio siempre, aunque los márgenes difieran (versiones LV/RV
+         o con/sin indecisos asignados de una misma muestra; gana LV > RV > A). Revisión del 26-oct: separarlas dejaba
+         dos filas con la misma llave (firma, inicio, fin) y la validación de duplicados detenía la corrida;
+       - se solapan o se tocan sin coincidir → mismo estudio (la misma encuesta en dos fuentes), salvo que vengan de la
+         MISMA fuente con márgenes a más de 3 pp: estudios paralelos (Univision/YouGov 2–15 oct y YouGov 28 sep–5 oct
+         en Florida; se conservan los dos y se registra);
        - disjuntos → estudios DISTINTOS, aunque estén a 1 día o tengan las mismas cifras (ActiVote TX 30 sep–14 oct y
          17–21 oct; OnMessage NY 1–6 oct y 12–14 oct). Se elimina la regla «≤ 7 días» y la de «mismas cifras ≤ 60 días».
   2. Un rango y una fecha puntual (270toWin publica por fecha de publicación):
@@ -106,6 +110,9 @@ def relacion(r: dict, b: dict) -> tuple[bool, str]:
     compatibles = mismas or dm <= TOL_MARGEN_PP or mismo_n
     if r.get('clave') == b.get('clave'):
         if cal == 'solapados':
+            ir, ib = intervalo(r), intervalo(b)
+            if ir[0] == ib[0] and ir[1] == ib[1]:
+                return True, 'misma firma, mismo periodo de campo (versiones del mismo estudio)'
             if r.get('origen') == b.get('origen') and dm > TOL_MARGEN_PP:
                 return False, 'ambigua: periodos solapados en la misma fuente con márgenes distintos'
             return True, 'misma firma, periodos de campo solapados'

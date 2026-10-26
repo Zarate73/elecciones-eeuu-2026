@@ -8,6 +8,8 @@ páginas reales. Flujo:
      prioridad Wikipedia (fechas de campo exactas) > base verificada > 270toWin (fecha de publicación).
      Identidad: familia de encuestadora + periodo de campo (identidad.py; auditoría T3 del 26-oct).
   4. Se descartan las de la primaria (multicandidato) por fecha, igual que con el Excel.
+  5. Filas que no son encuestas de la elección general (data/encuestas_excluidas.csv) se aíslan ANTES de combinar y se
+     escriben en salidas/encuestas_excluidas.csv: Berkeley IGS 29-may 25–21 de 270toWin es la primaria del 2-jun.
 """
 from __future__ import annotations
 
@@ -304,6 +306,30 @@ def _con_cache(cfg, nombre: str, funcion):
         return pd.DataFrame(columns=COLUMNAS), f'no_disponible ({err})'
 
 
+def aislar_excluidas(df: pd.DataFrame, nombre: str, cfg) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Separa las filas listadas en data/encuestas_excluidas.csv (coincidencia exacta: origen, clave_538, fin, D, R)."""
+    txt = str(cfg.rutas.get('encuestas_excluidas', '') or '').strip()
+    vacio = df.iloc[0:0].assign(razon='')
+    if not txt or df.empty or not cfg.ruta('encuestas_excluidas').exists():
+        return df, vacio
+    x = pd.read_csv(cfg.ruta('encuestas_excluidas'), comment='#')
+    x = x[x.origen == nombre]
+    if x.empty:
+        return df, vacio
+    fin = pd.to_datetime(df.fin).dt.date
+    m = pd.Series(False, index=df.index)
+    razon = pd.Series('', index=df.index, dtype=object)
+    for r in x.itertuples():
+        k = ((df.clave_538 == r.clave_538) & (fin == pd.Timestamp(r.fin).date())
+             & ((df.D - float(r.D)).abs() < 0.01) & ((df.R - float(r.R)).abs() < 0.01))
+        m |= k
+        razon[k] = r.razon
+    if m.any():
+        for r in df[m].itertuples():
+            log.warning('Encuesta aislada (%s): %s %s %g–%g · %s', nombre, r.pollster, r.fin, r.D, r.R, razon[r.Index])
+    return df[~m].reset_index(drop=True), df[m].assign(razon=razon[m]).reset_index(drop=True)
+
+
 def obtener_web(cfg) -> tuple[dict[str, list[Encuesta]], dict[str, str]]:
     """Encuestas de Wikipedia y 270toWin como objetos Encuesta (sin filtrar por corte)."""
     f, e = cfg.fuentes, cfg.eleccion
@@ -321,8 +347,16 @@ def obtener_web(cfg) -> tuple[dict[str, list[Encuesta]], dict[str, str]]:
         html = get_text(f.t270_url, offline=cfg.offline, timeout=f.timeout_http_s)
         return elegir_versiones(parse_tabla_270(html, e.candidato_d, e.candidato_r, anio))
 
-    estados, salida = {}, {}
+    estados, salida, aisladas = {}, {}, []
     for nombre, fn in (('wikipedia', _wiki), ('270towin', _t270)):
         df, estados[f'encuestas_{nombre}'] = _con_cache(cfg, nombre, fn)
+        df, fuera = aislar_excluidas(df, nombre, cfg)
+        if len(fuera):
+            aisladas.append(fuera)
         salida[nombre] = _a_encuestas(df, cfg.fecha_primaria) if not df.empty else []
+    ruta = cfg.dir_salidas / 'encuestas_excluidas.csv'
+    if aisladas:
+        pd.concat(aisladas, ignore_index=True).to_csv(ruta, index=False, encoding='utf-8-sig')
+    elif ruta.exists():
+        ruta.unlink()
     return salida, estados

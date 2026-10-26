@@ -204,3 +204,14 @@ def test_corrida_con_encuestas_en_vivo(cfg, red_simulada):
     assert enc['por_origen'].get('wikipedia', 0) >= 8 and enc['por_origen'].get('base', 0) >= 1
     assert r['reporte']['estados_fuentes']['encuestas_wikipedia'] == 'en_vivo'
     assert 10 < enc['margen_m5_pp'] < 25
+
+
+def test_encuesta_de_primaria_aislada(cfg, red_simulada):
+    """Berkeley IGS 29-may 25–21 (270toWin) es la primaria del 2-jun: se aísla antes de combinar y queda registrada aparte;
+    la general de Berkeley IGS del 19–24 may (52–31) se conserva (revisión del 26-oct)."""
+    from ca_pronostico import encuestas_web as W
+    web, _ = W.obtener_web(cfg)
+    bk = [(e.origen, str(e.fin), e.becerra, e.hilton) for e in web['wikipedia'] + web['270towin'] if e.familia.startswith('Berkeley IGS')]
+    assert ('270towin', '2026-05-29', 25.0, 21.0) not in bk and ('wikipedia', '2026-05-24', 52.0, 31.0) in bk
+    x = pd.read_csv(cfg.dir_salidas / 'encuestas_excluidas.csv')
+    assert len(x) == 1 and x.clave_538.iloc[0] == 'berkeleyigs' and x.razon.iloc[0].startswith('Primaria')

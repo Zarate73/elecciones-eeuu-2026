@@ -37,6 +37,19 @@ Antes de la elección se corrige un solo punto del código: la **identidad de la
 
 **Pruebas.** Las pruebas existentes más 17 sintéticas pasan en los diez paquetes: AZ 33, CA 36, FL 39, GA 34, IL 38, ME 38, NV 37, NY 47, PA 34, TX 41.
 
+## T3 · Revisión del parche (26-oct, tarde)
+
+- **Mismo periodo de campo = mismo estudio siempre.** Antes, dos versiones del mismo campo en una misma fuente con márgenes a más de 3 pp (p. ej. Marist RV 53–42 y LV 52–45) se conservaban como dos estudios. Quedaban dos filas con la misma llave (firma, inicio, fin) y la validación de duplicados detenía la corrida.
+  - Ahora se funden y gana LV > RV > A.
+  - La regla de 3 pp queda solo para periodos que se solapan sin coincidir (Univision/YouGov y YouGov en Florida).
+  - En las fuentes web no ocurría, porque `elegir_versiones` deja una versión por firma y fecha; el riesgo estaba en el Excel y en los archivos complementarios.
+- **California: encuesta de primaria aislada.** La fila de 270toWin «Berkeley IGS, 29-may, 25–21» (n = 5,472) es la primaria multicandidato del 2-jun.
+  - Ya no se separa como encuesta general: se aísla antes de combinar, desde `california/produccion/data/encuestas_excluidas.csv` (coincidencia exacta de origen, firma, fecha y cifras, con la razón).
+  - Queda registrada en `salidas/encuestas_excluidas.csv`.
+- **Nueva huella de `identidad.py`:** `f3b1c60409286168e5f3a6104e773d3f`, idéntica en los diez paquetes. Hay 19 pruebas sintéticas por paquete (2 nuevas) y 1 nueva en California.
+- **Antes/después con las mismas cachés** (`scripts/auditoria/correr_todos_offline.py`): las filas combinadas, la ventana, k, el margen, σ y P(D) no cambian en las 11 carreras. La única diferencia es California, que pasa de 27 a 26 filas: sale la fila de la primaria.
+- **Pruebas:** AZ 35, CA 39, FL 41, GA 36, IL 40, ME 40, NV 39, NY 49, PA 36, TX 43.
+
 ## T1 · Maine
 
 Ver la tabla en `maine/README.md` («Sensibilidad de Maine a la fecha de disponibilidad»). El pronóstico oficial es L = 0. Con L = 3–4, la corrección estatal baja ~1.1 pp y P(D) sube unos 2 puntos.

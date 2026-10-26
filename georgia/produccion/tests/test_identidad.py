@@ -8,7 +8,7 @@ import pandas as pd
 PKG = 'ga_pronostico'
 I = importlib.import_module(f'{PKG}.identidad')
 COLS = ['pollster', 'clave', 'inicio', 'fin', 'n', 'pop', 'D', 'R', 'otros', 'indecisos', 'origen']
-HUELLA = 'd1649c7cc8fcfb827ff2f750b9d3646b'          # md5 de identidad.py: el módulo debe ser el mismo en los diez paquetes
+HUELLA = 'f3b1c60409286168e5f3a6104e773d3f'          # md5 de identidad.py: el módulo debe ser el mismo en los diez paquetes
 
 
 def fila(pollster, clave, inicio, fin, D, R, origen='wikipedia', n=1000.0, pop='LV'):
@@ -146,3 +146,21 @@ def test_metadatos_insuficientes_no_pierden_la_observacion():
     w = [fila('Y', 'y', '2026-10-10', '2026-10-12', 50, 45)]
     t = [dict(fila('Y', 'y', '2026-10-30', '2026-10-30', 51, 44, origen='270towin'), n=float('nan'), pop=float('nan'))]
     assert len(comb(w, t)) == 2                            # 18 días después del cierre: otra encuesta, no se descarta
+
+
+def test_mismo_periodo_en_la_misma_fuente_es_un_estudio_aunque_difiera_el_margen():
+    # revisión del 26-oct: Marist RV 53–42 y LV 52–45 del mismo campo (Δ margen 4 pp) en la misma fuente; antes quedaban
+    # dos filas con la misma llave (firma, inicio, fin) y la validación de duplicados detenía la corrida
+    w = [fila('Marist', 'marist', '2026-10-01', '2026-10-04', 53, 42, pop='RV', n=1361.0),
+         fila('Marist', 'marist', '2026-10-01', '2026-10-04', 52, 45, pop='LV', n=1100.0)]
+    out = comb(w)
+    assert len(out) == 1 and out['pop'].iloc[0] == 'LV' and (out.D.iloc[0], out.R.iloc[0]) == (52, 45)
+    assert not out.duplicated(['clave', 'inicio', 'fin']).any()
+    assert any('mismo periodo' in d['razon'] for d in out.attrs['decisiones'])
+
+
+def test_mismo_periodo_desde_base_verificada_no_detiene_la_corrida():
+    b = [fila('Siena', 'siena', '2026-09-11', '2026-09-17', 50, 41, origen='base', pop='RV'),
+         fila('Siena', 'siena', '2026-09-11', '2026-09-17', 51, 37, origen='base', pop='LV')]
+    out = comb(b)
+    assert len(out) == 1 and out['pop'].iloc[0] == 'LV'
