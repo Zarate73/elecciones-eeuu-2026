@@ -128,7 +128,7 @@ def calibrar(cfg, h: int) -> dict:
     firma += hashlib.md5(b''.join((cfg.dir_datos / x).read_bytes() for x in
                                   ('ga_pres2024_polls.csv', 'az2024_encuestas_finales.csv', 'encuestas_2024_wiki.csv'))).hexdigest()[:6]
     regla = str(getattr(m, 'sesgo_regla', 'todas') or 'todas')
-    cache = cfg.dir_cache / f'calibracion_v14_h{h}_k{m.contraccion_casa}_vm{m.vida_media_dias}_s{regla}_{firma}.json'
+    cache = cfg.dir_cache / f'calibracion_v15_h{h}_k{m.contraccion_casa}_vm{m.vida_media_dias}_s{regla}_{firma}.json'
     if cache.exists():
         par = json.loads(cache.read_text(encoding='utf-8'))
         par['estado_fuente'] = estado
@@ -175,6 +175,15 @@ def calibrar(cfg, h: int) -> dict:
         bruto_g, contr_g = sesgo_estado(b.assign(location=b.location + '_' + b.tipo), f'{est}_Gov-G')
     except KeyError:
         bruto_g, contr_g = np.nan, np.nan
+    # sensibilidad leave-one-contest-out: el sesgo de la regla elegida quitando cada contienda del estado
+    sub = b[b.k >= 2] if regla == 'k2' else b
+    loco = []
+    for race in sub[sub.location == est].race:
+        try:
+            br, co = sesgo_estado(sub[sub.race != race])
+            loco.append({'race': race, 'sesgo_bruto': float(br), 'sesgo_contraido': float(co * br)})
+        except KeyError:
+            pass
     # regla «todas» en Illinois y Texas (IL: k2 empata, P = 0.53; TX: «todas» mejor, P = 0.07); «k2» en Maine
     bruto, contr = (bruto_k2, contr_k2) if regla == 'k2' else (bruto_t, contr_t)
     par = {'horizonte_dias': h, 'tau': tau, 's': s, 'nu': nu, 'n_contiendas': len(b),
@@ -185,6 +194,7 @@ def calibrar(cfg, h: int) -> dict:
            'sesgo_regla': regla,
            'sesgo_bruto_k2': bruto_k2, 'sesgo_contraido_k2': float(contr_k2 * bruto_k2),
            'sesgo_bruto_todas': bruto_t, 'sesgo_contraido_todas': float(contr_t * bruto_t),
+           'sesgo_loco': loco,
            'sesgo_bruto_gob': bruto_g, 'sesgo_contraido_gob': float(contr_g * bruto_g),
            'efectos_casa': efectos_casa(d, m.contraccion_casa),
            'efectos_casa_k4': efectos_casa(d, 4.0), 'efectos_casa_k16': efectos_casa(d, 16.0),   # sensibilidad

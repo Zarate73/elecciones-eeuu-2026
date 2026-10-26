@@ -12,13 +12,14 @@ Base: Texas v1.1.0 / Maine v1.1.0 / Pennsylvania v1.1.0 / Nevada v1.1.0 / Florid
   Pritzker = (100 − T + margen)/2 ;  Bailey = (100 − T − margen)/2 ;  mayoría simple; P(|margen| ≤ 0.5) se reporta
   final    = logit⁻¹((1 − w)·logit(P_encuestas) + w·logit(promedio Kalshi/Polymarket)),  w = 0.30; la distribución
              se desplaza para que P(margen > 0) = final. Con probabilidades cercanas a 1 la mezcla baja el margen
-             (hoy −2.2 pp) aunque los mercados también den ganador a Pritzker: «sin mercados» y Polymarket por rangos
+             (hoy −2.1 pp) aunque los mercados también den ganador a Pritzker: «sin mercados» y Polymarket por rangos
              son lecturas igual de defendibles del margen (como en Pennsylvania).
   Sesgo estatal (backtest de IL, 945 contiendas, 19 de IL): error de las encuestas pro-D en 8 de 19 (pro-R en 2020
   Pres −5.9, 2008 Sen −16.1). Cronológico de IL: sin sesgo 2.742 vs con sesgo 2.827 (P = 0.63, no significativo); a nivel
   nacional el sesgo gana con claridad (P = 0.002). Regla «todas» (k2 empata en IL, P = 0.53).
   Escenarios: cada uno con su probabilidad sin y con mercados; influencia de cada encuesta; sesgo k2, por cargo
-  (gobernador) y sin sesgo; sin encuestas partidistas; terceros con reducción; peso de mercados 0.15/0.50.
+  (gobernador), sin sesgo y sin cada contienda del estado (extremos); fechas por el punto medio del campo (como el
+  histórico de FiveThirtyEight); sin encuestas partidistas; terceros con reducción; peso de mercados 0.15/0.50.
 """
 from __future__ import annotations
 
@@ -170,6 +171,13 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     elif 'sesgo_contraido_k2' in par:                       # sin contiendas de una sola encuestadora (revisión NV)
         sk2 = par['sesgo_contraido_k2']
         esc.append(fila(sim(mu_enc - sk2), f'Sesgo estimado sin contiendas de una sola encuestadora ({-sk2:+.2f} pp)'))
+    loco = par.get('sesgo_loco') or []                       # revisión de Illinois: sin cada contienda del estado
+    if loco:
+        a_, b_ = min(loco, key=lambda z: z['sesgo_contraido']), max(loco, key=lambda z: z['sesgo_contraido'])
+        for x in (a_, b_):                                  # extremos de la corrección al quitar UNA contienda
+            esc.append(fila(sim(mu_enc - x['sesgo_contraido']),
+                            f"Sesgo sin la contienda {x['race']} ({-x['sesgo_contraido']:+.2f} pp; rango al quitar una de "
+                            f"{len(loco)}: {-b_['sesgo_contraido']:+.2f} a {-a_['sesgo_contraido']:+.2f})"))
     if np.isfinite(par.get('sesgo_contraido_gob', np.nan)):  # solo contiendas de gobernador del estado (revisión de Texas)
         sg = par['sesgo_contraido_gob']
         esc.append(fila(sim(mu_enc - sg), f'Sesgo estimado solo con contiendas de gobernador ({-sg:+.2f} pp)'))
@@ -200,7 +208,7 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
         m_k, *_ = promedio(q, par.get(f'efectos_casa_k{kk}', house), m.vida_media_dias)
         esc.append(fila(sim(m_k - sesgo), f'Efectos de casa con contracción k = {kk} (base 8)'))
     ep = par.get('efectos_partidistas', {})
-    lado = q.pollster.map(lado_partidista)
+    lado = q.pollster.map(lado_partidista).where(q.get('partidista', True), None)   # firma de un partido ≠ patrocinio
     casa_solo = {kk: (ep.get(ll, 0.0) if ll else 0.0) for kk, ll in zip(q.pollster_key, lado)}
     casa_mix = {kk: house.get(kk, ep.get(ll, 0.0) if ll else 0.0) for kk, ll in zip(q.pollster_key, lado)}
     for nom, mp in (('Ajuste partidista (patrocinador D/R)', casa_solo),
@@ -225,9 +233,15 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
         fila_q = q.loc[idx]
         con_encuestas(p[p.pollster_key != fila_q.pollster_key],
                       f'Sin {fila_q.pollster} (pesa {pesos[idx]:.0%})')
-    lado_p = p.pollster.map(lado_partidista)
+    lado_p = p.pollster.map(lado_partidista).where(p.get('partidista', True), None)
     if lado_p.notna().any():
         con_encuestas(p[lado_p.isna()], 'Sin encuestas de patrocinio partidista')
+    # revisión de Illinois: el histórico de FiveThirtyEight fecha cada encuesta en el PUNTO MEDIO del campo; producción
+    # usa el fin. Con campos largos (ActiVote 2–22 oct) la diferencia importa: escenario con las fechas del punto medio
+    ini = pd.to_datetime(p['inicio']) if 'inicio' in p else p.fin
+    medio = ini.fillna(p.fin) + (p.fin - ini.fillna(p.fin)) / 2
+    p_med = p.assign(fin=medio.dt.normalize(), days=(pd.Timestamp(cfg.dia_eleccion) - medio.dt.normalize()).dt.days)
+    con_encuestas(p_med, 'Fechas por el punto medio del campo (como el histórico de FiveThirtyEight)')
     t_rep = otros_enc if np.isfinite(otros_enc) else None
     for f_, nom_f in ((0.6, 'reducción moderada'), (0.3, 'reducción pronunciada')):
         tm, ts = terceros(otros_enc * f_) if t_rep is not None else (max(t_media * f_, 0.1), tsd)

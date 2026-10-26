@@ -15,6 +15,9 @@ nombre_d = "JB Pritzker"
 nombre_r = "Darren Bailey"
 terceros = "Terceros (Collin Corbett, I; otros)"
 condado_principal = "Cook"
+# Firmas que Wikipedia marca «(D)»/«(R)» por su inclinación, pero cuya encuesta aquí la pagó un medio, no un partido ni una
+# campaña: no cuentan como patrocinio partidista (PPP 30 sep–1 oct, encargada por Chicago News Weekly).
+firmas_sin_patrocinio_partidista = ["publicpolicypo"]
 zona_horaria = "America/Chicago"   # hora del centro; fija la fecha del corte
 recuento_pp = 0.5                      # Illinois no tiene recuento automático (lo pide un candidato): se reporta P(|margen| ≤ 0.5)
 

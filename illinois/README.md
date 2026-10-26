@@ -34,13 +34,13 @@ Base: el modelo de Texas v1.1.0 (Maine / Pennsylvania / Nevada / Florida / Georg
 | Pieza | Cómo entra | Por qué |
 |---|---|---|
 | Promedio de encuestas | V11: efecto de casa contraído (k = 8), √n, vida media de 14 días, cada firma pesa ~1; ventana de 21 días, **ampliada hoy** (solo 2 encuestas: PPP y ActiVote) | Mejor CRPS nacional (3.304); ampliar es mejor que no ampliar (3.397 vs 3.670) |
-| Identidad de las encuestas | Firma + periodo de campo; la fecha puntual de 270toWin es de publicación | Revisión de Texas del 25-oct |
+| Identidad de las encuestas | Firma + periodo de campo; la fecha puntual de 270toWin es de publicación; cifras originales cuando la fuente redondea (ActiVote 58.7–41.3) | Revisiones de Texas e Illinois del 25-oct ([detalle](docs/02_revision_externa_2026-10-25.md)) |
 | Sesgo estatal | Contraído por Bayes empírico con todas las contiendas del estado: hoy **suma** ~1.2 pp al demócrata | Cronológico IL: no significativo (sin sesgo P = 0.63); nacional: gana con claridad (P = 0.002); desde 2016 gana en IL |
 | Terceros (Corbett) | `real = a + c·(otros en las encuestas que los reportan)` | Mejor regla en IL y a nivel nacional |
 | Indecisos | 50/50 | El reparto proporcional es el peor en IL y a nivel nacional |
 | Ventajas grandes | Sin ajuste de escala | b = 1.00 fuera de muestra; ajustar empeora (P = 0.13 en ventajas ≥ 15 pp) |
 | σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día | Cobertura del 80 % correcta en el backtest |
-| Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30 | Peso estimado con 40 contiendas de 2024 ([detalle](../arizona/docs/03_peso_mercados.md)). Con probabilidades cercanas a 1 baja el margen (−2.2 pp): «sin mercados» y Polymarket por rangos son lecturas igual de defendibles |
+| Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30 | Peso estimado con 40 contiendas de 2024 ([detalle](../arizona/docs/03_peso_mercados.md)). Con probabilidades cercanas a 1 baja el margen (−2.1 pp): «sin mercados» y Polymarket por rangos son lecturas igual de defendibles |
 | Voto anticipado (civicAPI) | Diagnóstico, peso 0; solo volumen por condado y ciudad | Illinois no tiene registro partidario |
 
 ## Carpetas

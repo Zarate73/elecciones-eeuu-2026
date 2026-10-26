@@ -340,6 +340,10 @@ def obtener_encuestas(cfg) -> dict:
     p = p[(pd.to_datetime(p.fin) > pd.Timestamp(cfg.fecha_nominacion)) &
           (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()
     p['partidista'] = p.pollster.map(lambda x: len(set(re.findall(r'\((D|R)\)', str(x)))) == 1)   # bipartidista ≠ partidista
+    # Wikipedia marca «(D)» a firmas de inclinación partidista aunque la encuesta la pague un medio (PPP para Chicago
+    # News Weekly). Para el ajuste partidista cuenta el PATROCINIO (como la columna partisan de FiveThirtyEight)
+    sin_pat = set(cfg.eleccion.get('firmas_sin_patrocinio_partidista', []) or [])
+    p.loc[p.clave.isin(sin_pat), 'partidista'] = False
     p['n'] = pd.to_numeric(p.n, errors='coerce')
     p['n_fuente'] = np.where(p.n.notna(), 'reportado', '')
     p, aplicadas = aplicar_correcciones_n(p, cfg)

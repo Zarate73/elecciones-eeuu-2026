@@ -3,6 +3,8 @@
 Elección general del 3 de noviembre: **JB Pritzker (D, gobernador desde 2019)** busca un tercer periodo contra **Darren Bailey (R, exsenador estatal)**, la revancha de 2022, que Pritzker ganó por 12.5 puntos. En la boleta también está **Collin Corbett (independiente, exconsultor republicano)**. Gana la mayoría simple.
 
 ## Resumen del pronóstico (fixtures del 25-oct, 9 días a la elección)
+
+> **Actualización (revisión del 25-oct, v1.1.0):** ActiVote entra con sus cifras originales (58.7–41.3, +17.4). El promedio pasa de +18.66 a +18.24 y el final, de +17.6 (99.5 %) a +17.3 (99.4 %). Detalle en [`02_revision_externa_2026-10-25.md`](02_revision_externa_2026-10-25.md).
 | | Pritzker (D) | Bailey (R) | Terceros |
 |---|---|---|---|
 | % de voto (IC80) | 56.2 (52.0–60.5) | 38.6 (34.3–42.8) | 5.2 (3.0–7.3) |

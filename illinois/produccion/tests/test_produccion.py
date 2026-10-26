@@ -48,10 +48,23 @@ def test_fecha_de_publicacion_no_es_otra_encuesta(cfg, red_simulada):
     assert len(p[p.pollster_key == 'activote']) == 1
 
 
-def test_partidistas(cfg, red_simulada):
+def test_firma_partidista_no_es_patrocinio(cfg, red_simulada):
+    """Wikipedia rotula a PPP «(D)» por la firma, pero la encuesta la pagó Chicago News Weekly: no es patrocinio
+    partidista (config firmas_sin_patrocinio_partidista), como la columna partisan de FiveThirtyEight."""
     p = encuestas.obtener_encuestas(cfg)['encuestas']
-    assert p[p.pollster_key == 'publicpolicypo'].partidista.all()       # Wikipedia la rotula «(D)»
-    assert not p[p.pollster_key == 'activote'].partidista.any()
+    assert not p.partidista.any()
+    e = ejecutar(cfg, escribir_salidas=False)['modelo']
+    assert not e['escenarios'].escenario.str.startswith('Sin encuestas de patrocinio partidista').any()
+    assert set(e['ventana'].patrocinador) == {'—'}
+
+
+def test_cifras_originales_de_activote(cfg, red_simulada):
+    """ActiVote publica 58.7–41.3 (Wikipedia y 270toWin redondean 59–41): margen +17.4, no +18."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    a = p[p.pollster_key == 'activote'].iloc[0]
+    assert a.D == 58.7 and a.R == 41.3 and a.margin_poll == pytest.approx(17.4)
+    v = ejecutar(cfg, escribir_salidas=False)['modelo']['ventana']
+    assert v[v.pollster_key == 'activote'].iloc[0].D == 58.7
 
 
 def test_fuente_caida_usa_cache(cfg, red_simulada):
@@ -141,7 +154,8 @@ def test_escenarios(cfg, red_simulada):
     assert e.escenario.str.startswith('Polymarket por rangos').any()
     assert e.escenario.str.startswith('Sesgo estimado sin contiendas de una sola encuestadora').any()
     assert e.escenario.str.startswith('Sesgo estimado solo con contiendas de gobernador').any()
-    assert e.escenario.str.startswith('Sin encuestas de patrocinio partidista').any()
+    assert e.escenario.str.startswith('Fechas por el punto medio del campo').any()
+    assert e.escenario.str.startswith('Sesgo sin la contienda').sum() == 2
     sin = e[e.escenario == 'Sin sesgo estatal, sin mercados'].iloc[0]
     con = e[e.escenario == 'Con sesgo estatal, sin mercados (solo encuestas)'].iloc[0]
     assert SIGNO_SESGO * (con.margen - sin.margen) > 0                  # dirección del sesgo de IL
@@ -204,5 +218,5 @@ def test_k_efectivo_por_firma(cfg, red_simulada):
 
 # valores fijados con la corrida de referencia del 25-oct (ver notebook)
 N_ENCUESTAS = 2
-MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 18.661, -1.201, 17.64, 0.9949, 5.18   # sesgo «todas» (−1.20: encuestas pro-R)
+MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 18.239, -1.201, 17.32, 0.9940, 5.18   # sesgo «todas» (−1.20: encuestas pro-R)
 SIGNO_SESGO = +1                                    # en IL el sesgo SUMA al demócrata

@@ -8,12 +8,14 @@ Paquete de Python del modelo de Illinois: el gobernador JB Pritzker (D) contra D
 - **Promedio:** V11 de Georgia: efectos de casa contraídos (k = 8), √n, vida media de 14 días y cada firma pesa ~1. La ventana es de 21 días; si hay menos de 2 encuestadoras, se toman los 21 días previos a la encuesta más reciente. **Hoy se amplía:** solo ActiVote (2–22 oct) termina en los últimos 21 días; con la ampliación entra PPP (30 sep–1 oct).
 - **Identidad de una encuesta = firma + periodo de campo** (revisión de Texas). La fecha puntual de 270toWin es de publicación (PPP aparece el 6-oct; el campo fue 30 sep–1 oct).
 - **Alias:** «Public Policy Polling — Chicago News Weekly» (Excel) = «Public Policy Polling (D)» (Wikipedia); WGN-TV = Emerson.
+- **Patrocinio partidista ≠ firma partidista:** Wikipedia marca a PPP «(D)», pero esta encuesta la pagó Chicago News Weekly. `firmas_sin_patrocinio_partidista` en la configuración la excluye de los ajustes y escenarios partidistas (como la columna `partisan` de FiveThirtyEight). Su efecto de casa se mantiene.
+- **Cifras originales:** `data/correcciones_cifras.csv`: ActiVote 2–22 oct publica 58.7–41.3 (+17.4); Wikipedia y 270toWin redondean a 59–41 (+18).
 - **Sesgo estatal:** contraído por Bayes empírico con todas las contiendas del estado (`sesgo_regla = "todas"`). Hoy **suma** 1.20 pp al demócrata: en Illinois las encuestas tendieron a subestimarlo. «Sin sesgo», «k ≥ 2» y «solo gobernador» quedan como escenarios.
 - **Terceros (Corbett):** `real = a + c·otros`, con «otros» promediado solo entre las encuestas que los reportan. El Excel junta «indecisos / otros», así que no reporta terceros.
 - **Indecisos:** 50/50.
 - **σ:** `√(τ² + s²/k)`, t de Student, con una deriva de 0.25 pp/día cuando las encuestas son más viejas que el horizonte.
-- **Mercados:** Kalshi `GOVPARTYIL-26` y Polymarket `illinois-governor-winner-2026`, promediados, en mezcla logit con peso 0.30 (D / (D + R)). Con probabilidades cercanas a 1 la mezcla baja el margen (hoy −2.2 pp) aunque los mercados también den ganador a Pritzker.
-- **Escenarios:** cruce 2 × 2 de sesgo × mercados, sesgo k ≥ 2 y por cargo, influencia de cada encuesta, sin encuestas partidistas, terceros con reducción, peso de mercados 0.15/0.50 y Polymarket por rangos.
+- **Mercados:** Kalshi `GOVPARTYIL-26` y Polymarket `illinois-governor-winner-2026`, promediados, en mezcla logit con peso 0.30 (D / (D + R)). Con probabilidades cercanas a 1 la mezcla baja el margen (hoy −2.1 pp) aunque los mercados también den ganador a Pritzker.
+- **Escenarios:** cruce 2 × 2 de sesgo × mercados, sesgo k ≥ 2, por cargo y sin cada contienda del estado (extremos), fechas por el punto medio del campo, influencia de cada encuesta, sin encuestas partidistas, terceros con reducción, peso de mercados 0.15/0.50 y Polymarket por rangos.
 - **Voto anticipado (civicAPI):** Illinois no tiene registro partidario: solo volumen (correo + en persona) por condado y por las ciudades con junta electoral propia (Chicago, Rockford…). Diagnóstico, no entra al pronóstico.
 
 ## Fuentes
@@ -25,7 +27,7 @@ Paquete de Python del modelo de Illinois: el gobernador JB Pritzker (D) contra D
 | Kalshi y Polymarket | APIs públicas | Mezcla (peso 0.30) y rangos de margen (escenario) |
 | civicAPI | `early-vote/IL/{returned,inperson}` (por condado y ciudad, sin partido) | Diagnóstico del voto ya emitido |
 | FiveThirtyEight raw-polls | GitHub | Calibración |
-| Correcciones de cifras | `data/correcciones_cifras.csv` | D y R de la publicación original cuando Wikipedia redondea (hoy vacío) |
+| Correcciones de cifras | `data/correcciones_cifras.csv` | D y R de la publicación original cuando Wikipedia redondea (hoy: ActiVote 58.7–41.3) |
 | Correcciones de n | `data/correcciones_tamano_muestra.csv` | Tamaños verificados; n faltante = 600 marcado en `n_imputado` (hoy vacío: las dos encuestas traen n) |
 
 ## Uso
