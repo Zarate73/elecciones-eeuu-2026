@@ -113,3 +113,26 @@ Recalibración completa (incluida la contracción) quitando cada una de las 19 c
 - La capa de escala (actual = a + b·μ) se ajustó sobre predicciones LOYO de los años de entrenamiento. Esas predicciones se generaron con modelos que sí vieron el año de prueba, así que hay dependencia entre folds.
 - **El sesgo de esa dependencia favorece a la variante con escala:** ajusta mejor de lo que debería. Aun así perdió (P = 0.25 nacional, 0.13 en ventajas ≥ 15 pp), con b = 1.00.
 - Una validación anidada solo podría empeorarla. Se mantiene el descarte. El método queda anotado para cualquier capa de corrección futura.
+
+### 7.4 Tercera revisión: el experimento estrechaba la ventana — **correcta; corregido y medido**
+- Mover solo el límite inferior (modo A) estrecha la ventana: medianas en [9 + L, 21].
+- Si L representa la demora mediana→cierre, la ventana equivalente a la de producción es **[9 + L, 21 + L]** (modo B).
+- En el modo B las filas de 2024 no se desplazan, porque ya están fechadas por el cierre.
+
+**Límite de los datos (verificado):** el `raw-polls.csv` de FiveThirtyEight no trae ninguna encuesta con mediana a más de 21 días de la elección (máximo 21 en 7,073 filas). Por eso el tramo (21, 21 + L] **no existe** y casi toda la pérdida de contiendas viene de ese truncamiento de la base, no del código.
+
+| L | Contiendas A | Contiendas B | CRPS G, LOYO nacional (A / B) | G − H8, LOYO (A / B) | G − H8, cronológico (A / B) | σ media G (A / B) |
+|---|---|---|---|---|---|---|
+| 0 | 945 | 945 | 3.304 / 3.304 | −0.134 / −0.134 | −0.238 / −0.238 | 6.16 / 6.16 |
+| 2 | 901 | 903 | 3.377 / 3.368 | −0.151 / −0.153 | −0.260 / −0.262 | 6.30 / 6.29 |
+| 4 | 819 | 821 | 3.444 / 3.429 | −0.080 / −0.084 | −0.165 / −0.170 | 6.36 / 6.31 |
+| 7 | 653 | 662 | 3.478 / 3.441 | −0.051 / −0.057 | −0.090 / −0.098 | 6.38 / 6.32 |
+
+- **A y B casi coinciden.** B solo recupera las contiendas de 2024: 2 con L = 2 y 9 con L = 7.
+- **Las conclusiones no cambian con ningún modo ni retraso:**
+  - el sesgo contraído gana a «sin sesgo» a nivel nacional;
+  - el reparto proporcional de indecisos es siempre el peor;
+  - la cobertura del 80 % se mantiene en 0.80–0.82.
+- **Con L = 2,** el caso comparable con producción, la σ recalibrada sube ~2 % (6.16 → 6.29).
+- **La emulación no es fiel del todo.** Faltan las encuestas de los días 22 a 21 + L y no hay fechas de publicación. Una emulación completa requeriría otra base con fechas de inicio, cierre y publicación (por ejemplo, las encuestas por pregunta de FiveThirtyEight de 2018–2024).
+- **Se mantiene la recomendación transversal** (sección 7.1), sin cambios en Illinois.
