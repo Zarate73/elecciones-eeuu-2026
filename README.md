@@ -19,7 +19,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Pennsylvania | Gobernador: Shapiro 58.4% · Garrity 39.5% · P(Shapiro) >99% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`pennsylvania/`](pennsylvania/) |
 | Maine | Gobernador: Pingree 50.2% · Charles 43.0% · P(Pingree) 93% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`maine/`](maine/) |
 | Texas | Gobernador: Hinojosa 46.6% · Abbott 51.2% · P(Hinojosa) 14% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`texas/`](texas/) |
-| Illinois | Gobernador: Pritzker 56.2% · Bailey 38.6% · P(Pritzker) >99% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`illinois/`](illinois/) |
+| Illinois | Gobernador: Pritzker 56.2% · Bailey 38.6% · P(Pritzker) 99% (corte 2026-10-25) | **Producción (general)**, actualización automática | [`illinois/`](illinois/) |
 | … | | pendiente | |
 
 ## Estructura por estado
