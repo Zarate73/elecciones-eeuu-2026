@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presidenta de la Cámara estatal)** y **Bobby Charles (R)**, con **Rick Bennett (independiente)**. Elección abierta: Janet Mills no puede reelegirse. Gana la mayoría simple: la general de gobernador no usa voto preferencial.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 10:28 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 20:28 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -13,9 +13,9 @@ Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presi
 
 Margen D−R +7.2 pp (σ 4.8) · solo encuestas: P(Pingree) 92% · Kalshi 96% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 2.5% · 16 encuestas, 6 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +10.3 · sesgo estatal de Maine -3.7 · mercados +0.6
+Cómo se llega: promedio de encuestas +10.3 · sesgo estatal de Maine -3.7 · mercados +0.5
 
-**Con independiente** (mayoría simple): P(Pingree gana) 93% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 2% y Polymarket 2%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
+**Con independiente** (mayoría simple): P(Pingree gana) 93% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 2% y Polymarket 3%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
 
 **Encuesta más reciente:** Beacon Research (D)/Shaw & Co. Research (R), terminó el 2026-10-20 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
