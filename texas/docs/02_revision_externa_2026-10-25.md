@@ -43,3 +43,8 @@ Cambios en `tx_pronostico` v1.1.0. Pruebas: `produccion/tests/test_produccion.py
 - `zona_horaria = "America/Chicago"`: casi todo Texas usa la hora del centro. Fija la fecha del corte y la antigüedad de los precios de mercado.
 - El README y los mensajes de commit del flujo usan CT.
 - El horario del flujo (06:13 y 18:13 CT) no cambia.
+
+## 4. Verificación en el navegador (25-oct, noche)
+- activote.net confirma **47.5–52.5** (17–21 oct, mediana 19-oct, 400 LV).
+- La primera encuesta de ActiVote (30 sep–14 oct) es **49.1–50.9** (R+1.8), no el 49–51 redondeado de Wikipedia. Se agrega a `data/correcciones_cifras.csv`.
+- Efecto: promedio −3.226 → −3.220; P(Hinojosa) sin cambio material (14.2 %).

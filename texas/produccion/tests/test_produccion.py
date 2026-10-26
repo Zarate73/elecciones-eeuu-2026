@@ -55,6 +55,7 @@ def test_misma_firma_periodos_distintos_son_dos_encuestas(cfg, red_simulada):
     a = a.set_index(a.fin.dt.strftime('%Y-%m-%d'))
     assert {'2026-10-14', '2026-10-21'} <= set(a.index)
     assert a.loc['2026-10-21', 'D'] == 47.5 and a.loc['2026-10-21', 'R'] == 52.5
+    assert a.loc['2026-10-14', 'D'] == 49.1 and a.loc['2026-10-14', 'R'] == 50.9     # 50.9–49.1 en ActiVote
     assert 'wikipedia' not in a.loc['2026-10-14', 'tambien_en']          # ya no se funde con la segunda
 
 
