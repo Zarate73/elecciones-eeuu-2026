@@ -80,3 +80,36 @@ Recalibración completa (incluida la contracción) quitando cada una de las 19 c
   - El backtest de las variantes partidistas (P1–P3) usa la columna `partisan` de FiveThirtyEight, que marca el **patrocinio**.
   - Por consistencia, `firmas_sin_patrocinio_partidista = ["publicpolicypo"]` excluye a PPP de los ajustes y escenarios partidistas.
   - No cambia el pronóstico; solo deja de existir el escenario «sin encuestas partidistas», que no aplica.
+
+## 7. Segunda revisión: disponibilidad de las encuestas en el backtest
+### 7.1 Riesgo de fuga temporal — **correcto; cuantificado**
+- **El riesgo.** El backtest toma las encuestas con días_mediana ≥ H. Una encuesta cuya mediana cae antes del corte puede terminar o publicarse después, y no habría estado disponible.
+- **No se puede medir directamente:** el histórico no trae fechas de cierre ni de publicación.
+- **Prueba** (`backtest/revision_disponibilidad_illinois.py`): regla conservadora «disponible si mediana + L ≤ corte», con L = 0 (actual), 2, 4 y 7 días; misma ventana superior de 21 días. Se repiten el LOYO y el cronológico y se comparan las contiendas presentes con todas las L.
+
+| L (días) | Contiendas | CRPS G, LOYO (comunes, n = 653) | G − H8, LOYO | CRPS G, cronológico (comunes, n = 525) | G − H8, cronológico | σ media (LOYO, comunes) |
+|---|---|---|---|---|---|---|
+| 0 (actual) | 945 | 2.987 | −0.084 | 2.784 | −0.183 | 5.63 |
+| 2 | 901 | 3.109 | −0.077 | 2.894 | −0.186 | 5.81 |
+| 4 | 819 | 3.244 | −0.052 | 3.035 | −0.146 | 6.00 |
+| 7 | 653 | 3.478 | −0.050 | 3.296 | −0.090 | 6.38 |
+
+- **Las decisiones del modelo no cambian con ningún L:**
+  - el sesgo contraído gana a «sin sesgo» a nivel nacional en LOYO y en el cronológico;
+  - el reparto proporcional de indecisos (H2) es siempre el peor;
+  - en Illinois «sin sesgo» sigue algo mejor en las contiendas comunes, igual que con L = 0, y la decisión se sigue tomando con la evidencia nacional.
+- **Los niveles sí cambian.** Con más retraso hay menos encuestas y más viejas, y el CRPS sube. La prueba no separa cuánto es fuga eliminada y cuánto es información perdida, pero da una cota.
+- **Producción usa la fecha de fin ≤ corte**, que equivale a L ≈ la mitad del campo (1–2 días en una encuesta típica). Lo comparable es L ≈ 2. Ahí la σ recalibrada es ~3 % mayor (5.63 → 5.81) y la cobertura del 80 % se mantiene en 0.79–0.80.
+- **Conclusión:** los CRPS de L = 0 son algo optimistas en nivel, pero el orden de los modelos no depende de la fuga. La σ de producción podría estar ~2–3 % corta. En Illinois no cambia nada material: P(Pritzker) ≥ 99 % con cualquier σ razonable.
+- **Recomendación** (decisión transversal, no solo de IL), junto con la de fechar por el punto medio (sección 2):
+  - calibrar con una disponibilidad L = 2 (horizonte de calibración h + 2);
+  - medir el movimiento de cada estado antes de adoptarlo.
+
+### 7.2 Ventanas históricas frente a producción — **correcto**
+- Una ventana de 21 días por mediana y otra de 21 días por fin no contienen las mismas encuestas.
+- Es la misma inconsistencia de la sección 2 y se resuelve con la misma decisión transversal: fechar producción por el punto medio y calibrar con disponibilidad L.
+
+### 7.3 Prueba de escala: validación anidada — **correcto; no cambia la conclusión**
+- La capa de escala (actual = a + b·μ) se ajustó sobre predicciones LOYO de los años de entrenamiento. Esas predicciones se generaron con modelos que sí vieron el año de prueba, así que hay dependencia entre folds.
+- **El sesgo de esa dependencia favorece a la variante con escala:** ajusta mejor de lo que debería. Aun así perdió (P = 0.25 nacional, 0.13 en ventajas ≥ 15 pp), con b = 1.00.
+- Una validación anidada solo podría empeorarla. Se mantiene el descarte. El método queda anotado para cualquier capa de corrección futura.
