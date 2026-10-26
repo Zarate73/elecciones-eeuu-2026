@@ -7,8 +7,8 @@
   "D": "Xavier Becerra",
   "R": "Steve Hilton"
  },
- "corte": "2026-10-25",
- "dias_a_eleccion": 9,
+ "corte": "2026-10-26",
+ "dias_a_eleccion": 8,
  "pronostico": {
   "P_D": 0.9927,
   "pct_D": 60.9,
@@ -25,13 +25,13 @@
   "margen": 21.794,
   "margen_IC80": [
    14.32,
-   29.21
+   29.2
   ],
   "margen_IC95": [
-   8.78,
-   34.76
+   8.79,
+   34.75
   ],
-  "sd": 6.533,
+  "sd": 6.528,
   "nu": 5.0,
   "P_D_encuestas": 0.9963,
   "peso_mercados": 0.3,
@@ -41,14 +41,14 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9654,
+   "P_D": 0.965,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "McLaughlin & Associates (R)",
   "fin": "2026-10-20",
-  "dias_desde_fin": 5,
+  "dias_desde_fin": 6,
   "dias_antes_eleccion": 14,
   "origen": "wikipedia"
  },
@@ -253,27 +253,35 @@
    "P_kalshi": 0.9654,
    "pct_D": 60.9,
    "margen": 21.79
+  },
+  {
+   "corte": "2026-10-26",
+   "P_D": 0.9927,
+   "P_D_encuestas": 0.9963,
+   "P_kalshi": 0.965,
+   "pct_D": 60.9,
+   "margen": 21.79
   }
  ],
  "escenarios": [],
  "anticipado": {
   "fuente": "Civiq",
-  "fecha": "2026-10-24",
+  "fecha": "2026-10-25",
   "estado": "diagnóstico",
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 2722798.0,
+    "valor": 2757564.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Margen D−R de devueltas",
-    "valor": 20.98,
+    "valor": 21.08,
     "formato": "pp"
    },
    {
     "etiqueta": "2024 General al mismo día",
-    "valor": 18.38,
+    "valor": 18.16,
     "formato": "pp"
    }
   ]
@@ -292,7 +300,7 @@
   },
   {
    "nombre": "civiq",
-   "estado": "Datos de Civiq vía api, validados (2026-10-24)",
+   "estado": "Datos de Civiq vía api, validados (2026-10-25)",
    "en_vivo": true
   },
   {
