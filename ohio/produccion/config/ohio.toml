@@ -1,0 +1,75 @@
+# =====================================================================================
+# Ohio 2026 · configuración (modelo general: V11 + sesgo estatal contraído + terceros + mercados)
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "Ohio"
+abrev = "OH"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2025-11-22"        # Acton y Ramaswamy, candidatos de hecho (Tim Ryan descartó postularse el 22-nov-2025; Yost se retiró el 16-may-2025): solo cuentan encuestas que terminan después
+candidato_d = "Acton"
+candidato_r = "Ramaswamy"
+nombre_d = "Amy Acton"
+nombre_r = "Vivek Ramaswamy"
+terceros = "Terceros (Don Kissick, Libertario; votos por escrito)"
+condado_principal = "Franklin"
+# Firmas que Wikipedia marca «(D)»/«(R)» por su inclinación, pero cuya encuesta la pagó un medio, no un partido ni una
+# campaña: no cuentan como patrocinio partidista. Vacío en Ohio (se revisa con cada encuesta nueva).
+firmas_sin_patrocinio_partidista = []
+zona_horaria = "America/New_York"
+recuento_pp = 0.25                     # Ohio: recuento automático si el margen es ≤ 0.25 % de los votos (ORC 3515.011)
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+# Encuestas verificadas a mano (opcional). Excel con la hoja «Histórico encuestas» (OHIO_GOBERNADOR-v1.xlsx) o CSV
+# con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
+encuestas_base = "data/encuestas_verificadas_oh.csv"
+# Encuestas verificadas en la publicación original que no traen Wikipedia, 270toWin ni el Excel (columnas de la base más
+# fuente = URL y nota).
+encuestas_complementarias = "data/encuestas_complementarias_oh.csv"
+# Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
+# Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
+correcciones_n = "data/correcciones_tamano_muestra.csv"
+# Cifras de la publicación original cuando la fuente web las redondea (columnas clave, fin, pop, D, R, fuente).
+correcciones_cifras = "data/correcciones_cifras.csv"
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_Ohio_gubernatorial_election"
+t270_url = "https://www.270towin.com/2026-governor-polls/ohio"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "GOVPARTYOH-26"
+kalshi_ticker_d = "GOVPARTYOH-26-D"
+kalshi_ticker_r = "GOVPARTYOH-26-R"
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_evento_ganador = "ohio-governor-winner-2026"
+polymarket_evento_margen = "ohio-governor-margin-of-victory-2026"
+mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+civicapi = "https://civicapi.org/api/v2/early-vote"
+civicapi_estado = "OH"
+civicapi_por_partido = false           # Ohio no tiene registro partidario: civicAPI publica solo volumen por condado (88)
+votos_totales_eleccion_previa = 4134877 # gobernador 2022 (Wikipedia, resultados oficiales de la Secretaría de Estado): referencia de volumen
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 5                # menos encuestas web que esto => fuente degradada
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan en los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos: los 21 días previos a la encuesta más reciente
+vida_media_dias = 14.0
+contraccion_casa = 8.0
+sesgo_estatal = true                   # backtest de OH: las encuestas sobreestimaron al demócrata en 16 de 24 contiendas y en
+                                       # todas desde 2014; LOYO 2.066 vs 2.478 sin sesgo; cronológico 1.802 vs 2.464 (P = 0.002)
+sesgo_regla = "todas"                  # «k2» empata (LOYO 2.048, cronológico 1.799; estimación −3.96 vs −4.04); «por cargo» peor (P = 0.010)
+peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+sigma_dia_pp = 0.25                    # deriva diaria si las encuestas son más viejas que el horizonte calibrado
+n_simulaciones = 200000
+semilla = 20261028
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60
