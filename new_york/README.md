@@ -3,17 +3,17 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 02:41 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 03:07 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Kathy **Hochul** (D, gobernadora) | **56.3%** (52.2–60.4) | **97%** |
-| Bruce **Blakeman** (R) | **43.5%** (39.4–47.6) | **3%** |
+| Kathy **Hochul** (D, gobernadora) | **55.2%** (51.6–58.8) | **97%** |
+| Bruce **Blakeman** (R) | **44.6%** (41.0–48.2) | **3%** |
 | Otros (votos por escrito) | 0.2% (0.1–0.2) | — |
 
-Margen D−R +12.8 pp (σ 6.6) · solo encuestas: P(Hochul) 98% · Kalshi 94% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.9% · 23 encuestas, 2 encuestadoras en la ventana
+Margen D−R +10.6 pp (σ 5.7) · solo encuestas: P(Hochul) 97% · Kalshi 94% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 1.2% · 25 encuestas, 3 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +15.5 · sesgo estatal de Nueva York -1.8 · mercados -0.9
+Cómo se llega: promedio de encuestas +13.0 · sesgo estatal de Nueva York -1.8 · mercados -0.5
 
 **Encuesta más reciente:** ActiVote, terminó el 2026-10-23 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
