@@ -1,12 +1,10 @@
 """Encuestas 2026: Wikipedia (API MediaWiki) y 270toWin en vivo + base verificada (Excel o CSV), sin duplicados.
 
 Prioridad al combinar: Wikipedia > base verificada > 270toWin (Wikipedia trae n, población y terceros).
-Misma encuesta = misma firma (con ALIAS) y fin a ≤ 7 días, o misma firma con las mismas cifras (±0.5) a ≤ 60 días
-(270toWin fecha por publicación). Firmas distintas solo se fusionan si coinciden cifras Y tamaño de muestra (n ≥ 300) a
-≤ 30 días: 270toWin rotula «YouGov» encuestas que Wikipedia atribuye al patrocinador.
+Identidad de cada encuesta: firma (con ALIAS) + periodo de campo; ver identidad.py (auditoría T3, 26-oct).
 Nueva York: Siena College Research Institute (encuestas propias) ≠ NYT/Siena; Marist University = Marist College;
 co/efficient, McLaughlin, OnMessage y Red Oak son firmas republicanas. Si una fuente trae la versión LV y otra la RV
-de la misma encuesta, se conserva la LV. La identidad de una encuesta es firma + periodo de campo (ver combinar).
+de la misma encuesta, se conserva la LV.
 """
 from __future__ import annotations
 
@@ -19,6 +17,7 @@ import numpy as np
 import pandas as pd
 
 from . import encuestas_web as W
+from . import identidad
 from .red import get_json, get_text
 
 log = logging.getLogger(__name__)
@@ -195,74 +194,9 @@ def cargar_complementarias(ruta: Path) -> pd.DataFrame:
 
 
 def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
-    """Une las fuentes sin contar dos veces la misma encuesta.
-
-    La identidad de una encuesta es (firma, PERIODO DE CAMPO), no (firma, fecha cercana):
-      - misma firma y periodos que se solapan o se tocan → misma encuesta (versiones LV/RV o la misma en dos fuentes);
-      - misma firma, periodos distintos y ambos con rango → encuestas DISTINTAS aunque estén a pocos días (ActiVote
-        30 sep–14 oct y 17–21 oct; antes la regla «≤ 7 días» las fundía y se perdía la más reciente);
-      - una fuente con fecha puntual (publicación) a ≤ 7 días del periodo de otra con las mismas cifras, o a ≤ 3 días
-        con cualquier cifra → misma encuesta (Verasight 23-oct en 270toWin = campo 1–20 oct en Wikipedia);
-      - mismas cifras entre fuentes distintas a ≤ 60 días → misma encuesta con la fecha mal capturada.
-    Ninguna fuente publica un identificador de estudio, así que el periodo de campo es la mejor llave disponible.
-    Se elige la candidata MÁS CERCANA (no la primera que cumpla): Beacon/Shaw repitió 47–52 el 28-sep y el 19-oct.
-    """
-    base: list[dict] = []
-    for f in fuentes:
-        for r in f.to_dict('records'):
-            ir = _intervalo(r)
-            mejor, mejor_d = None, None
-            for b in base:
-                ib = _intervalo(b)
-                dist = _distancia(ir, ib)
-                dias = abs((ir[1] - ib[1]).days)
-                mismas = abs(r['D'] - b['D']) <= 0.51 and abs(r['R'] - b['R']) <= 0.51
-                otra_fuente = r['origen'] != b['origen']
-                # 270toWin rotula «YouGov» encuestas que otras fuentes atribuyen al patrocinador (UT/Texas Politics Project,
-                # CBS, Univision…): mismo n (≥ 300) y mismas cifras a ≤ 30 días = misma encuesta aunque cambie el nombre
-                mismo_n = pd.notna(r.get('n')) and pd.notna(b.get('n')) and r['n'] >= 300 and abs(r['n'] - b['n']) < 0.5
-                # «YouGov» genérico frente a «<patrocinador>/YouGov» con las mismas cifras a ≤ 7 días (el n puede diferir:
-                # CBS/YouGov 16-oct trae 1,492 en Wikipedia y 1,460 en 270toWin)
-                generico = mismas and dist <= 7 and 'yougov' in (r['clave'], b['clave']) and \
-                    'yougov' in str(r.get('pollster', '')).lower() and 'yougov' in str(b.get('pollster', '')).lower()
-                puntual = ir[2] or ib[2]
-                # las fechas del archivo complementario se verificaron en la publicación original: dos periodos distintos
-                # de la misma firma son encuestas distintas aunque las cifras coincidan (OnMessage 1–6 oct 50–46 y
-                # 12–14 oct 50.3–45.9, ambas con n = 1,000 LV; la regla «fecha mal capturada» las fundía)
-                fecha_verificada = 'complementaria' in (r['origen'], b['origen']) and not puntual
-                misma_firma = r['clave'] == b['clave'] and (
-                    dist == 0 and not puntual                                   # periodos de campo que se solapan
-                    or puntual and (dist <= 3 or (mismas and dist <= 7))        # fecha de publicación de otra fuente
-                    or mismas and otra_fuente and dias <= 60 and not fecha_verificada)   # fecha mal capturada
-                if (misma_firma or ((mismas and mismo_n and dias <= 30) or generico) and not fecha_verificada) and \
-                        (mejor_d is None or (dist, dias) < mejor_d):
-                    mejor, mejor_d = b, (dist, dias)
-            if mejor is None:
-                base.append(dict(r))
-                continue
-            b = mejor
-            rk = {'LV': 0, 'RV': 1, 'A': 2}
-            if rk.get(str(r.get('pop')), 3) < rk.get(str(b.get('pop')), 3):   # misma encuesta, mejor población
-                for c in ('D', 'R', 'otros', 'indecisos', 'n', 'pop'):
-                    b[c] = r[c]
-                b['nota_version'] = f"versión {r.get('pop')} de {r['origen']}"
-            # cifras con decimales del Excel verificado (Emerson 52.4–39.7, McLaughlin 49.6–45.7) frente a las redondeadas de
-            # Wikipedia/270toWin (52–40, 50–46): si son compatibles con el redondeo (±0.5), se conservan las del Excel
-            if (r['origen'] in VERIFICADAS and b['origen'] not in VERIFICADAS
-                    and abs(r['D'] - b['D']) <= 0.5 and abs(r['R'] - b['R']) <= 0.5
-                    and (r['D'] % 1 or r['R'] % 1)):
-                b['D'], b['R'] = r['D'], r['R']
-                b['nota_version'] = (b.get('nota_version') or '') + ' cifras con decimales del Excel verificado'
-            if _intervalo(b)[2] and not ir[2]:                   # conserva el periodo de campo, no la fecha de publicación
-                b['inicio'], b['fin'] = r['inicio'], r['fin']
-            for c in ('n', 'pop', 'otros', 'indecisos'):       # completa datos que falten
-                if pd.isna(b.get(c)) and pd.notna(r.get(c)):
-                    b[c] = r[c]
-            b.setdefault('tambien_en', set()).add(r['origen'])
-    out = pd.DataFrame(base, columns=COLS + ['tambien_en', 'nota_version'])
-    out['tambien_en'] = out.tambien_en.map(lambda s: ', '.join(sorted(s)) if isinstance(s, set) else '')
-    out['nota_version'] = out.nota_version.astype(object).where(out.nota_version.notna(), '')
-    return out
+    """Une las fuentes sin contar dos veces la misma encuesta ni fundir olas distintas: identidad por periodo de campo
+    (identidad.py, común a los diez paquetes; auditoría T3 del 26-oct). Las decisiones quedan en .attrs['decisiones']."""
+    return identidad.combinar_df(*fuentes, cols=COLS)
 
 
 def aplicar_correcciones_cifras(p: pd.DataFrame, cfg) -> tuple[pd.DataFrame, list[str]]:
@@ -386,6 +320,8 @@ def obtener_encuestas(cfg) -> dict:
     fuentes = [_normalizar(x, o) for x, o in ((wiki, 'wikipedia'), (base, 'base'), (comp, 'complementaria'),
                                               (t270, '270towin')) if len(x)]
     p = combinar(*fuentes)
+    for d_ in p.attrs.get('decisiones', []):
+        log.info('Identidad %s (%s): %s | %s', d_['decision'], d_['razon'], d_['conservada'], d_['nueva'])
     p = p[(pd.to_datetime(p.fin) > pd.Timestamp(cfg.fecha_nominacion)) &
           (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()
     p['partidista'] = p.pollster.map(lambda x: len(set(re.findall(r'\((D|R)\)', str(x)))) == 1)   # bipartidista ≠ partidista
@@ -409,9 +345,9 @@ def obtener_encuestas(cfg) -> dict:
     p['margin_poll'] = p.D - p.R
     p['pollster_key'] = p.clave
     p['otros'] = pd.to_numeric(p.otros, errors='coerce')
-    if p.duplicated(['pollster_key', 'fin']).any():
+    if p.duplicated(['pollster_key', 'inicio', 'fin']).any():
         raise ValueError('encuestas duplicadas tras combinar: '
-                         + str(p[p.duplicated(['pollster_key', 'fin'], keep=False)].pollster.tolist()))
+                         + str(p[p.duplicated(['pollster_key', 'inicio', 'fin'], keep=False)].pollster.tolist()))
     vivas = int((p.origen.isin(['wikipedia', '270towin']) | p.tambien_en.str.contains('wikipedia|270towin')).sum())
     if vivas < f.min_encuestas_vivas:
         avisos.append(f'solo {vivas} encuestas aparecen en fuentes web (< {f.min_encuestas_vivas})')

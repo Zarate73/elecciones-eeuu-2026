@@ -5,7 +5,8 @@ Flujo por carrera (gobernador / senado):
   2. Normaliza: fechas de campo, muestra y universo (LV/RV/A), % D y % R, clave de encuestadora (FiveThirtyEight).
   3. Elige UNA versión por encuesta (misma firma y fecha): LV > RV > A, luego mayor n, luego más indecisos
      (versión sin 'leaners' ni reasignación).
-  4. Combina fuentes sin duplicar (misma firma con fin a ±7 días): prioridad Wikipedia > propias > 270toWin.
+  4. Combina fuentes sin duplicar ni fundir olas distintas (identidad.py: firma + periodo de campo; auditoría T3
+     del 26-oct): prioridad Wikipedia > propias > 270toWin.
   5. Aplica data/ajustes_encuestas.csv (correcciones documentadas: reemplazar / excluir / agregar).
   6. Filtra por fecha (nominación <= fin <= corte) y valida (errores detienen la corrida).
 """
@@ -20,6 +21,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from . import identidad
 from .red import get_json, get_text
 
 log = logging.getLogger(__name__)
@@ -264,25 +266,37 @@ def elegir_versiones(df: pd.DataFrame) -> pd.DataFrame:
     return elegidas.drop(columns=['_pop', '_ind']).reset_index(drop=True)
 
 
-def combinar(*fuentes: pd.DataFrame, tolerancia_dias: int = 7, tolerancia_mismas_cifras: int = 21) -> pd.DataFrame:
-    """Une fuentes en orden de prioridad; una encuesta de menor prioridad se descarta si ya existe la misma
-    firma con fin a <= tolerancia_dias, o con las mismas cifras D/R a <= tolerancia_mismas_cifras
-    (270toWin fecha por publicación, que puede ir 1-3 semanas después del fin de campo)."""
-    base = pd.DataFrame(columns=COLUMNAS)
+def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
+    """Une fuentes en orden de prioridad; una fila de menor prioridad se descarta si es el MISMO estudio que una ya
+    incluida (identidad.py: periodo de campo, o fecha de publicación de 270toWin coherente con el cierre). La fila de
+    mayor prioridad se conserva tal cual. Las decisiones quedan en .attrs['decisiones']."""
+    regs = []
     for f in fuentes:
         if f is None or f.empty:
             continue
-        nuevas = []
-        for _, r in f.iterrows():
-            dias = pd.to_datetime(base.fin).sub(pd.Timestamp(r.fin)).abs().dt.days
-            mismas = ((pd.to_numeric(base.D) - r.D).abs() < 0.51) & ((pd.to_numeric(base.R) - r.R).abs() < 0.51)
-            ya = base[(base.clave_538 == r.clave_538) &
-                      ((dias <= tolerancia_dias) | (mismas & (dias <= tolerancia_mismas_cifras)))]
-            if ya.empty:
-                nuevas.append(r)
-        if nuevas:
-            base = pd.concat([base, pd.DataFrame(nuevas)], ignore_index=True) if len(base) else pd.DataFrame(nuevas)
-    return base.reset_index(drop=True)
+        regs.append([dict(r, clave=r.get('clave_538'), _fila=r) for r in f.to_dict('records')])
+    base, dec = identidad.combinar_registros(regs, fusionar_campos=False)
+    out = pd.DataFrame([b['_fila'] for b in base]) if base else pd.DataFrame(columns=COLUMNAS)
+    out.attrs['decisiones'] = dec
+    for d_ in dec:
+        log.info('Identidad %s (%s): %s | %s', d_['decision'], d_['razon'], d_['conservada'], d_['nueva'])
+    return out.reset_index(drop=True)
+
+
+def _coincidencia_ajuste(d: pd.DataFrame, a) -> pd.Series:
+    """Fila (UNA, la más cercana) a la que se refiere un ajuste: misma clave y calendario compatible con su periodo de
+    campo (solapado, o fecha de publicación de 270toWin 0–14 días después del cierre). Antes: todas las filas de la
+    firma con fin a ±7 días, que podía tocar dos olas distintas."""
+    m = pd.Series(False, index=d.index)
+    ref = {'inicio': a.inicio if pd.notna(a.get('inicio')) else a.fin, 'fin': a.fin}
+    mejor, mejor_d = None, None
+    for i, r in d[d.clave_538 == a.clave_538].iterrows():
+        cal, dist = identidad.calendario({'inicio': r.inicio, 'fin': r.fin}, ref)
+        if cal in ('solapados', 'publicacion', 'puntuales') and (mejor_d is None or dist < mejor_d):
+            mejor, mejor_d = i, dist
+    if mejor is not None:
+        m.loc[mejor] = True
+    return m
 
 
 def aplicar_ajustes(df: pd.DataFrame, ajustes: pd.DataFrame, carrera: str, alias=None) -> tuple[pd.DataFrame, list]:
@@ -292,7 +306,7 @@ def aplicar_ajustes(df: pd.DataFrame, ajustes: pd.DataFrame, carrera: str, alias
     d = df.copy()
     for _, a in ajustes[ajustes.carrera == carrera].iterrows():
         fin_ref = pd.Timestamp(a.fin)
-        m = (d.clave_538 == a.clave_538) & (pd.to_datetime(d.fin).sub(fin_ref).abs().dt.days <= 7) if len(d) else pd.Series([], dtype=bool)
+        m = _coincidencia_ajuste(d, a) if len(d) else pd.Series([], dtype=bool)
         if a.accion == 'excluir':
             if m.any():
                 d = d[~m]; log_aj.append(f'excluida {a.clave_538} {a.fin}: {a.motivo}')
@@ -327,7 +341,7 @@ def validar(df: pd.DataFrame) -> list[str]:
         err.append('clave_538 inválida (minúsculas, máx. 14 letras)')
     if not df['pop'].isin(list(RANGO_POP)).all():
         err.append('pop debe ser LV, RV o A')
-    dup = df[df.duplicated(['clave_538', 'fin'], keep=False)]
+    dup = df[df.duplicated(['clave_538', 'inicio', 'fin'], keep=False)]
     if len(dup):
         err.append(f'duplicadas: {dup.pollster.tolist()}')
     if (df.n < 100).any():

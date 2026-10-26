@@ -162,10 +162,11 @@ def test_combinar_mismas_cifras_con_fecha_de_publicacion():
     from datetime import date
     base = dict(inicio=date(2026, 7, 29), n=815.0, pop='LV', otros=0.0, indecisos=9.0, tipo_pregunta='', fuente='', nota='')
     w = pd.DataFrame([dict(base, pollster='Quantus Insights (R)', clave_538='quantusinsight', fin=date(2026, 8, 1), D=46.0, R=45.0, origen='wikipedia')])
-    t = pd.DataFrame([dict(base, pollster='Quantus Insights', clave_538='quantusinsight', fin=date(2026, 8, 10), D=46.0, R=45.0, origen='270towin'),
-                      dict(base, pollster='Quantus Insights', clave_538='quantusinsight', fin=date(2026, 8, 20), D=44.0, R=47.0, origen='270towin')])
+    # 270toWin trae una sola fecha (publicación): inicio = fin
+    t = pd.DataFrame([dict(base, pollster='Quantus Insights', clave_538='quantusinsight', inicio=date(2026, 8, 10), fin=date(2026, 8, 10), D=46.0, R=45.0, origen='270towin'),
+                      dict(base, pollster='Quantus Insights', clave_538='quantusinsight', inicio=date(2026, 8, 20), fin=date(2026, 8, 20), D=44.0, R=47.0, origen='270towin')])
     out = E.combinar(w, t)
-    assert len(out) == 2                                   # la de mismas cifras a 9 días se descarta; la distinta a 19 días no
+    assert len(out) == 2                                   # publicada 9 días después del cierre = misma; a 19 días, otra
     assert set(out.origen) == {'wikipedia', '270towin'}
 
 

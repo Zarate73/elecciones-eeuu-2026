@@ -36,6 +36,14 @@ M5 toma de cada versión anterior (M1–M4) solo lo que el backtest respalda:
 | Participación (Civiq) | diagnóstico, peso 0 | falló fuera de muestra en la primaria |
 | Sentimiento (GDELT) | diagnóstico, k = 1 | sin serie histórica para validarlo |
 
+## Qué valida y qué no valida el backtest
+
+*Auditoría transversal del 26-oct-2026 (T6). Detalle en [`docs/auditoria_2026-10-26.md`](../docs/auditoria_2026-10-26.md).*
+
+- M5 es una familia distinta del V11. La σ sistemática se calibra con el error histórico de las encuestas en California (2018–2025, RMSE ≈ 6.4 pp). Con tan pocas elecciones, la calibración de colas y la cobertura no se pueden validar con precisión.
+- Kalshi (peso 0.30) ajusta **solo la probabilidad publicada**. El margen, los intervalos y el % de voto son los del modelo, así que P(D) final y la distribución del margen no tienen por qué coincidir. En el V11 de los otros estados, en cambio, el mercado desplaza la distribución. No compare las dos familias en una misma tabla sin esta advertencia.
+- Identidad de encuestas: módulo común `ca_pronostico/identidad.py` (firma + periodo de campo), igual que en los otros nueve estados.
+
 ## Carpetas
 | Carpeta | Contenido |
 |---|---|

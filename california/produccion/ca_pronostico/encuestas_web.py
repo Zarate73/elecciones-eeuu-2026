@@ -6,7 +6,7 @@ páginas reales. Flujo:
   2. Una versión por encuesta (misma firma y fecha): LV > RV > A, luego mayor n, luego más indecisos.
   3. Combina con la base verificada (Excel local o data/encuestas_verificadas.csv) sin duplicar:
      prioridad Wikipedia (fechas de campo exactas) > base verificada > 270toWin (fecha de publicación).
-     Misma encuesta = misma familia de encuestadora con fin a <= 7 días, o mismas cifras a <= 21 días.
+     Identidad: familia de encuestadora + periodo de campo (identidad.py; auditoría T3 del 26-oct).
   4. Se descartan las de la primaria (multicandidato) por fecha, igual que con el Excel.
 """
 from __future__ import annotations
@@ -22,6 +22,7 @@ import pandas as pd
 from .encuestas import Encuesta, crear_encuesta, simplificar
 from .red import get_json, get_text
 
+from . import identidad
 log = logging.getLogger(__name__)
 
 MESES = {m: i for i, m in enumerate(['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'], 1)}
@@ -262,21 +263,21 @@ def _a_encuestas(df: pd.DataFrame, fecha_primaria: date) -> list[Encuesta]:
     return out
 
 
-def _misma(a: Encuesta, b: Encuesta, tol: int, tol_cifras: int) -> bool:
-    if a.familia != b.familia:
-        return False
-    dias = abs((a.fin - b.fin).days)
-    mismas = abs(a.becerra - b.becerra) < 0.51 and abs(a.hilton - b.hilton) < 0.51
-    return dias <= tol or (mismas and dias <= tol_cifras)
+def _registro(e: Encuesta) -> dict:
+    """Encuesta → registro de identidad.py. Sin intervalo conocido (270toWin) la fecha es puntual (publicación)."""
+    ini = e.inicio if e.intervalo_conocido else e.fin
+    return {'clave': e.familia, 'pollster': e.encuestadora, 'inicio': ini, 'fin': e.fin, 'n': float('nan'),
+            'pop': None, 'D': e.becerra, 'R': e.hilton, 'origen': e.origen, '_obj': e}
 
 
-def combinar(*fuentes: list[Encuesta], tol: int = 7, tol_cifras: int = 21) -> list[Encuesta]:
-    base: list[Encuesta] = []
-    for f in fuentes:
-        for e in f:
-            if not any(_misma(e, b, tol, tol_cifras) for b in base):
-                base.append(e)
-    return sorted(base, key=lambda e: e.fin, reverse=True)
+def combinar(*fuentes: list[Encuesta]) -> list[Encuesta]:
+    """Une fuentes en orden de prioridad sin duplicar ni fundir olas distintas (identidad.py: periodo de campo, o fecha
+    de publicación coherente con el cierre; auditoría T3 del 26-oct). Antes: misma familia con fin a ≤ 7 días o mismas
+    cifras a ≤ 21 días. La encuesta de mayor prioridad se conserva tal cual."""
+    base, dec = identidad.combinar_registros([[_registro(e) for e in f] for f in fuentes if f], fusionar_campos=False)
+    for d_ in dec:
+        log.info('Identidad %s (%s): %s | %s', d_['decision'], d_['razon'], d_['conservada'], d_['nueva'])
+    return sorted((b['_obj'] for b in base), key=lambda e: e.fin, reverse=True)
 
 
 def _con_cache(cfg, nombre: str, funcion):

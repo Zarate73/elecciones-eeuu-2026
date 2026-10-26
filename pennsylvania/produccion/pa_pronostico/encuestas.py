@@ -1,8 +1,7 @@
 """Encuestas 2026: Wikipedia (API MediaWiki) y 270toWin en vivo + base verificada (Excel o CSV), sin duplicados.
 
 Prioridad al combinar: Wikipedia > base verificada > 270toWin (Wikipedia trae n, población y terceros).
-Misma encuesta = misma firma (con ALIAS) y fin a ≤ 7 días, o misma firma con las mismas cifras (±0.5) a ≤ 60 días
-(270toWin fecha por publicación). Nunca se fusionan firmas distintas solo por coincidir en cifras.
+Identidad de cada encuesta: firma (con ALIAS) + periodo de campo; ver identidad.py (auditoría T3, 26-oct).
 Pennsylvania: la misma encuesta aparece con nombres distintos (PennLive = Bravo Group; NYT/Inquirer/Siena = Siena College).
 Si una fuente trae la versión LV y otra la RV de la misma encuesta, se conserva la LV (Franklin & Marshall, oct-2026).
 """
@@ -17,6 +16,7 @@ import numpy as np
 import pandas as pd
 
 from . import encuestas_web as W
+from . import identidad
 from .red import get_json, get_text
 
 log = logging.getLogger(__name__)
@@ -126,31 +126,9 @@ def _normalizar(f: pd.DataFrame, origen: str | None = None) -> pd.DataFrame:
 
 
 def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
-    base: list[dict] = []
-    for f in fuentes:
-        for r in f.to_dict('records'):
-            dup = False
-            for b in base:
-                dias = abs((pd.Timestamp(r['fin']) - pd.Timestamp(b['fin'])).days)
-                mismas = abs(r['D'] - b['D']) <= 0.51 and abs(r['R'] - b['R']) <= 0.51
-                if r['clave'] == b['clave'] and (dias <= 7 or (mismas and dias <= 60)):
-                    dup = True
-                    rk = {'LV': 0, 'RV': 1, 'A': 2}
-                    if rk.get(str(r.get('pop')), 3) < rk.get(str(b.get('pop')), 3):   # misma encuesta, mejor población
-                        for c in ('D', 'R', 'otros', 'indecisos', 'n', 'pop'):
-                            b[c] = r[c]
-                        b['nota_version'] = f"versión {r.get('pop')} de {r['origen']}"
-                    for c in ('n', 'pop', 'otros', 'indecisos'):       # completa datos que falten
-                        if pd.isna(b.get(c)) and pd.notna(r.get(c)):
-                            b[c] = r[c]
-                    b.setdefault('tambien_en', set()).add(r['origen'])
-                    break
-            if not dup:
-                base.append(dict(r))
-    out = pd.DataFrame(base, columns=COLS + ['tambien_en', 'nota_version'])
-    out['tambien_en'] = out.tambien_en.map(lambda s: ', '.join(sorted(s)) if isinstance(s, set) else '')
-    out['nota_version'] = out.nota_version.fillna('')
-    return out
+    """Une las fuentes sin contar dos veces la misma encuesta ni fundir olas distintas: identidad por periodo de campo
+    (identidad.py, común a los diez paquetes; auditoría T3 del 26-oct). Las decisiones quedan en .attrs['decisiones']."""
+    return identidad.combinar_df(*fuentes, cols=COLS)
 
 
 # ----------------------------------------------------------------------------------- en vivo con caché
@@ -239,6 +217,8 @@ def obtener_encuestas(cfg) -> dict:
         raise ValueError('ninguna fuente de encuestas disponible (ni en vivo, ni caché, ni base verificada)')
     fuentes = [_normalizar(x, o) for x, o in ((wiki, 'wikipedia'), (base, 'base'), (t270, '270towin')) if len(x)]
     p = combinar(*fuentes)
+    for d_ in p.attrs.get('decisiones', []):
+        log.info('Identidad %s (%s): %s | %s', d_['decision'], d_['razon'], d_['conservada'], d_['nueva'])
     p = p[(pd.to_datetime(p.fin) > pd.Timestamp(cfg.fecha_nominacion)) &
           (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()
     p['partidista'] = p.pollster.str.contains(r'\((?:R|D)\)')
@@ -255,9 +235,9 @@ def obtener_encuestas(cfg) -> dict:
     p['margin_poll'] = p.D - p.R
     p['pollster_key'] = p.clave
     p['otros'] = pd.to_numeric(p.otros, errors='coerce')
-    if p.duplicated(['pollster_key', 'fin']).any():
+    if p.duplicated(['pollster_key', 'inicio', 'fin']).any():
         raise ValueError('encuestas duplicadas tras combinar: '
-                         + str(p[p.duplicated(['pollster_key', 'fin'], keep=False)].pollster.tolist()))
+                         + str(p[p.duplicated(['pollster_key', 'inicio', 'fin'], keep=False)].pollster.tolist()))
     vivas = int((p.origen.isin(['wikipedia', '270towin']) | p.tambien_en.str.contains('wikipedia|270towin')).sum())
     if vivas < f.min_encuestas_vivas:
         avisos.append(f'solo {vivas} encuestas aparecen en fuentes web (< {f.min_encuestas_vivas})')
