@@ -1,0 +1,165 @@
+Contiendas (H=9, ventana 12–21 días): 945 · NY: 20
+
+== Nacional
+                                              modelo   n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+          G  V11 + sesgo estatal contraído (Florida) 945 3.304 4.556  0.947  0.802  0.947  0.069     6.159
+P1 casa + patrocinador si la firma no tiene historia 945 3.307 4.561  0.955  0.800  0.947  0.070     6.160
+             P3 encuestas partidistas pesan la mitad 945 3.313 4.569  0.957  0.797  0.947  0.069     6.165
+              H3 V11 + cuota R de indecisos estimada 945 3.336 4.591  0.599  0.794  0.943  0.070     6.099
+P2 sin encuestas partidistas (si hay no partidistas) 945 3.350 4.634  0.974  0.797  0.947  0.070     6.214
+                 F1 V11 + sesgo estatal sin contraer 945 3.389 4.636  0.914  0.796  0.940  0.074     6.159
+                  H8 V11 sin sesgo estatal (Arizona) 945 3.438 4.778  1.156  0.787  0.947  0.068     6.159
+                            P2s P2 sin sesgo estatal 945 3.475 4.848  1.171  0.788  0.950  0.069     6.214
+                   H2 V11 + indecisos proporcionales 945 3.543 4.844  0.981  0.794  0.944  0.069     6.426
+
+== Nacional_Gob
+                                              modelo   n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                  H8 V11 sin sesgo estatal (Arizona) 291 3.477 4.838  1.225  0.784  0.948  0.087     6.269
+P1 casa + patrocinador si la firma no tiene historia 291 3.513 4.823  0.950  0.780  0.928  0.091     6.272
+          G  V11 + sesgo estatal contraído (Florida) 291 3.514 4.824  0.952  0.784  0.928  0.091     6.269
+             P3 encuestas partidistas pesan la mitad 291 3.520 4.819  0.966  0.777  0.928  0.091     6.281
+                            P2s P2 sin sesgo estatal 291 3.521 4.919  1.251  0.780  0.942  0.089     6.301
+              H3 V11 + cuota R de indecisos estimada 291 3.524 4.809  0.535  0.784  0.921  0.091     6.205
+P2 sin encuestas partidistas (si hay no partidistas) 291 3.558 4.886  0.992  0.773  0.924  0.092     6.301
+                 F1 V11 + sesgo estatal sin contraer 291 3.731 5.069  0.833  0.746  0.921  0.097     6.269
+                   H2 V11 + indecisos proporcionales 291 3.824 5.180  0.807  0.759  0.928  0.091     6.548
+
+== NY_todas
+                                              modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+          G  V11 + sesgo estatal contraído (Florida) 20 2.929 3.852  0.910   0.80    0.9  0.010     5.691
+             P3 encuestas partidistas pesan la mitad 20 2.933 3.832  1.048   0.80    0.9  0.010     5.705
+P1 casa + patrocinador si la firma no tiene historia 20 2.962 3.915  0.969   0.80    0.9  0.010     5.702
+P2 sin encuestas partidistas (si hay no partidistas) 20 3.004 4.003  1.267   0.85    0.9  0.010     5.792
+                 F1 V11 + sesgo estatal sin contraer 20 3.093 4.065  1.548   0.80    0.9  0.010     5.691
+              H3 V11 + cuota R de indecisos estimada 20 3.097 4.111  0.609   0.80    0.9  0.016     5.638
+                   H2 V11 + indecisos proporcionales 20 3.252 4.261  0.805   0.85    0.9  0.010     5.919
+                  H8 V11 sin sesgo estatal (Arizona) 20 3.419 4.845 -1.772   0.65    0.9  0.011     5.691
+                            P2s P2 sin sesgo estatal 20 3.584 5.088 -1.278   0.65    0.9  0.011     5.792
+
+== NY_2016+
+                                              modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                 F1 V11 + sesgo estatal sin contraer  7 2.363 2.965  2.102  0.857    1.0  0.001     6.348
+                   H2 V11 + indecisos proporcionales  7 2.382 3.097  2.434  1.000    1.0  0.001     6.724
+          G  V11 + sesgo estatal contraído (Florida)  7 2.397 3.158  2.138  0.857    1.0  0.001     6.348
+             P3 encuestas partidistas pesan la mitad  7 2.399 3.080  2.534  0.857    1.0  0.001     6.379
+              H3 V11 + cuota R de indecisos estimada  7 2.427 3.202  2.125  0.857    1.0  0.001     6.310
+P1 casa + patrocinador si la firma no tiene historia  7 2.488 3.335  2.314  0.857    1.0  0.001     6.379
+                  H8 V11 sin sesgo estatal (Arizona)  7 2.528 3.723  2.435  1.000    1.0  0.000     6.348
+P2 sin encuestas partidistas (si hay no partidistas)  7 2.589 3.545  3.163  1.000    1.0  0.000     6.734
+                            P2s P2 sin sesgo estatal  7 2.992 4.408  3.858  1.000    1.0  0.000     6.734
+
+== NY_Gob
+                                              modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                  H8 V11 sin sesgo estatal (Arizona)  5 3.694 4.858 -0.881    0.6    0.8  0.000     5.349
+                            P2s P2 sin sesgo estatal  5 3.827 5.242 -0.497    0.6    0.8  0.000     5.337
+          G  V11 + sesgo estatal contraído (Florida)  5 4.467 5.832  1.440    0.6    0.8  0.001     5.349
+P1 casa + patrocinador si la firma no tiene historia  5 4.471 5.830  1.435    0.6    0.8  0.001     5.374
+             P3 encuestas partidistas pesan la mitad  5 4.472 5.871  1.575    0.6    0.8  0.001     5.385
+P2 sin encuestas partidistas (si hay no partidistas)  5 4.530 6.068  1.751    0.6    0.8  0.000     5.337
+              H3 V11 + cuota R de indecisos estimada  5 4.692 6.134  0.773    0.6    0.8  0.001     5.308
+                 F1 V11 + sesgo estatal sin contraer  5 4.909 6.668  2.175    0.6    0.8  0.002     5.349
+                   H2 V11 + indecisos proporcionales  5 5.495 6.891  0.384    0.6    0.8  0.001     5.506
+
+== Bootstrap por año: P(variante con menor CRPS que G)
+ambito                                                NY_todas  Nacional  Nacional_Gob
+variante                                                                              
+F1 V11 + sesgo estatal sin contraer                      0.016     0.096         0.003
+H2 V11 + indecisos proporcionales                        0.080     0.002         0.001
+H3 V11 + cuota R de indecisos estimada                   0.114     0.138         0.478
+H8 V11 sin sesgo estatal (Arizona)                       0.060     0.075         0.568
+P1 casa + patrocinador si la firma no tiene historia     0.089     0.174         0.708
+P2 sin encuestas partidistas (si hay no partidistas)     0.072     0.000         0.011
+P2s P2 sin sesgo estatal                                 0.032     0.043         0.456
+P3 encuestas partidistas pesan la mitad                  0.454     0.030         0.201
+
+== Errores de las encuestas en NY (V11 sin sesgo; + = pro-D): 6 pro-D de 20
+          race  year   tipo  k     D     R  actual  error_pp
+ 1998_Gov-G_NY  1998  Gov-G  6 22.56 54.31  -21.16    -10.59
+ 1998_Sen-G_NY  1998  Sen-G  8 45.00 44.37   10.54     -9.92
+2000_Pres-G_NY  2000 Pres-G  6 52.79 34.95   24.98     -7.15
+ 2000_Sen-G_NY  2000  Sen-G  6 48.86 44.22   12.26     -7.62
+ 2006_Gov-G_NY  2006  Gov-G  2 66.07 25.88   40.84     -0.65
+ 2006_Sen-G_NY  2006  Sen-G  2 60.14 32.64   35.99     -8.50
+2008_Pres-G_NY  2008 Pres-G  4 60.16 34.33   26.87     -1.03
+ 2010_Gov-G_NY  2010  Gov-G  7 58.43 32.23   29.30     -3.10
+2010_Sen-GS_NY  2010  Sen-G  7 55.10 33.43   27.84     -6.18
+ 2010_Sen-G_NY  2010  Sen-G  6 62.79 29.67   34.11     -0.98
+2012_Pres-G_NY  2012 Pres-G  3 60.30 34.60   28.17     -2.47
+ 2012_Sen-G_NY  2012  Sen-G  3 65.98 23.60   45.84     -3.47
+ 2014_Gov-G_NY  2014  Gov-G  2 55.07 31.93   13.97      9.18
+2016_Pres-G_NY  2016 Pres-G  2 54.16 34.10   22.64     -2.58
+ 2016_Sen-G_NY  2016  Sen-G  1 68.36 27.64   42.64     -1.93
+2020_Pres-G_NY  2020 Pres-G  1 65.40 32.80   23.11      9.49
+ 2022_Gov-G_NY  2022  Gov-G  9 50.49 43.32    6.40      0.76
+ 2022_Sen-G_NY  2022  Sen-G  6 53.82 36.99   14.01      2.81
+2024_Pres-G_NY  2024 Pres-G  2 56.33 39.41   12.60      4.32
+ 2024_Sen-G_NY  2024  Sen-G  3 57.15 34.69   18.30      4.16
+
+Error relativo NY por año (NY − nacional): {1998: -6.21, 2000: -6.28, 2006: -2.93, 2008: -0.14, 2010: -3.25, 2012: -0.69, 2014: 5.85, 2016: -7.5, 2020: 4.08, 2022: -0.32, 2024: 0.97} · autocorrelación -0.23
+Peso de encuestas partidistas en la ventana: media nacional 0.09; contiendas con > 50 %: 48
+
+== Validación estrictamente cronológica (2004–2024)
+      ambito             modelo     n  CRPS  sesgo
+    Nacional        G con sesgo 757.0 3.132  1.166
+    Nacional       H8 sin sesgo 757.0 3.369  1.594
+    Nacional P(sin sesgo mejor)   NaN 0.002    NaN
+Nacional_Gob        G con sesgo 218.0 3.147  1.244
+Nacional_Gob       H8 sin sesgo 218.0 3.270  1.763
+Nacional_Gob P(sin sesgo mejor)   NaN 0.148    NaN
+          NY        G con sesgo  16.0 2.487  2.049
+          NY       H8 sin sesgo  16.0 2.718 -0.083
+          NY P(sin sesgo mejor)   NaN 0.216    NaN
+      NY_Gob        G con sesgo   4.0 3.631  4.491
+      NY_Gob       H8 sin sesgo   4.0 2.644  1.519
+      NY_Gob P(sin sesgo mejor)   NaN 0.908    NaN
+    NY_2016+        G con sesgo   7.0 2.459  2.062
+    NY_2016+       H8 sin sesgo   7.0 2.583  2.286
+    NY_2016+ P(sin sesgo mejor)   NaN 0.252    NaN
+
+== Terceros
+                             ambito                                         regla   n  MAE_%D  MAE_%R  MAE_conjunto  MAE_terceros  sesgo_terceros
+                           Nacional                               T0 terceros = 0 945   2.978   2.387         2.682         2.766          -2.766
+                           Nacional                      T2 actual (faltante = 0) 945   2.420   2.368         2.394         1.440           0.009
+                           Nacional T4 faltante ≠ 0 (solo encuestas que reportan) 945   2.410   2.358         2.384         1.368           0.003
+                                 NY                               T0 terceros = 0  20   2.211   2.262         2.237         2.500          -2.500
+                                 NY                      T2 actual (faltante = 0)  20   1.752   2.323         2.038         1.220           0.169
+                                 NY T4 faltante ≠ 0 (solo encuestas que reportan)  20   1.739   2.439         2.089         1.189           0.476
+Nacional, sin reporte en la ventana                               T0 terceros = 0 445   2.847   2.524         2.685         1.896          -1.896
+Nacional, sin reporte en la ventana                      T2 actual (faltante = 0) 445   2.708   2.468         2.588         1.481          -0.051
+Nacional, sin reporte en la ventana T4 faltante ≠ 0 (solo encuestas que reportan) 445   2.709   2.469         2.589         1.490           0.001
+
+== Independiente fuerte: contiendas con terceros ≥ 5 % reportados en la ventana: 136 (de 500 con terceros reportados)
+   Desinfle medio (real − encuestas): -1.09 pp (mediana -1.26); regla T4: sesgo de terceros -0.06 pp, MAE 1.87
+   Error del margen vs desinfle: pendiente +0.323 (ee 0.214); error medio del margen -2.52 (débil o nula ⇒ el voto que pierde el tercero se reparte parejo: indecisos/terceros 50/50)
+   IC90 por bootstrap de años de la pendiente: [-0.169, +0.844]
+   Nacional, terceros ≥ 5 % (n = 136): MAE terceros T4 1.87 · T5 por tramos 1.91 · sesgo T4 -0.06 · T5 +0.02
+   NY (n = 20): MAE terceros T4 1.19 · T5 por tramos 1.18 · sesgo T4 +0.48 · T5 +0.47
+   NY, terceros ≥ 5 % (n = 4): MAE terceros T4 2.78 · T5 por tramos 2.72 · sesgo T4 +0.69 · T5 +0.75
+   Pendiente media de T5 para terceros fuertes: 0.798 (T4 global: 0.728)
+   Contiendas de NY con terceros reportados:
+          race  O_rep  O_real  desinfle   Tp     mu  actual  err_margen
+ 1998_Gov-G_NY  10.51   12.52      2.01 8.34 -31.75  -21.16       10.59
+2000_Pres-G_NY   5.82    4.56     -1.26 4.91  28.04   24.98       -3.06
+ 2014_Gov-G_NY   9.00    5.41     -3.59 7.44  25.91   13.97      -11.94
+2016_Pres-G_NY   4.63    3.84     -0.79 4.16  20.66   22.64        1.98
+2020_Pres-G_NY   0.80    1.39      0.59 1.37  33.75   23.11      -10.64
+ 2022_Sen-G_NY   3.48    0.45     -3.03 3.37  15.80   14.01       -1.79
+2024_Pres-G_NY   6.00    0.78     -5.22 5.31  15.74   12.60       -3.14
+ 2024_Sen-G_NY   1.42    0.66     -0.76 1.91  21.27   18.30       -2.97
+   Las 12 contiendas con más terceros en las encuestas (nacional):
+          race  O_rep  O_real  desinfle    Tp     mu  actual  err_margen
+ 2002_Gov-G_OK  16.00   14.12     -1.88 12.02  -4.86    0.66        5.52
+2016_Pres-G_NM  15.35   11.70     -3.65 12.15   9.12    8.22       -0.90
+ 2020_Gov-G_IN  14.36   11.44     -2.92 11.37 -23.63  -24.46       -0.83
+ 2009_Gov-G_NJ  13.41    6.66     -6.75 10.69   2.20   -3.58       -5.78
+ 2006_Gov-G_IL  13.15   10.94     -2.21 10.37  11.58   10.54       -1.04
+ 2016_Gov-G_WV  13.00    8.61     -4.39 10.40  -1.16    6.79        7.95
+ 2014_Gov-G_ME  12.86    8.43     -4.43 10.32  -1.86   -4.81       -2.95
+ 2022_Gov-G_OR  12.79    9.40     -3.39 10.19   0.83    3.42        2.59
+2016_Pres-G_ND  12.00    8.11     -3.89  9.66 -23.62  -36.41      -12.79
+ 2010_Gov-G_MN  11.93   13.08      1.15  9.45   7.01    0.42       -6.59
+2016_Pres-G_MT  11.00    8.08     -2.92  8.91 -11.76  -20.42       -8.66
+2016_Pres-G_ID  10.77   13.25      2.48  8.74 -20.03  -31.77      -11.74
+   Sesgo estatal NY, todas (n = 20): CRPS con sesgo 2.929 · sin sesgo 3.419
+   Sesgo estatal NY, k ≥ 2 (n = 18): CRPS con sesgo 2.769 · sin sesgo 3.357
+   Sesgo estatal NY, k = 1 (n = 2): CRPS con sesgo 4.370 · sin sesgo 3.968

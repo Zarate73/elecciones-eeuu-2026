@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        estado: [georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois]
+        estado: [georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york]
     defaults:
       run:
         working-directory: ${{ matrix.estado }}/produccion

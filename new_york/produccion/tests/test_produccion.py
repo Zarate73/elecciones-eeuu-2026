@@ -1,0 +1,213 @@
+"""Pruebas sin red del modelo de Nueva York (fixtures reales: captura del 26-oct 05:30 UTC, corte 25-oct)."""
+import json
+from datetime import date
+
+import numpy as np
+import pandas as pd
+import pytest
+
+from ny_pronostico import cli, encuestas, mercados
+from ny_pronostico.anticipado import obtener_anticipado, resumir
+from ny_pronostico.pipeline import ejecutar
+
+FIX = __import__('pathlib').Path(__file__).parent / 'fixtures'
+
+
+# ----------------------------------------------------------------------------------- encuestas
+def test_fechas_excel():
+    assert encuestas._fechas_es('01–05 oct 2026') == (date(2026, 10, 1), date(2026, 10, 5))
+    assert encuestas._fechas_es('28 sep–01 oct 2026') == (date(2026, 9, 28), date(2026, 10, 1))
+
+
+def test_base_verificada_csv():
+    """CSV publicado = bloque 1 de la hoja «Histórico encuestas» de NUEVA_YORK_GOBERNADOR-v1.xlsx: 26 encuestas generales."""
+    from ny_pronostico.config import RAIZ
+    b = encuestas.cargar_base(RAIZ / 'data' / 'encuestas_verificadas_ny.csv')
+    assert len(b) == 26 and b.iloc[0].pollster == 'GrayHouse (R)' and b.iloc[0].D == 44 and b.iloc[0].R == 36
+    e = b[b.pollster == 'Emerson College'].iloc[0]
+    assert e.D == 52.4 and e.R == 39.7
+
+
+def test_encuestas_en_vivo_sin_duplicados_y_alias(cfg, red_simulada):
+    r = encuestas.obtener_encuestas(cfg)
+    p = r['encuestas']
+    assert r['estados']['wikipedia'] == 'en_vivo' and r['estados']['270towin'] == 'en_vivo'
+    assert not p.duplicated(['pollster_key', 'fin']).any()
+    assert len(p) == N_ENCUESTAS and (p.fin > '2026-02-11').all()
+    # Siena College Research Institute conserva su propio historial (≠ NYT/Siena); Marist University = Marist College
+    assert (p.pollster_key == 'sienacollege').sum() == 6 and not (p.pollster_key == 'thenewyorktime').any()
+    assert (p.pollster_key == 'maristcollege').sum() == 2 and (p.pollster_key == 'quinnipiacuniv').sum() == 2
+
+
+def test_fecha_de_publicacion_no_es_otra_encuesta(cfg, red_simulada):
+    """270toWin fecha a Quinnipiac el 21-oct (publicación; campo 15–19 oct): una sola encuesta, con su periodo de campo."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    q = p[(p.pollster_key == 'quinnipiacuniv') & (p.fin >= '2026-10-01')]
+    assert len(q) == 1 and q.iloc[0].fin == pd.Timestamp('2026-10-19') and '270towin' in q.iloc[0].tambien_en
+
+
+def test_decimales_del_excel_verificado(cfg, red_simulada):
+    """Wikipedia redondea Emerson (52–40) y McLaughlin (50–46); el Excel verificado trae 52.4–39.7 y 49.6–45.7."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    e = p[p.pollster_key == 'emersoncollege'].iloc[0]
+    m = p[(p.pollster_key == 'mclaughlinasso') & (p.fin == '2026-08-31')].iloc[0]
+    assert (e.D, e.R) == (52.4, 39.7) and (m.D, m.R) == (49.6, 45.7)
+    q = p[p.pollster_key == 'quinnipiacuniv'].iloc[-1]
+    assert (q.D, q.R) == (55, 41)                                       # sin decimales en el Excel: no se toca
+
+
+def test_partidistas(cfg, red_simulada):
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    assert p[p.pollster_key.isin(['co', 'mclaughlinasso', 'onmessageinc', 'redoakstrategi', 'concordpublico'])].partidista.all()
+    assert not p[p.pollster_key.isin(['sienacollege', 'quinnipiacuniv', 'maristcollege', 'activote'])].partidista.any()
+
+
+def test_fuente_caida_usa_cache(cfg, red_simulada):
+    encuestas.obtener_encuestas(cfg)
+    red_simulada.caidas.add('wikipedia')
+    r = encuestas.obtener_encuestas(cfg)
+    assert r['estados']['wikipedia'].startswith('cache') and len(r['encuestas']) == N_ENCUESTAS
+
+
+# ----------------------------------------------------------------------------------- mercados
+def test_kalshi_y_polymarket_en_vivo(cfg, red_simulada):
+    mk = mercados.obtener_mercados(cfg)
+    k, p = mk['kalshi'], mk['polymarket']
+    assert k['estado'] == p['estado'] == 'en_vivo' and k['usable'] and p['usable']
+    assert k['p_d'] == pytest.approx(0.946) and k['p_r'] == pytest.approx(0.0605)
+    assert p['p_d'] == pytest.approx(0.956) and p['p_r'] == pytest.approx(0.04)
+    assert mk['kalshi_independiente'] is None
+
+
+def test_rangos_particion_completa(cfg, red_simulada):
+    """Margen de Polymarket: «Republican Wins» + 8 rangos del demócrata (partición completa)."""
+    rg = mercados.obtener_mercados(cfg)['rangos']
+    assert rg['completo'] and rg['n_contratos'] == 9
+    assert rg['suma_precios'] == pytest.approx(1.0905)
+    assert rg['P_D'] == pytest.approx(1 - 0.07 / 1.0905)
+    assert rg['margen_media'] == pytest.approx(16.40, abs=0.05) and rg['margen_cond_D'] == pytest.approx(17.87, abs=0.05)
+
+
+def test_rangos_incompletos_no_dan_probabilidad():
+    """Sin el contrato del lado perdedor no hay P(D) ni margen incondicional: solo E[M | D]."""
+    t = pd.DataFrame({'desde': [0, 5, 10, 15, 20, 25, 30], 'hasta': [5, 10, 15, 20, 25, 30, np.inf],
+                      'p': [.09, .0465, .1505, .26, .245, .115, .24], 'contrato': ['rango'] * 6 + ['abierto']})
+    r = mercados.resumen_rangos(t)
+    assert not r['completo'] and 'P_D' not in r and 'margen_media' not in r
+    assert r['suma_precios'] == pytest.approx(1.147) and r['margen_cond_D'] == pytest.approx(20.99, abs=0.05)
+
+
+# ----------------------------------------------------------------------------------- civicAPI
+def test_civicapi_sin_cobertura_no_degrada(cfg, red_simulada):
+    """civicAPI no publica Nueva York (404): es diagnóstico opcional; se avisa, pero no cuenta como fuente degradada."""
+    r = ejecutar(cfg, escribir_salidas=False)
+    assert not r['anticipado']['disponible'] and 'civicapi' not in r['estados_fuentes']
+    assert any('civicAPI sin datos de NY' in a for a in r['avisos']) and r['degradadas'] == []
+
+
+def test_civicapi_sin_partidos_es_error_si_se_pide_partido():
+    vacio = {'snapshot_date': '2026-10-23', 'regions': {'Statewide': {'Unspecified': {'votes': 10}}}}
+    with pytest.raises(ValueError):
+        resumir({'returned': vacio, 'requested': vacio})
+
+
+# ----------------------------------------------------------------------------------- pipeline
+def test_corrida_completa_en_vivo(cfg, red_simulada):
+    r = ejecutar(cfg)
+    assert r['degradadas'] == []
+    f = r['modelo']['final']
+    assert abs(f['pct_D'] + f['pct_R'] + f['pct_terceros'] - 100) < 1e-6
+    assert f['k'] == 2 and len(r['modelo']['ventana']) == 2 and not f['ventana']['ampliada'] and f['peso_mercados_aplicado'] == 0.30
+    assert f['terceros_regimen'].startswith('solo dos candidatos') and f['pct_terceros'] < 0.3
+    lo, hi = sorted([f['P_D_encuestas'], r['mercados']['promedio_D']])
+    assert lo - 1e-9 <= f['P_D'] <= hi + 1e-9
+    assert 'Con independiente' not in r['resumen_texto']
+
+
+def test_cifras_de_referencia(cfg, red_simulada):
+    """Mismas cifras que el notebook (200 000 simulaciones, semilla fija)."""
+    cfg.modelo['n_simulaciones'] = 200_000
+    r = ejecutar(cfg, escribir_salidas=False)
+    f, par = r['modelo']['final'], r['calibracion']
+    assert par['sesgo_regla'] == 'todas'
+    assert f['margen_encuestas'] == pytest.approx(MARGEN_ENC, abs=0.01)
+    assert par['sesgo_contraido'] == pytest.approx(SESGO, abs=0.002)
+    assert f['margen'] == pytest.approx(MARGEN, abs=0.03) and f['P_D'] == pytest.approx(P_D, abs=0.002)
+    assert f['pct_terceros'] == pytest.approx(TERCEROS, abs=0.05)
+
+
+def test_escenarios(cfg, red_simulada):
+    e = ejecutar(cfg, escribir_salidas=False)['modelo']['escenarios']
+    assert e.escenario.str.startswith('Sin Quinnipiac University').any() and e.escenario.str.startswith('Sin ActiVote').any()
+    assert e.escenario.str.startswith('Ventana 45 días').any()
+    assert e.escenario.str.startswith('Terceros: reducción').sum() == 2
+    assert {'Peso de mercados 0.15 (base 0.30)', 'Peso de mercados 0.50 (base 0.30)'} <= set(e.escenario)
+    assert e.escenario.str.startswith('Polymarket por rangos').any()
+    assert e.escenario.str.startswith('Sesgo estimado sin contiendas de una sola encuestadora').any()
+    assert e.escenario.str.startswith('Sesgo estimado solo con contiendas de gobernador').any()
+    assert e.escenario.str.startswith('Fechas por el punto medio del campo').any()
+    assert e.escenario.str.startswith('Sesgo sin la contienda').sum() == 2
+    sin = e[e.escenario == 'Sin sesgo estatal, sin mercados'].iloc[0]
+    con = e[e.escenario == 'Con sesgo estatal, sin mercados (solo encuestas)'].iloc[0]
+    assert SIGNO_SESGO * (con.margen - sin.margen) > 0                  # dirección del sesgo de NY
+
+
+def test_reporte_json_estricto(cfg, red_simulada):
+    ejecutar(cfg)
+    txt = (cfg.dir_salidas / 'ultimo' / 'reporte.json').read_text(encoding='utf-8')
+    rep = json.loads(txt, parse_constant=lambda c: (_ for _ in ()).throw(ValueError(c)))
+    assert rep['ultima_encuesta']['fin'] == '2026-10-23'
+    assert rep['anticipado']['disponible'] is False
+
+
+def test_sin_mercados_el_final_es_solo_encuestas(cfg, red_simulada):
+    red_simulada.caidas.update({'kalshi', 'polymarket'})
+    f = ejecutar(cfg, escribir_salidas=False)['modelo']['final']
+    assert f['peso_mercados_aplicado'] == 0 and f['P_D'] == f['P_D_encuestas']
+
+
+def test_offline_usa_caches_y_estricto_da_codigo_2(cfg, red_simulada, monkeypatch):
+    ejecutar(cfg)
+    cfg.offline = True
+    r = ejecutar(cfg)
+    assert {'wikipedia', '270towin', 'kalshi', 'polymarket'} <= set(r['degradadas']) and 'civicapi' not in r['degradadas']
+    monkeypatch.setattr(cli, 'cargar_config', lambda *a, **k: cfg)
+    assert cli.main(['correr', '--offline', '--estricto', '--sin-graficas']) == 2
+
+
+def test_historial_registra_version(cfg, red_simulada):
+    from ny_pronostico import __version__
+    ejecutar(cfg)
+    h = pd.read_csv(cfg.dir_salidas / 'historial_pronosticos.csv')
+    assert h.version_modelo.iloc[-1] == __version__.split()[0]
+
+
+def test_excel_verificado_contiene_al_csv_publicado():
+    from ny_pronostico.config import RAIZ, cargar_config
+    ruta = cargar_config().ruta_encuestas_base
+    if ruta is None or ruta.suffix.lower() != '.xlsx' or not ruta.exists():
+        pytest.skip('la configuración no apunta a un Excel local')
+    clave = lambda d: set(zip(d.pollster, pd.to_datetime(d.fin).dt.date, d.D.astype(float), d.R.astype(float)))
+    assert clave(encuestas.cargar_base(RAIZ / 'data' / 'encuestas_verificadas_ny.csv')) <= clave(encuestas.cargar_base(ruta))
+
+
+def test_n_imputado_marcado(cfg, red_simulada):
+    """Todas las encuestas traen n en Wikipedia: no hay imputación."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    assert not p.n_imputado.any()
+    assert set(p.n_fuente) <= {'reportado', 'imputado (600)'} or p.n_fuente.str.startswith('corregido').any()
+
+
+def test_k_efectivo_por_firma(cfg, red_simulada):
+    """k efectivo agrupa los pesos por firma (W_f = Σ w de sus encuestas): nunca supera al número de firmas."""
+    import re
+    e = ejecutar(cfg, escribir_salidas=False)['modelo']['escenarios']
+    nom = e[e.escenario.str.startswith('Incertidumbre con k efectivo')].escenario.iloc[0]
+    k_ef, k = map(float, re.search(r'k efectivo ([\d.]+) \(no (\d+) firmas\)', nom).groups())
+    assert 1 <= k_ef <= k
+
+
+# valores fijados con la corrida de referencia del 25-oct (ver notebook)
+N_ENCUESTAS = 23
+MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 15.535, 1.947, 12.75, 0.9735, 0.15   # sesgo «todas» (+1.95 pp pro-D)
+SIGNO_SESGO = -1                                    # en NY el sesgo RESTA al demócrata

@@ -1,0 +1,75 @@
+# =====================================================================================
+# Nueva York 2026 · configuración (modelo general: V11 + sesgo estatal contraído + terceros + mercados)
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "Nueva York"
+abrev = "NY"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2026-02-11"        # Hochul y Blakeman, candidatos de hecho (Delgado se retiró el 10-feb; Stefanik, el 19-dic): solo cuentan encuestas que terminan después
+candidato_d = "Hochul"
+candidato_r = "Blakeman"
+nombre_d = "Kathy Hochul"
+nombre_r = "Bruce Blakeman"
+terceros = "Otros (solo votos por escrito: no hay terceros en la boleta)"
+condado_principal = "Kings"
+# Firmas que Wikipedia marca «(D)»/«(R)» por su inclinación, pero cuya encuesta la pagó un medio, no un partido ni una
+# campaña: no cuentan como patrocinio partidista. Vacío en Nueva York (se revisa con cada encuesta nueva).
+firmas_sin_patrocinio_partidista = []
+zona_horaria = "America/New_York"
+recuento_pp = 0.5                      # Nueva York: recuento automático con margen ≤ 0.5 pp (o ≤ 20 votos)
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+# Encuestas verificadas a mano (opcional). Excel con la hoja «Histórico encuestas» (NUEVA_YORK_GOBERNADOR-v1.xlsx) o CSV
+# con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
+encuestas_base = "data/encuestas_verificadas_ny.csv"
+# Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
+# Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
+correcciones_n = "data/correcciones_tamano_muestra.csv"
+# Cifras de la publicación original cuando la fuente web las redondea (columnas clave, fin, pop, D, R, fuente).
+correcciones_cifras = "data/correcciones_cifras.csv"
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_New_York_gubernatorial_election"
+t270_url = "https://www.270towin.com/2026-governor-polls/new-york"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "GOVPARTYNY-26"
+kalshi_ticker_d = "GOVPARTYNY-26-D"
+kalshi_ticker_r = "GOVPARTYNY-26-R"
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_evento_ganador = "new-york-governor-winner-2026"
+polymarket_evento_margen = "new-york-governor-margin-of-victory-2026"
+mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+civicapi = "https://civicapi.org/api/v2/early-vote"
+civicapi_estado = "NY"
+civicapi_por_partido = true
+civicapi_opcional = true               # civicAPI no publica NY (404 el 25-oct): se intenta en vivo, pero no cuenta como fuente degradada
+votos_totales_eleccion_previa = 5912286 # gobernador 2022 (Junta Electoral del Estado de Nueva York): referencia de volumen
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 5                # menos encuestas web que esto => fuente degradada
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan en los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos: los 21 días previos a la encuesta más reciente
+vida_media_dias = 14.0
+contraccion_casa = 8.0
+sesgo_estatal = true                   # backtest de NY: con sesgo 2.929 vs 3.419 (LOYO, P = 0.06); cronológico 2.487 vs 2.718
+sesgo_regla = "todas"                  # cronológico de NY: «k2» peor (2.646 vs 2.487, P = 0.02)
+peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+# La Junta Electoral rechazó todas las peticiones de partidos no calificados (mayo 2026): en la boleta solo están Hochul
+# (D, WFP) y Blakeman (R, Conservador). Terceros = votos por escrito, como en 2022 (0.16 %): media 0.15, sd 0.05
+terceros_fijos = [0.15, 0.05]
+sigma_dia_pp = 0.25                    # deriva diaria si las encuestas son más viejas que el horizonte calibrado
+n_simulaciones = 200000
+semilla = 20261027
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60
