@@ -253,6 +253,8 @@ def test_readme_muestra_voto_anticipado_nyc(cfg, red_simulada, tmp_path, monkeyp
     """El bloque del README (en copias temporales) incluye los check-ins de NYC y el enlace por condado."""
     import importlib.util
     from ny_pronostico.config import RAIZ
+    if not (RAIZ / 'scripts' / 'actualizar_readme.py').exists():
+        pytest.skip('paquete local: sin actualizar_readme.py (solo se usa en GitHub)')
     ejecutar(cfg)
     spec = importlib.util.spec_from_file_location('actualizar_readme', RAIZ / 'scripts' / 'actualizar_readme.py')
     ar = importlib.util.module_from_spec(spec)
