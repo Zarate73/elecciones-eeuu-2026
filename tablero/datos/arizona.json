@@ -10,30 +10,30 @@
  "corte": "2026-10-25",
  "dias_a_eleccion": 9,
  "pronostico": {
-  "P_D": 0.921,
-  "pct_D": 51.75,
+  "P_D": 0.9232,
+  "pct_D": 51.79,
   "pct_D_IC80": [
-   48.19,
-   55.32
+   48.23,
+   55.36
   ],
-  "pct_R": 44.34,
+  "pct_R": 44.3,
   "pct_R_IC80": [
-   40.77,
-   47.9
+   40.72,
+   47.86
   ],
   "pct_terceros": 3.91,
   "pct_terceros_IC80": [
    1.46,
    6.32
   ],
-  "margen": 7.403,
+  "margen": 7.489,
   "margen_IC80": [
-   0.71,
-   14.12
+   0.79,
+   14.21
   ],
   "margen_IC95": [
-   -3.15,
-   17.98
+   -3.07,
+   18.07
   ],
   "sd": 5.344,
   "nu": 19.2,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Recuento automático (|margen| ≤ 0.5)",
-    "valor": 0.0266
+    "valor": 0.026
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.895,
+   "P_D": 0.9019,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9104,
+   "P_D": 0.9204,
    "estado": "en_vivo"
   }
  ],
@@ -268,19 +268,19 @@
   },
   {
    "corte": "2026-10-25",
-   "P_D": 0.921,
+   "P_D": 0.9232,
    "P_D_encuestas": 0.9278,
-   "P_kalshi": 0.895,
-   "P_polymarket": 0.9104,
-   "pct_D": 51.7462,
-   "margen": 7.4034
+   "P_kalshi": 0.9019,
+   "P_polymarket": 0.9204,
+   "pct_D": 51.7889,
+   "margen": 7.4888
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 7.403,
-   "P_D": 0.921
+   "margen": 7.489,
+   "P_D": 0.9232
   },
   {
    "escenario": "Solo encuestas (sin mercados)",
@@ -339,18 +339,18 @@
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 6.556,
-   "P_D": 0.895
+   "margen": 6.766,
+   "P_D": 0.9019
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 7.048,
-   "P_D": 0.9104
+   "margen": 7.403,
+   "P_D": 0.9204
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 9.51,
-   "P_D": 0.9151
+   "margen": 9.583,
+   "P_D": 0.9161
   }
  ],
  "anticipado": {
@@ -387,9 +387,9 @@
  },
  "adicional": {
   "titulo": "Polymarket por rangos de margen",
-  "P_D": 0.9151,
-  "margen": 9.51,
-  "nota": "Margen implícito +9.5 pp (σ 7.8)"
+  "P_D": 0.9161,
+  "margen": 9.58,
+  "nota": "Margen implícito +9.6 pp (σ 7.9)"
  },
  "fuentes": [
   {
