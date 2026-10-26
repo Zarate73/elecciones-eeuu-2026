@@ -1,0 +1,580 @@
+{
+ "clave": "new_york",
+ "estado": "Nueva York",
+ "cargo": "Gobernador",
+ "modelo": "General (V11, sesgo estatal contraído)",
+ "candidatos": {
+  "D": "Kathy Hochul",
+  "R": "Bruce Blakeman"
+ },
+ "corte": "2026-10-26",
+ "dias_a_eleccion": 8,
+ "pronostico": {
+  "P_D": 0.9739,
+  "pct_D": 56.33,
+  "pct_D_IC80": [
+   52.21,
+   60.45
+  ],
+  "pct_R": 43.51,
+  "pct_R_IC80": [
+   39.4,
+   47.64
+  ],
+  "pct_terceros": 0.15,
+  "pct_terceros_IC80": [
+   0.1,
+   0.21
+  ],
+  "margen": 12.817,
+  "margen_IC80": [
+   4.57,
+   21.04
+  ],
+  "margen_IC95": [
+   -0.13,
+   25.79
+  ],
+  "sd": 6.554,
+  "nu": 20.0,
+  "P_D_encuestas": 0.9805,
+  "peso_mercados": 0.3,
+  "mercado_en_distribucion": true,
+  "extra": [
+   {
+    "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
+    "valor": 0.0086
+   }
+  ]
+ },
+ "mercados": [
+  {
+   "nombre": "Kalshi",
+   "P_D": 0.9427,
+   "estado": "en_vivo"
+  },
+  {
+   "nombre": "Polymarket",
+   "P_D": 0.9555,
+   "estado": "en_vivo"
+  }
+ ],
+ "ultima_encuesta": {
+  "encuestadora": "ActiVote",
+  "fin": "2026-10-23",
+  "dias_desde_fin": 3,
+  "dias_antes_eleccion": 11,
+  "origen": "wikipedia"
+ },
+ "encuestas": [
+  {
+   "fin": "2026-10-23",
+   "encuestadora": "ActiVote",
+   "D": 59.0,
+   "R": 41.0,
+   "margen": 18.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.4165
+  },
+  {
+   "fin": "2026-10-19",
+   "encuestadora": "Quinnipiac University",
+   "D": 55.0,
+   "R": 41.0,
+   "margen": 14.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.5835
+  },
+  {
+   "fin": "2026-10-06",
+   "encuestadora": "Beacon Research (D)",
+   "D": 53.0,
+   "R": 31.0,
+   "margen": 22.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-06",
+   "encuestadora": "OnMessage Inc. (R)",
+   "D": 50.0,
+   "R": 46.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-05",
+   "encuestadora": "Emerson College",
+   "D": 52.4,
+   "R": 39.7,
+   "margen": 12.7,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-04",
+   "encuestadora": "Marist University",
+   "D": 53.0,
+   "R": 42.0,
+   "margen": 11.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-25",
+   "encuestadora": "co/efficient (R)",
+   "D": 48.0,
+   "R": 41.0,
+   "margen": 7.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-20",
+   "encuestadora": "Quinnipiac University",
+   "D": 58.0,
+   "R": 39.0,
+   "margen": 19.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-17",
+   "encuestadora": "Siena College",
+   "D": 50.0,
+   "R": 41.0,
+   "margen": 9.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-31",
+   "encuestadora": "McLaughlin & Associates (R)",
+   "D": 49.6,
+   "R": 45.7,
+   "margen": 3.9,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-21",
+   "encuestadora": "Concord Public Opinion Partners (D)",
+   "D": 50.0,
+   "R": 34.0,
+   "margen": 16.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-06",
+   "encuestadora": "Siena College",
+   "D": 49.0,
+   "R": 39.0,
+   "margen": 10.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-28",
+   "encuestadora": "Moxie Strategies",
+   "D": 49.0,
+   "R": 37.0,
+   "margen": 12.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-12",
+   "encuestadora": "Red Oak Strategic (R)",
+   "D": 47.0,
+   "R": 43.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-02",
+   "encuestadora": "co/efficient (R)",
+   "D": 47.0,
+   "R": 41.0,
+   "margen": 6.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-06-23",
+   "encuestadora": "Siena College",
+   "D": 52.0,
+   "R": 32.0,
+   "margen": 20.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-06-14",
+   "encuestadora": "Pollfinity Research",
+   "D": 46.0,
+   "R": 35.0,
+   "margen": 11.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-04-30",
+   "encuestadora": "Siena College",
+   "D": 49.0,
+   "R": 33.0,
+   "margen": 16.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-03-26",
+   "encuestadora": "Siena College",
+   "D": 47.0,
+   "R": 34.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-03-26",
+   "encuestadora": "Echelon Insights/Tusk Strategies",
+   "D": 55.0,
+   "R": 40.0,
+   "margen": 15.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-03-08",
+   "encuestadora": "McLaughlin & Associates (R)",
+   "D": 52.0,
+   "R": 43.0,
+   "margen": 9.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-02-26",
+   "encuestadora": "Siena College",
+   "D": 51.0,
+   "R": 31.0,
+   "margen": 20.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-02-19",
+   "encuestadora": "Marist University",
+   "D": 50.0,
+   "R": 33.0,
+   "margen": 17.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  }
+ ],
+ "n_encuestas_ventana": 2,
+ "historial": [
+  {
+   "corte": "2026-10-26",
+   "P_D": 0.9739,
+   "P_D_encuestas": 0.9805,
+   "P_kalshi": 0.9427,
+   "P_polymarket": 0.9555,
+   "pct_D": 56.3314,
+   "margen": 12.817
+  }
+ ],
+ "escenarios": [
+  {
+   "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+   "margen": 12.817,
+   "P_D": 0.9739
+  },
+  {
+   "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
+   "margen": 13.699,
+   "P_D": 0.9805
+  },
+  {
+   "escenario": "Sin sesgo estatal, sin mercados",
+   "margen": 15.523,
+   "P_D": 0.9894
+  },
+  {
+   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
+   "margen": 14.072,
+   "P_D": 0.9829
+  },
+  {
+   "escenario": "Sesgo estatal sin contraer (-2.47 pp)",
+   "margen": 13.067,
+   "P_D": 0.976
+  },
+  {
+   "escenario": "Sesgo estatal a la mitad (-0.92 pp)",
+   "margen": 14.631,
+   "P_D": 0.9855
+  },
+  {
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-1.35 pp)",
+   "margen": 14.194,
+   "P_D": 0.9834
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2020_Pres-G_NY (-1.31 pp; rango al quitar una de 20: -1.95 a -1.31)",
+   "margen": 14.239,
+   "P_D": 0.9838
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2016_Pres-G_NY (-1.95 pp; rango al quitar una de 20: -1.95 a -1.31)",
+   "margen": 13.58,
+   "P_D": 0.98
+  },
+  {
+   "escenario": "Sesgo estimado solo con contiendas de gobernador (-0.47 pp)",
+   "margen": 15.079,
+   "P_D": 0.9878
+  },
+  {
+   "escenario": "Distribución normal",
+   "margen": 13.676,
+   "P_D": 0.9822
+  },
+  {
+   "escenario": "Incertidumbre con k efectivo 1.9 (no 2 firmas) y deriva por antigüedad ponderada (5 días)",
+   "margen": 13.703,
+   "P_D": 0.9795
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": 13.676,
+   "P_D": 0.9802
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 13.726,
+   "P_D": 0.9806
+  },
+  {
+   "escenario": "Deriva al doble (0.50 pp/día, 3 días)",
+   "margen": 13.726,
+   "P_D": 0.9807
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
+   "margen": 13.712,
+   "P_D": 0.9804
+  },
+  {
+   "escenario": "Ventana 45 días (7 encuestadoras)",
+   "margen": 11.87,
+   "P_D": 0.993
+  },
+  {
+   "escenario": "Ventana 60 días (8 encuestadoras)",
+   "margen": 11.542,
+   "P_D": 0.9929
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": 13.832,
+   "P_D": 0.9812
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
+   "margen": 13.73,
+   "P_D": 0.9813
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
+   "margen": 13.689,
+   "P_D": 0.9804
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
+   "margen": 13.842,
+   "P_D": 0.981
+  },
+  {
+   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
+   "margen": 13.7,
+   "P_D": 0.9804
+  },
+  {
+   "escenario": "Sin Quinnipiac University (pesa 58%) → ventana desde 2026-10-02: Marist University, Emerson College, OnMessage Inc., Beacon Research, ActiVote",
+   "margen": 12.46,
+   "P_D": 0.9919
+  },
+  {
+   "escenario": "Sin ActiVote (pesa 42%) → ventana desde 2026-09-28: Marist University, Emerson College, OnMessage Inc., Beacon Research, Quinnipiac University",
+   "margen": 11.118,
+   "P_D": 0.985
+  },
+  {
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Quinnipiac University, ActiVote",
+   "margen": 13.706,
+   "P_D": 0.98
+  },
+  {
+   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-09-26: Marist University, OnMessage Inc., Beacon Research, Emerson College, ActiVote, Quinnipiac University",
+   "margen": 11.902,
+   "P_D": 0.9916
+  },
+  {
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 0.1 %)",
+   "margen": 13.702,
+   "P_D": 0.9803
+  },
+  {
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 0.1 %)",
+   "margen": 13.691,
+   "P_D": 0.9798
+  },
+  {
+   "escenario": "Peso de mercados 0.15 (base 0.30)",
+   "margen": 13.252,
+   "P_D": 0.9775
+  },
+  {
+   "escenario": "Peso de mercados 0.50 (base 0.30)",
+   "margen": 12.214,
+   "P_D": 0.9684
+  },
+  {
+   "escenario": "Solo Kalshi (probabilidad)",
+   "margen": 10.239,
+   "P_D": 0.9427
+  },
+  {
+   "escenario": "Solo Polymarket (probabilidad)",
+   "margen": 11.097,
+   "P_D": 0.9555
+  },
+  {
+   "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
+   "margen": 16.674,
+   "P_D": 0.9456
+  }
+ ],
+ "anticipado": {
+  "fuente": "Junta Electoral de NYC",
+  "fecha": "2026-10-25",
+  "estado": "en_vivo",
+  "nota": "Solo la Ciudad de Nueva York, solo en persona y sin partido (día 2 del voto anticipado): mide participación, no indica el resultado",
+  "metricas": [
+   {
+    "etiqueta": "Check-ins acumulados en la ciudad",
+    "valor": 165143.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Manhattan",
+    "valor": 46314.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Bronx",
+    "valor": 17595.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Brooklyn",
+    "valor": 47177.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Queens",
+    "valor": 40281.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Staten Island",
+    "valor": 13776.0,
+    "formato": "entero"
+   }
+  ]
+ },
+ "rangos_poly": {
+  "P_D": 0.9456,
+  "margen": 16.67
+ },
+ "adicional": {
+  "titulo": "Sesgo estatal de Nueva York",
+  "P_D": null,
+  "margen": -1.84,
+  "etiqueta_margen": "corrección al margen D−R",
+  "nota": "Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3); el sesgo contraído corrige -1.8 pp (promedio de encuestas +15.5). Polymarket por rangos: margen implícito +16.7 pp."
+ },
+ "fuentes": [
+  {
+   "nombre": "historico_538",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "wikipedia",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "270towin",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "base_verificada",
+   "estado": "archivo (encuestas_verificadas_ny.csv, 26 encuestas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "kalshi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket_rangos",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "nyc_boe",
+   "estado": "en_vivo",
+   "en_vivo": true
+  }
+ ],
+ "avisos": [
+  "civicAPI sin datos de NY (diagnóstico opcional): no_disponible (HTTPError: 404 Client Error: Not Found for url: https://civicapi."
+ ],
+ "carpeta": "new_york"
+}

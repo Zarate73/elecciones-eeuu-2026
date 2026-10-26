@@ -3,7 +3,27 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Se llena con la primera corrida automática.
+**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 02:41 ET · fuentes en vivo 8/8
+
+| Gobernador | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Kathy **Hochul** (D, gobernadora) | **56.3%** (52.2–60.4) | **97%** |
+| Bruce **Blakeman** (R) | **43.5%** (39.4–47.6) | **3%** |
+| Otros (votos por escrito) | 0.2% (0.1–0.2) | — |
+
+Margen D−R +12.8 pp (σ 6.6) · solo encuestas: P(Hochul) 98% · Kalshi 94% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.9% · 23 encuestas, 2 encuestadoras en la ventana
+
+Cómo se llega: promedio de encuestas +15.5 · sesgo estatal de Nueva York -1.8 · mercados -0.9
+
+**Encuesta más reciente:** ActiVote, terminó el 2026-10-23 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+
+**Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 2, al 2026-10-25): 165,143 en persona · Manhattan 46,314 · Bronx 17,595 · Brooklyn 47,177 · Queens 40,281 · Staten Island 13,776. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_new_york.yml)).
