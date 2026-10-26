@@ -21,7 +21,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Texas | Gobernador: Hinojosa 46.5% · Abbott 51.3% · P(Hinojosa) 14% (corte 2026-10-26) | **Producción (general)**, actualización automática | [`texas/`](texas/) |
 | Illinois | Gobernador: Pritzker 56.2% · Bailey 38.7% · P(Pritzker) 99% (corte 2026-10-26) | **Producción (general)**, actualización automática | [`illinois/`](illinois/) |
 | Nueva York | Gobernador: Hochul 55.2% · Blakeman 44.6% · P(Hochul) 97% (corte 2026-10-26) | **Producción (general)**, actualización automática | [`new_york/`](new_york/) |
-| Ohio | Gobernador: Acton 48.7% · Ramaswamy 48.1% · P(Acton) 55% (referencia 2026-10-26) | **Producción (general)**, actualización automática | [`ohio/`](ohio/) |
+| Ohio | Gobernador: Acton 48.7% · Ramaswamy 48.1% · P(Acton) 55% (corte 2026-10-26) | **Producción (general)**, actualización automática | [`ohio/`](ohio/) |
 | … | | pendiente | |
 
 ## Estructura por estado

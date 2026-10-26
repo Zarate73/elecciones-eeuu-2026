@@ -3,7 +3,27 @@
 Elección general del 3 de noviembre de 2026 entre **Amy Acton (D, exdirectora de Salud del estado)** y **Vivek Ramaswamy (R)**, con Don Kissick (Libertario). El gobernador Mike DeWine (R) deja el cargo por límite de mandatos. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Se llena con la primera corrida automática.
+**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 18:54 ET · fuentes en vivo 9/9
+
+| Gobernador | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Amy **Acton** (D) | **48.7%** (45.5–51.9) | **55%** |
+| Vivek **Ramaswamy** (R) | **48.1%** (44.9–51.3) | **45%** |
+| Terceros (Don Kissick, L; otros) | 3.1% (1.0–5.3) | — |
+
+Margen D−R +0.6 pp (σ 4.8) · solo encuestas: P(Acton) 41% · Kalshi 82% · Polymarket 83% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 4.3% · 28 encuestas, 6 encuestadoras en la ventana
+
+Cómo se llega: promedio de encuestas +3.0 · sesgo estatal de Ohio -4.0 · mercados +1.7
+
+**Encuesta más reciente:** RedBox Research (D), terminó el 2026-10-23 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-26): 1,084,305 (632,136 en persona, 452,169 por correo) · 26 % del total de votos de 2022. Ohio no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_ohio.yml)).
