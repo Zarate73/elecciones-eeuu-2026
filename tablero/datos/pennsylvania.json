@@ -274,8 +274,8 @@
    "P_D_encuestas": 0.9987,
    "P_kalshi": 0.9725,
    "P_polymarket": 0.9775,
-   "pct_D": 58.4429,
-   "margen": 18.9859
+   "pct_D": 58.4431,
+   "margen": 18.9863
   }
  ],
  "escenarios": [
@@ -416,13 +416,13 @@
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 13.28,
+   "margen": 13.283,
    "P_D": 0.9775
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 24.104,
-   "P_D": 0.9883
+   "margen": 23.097,
+   "P_D": 0.9875
   }
  ],
  "anticipado": {
@@ -458,15 +458,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9883,
-  "margen": 24.1
+  "P_D": 0.9875,
+  "margen": 23.1
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",
   "P_D": null,
   "margen": -0.92,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.9 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +24.1 pp."
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.9 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +23.1 pp."
  },
  "fuentes": [
   {
