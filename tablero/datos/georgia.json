@@ -10,26 +10,26 @@
  "corte": "2026-10-26",
  "dias_a_eleccion": 8,
  "pronostico": {
-  "P_D": 0.4119,
-  "pct_D": 49.44,
+  "P_D": 0.4183,
+  "pct_D": 49.48,
   "pct_D_IC80": [
-   46.13,
-   52.77
+   46.17,
+   52.81
   ],
-  "pct_R": 50.55,
+  "pct_R": 50.51,
   "pct_R_IC80": [
-   47.22,
-   53.85
+   47.18,
+   53.81
   ],
   "pct_terceros": null,
-  "margen": -1.102,
+  "margen": -1.022,
   "margen_IC80": [
-   -7.72,
-   5.55
+   -7.64,
+   5.63
   ],
   "margen_IC95": [
-   -11.52,
-   9.34
+   -11.43,
+   9.42
   ],
   "sd": 5.277,
   "nu": 20.0,
@@ -39,14 +39,14 @@
   "extra": [
    {
     "etiqueta": "Segunda vuelta (ninguno > 50 %)",
-    "valor": 0.0016
+    "valor": 0.0018
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.601,
+   "P_D": 0.6212,
    "estado": "en_vivo"
   }
  ],
@@ -253,18 +253,18 @@
   },
   {
    "corte": "2026-10-26",
-   "P_D": 0.4119,
+   "P_D": 0.4183,
    "P_D_encuestas": 0.3347,
-   "P_kalshi": 0.601,
-   "pct_D": 49.4436,
-   "margen": -1.1022
+   "P_kalshi": 0.6212,
+   "pct_D": 49.484,
+   "margen": -1.0216
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL",
-   "margen": -1.102,
-   "P_D": 0.4119
+   "margen": -1.022,
+   "P_D": 0.4183
   },
   {
    "escenario": "Solo encuestas (sin Kalshi)",
@@ -278,13 +278,13 @@
   },
   {
    "escenario": "Distribución normal",
-   "margen": -1.141,
-   "P_D": 0.4144
+   "margen": -1.057,
+   "P_D": 0.4203
   },
   {
    "escenario": "Kalshi solo",
-   "margen": 1.339,
-   "P_D": 0.6034
+   "margen": 1.607,
+   "P_D": 0.6245
   },
   {
    "escenario": "Ventana 30 días",
@@ -299,22 +299,22 @@
  ],
  "anticipado": {
   "fuente": "Civic Forge",
-  "fecha": "2026-10-24",
+  "fecha": "2026-10-25",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Boletas vs 2022 (mismo día)",
-    "valor": 109398.0,
+    "valor": 111936.0,
     "formato": "entero_signo"
    },
    {
     "etiqueta": "% votantes negros vs 2022",
-    "valor": 2.99,
+    "valor": 2.97,
     "formato": "pp"
    },
    {
     "etiqueta": "% 65+ vs 2022",
-    "valor": 2.21,
+    "valor": 2.15,
     "formato": "pp"
    }
   ]
@@ -325,7 +325,7 @@
   "pct_D": 53.51,
   "pct_R": 46.48,
   "margen": 7.03,
-  "nota": "Voto dividido (gobernador R + senado D): 50%"
+  "nota": "Voto dividido (gobernador R + senado D): 49%"
  },
  "fuentes": [
   {
