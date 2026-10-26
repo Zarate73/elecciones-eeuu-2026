@@ -40,4 +40,4 @@ jobs:
         run: python scripts/actualizar_readme.py
       - name: Publicar resultados (README, tablero y salidas)
         working-directory: .
-        run: bash scripts/publicar.sh texas "Pronóstico Texas $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET"
+        run: bash scripts/publicar.sh texas "Pronóstico Texas $(TZ=America/Chicago date +'%Y-%m-%d %H:%M') CT"

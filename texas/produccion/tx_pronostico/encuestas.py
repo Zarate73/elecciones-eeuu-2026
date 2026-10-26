@@ -155,16 +155,41 @@ def _normalizar(f: pd.DataFrame, origen: str | None = None) -> pd.DataFrame:
     return f[COLS]
 
 
+def _intervalo(r: dict) -> tuple[pd.Timestamp, pd.Timestamp, bool]:
+    """(inicio, fin, puntual). «Puntual» = la fuente solo da una fecha (270toWin): suele ser la de PUBLICACIÓN, no el
+    cierre de campo (Verasight/VoteHub: campo 1–20 oct, publicada el 23-oct)."""
+    fin = pd.Timestamp(r['fin'])
+    ini = pd.Timestamp(r['inicio']) if pd.notna(r.get('inicio')) else fin
+    return ini, fin, ini == fin
+
+
+def _distancia(a: tuple, b: tuple) -> int:
+    """Días entre dos periodos de campo (0 si se solapan o se tocan)."""
+    return max((a[0] - b[1]).days, (b[0] - a[1]).days, 0)
+
+
 def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
-    """Une las fuentes sin contar dos veces la misma encuesta. Para cada encuesta se busca, entre las ya aceptadas, la
-    candidata a duplicado MÁS CERCANA en fecha (no la primera que cumpla: una firma que repite cifras, como
-    Beacon/Shaw 47–52 el 28-sep y el 19-oct en Texas, haría que la segunda se pegara a la primera)."""
+    """Une las fuentes sin contar dos veces la misma encuesta.
+
+    La identidad de una encuesta es (firma, PERIODO DE CAMPO), no (firma, fecha cercana):
+      - misma firma y periodos que se solapan o se tocan → misma encuesta (versiones LV/RV o la misma en dos fuentes);
+      - misma firma, periodos distintos y ambos con rango → encuestas DISTINTAS aunque estén a pocos días (ActiVote
+        30 sep–14 oct y 17–21 oct; antes la regla «≤ 7 días» las fundía y se perdía la más reciente);
+      - una fuente con fecha puntual (publicación) a ≤ 7 días del periodo de otra con las mismas cifras, o a ≤ 3 días
+        con cualquier cifra → misma encuesta (Verasight 23-oct en 270toWin = campo 1–20 oct en Wikipedia);
+      - mismas cifras entre fuentes distintas a ≤ 60 días → misma encuesta con la fecha mal capturada.
+    Ninguna fuente publica un identificador de estudio, así que el periodo de campo es la mejor llave disponible.
+    Se elige la candidata MÁS CERCANA (no la primera que cumpla): Beacon/Shaw repitió 47–52 el 28-sep y el 19-oct.
+    """
     base: list[dict] = []
     for f in fuentes:
         for r in f.to_dict('records'):
-            mejor, mejor_dias = None, None
+            ir = _intervalo(r)
+            mejor, mejor_d = None, None
             for b in base:
-                dias = abs((pd.Timestamp(r['fin']) - pd.Timestamp(b['fin'])).days)
+                ib = _intervalo(b)
+                dist = _distancia(ir, ib)
+                dias = abs((ir[1] - ib[1]).days)
                 mismas = abs(r['D'] - b['D']) <= 0.51 and abs(r['R'] - b['R']) <= 0.51
                 otra_fuente = r['origen'] != b['origen']
                 # 270toWin rotula «YouGov» encuestas que otras fuentes atribuyen al patrocinador (UT/Texas Politics Project,
@@ -172,14 +197,16 @@ def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
                 mismo_n = pd.notna(r.get('n')) and pd.notna(b.get('n')) and r['n'] >= 300 and abs(r['n'] - b['n']) < 0.5
                 # «YouGov» genérico frente a «<patrocinador>/YouGov» con las mismas cifras a ≤ 7 días (el n puede diferir:
                 # CBS/YouGov 16-oct trae 1,492 en Wikipedia y 1,460 en 270toWin)
-                generico = mismas and dias <= 7 and 'yougov' in (r['clave'], b['clave']) and \
+                generico = mismas and dist <= 7 and 'yougov' in (r['clave'], b['clave']) and \
                     'yougov' in str(r.get('pollster', '')).lower() and 'yougov' in str(b.get('pollster', '')).lower()
-                # misma firma: ≤ 7 días, o mismas cifras con fecha distinta ENTRE FUENTES (≤ 60 días: fechas mal
-                # capturadas). Dentro de una misma fuente, mismas cifras con fechas distintas son encuestas distintas.
-                misma_firma = r['clave'] == b['clave'] and (dias <= 7 or (mismas and otra_fuente and dias <= 60))
+                puntual = ir[2] or ib[2]
+                misma_firma = r['clave'] == b['clave'] and (
+                    dist == 0 and not puntual                                   # periodos de campo que se solapan
+                    or puntual and (dist <= 3 or (mismas and dist <= 7))        # fecha de publicación de otra fuente
+                    or mismas and otra_fuente and dias <= 60)                   # misma encuesta, fecha mal capturada
                 if (misma_firma or (mismas and mismo_n and dias <= 30) or generico) and \
-                        (mejor_dias is None or dias < mejor_dias):
-                    mejor, mejor_dias = b, dias
+                        (mejor_d is None or (dist, dias) < mejor_d):
+                    mejor, mejor_d = b, (dist, dias)
             if mejor is None:
                 base.append(dict(r))
                 continue
@@ -189,14 +216,35 @@ def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
                 for c in ('D', 'R', 'otros', 'indecisos', 'n', 'pop'):
                     b[c] = r[c]
                 b['nota_version'] = f"versión {r.get('pop')} de {r['origen']}"
+            if _intervalo(b)[2] and not ir[2]:                   # conserva el periodo de campo, no la fecha de publicación
+                b['inicio'], b['fin'] = r['inicio'], r['fin']
             for c in ('n', 'pop', 'otros', 'indecisos'):       # completa datos que falten
                 if pd.isna(b.get(c)) and pd.notna(r.get(c)):
                     b[c] = r[c]
             b.setdefault('tambien_en', set()).add(r['origen'])
     out = pd.DataFrame(base, columns=COLS + ['tambien_en', 'nota_version'])
     out['tambien_en'] = out.tambien_en.map(lambda s: ', '.join(sorted(s)) if isinstance(s, set) else '')
-    out['nota_version'] = out.nota_version.fillna('')
+    out['nota_version'] = out.nota_version.astype(object).where(out.nota_version.notna(), '')
     return out
+
+
+def aplicar_correcciones_cifras(p: pd.DataFrame, cfg) -> tuple[pd.DataFrame, list[str]]:
+    """Reemplaza D y R con las cifras de la publicación original (data/correcciones_cifras.csv: clave, fin, pop, D, R,
+    fuente). Wikipedia redondea a enteros por separado: ActiVote 47.5–52.5 aparece como 48–53 (suma 101). El margen D−R
+    no cambia en ese caso, pero las cifras deben ser las publicadas."""
+    txt = str(cfg.rutas.get('correcciones_cifras', '') or '').strip()
+    if not txt or not cfg.ruta('correcciones_cifras').exists():
+        return p, []
+    c = pd.read_csv(cfg.ruta('correcciones_cifras'), comment='#')
+    hechas = []
+    for _, r in c.iterrows():
+        m = ((p.clave == str(r.clave)) & (pd.to_datetime(p.fin) == pd.Timestamp(r.fin))
+             & (p['pop'].astype(str).str.upper() == str(r['pop']).upper()))
+        if m.any():
+            antes = f"{p.loc[m, 'D'].iloc[0]:g}–{p.loc[m, 'R'].iloc[0]:g}"
+            p.loc[m, 'D'], p.loc[m, 'R'] = float(r.D), float(r.R)
+            hechas.append(f"{r.clave} {r.fin} {r['pop']}: {antes} → {r.D:g}–{r.R:g} ({r.fuente})")
+    return p, hechas
 
 
 # ----------------------------------------------------------------------------------- en vivo con caché
@@ -293,6 +341,9 @@ def obtener_encuestas(cfg) -> dict:
     p, aplicadas = aplicar_correcciones_n(p, cfg)
     if aplicadas:
         log.info('Tamaños de muestra corregidos: %s', '; '.join(aplicadas))
+    p, cifras = aplicar_correcciones_cifras(p, cfg)
+    if cifras:
+        log.info('Cifras corregidas con la publicación original: %s', '; '.join(cifras))
     p['n_imputado'] = p.n.isna()
     p.loc[p.n_imputado, 'n_fuente'] = 'imputado (600)'
     p['n'] = p.n.fillna(600).clip(100, 3000)

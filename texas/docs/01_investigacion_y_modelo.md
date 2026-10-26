@@ -3,6 +3,8 @@
 Elección general del 3 de noviembre: **Greg Abbott (R, gobernador desde 2015)** busca un cuarto periodo contra **Gina Hinojosa (D, representante estatal por Austin)**. En la boleta también está Pat Dixon (libertario). Gana la mayoría simple; no hay segunda vuelta en la general.
 
 ## Resumen del pronóstico (fixtures del 25-oct, 9 días a la elección)
+
+> **Actualización (revisión del 25-oct, v1.1.0):** se recuperó la segunda encuesta de ActiVote (17–21 oct). El promedio pasa de −3.11 a −3.23 y P(Hinojosa) de 14.6 % a 14.2 %. Detalle en [`02_revision_externa_2026-10-25.md`](02_revision_externa_2026-10-25.md).
 | | Hinojosa (D) | Abbott (R) | Terceros |
 |---|---|---|---|
 | % de voto (IC80) | 46.6 (43.6–49.6) | 51.2 (48.2–54.1) | 2.2 (0.1–4.3) |

@@ -47,6 +47,26 @@ def test_misma_firma_mismas_cifras_en_fechas_distintas(cfg, red_simulada):
     assert b[b.fin == '2026-10-19'].iloc[0].n == 1398                   # versión LV, no la RV (2,011)
 
 
+def test_misma_firma_periodos_distintos_son_dos_encuestas(cfg, red_simulada):
+    """ActiVote levantó del 30 sep al 14 oct y del 17 al 21 oct: dos encuestas, aunque sus fechas de fin estén a 7 días.
+    Las cifras de la segunda son las de ActiVote (47.5–52.5), no las redondeadas de Wikipedia (48–53, suma 101)."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    a = p[p.pollster_key == 'activote']
+    a = a.set_index(a.fin.dt.strftime('%Y-%m-%d'))
+    assert {'2026-10-14', '2026-10-21'} <= set(a.index)
+    assert a.loc['2026-10-21', 'D'] == 47.5 and a.loc['2026-10-21', 'R'] == 52.5
+    assert 'wikipedia' not in a.loc['2026-10-14', 'tambien_en']          # ya no se funde con la segunda
+
+
+def test_fecha_de_publicacion_no_es_otra_encuesta(cfg, red_simulada):
+    """270toWin fecha a Verasight/VoteHub el 23-oct (publicación); el campo fue del 1 al 20 de octubre: una sola
+    encuesta, con el periodo de campo."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    v = p[p.pollster_key == 'verasight']
+    assert len(v[v.fin >= '2026-10-15']) == 1
+    assert v.iloc[-1].fin == pd.Timestamp('2026-10-20') and '270towin' in v.iloc[-1].tambien_en
+
+
 def test_yougov_generico_es_la_de_cbs(cfg, red_simulada):
     """270toWin rotula «YouGov» (18-oct, n 1,460) la encuesta de CBS News/YouGov (16-oct, n 1,492 en Wikipedia)."""
     p = encuestas.obtener_encuestas(cfg)['encuestas']
@@ -127,7 +147,7 @@ def test_corrida_completa_en_vivo(cfg, red_simulada):
     assert r['degradadas'] == []
     f = r['modelo']['final']
     assert abs(f['pct_D'] + f['pct_R'] + f['pct_terceros'] - 100) < 1e-6
-    assert f['k'] == 9 and not f['ventana']['ampliada'] and f['peso_mercados_aplicado'] == 0.30
+    assert f['k'] == 9 and len(r['modelo']['ventana']) == 10 and not f['ventana']['ampliada'] and f['peso_mercados_aplicado'] == 0.30
     assert f['terceros_regimen'] == 'reportado en encuestas'
     lo, hi = sorted([f['P_D_encuestas'], r['mercados']['promedio_D']])
     assert lo - 1e-9 <= f['P_D'] <= hi + 1e-9
@@ -164,7 +184,7 @@ def test_reporte_json_estricto(cfg, red_simulada):
     ejecutar(cfg)
     txt = (cfg.dir_salidas / 'ultimo' / 'reporte.json').read_text(encoding='utf-8')
     rep = json.loads(txt, parse_constant=lambda c: (_ for _ in ()).throw(ValueError(c)))
-    assert rep['ultima_encuesta']['fin'] == '2026-10-20'
+    assert rep['ultima_encuesta']['fin'] == '2026-10-21'
     assert rep['anticipado']['por_partido'] is False
 
 
@@ -217,5 +237,5 @@ def test_k_efectivo_por_firma(cfg, red_simulada):
 
 
 # valores fijados con la corrida de referencia del 25-oct (ver notebook)
-N_ENCUESTAS = 50
-MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = -3.113, 2.495, -4.546, 0.1465, 2.21   # sesgo «todas» (+2.50 pp pro-D)
+N_ENCUESTAS = 51
+MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = -3.226, 2.495, -4.634, 0.1417, 2.21   # sesgo «todas» (+2.50 pp pro-D)

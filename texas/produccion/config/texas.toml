@@ -15,7 +15,7 @@ nombre_d = "Gina Hinojosa"
 nombre_r = "Greg Abbott"
 terceros = "Terceros (Pat Dixon, L; otros)"
 condado_principal = "Harris"
-zona_horaria = "America/New_York"
+zona_horaria = "America/Chicago"   # hora del centro (casi todo Texas); fija la fecha del corte
 recuento_pp = 0.5                      # Texas no tiene recuento automático (lo pide un candidato): se reporta P(|margen| ≤ 0.5)
 
 [rutas]
@@ -28,6 +28,8 @@ encuestas_base = "data/encuestas_verificadas_tx.csv"
 # Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
 # Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
 correcciones_n = "data/correcciones_tamano_muestra.csv"
+# Cifras de la publicación original cuando la fuente web las redondea (columnas clave, fin, pop, D, R, fuente).
+correcciones_cifras = "data/correcciones_cifras.csv"
 
 [fuentes]
 timeout_http_s = 30

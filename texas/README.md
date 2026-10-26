@@ -34,6 +34,7 @@ Base: el modelo de Maine v1.1.0 (Pennsylvania / Nevada / Florida / Georgia V11).
 | Pieza | Cómo entra | Por qué |
 |---|---|---|
 | Promedio de encuestas | V11: efecto de casa contraído (k = 8), √n, vida media de 14 días, cada firma pesa ~1; ventana de 21 días, ampliada si hay menos de 2 encuestadoras | Mejor CRPS nacional (3.304) |
+| Identidad de las encuestas | Firma + periodo de campo; la fecha puntual de 270toWin es de publicación | Revisión del 25-oct ([detalle](docs/02_revision_externa_2026-10-25.md)) |
 | Encuestadoras con varios nombres | Fox News = Beacon/Shaw, Texas A&M = ReconMR/Siena, UH Hobby = University of Houston, Cook = GS Strategy/New River, «YouGov» de 270toWin = CBS/YouGov | Conservan su efecto de casa; no se cuentan dos veces |
 | Sesgo estatal | Contraído por Bayes empírico con todas las contiendas del estado: hoy se restan ~2.5 pp (las encuestas en TX sobreestimaron al demócrata en 14 de 20 contiendas, +7.2 en 2024) | Cronológico TX: empate con «sin sesgo» (2.306 vs 2.309), mejor que «k ≥ 2» (P = 0.07); nacional: gana con claridad (P = 0.002). «Sin sesgo» y «solo gobernador» se reportan siempre |
 | Encuestas partidistas | Con su efecto de casa; «sin partidistas» es escenario | Excluirlas mejora en TX (P = 0.98) pero es lo peor a nivel nacional (P = 0.000) |

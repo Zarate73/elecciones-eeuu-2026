@@ -75,7 +75,7 @@ def _p(x) -> str:
 def main() -> int:
     rep = json.loads((SAL / 'ultimo' / 'reporte.json').read_text(encoding='utf-8'))
     g, mk, a = rep['gobernador'], rep['mercados'], rep.get('anticipado', {})
-    ahora = datetime.now(ZoneInfo('America/New_York')).strftime('%Y-%m-%d %H:%M ET')
+    ahora = datetime.now(ZoneInfo('America/Chicago')).strftime('%Y-%m-%d %H:%M CT')   # hora del centro
     vivas = sum(1 for v in rep['estados_fuentes'].values() if str(v).startswith(('en_vivo', 'archivo')))
     total = len(rep['estados_fuentes'])
     lineas = [
