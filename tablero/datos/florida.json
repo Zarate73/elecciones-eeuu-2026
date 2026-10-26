@@ -7,66 +7,76 @@
   "D": "David Jolly",
   "R": "Byron Donalds"
  },
- "corte": "2026-10-25",
- "dias_a_eleccion": 9,
+ "corte": "2026-10-26",
+ "dias_a_eleccion": 8,
  "pronostico": {
-  "P_D": 0.0507,
-  "pct_D": 44.88,
+  "P_D": 0.0443,
+  "pct_D": 44.43,
   "pct_D_IC80": [
-   41.53,
-   48.19
+   41.24,
+   47.61
   ],
-  "pct_R": 53.01,
+  "pct_R": 52.55,
   "pct_R_IC80": [
-   49.69,
-   56.32
+   49.35,
+   55.74
   ],
-  "pct_terceros": 2.1,
+  "pct_terceros": 3.01,
   "pct_terceros_IC80": [
-   0.1,
-   4.5
+   0.83,
+   5.14
   ],
-  "margen": -8.133,
+  "margen": -8.119,
   "margen_IC80": [
-   -14.4,
-   -1.86
+   -14.13,
+   -2.1
   ],
   "margen_IC95": [
-   -18.02,
-   1.76
+   -17.59,
+   1.35
   ],
-  "sd": 4.993,
-  "nu": 19.5,
-  "P_D_encuestas": 0.028,
+  "sd": 4.785,
+  "nu": 20.0,
+  "P_D_encuestas": 0.0227,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Recuento por máquina (|margen| ≤ 0.5)",
-    "valor": 0.0195
+    "valor": 0.0181
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.1832,
+   "P_D": 0.1931,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.185,
+   "P_D": 0.1859,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "Univ. of North Florida",
-  "fin": "2026-10-21",
-  "dias_desde_fin": 4,
-  "dias_antes_eleccion": 13,
-  "origen": "270towin"
+  "encuestadora": "RedBox Research",
+  "fin": "2026-10-23",
+  "dias_desde_fin": 3,
+  "dias_antes_eleccion": 11,
+  "origen": "wikipedia"
  },
  "encuestas": [
+  {
+   "fin": "2026-10-23",
+   "encuestadora": "RedBox Research",
+   "D": 44.0,
+   "R": 49.0,
+   "margen": -5.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.2974
+  },
   {
    "fin": "2026-10-21",
    "encuestadora": "Univ. of North Florida",
@@ -75,7 +85,7 @@
    "margen": -2.0,
    "en_ventana": true,
    "origen": "270towin",
-   "peso": 0.2685
+   "peso": 0.1886
   },
   {
    "fin": "2026-10-20",
@@ -85,7 +95,7 @@
    "margen": -9.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.2121
+   "peso": 0.149
   },
   {
    "fin": "2026-10-19",
@@ -95,7 +105,7 @@
    "margen": -2.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.2432
+   "peso": 0.1708
   },
   {
    "fin": "2026-10-19",
@@ -105,7 +115,7 @@
    "margen": -4.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1268
+   "peso": 0.0891
   },
   {
    "fin": "2026-10-15",
@@ -115,7 +125,7 @@
    "margen": -8.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1494
+   "peso": 0.105
   },
   {
    "fin": "2026-10-11",
@@ -129,20 +139,20 @@
   },
   {
    "fin": "2026-10-10",
-   "encuestadora": "Change Research (D)",
-   "D": 47.0,
-   "R": 47.0,
-   "margen": 0.0,
+   "encuestadora": "MDW Communications",
+   "D": 44.0,
+   "R": 46.0,
+   "margen": -2.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
   },
   {
    "fin": "2026-10-10",
-   "encuestadora": "MDW Communications",
-   "D": 44.0,
-   "R": 46.0,
-   "margen": -2.0,
+   "encuestadora": "Change Research (D)",
+   "D": 47.0,
+   "R": 47.0,
+   "margen": 0.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -160,9 +170,9 @@
   {
    "fin": "2026-10-07",
    "encuestadora": "St. Pete Polls",
-   "D": 45.0,
-   "R": 45.0,
-   "margen": 0.0,
+   "D": 44.6,
+   "R": 44.7,
+   "margen": -0.1,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -220,9 +230,9 @@
   {
    "fin": "2026-09-17",
    "encuestadora": "St. Pete Polls",
-   "D": 43.0,
-   "R": 44.0,
-   "margen": -1.0,
+   "D": 43.4,
+   "R": 43.5,
+   "margen": -0.1,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -238,7 +248,7 @@
    "peso": null
   }
  ],
- "n_encuestas_ventana": 5,
+ "n_encuestas_ventana": 6,
  "historial": [
   {
    "corte": "2026-10-22",
@@ -275,162 +285,171 @@
    "P_polymarket": 0.185,
    "pct_D": 44.8822,
    "margen": -8.1325
+  },
+  {
+   "corte": "2026-10-26",
+   "P_D": 0.0443,
+   "P_D_encuestas": 0.0227,
+   "P_kalshi": 0.1931,
+   "P_polymarket": 0.1859,
+   "pct_D": 44.4341,
+   "margen": -8.1185
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": -8.133,
-   "P_D": 0.0507
+   "margen": -8.119,
+   "P_D": 0.0443
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": -9.635,
-   "P_D": 0.028
+   "margen": -9.695,
+   "P_D": 0.0227
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": -4.367,
-   "P_D": 0.1848
+   "margen": -4.552,
+   "P_D": 0.1652
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": -4.371,
-   "P_D": 0.1846
+   "margen": -4.426,
+   "P_D": 0.1722
   },
   {
-   "escenario": "Sesgo estatal sin contraer (-5.88 pp)",
-   "margen": -10.259,
-   "P_D": 0.022
+   "escenario": "Sesgo estatal sin contraer (-5.70 pp)",
+   "margen": -10.26,
+   "P_D": 0.0181
   },
   {
-   "escenario": "Sesgo estatal a la mitad (-2.62 pp)",
-   "margen": -7.005,
-   "P_D": 0.0777
+   "escenario": "Sesgo estatal a la mitad (-2.56 pp)",
+   "margen": -7.127,
+   "P_D": 0.0666
   },
   {
    "escenario": "Distribución normal",
-   "margen": -9.6,
-   "P_D": 0.0272
+   "margen": -9.661,
+   "P_D": 0.0215
   },
   {
    "escenario": "Sin terceros",
-   "margen": -9.601,
-   "P_D": 0.0278
+   "margen": -9.661,
+   "P_D": 0.0227
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": -9.593,
-   "P_D": 0.0281
+   "margen": -9.657,
+   "P_D": 0.0232
   },
   {
-   "escenario": "Deriva al doble (0.50 pp/día, 4 días)",
-   "margen": -9.601,
-   "P_D": 0.0291
+   "escenario": "Deriva al doble (0.50 pp/día, 3 días)",
+   "margen": -9.662,
+   "P_D": 0.0234
   },
   {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (5 encuestadoras)",
-   "margen": -9.609,
-   "P_D": 0.0284
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (6 encuestadoras)",
+   "margen": -9.669,
+   "P_D": 0.0232
   },
   {
-   "escenario": "Ventana 45 días (12 encuestadoras)",
-   "margen": -9.283,
-   "P_D": 0.016
+   "escenario": "Ventana 45 días (13 encuestadoras)",
+   "margen": -9.348,
+   "P_D": 0.0144
   },
   {
-   "escenario": "Ventana 60 días (12 encuestadoras)",
-   "margen": -9.436,
-   "P_D": 0.0149
+   "escenario": "Ventana 60 días (13 encuestadoras)",
+   "margen": -9.469,
+   "P_D": 0.0137
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": -9.863,
-   "P_D": 0.0254
+   "margen": -9.848,
+   "P_D": 0.0212
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": -9.538,
-   "P_D": 0.0286
+   "margen": -9.618,
+   "P_D": 0.0232
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": -9.692,
-   "P_D": 0.0272
+   "margen": -9.731,
+   "P_D": 0.0224
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": -9.315,
-   "P_D": 0.0315
+   "margen": -9.468,
+   "P_D": 0.0248
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": -9.614,
-   "P_D": 0.0284
+   "margen": -9.676,
+   "P_D": 0.0232
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": -4.387,
-   "P_D": 0.1832
+   "margen": -4.034,
+   "P_D": 0.1931
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": -4.353,
-   "P_D": 0.185
+   "margen": -4.159,
+   "P_D": 0.1859
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": -6.036,
-   "P_D": 0.1659
+   "margen": -5.638,
+   "P_D": 0.173
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-25",
+  "fecha": "2026-10-26",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (correo + en persona)",
-    "valor": 2780853.0,
+    "valor": 2928377.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Emitidos por demócratas registrados",
-    "valor": 39.8,
+    "valor": 39.51,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por republicanos registrados",
-    "valor": 39.57,
+    "valor": 39.87,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por sin partido (NPA)",
-    "valor": 18.2,
+    "valor": 18.18,
     "formato": "pct"
    },
    {
     "etiqueta": "Margen D−R por correo",
-    "valor": 7.23,
+    "valor": 7.25,
     "formato": "pp"
    },
    {
     "etiqueta": "Margen D−R en persona",
-    "valor": -6.86,
+    "valor": -7.65,
     "formato": "pp"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.1659,
-  "margen": -6.04
+  "P_D": 0.173,
+  "margen": -5.64
  },
  "adicional": {
   "titulo": "Sesgo estatal de Florida",
   "P_D": null,
-  "margen": -5.23,
+  "margen": -5.11,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Las encuestas de FL han sobreestimado al demócrata: el modelo corrige -5.2 pp (promedio de encuestas -4.4). Polymarket por rangos: margen implícito -6.0 pp."
+  "nota": "Las encuestas de FL han sobreestimado al demócrata: el modelo corrige -5.1 pp (promedio de encuestas -4.6). Polymarket por rangos: margen implícito -5.6 pp."
  },
  "fuentes": [
   {

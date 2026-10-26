@@ -1,7 +1,7 @@
 {
   "version_modelo": "1.1.0",
-  "corte": "2026-10-25",
-  "dias_a_eleccion": 9,
+  "corte": "2026-10-26",
+  "dias_a_eleccion": 8,
   "estados_fuentes": {
     "historico_538": "en_vivo",
     "wikipedia": "en_vivo",
@@ -14,151 +14,151 @@
   },
   "avisos": [],
   "conteos_encuestas": {
-    "wikipedia": 33,
+    "wikipedia": 34,
     "base": 25,
     "270towin": 10
   },
   "ultima_encuesta": {
-    "encuestadora": "Univ. of North Florida",
-    "fin": "2026-10-21",
-    "dias_desde_fin": 4,
-    "dias_antes_eleccion": 13,
-    "origen": "270towin"
+    "encuestadora": "RedBox Research",
+    "fin": "2026-10-23",
+    "dias_desde_fin": 3,
+    "dias_antes_eleccion": 11,
+    "origen": "wikipedia"
   },
   "gobernador": {
     "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-    "margen": -8.132533209249875,
-    "sd": 4.992844195114246,
+    "margen": -8.11854227092258,
+    "sd": 4.785443215291009,
     "IC80": [
-      -14.400110392450701,
-      -1.861725411678047
+      -14.129213836672388,
+      -2.1027586107803735
     ],
     "IC95": [
-      -18.01550427076228,
-      1.756718420089373
+      -17.589093876774967,
+      1.3536216824607328
     ],
-    "pct_D": 44.88215718833399,
+    "pct_D": 44.4340696984767,
     "pct_D_IC80": [
-      41.53210789920143,
-      48.19347541867109
+      41.23912295765667,
+      47.610451870497386
     ],
-    "pct_R": 53.01469039758386,
+    "pct_R": 52.55261196939927,
     "pct_R_IC80": [
-      49.687822583805406,
-      56.32489565837754
+      49.35204991494087,
+      55.73715721984199
     ],
-    "pct_terceros": 2.103152414082149,
+    "pct_terceros": 3.0133183321240162,
     "pct_terceros_IC80": [
-      0.1,
-      4.4950675942848175
+      0.8345394131113247,
+      5.13907310944683
     ],
-    "P_D": 0.05071,
-    "P_recuento": 0.019535,
-    "P_D_mas_50": 0.0262,
-    "P_D_encuestas": 0.028,
-    "P_D_mezcla_objetivo": 0.050705660363733494,
-    "desplazamiento_mercados_pp": 1.5024615444300968,
+    "P_D": 0.04433,
+    "P_recuento": 0.01812,
+    "P_D_mas_50": 0.01479,
+    "P_D_encuestas": 0.022665,
+    "P_D_mezcla_objetivo": 0.04432855895346987,
+    "desplazamiento_mercados_pp": 1.5768975510236154,
     "peso_mercados_aplicado": 0.3,
-    "margen_encuestas": -4.379788213519505,
-    "k": 5,
+    "margen_encuestas": -4.564252841871322,
+    "k": 6,
     "ventana": {
       "desde": "2026-10-13",
       "ampliada": false,
       "regla": "normal"
     },
-    "dias_extra_encuestas": 4,
-    "terceros_media": 1.8961573033707864,
-    "terceros_reportados_encuestas": null,
-    "terceros_regimen": "ninguna encuesta de la ventana los reporta",
-    "sesgo_estatal_aplicado": 5.233963738332584,
-    "sesgo_estatal_bruto": 5.884955361722065,
-    "contraccion_sesgo": 0.889380363422334,
-    "P_D_con_mercados": 0.050705660363733494,
-    "margen_con_mercados": -8.132533209249875,
-    "n_encuestas": 17
+    "dias_extra_encuestas": 3,
+    "terceros_media": 2.9853962689185227,
+    "terceros_reportados_encuestas": 3.0,
+    "terceros_regimen": "reportado en encuestas",
+    "sesgo_estatal_aplicado": 5.110339569494922,
+    "sesgo_estatal_bruto": 5.702150247893171,
+    "contraccion_sesgo": 0.8962127175416131,
+    "P_D_con_mercados": 0.04432855895346987,
+    "margen_con_mercados": -8.11854227092258,
+    "n_encuestas": 18
   },
   "escenarios": [
     {
       "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-      "margen": -8.132533209249875,
-      "sd": 4.992844195114246,
+      "margen": -8.11854227092258,
+      "sd": 4.785443215291009,
       "IC80": [
-        -14.400110392450701,
-        -1.861725411678047
+        -14.129213836672388,
+        -2.1027586107803735
       ],
       "IC95": [
-        -18.01550427076228,
-        1.756718420089373
+        -17.589093876774967,
+        1.3536216824607328
       ],
-      "pct_D": 44.88215718833399,
+      "pct_D": 44.4340696984767,
       "pct_D_IC80": [
-        41.53210789920143,
-        48.19347541867109
+        41.23912295765667,
+        47.610451870497386
       ],
-      "pct_R": 53.01469039758386,
+      "pct_R": 52.55261196939927,
       "pct_R_IC80": [
-        49.687822583805406,
-        56.32489565837754
+        49.35204991494087,
+        55.73715721984199
       ],
-      "pct_terceros": 2.103152414082149,
+      "pct_terceros": 3.0133183321240162,
       "pct_terceros_IC80": [
-        0.1,
-        4.4950675942848175
+        0.8345394131113247,
+        5.13907310944683
       ],
-      "P_D": 0.05071,
-      "P_recuento": 0.019535,
-      "P_D_mas_50": 0.0262,
-      "P_D_encuestas": 0.028,
-      "P_D_mezcla_objetivo": 0.050705660363733494,
-      "desplazamiento_mercados_pp": 1.5024615444300968,
+      "P_D": 0.04433,
+      "P_recuento": 0.01812,
+      "P_D_mas_50": 0.01479,
+      "P_D_encuestas": 0.022665,
+      "P_D_mezcla_objetivo": 0.04432855895346987,
+      "desplazamiento_mercados_pp": 1.5768975510236154,
       "peso_mercados_aplicado": 0.3,
-      "margen_encuestas": -4.379788213519505,
-      "k": 5.0,
+      "margen_encuestas": -4.564252841871322,
+      "k": 6.0,
       "ventana": {
         "desde": "2026-10-13",
         "ampliada": false,
         "regla": "normal"
       },
-      "dias_extra_encuestas": 4.0,
-      "terceros_media": 1.8961573033707864,
-      "terceros_reportados_encuestas": null,
-      "terceros_regimen": "ninguna encuesta de la ventana los reporta",
-      "sesgo_estatal_aplicado": 5.233963738332584,
-      "sesgo_estatal_bruto": 5.884955361722065,
-      "contraccion_sesgo": 0.889380363422334,
-      "P_D_con_mercados": 0.050705660363733494,
-      "margen_con_mercados": -8.132533209249875
+      "dias_extra_encuestas": 3.0,
+      "terceros_media": 2.9853962689185227,
+      "terceros_reportados_encuestas": 3.0,
+      "terceros_regimen": "reportado en encuestas",
+      "sesgo_estatal_aplicado": 5.110339569494922,
+      "sesgo_estatal_bruto": 5.702150247893171,
+      "contraccion_sesgo": 0.8962127175416131,
+      "P_D_con_mercados": 0.04432855895346987,
+      "margen_con_mercados": -8.11854227092258
     },
     {
       "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-      "margen": -9.634994753679972,
-      "sd": 4.992844195114246,
+      "margen": -9.695439821946195,
+      "sd": 4.785443215291009,
       "IC80": [
-        -15.902571936880799,
-        -3.364186956108144
+        -15.706111387696003,
+        -3.679656161803989
       ],
       "IC95": [
-        -19.517965815192376,
-        0.2542568756592763
+        -19.165991427798584,
+        -0.22327586856288265
       ],
-      "pct_D": 44.130926416118946,
+      "pct_D": 43.645620922964895,
       "pct_D_IC80": [
-        40.78087712698638,
-        47.44224464645605
+        40.45067418214486,
+        46.82200309498558
       ],
-      "pct_R": 53.765921169798915,
+      "pct_R": 53.34106074491109,
       "pct_R_IC80": [
-        50.43905335602045,
-        57.076126430592595
+        50.140498690452674,
+        56.52560599535379
       ],
-      "pct_terceros": 2.103152414082149,
+      "pct_terceros": 3.0133183321240162,
       "pct_terceros_IC80": [
-        0.1,
-        4.4950675942848175
+        0.8345394131113247,
+        5.13907310944683
       ],
-      "P_D": 0.028,
-      "P_recuento": 0.011625,
-      "P_D_mas_50": 0.01419,
+      "P_D": 0.022665,
+      "P_recuento": 0.010405,
+      "P_D_mas_50": 0.00724,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -173,39 +173,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.050705660363733494,
-      "margen_con_mercados": -8.132533209249875
+      "P_D_con_mercados": 0.04432855895346987,
+      "margen_con_mercados": -8.11854227092258
     },
     {
       "escenario": "Sin sesgo estatal, sin mercados",
-      "margen": -4.366713615823438,
-      "sd": 5.002936663485394,
+      "margen": -4.552361693700437,
+      "sd": 4.794702424990669,
       "IC80": [
-        -10.633221207265624,
-        1.9101588590812801
+        -10.559950586351494,
+        1.465678823767926
       ],
       "IC95": [
-        -14.304956162284974,
-        5.510052005879914
+        -14.07635956545977,
+        4.910522927505553
       ],
-      "pct_D": 46.76131575737903,
+      "pct_D": 46.213855336453896,
       "pct_D_IC80": [
-        43.42504963284939,
-        50.08091486563178
+        43.019729497940475,
+        49.40971045728106
       ],
-      "pct_R": 51.128029373202466,
+      "pct_R": 50.76621703015434,
       "pct_R_IC80": [
-        47.78110794596234,
-        54.45740594512729
+        47.571483265610844,
+        53.95783908555481
       ],
-      "pct_terceros": 2.110654869418512,
+      "pct_terceros": 3.019927633391763,
       "pct_terceros_IC80": [
-        0.1,
-        4.502426578812012
+        0.8359650772207675,
+        5.145095535182788
       ],
-      "P_D": 0.18484,
-      "P_recuento": 0.053835,
-      "P_D_mas_50": 0.105405,
+      "P_D": 0.165195,
+      "P_recuento": 0.052145,
+      "P_D_mas_50": 0.065225,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -220,39 +220,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.18461299587050647,
-      "margen_con_mercados": -4.370833164246584
+      "P_D_con_mercados": 0.17221214146046301,
+      "margen_con_mercados": -4.425706811780899
     },
     {
       "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-      "margen": -4.370833164246584,
-      "sd": 5.002936663485394,
+      "margen": -4.425706811780899,
+      "sd": 4.794702424990669,
       "IC80": [
-        -10.63734075568877,
-        1.9060393106581346
+        -10.433295704431956,
+        1.5923337056874636
       ],
       "IC95": [
-        -14.30907571070812,
-        5.505932457456769
+        -13.949704683540231,
+        5.03717780942509
       ],
-      "pct_D": 46.759255983167456,
+      "pct_D": 46.27718277741367,
       "pct_D_IC80": [
-        43.42298985863782,
-        50.07885509142021
+        43.08305693890024,
+        49.473037898240825
       ],
-      "pct_R": 51.13008914741403,
+      "pct_R": 50.70288958919457,
       "pct_R_IC80": [
-        47.783167720173914,
-        54.459465719338866
+        47.50815582465108,
+        53.89451164459504
       ],
-      "pct_terceros": 2.110654869418512,
+      "pct_terceros": 3.019927633391763,
       "pct_terceros_IC80": [
-        0.1,
-        4.502426578812012
+        0.8359650772207675,
+        5.145095535182788
       ],
-      "P_D": 0.184615,
-      "P_recuento": 0.05376,
-      "P_D_mas_50": 0.105195,
+      "P_D": 0.172215,
+      "P_recuento": 0.053245,
+      "P_D_mas_50": 0.068325,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -267,39 +267,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.184615,
-      "margen_con_mercados": -4.370833164246584
+      "P_D_con_mercados": 0.172215,
+      "margen_con_mercados": -4.425706811780899
     },
     {
-      "escenario": "Sesgo estatal sin contraer (-5.88 pp)",
-      "margen": -10.258863312212355,
-      "sd": 5.011096455541261,
+      "escenario": "Sesgo estatal sin contraer (-5.70 pp)",
+      "margen": -10.260354081899825,
+      "sd": 4.80435863629738,
       "IC80": [
-        -16.554897817270312,
-        -3.9523325716152344
+        -16.300684527371846,
+        -4.211191282140881
       ],
       "IC95": [
-        -20.201103459146132,
-        -0.27953955249022855
+        -19.786191846935896,
+        -0.7004777267636576
       ],
-      "pct_D": 43.81953963756582,
+      "pct_D": 43.3635335629698,
       "pct_D_IC80": [
-        40.47667808305681,
-        47.15307618829338
+        40.15651508710754,
+        46.572064297153034
       ],
-      "pct_R": 54.07840294977818,
+      "pct_R": 53.623887644869626,
       "pct_R_IC80": [
-        50.72272382559675,
-        57.39994027791153
+        50.42709794442933,
+        56.815286861362566
       ],
-      "pct_terceros": 2.102057412655999,
+      "pct_terceros": 3.0125787921605784,
       "pct_terceros_IC80": [
-        0.1,
-        4.479938836691661
+        0.834859825239991,
+        5.126797285896906
       ],
-      "P_D": 0.022005,
-      "P_recuento": 0.00959,
-      "P_D_mas_50": 0.010895,
+      "P_D": 0.018135,
+      "P_recuento": 0.008485,
+      "P_D_mas_50": 0.00541,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -314,39 +314,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.04299849480724692,
-      "margen_con_mercados": -8.631917643333114
+      "P_D_con_mercados": 0.038048339700953754,
+      "margen_con_mercados": -8.576158826326932
     },
     {
-      "escenario": "Sesgo estatal a la mitad (-2.62 pp)",
-      "margen": -7.004910878045808,
-      "sd": 5.013353790658443,
+      "escenario": "Sesgo estatal a la mitad (-2.56 pp)",
+      "margen": -7.127083233220283,
+      "sd": 4.804652519947308,
       "IC80": [
-        -13.315781870593936,
-        -0.7150001994861943
+        -13.175992545976111,
+        -1.0943664425671598
       ],
       "IC95": [
-        -16.92541939551445,
-        2.915928710685939
+        -16.63729992707634,
+        2.3756994624449086
       ],
-      "pct_D": 45.444753759064795,
+      "pct_D": 44.92904041120179,
       "pct_D_IC80": [
-        42.09161414222125,
-        48.772699715229116
+        41.72465306116915,
+        48.12382246991413
       ],
-      "pct_R": 52.44966463711061,
+      "pct_R": 52.05612364442208,
       "pct_R_IC80": [
-        49.10906247543733,
-        55.782863115976205
+        48.860289143664716,
+        55.248748962323056
       ],
-      "pct_terceros": 2.105581603824605,
+      "pct_terceros": 3.014835944376125,
       "pct_terceros_IC80": [
-        0.1,
-        4.487443015954551
+        0.8291040643307976,
+        5.13262106146217
       ],
-      "P_D": 0.077655,
-      "P_recuento": 0.028,
-      "P_D_mas_50": 0.04151,
+      "P_D": 0.06656,
+      "P_recuento": 0.025715,
+      "P_D_mas_50": 0.02338,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -361,39 +361,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.10165898350281156,
-      "margen_con_mercados": -6.240344755798554
+      "P_D_con_mercados": 0.09241308633864778,
+      "margen_con_mercados": -6.250335283396979
     },
     {
       "escenario": "Distribución normal",
-      "margen": -9.60000220021148,
-      "sd": 4.996322005193071,
+      "margen": -9.660860092165185,
+      "sd": 4.789451965337448,
       "IC80": [
-        -16.015056072529063,
-        -3.201296278455031
+        -15.810416986826683,
+        -3.5273311247080468
       ],
       "IC95": [
-        -19.41252729814844,
-        0.18913337752258394
+        -19.067137199330887,
+        -0.27651850093925273
       ],
-      "pct_D": 44.146741808966844,
+      "pct_D": 43.66140137855997,
       "pct_D_IC80": [
-        40.75354726176773,
-        47.523732313928264
+        40.418099250947265,
+        46.892046471493835
       ],
-      "pct_R": 53.746744009178336,
+      "pct_R": 53.32226147072517,
       "pct_R_IC80": [
-        50.3567624095487,
-        57.12032608183768
+        50.081117252393035,
+        56.55901034562886
       ],
-      "pct_terceros": 2.1065141818548176,
+      "pct_terceros": 3.0163371507148664,
       "pct_terceros_IC80": [
-        0.1,
-        4.500443552626573
+        0.8359728342767423,
+        5.143228742146838
       ],
-      "P_D": 0.027185,
-      "P_recuento": 0.01292,
-      "P_D_mas_50": 0.012455,
+      "P_D": 0.02152,
+      "P_recuento": 0.011265,
+      "P_D_mas_50": 0.00571,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -408,39 +408,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.049691845521243984,
-      "margen_con_mercados": -8.22197832132246
+      "P_D_con_mercados": 0.0427828871700586,
+      "margen_con_mercados": -8.23367980538824
     },
     {
       "escenario": "Sin terceros",
-      "margen": -9.601260228534324,
-      "sd": 4.995350992042145,
+      "margen": -9.660587232528746,
+      "sd": 4.786643371638843,
       "IC80": [
-        -15.857193416850958,
-        -3.3392946680259037
+        -15.659467246459391,
+        -3.6550412665175838
       ],
       "IC95": [
-        -19.479872909271077,
-        0.2602113166548132
+        -19.12530386922148,
+        -0.21478994977210197
       ],
-      "pct_D": 45.14936988573284,
+      "pct_D": 45.11970638373563,
       "pct_D_IC80": [
-        42.02140329157452,
-        48.28035266598705
+        42.12026637677031,
+        48.12247936674122
       ],
-      "pct_R": 54.75063011426716,
+      "pct_R": 54.78029361626438,
       "pct_R_IC80": [
-        51.61964733401295,
-        57.87859670842548
+        51.777520633258796,
+        57.779733623229696
       ],
       "pct_terceros": 0.1,
       "pct_terceros_IC80": [
         0.1,
         0.1
       ],
-      "P_D": 0.02778,
-      "P_recuento": 0.011775,
-      "P_D_mas_50": 0.02659,
+      "P_D": 0.022665,
+      "P_recuento": 0.00992,
+      "P_D_mas_50": 0.02184,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -455,39 +455,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.050432945867588536,
-      "margen_con_mercados": -8.137938546366783
+      "P_D_con_mercados": 0.04432855895346987,
+      "margen_con_mercados": -8.11318514371749
     },
     {
       "escenario": "Sin deriva por encuestas viejas",
-      "margen": -9.593326941838722,
-      "sd": 4.98581870798724,
+      "margen": -9.656773724361042,
+      "sd": 4.78214175231862,
       "IC80": [
-        -15.849755452681848,
-        -3.311822860726854
+        -15.657376071709699,
+        -3.627871551181367
       ],
       "IC95": [
-        -19.456795540148658,
-        0.28938590909076833
+        -19.112966168883094,
+        -0.1759271183640221
       ],
-      "pct_D": 44.15002037857683,
+      "pct_D": 43.66320776516445,
       "pct_D_IC80": [
-        40.82378434643454,
-        47.47481920259867
+        40.48668551623243,
+        46.852857347419146
       ],
-      "pct_R": 53.74334732041555,
+      "pct_R": 53.319981489525496,
       "pct_R_IC80": [
-        50.39429284087481,
-        57.04837996286338
+        50.11598643933113,
+        56.50388942438698
       ],
-      "pct_terceros": 2.1066323010076107,
+      "pct_terceros": 3.0168107453100492,
       "pct_terceros_IC80": [
-        0.1,
-        4.493048237158193
+        0.8408937013747705,
+        5.137504302225398
       ],
-      "P_D": 0.028135,
-      "P_recuento": 0.01166,
-      "P_D_mas_50": 0.014325,
+      "P_D": 0.02315,
+      "P_recuento": 0.010165,
+      "P_D_mas_50": 0.007625,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -502,39 +502,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.05087266408648155,
-      "margen_con_mercados": -8.143728048333749
+      "P_D_con_mercados": 0.044975609623197826,
+      "margen_con_mercados": -8.105248862712703
     },
     {
-      "escenario": "Deriva al doble (0.50 pp/día, 4 días)",
-      "margen": -9.60088497141623,
-      "sd": 5.05238156288493,
+      "escenario": "Deriva al doble (0.50 pp/día, 3 días)",
+      "margen": -9.661751002561708,
+      "sd": 4.8336682092844345,
       "IC80": [
-        -15.965698588653192,
-        -3.257652081726163
+        -15.753328586285177,
+        -3.5917769489115705
       ],
       "IC95": [
-        -19.62075887173911,
-        0.35203111123213987
+        -19.240890413548925,
+        -0.13477382977381078
       ],
-      "pct_D": 44.14380232426202,
+      "pct_D": 43.65840339876693,
       "pct_D_IC80": [
-        40.763014840141125,
-        47.50206524494453
+        40.42622535117761,
+        46.86705321581114
       ],
-      "pct_R": 53.74468729567826,
+      "pct_R": 53.32015440132864,
       "pct_R_IC80": [
-        50.38765607721442,
-        57.10170730733454
+        50.1013570585636,
+        56.52634810587853
       ],
-      "pct_terceros": 2.1115103800597264,
+      "pct_terceros": 3.0214421999044374,
       "pct_terceros_IC80": [
-        0.1,
-        4.5014642522838955
+        0.84018850442538,
+        5.144340750802659
       ],
-      "P_D": 0.029095,
-      "P_recuento": 0.01216,
-      "P_D_mas_50": 0.0147,
+      "P_D": 0.023385,
+      "P_recuento": 0.0104,
+      "P_D_mas_50": 0.00761,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -549,39 +549,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.0520528572974557,
-      "margen_con_mercados": -8.114770885520665
+      "P_D_con_mercados": 0.045287546375143546,
+      "margen_con_mercados": -8.125775910793712
     },
     {
-      "escenario": "Regla literal V11 (última encuesta de cada firma) (5 encuestadoras)",
-      "margen": -9.60928316101789,
-      "sd": 5.0056310264087776,
+      "escenario": "Regla literal V11 (última encuesta de cada firma) (6 encuestadoras)",
+      "margen": -9.66931967208286,
+      "sd": 4.797207443046572,
       "IC80": [
-        -15.886666473921895,
-        -3.311694693691981
+        -15.690522190554283,
+        -3.630454262199285
       ],
       "IC95": [
-        -19.483540056224726,
-        0.3166476609209396
+        -19.1258651135968,
+        -0.15520417604833386
       ],
-      "pct_D": 44.13880242267231,
+      "pct_D": 43.65402169005784,
       "pct_D_IC80": [
-        40.787651857696126,
-        47.474300983656065
+        40.448284120683496,
+        46.852675154819316
       ],
-      "pct_R": 53.74808558369021,
+      "pct_R": 53.3233413621407,
       "pct_R_IC80": [
-        50.40122549822662,
-        57.07435027731398
+        50.13296228418642,
+        56.51353752339921
       ],
-      "pct_terceros": 2.1131119936374807,
+      "pct_terceros": 3.0226369478014634,
       "pct_terceros_IC80": [
-        0.1,
-        4.517907942796202
+        0.8448335013471419,
+        5.158060977807739
       ],
-      "P_D": 0.02843,
-      "P_recuento": 0.01163,
-      "P_D_mas_50": 0.01434,
+      "P_D": 0.023245,
+      "P_recuento": 0.010165,
+      "P_D_mas_50": 0.007145,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -596,39 +596,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.05123669734945427,
-      "margen_con_mercados": -8.126397103848646
+      "P_D_con_mercados": 0.04510183475804646,
+      "margen_con_mercados": -8.100474966140201
     },
     {
-      "escenario": "Ventana 45 días (12 encuestadoras)",
-      "margen": -9.283448863714218,
-      "sd": 4.2479350220482734,
+      "escenario": "Ventana 45 días (13 encuestadoras)",
+      "margen": -9.348264169120556,
+      "sd": 4.195715170216454,
       "IC80": [
-        -14.612578956817574,
-        -3.932337245204685
+        -14.616711895208246,
+        -4.061207487408312
       ],
       "IC95": [
-        -17.698215029953648,
-        -0.8871247328228925
+        -17.659908565471458,
+        -1.0581213584189317
       ],
-      "pct_D": 44.083898151211294,
+      "pct_D": 43.94803026713032,
       "pct_D_IC80": [
-        41.216313196152264,
-        46.94404380843675
+        41.120093629870794,
+        46.78427979907925
       ],
-      "pct_R": 53.36734701492551,
+      "pct_R": 53.29629443625087,
       "pct_R_IC80": [
-        50.50626957014033,
-        56.222589482105946
+        50.45761473168404,
+        56.13569788580621
       ],
-      "pct_terceros": 2.5487548338631987,
+      "pct_terceros": 2.755675296618814,
       "pct_terceros_IC80": [
-        0.32047023960819293,
-        4.65322212944366
+        0.5551376404086747,
+        4.8660205598439985
       ],
-      "P_D": 0.01597,
-      "P_recuento": 0.008355,
-      "P_D_mas_50": 0.005475,
+      "P_D": 0.01444,
+      "P_recuento": 0.007805,
+      "P_D_mas_50": 0.004575,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -643,39 +643,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.03451166793378543,
-      "margen_con_mercados": -7.721090317974223
+      "P_D_con_mercados": 0.0325393310741498,
+      "margen_con_mercados": -7.741607543369569
     },
     {
-      "escenario": "Ventana 60 días (12 encuestadoras)",
-      "margen": -9.43615206138193,
-      "sd": 4.257550220486268,
+      "escenario": "Ventana 60 días (13 encuestadoras)",
+      "margen": -9.4691834772687,
+      "sd": 4.204681959286728,
       "IC80": [
-        -14.795139631594894,
-        -4.0799462294438955
+        -14.765197872101567,
+        -4.176287488651744
       ],
       "IC95": [
-        -17.87053010128587,
-        -1.0165984408316717
+        -17.79355924001986,
+        -1.1544031117310163
       ],
-      "pct_D": 44.02553058453848,
+      "pct_D": 43.891274264701025,
       "pct_D_IC80": [
-        41.164084439072354,
-        46.881538599440525
+        41.04363151539413,
+        46.73837919509732
       ],
-      "pct_R": 53.461682645920405,
+      "pct_R": 53.36045774196973,
       "pct_R_IC80": [
-        50.595630977953626,
-        56.3204881523363
+        50.521396265483624,
+        56.19047764047001
       ],
-      "pct_terceros": 2.5127867695411163,
+      "pct_terceros": 2.7482679933292533,
       "pct_terceros_IC80": [
-        0.2884267275995821,
-        4.6002185365886925
+        0.5539419277831678,
+        4.844112873406874
       ],
-      "P_D": 0.014925,
-      "P_recuento": 0.007665,
-      "P_D_mas_50": 0.00539,
+      "P_D": 0.013745,
+      "P_recuento": 0.007315,
+      "P_D_mas_50": 0.004385,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -690,39 +690,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.03294386352364912,
-      "margen_con_mercados": -7.852429027855367
+      "P_D_con_mercados": 0.03145467715103006,
+      "margen_con_mercados": -7.85113341087508
     },
     {
       "escenario": "Sin efectos de casa",
-      "margen": -9.862812411911277,
-      "sd": 4.99293269990211,
+      "margen": -9.848170536775422,
+      "sd": 4.7854509166735895,
       "IC80": [
-        -16.128521005677374,
-        -3.578154861596294
+        -15.855188952354757,
+        -3.8208245477252567
       ],
       "IC95": [
-        -19.75872027082243,
-        0.03084640410522455
+        -19.33666095347532,
+        -0.3735076506768674
       ],
-      "pct_D": 44.01652672993783,
+      "pct_D": 43.56892279485794,
       "pct_D_IC80": [
-        40.67612498537052,
-        47.339567166351365
+        40.3746794980624,
+        46.761928207788145
       ],
-      "pct_R": 53.87933914184911,
+      "pct_R": 53.41709333163336,
       "pct_R_IC80": [
-        50.54502718015465,
-        57.196957595739164
+        50.21938649132589,
+        56.595171545313576
       ],
-      "pct_terceros": 2.104134128213067,
+      "pct_terceros": 3.0139838735086952,
       "pct_terceros_IC80": [
-        0.1,
-        4.496255643706924
+        0.8291213377432975,
+        5.140526592219192
       ],
-      "P_D": 0.02536,
-      "P_recuento": 0.010525,
-      "P_D_mas_50": 0.01242,
+      "P_D": 0.021165,
+      "P_recuento": 0.00958,
+      "P_D_mas_50": 0.00661,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -737,39 +737,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.04738514121449958,
-      "margen_con_mercados": -8.304080260424318
+      "P_D_con_mercados": 0.042298291475599575,
+      "margen_con_mercados": -8.230399700579335
     },
     {
       "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-      "margen": -9.537750358235455,
-      "sd": 4.98900412093898,
+      "margen": -9.618154124876677,
+      "sd": 4.782752481684453,
       "IC80": [
-        -15.796754828478601,
-        -3.2534849770291503
+        -15.619685335878632,
+        -3.588739540524863
       ],
       "IC95": [
-        -19.42107867916045,
-        0.3238741077110133
+        -19.089703500332178,
+        -0.1673851535179739
       ],
-      "pct_D": 44.178811114258124,
+      "pct_D": 43.68364112740081,
       "pct_D_IC80": [
-        40.84838756043553,
-        47.49913907630426
+        40.50386627096271,
+        46.87115010674015
       ],
-      "pct_R": 53.71656147249358,
+      "pct_R": 53.30179525227748,
       "pct_R_IC80": [
-        50.38005044829841,
-        57.030469047732595
+        50.11198100716135,
+        56.48361657311224
       ],
-      "pct_terceros": 2.104627413248301,
+      "pct_terceros": 3.01456362032171,
       "pct_terceros_IC80": [
-        0.1,
-        4.501596970468668
+        0.8364539880992742,
+        5.144626748788312
       ],
-      "P_D": 0.028585,
-      "P_recuento": 0.01212,
-      "P_D_mas_50": 0.014605,
+      "P_D": 0.023205,
+      "P_recuento": 0.010295,
+      "P_D_mas_50": 0.007475,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -784,39 +784,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.051427478233863066,
-      "margen_con_mercados": -8.089940296990198
+      "P_D_con_mercados": 0.04504870775484038,
+      "margen_con_mercados": -8.072409676459959
     },
     {
       "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-      "margen": -9.69189301348044,
-      "sd": 5.008241610734735,
+      "margen": -9.731047578028281,
+      "sd": 4.800589337120075,
       "IC80": [
-        -15.9780066377171,
-        -3.4190959705569672
+        -15.761950730955622,
+        -3.714173329590015
       ],
       "IC95": [
-        -19.65138244309615,
-        0.20387451212385047
+        -19.27666446406302,
+        -0.24230003783959272
       ],
-      "pct_D": 44.10253479729585,
+      "pct_D": 43.628491519643426,
       "pct_D_IC80": [
-        40.76008156930645,
-        47.42122478780001
+        40.43743207459436,
+        46.81456110405875
       ],
-      "pct_R": 53.79442781077629,
+      "pct_R": 53.35953909767171,
       "pct_R_IC80": [
-        50.45552690682272,
-        57.126292364801536
+        50.162928515601884,
+        56.560205352575984
       ],
-      "pct_terceros": 2.103037391927855,
+      "pct_terceros": 3.01196938268487,
       "pct_terceros_IC80": [
-        0.1,
-        4.488469236771889
+        0.8227070455171079,
+        5.133432853558885
       ],
-      "P_D": 0.027225,
-      "P_recuento": 0.0113,
-      "P_D_mas_50": 0.01338,
+      "P_D": 0.022375,
+      "P_recuento": 0.009855,
+      "P_D_mas_50": 0.007435,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -831,39 +831,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.0497418310797431,
-      "margen_con_mercados": -8.17183642887804
+      "P_D_con_mercados": 0.043939519521159785,
+      "margen_con_mercados": -8.145597448192868
     },
     {
       "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-      "margen": -9.314966765288185,
-      "sd": 5.001459330874676,
+      "margen": -9.468063777177194,
+      "sd": 4.793340492236467,
       "IC80": [
-        -15.598519139897212,
-        -3.023032155117299
+        -15.495718587487092,
+        -3.432748664707638
       ],
       "IC95": [
-        -19.206489180904335,
-        0.5550672045353435
+        -18.945889981882157,
+        -0.01640664501121268
       ],
-      "pct_D": 44.29043279137932,
+      "pct_D": 43.75869972281745,
       "pct_D_IC80": [
-        40.95135984329058,
-        47.60347660596329
+        40.552745577433654,
+        46.95182509779971
       ],
-      "pct_R": 53.6053995566675,
+      "pct_R": 53.22676349999464,
       "pct_R_IC80": [
-        50.258368194980896,
-        56.92191620420043
+        50.040219089562065,
+        56.408556819903104
       ],
-      "pct_terceros": 2.1041676519531873,
+      "pct_terceros": 3.014536777187922,
       "pct_terceros_IC80": [
-        0.1,
-        4.492611502936298
+        0.8351261493903246,
+        5.137496403995786
       ],
-      "P_D": 0.031475,
-      "P_recuento": 0.012925,
-      "P_D_mas_50": 0.016055,
+      "P_D": 0.02482,
+      "P_recuento": 0.01088,
+      "P_D_mas_50": 0.00802,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -878,39 +878,39 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.05492571200829356,
-      "margen_con_mercados": -7.931934591771744
+      "P_D_con_mercados": 0.047170812984852775,
+      "margen_con_mercados": -7.967027336198345
     },
     {
       "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-      "margen": -9.613859357226788,
-      "sd": 5.014421279277939,
+      "margen": -9.676034985767282,
+      "sd": 4.805359838017192,
       "IC80": [
-        -15.934641560382143,
-        -3.3186861184263825
+        -15.73556646758759,
+        -3.6375205095916225
       ],
       "IC95": [
-        -19.540035276408627,
-        0.29881371431692544
+        -19.1912000041273,
+        -0.17282341257505543
       ],
-      "pct_D": 44.14293282060815,
+      "pct_D": 43.656805015434884,
       "pct_D_IC80": [
-        40.777967057159074,
-        47.4733725665207
+        40.45566809010734,
+        46.84909695452461
       ],
-      "pct_R": 53.75679217783494,
+      "pct_R": 53.33284000120216,
       "pct_R_IC80": [
-        50.40382405864162,
-        57.09789098733267
+        50.127162408535455,
+        56.53670384067323
       ],
-      "pct_terceros": 2.100275001556908,
+      "pct_terceros": 3.0103549833629506,
       "pct_terceros_IC80": [
-        0.1,
-        4.491633814575572
+        0.8305121997204286,
+        5.1359862591543655
       ],
-      "P_D": 0.02836,
-      "P_recuento": 0.011765,
-      "P_D_mas_50": 0.01432,
+      "P_D": 0.023235,
+      "P_recuento": 0.010785,
+      "P_D_mas_50": 0.007165,
       "P_D_encuestas": null,
       "P_D_mezcla_objetivo": null,
       "desplazamiento_mercados_pp": null,
@@ -925,12 +925,12 @@
       "sesgo_estatal_aplicado": null,
       "sesgo_estatal_bruto": null,
       "contraccion_sesgo": null,
-      "P_D_con_mercados": 0.05115042779442613,
-      "margen_con_mercados": -8.130494803587867
+      "P_D_con_mercados": 0.04508855578760841,
+      "margen_con_mercados": -8.112737484645542
     },
     {
       "escenario": "Solo Kalshi (probabilidad)",
-      "margen": -4.386758550928265,
+      "margen": -4.033683798549249,
       "sd": null,
       "IC80": null,
       "IC95": null,
@@ -940,7 +940,7 @@
       "pct_R_IC80": null,
       "pct_terceros": null,
       "pct_terceros_IC80": null,
-      "P_D": 0.18316831683168316,
+      "P_D": 0.19306930693069307,
       "P_recuento": null,
       "P_D_mas_50": null,
       "P_D_encuestas": null,
@@ -962,7 +962,7 @@
     },
     {
       "escenario": "Solo Polymarket (probabilidad)",
-      "margen": -4.352621681938946,
+      "margen": -4.158825711965133,
       "sd": null,
       "IC80": null,
       "IC95": null,
@@ -972,7 +972,7 @@
       "pct_R_IC80": null,
       "pct_terceros": null,
       "pct_terceros_IC80": null,
-      "P_D": 0.185,
+      "P_D": 0.185929648241206,
       "P_recuento": null,
       "P_D_mas_50": null,
       "P_D_encuestas": null,
@@ -994,8 +994,8 @@
     },
     {
       "escenario": "Polymarket por rangos de margen",
-      "margen": -6.035552193645991,
-      "sd": 7.23314092006473,
+      "margen": -5.638483965014577,
+      "sd": 7.5927543356377845,
       "IC80": null,
       "IC95": null,
       "pct_D": null,
@@ -1004,7 +1004,7 @@
       "pct_R_IC80": null,
       "pct_terceros": null,
       "pct_terceros_IC80": null,
-      "P_D": 0.1659102370146243,
+      "P_D": 0.17298347910592807,
       "P_recuento": null,
       "P_D_mas_50": null,
       "P_D_encuestas": null,
@@ -1027,70 +1027,70 @@
   ],
   "mercados": {
     "kalshi": {
-      "p_d": 0.185,
-      "p_r": 0.825,
-      "p_D": 0.18316831683168316,
+      "p_d": 0.195,
+      "p_r": 0.815,
+      "p_D": 0.19306930693069307,
       "overround": 0.010000000000000009,
-      "fecha": "2026-10-25",
+      "fecha": "2026-10-26",
       "antiguedad_dias": 0,
       "estado": "en_vivo",
       "usable": true
     },
     "polymarket": {
       "p_d": 0.185,
-      "p_r": 0.815,
-      "p_D": 0.185,
-      "overround": 0.0,
-      "fecha": "2026-10-25",
+      "p_r": 0.81,
+      "p_D": 0.185929648241206,
+      "overround": -0.004999999999999893,
+      "fecha": "2026-10-26",
       "antiguedad_dias": 0,
       "estado": "en_vivo",
       "usable": true
     },
-    "promedio_D": 0.18408415841584158,
-    "dif_pp": -0.18316831683168333,
+    "promedio_D": 0.18949947758594954,
+    "dif_pp": 0.7139658689487072,
     "rangos": {
-      "margen_media": -6.035552193645991,
-      "margen_sd": 7.23314092006473,
-      "P_D": 0.1659102370146243,
+      "margen_media": -5.638483965014577,
+      "margen_sd": 7.5927543356377845,
+      "P_D": 0.17298347910592807,
       "estado": "en_vivo"
     }
   },
   "anticipado": {
-    "fecha": "2026-10-25",
-    "emitidos": 2780853,
-    "por_correo": 1399200,
-    "en_persona": 1381653,
-    "correo_solicitado": 1099503,
-    "pct_D": 39.80044971812606,
-    "pct_R": 39.56818285612364,
-    "pct_NPA": 18.198049303576997,
-    "pct_Otros": 2.4333181221733042,
-    "margen_DR_pp": 0.23226686200241436,
-    "margen_DR_correo_pp": 7.23156089193825,
-    "margen_DR_persona_pp": -6.855918237068208,
-    "miami_dade_pct": 9.45875240438815,
-    "miami_dade_margen_pp": 3.648957929393158,
+    "fecha": "2026-10-26",
+    "emitidos": 2928377,
+    "por_correo": 1434160,
+    "en_persona": 1494217,
+    "correo_solicitado": 1074453,
+    "pct_D": 39.51441361546003,
+    "pct_R": 39.86805660609956,
+    "pct_NPA": 18.17976305646438,
+    "pct_Otros": 2.4377667219760295,
+    "margen_DR_pp": -0.3536429906395249,
+    "margen_DR_correo_pp": 7.2462626206281024,
+    "margen_DR_persona_pp": -7.648085920585832,
+    "miami_dade_pct": 9.272200949536211,
+    "miami_dade_margen_pp": 3.4379891354387255,
     "disponible": true,
     "estado": "en_vivo",
     "uso": "diagnóstico; no entra al pronóstico",
     "fuente": "civicAPI (civicapi.org), División de Elecciones de Florida"
   },
   "calibracion": {
-    "horizonte_dias": 9,
+    "horizonte_dias": 8,
     "tau": 3.6,
     "s": 7.7,
-    "nu": 19.5,
-    "n_contiendas": 945,
-    "terceros_a": 0.798018297433004,
-    "terceros_c": 0.7292701908435354,
-    "terceros_sd": 1.689437928899142,
-    "terceros_sin_reporte": 1.8961573033707864,
-    "terceros_sin_reporte_sd": 2.0282467737432537,
-    "n_con_reporte": 500,
-    "n_sin_reporte": 445,
-    "sesgo_bruto": 5.884955361722065,
-    "sesgo_contraido": 5.233963738332584,
-    "contraccion": 0.889380363422334,
+    "nu": 20.0,
+    "n_contiendas": 957,
+    "terceros_a": 0.7869767531687077,
+    "terceros_c": 0.7328065052499382,
+    "terceros_sd": 1.6807767927806474,
+    "terceros_sin_reporte": 1.8937723214285715,
+    "terceros_sin_reporte_sd": 2.0210350886311366,
+    "n_con_reporte": 509,
+    "n_sin_reporte": 448,
+    "sesgo_bruto": 5.702150247893171,
+    "sesgo_contraido": 5.110339569494922,
+    "contraccion": 0.8962127175416131,
     "efectos_partidistas": {
       "D": 2.5893288939805412,
       "R": -2.659594818194921
@@ -1100,10 +1100,10 @@
         "race": "1998_Gov-G_FL",
         "year": 1998,
         "location": "FL",
-        "k": 5,
+        "k": 6,
         "otros_enc": null,
         "otros_real": 0.01,
-        "e": -1.591
+        "e": -0.965
       },
       {
         "race": "1998_Sen-G_FL",
@@ -1119,54 +1119,54 @@
         "year": 2000,
         "location": "FL",
         "k": 7,
-        "otros_enc": 2.803,
+        "otros_enc": 3.048,
         "otros_real": 2.31,
-        "e": 1.194
+        "e": 1.274
       },
       {
         "race": "2000_Sen-G_FL",
         "year": 2000,
         "location": "FL",
         "k": 6,
-        "otros_enc": 5.341,
+        "otros_enc": 5.596,
         "otros_real": 2.77,
-        "e": 1.535
+        "e": 1.065
       },
       {
         "race": "2002_Gov-G_FL",
         "year": 2002,
         "location": "FL",
-        "k": 6,
+        "k": 7,
         "otros_enc": null,
         "otros_real": 0.83,
-        "e": 7.406
+        "e": 7.39
       },
       {
         "race": "2004_Pres-G_FL",
         "year": 2004,
         "location": "FL",
-        "k": 13,
-        "otros_enc": 1.241,
+        "k": 14,
+        "otros_enc": 1.336,
         "otros_real": 0.81,
-        "e": 3.665
+        "e": 3.908
       },
       {
         "race": "2004_Sen-G_FL",
         "year": 2004,
         "location": "FL",
-        "k": 8,
+        "k": 10,
         "otros_enc": 2.0,
         "otros_real": 2.25,
-        "e": 1.677
+        "e": 2.395
       },
       {
         "race": "2006_Gov-G_FL",
         "year": 2006,
         "location": "FL",
         "k": 8,
-        "otros_enc": 1.141,
+        "otros_enc": 0.876,
         "otros_real": 2.71,
-        "e": -0.246
+        "e": 0.102
       },
       {
         "race": "2006_Sen-G_FL",
@@ -1175,34 +1175,34 @@
         "k": 5,
         "otros_enc": null,
         "otros_real": 1.6,
-        "e": 2.05
+        "e": 2.569
       },
       {
         "race": "2008_Pres-G_FL",
         "year": 2008,
         "location": "FL",
-        "k": 17,
+        "k": 18,
         "otros_enc": 1.496,
         "otros_real": 0.75,
-        "e": -0.055
+        "e": 0.068
       },
       {
         "race": "2010_Gov-G_FL",
         "year": 2010,
         "location": "FL",
-        "k": 8,
+        "k": 9,
         "otros_enc": 2.0,
         "otros_real": 3.41,
-        "e": 2.116
+        "e": 1.065
       },
       {
         "race": "2012_Pres-G_FL",
         "year": 2012,
         "location": "FL",
         "k": 13,
-        "otros_enc": 1.376,
+        "otros_enc": 1.677,
         "otros_real": 0.86,
-        "e": -1.263
+        "e": -1.406
       },
       {
         "race": "2012_Sen-G_FL",
@@ -1211,7 +1211,7 @@
         "k": 9,
         "otros_enc": null,
         "otros_real": 2.54,
-        "e": -4.837
+        "e": -5.076
       },
       {
         "race": "2014_Gov-G_FL",
@@ -1227,9 +1227,9 @@
         "year": 2016,
         "location": "FL",
         "k": 23,
-        "otros_enc": 3.398,
+        "otros_enc": 3.439,
         "otros_real": 3.16,
-        "e": 3.064
+        "e": 3.125
       },
       {
         "race": "2016_Sen-G_FL",
@@ -1238,70 +1238,70 @@
         "k": 22,
         "otros_enc": null,
         "otros_real": 3.71,
-        "e": 2.954
+        "e": 2.95
       },
       {
         "race": "2018_Gov-G_FL",
         "year": 2018,
         "location": "FL",
-        "k": 19,
+        "k": 21,
         "otros_enc": 1.829,
         "otros_real": 1.22,
-        "e": 2.971
+        "e": 2.472
       },
       {
         "race": "2018_Sen-G_FL",
         "year": 2018,
         "location": "FL",
-        "k": 18,
+        "k": 20,
         "otros_enc": null,
         "otros_real": 0.02,
-        "e": 1.235
+        "e": 1.12
       },
       {
         "race": "2020_Pres-G_FL",
         "year": 2020,
         "location": "FL",
-        "k": 18,
-        "otros_enc": 1.336,
+        "k": 20,
+        "otros_enc": 1.454,
         "otros_real": 0.92,
-        "e": 4.257
+        "e": 4.603
       },
       {
         "race": "2022_Gov-G_FL",
         "year": 2022,
         "location": "FL",
-        "k": 6,
+        "k": 9,
         "otros_enc": 1.0,
         "otros_real": 0.66,
-        "e": 12.426
+        "e": 10.358
       },
       {
         "race": "2022_Sen-G_FL",
         "year": 2022,
         "location": "FL",
-        "k": 4,
+        "k": 7,
         "otros_enc": 1.0,
         "otros_real": 1.05,
-        "e": 8.261
+        "e": 8.699
       },
       {
         "race": "2024_Pres-G_FL",
         "year": 2024,
         "location": "FL",
-        "k": 12,
-        "otros_enc": 3.759,
+        "k": 13,
+        "otros_enc": 4.02,
         "otros_real": 0.92,
-        "e": 6.532
+        "e": 6.652
       },
       {
         "race": "2024_Sen-G_FL",
         "year": 2024,
         "location": "FL",
-        "k": 9,
-        "otros_enc": 2.73,
+        "k": 10,
+        "otros_enc": 2.79,
         "otros_real": 1.64,
-        "e": 8.403
+        "e": 8.446
       }
     ],
     "estado_fuente": "en_vivo"
