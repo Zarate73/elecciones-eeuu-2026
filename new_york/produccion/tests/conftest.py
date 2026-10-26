@@ -55,6 +55,8 @@ class RedSimulada:
         self._revisar(url, offline)
         if 'githubusercontent' in url:
             return (RAIZ / 'data' / 'fte_raw_polls_2023.csv').read_text(encoding='utf-8')
+        if 'vote.nyc' in url:
+            return (FIX / 'nyc_early_voting_checkins.html').read_text(encoding='utf-8')
         if '270towin' in url:
             return (FIX / 't270_ny_gob.html').read_text(encoding='utf-8')
         raise AssertionError(f'URL no esperada: {url}')
@@ -67,6 +69,7 @@ def red_simulada(monkeypatch):
         monkeypatch.setattr(f'{mod}.get_json', r.get_json)
     monkeypatch.setattr('ny_pronostico.encuestas.get_text', r.get_text)
     monkeypatch.setattr('ny_pronostico.historico.get_text', r.get_text)
+    monkeypatch.setattr('ny_pronostico.anticipado_nyc.get_text', r.get_text)
     monkeypatch.setattr('time.sleep', lambda s: None)
     monkeypatch.setattr('ny_pronostico.mercados.datetime', RelojFijo)
     return r

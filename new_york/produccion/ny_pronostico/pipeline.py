@@ -6,6 +6,7 @@ import logging
 import numpy as np
 
 from .anticipado import obtener_anticipado
+from .anticipado_nyc import obtener_nyc
 from .encuestas import obtener_encuestas
 from .historico import calibrar
 from .mercados import obtener_mercados
@@ -64,6 +65,10 @@ def ejecutar(cfg, escribir_salidas: bool = True) -> dict:
         # Nueva York: civicAPI no publica voto anticipado de NY (404). Es diagnóstico con peso 0: se avisa, pero no cuenta
         # como fuente degradada ni hace fallar --estricto
         avisos.append(f"civicAPI sin datos de {cfg.eleccion.abrev} (diagnóstico opcional): {ant['estado'][:80]}")
+        # en su lugar: check-ins de voto anticipado de la Junta Electoral de NYC (solo la ciudad), también diagnóstico
+        if cfg.fuentes.get('nyc_voto_anticipado_url'):
+            ant = obtener_nyc(cfg)
+            estados['nyc_boe'] = ant['estado']
     else:
         estados['civicapi'] = ant['estado']
     degradadas = [k for k, v in estados.items() if not vivo(v)]

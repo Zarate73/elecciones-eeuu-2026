@@ -16,6 +16,7 @@ Paquete de Python del modelo de Nueva York: la gobernadora Kathy Hochul (D, tamb
 - **Mercados:** Kalshi `GOVPARTYNY-26` y Polymarket `new-york-governor-winner-2026`, promediados, en mezcla logit con peso 0.30 (D / (D + R)).
 - **Recuento:** automático si el margen es ≤ 0.5 pp (o ≤ 20 votos): se reporta P(|margen| ≤ 0.5).
 - **Voto anticipado:** civicAPI no publica Nueva York (404). Se consulta en vivo por si empieza a hacerlo, pero es diagnóstico opcional: no cuenta como fuente degradada.
+  Mientras tanto se leen los check-ins de la Junta Electoral de NYC (vote.nyc): acumulado por condado y por día, solo la ciudad, solo en persona y sin partido. Es diagnóstico (no entra al pronóstico); si la página no responde se usa la caché y la fuente `nyc_boe` cuenta como degradada. Salidas: `salidas/ultimo/voto_anticipado_condados.csv` y `salidas/nyc_voto_anticipado_historial.csv`.
 
 ## Fuentes
 | Fuente | Vía | Uso |
@@ -25,6 +26,7 @@ Paquete de Python del modelo de Nueva York: la gobernadora Kathy Hochul (D, tamb
 | Base verificada | Excel (hoja «Histórico encuestas» de `NUEVA_YORK_GOBERNADOR-v1.xlsx`) o `data/encuestas_verificadas_ny.csv` | Encuestas |
 | Kalshi y Polymarket | APIs públicas | Mezcla (peso 0.30) y rangos de margen (escenario) |
 | civicAPI | `early-vote/NY/...` (hoy 404) | Diagnóstico opcional del voto ya emitido |
+| Junta Electoral de NYC | `vote.nyc/page/early-voting-check-ins` | Check-ins de voto anticipado en persona por condado (diagnóstico) |
 | FiveThirtyEight raw-polls | GitHub | Calibración |
 | Correcciones de cifras | `data/correcciones_cifras.csv` | D y R de la publicación original cuando Wikipedia redondea (hoy vacío) |
 | Correcciones de n | `data/correcciones_tamano_muestra.csv` | Tamaños verificados; n faltante = 600 marcado en `n_imputado` (hoy vacío) |

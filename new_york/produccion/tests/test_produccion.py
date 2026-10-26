@@ -8,6 +8,7 @@ import pytest
 
 from ny_pronostico import cli, encuestas, mercados
 from ny_pronostico.anticipado import obtener_anticipado, resumir
+from ny_pronostico.anticipado_nyc import parse_checkins
 from ny_pronostico.pipeline import ejecutar
 
 FIX = __import__('pathlib').Path(__file__).parent / 'fixtures'
@@ -99,10 +100,42 @@ def test_rangos_incompletos_no_dan_probabilidad():
 
 # ----------------------------------------------------------------------------------- civicAPI
 def test_civicapi_sin_cobertura_no_degrada(cfg, red_simulada):
-    """civicAPI no publica Nueva York (404): es diagnóstico opcional; se avisa, pero no cuenta como fuente degradada."""
+    """civicAPI no publica Nueva York (404): es diagnóstico opcional; se avisa, no cuenta como degradada y se usa vote.nyc."""
     r = ejecutar(cfg, escribir_salidas=False)
-    assert not r['anticipado']['disponible'] and 'civicapi' not in r['estados_fuentes']
+    assert 'civicapi' not in r['estados_fuentes'] and r['estados_fuentes']['nyc_boe'] == 'en_vivo'
     assert any('civicAPI sin datos de NY' in a for a in r['avisos']) and r['degradadas'] == []
+
+
+# ----------------------------------------------------------------------------------- voto anticipado NYC
+def test_nyc_checkins_parseo():
+    """Captura real de vote.nyc (26-oct): días 1 y 2; la suma por condado coincide con el total publicado."""
+    d = parse_checkins((FIX / 'nyc_early_voting_checkins.html').read_text(encoding='utf-8'), 'General Election 2026')
+    assert list(d.dia) == [1, 2] and list(d.total) == [86_215, 165_143] and (d.total == d.total_publicado).all()
+    u = d.iloc[-1]
+    assert (u.Manhattan, u.Bronx, u.Brooklyn, u.Queens, u['Staten Island']) == (46_314, 17_595, 47_177, 40_281, 13_776)
+
+
+def test_nyc_checkins_en_corrida(cfg, red_simulada):
+    r = ejecutar(cfg, escribir_salidas=False)
+    a = r['anticipado']
+    assert a['disponible'] and a['tipo'] == 'nyc_checkins' and a['por_partido'] is False
+    assert a['fecha'] == '2026-10-25' and a['dia'] == 2 and a['emitidos'] == 165_143
+    assert a['condado_principal'] == 'Brooklyn' and abs(a['condados'].pct.sum() - 100) < 1e-9
+    assert 'VOTO ANTICIPADO EN NYC' in r['resumen_texto'] and '165,143' in r['resumen_texto']
+
+
+def test_nyc_checkins_respeta_el_corte(cfg, red_simulada):
+    cfg.corte_manual = date(2026, 10, 24)
+    a = ejecutar(cfg, escribir_salidas=False)['anticipado']
+    assert a['dia'] == 1 and a['emitidos'] == 86_215
+
+
+def test_nyc_checkins_caido_usa_cache_y_degrada(cfg, red_simulada):
+    ejecutar(cfg)
+    red_simulada.caidas.add('vote.nyc')
+    r = ejecutar(cfg, escribir_salidas=False)
+    assert r['anticipado']['disponible'] and r['estados_fuentes']['nyc_boe'].startswith('cache')
+    assert r['degradadas'] == ['nyc_boe']
 
 
 def test_civicapi_sin_partidos_es_error_si_se_pide_partido():
@@ -157,7 +190,9 @@ def test_reporte_json_estricto(cfg, red_simulada):
     txt = (cfg.dir_salidas / 'ultimo' / 'reporte.json').read_text(encoding='utf-8')
     rep = json.loads(txt, parse_constant=lambda c: (_ for _ in ()).throw(ValueError(c)))
     assert rep['ultima_encuesta']['fin'] == '2026-10-23'
-    assert rep['anticipado']['disponible'] is False
+    assert rep['anticipado']['tipo'] == 'nyc_checkins' and rep['anticipado']['emitidos'] == 165_143
+    assert (cfg.dir_salidas / 'ultimo' / 'voto_anticipado_condados.csv').exists()
+    assert (cfg.dir_salidas / 'nyc_voto_anticipado_historial.csv').exists()
 
 
 def test_sin_mercados_el_final_es_solo_encuestas(cfg, red_simulada):
@@ -171,6 +206,7 @@ def test_offline_usa_caches_y_estricto_da_codigo_2(cfg, red_simulada, monkeypatc
     cfg.offline = True
     r = ejecutar(cfg)
     assert {'wikipedia', '270towin', 'kalshi', 'polymarket'} <= set(r['degradadas']) and 'civicapi' not in r['degradadas']
+    assert r['estados_fuentes']['nyc_boe'].startswith('cache')
     monkeypatch.setattr(cli, 'cargar_config', lambda *a, **k: cfg)
     assert cli.main(['correr', '--offline', '--estricto', '--sin-graficas']) == 2
 
@@ -211,3 +247,24 @@ def test_k_efectivo_por_firma(cfg, red_simulada):
 N_ENCUESTAS = 23
 MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 15.535, 1.947, 12.75, 0.9735, 0.15   # sesgo «todas» (+1.95 pp pro-D)
 SIGNO_SESGO = -1                                    # en NY el sesgo RESTA al demócrata
+
+
+def test_readme_muestra_voto_anticipado_nyc(cfg, red_simulada, tmp_path, monkeypatch):
+    """El bloque del README (en copias temporales) incluye los check-ins de NYC y el enlace por condado."""
+    import importlib.util
+    from ny_pronostico.config import RAIZ
+    ejecutar(cfg)
+    spec = importlib.util.spec_from_file_location('actualizar_readme', RAIZ / 'scripts' / 'actualizar_readme.py')
+    ar = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ar)
+    est, raiz = tmp_path / 'README_est.md', tmp_path / 'README_raiz.md'
+    est.write_text(f'x\n{ar.INI}\n{ar.FIN}\n', encoding='utf-8')
+    raiz.write_text('| Estado | a | b | c |\n|---|---|---|---|\n| … | | | |\n', encoding='utf-8')
+    monkeypatch.setattr(ar, 'SAL', cfg.dir_salidas)
+    monkeypatch.setattr(ar, 'README_EST', est)
+    monkeypatch.setattr(ar, 'README_RAIZ', raiz)
+    monkeypatch.setattr(ar, 'evolucion', lambda: False)
+    assert ar.main() == 0
+    t = est.read_text(encoding='utf-8')
+    assert '**Voto anticipado en la Ciudad de Nueva York**' in t and 'Brooklyn 47,177' in t and 'voto_anticipado_condados.csv' in t
+    assert '| Nueva York |' in raiz.read_text(encoding='utf-8')

@@ -20,11 +20,11 @@ Base: el modelo de Illinois v1.1.0 (Texas / Maine / Pennsylvania / Nevada / Flor
 | σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día | Cobertura del 80 % correcta en el backtest |
 | Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30 | Peso estimado con 40 contiendas de 2024 ([detalle](../arizona/docs/03_peso_mercados.md)) |
 | Recuento | P(\|margen\| ≤ 0.5 pp) | Recuento automático en NY |
-| Voto anticipado | civicAPI no cubre NY: diagnóstico opcional, no degrada | — |
+| Voto anticipado | Check-ins en persona de la Ciudad de Nueva York (vote.nyc), por condado; civicAPI no cubre NY | Diagnóstico, peso 0 |
 
 ## Carpetas
 | Carpeta | Contenido |
 |---|---|
-| [`produccion/`](produccion/) | Paquete `ny_pronostico`. Fuentes en vivo: Wikipedia, 270toWin, Kalshi, Polymarket, FiveThirtyEight (civicAPI opcional). Incluye CLI, pruebas sin red y tarea programada de Windows |
+| [`produccion/`](produccion/) | Paquete `ny_pronostico`. Fuentes en vivo: Wikipedia, 270toWin, Kalshi, Polymarket, FiveThirtyEight, vote.nyc (civicAPI opcional). Incluye CLI, pruebas sin red y tarea programada de Windows |
 | [`backtest/`](backtest/) | Backtest de variantes (sesgo estatal, indecisos, encuestas partidistas, terceros), validación cronológica del sesgo y escala de ventajas grandes |
 | [`docs/`](docs/) | Investigación del electorado (registro, regiones, independientes, indecisos), contexto, fuentes y decisiones del modelo |

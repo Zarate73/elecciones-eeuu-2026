@@ -107,7 +107,12 @@ def main() -> int:
         lineas += ['', f"**Encuesta más reciente:** {u['encuestadora']}, terminó el {u['fin']} "
                        f"(**{u['dias_desde_fin']} días** antes del corte). Las fuentes se consultan en vivo, pero el promedio "
                        f"solo puede ser tan reciente como la última encuesta publicada."]
-    if a.get('disponible'):
+    if a.get('disponible') and a.get('tipo') == 'nyc_checkins':
+        lineas += ['', f"**Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, "
+                       f"diagnóstico, día {a['dia']}, al {a['fecha']}): {a['emitidos']:,} en persona · "
+                       + ' · '.join(f"{x['condado']} {x['emitidos']:,}" for x in a.get('condados_lista', []))
+                       + ". Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico."]
+    elif a.get('disponible'):
         lineas += ['', f"**Voto anticipado ya emitido** (civicAPI, diagnóstico, al {a['fecha']}): {a['emitidos']:,} "
                        f"({a['en_persona']:,} en persona, {a['por_correo']:,} por correo)"
                        + (f" · {a['pct_del_total_previo']:.0f} % del total de votos de 2022" if a.get('pct_del_total_previo') else '')

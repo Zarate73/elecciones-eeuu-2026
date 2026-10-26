@@ -23,6 +23,8 @@ Elección general del 3 de noviembre: **Kathy Hochul (D, gobernadora desde 2021)
 | Kalshi `GOVPARTYNY-26` | En vivo (D y R; 3.9 M contratos en R) | Mezcla |
 | Polymarket `new-york-governor-winner-2026` y `…-margin-of-victory-2026` | En vivo; márgenes = «Republican Wins» + 8 rangos del demócrata (partición completa, suma 1.09) | Mezcla y escenario |
 | civicAPI | **No publica Nueva York** (404) | Se consulta en vivo por si empieza a hacerlo; diagnóstico opcional, no degrada |
+| Junta Electoral de NYC (vote.nyc, «Early Voting Check-Ins») | Check-ins acumulados por condado, cada noche; solo la ciudad, solo en persona, sin partido | Diagnóstico (peso 0). Sustituye a civicAPI mientras esta dé 404; si cae, cuenta como degradada |
+| Junta Electoral del estado (elections.ny.gov) | Bloquea consultas automáticas (403, también desde GitHub Actions) | No se usa |
 | Junta Electoral de NY, Siena SRI | 403 / 404 desde GitHub Actions | No accesibles de forma automática |
 | OnPoint Politics, PoliAgg | Solo promedios | No se agregan |
 | FiveThirtyEight raw-polls | En vivo | Calibración |
@@ -45,7 +47,7 @@ Elección general del 3 de noviembre: **Kathy Hochul (D, gobernadora desde 2021)
 - **Geografía del voto (Siena, ago-2026):** NYC Hochul 64 – 19; suburbios Blakeman 49 – 41; norte del estado prácticamente empatado.
 - **Independientes:** Siena (sep) Blakeman 44 – 39 con 17 % indeciso; Quinnipiac (sep) Hochul 51 – 45.
 - **Lealtad partidista:** Siena tiene a Hochul con 81 % de los demócratas y a Blakeman con 88 % de los republicanos.
-- **Voto anticipado:** del 24-oct al 1-nov; la inscripción cerró el 24-oct. No hay datos automáticos (civicAPI no cubre NY).
+- **Voto anticipado:** del 24-oct al 1-nov; la inscripción cerró el 24-oct. civicAPI no cubre NY y la Junta del estado da 403, así que el único dato automático es el de la **Ciudad de Nueva York** (vote.nyc): día 1 (24-oct) 86,215 check-ins; día 2 (25-oct) 165,143 acumulados (Brooklyn 47,177 · Manhattan 46,314 · Queens 40,281 · Bronx 17,595 · Staten Island 13,776). Es **solo diagnóstico**: no hay partido ni registro por votante, la ciudad es ~40 % del voto estatal y no incluye correo. Sirve para seguir participación (comparable día a día con 2022/2024), no para estimar el margen.
 - **2022:** Hochul ganó por 6.4 contra Zeldin (53.2 – 46.7, terceros 0.16 %). A estas alturas Siena la tenía +17; una Quinnipiac de finales de octubre con +4, entonces vista como atípica, fue la que acertó.
 
 ## 3. Indecisos

@@ -51,6 +51,9 @@ civicapi = "https://civicapi.org/api/v2/early-vote"
 civicapi_estado = "NY"
 civicapi_por_partido = true
 civicapi_opcional = true               # civicAPI no publica NY (404 el 25-oct): se intenta en vivo, pero no cuenta como fuente degradada
+# En su lugar: check-ins de voto anticipado de la Junta Electoral de NYC (solo la ciudad, en persona, sin partido). Diagnóstico.
+nyc_voto_anticipado_url = "https://www.vote.nyc/page/early-voting-check-ins"
+nyc_eleccion = "General Election 2026"
 votos_totales_eleccion_previa = 5912286 # gobernador 2022 (Junta Electoral del Estado de Nueva York): referencia de volumen
 fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
 min_encuestas_vivas = 5                # menos encuestas web que esto => fuente degradada

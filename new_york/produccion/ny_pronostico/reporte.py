@@ -56,7 +56,12 @@ def texto_resumen(r: dict, cfg) -> str:
                        f"(σ {rg['margen_sd']:.1f}; condicional a que gane un partido principal) · " if rg.get('completo') else 'partición INCOMPLETA: sin P(D) ni margen incondicional · ')
                     + (f"E[margen | gana D] {rg['margen_cond_D']:+.1f}" if 'margen_cond_D' in rg else '')]
     a = r.get('anticipado', {})
-    if a.get('disponible') and a.get('por_partido') is False:
+    if a.get('disponible') and a.get('tipo') == 'nyc_checkins':
+        lin += ['', f"VOTO ANTICIPADO EN NYC (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, {a['estado'][:30]}, "
+                    f"día {a['dia']}, al {a['fecha']}): {a['emitidos']:,} en persona · "
+                    + ' · '.join(f"{x.condado} {x.emitidos:,}" for x in a['condados'].itertuples())
+                    + " · solo la ciudad y solo en persona; sin partido"]
+    elif a.get('disponible') and a.get('por_partido') is False:
         lin += ['', f"VOTO YA EMITIDO (civicAPI, diagnóstico, {a['estado'][:30]}, al {a['fecha']}): {a['emitidos']:,} "
                     f"({a['por_correo']:,} correo · {a['en_persona']:,} en persona)"
                     + (f" · {a['pct_del_total_previo']:.0f} % del total de votos de 2022" if a.get('pct_del_total_previo') else '')
