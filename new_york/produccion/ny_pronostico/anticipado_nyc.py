@@ -1,7 +1,7 @@
 """Voto anticipado en persona de la Ciudad de Nueva York: «Early Voting Check-Ins» de la Junta Electoral de NYC (vote.nyc).
 
 civicAPI no publica Nueva York (404) y la Junta Electoral del estado bloquea las consultas automáticas (403). La Junta de
-NYC publica cada noche los check-ins acumulados por condado (borough): solo la ciudad (~40 % del voto estatal), solo voto
+NYC publica cada noche los check-ins acumulados por condado (borough): solo la ciudad (poco más de un tercio del voto estatal), solo voto
 en persona, sin partido. SOLO DIAGNÓSTICO: no entra al pronóstico.
 
 Formato de la página (texto):
