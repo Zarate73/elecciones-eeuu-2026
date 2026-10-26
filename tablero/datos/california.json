@@ -10,7 +10,7 @@
  "corte": "2026-10-25",
  "dias_a_eleccion": 9,
  "pronostico": {
-  "P_D": 0.9929,
+  "P_D": 0.9927,
   "pct_D": 60.9,
   "pct_D_IC80": [
    57.16,
@@ -41,7 +41,7 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9684,
+   "P_D": 0.9654,
    "estado": "en_vivo"
   }
  ],
@@ -248,9 +248,9 @@
   },
   {
    "corte": "2026-10-25",
-   "P_D": 0.9929,
+   "P_D": 0.9927,
    "P_D_encuestas": 0.9963,
-   "P_kalshi": 0.9684,
+   "P_kalshi": 0.9654,
    "pct_D": 60.9,
    "margen": 21.79
   }
@@ -307,7 +307,7 @@
   },
   {
    "nombre": "gdelt",
-   "estado": "cache (< 12 h)",
+   "estado": "parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 42",
    "en_vivo": false
   },
   {

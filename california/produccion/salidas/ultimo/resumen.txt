@@ -12,7 +12,7 @@ FUENTES
   civiq: Datos de Civiq vía api, validados (2026-10-24)
   civiq_historia: api_en_vivo (197 filas)
   civiq_condados: api_en_vivo (58 condados)
-  gdelt: cache (< 12 h)
+  gdelt: parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429
   kalshi: en_vivo
   encuestas: 15 (wikipedia 13, base 2) · margen legado +20.38 → M5 +21.81
 
@@ -23,7 +23,7 @@ PARTICIPACIÓN (diagnóstico; w_m2 = 0.00)
   corr(Δ temprano, error de encuestas) = +0.75 (n=3)
 
 SENTIMIENTO: k candidato 1.52 · aplicado 1.00 · GDELT z=1.20
-KALSHI: 0.968 (en_vivo) · en mezcla True
+KALSHI: 0.965 (en_vivo) · en mezcla True
 PDI (contraste, 2026-10-19): D−R +18.4 en 1,214,420 boletas
 
 MODELOS

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generado": "2026-10-25T09:27:36-07:00",
+  "generado": "2026-10-25T21:58:58-07:00",
   "fecha_corte": "2026-10-25",
   "dias_a_eleccion": 9,
   "offline": false,
@@ -20,7 +20,7 @@
       67.37783203448
     ],
     "p_d_gana_modelo": 0.996295,
-    "p_d_gana_final": 0.9929141107153776
+    "p_d_gana_final": 0.992718365798087
   },
   "estados_fuentes": {
     "encuestas_wikipedia": "en_vivo",
@@ -28,7 +28,7 @@
     "civiq": "Datos de Civiq vía api, validados (2026-10-24)",
     "civiq_historia": "api_en_vivo (197 filas)",
     "civiq_condados": "api_en_vivo (58 condados)",
-    "gdelt": "cache (< 12 h)",
+    "gdelt": "parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
     "kalshi": "en_vivo"
   },
   "ultima_encuesta": {
@@ -129,12 +129,12 @@
       "composicion_final_proyectada_pp": 22.506383996761695,
       "composicion_a_resultado": {
         "disponible": true,
-        "pendiente": 2.1024469820554663,
+        "pendiente": 2.1024469820554668,
         "intercepto": -21.369070146818963,
         "n": 4,
-        "rmse_loo_pp": 4.223595885799268,
-        "error_primaria_2026_pp": 4.307928221859722,
-        "margen_resultado_implicito_pp": 25.94940896415411
+        "rmse_loo_pp": 4.223595885799315,
+        "error_primaria_2026_pp": 4.307928221859708,
+        "margen_resultado_implicito_pp": 25.949408964154117
       },
       "diagnostico_retrospectivo": [
         {
@@ -203,7 +203,7 @@
     "gdelt": {
       "disponible": true,
       "fecha": "2026-10-04",
-      "brecha_7d": 0.33079999999999987,
+      "brecha_7d": -0.05197142857142868,
       "innovacion_7d": 0.7575533333333332,
       "z_innovacion": 1.2016063265671821,
       "k_sent_candidato": 1.5228174647466208
@@ -213,10 +213,10 @@
     "validado": false
   },
   "kalshi": {
-    "p_d": 0.9644999999999999,
-    "p_r": 0.0315,
-    "p_d_normalizada": 0.9683734939759037,
-    "overround": -0.004000000000000115,
+    "p_d": 0.964,
+    "p_r": 0.0345,
+    "p_d_normalizada": 0.9654481722583876,
+    "overround": -0.0015000000000000568,
     "fecha": "2026-10-25",
     "antiguedad_dias": 0,
     "estado": "en_vivo",
@@ -225,9 +225,9 @@
   "calibracion": {
     "dias_ref": 14,
     "n_elecciones": 4,
-    "rmse_historico_pp": 6.4398075547637825,
-    "sesgo_medio_pp": -2.8469637480849945,
-    "sigma_sis_pp": 6.141535479404982,
+    "rmse_historico_pp": 6.439807554763783,
+    "sesgo_medio_pp": -2.8469637480849954,
+    "sigma_sis_pp": 6.1415354794049835,
     "errores": {
       "GOB2018": 7.11,
       "GOB2022": -5.57,
@@ -239,13 +239,13 @@
     "media_pp": 21.806000206790078,
     "media_final_pp": 21.806000206790078,
     "desplazamiento_kalshi_pp": 0.0,
-    "p_mezcla_objetivo": 0.9929141107153776,
-    "sigma_pp": 6.5327451510416745,
+    "p_mezcla_objetivo": 0.992718365798087,
+    "sigma_pp": 6.532745151041675,
     "k_sent_aplicado": 1.0,
     "delta_m2_aplicado_pp": 0.0,
     "p_modelo": 0.996295,
-    "p_final": 0.9929141107153776,
-    "p_kalshi_usada": 0.9683734939759037,
+    "p_final": 0.992718365798087,
+    "p_kalshi_usada": 0.9654481722583876,
     "w_kalshi": 0.3,
     "cuantiles_margen_pp": {
       "2.5": 8.781103665897268,
@@ -255,12 +255,12 @@
       "97.5": 34.75566406895997
     },
     "componentes_varianza_pp2": {
-      "sistematico": 37.718458044790175,
+      "sistematico": 37.7184580447902,
       "muestreo_encuestas": 4.395801163668333,
       "deriva_hasta_eleccion": 0.5625,
       "participacion_m2": 0.0
     }
   },
   "avisos": [],
-  "duracion_s": 3.7
+  "duracion_s": 135.5
 }

@@ -3,14 +3,14 @@
 Elección general del 3 de noviembre de 2026 entre **Xavier Becerra (D)** y **Steve Hilton (R)**, los dos primeros de la primaria *top-two* del 2 de junio.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 09:27 PT · fuentes en vivo 6/7
+**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 21:59 PT · fuentes en vivo 6/7
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
 | Xavier **Becerra** (D) | **60.9%** (57.2–64.6) | **99.3%** |
 | Steve **Hilton** (R) | **39.1%** (35.4–42.8) | **0.7%** |
 
-Margen D−R +21.8 pp (σ 6.5) · solo modelo: P(Becerra) 99.6% · Kalshi 96.8% (peso 0.30) · 15 encuestas (13 wikipedia, 2 base) · promedio M5 +21.8
+Margen D−R +21.8 pp (σ 6.5) · solo modelo: P(Becerra) 99.6% · Kalshi 96.5% (peso 0.30) · 15 encuestas (13 wikipedia, 2 base) · promedio M5 +21.8
 
 **Encuesta más reciente:** McLaughlin & Associates (R), terminó el 2026-10-20 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
