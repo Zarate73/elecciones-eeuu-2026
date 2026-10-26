@@ -3,8 +3,10 @@
 Elección general del 3 de noviembre de 2026 entre **Amy Acton (D, exdirectora de Salud del estado)** y **Vivek Ramaswamy (R)**, con Don Kissick (Libertario). El gobernador Mike DeWine (R) deja el cargo por límite de mandatos. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Sin corrida automática todavía: el modelo está validado y empaquetado, pero el flujo de GitHub Actions no está activo. Pronóstico de referencia con las fuentes del 26-oct-2026 (pruebas sin red): **Acton 48.7 % · Ramaswamy 48.1 % · P(Acton) 55.0 %** (margen +0.6, σ 4.8; solo encuestas 40.8 %; Kalshi y Polymarket ~82 %).
+Se llena con la primera corrida automática.
 <!-- PRONOSTICO:FIN -->
+
+GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_ohio.yml)).
 
 ## Modelo general (elegido por backtest)
 Base: el modelo de Nueva York v1.1.0 e Illinois v1.1.0 (Texas / Maine / Pennsylvania / Nevada / Florida / Georgia V11). Se validó con un backtest *leave-one-year-out* de 957 contiendas (1998–2024, 24 de Ohio) a 8 días de la elección, con la misma ventana que producción, más una validación estrictamente cronológica.

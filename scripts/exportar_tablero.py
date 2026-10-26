@@ -390,10 +390,16 @@ def new_york() -> dict | None:
                     'Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3)')
 
 
+# ------------------------------------------------------------------------------------ Ohio
+def ohio() -> dict | None:
+    return _general('ohio', 'Ohio', {'D': 'Amy Acton', 'R': 'Vivek Ramaswamy'}, 'Sesgo estatal de Ohio',
+                    'En OH las encuestas sobreestimaron al demócrata en todas las contiendas desde 2014 (+2.9 a +8.1 pp)')
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york):
+    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york, ohio):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás
