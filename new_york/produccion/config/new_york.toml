@@ -28,6 +28,9 @@ logs = "logs"
 # Encuestas verificadas a mano (opcional). Excel con la hoja «Histórico encuestas» (NUEVA_YORK_GOBERNADOR-v1.xlsx) o CSV
 # con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
 encuestas_base = "data/encuestas_verificadas_ny.csv"
+# Encuestas verificadas en la publicación original que no traen Wikipedia, 270toWin ni el Excel (columnas de la base más
+# fuente = URL y nota). Revisión externa del 26-oct: OnMessage (R) 12–14 oct y Pollfinity 8–12 oct.
+encuestas_complementarias = "data/encuestas_complementarias_ny.csv"
 # Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
 # Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
 correcciones_n = "data/correcciones_tamano_muestra.csv"

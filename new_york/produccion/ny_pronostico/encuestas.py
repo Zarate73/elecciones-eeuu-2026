@@ -177,6 +177,23 @@ def _distancia(a: tuple, b: tuple) -> int:
     return max((a[0] - b[1]).days, (b[0] - a[1]).days, 0)
 
 
+VERIFICADAS = ('base', 'complementaria')          # orígenes verificados a mano: sus decimales mandan sobre los redondeos
+
+
+def cargar_complementarias(ruta: Path) -> pd.DataFrame:
+    """Encuestas verificadas en la publicación original que no están en Wikipedia, 270toWin ni el Excel (revisión externa
+    del 26-oct: OnMessage 12–14 oct, Pollfinity 8–12 oct). Columnas de la base más `fuente` (URL) y `nota`."""
+    df = pd.read_csv(ruta, comment='#')
+    faltan = {'pollster', 'inicio', 'fin', 'D', 'R', 'fuente'} - set(df.columns)
+    if faltan:
+        raise ValueError(f'{ruta.name}: faltan columnas {sorted(faltan)}')
+    for c in ('n', 'pop', 'otros', 'indecisos'):
+        if c not in df:
+            df[c] = np.nan
+    df['origen'] = 'complementaria'
+    return df
+
+
 def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
     """Une las fuentes sin contar dos veces la misma encuesta.
 
@@ -209,11 +226,15 @@ def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
                 generico = mismas and dist <= 7 and 'yougov' in (r['clave'], b['clave']) and \
                     'yougov' in str(r.get('pollster', '')).lower() and 'yougov' in str(b.get('pollster', '')).lower()
                 puntual = ir[2] or ib[2]
+                # las fechas del archivo complementario se verificaron en la publicación original: dos periodos distintos
+                # de la misma firma son encuestas distintas aunque las cifras coincidan (OnMessage 1–6 oct 50–46 y
+                # 12–14 oct 50.3–45.9, ambas con n = 1,000 LV; la regla «fecha mal capturada» las fundía)
+                fecha_verificada = 'complementaria' in (r['origen'], b['origen']) and not puntual
                 misma_firma = r['clave'] == b['clave'] and (
                     dist == 0 and not puntual                                   # periodos de campo que se solapan
                     or puntual and (dist <= 3 or (mismas and dist <= 7))        # fecha de publicación de otra fuente
-                    or mismas and otra_fuente and dias <= 60)                   # misma encuesta, fecha mal capturada
-                if (misma_firma or (mismas and mismo_n and dias <= 30) or generico) and \
+                    or mismas and otra_fuente and dias <= 60 and not fecha_verificada)   # fecha mal capturada
+                if (misma_firma or ((mismas and mismo_n and dias <= 30) or generico) and not fecha_verificada) and \
                         (mejor_d is None or (dist, dias) < mejor_d):
                     mejor, mejor_d = b, (dist, dias)
             if mejor is None:
@@ -227,7 +248,7 @@ def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
                 b['nota_version'] = f"versión {r.get('pop')} de {r['origen']}"
             # cifras con decimales del Excel verificado (Emerson 52.4–39.7, McLaughlin 49.6–45.7) frente a las redondeadas de
             # Wikipedia/270toWin (52–40, 50–46): si son compatibles con el redondeo (±0.5), se conservan las del Excel
-            if (r['origen'] == 'base' and b['origen'] != 'base'
+            if (r['origen'] in VERIFICADAS and b['origen'] not in VERIFICADAS
                     and abs(r['D'] - b['D']) <= 0.5 and abs(r['R'] - b['R']) <= 0.5
                     and (r['D'] % 1 or r['R'] % 1)):
                 b['D'], b['R'] = r['D'], r['R']
@@ -259,7 +280,12 @@ def aplicar_correcciones_cifras(p: pd.DataFrame, cfg) -> tuple[pd.DataFrame, lis
         if m.any():
             antes = f"{p.loc[m, 'D'].iloc[0]:g}–{p.loc[m, 'R'].iloc[0]:g}"
             p.loc[m, 'D'], p.loc[m, 'R'] = float(r.D), float(r.R)
-            hechas.append(f"{r.clave} {r.fin} {r['pop']}: {antes} → {r.D:g}–{r.R:g} ({r.fuente})")
+            extra = ''
+            for col in ('otros', 'indecisos'):                  # opcionales: clasificación de la publicación original
+                if col in c and pd.notna(r.get(col)):
+                    p.loc[m, col] = float(r[col])
+                    extra += f' {col} {float(r[col]):g}'
+            hechas.append(f"{r.clave} {r.fin} {r['pop']}: {antes} → {r.D:g}–{r.R:g}{extra} ({r.fuente})")
     return p, hechas
 
 
@@ -345,9 +371,20 @@ def obtener_encuestas(cfg) -> dict:
         else:
             estados['base_verificada'] = f'no_encontrado ({rb})'
             avisos.append(f'no existe la base verificada {rb}')
+    comp = pd.DataFrame(columns=COLS)
+    txt = str(cfg.rutas.get('encuestas_complementarias', '') or '').strip()
+    if txt:
+        rc = cfg.ruta('encuestas_complementarias')
+        try:
+            comp = cargar_complementarias(rc)
+            estados['complementarias'] = f'archivo ({rc.name}, {len(comp)} encuestas)'
+        except Exception as exc:
+            estados['complementarias'] = f'error ({type(exc).__name__}: {str(exc)[:80]})'
+            avisos.append(f'no se pudo leer {rc.name}: {exc}')
     if wiki.empty and t270.empty and base.empty:
         raise ValueError('ninguna fuente de encuestas disponible (ni en vivo, ni caché, ni base verificada)')
-    fuentes = [_normalizar(x, o) for x, o in ((wiki, 'wikipedia'), (base, 'base'), (t270, '270towin')) if len(x)]
+    fuentes = [_normalizar(x, o) for x, o in ((wiki, 'wikipedia'), (base, 'base'), (comp, 'complementaria'),
+                                              (t270, '270towin')) if len(x)]
     p = combinar(*fuentes)
     p = p[(pd.to_datetime(p.fin) > pd.Timestamp(cfg.fecha_nominacion)) &
           (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()
@@ -380,4 +417,4 @@ def obtener_encuestas(cfg) -> dict:
         avisos.append(f'solo {vivas} encuestas aparecen en fuentes web (< {f.min_encuestas_vivas})')
     log.info('Encuestas: %d combinadas (wiki %d, base %d, 270 %d)', len(p), len(wiki), len(base), len(t270))
     return {'encuestas': p.sort_values('fin').reset_index(drop=True), 'estados': estados, 'avisos': avisos,
-            'conteos': {'wikipedia': len(wiki), 'base': len(base), '270towin': len(t270)}}
+            'conteos': {'wikipedia': len(wiki), 'base': len(base), 'complementarias': len(comp), '270towin': len(t270)}}

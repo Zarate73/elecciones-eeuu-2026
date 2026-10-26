@@ -150,7 +150,7 @@ def test_corrida_completa_en_vivo(cfg, red_simulada):
     assert r['degradadas'] == []
     f = r['modelo']['final']
     assert abs(f['pct_D'] + f['pct_R'] + f['pct_terceros'] - 100) < 1e-6
-    assert f['k'] == 2 and len(r['modelo']['ventana']) == 2 and not f['ventana']['ampliada'] and f['peso_mercados_aplicado'] == 0.30
+    assert f['k'] == 3 and len(r['modelo']['ventana']) == 3 and not f['ventana']['ampliada'] and f['peso_mercados_aplicado'] == 0.30
     assert f['terceros_regimen'].startswith('solo dos candidatos') and f['pct_terceros'] < 0.3
     lo, hi = sorted([f['P_D_encuestas'], r['mercados']['promedio_D']])
     assert lo - 1e-9 <= f['P_D'] <= hi + 1e-9
@@ -244,8 +244,8 @@ def test_k_efectivo_por_firma(cfg, red_simulada):
 
 
 # valores fijados con la corrida de referencia del 25-oct (ver notebook)
-N_ENCUESTAS = 23
-MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 15.535, 1.947, 12.75, 0.9735, 0.15   # sesgo «todas» (+1.95 pp pro-D)
+N_ENCUESTAS = 25                                    # 23 de las fuentes + 2 complementarias (OnMessage 12–14 oct, Pollfinity 8–12 oct)
+MARGEN_ENC, SESGO, MARGEN, P_D, TERCEROS = 13.011, 1.947, 10.57, 0.967, 0.15   # sesgo «todas» (+1.95 pp pro-D)
 SIGNO_SESGO = -1                                    # en NY el sesgo RESTA al demócrata
 
 
@@ -270,3 +270,41 @@ def test_readme_muestra_voto_anticipado_nyc(cfg, red_simulada, tmp_path, monkeyp
     t = est.read_text(encoding='utf-8')
     assert '**Voto anticipado en la Ciudad de Nueva York**' in t and 'Brooklyn 47,177' in t and 'voto_anticipado_condados.csv' in t
     assert '| Nueva York |' in raiz.read_text(encoding='utf-8')
+
+
+# ----------------------------------------------------------------------------------- revisión externa del 26-oct
+def test_complementarias_onmessage_distinta_y_en_ventana(cfg, red_simulada):
+    """OnMessage 12–14 oct (50.3–45.9, 1,000 LV) no se funde con la de 1–6 oct (50–46, 1,000 LV): mismas cifras y mismo n,
+    pero periodos distintos verificados en la publicación original. Entra a la ventana como encuesta de patrocinio R."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    om = p[p.clave == 'onmessageinc'].sort_values('fin')
+    assert [str(x.date()) for x in om.fin] == ['2026-10-06', '2026-10-14']
+    assert (om.D.tolist(), om.R.tolist()) == ([50.0, 50.3], [46.0, 45.9]) and om.partidista.all()
+    v = ejecutar(cfg, escribir_salidas=False)['modelo']['ventana']
+    assert set(v.pollster) == {'OnMessage Inc. (R)', 'Quinnipiac University', 'ActiVote'}
+    assert v.set_index('pollster').peso.round(3).to_dict() == {'OnMessage Inc. (R)': 0.297, 'Quinnipiac University': 0.41,
+                                                               'ActiVote': 0.293}
+
+
+def test_complementarias_pollfinity_fuera_de_ventana(cfg, red_simulada):
+    """Pollfinity 8–12 oct termina un día antes del inicio de la ventana (13-oct): está en la base, no en la ventana."""
+    p = ejecutar(cfg, escribir_salidas=False)['modelo']['encuestas']
+    pf = p[(p.clave == 'pollfinityrese') & (p.fin == '2026-10-12')]
+    assert len(pf) == 1 and not pf.en_ventana.iloc[0] and pf.origen.iloc[0] == 'complementaria'
+
+
+def test_complementaria_se_deduplica_si_wikipedia_la_agrega():
+    """Si Wikipedia agrega la OnMessage 12–14 oct redondeada (50–46), es la misma encuesta y se conservan los decimales."""
+    w = pd.DataFrame([{'pollster': 'OnMessage Inc. (R)', 'inicio': '2026-10-01', 'fin': '2026-10-06', 'n': 1000, 'pop': 'LV', 'D': 50, 'R': 46},
+                      {'pollster': 'OnMessage Inc. (R)', 'inicio': '2026-10-12', 'fin': '2026-10-14', 'n': 1000, 'pop': 'LV', 'D': 50, 'R': 46}])
+    c = pd.DataFrame([{'pollster': 'OnMessage Inc. (R)', 'inicio': '2026-10-12', 'fin': '2026-10-14', 'n': 1000, 'pop': 'LV', 'D': 50.3, 'R': 45.9}])
+    out = encuestas.combinar(encuestas._normalizar(w, 'wikipedia'), encuestas._normalizar(c, 'complementaria')).sort_values('fin')
+    assert len(out) == 2 and (out.D.tolist(), out.R.tolist()) == ([50, 50.3], [46, 45.9])
+
+
+def test_quinnipiac_sin_terceros(cfg, red_simulada):
+    """Quinnipiac publica «no sabe» + «rechazó», no terceros: otros = 0 y sin preferencia = 4 (oct) y 3 (sep)."""
+    p = encuestas.obtener_encuestas(cfg)['encuestas']
+    q = p[p.clave == 'quinnipiacuniv'].set_index(p[p.clave == 'quinnipiacuniv'].fin.dt.strftime('%m-%d'))
+    assert (q.otros.to_dict(), q.indecisos.to_dict()) == ({'09-20': 0.0, '10-19': 0.0}, {'09-20': 3.0, '10-19': 4.0})
+    assert (q.D.tolist(), q.R.tolist()) == ([58.0, 55.0], [39.0, 41.0])

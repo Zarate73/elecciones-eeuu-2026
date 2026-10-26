@@ -33,8 +33,8 @@ Base: el modelo de Illinois v1.1.0 (Texas / Maine / Pennsylvania / Nevada / Flor
 
 | Pieza | Cómo entra | Por qué |
 |---|---|---|
-| Promedio de encuestas | V11: efecto de casa contraído (k = 8), √n, vida media de 14 días, cada firma pesa ~1; ventana de 21 días (hoy: Quinnipiac y ActiVote) | Mejor CRPS nacional (3.304). Las encuestas del 1–6 oct quedan fuera; los escenarios de 45 días y de fecha media las incluyen (+11.8) |
-| Identidad de las encuestas | Firma + periodo de campo; Siena SRI ≠ NYT/Siena; decimales del Excel verificado cuando Wikipedia redondea | Conservan su efecto de casa y sus cifras originales |
+| Promedio de encuestas | V11: efecto de casa contraído (k = 8), √n, vida media de 14 días, cada firma pesa ~1; ventana de 21 días (hoy: Quinnipiac, OnMessage (R) 12–14 oct y ActiVote) | Mejor CRPS nacional (3.304). Las encuestas del 1–12 oct quedan fuera; los escenarios de 45 días y de fecha media las incluyen |
+| Identidad de las encuestas | Firma + periodo de campo; Siena SRI ≠ NYT/Siena; decimales del Excel verificado cuando Wikipedia redondea; encuestas que faltan en las fuentes web, desde `data/encuestas_complementarias_ny.csv` ([revisión del 26-oct](docs/02_revision_externa_2026-10-26.md)) | Conservan su efecto de casa y sus cifras originales |
 | Sesgo estatal | Contraído por Bayes empírico con todas las contiendas del estado: hoy **resta** ~1.9 pp (desde 2020 las encuestas en NY sobreestimaron al demócrata) | El estado donde más ayuda: LOYO 2.929 vs 3.419 sin sesgo; cronológico 2.487 vs 2.718; «k ≥ 2» y «por cargo» peores |
 | Terceros | Solo dos candidatos en la boleta: votos por escrito fijos (0.15 %) | La Junta Electoral rechazó las demás peticiones; 2022: 0.16 % |
 | Indecisos | 50/50 | El reparto proporcional y la cuota R son peores en NY y a nivel nacional |

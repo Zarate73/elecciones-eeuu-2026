@@ -5,9 +5,10 @@ Paquete de Python del modelo de Nueva York: la gobernadora Kathy Hochul (D, tamb
 **Todas las fuentes se consultan en vivo en cada corrida.** Si una falla, se usa su última copia y el reporte lo marca.
 
 ## Modelo (elegido por backtest, ver `../docs/01_investigacion_y_modelo.md`)
-- **Promedio:** V11 de Georgia: efectos de casa contraídos (k = 8), √n, vida media de 14 días y cada firma pesa ~1. La ventana es de 21 días; si hay menos de 2 encuestadoras, se toman los 21 días previos a la encuesta más reciente. **Hoy entran solo Quinnipiac (15–19 oct) y ActiVote (1–23 oct)**: las cuatro encuestas del 1–6 de octubre (Marist, Emerson, OnMessage, Beacon) quedan fuera por pocos días; los escenarios «ventana de 45 días» y «fechas por el punto medio del campo» las incluyen (≈ +11.8 en lugar de +13.6 sin mercados).
+- **Promedio:** V11 de Georgia: efectos de casa contraídos (k = 8), √n, vida media de 14 días y cada firma pesa ~1. La ventana es de 21 días; si hay menos de 2 encuestadoras, se toman los 21 días previos a la encuesta más reciente. **Hoy entran Quinnipiac (15–19 oct), OnMessage (R) (12–14 oct) y ActiVote (1–23 oct)**. Las encuestas del 1 al 12 de octubre (Marist, Emerson, OnMessage 1–6 oct, Beacon, Pollfinity) quedan fuera por pocos días; los escenarios «ventana de 45 días» y «fechas por el punto medio del campo» las incluyen.
 - **Identidad de una encuesta = firma + periodo de campo.** La fecha puntual de 270toWin es de publicación (Quinnipiac aparece el 21-oct; el campo fue 15–19 oct).
 - **Alias:** Siena College Research Institute **no** se unifica con NYT/Siena: tiene su propio historial en FiveThirtyEight (62 encuestas, casi todas de NY). Marist University = Marist College.
+- **Encuestas complementarias** (`data/encuestas_complementarias_ny.csv`, revisión del 26-oct): verificadas en la publicación original y ausentes de Wikipedia, 270toWin y el Excel: OnMessage (R) 12–14 oct (50.3–45.9, pagada por la campaña de Komatireddy) y Pollfinity 8–12 oct (47–44, RV). Sus fechas mandan: dos periodos distintos de la misma firma no se funden aunque coincidan cifras y n.
 - **Cifras con decimales del Excel verificado:** si Wikipedia/270toWin redondean (Emerson 52–40, McLaughlin 50–46) y el Excel trae decimales compatibles (52.4–39.7, 49.6–45.7), se usan los del Excel.
 - **Sesgo estatal:** contraído por Bayes empírico con todas las contiendas del estado (`sesgo_regla = "todas"`). Hoy **resta** 1.95 pp a Hochul: desde 2020 las encuestas en NY sobreestimaron al demócrata (+9.5 en 2020, +4.3 en 2024). Es el estado donde el sesgo más ayuda en el backtest. «Sin sesgo», «k ≥ 2», «solo gobernador» y «sin cada contienda» quedan como escenarios.
 - **Terceros:** solo dos candidatos en la boleta → votos por escrito fijos (`terceros_fijos = [0.15, 0.05]`, como el 0.16 % de 2022). El «otro» de las encuestas se reparte como los indecisos.
@@ -28,7 +29,8 @@ Paquete de Python del modelo de Nueva York: la gobernadora Kathy Hochul (D, tamb
 | civicAPI | `early-vote/NY/...` (hoy 404) | Diagnóstico opcional del voto ya emitido |
 | Junta Electoral de NYC | `vote.nyc/page/early-voting-check-ins` | Check-ins de voto anticipado en persona por condado (diagnóstico) |
 | FiveThirtyEight raw-polls | GitHub | Calibración |
-| Correcciones de cifras | `data/correcciones_cifras.csv` | D y R de la publicación original cuando Wikipedia redondea (hoy vacío) |
+| Encuestas complementarias | `data/encuestas_complementarias_ny.csv` (con URL de la fuente) | Encuestas que faltan en las fuentes web y en el Excel |
+| Correcciones de cifras | `data/correcciones_cifras.csv` | D, R y opcionalmente otros/indecisos de la publicación original (hoy: Quinnipiac, «no sabe» + «rechazó» en lugar de terceros) |
 | Correcciones de n | `data/correcciones_tamano_muestra.csv` | Tamaños verificados; n faltante = 600 marcado en `n_imputado` (hoy vacío) |
 
 ## Uso

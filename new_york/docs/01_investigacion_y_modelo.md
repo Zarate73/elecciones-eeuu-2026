@@ -2,6 +2,9 @@
 
 Elección general del 3 de noviembre: **Kathy Hochul (D, gobernadora desde 2021)** busca su segundo periodo completo contra **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. Hochul va también en la línea del Working Families Party y Blakeman en la Conservadora. **No hay terceros en la boleta:** la Junta Electoral rechazó en mayo todas las peticiones de partidos no calificados. Gana la mayoría simple.
 
+
+> **Actualización (v1.1.0, 26-oct):** la revisión externa agregó OnMessage (R) 12–14 oct y Pollfinity 8–12 oct, que faltaban en las fuentes web. Con OnMessage en la ventana el promedio pasa de +15.5 a +13.0 y el pronóstico a **+10.6 (σ 5.7), P(Hochul) 96.7 %** con la misma captura. Las cifras de abajo son las de v1.0.1; detalle en [`02_revision_externa_2026-10-26.md`](02_revision_externa_2026-10-26.md).
+
 ## Resumen del pronóstico (captura del 26-oct 05:30 UTC, corte 25-oct, 9 días a la elección)
 | | Hochul (D) | Blakeman (R) | Votos por escrito |
 |---|---|---|---|
