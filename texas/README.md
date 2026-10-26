@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **Greg Abbott (R, gobernador en funciones)** y **Gina Hinojosa (D, representante estatal por Austin)**, con Pat Dixon (libertario). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-25** (9 días a la elección) · actualizado automáticamente 2026-10-25 19:40 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 12:22 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Gina **Hinojosa** (D) | **46.6%** (43.6–49.5) | **14%** |
-| Greg **Abbott** (R, gobernador) | **51.2%** (48.3–54.2) | **86%** |
+| Gina **Hinojosa** (D) | **46.5%** (43.6–49.5) | **14%** |
+| Greg **Abbott** (R, gobernador) | **51.3%** (48.3–54.2) | **86%** |
 | Terceros (Pat Dixon, L; otros) | 2.2% (0.1–4.3) | — |
 
-Margen D−R -4.7 pp (σ 4.4) · solo encuestas: P(Hinojosa) 9% · Kalshi 32% · Polymarket 30% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 5.0% · 51 encuestas, 9 encuestadoras en la ventana
+Margen D−R -4.8 pp (σ 4.4) · solo encuestas: P(Hinojosa) 9% · Kalshi 32% · Polymarket 32% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 4.9% · 51 encuestas, 9 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas -3.2 · sesgo estatal de Texas -2.5 · mercados +1.1
+Cómo se llega: promedio de encuestas -3.2 · sesgo estatal de Texas -2.7 · mercados +1.1
 
-**Encuesta más reciente:** ActiVote, terminó el 2026-10-21 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** ActiVote, terminó el 2026-10-21 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-25): 4,132,879 (3,934,187 en persona, 198,692 por correo) · 51 % del total de votos de 2022. Texas no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-26): 4,394,402 (4,192,397 en persona, 202,005 por correo) · 54 % del total de votos de 2022. Texas no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
