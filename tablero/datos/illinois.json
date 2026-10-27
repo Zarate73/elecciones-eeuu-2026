@@ -10,30 +10,30 @@
  "corte": "2026-10-26",
  "dias_a_eleccion": 8,
  "pronostico": {
-  "P_D": 0.9946,
-  "pct_D": 56.15,
+  "P_D": 0.9943,
+  "pct_D": 56.06,
   "pct_D_IC80": [
-   51.89,
-   60.42
+   51.8,
+   60.33
   ],
-  "pct_R": 38.66,
+  "pct_R": 38.75,
   "pct_R_IC80": [
-   34.4,
-   42.92
+   34.49,
+   43.01
   ],
   "pct_terceros": 5.19,
   "pct_terceros_IC80": [
    3.04,
    7.35
   ],
-  "margen": 17.493,
+  "margen": 17.313,
   "margen_IC80": [
-   9.27,
-   25.73
+   9.09,
+   25.55
   ],
   "margen_IC95": [
-   4.54,
-   30.49
+   4.37,
+   30.31
   ],
   "sd": 6.556,
   "nu": 20.0,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0019
+    "valor": 0.002
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9656,
+   "P_D": 0.9636,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9824,
+   "P_D": 0.9746,
    "estado": "en_vivo"
   }
  ],
@@ -101,19 +101,19 @@
   },
   {
    "corte": "2026-10-26",
-   "P_D": 0.9946,
+   "P_D": 0.9943,
    "P_D_encuestas": 0.9973,
-   "P_kalshi": 0.9656,
-   "P_polymarket": 0.9824,
-   "pct_D": 56.1525,
-   "margen": 17.4925
+   "P_kalshi": 0.9636,
+   "P_polymarket": 0.9746,
+   "pct_D": 56.0629,
+   "margen": 17.3132
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 17.493,
-   "P_D": 0.9946
+   "margen": 17.313,
+   "P_D": 0.9943
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -127,8 +127,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 16.669,
-   "P_D": 0.9929
+   "margen": 16.527,
+   "P_D": 0.9925
   },
   {
    "escenario": "Sesgo estatal sin contraer (+1.60 pp)",
@@ -252,28 +252,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 18.513,
-   "P_D": 0.9962
+   "margen": 18.441,
+   "P_D": 0.9961
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 16.173,
-   "P_D": 0.9916
+   "margen": 15.909,
+   "P_D": 0.9908
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 11.941,
-   "P_D": 0.9656
+   "margen": 11.763,
+   "P_D": 0.9636
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 14.029,
-   "P_D": 0.9824
+   "margen": 12.899,
+   "P_D": 0.9746
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 20.754,
-   "P_D": 0.975
+   "margen": 20.883,
+   "P_D": 0.9754
   }
  ],
  "anticipado": {
@@ -284,41 +284,41 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 789463.0,
+    "valor": 793874.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 344602.0,
+    "valor": 348422.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 444861.0,
+    "valor": 445452.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 19.2,
+    "valor": 19.3,
     "formato": "pct"
    },
    {
     "etiqueta": "Peso de Cook",
-    "valor": 17.4,
+    "valor": 17.3,
     "formato": "pct"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.975,
-  "margen": 20.75
+  "P_D": 0.9754,
+  "margen": 20.88
  },
  "adicional": {
   "titulo": "Sesgo estatal de Illinois",
   "P_D": null,
   "margen": 1.2,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +1.2 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.8 pp."
+  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +1.2 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.9 pp."
  },
  "fuentes": [
   {
