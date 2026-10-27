@@ -4,6 +4,7 @@ from __future__ import annotations
 import logging
 
 import numpy as np
+import pandas as pd
 
 from .anticipado import obtener_anticipado
 from .encuestas import obtener_encuestas
@@ -28,11 +29,13 @@ def ultima_encuesta(p, cfg) -> dict:
 
 
 def vivo(estado) -> bool:
-    return str(estado).startswith(('en_vivo', 'archivo'))
+    # «historico» / «no_aplica»: reconstrucción de un corte pasado (precio al cierre de ese día; sin snapshot ≤ corte)
+    return str(estado).startswith(('en_vivo', 'archivo', 'historico', 'no_aplica'))
 
 
 def ejecutar(cfg, escribir_salidas: bool = True) -> dict:
-    log.info('Corte %s · %d días a la elección · offline=%s', cfg.corte, cfg.dias_a_eleccion, cfg.offline)
+    log.info('Corte %s · %d días a la elección · offline=%s · reconstrucción=%s', cfg.corte, cfg.dias_a_eleccion,
+             cfg.offline, cfg.es_reconstruccion)
     if cfg.dias_a_eleccion < 0:
         raise ErrorFatal('El corte es posterior a la elección')
     estados, avisos = {}, []
@@ -62,8 +65,17 @@ def ejecutar(cfg, escribir_salidas: bool = True) -> dict:
     ant = obtener_anticipado(cfg)
     estados['civicapi'] = ant['estado']
     degradadas = [k for k, v in estados.items() if not vivo(v)]
+    nd = e.get('no_disponibles_al_corte')
+    rec = {'activa': cfg.es_reconstruccion, 'corte': str(cfg.corte), 'corrida': str(cfg.hoy),
+           'no_disponibles_al_corte': [] if nd is None or nd.empty else
+           [{'encuestadora': str(x.pollster), 'fin': str(pd.Timestamp(x.fin).date()), 'disponible_desde':
+             str(pd.Timestamp(x.disponible_desde).date()), 'tipo_fecha': x.tipo_fecha} for x in nd.itertuples()]}
+    if cfg.es_reconstruccion:
+        avisos.insert(0, f'RECONSTRUCCIÓN del corte {cfg.corte} (corrida del {cfg.hoy}): solo encuestas publicadas al '
+                         f'corte y precios de mercado al cierre de ese día')
     res = {'modelo': r, 'mercados': mk, 'anticipado': ant, 'calibracion': par, 'estados_fuentes': estados,
-           'avisos': avisos, 'degradadas': degradadas, 'conteos': e['conteos'], 'ultima_encuesta': ult}
+           'avisos': avisos, 'degradadas': degradadas, 'conteos': e['conteos'], 'ultima_encuesta': ult,
+           'reconstruccion': rec}
     res['resumen_texto'] = texto_resumen(res, cfg)
     if escribir_salidas:
         res['carpeta'] = escribir(res, cfg)

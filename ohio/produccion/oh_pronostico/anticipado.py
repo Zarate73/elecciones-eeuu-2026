@@ -100,6 +100,18 @@ def obtener_anticipado(cfg) -> dict:
     d = cfg.dir_cache / 'civicapi'
     d.mkdir(parents=True, exist_ok=True)
     js, estado = {}, 'en_vivo'
+    if cfg.es_reconstruccion:      # revisión OH-05: el snapshot de hoy es posterior al corte; solo snapshots guardados ≤ corte
+        for cat in CATS:
+            arch = sorted(x for x in d.glob(f'{f.civicapi_estado}_{cat}_*.json') if x.stem.split('_')[-1] <= str(cfg.corte))
+            if arch:
+                js[cat] = json.loads(arch[-1].read_text(encoding='utf-8'))
+        if any(c not in js for c in CATS if c not in OPCIONALES):
+            return {'disponible': False, 'estado': f'no_aplica (reconstrucción: sin snapshot ≤ {cfg.corte})'}
+        res = _resumir(js, cfg)
+        res.update({'disponible': True, 'estado': f"historico (snapshot del {res['fecha']})",
+                    'uso': 'diagnóstico; no entra al pronóstico',
+                    'fuente': f'civicAPI (civicapi.org), datos oficiales de {cfg.eleccion.estado}'})
+        return res
     try:
         for cat in CATS:
             try:

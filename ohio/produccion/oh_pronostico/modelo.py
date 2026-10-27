@@ -5,7 +5,9 @@ Base: Nueva York v1.1.0 / Illinois v1.1.0 / Texas / Maine / Pennsylvania / Nevad
              1/firma; sesgo estatal con vida media de 4 años, contraído por Bayes empírico, con todas las contiendas
              del estado: hoy +4.04 pp pro-D, se resta)
   ventana  últimos 21 días; si hay < 2 encuestadoras, los 21 días previos a la encuesta más reciente
-  σ        = √(τ² + s²/k + 0.25²·días que las encuestas son más viejas que el horizonte calibrado); t de Student
+  σ        = √(τ² + s²/k + σ_d²·d), σ_d = 0.25, d = días que las encuestas son más viejas que el horizonte calibrado;
+           t de Student. La deriva es un PASEO ALEATORIO: la VARIANZA crece linealmente con d y la desviación estándar
+           adicional con √d (0.25 pp por √día; 3 días → 0.43 pp), no 0.25 pp por día (revisión OH-04).
   terceros real = a + c·(otros en las encuestas que los reportan) (Don Kissick, Libertario, y votos por escrito);
            indecisos 50/50
   Acton    = (100 − T + margen)/2 ;  Ramaswamy = (100 − T − margen)/2 ;  P(|margen| ≤ 0.25) = recuento automático
@@ -92,7 +94,7 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     q, nota = seleccionar_ventana(p, cfg)
     h = int(par['horizonte_dias'])
     edad_extra = max((pd.Timestamp(cfg.dia_eleccion) - q.fin.max()).days - h, 0)
-    var_deriva = m.sigma_dia_pp ** 2 * edad_extra
+    var_deriva = m.sigma_dia_pp ** 2 * edad_extra      # paseo aleatorio: varianza σ_d²·d → sd adicional σ_d·√d
     house = par['efectos_casa']
     mu_enc, otros_enc, k, w = promedio(q, house, m.vida_media_dias)
     sesgo = par['sesgo_contraido'] if m.sesgo_estatal else 0.0
@@ -198,7 +200,7 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
     esc.append(fila(sim(mu, dist, 0.1, 0.0), 'Sin terceros'))
     esc.append(fila(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva)), par['nu'])), 'Sin deriva por encuestas viejas'))
     esc.append(fila(sim(mu, Dist(float(np.sqrt(sd ** 2 - var_deriva + 3 * var_deriva)), par['nu'])),
-                    f'Deriva al doble (0.50 pp/día, {edad_extra} días)'))
+                    f'Deriva al doble (σ_d = 0.50 pp por √día, {edad_extra} días)'))
     for nom, kw in (('Regla literal V11 (última encuesta de cada firma)', {'regla': 'v11'}),
                     ('Ventana 45 días', {'dias': 45}), ('Ventana 60 días', {'dias': 60})):
         qq, _ = seleccionar_ventana(p, cfg, **kw)

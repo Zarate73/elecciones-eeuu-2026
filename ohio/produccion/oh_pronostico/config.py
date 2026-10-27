@@ -47,8 +47,20 @@ class Config:
         return date.fromisoformat(self.eleccion.fecha_nominacion)
 
     @property
+    def hoy(self) -> date:
+        return datetime.now(ZoneInfo(self.eleccion.zona_horaria)).date()
+
+    @property
     def corte(self) -> date:
-        return self.corte_manual or datetime.now(ZoneInfo(self.eleccion.zona_horaria)).date()
+        return self.corte_manual or self.hoy
+
+    @property
+    def es_reconstruccion(self) -> bool:
+        """Corte anterior a hoy (revisión OH-05): las fuentes descargadas hoy traen información posterior al corte, así que
+        solo entran encuestas ya PUBLICADAS al corte, precios de mercado al cierre de ese día y snapshots de voto
+        anticipado con fecha ≤ corte. La corrida diaria (corte = hoy) no cambia: todo lo que trae una fuente en vivo ya
+        está publicado."""
+        return self.corte < self.hoy
 
     @property
     def dias_a_eleccion(self) -> int:

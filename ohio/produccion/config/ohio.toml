@@ -50,6 +50,7 @@ polymarket_api = "https://gamma-api.polymarket.com"
 polymarket_evento_ganador = "ohio-governor-winner-2026"
 polymarket_evento_margen = "ohio-governor-margin-of-victory-2026"
 mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+retraso_publicacion_dias = 3           # reconstrucciones: publicación supuesta = cierre de campo + 3 días si no se conoce (270toWin: 0–8, mediana 2–3)
 civicapi = "https://civicapi.org/api/v2/early-vote"
 civicapi_estado = "OH"
 civicapi_por_partido = false           # Ohio no tiene registro partidario: civicAPI publica solo volumen por condado (88)
@@ -66,7 +67,8 @@ sesgo_estatal = true                   # backtest de OH: las encuestas sobreesti
                                        # todas desde 2014; LOYO 2.066 vs 2.478 sin sesgo; cronológico 1.802 vs 2.464 (P = 0.002)
 sesgo_regla = "todas"                  # «k2» empata (LOYO 2.048, cronológico 1.799; estimación −3.96 vs −4.04); «por cargo» peor (P = 0.010)
 peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
-sigma_dia_pp = 0.25                    # deriva diaria si las encuestas son más viejas que el horizonte calibrado
+sigma_dia_pp = 0.25                    # deriva (paseo aleatorio) si las encuestas son más viejas que el horizonte calibrado:
+                                       # varianza 0.25²·d; la sd adicional crece con √d (0.25 pp por √día), no 0.25 pp/día
 n_simulaciones = 200000
 semilla = 20261028
 

@@ -25,8 +25,12 @@ class RelojFijo(_dt.datetime):
 def _archivo_json(url: str, params: dict) -> str:
     if 'wikipedia' in url:
         return 'wikipedia_oh_gob.json'
+    if 'kalshi' in url and '/candlesticks' in url:            # reconstrucción: velas diarias (revisión OH-05)
+        return f"kalshi_velas_{url.split('/markets/')[1].split('/')[0]}.json"
     if 'kalshi' in url:
         return 'kalshi_markets.json'
+    if 'prices-history' in url:                               # reconstrucción: historial de Polymarket por token
+        return f"polymarket_historial_{params['market'][:16]}.json"
     if 'polymarket' in url:
         return f"polymarket_{params['slug']}.json"
     if 'civicapi' in url:
@@ -69,6 +73,7 @@ def red_simulada(monkeypatch):
     monkeypatch.setattr('oh_pronostico.historico.get_text', r.get_text)
     monkeypatch.setattr('time.sleep', lambda s: None)
     monkeypatch.setattr('oh_pronostico.mercados.datetime', RelojFijo)
+    monkeypatch.setattr('oh_pronostico.config.datetime', RelojFijo)
     return r
 
 

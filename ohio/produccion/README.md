@@ -26,10 +26,23 @@ Paquete de Python del modelo de Ohio: Amy Acton (D), exdirectora de Salud del es
   - «Sin sesgo», «k ≥ 2», «solo gobernador» y «sin cada contienda» quedan como escenarios.
 - **Terceros (Kissick y votos por escrito):** `real = a + c·(otros en las encuestas que los reportan)`, la regla T4. Es la mejor en Ohio y a nivel nacional.
 - **Indecisos:** 50/50.
-- **σ:** `√(τ² + s²/k)`, t de Student, con una deriva de 0.25 pp/día cuando las encuestas son más viejas que el horizonte.
+- **σ:** `√(τ² + s²/k + 0.25²·d)`, t de Student; d = días que las encuestas son más viejas que el horizonte calibrado. La deriva es un paseo aleatorio: la varianza crece linealmente con d y la desviación estándar adicional con √d (0.25 pp por √día; con 3 días, +0.43 pp en cuadratura), no 0.25 pp por día. El escenario «deriva al doble» usa σ_d = 0.50 (cuatro veces la varianza de la deriva).
 - **Mercados:** Kalshi `GOVPARTYOH-26` y Polymarket `ohio-governor-winner-2026`, promediados, en mezcla logit con peso 0.30 (D / (D + R)). Hoy los mercados (~82 %) están muy por encima de las encuestas corregidas (41 %).
 - **Recuento:** automático si el margen es ≤ 0.25 % de los votos; se reporta P(|margen| ≤ 0.25).
 - **Voto anticipado (civicAPI):** Ohio no tiene registro partidario, así que solo hay volumen por condado (correo y en persona). Es diagnóstico: no entra al pronóstico.
+
+## Reconstruir un corte pasado (revisión OH-05)
+`python -m oh_pronostico correr --corte 2026-10-21` con un corte anterior a hoy es una **reconstrucción**: las fuentes se descargan hoy y traen información posterior al corte. Por eso:
+- **Encuestas:** solo entran las ya **publicadas** al corte.
+  - La fecha de publicación sale de 270toWin, que fecha por publicación, o de la columna `publicacion` del archivo complementario.
+  - Sin fecha conocida se usa cierre de campo + `retraso_publicacion_dias` (3).
+  - Nunca entra una encuesta con campo posterior al corte, aunque la fuente la traiga.
+  - Cada encuesta lleva `publicacion`, `tipo_fecha` y `disponible_desde`. Las excluidas quedan en `reporte.json` (`reconstruccion.no_disponibles_al_corte`) y en los avisos.
+- **Mercados:** precio al cierre del día del corte, con la vela diaria de Kalshi y el historial de Polymarket, para el ganador y para cada rango de margen. No se escribe en la caché de consultas en vivo.
+- **Voto anticipado:** solo snapshots guardados con fecha ≤ corte; sin ellos, «no aplica» (diagnóstico).
+- **Marcas:** el resumen dice «RECONSTRUCCIÓN» y el historial marca la fila con `reconstruccion = True`.
+
+La corrida diaria (corte = hoy) no cambia: todo lo que trae una fuente en vivo ya está publicado.
 
 ## Fuentes
 | Fuente | Vía | Uso |

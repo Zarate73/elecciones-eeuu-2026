@@ -184,11 +184,53 @@ def cargar_complementarias(ruta: Path) -> pd.DataFrame:
     faltan = {'pollster', 'inicio', 'fin', 'D', 'R', 'fuente'} - set(df.columns)
     if faltan:
         raise ValueError(f'{ruta.name}: faltan columnas {sorted(faltan)}')
-    for c in ('n', 'pop', 'otros', 'indecisos'):
+    for c in ('n', 'pop', 'otros', 'indecisos', 'publicacion'):
         if c not in df:
             df[c] = np.nan
     df['origen'] = 'complementaria'
     return df
+
+
+# ----------------------------------------------------------------------------------- disponibilidad (revisión OH-05)
+def fechas_disponibilidad(p: pd.DataFrame, t270: pd.DataFrame, comp: pd.DataFrame, retraso: int) -> pd.DataFrame:
+    """Agrega publicacion, tipo_fecha y disponible_desde a cada encuesta combinada.
+
+    - 270toWin fecha cada encuesta por su PUBLICACIÓN: si su fila coincide con la encuesta (identidad.relacion; la más
+      cercana en el calendario), esa fecha es la publicación (nunca antes del cierre de campo).
+    - Archivo complementario: columna opcional `publicacion` (verificada en la fuente original).
+    - Sin fecha de publicación conocida: cierre de campo + `retraso` días (supuesto; en Ohio 270toWin publica 0–8 días
+      después del cierre, mediana 2–3).
+    Wikipedia y el Excel solo traen el periodo de campo."""
+    p = p.copy()
+    p['publicacion'], p['tipo_fecha'] = pd.NaT, ''
+    filas = p.to_dict('records')
+    for r in (t270.to_dict('records') if len(t270) else []):
+        mejor, md = None, None
+        for i, b in enumerate(filas):
+            if b.get('origen') == '270towin' and b is not None and pd.Timestamp(b['fin']) == pd.Timestamp(r['fin']) \
+                    and b.get('clave') == r.get('clave'):
+                mejor, md = i, -1                          # la propia fila de 270toWin (solo está en 270toWin)
+                break
+            misma, _ = identidad.relacion(r, b)
+            if misma:
+                d = identidad.calendario(r, b)[1]
+                if md is None or d < md:
+                    mejor, md = i, d
+        if mejor is not None:
+            f_pub = max(pd.Timestamp(r['fin']), pd.Timestamp(filas[mejor]['fin']))
+            act = p.iloc[mejor]['publicacion']
+            if pd.isna(act) or f_pub < act:
+                p.iat[mejor, p.columns.get_loc('publicacion')] = f_pub
+                p.iat[mejor, p.columns.get_loc('tipo_fecha')] = 'publicacion (270toWin)'
+    if len(comp) and 'publicacion' in comp:
+        for r in comp[comp.publicacion.notna()].itertuples():
+            m = (p.clave == r.clave) & (pd.to_datetime(p.fin) == pd.Timestamp(r.fin))
+            p.loc[m, 'publicacion'] = pd.Timestamp(r.publicacion)
+            p.loc[m, 'tipo_fecha'] = 'publicacion (fuente verificada)'
+    sin = p.publicacion.isna()
+    p.loc[sin, 'tipo_fecha'] = f'estimada: fin + {retraso} días'
+    p['disponible_desde'] = p.publicacion.where(~sin, pd.to_datetime(p.fin) + pd.Timedelta(days=retraso))
+    return p
 
 
 def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
@@ -320,8 +362,21 @@ def obtener_encuestas(cfg) -> dict:
     p = combinar(*fuentes)
     for d_ in p.attrs.get('decisiones', []):
         log.info('Identidad %s (%s): %s | %s', d_['decision'], d_['razon'], d_['conservada'], d_['nueva'])
+    retraso = int(f.get('retraso_publicacion_dias', 3))
+    comp_n = _normalizar(comp, 'complementaria').assign(publicacion=comp.get('publicacion')) if len(comp) else comp
+    t270_n = _normalizar(t270, '270towin') if len(t270) else t270
+    p = fechas_disponibilidad(p, t270_n, comp_n, retraso)
     p = p[(pd.to_datetime(p.fin) > pd.Timestamp(cfg.fecha_nominacion)) &
-          (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()
+          (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()          # nunca una encuesta con campo posterior al corte
+    no_disp = p.iloc[0:0]
+    if cfg.es_reconstruccion:      # revisión OH-05: solo lo ya publicado al corte (en vivo, todo lo descargado ya está publicado)
+        fuera = p.disponible_desde > pd.Timestamp(cfg.corte)
+        no_disp = p[fuera].copy()
+        p = p[~fuera].copy()
+        if len(no_disp):
+            avisos.append(f'reconstrucción del {cfg.corte}: {len(no_disp)} encuesta(s) con campo cerrado pero aún no '
+                          f'publicadas al corte: ' + ', '.join(f"{r.pollster} ({r.tipo_fecha}: {r.disponible_desde.date()})"
+                                                             for r in no_disp.itertuples()))
     p['partidista'] = p.pollster.map(lambda x: len(set(re.findall(r'\((D|R)\)', str(x)))) == 1)   # bipartidista ≠ partidista
     # Wikipedia marca «(D)» a firmas de inclinación partidista aunque la encuesta la pague un medio (PPP para Chicago
     # News Weekly). Para el ajuste partidista cuenta el PATROCINIO (como la columna partisan de FiveThirtyEight)
@@ -351,4 +406,5 @@ def obtener_encuestas(cfg) -> dict:
         avisos.append(f'solo {vivas} encuestas aparecen en fuentes web (< {f.min_encuestas_vivas})')
     log.info('Encuestas: %d combinadas (wiki %d, base %d, 270 %d)', len(p), len(wiki), len(base), len(t270))
     return {'encuestas': p.sort_values('fin').reset_index(drop=True), 'estados': estados, 'avisos': avisos,
-            'conteos': {'wikipedia': len(wiki), 'base': len(base), 'complementarias': len(comp), '270towin': len(t270)}}
+            'conteos': {'wikipedia': len(wiki), 'base': len(base), 'complementarias': len(comp), '270towin': len(t270)},
+            'no_disponibles_al_corte': no_disp}

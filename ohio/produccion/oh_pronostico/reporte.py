@@ -19,7 +19,8 @@ def texto_resumen(r: dict, cfg) -> str:
     m, e, mk = r['modelo'], cfg.eleccion, r['mercados']
     f = m['final']
     v = f['ventana']
-    lin = [f"{e.estado} {e.cargo} {cfg.dia_eleccion.year} · corte {cfg.corte} ({cfg.dias_a_eleccion} días a la elección)",
+    lin = [f"{e.estado} {e.cargo} {cfg.dia_eleccion.year} · corte {cfg.corte} ({cfg.dias_a_eleccion} días a la elección)"
+           + (f" · RECONSTRUCCIÓN (corrida del {cfg.hoy})" if cfg.es_reconstruccion else ''),
            '=' * 78,
            f"  {e.nombre_d} (D): {f['pct_D']:.1f}%   [IC80 {f['pct_D_IC80'][0]:.1f}–{f['pct_D_IC80'][1]:.1f}]",
            f"  {e.nombre_r} (R): {f['pct_R']:.1f}%   [IC80 {f['pct_R_IC80'][0]:.1f}–{f['pct_R_IC80'][1]:.1f}]",
@@ -113,6 +114,7 @@ def reporte_json(r: dict, cfg) -> dict:
     from . import __version__
     return {'version_modelo': __version__, 'corte': str(cfg.corte), 'dias_a_eleccion': cfg.dias_a_eleccion, 'estados_fuentes': r['estados_fuentes'],
             'avisos': r['avisos'], 'conteos_encuestas': r['conteos'], 'ultima_encuesta': r['ultima_encuesta'],
+            'reconstruccion': r.get('reconstruccion'),
             'gobernador': {**m['final'], 'n_encuestas': len(m['encuestas'])},
             'escenarios': m['escenarios'],
             'mercados': {'kalshi': mk['kalshi'], 'polymarket': mk['polymarket'], 'promedio_D': mk['promedio_D'],
@@ -168,7 +170,8 @@ def escribir(r: dict, cfg) -> Path:
                    'ultima_encuesta_fin': r['ultima_encuesta']['fin'], 'dias_desde_ultima_encuesta': r['ultima_encuesta']['dias_desde_fin'],
                    'sesgo_estatal': f.get('sesgo_estatal_aplicado'), 'desplazamiento_mercados': f['desplazamiento_mercados_pp'],
                    'emitidos_anticipado': r['anticipado'].get('emitidos'), 'margen_DR_anticipado': r['anticipado'].get('margen_DR_pp'),
-                   'fuentes_degradadas': ';'.join(r['degradadas'])}])
+                   'fuentes_degradadas': ';'.join(r['degradadas']),
+                   'reconstruccion': bool(cfg.es_reconstruccion)}])
     # se reescribe completo: si cambian las columnas (versión nueva) el CSV sigue siendo rectangular
     if hist.exists():
         fila = pd.concat([pd.read_csv(hist), fila], ignore_index=True)

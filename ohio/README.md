@@ -39,7 +39,7 @@ Base: el modelo de Nueva York v1.1.0 e Illinois v1.1.0 (Texas / Maine / Pennsylv
 | Terceros (Kissick) | `real = a + c·(otros en las encuestas que los reportan)` | Mejor regla en OH y a nivel nacional |
 | Indecisos | 50/50 | El reparto proporcional y la cuota R son peores |
 | Ventajas grandes | Sin ajuste de escala | b = 1.00 fuera de muestra |
-| σ | `√(τ² + s²/k)` calibrada a los días que faltan, t de Student, más una deriva de 0.25 pp/día | Cobertura del 80 % correcta en el backtest |
+| σ | `√(τ² + s²/k + 0.25²·d)` calibrada a los días que faltan, t de Student; d = días que las encuestas son más viejas que el horizonte. La deriva es un paseo aleatorio: la sd adicional crece con √d (0.25 pp por √día) | Cobertura del 80 % correcta en el backtest |
 | Mercados | Promedio de **Kalshi y Polymarket**, mezcla logit con peso 0.30 | Peso estimado con 40 contiendas de 2024 ([detalle](../arizona/docs/03_peso_mercados.md)). Hoy los mercados (~82 %) están muy por encima de las encuestas corregidas (41 %): el peso 0.15/0.50 da 48 %/64 % |
 | Recuento | P(\|margen\| ≤ 0.25 pp) | Recuento automático en OH |
 | Voto anticipado | civicAPI por condado (88), sin partido | Diagnóstico, peso 0 |

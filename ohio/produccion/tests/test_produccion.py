@@ -242,3 +242,90 @@ def test_readme_bloque_automatico(cfg, red_simulada, tmp_path, monkeypatch):
     t = est.read_text(encoding='utf-8')
     assert 'Amy **Acton**' in t and 'Vivek **Ramaswamy**' in t and '1,084,305' in t
     assert '| Ohio |' in raiz.read_text(encoding='utf-8')
+
+
+# ----------------------------------------------------------------------------------- revisión OH-05: reconstrucción de cortes
+def _con_encuestas_artificiales(monkeypatch, filas):
+    """Agrega encuestas a la respuesta de Wikipedia (como si la fuente descargada hoy las trajera)."""
+    from oh_pronostico import encuestas_web as W
+    original = W.parse_tabla_wikipedia
+
+    def parse(*a, **k):
+        d = original(*a, **k)
+        base = d.iloc[0].to_dict()
+        extra = [{**base, 'pollster': nom, 'clave_538': W.clave_firma(nom), 'inicio': date.fromisoformat(i),
+                  'fin': date.fromisoformat(f), 'n': 800.0, 'pop': 'LV', 'D': D, 'R': R} for nom, i, f, D, R in filas]
+        return pd.concat([d, pd.DataFrame(extra)], ignore_index=True)
+    monkeypatch.setattr(W, 'parse_tabla_wikipedia', parse)
+
+
+def test_es_reconstruccion_solo_si_el_corte_es_anterior_a_hoy(cfg, red_simulada):
+    assert cfg.hoy == date(2026, 10, 26) and not cfg.es_reconstruccion          # reloj fijo de los fixtures
+    cfg.corte_manual = date(2026, 10, 21)
+    assert cfg.es_reconstruccion
+
+
+def test_fecha_de_publicacion_desde_270towin(cfg, red_simulada):
+    """270toWin fecha por publicación: Marist (campo 15–18 oct) se publicó el 20-oct; Verasight (1–20 oct), el 22-oct.
+    Sin fecha de publicación (Wedgewood, solo en el Excel): cierre de campo + 3 días."""
+    m = encuestas.obtener_encuestas(cfg)['encuestas']
+    mar = m[(m.pollster_key == 'maristcollege') & (m.fin == '2026-10-18')].iloc[0]
+    ver = m[m.pollster_key == 'verasight'].iloc[0]
+    wed = m[m.pollster_key == 'wedgewoodpolls'].iloc[0]
+    assert (mar.publicacion, mar.tipo_fecha) == (pd.Timestamp('2026-10-20'), 'publicacion (270toWin)')
+    assert ver.disponible_desde == pd.Timestamp('2026-10-22')
+    assert wed.tipo_fecha == 'estimada: fin + 3 días' and wed.disponible_desde == pd.Timestamp('2026-08-16')
+    assert (m.disponible_desde >= m.fin).all()
+
+
+def test_reconstruccion_excluye_encuestas_no_publicadas(cfg, red_simulada):
+    """Corte del 21-oct con las fuentes de hoy: RedBox (campo hasta el 23-oct) y Verasight (publicada el 22-oct) no entran;
+    GS/New River y Beacon (publicadas el 21-oct) sí."""
+    cfg.corte_manual = date(2026, 10, 21)
+    r = ejecutar(cfg, escribir_salidas=False)
+    v = set(r['modelo']['ventana'].pollster_key)
+    assert v == {'gsstrategygrou', 'maristcollege', 'beaconresearch', 'activote'}
+    assert not r['modelo']['encuestas'].pollster_key.isin(['redboxresearch', 'verasight']).any()
+    rec = r['reconstruccion']
+    assert rec['activa'] and [x['encuestadora'] for x in rec['no_disponibles_al_corte']] == ['Verasight/VoteHub']
+    assert r['avisos'][0].startswith('RECONSTRUCCIÓN del corte 2026-10-21') and 'RECONSTRUCCIÓN' in r['resumen_texto']
+
+
+def test_encuesta_futura_artificial_nunca_entra(cfg, red_simulada, monkeypatch):
+    """Aunque la fuente descargada la traiga: (a) campo posterior al corte → nunca; (b) campo cerrado antes del corte pero
+    sin publicación conocida y fin + 3 > corte → fuera en una reconstrucción; (c) en la corrida diaria lo descargado hoy ya
+    está publicado → entra."""
+    _con_encuestas_artificiales(monkeypatch, [('Futura A', '2026-10-21', '2026-10-22', 60, 30),
+                                              ('Reciente B', '2026-10-18', '2026-10-20', 30, 60),
+                                              ('Hoy C', '2026-10-24', '2026-10-25', 49, 49)])
+    cfg.corte_manual = date(2026, 10, 21)
+    r = ejecutar(cfg, escribir_salidas=False)
+    nombres = set(r['modelo']['encuestas'].pollster)
+    assert 'Futura A' not in nombres and 'Reciente B' not in nombres and 'Hoy C' not in nombres
+    assert 'Reciente B' in {x['encuestadora'] for x in r['reconstruccion']['no_disponibles_al_corte']}
+    cfg.corte_manual = date(2026, 10, 26)                                   # corrida diaria
+    r2 = ejecutar(cfg, escribir_salidas=False)
+    assert {'Futura A', 'Reciente B', 'Hoy C'} <= set(r2['modelo']['encuestas'].pollster)
+    assert not r2['reconstruccion']['activa'] and r2['reconstruccion']['no_disponibles_al_corte'] == []
+
+
+def test_reconstruccion_usa_precios_al_cierre_del_corte(cfg, red_simulada):
+    """Mercados del 21-oct al cierre de ese día (Kalshi 0.78/0.22, Polymarket 0.78/0.23), no los de hoy (~0.82); los rangos
+    también. No se escribe en la caché de consultas en vivo."""
+    cfg.corte_manual = date(2026, 10, 21)
+    mk = mercados.obtener_mercados(cfg)
+    k, p = mk['kalshi'], mk['polymarket']
+    assert k['estado'] == p['estado'] == 'historico (cierre 2026-10-21)' and k['usable'] and p['usable']
+    assert (k['p_d'], k['p_r']) == pytest.approx((0.78, 0.22)) and (p['p_d'], p['p_r']) == pytest.approx((0.78, 0.23))
+    assert mk['rangos']['estado'].startswith('historico') and mk['rangos']['n_contratos'] == 10
+    assert not (cfg.dir_cache / 'mercado_kalshi.csv').exists()
+
+
+def test_reconstruccion_no_usa_el_voto_anticipado_de_hoy(cfg, red_simulada):
+    """civicAPI publica hoy el acumulado al 26-oct: en una reconstrucción del 21-oct solo vale un snapshot ≤ 21-oct.
+    Sin él, «no aplica» (diagnóstico; no cuenta como fuente degradada)."""
+    ejecutar(cfg)                                                           # corrida diaria: guarda el snapshot del 26-oct
+    cfg.corte_manual = date(2026, 10, 21)
+    r = ejecutar(cfg, escribir_salidas=False)
+    assert not r['anticipado']['disponible'] and r['estados_fuentes']['civicapi'].startswith('no_aplica')
+    assert r['degradadas'] == []
