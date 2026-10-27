@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Site Meta -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<script type="text/javascript">var gform;gform||(document.addEventListener("gform_main_scripts_loaded",function(){gform.scriptsLoaded=!0}),document.addEventListener("gform/theme/scripts_loaded",function(){gform.themeScriptsLoaded=!0}),window.addEventListener("DOMContentLoaded",function(){gform.domLoaded=!0}),gform={domLoaded:!1,scriptsLoaded:!1,themeScriptsLoaded:!1,isFormEditor:()=>"function"==typeof InitializeEditor,callIfLoaded:function(o){return!(!gform.domLoaded||!gform.scriptsLoaded||!gform.themeScriptsLoaded&&!gform.isFormEditor()||(gform.isFormEditor()&&console.warn("The use of gform.initializeOnLoaded() is deprecated in the form editor context and will be removed in Gravity Forms 3.1."),o(),0))},initializeOnLoaded:function(o){gform.callIfLoaded(o)||(document.addEventListener("gform_main_scripts_loaded",()=>{gform.scriptsLoaded=!0,gform.callIfLoaded(o)}),document.addEventListener("gform/theme/scripts_loaded",()=>{gform.themeScriptsLoaded=!0,gform.callIfLoaded(o)}),window.addEventListener("DOMContentLoaded",()=>{gform.domLoaded=!0,gform.callIfLoaded(o)}))},hooks:{action:{},filter:{}},addAction:function(o,r,e,t){gform.addHook("action",o,r,e,t)},addFilter:function(o,r,e,t){gform.addHook("filter",o,r,e,t)},doAction:function(o){gform.doHook("action",o,arguments)},applyFilters:function(o){return gform.doHook("filter",o,arguments)},removeAction:function(o,r){gform.removeHook("action",o,r)},removeFilter:function(o,r,e){gform.removeHook("filter",o,r,e)},addHook:function(o,r,e,t,n){null==gform.hooks[o][r]&&(gform.hooks[o][r]=[]);var d=gform.hooks[o][r];null==n&&(n=r+"_"+d.length),gform.hooks[o][r].push({tag:n,callable:e,priority:t=null==t?10:t})},doHook:function(r,o,e){var t;if(e=Array.prototype.slice.call(e,1),null!=gform.hooks[r][o]&&((o=gform.hooks[r][o]).sort(function(o,r){return o.priority-r.priority}),o.forEach(function(o){"function"!=typeof(t=o.callable)&&(t=window[t]),"action"==r?t.apply(null,e):e[0]=t.apply(null,e)})),"filter"==r)return e[0]},removeHook:function(o,r,t,n){var e;null!=gform.hooks[o][r]&&(e=(e=gform.hooks[o][r]).filter(function(o,r,e){return!!(null!=n&&n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}});</script>
+	<meta name="google-site-verification" content="MdIq3WB0S_05CH7QjYv2Nrc-j-6TXzkc_1zh7Ab6Xv0" />
+	<meta name="facebook-domain-verification" content="mran33yqcbsnbq2117b2kqkjoj1kcy" />
+	
+		
+			<!-- Favicons -->
+		<link rel="apple-touch-icon" sizes="57x57" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/favicon-16x16.png">
+		<link rel="manifest" href="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/favicons/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<!-- End Favicons -->			<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TJHWF8');</script>
+	<!-- End Google Tag Manager -->		
+	<!-- Open Graph -->
+	<meta property="og:title" content="Elon University Poll" />
+	<meta property="og:description" content="Most Recent Polls October 20, 2026: North Carolina Poll on the Nov. 3, 2026, midterm election News release | Topline and methodology | Data charts September 17, 2026: North Carolina Poll on NC..." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.elon.edu/u/elon-poll/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="Elon University" />
+	<meta property="og:image" content="https://www.elon.edu/u/wp-content/themes/ElonUniversity-Base/assets/img/global/og-image-2020.png" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="628" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@elonuniversity" />
+	<meta name="twitter:title" content="Elon University Poll" />
+	<meta name="twitter:description" content="Most Recent Polls October 20, 2026: North Carolina Poll on the Nov. 3, 2026, midterm election News release | Topline and methodology | Data charts September 17, 2026: North Carolina Poll on NC..." />
+	<meta name="twitter:image" content="https://www.elon.edu/u/wp-content/themes/ElonUniversity-Base/assets/img/global/og-image-2020.png" />
+	<meta name="elon:share_email_subject" content="Elon University Poll" />
+	<meta name="elon:share_email_body" content="Most Recent Polls October 20, 2026: North Carolina Poll on the Nov. 3, 2026, midterm election News release | Topline and methodology | Data charts September 17, 2026: North Carolina Poll on NC..." />
+	<meta name="elon:share_tweet" content="" />
+	<!-- End Open Graph -->	
+	<!-- WP Enqueued Head Scripts and Styles -->
+	<title>Elon University Poll | Elon University</title>
+<link rel='dns-prefetch' href='//25livepub.collegenet.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Elon University Poll &raquo; Feed" href="https://www.elon.edu/u/elon-poll/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Elon University Poll &raquo; Comments Feed" href="https://www.elon.edu/u/elon-poll/comments/feed/" />
+<link rel='stylesheet' id='elon-font-awesome-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/styles/fontawesome/legacy/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elon-global-header-footer-styles-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/styles/css/elon-global-header-footer-api-styles.css?ver=1788805115' type='text/css' media='all' />
+<link rel='stylesheet' id='elon-main-all-styles-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/styles/css/elon-main-all-styles.css?ver=1788805115' type='text/css' media='all' />
+<link rel='stylesheet' id='elon-print-styles-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/styles/css/elon-print-styles.css?ver=1788805115' type='text/css' media='print' />
+<link rel='stylesheet' id='owl-carousel-styles-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/styles/css/vendor/owl-carousel/owl.carousel.css?ver=2.3.4' type='text/css' media='all' />
+<link rel='stylesheet' id='elon-lity-styles-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/plugins/lity/lity.min.css?ver=1.5.67' type='text/css' media='all' />
+<link rel='stylesheet' id='dflip-styles-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/plugins/dflip/css/dflip.css?ver=1.7.18' type='text/css' media='all' />
+<link rel='stylesheet' id='dflip-icons-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/plugins/dflip/css/themify-icons.css?ver=1.7.18' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/jquery/jquery-2.1.1.min.js'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/jquery-ui/1.13.0/jquery-ui.min.js?ver=1.13.0'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/global/modernizr.js?ver=1.5.67'></script>
+<script type='text/javascript' src='//25livepub.collegenet.com/scripts/spuds.js?ver=1.5.67'></script>
+<link rel='https://api.w.org/' href='https://www.elon.edu/u/elon-poll/wp-json/' />
+<link rel="canonical" href="https://www.elon.edu/u/elon-poll/" />
+<link rel='shortlink' href='https://www.elon.edu/u/elon-poll/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.elon.edu/u/elon-poll/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.elon.edu%2Fu%2Felon-poll%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.elon.edu/u/elon-poll/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.elon.edu%2Fu%2Felon-poll%2F&#038;format=xml" />
+
+<!-- be_ixf, sdk, gho-->
+<meta name="be:sdk" content="php_sdk_1.5.8" />
+<meta name="be:timer" content="158ms" />
+<meta name="be:orig_url" content="https%3A%2F%2Fwww.elon.edu%2Fu%2Felon-poll%2F" />
+<meta name="be:norm_url" content="https%3A%2F%2Fwww.elon.edu%2Fu%2Felon-poll%2F" />
+<meta name="be:capsule_url" content="https%3A%2F%2Fixfd1-api.bc0a.com%2Fapi%2Fixf%2F1.0.0%2Fget_capsule%2Ff00000000297652%2F01510858946" />
+<meta name="be:api_dt" content="py_2026;pm_10;pd_19;ph_19;pmh_51;p_epoch:1792453910128" />
+<meta name="be:mod_dt" content="py_2026;pm_10;pd_19;ph_19;pmh_51;p_epoch:1792453910128" />
+<meta name="be:diag" content="hRxDY7wjGdtvXPuvZ8ytFI5KnBlXFS2CDqWVdeyZqjkZN86V44TPzOFPeFebbXR5eVdcPrmGOWUIAD4sIaxzVgzRPvEC++oEDc/UCM33GqusBt7llj8i7IeRpjVa7nl3ejPwVadGQ/AN/HbnibS0vVN3GPG/zg8is9rTjcxfGuNxct5gHR8jtS4q8TVG4oeQ3VylLVkcZc5/f87yMyCs0Ux6oA/kScs/lIteL+kv9d0VBLNw4dz1Ka4tLqL2k/c+2NSbxZep8/HPi8V5qmvGV7N/XIWwGfoYkIiH/2Q6uqbWuaGACehRgAhGVXJllJ7AmDKLbc6AohDwMu1uAGc9BroxCBvSDGtBzOwsS8hZLnxW1LsGRZOdkC9IwTZTsfV16blH2QwylcZQOvR1Dy/Mv0ixUAH3YJ8gEYxPbYomZxubKNF77YOsMkyGzeSiorZIHSQAwbfp4jRavD7ECs/fiIVPzwTnu7fpJU4toNc4/UsewSwNhkm5FsGMuY0jvyrL0CFYo3ZxL5PWoIobr04vL3xvCFsNMwnDjCoHhA7Ihdqtx+HnqipZixpIXNuRUC1U5tuzzttER3tJGcUoPONF65xs83uIt0Vti5e11ZhcnKSG7Nze/kzr86Rfckd1JdbmThvkx6RE25P7pJpZMczGmr8wGpwZz0k+7TYLMqfBhqg2dWDH6DWP9KejVkK5h5OSKzrwvnNdNr3EySnO8UoVFevPYjkByWbB2UDyy2fXi8gqTuxWKyd5hFD+fP07uc6coMWsXehdvX77dbLHVPE/FwQzE1GlgsD8pkDkgfp93M0kRS4Kv4qfDrLwc1WYYmW//ExaqOmd7+vuDgRC2av+zXOdy4Z7w8Sq+y6AsS4H9ebAafGcnMEX1RoCsWQEqdn6xvlUrimOYcBuIz8S3YOGO/iFlNjQZJDG9wlvPL1fMLPiT6+pKYVU064GJp7+6WoPATsRpzuK4XkNUODb0Yvstg0atwJgXVICpmYuoS4G2WNAW2HKE1wv8QpvyoOLzxnnDS+GcZEgv9UTeqyO8GGo8Pt6FCxqZI52IpydbKt7ifHi49h0mtUIJh3zG6S3OAZPBFoR1uQXETo9ynwjubAOmPEOq4qVXw9LC3ell1qbiIOCi7iSPCep40XB5zEEUgzVrBG05O6UKbBWYzEhsRbKScKTlyxW3TQxq8799FLpjRHdBWa0jfyIH7qMuO6ifudCHhKIWgIyItLVvlY60vXLmywEr0LeGbt7fyom0YEREER9IPstmzz0O1+MQdktP+3W+O65yjCn0tNExy1zg9okpc7zo/FSZBAfmjvmCdtIhRLhhcDpTQjVCADnqPQY/LNJuGRKoswE3+k6ePASayy9IroR2sdPsutYF7kSMBDtdtqzFCrIYWTc6obpY2nN1RK2Co4MaaAj76nhoFiyiznP2zflHO0QeMc9T2qKGH/BoDYs3NDTcPusrqnjBLdv2VbdH47hyhHSIjB2hz8TP+ngMYs3h1gJCR99wZa9MIUZy8XLbUvxJlrzgs+sytQTKYyJDehWGUuFLrWYL0nKcFBcbGoG6eg5BBRETueQ8So/L/eh6PhLMUtfkAIrSuhiMQZ/e43oDluvFqlTakFeK3c03xwLj1JTCQBJQ2SKG+B0ApEifcf6h9YmLQ8z2N0pgF8gJ+DaF7cL0Z+2DfD46xYC1RAghNdjnGYyoThkkNhLhfSCYBsE5JnVa4ebtXlvew7BW7WBhKWxEXA2aa6V9Sq8GetezhT8ajdEKUaR1hwEPx/dG0Qa9tETx2MYaj8GLm5NntUEK3g691IQl2fQig1wzhUdI4PYGE/WJ1HRTP6hY4iVwrdUnFiC1MeAg5nUj8sYH2S+8DqHHKdVUma0QEG9zAc9wbLmSmm8l7R0R8KObUzu583FPyHfuTXKMTblQuV5Y9ydi+pOiJZcg3gcr+LLv8KRRmLFXl63dgY7IyjC4yrkeG+9gzvA3Qvo/ZUvsHt5lsp5E9+jCQrWIEvomSmaNSwrmDE3CShiPq27swNtkb8KzY/HVUF73ljcBNMeFHdafYp/x4hgnuKmXj0YeOIn0Y+dFrkboBhkj6UB6E2RwY0yt66pHIyoijrs2mqXyZlYRw7quqG8QYSyvlSiwD3iEeT8AQ86q2+3vlIkC+/eXwkc1A7YqlyHGd5Twc6SZ4MDgKnYR7Zby/BT1XHcLq6LVwGcguZHCo+Tgowg/plO6ypo6oQcEKXPPtTqA7vr06YRCWVclrwmT07LsCU1xpzHjxJo6QYyLajufOtQulVT9BH3LtNRnBZ4ky+pNxdVTfId8fefyiCLa2E7P3La3TFCZmV5zhI2lOkQ9pVgtuU0aKSwidQr5PsH70XBQb/WeSGMkV2gtK5wYjflH4aX5RC8r0p0kTkGDIaIZIhJxe8ODOmWaBvC/XsY7qnUTArdfbLGifrxqM9qRjGOj0rRts4hXw==" />
+<meta name="be:messages" content="false" />
+
+
+<script data-cfasync="false" data-ignorepath="www.elon.edu/assets/" data-url="PhotoManager" id="marvel" data-customerid="f00000000297652" src="https://marvel-b2-cdn.bc0a.com/marvel.js"></script>
+	
+	<!-- Custom Page Styles -->
+	<style>@media only screen and (min-width: 641px) {
+    .gform_wrapper .top_label li.gfield.gf_left_half, .gform_wrapper .top_label li.gfield.gf_right_half {
+        width: 49% !important;
+    }
+}
+.gform_footer p,
+.gform_footer + p {
+  display: none !important;
+}</style>	
+	<!-- Custom Page JavaScript -->
+		
+</head>
+
+
+<body class="home page-template page-template-page-templates page-template-page-home page-template-page-templatespage-home-php page page-id-11 page-parent">
+	
+			<!-- Start Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJHWF8" 
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	
+	<!-- Facebook JavaScript SDK -->
+	<div id="fb-root"></div>
+	<script>
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<!-- End Facebook JavaScript SDK -->	
+	<!-- Start Global Header Jump Links -->
+<ul class="global-header--sr-jump-links" id="srJumpLinks">
+	<li><a class="global-sr-jump-link" href="#mainArea">Jump to main content</a></li>
+	<li><a class="global-sr-jump-link" id="jumpToSearch" href="#searchArea">Jump to search</a></li>
+	<li><a class="global-sr-jump-link" href="#footerArea">Jump to the footer</a></li>
+</ul>
+<!-- END Global Header Jump Links -->		
+		<!-- Start Elon Global Header -->
+		<header class="global-header gh-resources--closed" id="headerArea" role="banner" aria-label="Site Header">
+			<div class="gh-open-menu-overlay" id="ghOverlay"></div>
+			<div class="global-header--inner">
+				
+				<div class="global-header--brand gh-inner--cell">
+					<div class="global-header--logo">
+						<a href="https://www.elon.edu"><span class="sr-only">Elon University home</span></a>
+					</div>
+					
+					<a class="gh-mobile-menu--toggle-open" id="ghMobileMenuOpen" href="#" aria-expanded="false" aria-controls="ghSiteNav"><i class="fa fa-bars" aria-hidden="true"></i><span class="sr-only">Open Site Navigation</span></a>
+				</div>
+				
+				<nav class="global-header--links gh-inner--cell" id="ghSiteNav" aria-label="Elon University Site Navigation">
+					
+					<nav class="global-header--nav gh-nav--primary" aria-label="Elon Primary Navigation">
+						<ul id="menu-primary-nav-2018" class="menu"><li id="menu-item-5566" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5566"><a href="https://www.elon.edu/u/nav-about/">About</a></li>
+<li id="menu-item-5546" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5546"><a href="https://www.elon.edu/u/nav-admissions/">Admissions</a></li>
+<li id="menu-item-5550" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5550"><a href="https://www.elon.edu/academics">Academics</a></li>
+<li id="menu-item-5574" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5574"><a href="https://www.elon.edu/u/nav-global/">Global</a></li>
+<li id="menu-item-5554" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5554"><a href="https://www.elon.edu/u/nav-campus-life/">Campus Life</a></li>
+<li id="menu-item-5558" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5558"><a href="http://elonphoenix.com/">Athletics</a></li>
+<li id="menu-item-5562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5562"><a href="https://www.elon.edu/u/nav-alumni/">Alumni</a></li>
+</ul>					</nav>
+					
+					<div class="gh-links--top-bar">
+						<div class="gh-top-bar--outer">
+							<div class="gh-top-bar--inner">
+							
+								<div class="gh-top-bar--item">
+									<nav class="global-header--nav gh-nav--secondary" aria-label="Elon Secondary Navigation">
+										<ul id="menu-utility-nav-left-2018" class="menu"><li id="menu-item-5526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5526"><a href="https://www.elon.edu/u/student-resources/">Students</a></li>
+<li id="menu-item-5530" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5530"><a href="https://www.elon.edu/u/faculty-staff-resources/">Faculty &#038; Staff</a></li>
+<li id="menu-item-5534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5534"><a href="https://www.elon.edu/u/parents-resources/">Parents</a></li>
+</ul>									</nav>
+								</div>
+								
+																<div class="gh-top-bar--item global-header--resources-wrap">
+									<a class="gh-resources--toggle" id="ghResourcesNavToggle" href="#" aria-expanded="false" aria-controls="ghResourcesNav"><i class="fa fa-plus" aria-hidden="true"></i>Resources</a>
+
+									<nav class="global-header--nav gh-nav--resources" id="ghResourcesNav" aria-label="Elon Resources Navigation">
+										<ul>
+																					<li><a href="https://ontrack.elon.edu/"><i class="fa fa-user-circle-o" aria-hidden="true"></i>OnTrack</a></li>
+																					<li><a href="https://www.elon.edu/lms"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Canvas</a></li>
+																					<li><a href="https://www.elon.edu/calendar"><i class="fa fa-calendar" aria-hidden="true"></i>Calendar</a></li>
+																					<li><a href="https://www.elon.edu/u/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i>News</a></li>
+																					<li><a href="https://www.elon.edu/library/"><i class="fa fa-book" aria-hidden="true"></i>Library</a></li>
+																					<li><a href="https://www.elon.edu/maps"><i class="fa fa-map" aria-hidden="true"></i>Maps</a></li>
+																					<li><a href="https://www.elon.edu/directories/"><i class="fa fa-id-card-o" aria-hidden="true"></i>Directory</a></li>
+																					<li><a href="https://www.elon.edu/email/"><i class="fa fa-envelope" aria-hidden="true"></i>Email</a></li>
+																				</ul>
+									</nav>
+									
+									<a class="gh-resources--sr-jump-link global-sr-jump-link" id="ghCloseResources" href="#">Close Resources</a>
+								</div>
+								
+								<div class="gh-top-bar--item global-header--search-wrap">
+									<form id="searchArea" role="search" method="get" action="https://www.elon.edu/u/search/">
+										<input type="hidden" value="009455150392920241679:benawwy4d2u" name="cx" />
+										<input type="hidden" value="FORID:10" name="cof" />
+										<input type="hidden" value="UTF-8" name="ie" />
+										<label for="ghSearchInput" class="sr-only">Search Elon.edu</label>
+										<input class="gh-search--input" id="ghSearchInput" placeholder="Search Elon.edu" type="search" name="q" />
+										<button class="gh-search--submit" id="ghSearchSubmit" type="submit"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Submit Search</span></button>
+									</form>
+								</div>
+
+								<div class="gh-top-bar--item">
+									<nav class="global-header--nav gh-nav--cta" aria-label="Calls to Action Navigation">
+										<ul id="menu-utility-nav-right-2018" class="menu"><li id="menu-item-5538" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5538"><a href="https://www.elon.edu/makeagift">Give</a></li>
+<li id="menu-item-5542" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5542"><a href="https://www.elon.edu/u/admissions/undergraduate/apply/">Apply</a></li>
+</ul>									</nav>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					
+					<a class="gh-mobile-menu--toggle-close" id="ghMobileMenuClose" href="#" aria-expanded="false" aria-controls="ghSiteNav"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sr-only">Close Site Navigation</span></a>
+
+				</nav>
+				
+			</div>
+		</header>
+		<!-- END Elon Global Header -->
+
+<!-- Main Content Area -->
+<main id="mainArea">
+
+	<!-- Page Content Wrapper -->
+	<article class="page--content-wrapper" aria-labelledby="ariaPageTitleLabel">
+		
+		
+<!-- Page Header -->
+<header class="page--header">
+	<div class="row">
+		
+		<nav class="page-header--breadcrumbs standard-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb-list" itemscope itemtype="http://schema.org/BreadcrumbList"><li class="breadcrumb-list--item list-item--home" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://www.elon.edu" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li><li class="breadcrumb-list--item list-item--active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" aria-current="page"><span itemprop="name">Elon University Poll</span><meta itemprop="position" content="2"></li></ol></nav>		
+					
+			<h1 id="ariaPageTitleLabel" class="page-hero--title">Elon University Poll</h1>
+			
+				
+	</div>
+</header>
+<!-- END Page Header -->
+
+<div class="page--hero">
+	<div class="row">
+		<div class="column-12">
+			
+			<div class="page-hero--img-wrap"><img alt="Elon University Poll" src="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/06/elon-poll-hero-copy-1.jpg" /></div>			
+						
+						
+		</div>
+	</div>
+</div>
+
+<!-- Featured Links -->
+<nav class="page--featured-links" aria-label="Featured Links">
+	<div class="row">
+		<div class="column-12">
+			<ul>
+				
+				<li><a href="https://www.elon.edu/u/elon-poll/about/" target="_self"><i class="fa fa-info-circle" aria-hidden="true"></i>About the Poll</a></li><li><a href="https://www.elon.edu/u/elon-poll/commitment-to-transparency/" target="_self"><i class="fa fa-search" aria-hidden="true"></i>Commitment to Transparency</a></li><li><a href="https://www.elon.edu/u/elon-poll/methodology/" target="_self"><i class="fa fa-cogs" aria-hidden="true"></i>Methodology</a></li><li><a href="https://www.elon.edu/u/elon-poll/archive/" target="_self"><i class="fa fa-archive" aria-hidden="true"></i>Poll Archive</a></li><li><a href="https://www.elon.edu/u/elon-poll/contact/" target="_self"><i class="fa fa-envelope" aria-hidden="true"></i>Contact</a></li>				
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- END Featured Links -->
+
+		
+		<!-- Page Body -->
+		<div class="page--body">
+			<div class="row">
+				
+				<!-- Main Content Column -->
+				<div class="main-content column-9 push-3">
+					
+					
+					<h2>Most Recent Polls</h2>
+<p><strong>October 20, 2026:</strong> North Carolina Poll on the Nov. 3, 2026, midterm election</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/10/Elon-Poll-news-release-10-20-26.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/10/Elon-University-Poll-topline-methodology-10_20_26.pdf" class="link--arrow-icon">Topline and methodology</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/10/Elon-University-Poll-data-charts-10-20-26.pdf" class="link--arrow-icon">Data charts</a></p>
+<p><strong>September 17, 2026:</strong> North Carolina Poll on NC Constitutional amendments on the November 2026 ballot, plus public opinion on the state&#8217;s marijuana laws</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/09/Elon-University-Poll-NR-9-17-26.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/09/Elon-University-Poll-Topline-Methodology-9-17-26.pdf" class="link--arrow-icon">Topline and methodology</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/09/Elon-University-Poll-charts-9-17-26.pdf" class="link--arrow-icon">Data charts</a></p>
+<p><strong>September 10, 2026:</strong> North Carolina Poll on U.S. Senate race, the state&#8217;s upcoming voting process, issues on voters&#8217; minds and approval ratings</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/09/Elon-University-Poll-NR-9-10-26.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/09/Elon-University-Poll-Topline-Methodology-9-10-26.pdf" class="link--arrow-icon">Topline and methodology</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/09/Elon-University-Poll-charts-9-10-26.pdf" class="link--arrow-icon">Data charts</a></p>
+<p><strong>September 2, 2026:</strong> National survey with Elon University&#8217;s <a href="http://imaginingthedigitalfuture.org">Imagining the Digital Future Center</a> &#8211; &#8220;The Rise of AI Companions,&#8221; a report on the use of AI systems as social companions</p>
+<p><a href="https://imaginingthedigitalfuture.org/reports-and-publications/the-rise-of-ai-companions/" class="link--arrow-icon">Special Report website</a> | <a href="https://imaginingthedigitalfuture.org/wp-content/uploads/2026/06/AI-Companions-report-ITDF-Elon-Poll-6_26.pdf" class="link--pdf">Special Report Publication (PDF)</a> | <a href="https://imaginingthedigitalfuture.org/reports-and-publications/the-rise-of-ai-companions/news-release-the-rise-of-ai-companions/" class="link--arrow-icon">News Release</a> | <a href="https://imaginingthedigitalfuture.org/wp-content/uploads/2026/06/AI-Companions-topline-methodology-6_26.pdf" class="link--arrow-icon link--pdf">Topline and Methodology</a></p>
+<p><strong>August 18, 2026</strong>: SPECIAL REPORT &#8211; 2026 North Carolina Political Landscape Report, a survey on 30 identities that define the state&#8217;s electorate</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/08/NC-Political-Landscape-Report-8-18-26.pdf" class="link--arrow-icon">Special Report Publication</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/08/Elon-University-Poll-NC-Political-Landscape-NR-8-18-26.pdf" class="link--arrow-icon">News Release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/08/NC-Political-Landscape-Report-toplinemethodology.pdf" class="link--arrow-icon">Topline and Methodology</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/08/nc-political-landscape-report-LAUNCH-GRAPHICS.pdf" class="link--arrow-icon">Charts</a></p>
+<p><strong>August 12, 2026:</strong> North Carolina Poll on NC&#8217;s U.S. Senate race, approval ratings, data centers</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/08/Elon-Poll-1-fall-2026-NR-V3-8-12-26.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/08/Elon-University-Poll-Topline-8-12-26.pdf" class="link--arrow-icon">Topline and methodology</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/08/Elon-Poll-August-2026-charts-8-12-26.pdf" class="link--arrow-icon">Data charts</a></p>
+<p><strong>June 2, 2026:</strong> SPECIAL REPORT &#8211; America250, a national public opinion poll on the state of U.S. democracy as the nation commemorates the 250th anniversary of the signing of the Declaration of Independence.</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/06/America-250-poll-NR-FINAL.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/05/america250-poll-report-6-2-26sm.pdf" class="link--arrow-icon">Special Report publication</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/05/Elon-University-Poll-America250-topline-6-2-26.pdf" class="link--arrow-icon">Topline and methodology</a></p>
+<p><strong>April 2, 2026</strong>: North Carolina poll on NC&#8217;s U.S. Senate race, election confidence, approval ratings, data centers, healthcare, firearms and the state&#8217;s economy</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/03/Elon-Poll-spring-2026-2-news-release.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/03/Elon-Poll-state-issues-charts-4-2-26.pdf" class="link--arrow-icon">Charts and data</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/03/Elon-Poll-topline-methodology-4-1-26.pdf" class="link--arrow-icon">Topline and methodology</a></p>
+<p><strong>April 1, 2026</strong>: North Carolina poll on war in Iran, political leader approval ratings, national economy, views about ICE</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/03/Elon-Poll-spring-2026-1-news-release.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/03/Elon-Poll-national-issues-charts-4-1-26.pdf" class="link--arrow-icon">Charts and data</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2026/03/Elon-Poll-topline-methodology-4-1-26.pdf" class="link--arrow-icon">Topline and methodology</a></p>
+<p><strong>December 17, 2025</strong>: North Carolina poll on K-12 education in partnership with the Elon University Dr. Jo Watts Williams School of Education</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/12/Elon-Poll-education-news-release-12-17-25.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/12/Elon-Poll-education-charts-and-data-12-16-25.pdf" class="link--arrow-icon">Charts and data</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/12/Elon-Poll-topline-12-16-25.pdf" class="link--arrow-icon">Topline and methodology</a></p>
+<p><strong>October 16, 2025:</strong> North Carolina poll &#8211; Topics: Economy; Trump, Stein, NCGA and Congress job performance ratings; 2026 election outlook; healthcare funding concerns</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/10/Elon-Poll-Fall-2025-10-16-25-NR-FINAL.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/10/Elon-Poll-1-fall25-charts-and-data-10-16-25.pdf" class="link--arrow-icon">Charts and data</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/10/Elon-Poll-topline-10-16-25.pdf" class="link--arrow-icon">Topline and methodology</a></p>
+<p><strong>October 14, 2025:</strong> North Carolina poll &#8211; Topics: Violent crime and public safety concerns, deployment of the National Guard for law enforcement in U.S. cities, aftermath of Charlie Kirk killing and issues related to free speech</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/10/Elon-Poll-Fall-2025-10-14-25-NR-FINAL.pdf" class="link--arrow-icon">News release</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/10/Elon-Poll-1-fall25-charts-10-14-25.pdf" class="link--arrow-icon">Charts and data</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/10/Elon-Poll-topline-10-14-25.pdf" class="link--arrow-icon">Topline and methodology</a></p>
+<p><strong>October 9, 2025:</strong> &#8220;College Sports at a Crossroads,&#8221; a national poll of NCAA Division I college presidents and chancellors, athletics directors, senior woman administrators and faculty athletics representatives, conducted in partnership with the <a href="http://knightcommission.org">Knight Commission on Intercollegiate Athletics</a></p>
+<p><a href="https://www.elon.edu/u/elon-poll/knight-commission-on-intercollegiate-athletics-division-i-leaders-survey/" class="link--arrow-icon">Survey website</a></p>
+<p><a href="https://www.elon.edu/u/elon-poll/knight-commission-on-intercollegiate-athletics-division-i-leaders-survey/knight-commission-on-intercollegiate-athletics-di-leaders-survey-executive-summary/" class="link--arrow-icon">Executive Summary</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/10/Knight-Commission-Full-Report-10-10-25.pdf" class="link--arrow-icon">Full Report</a> | <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/09/DI-leaders-survey-charts-and-data.pdf" class="link--arrow-icon">Charts and Data</a></p>
+<p><strong>August 6, 2025:</strong> <a href="https://www.elon.edu/u/elon-poll/homepage/knight-commission-on-intercollegiate-athletics-public-opinion-survey/knight-commission-on-intercollegiate-athletics-public-opinion-survey-executive-summary/">&#8220;Changing the Game,&#8221;</a> a national public opinion poll on college athletics, conducted in partnership with the <a href="http://knightcommission.org">Knight Commission on Intercollegiate Athletics</a></p>
+<p><a href="https://www.elon.edu/u/elon-poll/homepage/knight-commission-on-intercollegiate-athletics-public-opinion-survey/" class="link--arrow-icon">Survey website</a></p>
+<p><a href="https://www.elon.edu/u/elon-poll/homepage/knight-commission-on-intercollegiate-athletics-public-opinion-survey/knight-commission-on-intercollegiate-athletics-public-opinion-survey-executive-summary/" class="link--arrow-icon">Executive summary</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/08/Changing-the-Game-a-national-public-opinion-poll-on-college-athletics-1.pdf" class="link--arrow-icon">Charts &amp; Analysis</a></p>
+<p><strong>April 29, 2025:</strong> National Poll &#8211; Topics: Tariff impacts, confidence in the U.S. economy, job security, Social Security concerns</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/04/Elon-University-Poll-4-29-25-news-release.pdf" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/04/Elon-University-Poll-4-29-25-topline.pdf" class="link--arrow-icon">Full Report</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/04/Elon-University-Poll-4-29-25-analysis_charts.pdf" class="link--arrow-icon">Charts &amp; Analysis</a></p>
+<p><strong>April 24, 2025:</strong> National Poll &#8211; Topics: Balance of power in the U.S. government, conflicts between the judicial and executive branches of government, opinions about the judiciary and the Department of Justice</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/04/Elon-University-Poll-NR-4-24-25.pdf" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/04/Elon-Poll-topline-JUDICIAL-SYSTEM-4-24-25.pdf" class="link--arrow-icon">Full Report</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/04/Elon-Poll-analysis_charts-JUDICIAL-SYSTEM.pdf" class="link--arrow-icon">Charts &amp; Analysis</a></p>
+<p><strong>March 27, 2025:</strong> North Carolina Poll &#8211; Topics: Hurricane Helene recovery, NC Supreme Court, cell phones in schools, concealed handgun permits, tax levels and Fort Bragg name change</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-Poll-2-Spring-2025-NR-state-issues.pdf" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-University-Poll-topline-3-27-25.pdf" class="link--arrow-icon">Full Report</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-Poll-2-spring25-STATE-ISSUES-analysis_charts.pdf" class="link--arrow-icon">Charts &amp; Analysis</a></p>
+<p><strong>March 25, 2025:</strong> North Carolina Poll &#8211; Federal agency cuts and DOGE actions, immigration policy<br />
+North Carolinians do not favor elimination or major cutbacks at 14 federal agencies targeted for reduction by President Donald Trump’s administration and its Department of Government Efficiency (DOGE).</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-Poll-2-Spring-2025-NR-federal-issues-FINAL.pdf" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-University-Poll-topline-3-25-25.pdf" class="link--arrow-icon">Full Report</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-Poll-2-spring25-FEDERAL-ISSUES-analysis_charts.pdf" class="link--arrow-icon">Charts &amp; Analysis</a></p>
+<p><strong>March 19, 2025:</strong> North Carolina Poll &#8211; Basketball tournament edition<br />
+As the 2025 NCAA Division I basketball tournaments begin, North Carolinians express opinions about in-state rivalries and their relative interest in the men&#8217;s and women&#8217;s tournaments.</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-University-Poll-3-19-25-basketball.pdf" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-University-Poll-3-19-25-basketball-topline.pdf" class="link--arrow-icon">Full Report</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/03/Elon-Poll-2-spring25-analysis_charts-basketball.pdf" class="link--arrow-icon">Charts &amp; Analysis</a></p>
+<p><strong>Feb. 25, 2025:</strong> National Poll: Americans expect higher prices, economic disruptions and negative impacts on small businesses as a result of tariff increases. Americans also express concerns about Trump administration policies and immigration enforcement.</p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/02/Elon-University-Poll-NR-2-25-25.pdf" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/02/Elon-University-Poll-topline-2-25-25.pdf" class="link--arrow-icon">Full report</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2025/02/Elon-University-Poll-analysis-charts-2-25-25.pdf" class="link--arrow-icon">Charts &amp; Analysis</a></p>
+<p><strong>Oct. 29, 2024: </strong>Elon University Poll: Hurricane Helene factors into dead-even presidential election in N.C.</p>
+<p><a href="http://www.elon.edu/u/elon-poll/elon-poll-october-29-2024/" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2024/10/ElonPoll_Report_102924.pdf" class="link--arrow-icon">Full Report (PDF)</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2024/10/ElonPoll_Analysis_102924.pdf" class="link--arrow-icon">Report Analysis (PDF)</a></p>
+<p><strong>Sept. 24, 2024: </strong>Elon University Poll finds Harris, Trump too close to call in N.C., and Stein with double-digit lead in governor’s race</p>
+<p><a href="http://www.elon.edu/u/elon-poll/elon-poll-september-24-2024/" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2024/09/Elon-Poll-Report-092424.pdf" class="link--arrow-icon">Full Report (PDF)</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2024/09/ElonPoll-Analysis-092424.pdf" class="link--arrow-icon">Report Analysis (PDF)</a></p>
+<p><strong>Aug. 27, 2024: </strong>North Carolina voters concerned about accuracy of the vote count and post-election violence in November</p>
+<p><a href="http://www.elon.edu/u/elon-poll/elon-poll-aug-27-2024/" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2024/08/ElonPoll_8_27_24_toplinetabs.pdf" class="link--arrow-icon">Full Report (PDF)</a> and <a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2024/08/Elon-Poll-analysis-charts-8-27-24.pdf" class="link--arrow-icon">Report Analysis (PDF)</a></p>
+<p><strong>May 15, 2024: </strong>AI &amp; Politics &#8217;24 &#8211; a national public opinion poll conducted in partnership with Elon&#8217;s <a href="https://imaginingthedigitalfuture.org/reports-and-publications/ai-politics-24/">Imagining the Digital Future Center</a></p>
+<p><a href="https://www.elon.edu/u/elon-poll/elon-poll-may-15-2024/" class="link--arrow-icon">News Release</a></p>
+<p><a href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2024/05/ITDF-ElonPoll_AIpolitics_5-15-24.pdf" class="link--arrow-icon">Full Report</a> and <a href="https://imaginingthedigitalfuture.org/reports-and-publications/ai-politics-24/methodology-ai-politics-24/" class="link--arrow-icon">Methodology</a></p>
+<p><strong>June 14, 2023</strong>: Broad support for sports betting, but divisions over recent abortion law changes in North Carolina</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-june-14-2023/">News Release</a></li>
+<li><a class="extra" href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2023/06/Elon-Poll-Report-061423.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>November 2, 2022</strong>: The economy, abortion, election integrity: What N.C. voters are thinking heading into Election Day</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-november-2-2022/">News Release</a></li>
+<li><a class="extra" href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2022/11/Elon-Poll-Report-110222.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>June 8, 2022</strong>: Elon University Poll identifies how high-impact undergraduate experiences affect students</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-june-8-2022/">News Release</a></li>
+<li><a class="extra" href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2022/05/Poll_CEL_report_2021-final.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>February 15, 2022</strong>: Elon University Poll finds younger N.C. attorneys see need for changes in state’s legal system</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-february-15-2022/">News Release</a></li>
+<li><a class="extra" href="https://eloncdn.blob.core.windows.net/eu3/sites/819/2022/02/Elon-Poll-Report-021522_1.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>October 27, 2021</strong>: Elon University Poll finds North Carolinians concerned about spike in housing prices</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-october-27-2021/">News Release</a></li>
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2021/10/Elon-Poll-Report-102721.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>October 22, 2021</strong>: Elon University Poll finds vaccinated in N.C. overwhelmingly support booster shots</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-october-22-2021/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2021/10/Elon-Poll-Report-102221.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>April 9, 2021</strong>: Elon University Poll finds N.C. residents increasingly favor COVID-19 vaccination</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-april-9-2021/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2021/04/Elon-Poll-Report-040921.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>April 8, 2021</strong>: Elon University Poll finds most N.C. residents still want Confederate monuments to remain in public spaces</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-april-8-2021/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2021/04/Elon-Poll-Report-040821.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>February 11, 2021</strong>: Elon University Poll finds support for legalizing marijuana in N.C. for medical, recreational use</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-february-11-2021/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2021/02/Elon-Poll-Report-021121.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>February 9, 2021</strong>: Elon University Poll finds North Carolina residents increasingly favor getting COVID-19 vaccine</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-february-9-2021/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2021/02/Elon-Poll-Report-020921.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>February 5, 2021</strong>: Elon University Poll finds North Carolinians divided on Trump’s responsibility for U.S. Capitol violence</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-february-5-2021/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2021/02/Elon-Poll-Report-020521-1.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>December 10, 2020</strong>: Elon University Poll finds that many N.C. residents are wary of taking COVID-19 vaccine</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-december-10-2020/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2020/12/Elon-Poll-Report-121020_corrected.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>October 29, 2020</strong>: N.C. voters concerned about election interference, post-election violence and mail-in ballot issues</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-university-poll-october-29-2020/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2020/10/Elon-Poll-Report-102920.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>October 15, 2020</strong>: N.C. residents grade Trump, Cooper on handling of pandemic, express concern about COVID-19 spread with return to school</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-october-15-2020/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2020/10/Elon-Poll-Report-101520.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>July 2, 2020</strong>: Most North Carolinians support mask mandate, but less worried about virus now</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-july-2-2020/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2020/07/elon-poll-june-covid-final.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>March 18, 2020</strong>: U.S. residents express high anxiety about coronavirus, split on national response</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-covid-19-outbreak/">News Release</a></li>
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2020/03/2020_3_18-ElonPoll_Report_final.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>February 27, 2020</strong>: Politics, health care and the economy: What N.C. voters are thinking heading into Super Tuesday</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-economy-health-care-and-politics-heading-into-super-tuesday/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2020/02/2020_2_26-ElonPoll_Report_final.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>November 20, 2019</strong>: A new Elon University Poll asked N.C. residents about whether Confederate statues and monuments should remain on public property.</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-confederate-statues-and-monuments/">News Release</a></li>
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/11/2019_11_20-ElonPoll_Report.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>July 31, 2019</strong>: A new Elon University Poll focuses on high-impact experiences in college, writing skills.</p>
+<ul class="plain-list">
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/elon-poll-july-31-2019/">News Release</a></li>
+<li><a class="extra" href="https://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/07/2019_7_31-ElonPoll_Report.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>April 12, 2019</strong>: A new Elon University Poll has found that N.C. residents most concerned about public shootings, terrorism and pedestrian safety.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-april-12-2019/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/04/2019_04_12-ElonPoll_Report.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>March 14, 2019</strong>: A new Elon University Poll has found that N.C. voters favor Biden, Sanders over other 2020 presidential contenders.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-march-14-2019/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/03/2019_03_14-ElonPoll_Report.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>March 1, 2019</strong>: A new Elon University Poll has found that half of N.C. voters say election fraud is a &#8220;major problem&#8221; in the wake of a Congressional election scandal, with many expressing a lack of confidence in future elections.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-march-1-2019/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/03/2019_3_1-Elon-Poll-Report-1.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>February 12, 2019</strong>: A new Elon University Poll finds that a slim majority of N.C. voters supports the closure of ABC stores in favor of private retailers handling liquor sales in the state. The poll also found that a similar-sized majority supports ABC stores remaining closed on Sundays.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/elon-poll-february-12-2019/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/02/2019_02_12-Elon-Poll-Report.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>October 11, 2018: </strong>A new Elon University Poll finds that in the wake of Hurricane Florence, N.C. voters believe that climate change is negatively impacting the state&#8217;s coastal areas and are supportive of environmental policy changes.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/archive/2018-10-11/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/01/Elon-Poll-Report-101118.pdf" style="font-size: 1em" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>September 6, 2018: </strong>A new Elon University Poll finds that N.C. voters know little about constitutional amendments they will be asked to vote on this fall, and that support shifts after voters are provided more information about the measures.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/archive/2018-09-06/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/02/Elon-Poll-Report-090618.pdf" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>August 22, 2018: </strong>A new Elon University Poll of college graduates finds that building relationships, especially early in a college career, with faculty, staff and peers is key to positive perceptions of the undergraduate experience.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/archive/2018-08-22/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/02/Elon-Poll-Report-082218.pdf" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>April 18, 2018: </strong>A new Elon University Poll conducted in partnership with The Business Journals surveyed residents in the 19 locations that are finalists for Amazon&#8217;s $5 billion HQ2 project and tracked support for the project as well as how locals believe it might impact their lives.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/archive/2018-04-18/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/02/Elon-Poll-Report-041818.pdf" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>March 8, 2018: </strong>A new Elon University Poll conducted in partnership with the Raleigh News &amp; Observer and the Charlotte Observer finds that a large majority of educators in the state say arming teachers with guns is a bad idea and would increase gun-related deaths in schools.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/archive/2018-03-08/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/02/Elon-Poll-Report-030818.pdf" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><strong>Feb. 23, 2018: </strong>The most recent statewide survey gauged the level of political knowledge of N.C. voters and asked them their thoughts about the redistricting process through which congressional districts are drawn.</p>
+<ul class="plain-list">
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/archive/2018-02-23/">News Release</a></li>
+<li><a class="extra" href="http://www.elon.edu/u/elon-poll/wp-content/uploads/sites/819/2019/02/Elon-Poll-Report-022318.pdf" target="_blank" rel="noopener">Full Report and Methodology</a></li>
+</ul>
+<p><a href="http://www.elon.edu/u/elon-poll/archive/" class="lg-icon">View Poll Archive</a></p>
+
+										
+				</div>
+				<!-- END Main Content Column -->
+				
+				<!-- Sidebar Column -->
+				<aside class="sidebar column-3 pull-9" aria-label="Page Sidebar">
+					
+					
+		<nav class="sidebar--page-nav" aria-label="Page Navigation">
+			<ul id="menu-sidebar-nav" class=""><li class="page-nav-home"><a href="https://www.elon.edu/u/elon-poll/">Elon University Poll</a></li><li id="menu-item-633" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-633"><a href="https://www.elon.edu/u/elon-poll/contact/">Contact Information</a></li>
+<li id="menu-item-637" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-637"><a href="https://www.elon.edu/u/elon-poll/about/">About the Poll</a>
+<ul class="sub-menu">
+	<li id="menu-item-6410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6410"><a href="https://www.elon.edu/u/elon-poll/elon-university-poll-director-jason-husser/">Elon University Poll Director Jason Husser</a></li>
+</ul>
+</li>
+<li id="menu-item-641" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-641"><a href="https://www.elon.edu/u/elon-poll/commitment-to-transparency/">Commitment to Transparency</a></li>
+<li id="menu-item-645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-645"><a href="https://www.elon.edu/u/elon-poll/methodology/">Methodology</a></li>
+<li id="menu-item-649" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-649"><a href="https://www.elon.edu/u/elon-poll/archive/">Poll Archive</a>
+<ul class="sub-menu">
+	<li id="menu-item-2698" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2698"><a href="#current">2016-Current</a></li>
+	<li id="menu-item-2694" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2694"><a href="#2015">2011-2015</a></li>
+	<li id="menu-item-2690" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2690"><a href="#2010">2006-2010</a></li>
+	<li id="menu-item-2686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2686"><a href="#2005">2001-2005</a></li>
+</ul>
+</li>
+<li id="menu-item-661" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-661"><a href="https://www.elon.edu/u/elon-poll/in-the-news/">In the News</a></li>
+</ul>		</nav>
+
+		<div class="widget-wrap"><div id="elon-social-media-manual-2" class="widget Elon_Social_Media_Manual_Widget"><h3 class="widget-title">Follow Elon Poll</h3><div class="social-accounts-manual orientation-vertical size-small"><div class="individual-social-account"><ul><li class="twitter"><a target="_blank" href="https://twitter.com/elonpoll"><span class="">X</span></a></li><li class="facebook"><a target="_blank" href="https://www.facebook.com/ElonPoll/"><span class="">Facebook</span></a></li></ul></div></div></div></div>					
+				</aside>
+				<!-- END Sidebar Column -->
+				
+			</div>
+		</div>
+		<!-- END Page Body -->
+		
+				
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+				jQuery('li.gf_readonly textarea').attr('readonly','readonly');
+				jQuery('li.gf_readonly input[type=text]').attr('readonly','readonly');
+				jQuery('li.gf_readonly input[type=checkbox]').attr('onclick','return false;');
+				jQuery('li.gf_readonly input[type=radio]').attr('onclick','return false;');
+			});
+		</script>
+		
+							
+<!-- Related Content -->
+<aside class="page--related-content page--section shaded-stripes" aria-label="Related Content">
+	<div class="row">
+		<div class="column-6">
+			<div class="bottom-left-content-wrap">
+				<h3>Upcoming Polls</h3>
+<p>To be included on future poll news releases, fill out the form below or contact Eric Townsend in Elon University&#8217;s Office of University Communications at<span> </span><a href="mailto:etownsend4@elon.edu">etownsend4@elon.edu</a>.</p>
+
+                <div class='gf_browser_chrome gform_wrapper gform_legacy_markup_wrapper gform-theme--no-framework' data-form-theme='legacy' data-form-index='0' id='gform_wrapper_5' style='display:none'><div id='gf_5' class='gform_anchor' tabindex='-1'></div><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_5' id='gform_5'  action='/u/elon-poll/#gf_5' data-formid='5' novalidate>
+                        <div class='gform-body gform_body'><ul id='gform_fields_5' class='gform_fields top_label form_sublabel_below description_below validation_below'><li id="field_5_8" class="gfield gfield--type-text gf_left_half gfield_contains_required field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_8'>First Name<span class="gfield_required"><span class="gfield_required gfield_required_asterisk">*</span></span></label><div class='ginput_container ginput_container_text'><input name='input_8' id='input_5_8' type='text' value='' class='medium'     aria-required="true" aria-invalid="false"   /></div></li><li id="field_5_9" class="gfield gfield--type-text gf_right_half gfield_contains_required field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_9'>Last Name<span class="gfield_required"><span class="gfield_required gfield_required_asterisk">*</span></span></label><div class='ginput_container ginput_container_text'><input name='input_9' id='input_5_9' type='text' value='' class='medium'     aria-required="true" aria-invalid="false"   /></div></li><li id="field_5_2" class="gfield gfield--type-email gf_left_half gfield_contains_required field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_2'>Email<span class="gfield_required"><span class="gfield_required gfield_required_asterisk">*</span></span></label><div class='ginput_container ginput_container_email'>
+                            <input name='input_2' id='input_5_2' type='email' value='' class='medium'    aria-required="true" aria-invalid="false"  />
+                        </div></li><li id="field_5_10" class="gfield gfield--type-radio gfield--type-choice gf_right_half gfield_contains_required field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' >Are you a member of the media?<span class="gfield_required"><span class="gfield_required gfield_required_asterisk">*</span></span></label><div class='ginput_container ginput_container_radio'><ul class='gfield_radio' id='input_5_10'>
+			<li class='gchoice gchoice_5_10_0'>
+				<input name='input_10' type='radio' value='Yes'  id='choice_5_10_0'    />
+				<label for='choice_5_10_0' id='label_5_10_0' class='gform-field-label gform-field-label--type-inline'>Yes</label>
+			</li>
+			<li class='gchoice gchoice_5_10_1'>
+				<input name='input_10' type='radio' value='No'  id='choice_5_10_1'    />
+				<label for='choice_5_10_1' id='label_5_10_1' class='gform-field-label gform-field-label--type-inline'>No</label>
+			</li></ul></div></li><li id="field_5_11" class="gfield gfield--type-text field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_11'>Media Outlet</label><div class='ginput_container ginput_container_text'><input name='input_11' id='input_5_11' type='text' value='' class='medium'      aria-invalid="false"   /></div></li><li id="field_5_13" class="gfield gfield--type-text gf_left_half field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_13'>City</label><div class='ginput_container ginput_container_text'><input name='input_13' id='input_5_13' type='text' value='' class='medium'      aria-invalid="false"   /></div></li><li id="field_5_14" class="gfield gfield--type-select gf_right_half field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_14'>State</label><div class='ginput_container ginput_container_select'><select name='input_14' id='input_5_14' class='medium gfield_select'     aria-invalid="false" ><option value='Alabama' >Alabama</option><option value='Alaska' >Alaska</option><option value='Arizona' >Arizona</option><option value='Arkansas' >Arkansas</option><option value='California' >California</option><option value='Colorado' >Colorado</option><option value='Connecticut' >Connecticut</option><option value='Delaware' >Delaware</option><option value='District of Columbia' >District of Columbia</option><option value='Florida' >Florida</option><option value='Georgia' >Georgia</option><option value='Hawaii' >Hawaii</option><option value='Idaho' >Idaho</option><option value='Illinois' >Illinois</option><option value='Indiana' >Indiana</option><option value='Iowa' >Iowa</option><option value='Kansas' >Kansas</option><option value='Kentucky' >Kentucky</option><option value='Louisiana' >Louisiana</option><option value='Maine' >Maine</option><option value='Maryland' >Maryland</option><option value='Massachusetts' >Massachusetts</option><option value='Michigan' >Michigan</option><option value='Minnesota' >Minnesota</option><option value='Mississippi' >Mississippi</option><option value='Missouri' >Missouri</option><option value='Montana' >Montana</option><option value='Nebraska' >Nebraska</option><option value='Nevada' >Nevada</option><option value='New Hampshire' >New Hampshire</option><option value='New Jersey' >New Jersey</option><option value='New Mexico' >New Mexico</option><option value='New York' >New York</option><option value='North Carolina' >North Carolina</option><option value='North Dakota' >North Dakota</option><option value='Ohio' >Ohio</option><option value='Oklahoma' >Oklahoma</option><option value='Oregon' >Oregon</option><option value='Pennsylvania' >Pennsylvania</option><option value='Rhode Island' >Rhode Island</option><option value='South Carolina' >South Carolina</option><option value='South Dakota' >South Dakota</option><option value='Tennessee' >Tennessee</option><option value='Texas' >Texas</option><option value='Utah' >Utah</option><option value='Vermont' >Vermont</option><option value='Virginia' >Virginia</option><option value='Washington' >Washington</option><option value='West Virginia' >West Virginia</option><option value='Wisconsin' >Wisconsin</option><option value='Wyoming' >Wyoming</option><option value='Armed Forces Americas' >Armed Forces Americas</option><option value='Armed Forces Europe' >Armed Forces Europe</option><option value='Armed Forces Pacific' >Armed Forces Pacific</option></select></div></li><li id="field_5_12" class="gfield gfield--type-captcha field_sublabel_below gfield--no-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_12'>CAPTCHA</label><div id='input_5_12' class='ginput_container ginput_recaptcha' data-sitekey='6Ld1dvISAAAAAORXim5OB-sluoXch1bW4CBM3mZi'  data-theme='light' data-tabindex='0'  data-badge=''></div></li><li id="field_5_15" class="gfield gfield--type-honeypot gform_validation_container field_sublabel_below gfield--has-description field_description_below field_validation_below gfield_visibility_visible"  ><label class='gfield_label gform-field-label' for='input_5_15'>Comments</label><div class='ginput_container'><input name='input_15' id='input_5_15' type='text' value='' autocomplete='new-password'/></div><div class='gfield_description' id='gfield_description_5_15'>This field is for validation purposes and should be left unchanged.</div></li></ul></div>
+        <div class='gform-footer gform_footer top_label'> <input type='submit' id='gform_submit_button_5' class='gform_button button' onclick='gform.submission.handleButtonClick(this);' data-submission-type='submit' value='Submit'  /> <input type='hidden' name='gform_ajax' value='form_id=5&amp;title=&amp;description=&amp;tabindex=0&amp;theme=legacy&amp;styles=[]&amp;hash=d80361569f4f7ba3ac50349135ab8fdd' />
+            <input type='hidden' class='gform_hidden' name='gform_submission_method' data-js='gform_submission_method_5' value='iframe' />
+            <input type='hidden' class='gform_hidden' name='gform_theme' data-js='gform_theme_5' id='gform_theme_5' value='legacy' />
+            <input type='hidden' class='gform_hidden' name='gform_style_settings' data-js='gform_style_settings_5' id='gform_style_settings_5' value='[]' />
+            <input type='hidden' class='gform_hidden' name='is_submit_5' value='1' />
+            <input type='hidden' class='gform_hidden' name='gform_submit' value='5' />
+            
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+            <input type='hidden' class='gform_hidden' name='state_5' value='WyJbXSIsImNlYTRlYjFkMGM4YmZiMDZlNjJmOGUwZTU1YjZiYzliIl0=' />
+            <input type='hidden' autocomplete='off' class='gform_hidden' name='gform_target_page_number_5' id='gform_target_page_number_5' value='0' />
+            <input type='hidden' autocomplete='off' class='gform_hidden' name='gform_source_page_number_5' id='gform_source_page_number_5' value='1' />
+            <input type='hidden' name='gform_field_values' value='' />
+            
+        </div>
+                        </form>
+                        </div>
+		                <iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_5' id='gform_ajax_frame_5' title='This iframe contains the logic required to handle Ajax powered Gravity Forms.'></iframe>
+		                <script type="text/javascript"> gform.initializeOnLoaded( function() {gformInitSpinner( 5, 'https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/images/spinner.svg', true );jQuery('#gform_ajax_frame_5').on('load',function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_5');var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_5').length > 0;var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = form_content.length > 0 && ! is_redirect && ! is_confirmation;var mt = parseInt(jQuery('html').css('margin-top'), 10) + parseInt(jQuery('body').css('margin-top'), 10) + 100;if(is_form){form_content.find('form').css('opacity', 0);jQuery('#gform_wrapper_5').html(form_content.html());if(form_content.hasClass('gform_validation_error')){jQuery('#gform_wrapper_5').addClass('gform_validation_error');} else {jQuery('#gform_wrapper_5').removeClass('gform_validation_error');}setTimeout( function() { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_5').offset().top - mt); }, 50 );if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_5').val();gformInitSpinner( 5, 'https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/images/spinner.svg', true );jQuery(document).trigger('gform_page_loaded', [5, current_page]);window['gf_submitting_5'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('.GF_AJAX_POSTBACK').html();if(!confirmation_content){confirmation_content = contents;}jQuery('#gform_wrapper_5').replaceWith(confirmation_content);jQuery(document).scrollTop(jQuery('#gf_5').offset().top - mt);jQuery(document).trigger('gform_confirmation_loaded', [5]);window['gf_submitting_5'] = false;wp.a11y.speak(jQuery('#gform_confirmation_message_5').text());}else{jQuery('#gform_5').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger("gform_pre_post_render", [{ formId: "5", currentPage: "current_page", abort: function() { this.preventDefault(); } }]);        if (event && event.defaultPrevented) {                return;        }        const gformWrapperDiv = document.getElementById( "gform_wrapper_5" );        if ( gformWrapperDiv ) {            const visibilitySpan = document.createElement( "span" );            visibilitySpan.id = "gform_visibility_test_5";            gformWrapperDiv.insertAdjacentElement( "afterend", visibilitySpan );        }        const visibilityTestDiv = document.getElementById( "gform_visibility_test_5" );        let postRenderFired = false;        function triggerPostRender() {            if ( postRenderFired ) {                return;            }            postRenderFired = true;            gform.core.triggerPostRenderEvents( 5, current_page );            if ( visibilityTestDiv ) {                visibilityTestDiv.parentNode.removeChild( visibilityTestDiv );            }        }        function debounce( func, wait, immediate ) {            var timeout;            return function() {                var context = this, args = arguments;                var later = function() {                    timeout = null;                    if ( !immediate ) func.apply( context, args );                };                var callNow = immediate && !timeout;                clearTimeout( timeout );                timeout = setTimeout( later, wait );                if ( callNow ) func.apply( context, args );            };        }        const debouncedTriggerPostRender = debounce( function() {            triggerPostRender();        }, 200 );        if ( visibilityTestDiv && visibilityTestDiv.offsetParent === null ) {            const observer = new MutationObserver( ( mutations ) => {                mutations.forEach( ( mutation ) => {                    if ( mutation.type === 'attributes' && visibilityTestDiv.offsetParent !== null ) {                        debouncedTriggerPostRender();                        observer.disconnect();                    }                });            });            observer.observe( document.body, {                attributes: true,                childList: false,                subtree: true,                attributeFilter: [ 'style', 'class' ],            });        } else {            triggerPostRender();        }    } );} ); </script>
+			</div>
+		</div>
+		<div class="column-6">
+			<div class="bottom-right-content-wrap">
+				<h3>Follow the Elon Poll on Social Media</h3>
+<p>The Elon Poll occasionally releases data via social media. Be sure to follow the poll on<span> </span><a class="external" href="http://x.com/elonpoll" target="_blank" rel="noopener">X (@elonpoll)</a><span> </span>and<span> </span><a class="external" href="http://www.facebook.com/pages/Elon-University-Poll/132493356765289" target="_blank" rel="noopener">Facebook</a><span> </span>for periodic updates and insights.</p>
+<p>&nbsp;</p>
+			</div>
+		</div>
+	</div>
+</aside>
+<!-- END Related Content -->
+
+
+	</article>
+	<!-- END Page Content Wrapper -->
+
+</main>
+<!-- END Main Content Area -->
+
+	
+
+		<!-- Start Elon Global Footer -->
+		<footer class="global-footer" id="footerArea">
+			
+			<a class="gf-to-top--sr-jump-link global-sr-jump-link" href="#srJumpLinks">Jump to Top</a>
+			
+						<div class="global-footer--social global-footer--row">
+				<div class="gf-row--inner">
+					<ul>
+																	<li><a href="http://www.facebook.com/ElonUniversity" title="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook" aria-hidden="true"></i><span class="sr-only">Elon University Facebook</span></a></li>
+																							<li><a href="http://www.twitter.com/elonuniversity" title="X (formerly Twitter)" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter-x-patch" aria-hidden="true"></i><span class="sr-only">Elon University X (formerly Twitter)</span></a></li>
+																							<li><a href="http://www.instagram.com/elonuniversity" title="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram" aria-hidden="true"></i><span class="sr-only">Elon University Instagram</span></a></li>
+																							<li><a href="http://www.linkedin.com/edu/school?id=18771" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i><span class="sr-only">Elon University LinkedIn</span></a></li>
+																							<li><a href="https://www.flickr.com/photos/elonuniversity/" title="Flickr" target="_blank" rel="noopener noreferrer"><i class="fa fa-flickr" aria-hidden="true"></i><span class="sr-only">Elon University Flickr</span></a></li>
+																							<li><a href="http://www.youtube.com/elonuniversity" title="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa fa-youtube" aria-hidden="true"></i><span class="sr-only">Elon University YouTube</span></a></li>
+																							<li><a href="https://www.elon.edu/u/about/contact-elon/social-media/" title="Full Social Media List"><i class="fa fa-list" aria-hidden="true"></i><span class="sr-only">Elon University Full Social Media List</span></a></li>
+																</ul>
+				</div>
+			</div>
+						
+			<div class="global-footer--resources global-footer--row">
+				<div class="gf-row--inner">
+					
+					<div class="gf-resources--links gf-resources--links-left">
+						<ul id="menu-footer-nav-left" class="menu"><li id="menu-item-33" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33"><a href="https://www.elon.edu/u/about/contact-elon/">Contact Elon</a></li>
+<li id="menu-item-25" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25"><a href="http://www.elon.edu/emergency">Emergency Info</a></li>
+<li id="menu-item-29" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29"><a href="http://www.elon.edu/directories/">Campus Directories</a></li>
+<li id="menu-item-37" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37"><a href="https://www.elon.edu/visit">Visit Campus</a></li>
+<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41"><a href="http://www.elon.edu/eservices">Online Services</a></li>
+<li id="menu-item-18022" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18022"><a href="https://secure.ethicspoint.com/domain/media/en/gui/90851/index.html">EthicsPoint</a></li>
+<li id="menu-item-16121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16121"><a href="https://www.elon.edu/hr">Human Resources</a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45"><a href="https://www.elon.edu/u/campus-health-status-alerts/">Health Status &#038; Alerts</a></li>
+</ul>					</div>
+					
+					<div class="gf-resources--links gf-resources--links-right">
+						<ul id="menu-footer-nav-right" class="menu"><li id="menu-item-49" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49"><a href="http://www.elon.edu/spaces">Space Reservations</a></li>
+<li id="menu-item-53" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-53"><a href="https://www.elon.edu/library/">Library</a></li>
+<li id="menu-item-57" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57"><a href="http://elon.bncollege.com/">Bookstore</a></li>
+<li id="menu-item-61" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61"><a href="http://www.elon.edu/culturalcalendar">Box Office</a></li>
+<li id="menu-item-65" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65"><a href="https://www.elon.edu/privacy">Privacy Policy</a></li>
+<li id="menu-item-69" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69"><a href="https://www.elon.edu/u/compliance/">Nondiscrimination</a></li>
+<li id="menu-item-16125" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16125"><a href="https://www.elon.edu/u/compliance/gdpr/">GDPR Information</a></li>
+<li id="menu-item-18025" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18025"><a href="https://www.elon.edu/u/compliance/accessibility/">Accessibility</a></li>
+</ul>					</div>
+					
+					<div class="gf-resources--location">
+						<img alt="Map showing Elon University, a U.S. News nationally ranked best college, located in North Carolina between Greensboro and Raleigh" src="https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/img/global/nc-map.svg" />
+						<address>
+							100 Campus Drive | Elon, NC 27244<br /><a href="tel:3362782000">336.278.2000</a>
+						</address>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="global-footer--copyright global-footer--row">
+				<div class="gf-row--inner">
+					<p>&copy; 2026 Elon University | All Rights Reserved</p>
+				</div>
+			</div>
+			
+						<div class="footer--be--related-links"><div class="footer--be--related-links-inner"><div class="be-ix-link-block"><div class="be-ix-link-block"><div class="be-related-link-container"><div class="be-label">Also of Interest</div><ul class="be-list"><li class="be-list-item"><a class="be-related-link" href="https://www.elon.edu/u/elon-poll/about/">About the Poll</a></li><li class="be-list-item"><a class="be-related-link" href="https://www.elon.edu/u/elon-poll/archive/">Poll Archive</a></li><li class="be-list-item"><a class="be-related-link" href="https://www.elon.edu/u/elon-poll/elon-poll-october-29-2024/">Elon Poll – October 29, 2024</a></li></ul> </div></div>
+
+<!-- be_ixf, sdk, is -->
+</div></div></div>			
+		</footer>
+		<!-- END Elon Global Footer -->
+
+<!-- Start WP Enqueued Footer Scripts -->
+
+<span id="application_root" style="display: none;">/u/</span>
+<link rel='stylesheet' id='gforms_reset_css-css'  href='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/legacy/css/formreset.min.css?ver=2.9.13.1' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_formsmain_css-css'  href='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/legacy/css/formsmain.min.css?ver=2.9.13.1' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_ready_class_css-css'  href='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/legacy/css/readyclass.min.css?ver=2.9.13.1' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_browsers_css-css'  href='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/legacy/css/browsers.min.css?ver=2.9.13.1' type='text/css' media='all' />
+<link rel='stylesheet' id='elon-gform-styles-css'  href='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/styles/css/elon-gform-legacy-styles.css?ver=1788805115' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/global/header/global-header-scripts.js?ver=1788805115'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js-next/dist/bundles/behaviors.min.js?ver=1788805115'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var elon_news = {"base_url":"https:\/\/www.elon.edu\/u\/news\/","api":{"social_accounts":"https:\/\/www.elon.edu\/u\/news\/wp-json\/news\/v1\/feed\/social"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js-next/dist/bundles/features.min.js?ver=1788805115'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js-next/dist/bundles/sidebar-navigation.min.js?ver=1788805115'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/plugins/dflip/js/dflip.min.js?ver=1.7.18'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/global/components/widgets/Flipbook/Flipbook.js?ver=1.5.67'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/plugins/jquery-cycle/jquery.cycle.lite.js?ver=1.7'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var elon_home_settings = {"rotator_speed":"5000","rotator_pause":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-content/themes/ElonUniversity-Base/assets/js/global/templates/home/init.js?ver=1.5.67'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-includes/js/wp-embed.min.js?ver=1793129873'></script>
+<script type='text/javascript' src='https://www.elon.edu/u/elon-poll/wp-includes/js/wp-a11y.min.js?ver=1793129873'></script>
+<script type='text/javascript' defer='defer' src='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/js/jquery.json.min.js?ver=2.9.13.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var gform_i18n = {"datepicker":{"days":{"monday":"Mo","tuesday":"Tu","wednesday":"We","thursday":"Th","friday":"Fr","saturday":"Sa","sunday":"Su"},"months":{"january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December"},"firstDay":0,"iconText":"Select date"}};
+var gf_legacy_multi = [];
+var gform_gravityforms = {"strings":{"invalid_file_extension":"This type of file is not allowed. Must be one of the following:","delete_file":"Delete this file","in_progress":"in progress","file_exceeds_limit":"File exceeds size limit","illegal_extension":"This type of file is not allowed.","max_reached":"Maximum number of files reached","unknown_error":"There was a problem while saving the file on the server","currently_uploading":"Please wait for the uploading to complete","cancel":"Cancel","cancel_upload":"Cancel this upload","cancelled":"Cancelled"},"vars":{"images_url":"https:\/\/www.elon.edu\/u\/elon-poll\/wp-content\/plugins\/gravityforms\/images"}};
+var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2,"code":"USD"},"base_url":"https:\/\/www.elon.edu\/u\/elon-poll\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/www.elon.edu\/u\/elon-poll\/wp-content\/plugins\/gravityforms\/images\/spinner.svg","version_hash":"153f14340a4071db617e5c6554f0722a","strings":{"newRowAdded":"New row added.","rowRemoved":"Row removed","formSaved":"The form has been saved.  The content contains the link to return and complete the form."}};
+var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2,"code":"USD"},"base_url":"https:\/\/www.elon.edu\/u\/elon-poll\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/www.elon.edu\/u\/elon-poll\/wp-content\/plugins\/gravityforms\/images\/spinner.svg","version_hash":"153f14340a4071db617e5c6554f0722a","strings":{"newRowAdded":"New row added.","rowRemoved":"Row removed","formSaved":"The form has been saved.  The content contains the link to return and complete the form."}};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/js/gravityforms.min.js?ver=2.9.13.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var gf_legacy = {"is_legacy":"1"};
+var gf_legacy = {"is_legacy":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/js/conditional_logic.min.js?ver=2.9.13.1'></script>
+<script type='text/javascript' defer='defer' src='https://www.google.com/recaptcha/api.js?hl=en&#038;ver=1793129873#038;render=explicit'></script>
+<script type='text/javascript' defer='defer' src='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/assets/js/dist/utils.min.js?ver=380b7a5ec0757c78876bc8a59488f2f3'></script>
+<script type='text/javascript' defer='defer' src='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/assets/js/dist/vendor-theme.min.js?ver=21e5a4db1670166692ac5745329bfc80'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var gform_theme_config = {"common":{"form":{"honeypot":{"version_hash":"153f14340a4071db617e5c6554f0722a"},"ajax":{"ajaxurl":"https:\/\/www.elon.edu\/u\/elon-poll\/wp-admin\/admin-ajax.php","ajax_submission_nonce":"c267e2afdb","i18n":{"step_announcement":"Step %1$s of %2$s, %3$s","unknown_error":"There was an unknown error processing your request. Please try again."}}}},"hmr_dev":"","public_path":"https:\/\/www.elon.edu\/u\/elon-poll\/wp-content\/plugins\/gravityforms\/assets\/js\/dist\/","config_nonce":"f641b57bad"};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityforms/assets/js/dist/scripts-theme.min.js?ver=b436459e6f25ebcd9e95ea18e1a35e19'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var gform_signature_delete_signature_strings = {"confirm_delete":"Would you like to delete this file? 'Cancel' to stop. 'OK' to delete","delete_nonce":"7ced38fd41","form_id":""};
+var gform_signature_delete_signature_strings = {"confirm_delete":"Would you like to delete this file? 'Cancel' to stop. 'OK' to delete","delete_nonce":"7ced38fd41","form_id":""};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://www.elon.edu/u/elon-poll/wp-content/plugins/gravityformssignature/js/gfsignature_delete_signature.min.js?ver=4.1'></script>
+<script type="text/javascript"> gform.initializeOnLoaded( function() { jQuery(document).on('gform_post_render', function(event, formId, currentPage){if(formId == 5) {gf_global["number_formats"][5] = {"8":{"price":false,"value":false},"9":{"price":false,"value":false},"2":{"price":false,"value":false},"10":{"price":false,"value":false},"11":{"price":false,"value":false},"13":{"price":false,"value":false},"14":{"price":false,"value":false},"12":{"price":false,"value":false},"15":{"price":false,"value":false}};if(window['jQuery']){if(!window['gf_form_conditional_logic'])window['gf_form_conditional_logic'] = new Array();window['gf_form_conditional_logic'][5] = { logic: { 11: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"10","operator":"is","value":"Yes"}]},"nextButton":null,"section":null},13: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"10","operator":"is","value":"Yes"}]},"nextButton":null,"section":null},14: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"10","operator":"is","value":"Yes"}]},"nextButton":null,"section":null} }, dependents: { 11: [11],13: [13],14: [14] }, animation: 0, defaults: [], fields: {"8":[],"9":[],"2":[],"10":[11,13,14],"11":[],"13":[],"14":[],"12":[],"15":[]} }; if(!window['gf_number_format'])window['gf_number_format'] = 'decimal_dot';jQuery(document).ready(function(){gform.utils.trigger({ event: 'gform/conditionalLogic/init/start', native: false, data: { formId: 5, fields: null, isInit: true } });window['gformInitPriceFields']();gf_apply_rules(5, [11,13,14], true);jQuery('#gform_wrapper_5').show();jQuery('#gform_wrapper_5 form').css('opacity', '');jQuery(document).trigger('gform_post_conditional_logic', [5, null, true]);gform.utils.trigger({ event: 'gform/conditionalLogic/init/end', native: false, data: { formId: 5, fields: null, isInit: true } });} );} } } );jQuery(document).on('gform_post_conditional_logic', function(event, formId, fields, isInit){} ) } ); </script><script type="text/javascript"> gform.initializeOnLoaded( function() {jQuery(document).trigger("gform_pre_post_render", [{ formId: "5", currentPage: "1", abort: function() { this.preventDefault(); } }]);        if (event && event.defaultPrevented) {                return;        }        const gformWrapperDiv = document.getElementById( "gform_wrapper_5" );        if ( gformWrapperDiv ) {            const visibilitySpan = document.createElement( "span" );            visibilitySpan.id = "gform_visibility_test_5";            gformWrapperDiv.insertAdjacentElement( "afterend", visibilitySpan );        }        const visibilityTestDiv = document.getElementById( "gform_visibility_test_5" );        let postRenderFired = false;        function triggerPostRender() {            if ( postRenderFired ) {                return;            }            postRenderFired = true;            gform.core.triggerPostRenderEvents( 5, 1 );            if ( visibilityTestDiv ) {                visibilityTestDiv.parentNode.removeChild( visibilityTestDiv );            }        }        function debounce( func, wait, immediate ) {            var timeout;            return function() {                var context = this, args = arguments;                var later = function() {                    timeout = null;                    if ( !immediate ) func.apply( context, args );                };                var callNow = immediate && !timeout;                clearTimeout( timeout );                timeout = setTimeout( later, wait );                if ( callNow ) func.apply( context, args );            };        }        const debouncedTriggerPostRender = debounce( function() {            triggerPostRender();        }, 200 );        if ( visibilityTestDiv && visibilityTestDiv.offsetParent === null ) {            const observer = new MutationObserver( ( mutations ) => {                mutations.forEach( ( mutation ) => {                    if ( mutation.type === 'attributes' && visibilityTestDiv.offsetParent !== null ) {                        debouncedTriggerPostRender();                        observer.disconnect();                    }                });            });            observer.observe( document.body, {                attributes: true,                childList: false,                subtree: true,                attributeFilter: [ 'style', 'class' ],            });        } else {            triggerPostRender();        }    } ); </script><!-- End WP Enqueued Footer Scripts -->
+
+
+</body>
+</html>
