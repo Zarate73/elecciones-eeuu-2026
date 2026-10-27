@@ -3,19 +3,19 @@
 Elección general del 3 de noviembre de 2026 entre **Katie Hobbs (D, gobernadora en funciones)** y **Andy Biggs (R)**, con candidatos de terceros en la boleta.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 22:22 MST · fuentes en vivo 8/8
+**Pronóstico al 2026-10-27** (7 días a la elección) · actualizado automáticamente 2026-10-27 11:07 MST · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Katie **Hobbs** (D) | **51.7%** (48.2–55.3) | **92%** |
-| Andy **Biggs** (R) | **44.4%** (40.8–47.9) | **8%** |
-| Terceros | 3.9% (1.5–6.3) | — |
+| Katie **Hobbs** (D) | **51.5%** (47.7–55.3) | **90%** |
+| Andy **Biggs** (R) | **44.4%** (40.5–48.2) | **10%** |
+| Terceros | 4.1% (1.7–6.5) | — |
 
-Margen D−R +7.4 pp (σ 5.3) · solo encuestas: P(Hobbs) 93% · Kalshi 90% · Polymarket 90% (peso de mercados 0.3) · recuento automático 2.7% · 16 encuestas, 4 encuestadoras en la ventana
+Margen D−R +7.2 pp (σ 5.8) · solo encuestas: P(Hobbs) 89% · Kalshi 90% · Polymarket 92% (peso de mercados 0.3) · recuento automático 3.0% · 18 encuestas, 3 encuestadoras en la ventana
 
-**Encuesta más reciente:** GrayHouse (R), terminó el 2026-10-20 (**6 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** HighGround, Inc., terminó el 2026-10-25 (**2 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado** (civicAPI, diagnóstico, al 2026-10-26): 971,184 boletas devueltas · D 38.1% · R 38.8% · otros 23.1% · Maricopa 58% del total
+**Voto anticipado** (civicAPI, diagnóstico, al 2026-10-27): 1,118,300 boletas devueltas · D 37.8% · R 38.8% · otros 23.4% · Maricopa 59% del total
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
