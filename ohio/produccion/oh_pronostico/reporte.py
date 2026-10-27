@@ -142,6 +142,7 @@ def escribir(r: dict, cfg) -> Path:
     m['escenarios'].to_csv(base / 'escenarios_gobernador.csv', index=False, encoding='utf-8-sig')
     cols = ['fin', 'inicio', 'pollster', 'clave', 'pop', 'n', 'n_fuente', 'D', 'R', 'otros', 'indecisos', 'margin_poll',
             'efecto_casa', 'margen_corregido', 'partidista', 'origen', 'tambien_en', 'en_ventana']
+    cols += [c for c in ('publicacion', 'tipo_fecha', 'disponible_desde') if c in m['encuestas']]   # revisión OH-05
     m['encuestas'][cols].sort_values('fin', ascending=False).to_csv(base / 'encuestas_gobernador.csv', index=False,
                                                                      encoding='utf-8-sig')
     m['ventana'][['fin', 'pollster', 'n', 'n_fuente', 'D', 'R', 'margin_poll', 'efecto_casa', 'margen_corregido', 'patrocinador',

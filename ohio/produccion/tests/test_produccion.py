@@ -329,3 +329,10 @@ def test_reconstruccion_no_usa_el_voto_anticipado_de_hoy(cfg, red_simulada):
     r = ejecutar(cfg, escribir_salidas=False)
     assert not r['anticipado']['disponible'] and r['estados_fuentes']['civicapi'].startswith('no_aplica')
     assert r['degradadas'] == []
+
+
+def test_csv_de_encuestas_trae_fechas_de_disponibilidad(cfg, red_simulada):
+    ejecutar(cfg)
+    e = pd.read_csv(cfg.dir_salidas / 'ultimo' / 'encuestas_gobernador.csv', encoding='utf-8-sig')
+    assert {'publicacion', 'tipo_fecha', 'disponible_desde'} <= set(e.columns)
+    assert e[e.pollster == 'Verasight/VoteHub'].disponible_desde.iloc[0].startswith('2026-10-22')
