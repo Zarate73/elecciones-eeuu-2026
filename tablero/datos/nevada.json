@@ -7,75 +7,85 @@
   "D": "Aaron Ford",
   "R": "Joe Lombardo"
  },
- "corte": "2026-10-26",
- "dias_a_eleccion": 8,
+ "corte": "2026-10-27",
+ "dias_a_eleccion": 7,
  "pronostico": {
-  "P_D": 0.5905,
-  "pct_D": 47.39,
+  "P_D": 0.6825,
+  "pct_D": 47.93,
   "pct_D_IC80": [
-   43.14,
-   51.62
+   44.19,
+   51.67
   ],
-  "pct_R": 45.96,
+  "pct_R": 45.33,
   "pct_R_IC80": [
-   41.71,
-   50.2
+   41.6,
+   49.06
   ],
-  "pct_terceros": 6.65,
+  "pct_terceros": 6.74,
   "pct_terceros_IC80": [
-   4.5,
-   8.8
+   4.6,
+   8.88
   ],
-  "margen": 1.43,
+  "margen": 2.598,
   "margen_IC80": [
-   -6.76,
-   9.63
+   -4.55,
+   9.75
   ],
   "margen_IC95": [
-   -11.48,
-   14.34
+   -8.65,
+   13.85
   ],
-  "sd": 6.523,
-  "nu": 20.0,
-  "P_D_encuestas": 0.5394,
+  "sd": 5.684,
+  "nu": 20.7,
+  "P_D_encuestas": 0.6344,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0621
+    "valor": 0.0646
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.705,
+   "P_D": 0.765,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.6965,
+   "P_D": 0.795,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "RedBox Research",
-  "fin": "2026-10-23",
-  "dias_desde_fin": 3,
-  "dias_antes_eleccion": 11,
+  "encuestadora": "Hart Research (D)",
+  "fin": "2026-10-25",
+  "dias_desde_fin": 2,
+  "dias_antes_eleccion": 9,
   "origen": "wikipedia"
  },
  "encuestas": [
   {
+   "fin": "2026-10-25",
+   "encuestadora": "Hart Research (D)",
+   "D": 49.0,
+   "R": 45.0,
+   "margen": 4.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.3882
+  },
+  {
    "fin": "2026-10-23",
-   "encuestadora": "RedBox Research",
+   "encuestadora": "RedBox Research (D)",
    "D": 46.0,
    "R": 43.0,
    "margen": 3.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.6993
+   "peso": 0.4279
   },
   {
    "fin": "2026-10-13",
@@ -85,7 +95,7 @@
    "margen": -1.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.3007
+   "peso": 0.1839
   },
   {
    "fin": "2026-09-30",
@@ -168,7 +178,7 @@
    "peso": null
   }
  ],
- "n_encuestas_ventana": 2,
+ "n_encuestas_ventana": 3,
  "historial": [
   {
    "corte": "2026-10-22",
@@ -214,202 +224,216 @@
    "P_polymarket": 0.6965,
    "pct_D": 47.3908,
    "margen": 1.4301
+  },
+  {
+   "corte": "2026-10-27",
+   "P_D": 0.6825,
+   "P_D_encuestas": 0.6344,
+   "P_kalshi": 0.765,
+   "P_polymarket": 0.795,
+   "pct_D": 47.9299,
+   "margen": 2.5981
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 1.43,
-   "P_D": 0.5905
+   "margen": 2.598,
+   "P_D": 0.6825
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": 0.623,
-   "P_D": 0.5394
+   "margen": 1.876,
+   "P_D": 0.6344
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": 1.393,
-   "P_D": 0.588
+   "margen": 2.409,
+   "P_D": 0.6699
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 1.964,
-   "P_D": 0.6235
+   "margen": 2.981,
+   "P_D": 0.7058
   },
   {
-   "escenario": "Sesgo estatal sin contraer (-0.99 pp)",
-   "margen": 0.398,
-   "P_D": 0.525
+   "escenario": "Sesgo estatal sin contraer (-0.73 pp)",
+   "margen": 1.67,
+   "P_D": 0.6193
   },
   {
-   "escenario": "Sesgo estatal a la mitad (-0.36 pp)",
-   "margen": 1.003,
-   "P_D": 0.5644
+   "escenario": "Sesgo estatal a la mitad (-0.25 pp)",
+   "margen": 2.14,
+   "P_D": 0.6523
   },
   {
-   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.26 pp)",
-   "margen": 1.119,
-   "P_D": 0.5711
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.04 pp)",
+   "margen": 2.354,
+   "P_D": 0.6659
   },
   {
    "escenario": "Distribución normal",
-   "margen": 0.672,
-   "P_D": 0.5405
+   "margen": 1.919,
+   "P_D": 0.6323
   },
   {
    "escenario": "Sin terceros",
-   "margen": 0.676,
-   "P_D": 0.5427
+   "margen": 1.922,
+   "P_D": 0.6357
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": 0.669,
-   "P_D": 0.5432
+   "margen": 1.919,
+   "P_D": 0.6379
   },
   {
-   "escenario": "Deriva al doble (0.50 pp/día, 3 días)",
-   "margen": 0.659,
-   "P_D": 0.5413
+   "escenario": "Deriva al doble (0.50 pp/día, 2 días)",
+   "margen": 1.906,
+   "P_D": 0.6345
   },
   {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
-   "margen": 0.639,
-   "P_D": 0.5411
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (3 encuestadoras)",
+   "margen": 1.892,
+   "P_D": 0.6352
   },
   {
-   "escenario": "Ventana 45 días (4 encuestadoras)",
-   "margen": 0.013,
-   "P_D": 0.5002
+   "escenario": "Ventana 45 días (5 encuestadoras)",
+   "margen": 1.323,
+   "P_D": 0.6088
   },
   {
-   "escenario": "Ventana 60 días (5 encuestadoras)",
-   "margen": 0.14,
-   "P_D": 0.5112
+   "escenario": "Ventana 60 días (6 encuestadoras)",
+   "margen": 1.388,
+   "P_D": 0.619
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": 1.09,
-   "P_D": 0.5688
+   "margen": 2.178,
+   "P_D": 0.6542
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 0.559,
-   "P_D": 0.5362
+   "margen": 1.844,
+   "P_D": 0.6321
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 0.745,
-   "P_D": 0.5473
+   "margen": 1.957,
+   "P_D": 0.6395
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 0.292,
-   "P_D": 0.5182
+   "margen": -0.432,
+   "P_D": 0.4681
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 0.689,
-   "P_D": 0.5434
+   "margen": -0.177,
+   "P_D": 0.4875
   },
   {
-   "escenario": "Sin RedBox Research (pesa 70%) → ventana desde 2026-09-22: Noble Predictive Insights, Concord Public Opinion Partners, Global Strategy Group",
-   "margen": -2.696,
-   "P_D": 0.3145
+   "escenario": "Sin RedBox Research (D) (pesa 43%) → ventana desde 2026-10-13: Global Strategy Group, Hart Research",
+   "margen": 1.44,
+   "P_D": 0.5911
   },
   {
-   "escenario": "Sin Global Strategy Group (D) (pesa 30%) → ventana desde 2026-10-02: RedBox Research",
-   "margen": 2.286,
-   "P_D": 0.6109
+   "escenario": "Sin Hart Research (D) (pesa 39%) → ventana desde 2026-10-13: Global Strategy Group, RedBox Research",
+   "margen": 0.89,
+   "P_D": 0.5569
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-02: RedBox Research",
-   "margen": 2.263,
-   "P_D": 0.6084
+   "escenario": "Sin Global Strategy Group (D) (pesa 18%) → ventana desde 2026-10-13: RedBox Research, Hart Research",
+   "margen": 2.974,
+   "P_D": 0.683
+  },
+  {
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-09-05: Emerson College, Noble Predictive Insights",
+   "margen": -0.942,
+   "P_D": 0.4415
   },
   {
    "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 4.3 %)",
-   "margen": 0.646,
-   "P_D": 0.5408
+   "margen": 1.928,
+   "P_D": 0.6367
   },
   {
-   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.5 %)",
-   "margen": 0.681,
-   "P_D": 0.5416
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.6 %)",
+   "margen": 1.88,
+   "P_D": 0.6338
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 1.027,
-   "P_D": 0.5651
+   "margen": 2.241,
+   "P_D": 0.6589
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 1.967,
-   "P_D": 0.6235
+   "margen": 3.073,
+   "P_D": 0.7127
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 3.399,
-   "P_D": 0.705
+   "margen": 3.987,
+   "P_D": 0.765
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 3.243,
-   "P_D": 0.6965
+   "margen": 4.556,
+   "P_D": 0.795
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 2.788,
-   "P_D": 0.7055
+   "margen": 2.992,
+   "P_D": 0.7202
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-26",
+  "fecha": "2026-10-27",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (correo + en persona)",
-    "valor": 425510.0,
+    "valor": 448423.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Emitidos por demócratas registrados",
-    "valor": 39.86,
+    "valor": 40.12,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por republicanos registrados",
-    "valor": 35.07,
+    "valor": 34.76,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por otros y no partidistas",
-    "valor": 25.07,
+    "valor": 25.11,
     "formato": "pct"
    },
    {
     "etiqueta": "Margen D−R por correo",
-    "valor": 10.57,
+    "valor": 11.43,
     "formato": "pp"
    },
    {
     "etiqueta": "Margen D−R en persona",
-    "valor": -3.65,
+    "valor": -3.29,
     "formato": "pp"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.7055,
-  "margen": 2.79
+  "P_D": 0.7202,
+  "margen": 2.99
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nevada (pequeño)",
   "P_D": null,
-  "margen": -0.73,
+  "margen": -0.49,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.7 pp (promedio de encuestas +1.4). Polymarket por rangos: margen implícito +2.8 pp."
+  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.5 pp (promedio de encuestas +2.4). Polymarket por rangos: margen implícito +3.0 pp."
  },
  "fuentes": [
   {

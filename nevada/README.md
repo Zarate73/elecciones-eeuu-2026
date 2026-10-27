@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **Aaron Ford (D, fiscal general)** y **Joe Lombardo (R, gobernador en funciones)**. En la boleta también aparecen Danielle Ford (independiente) y la opción «None of these candidates».
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 22:41 PT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-27** (7 días a la elección) · actualizado automáticamente 2026-10-27 11:24 PT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Aaron **Ford** (D) | **47.4%** (43.1–51.6) | **59%** |
-| Joe **Lombardo** (R, gobernador) | **46.0%** (41.7–50.2) | **41%** |
-| Terceros | 6.6% (4.5–8.8) | — |
+| Aaron **Ford** (D) | **47.9%** (44.2–51.7) | **68%** |
+| Joe **Lombardo** (R, gobernador) | **45.3%** (41.6–49.1) | **32%** |
+| Terceros | 6.7% (4.6–8.9) | — |
 
-Margen D−R +1.4 pp (σ 6.5) · solo encuestas: P(Ford) 54% · Kalshi 70% · Polymarket 70% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 6.2% · 10 encuestas, 2 encuestadoras en la ventana
+Margen D−R +2.6 pp (σ 5.7) · solo encuestas: P(Ford) 63% · Kalshi 76% · Polymarket 80% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 6.5% · 11 encuestas, 3 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +1.4 · sesgo estatal de Nevada -0.7 · mercados +0.8
+Cómo se llega: promedio de encuestas +2.4 · sesgo estatal de Nevada -0.5 · mercados +0.7
 
-**Encuesta más reciente:** RedBox Research, terminó el 2026-10-23 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Hart Research (D), terminó el 2026-10-25 (**2 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-26): 425,510 (252,842 por correo, 172,668 en persona) · registrados D 39.9% · R 35.1% · otros e independientes 25.1% (correo D+10.6, en persona R+3.7). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-27): 448,423 (263,414 por correo, 185,009 en persona) · registrados D 40.1% · R 34.8% · otros e independientes 25.1% (correo D+11.4, en persona R+3.3). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
