@@ -50,12 +50,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.967,
+   "P_D": 0.9675,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9765,
+   "P_D": 0.976,
    "estado": "en_vivo"
   }
  ],
@@ -281,10 +281,10 @@
    "corte": "2026-10-26",
    "P_D": 0.9968,
    "P_D_encuestas": 0.9987,
-   "P_kalshi": 0.967,
-   "P_polymarket": 0.9765,
-   "pct_D": 58.4133,
-   "margen": 18.9228
+   "P_kalshi": 0.9675,
+   "P_polymarket": 0.976,
+   "pct_D": 58.4136,
+   "margen": 18.9232
   }
  ],
  "escenarios": [
@@ -305,7 +305,7 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 19.697,
+   "margen": 19.698,
    "P_D": 0.9977
   },
   {
@@ -415,23 +415,23 @@
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 17.219,
+   "margen": 17.221,
    "P_D": 0.994
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 12.088,
-   "P_D": 0.967
+   "margen": 12.137,
+   "P_D": 0.9675
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 13.159,
-   "P_D": 0.9765
+   "margen": 13.097,
+   "P_D": 0.976
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 23.234,
-   "P_D": 0.9864
+   "margen": 23.26,
+   "P_D": 0.9871
   }
  ],
  "anticipado": {
@@ -467,15 +467,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9864,
-  "margen": 23.23
+  "P_D": 0.9871,
+  "margen": 23.26
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",
   "P_D": null,
   "margen": -0.9,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.9 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +23.2 pp."
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.9 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +23.3 pp."
  },
  "fuentes": [
   {
