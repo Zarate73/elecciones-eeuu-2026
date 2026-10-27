@@ -1,0 +1,84 @@
+# =====================================================================================
+# North Carolina 2026 · Senado · configuración (modelo general: V11 + sesgo estatal contraído + terceros + mercados)
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "North Carolina"
+abrev = "NC"
+cargo = "Senado"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2025-07-27"        # Cooper anunció su candidatura el 28-jul-2025 y Whatley el 31-jul-2025 (tras declinar Lara Trump): candidatos de hecho desde entonces; las primarias (3-mar-2026) solo los confirmaron (Cooper 92 %, Whatley 65 %)
+candidato_d = "Cooper"
+candidato_r = "Whatley"
+nombre_d = "Roy Cooper"
+nombre_r = "Michael Whatley"
+terceros = "Terceros (Shannon Bray, Libertario; Michael Dublin, Verde; votos por escrito)"
+condado_principal = "Wake"
+# Firmas que Wikipedia marca «(D)»/«(R)» por su inclinación, pero cuya encuesta la pagó un medio, no un partido ni una
+# campaña: no cuentan como patrocinio partidista. Harper Polling hace la encuesta de Carolina Journal (medio de la John
+# Locke Foundation, conservador): se mantiene como (R), igual que en el histórico de FiveThirtyEight.
+firmas_sin_patrocinio_partidista = []
+zona_horaria = "America/New_York"
+recuento_pp = 0.26                     # NC (G.S. 163-182.7): recuento a petición si la diferencia es ≤ 0.5 % de los votos o ≤ 10,000 votos, lo que sea MENOR. Con ~3.8 millones de votos (Senado 2022: 3,790,202) manda el tope de 10,000 ≈ 0.26 pp
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+# Encuestas verificadas a mano (opcional). Excel con la hoja «Histórico encuestas» (NORTH_CAROLINA_SENADO.xlsx) o CSV
+# con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
+encuestas_base = "data/encuestas_verificadas_nc.csv"   # exportación CSV de la hoja «Histórico encuestas» del Excel (el Excel no se publica)
+# Encuestas verificadas en la publicación original que no traen Wikipedia, 270toWin ni el Excel (columnas de la base más
+# fuente = URL y nota).
+encuestas_complementarias = "data/encuestas_complementarias_nc.csv"
+# Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
+# Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
+correcciones_n = "data/correcciones_tamano_muestra.csv"
+# Cifras de la publicación original cuando la fuente web las redondea (columnas clave, fin, pop, D, R, fuente).
+correcciones_cifras = "data/correcciones_cifras.csv"
+# Filas de las fuentes web que son otra versión de una encuesta ya contada (o no son de la general): se aíslan antes de combinar
+encuestas_excluidas = "data/encuestas_excluidas.csv"
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_United_States_Senate_election_in_North_Carolina"
+t270_url = "https://www.270towin.com/2026-senate-polls/north-carolina"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "SENATENC-26"
+kalshi_ticker_d = "SENATENC-26-D"
+kalshi_ticker_r = "SENATENC-26-R"
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_evento_ganador = "north-carolina-senate-election-winner"
+polymarket_evento_margen = "north-carolina-senate-margin-of-victory-2026"
+mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+retraso_publicacion_dias = 3           # reconstrucciones: publicación supuesta = cierre de campo + 3 días si no se conoce
+civicapi = "https://civicapi.org/api/v2/early-vote"
+civicapi_estado = "NC"
+civicapi_por_partido = true            # NC tiene registro partidario (D, R, sin afiliación, L, Verde): desglose por partido y condado (100)
+votos_totales_eleccion_previa = 3790202 # Senado 2022 (resultados certificados de la NCSBE): referencia de volumen
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 5                # menos encuestas web que esto => fuente degradada
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan en los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos: los 21 días previos a la encuesta más reciente
+vida_media_dias = 14.0
+contraccion_casa = 8.0
+sesgo_estatal = true                   # backtest de NC: las encuestas sobreestimaron al demócrata en 16 de 23 contiendas y en las 10
+                                       # desde 2014 (+0.3 a +6.2 pp); LOYO NC 1.963 vs 2.021 sin sesgo; Senado nacional 3.347 vs 3.496
+                                       # (P = 0.07); cronológico nacional 3.042 vs 3.260 (P = 0.006), Senado 3.236 vs 3.474 (P = 0.012)
+sesgo_regla = "todas"                  # «k2» casi igual hoy (−2.11 vs −2.10) y peor en NC (LOYO, P = 0.000); «por cargo» (solo Senado,
+                                       # −1.72) gana en NC_Sen (n = 7–9) pero pierde a nivel nacional en el Senado (cronológico P = 0.054): escenario
+peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+# Sin «tercero principal»: hay dos candidatos menores (Bray, L; Dublin, G) y en NC el registro de un partido no depende
+# del voto al Senado (depende de gobernador o presidente, ≥ 2 %). Los terceros se modelan en bloque (regla T4).
+sigma_dia_pp = 0.25                    # deriva (paseo aleatorio) si las encuestas son más viejas que el horizonte calibrado:
+                                       # varianza 0.25²·d; la sd adicional crece con √d (0.25 pp por √día), no 0.25 pp/día
+n_simulaciones = 200000
+semilla = 20261103
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60
