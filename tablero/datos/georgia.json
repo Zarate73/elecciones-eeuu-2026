@@ -10,36 +10,36 @@
  "corte": "2026-10-27",
  "dias_a_eleccion": 7,
  "pronostico": {
-  "P_D": 0.4061,
-  "pct_D": 49.41,
+  "P_D": 0.4358,
+  "pct_D": 49.62,
   "pct_D_IC80": [
-   46.1,
-   52.73
+   46.5,
+   52.75
   ],
-  "pct_R": 50.58,
+  "pct_R": 50.37,
   "pct_R_IC80": [
-   47.26,
-   53.89
+   47.24,
+   53.49
   ],
   "pct_terceros": null,
-  "margen": -1.173,
+  "margen": -0.755,
   "margen_IC80": [
-   -7.79,
-   5.47
+   -7.0,
+   5.52
   ],
   "margen_IC95": [
-   -11.58,
-   9.26
+   -10.58,
+   9.09
   ],
-  "sd": 5.273,
+  "sd": 4.976,
   "nu": 19.9,
-  "P_D_encuestas": 0.3219,
+  "P_D_encuestas": 0.3598,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Segunda vuelta (ninguno > 50 %)",
-    "valor": 0.0015
+    "valor": 0.0018
    }
   ]
  },
@@ -51,13 +51,23 @@
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "ActiVote",
-  "fin": "2026-10-20",
-  "dias_desde_fin": 7,
-  "dias_antes_eleccion": 14,
+  "encuestadora": "Echelon Insights (R)",
+  "fin": "2026-10-23",
+  "dias_desde_fin": 4,
+  "dias_antes_eleccion": 11,
   "origen": "wikipedia"
  },
  "encuestas": [
+  {
+   "fin": "2026-10-23",
+   "encuestadora": "Echelon Insights (R)",
+   "D": 49.0,
+   "R": 48.0,
+   "margen": 1.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": null
+  },
   {
    "fin": "2026-10-20",
    "encuestadora": "ActiVote",
@@ -209,7 +219,7 @@
    "peso": null
   }
  ],
- "n_encuestas_ventana": 4,
+ "n_encuestas_ventana": 5,
  "historial": [
   {
    "corte": "2026-10-21",
@@ -261,68 +271,68 @@
   },
   {
    "corte": "2026-10-27",
-   "P_D": 0.4061,
-   "P_D_encuestas": 0.3219,
+   "P_D": 0.4358,
+   "P_D_encuestas": 0.3598,
    "P_kalshi": 0.615,
-   "pct_D": 49.4082,
-   "margen": -1.1732
+   "pct_D": 49.6174,
+   "margen": -0.7547
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL",
-   "margen": -1.173,
-   "P_D": 0.4061
+   "margen": -0.755,
+   "P_D": 0.4358
   },
   {
    "escenario": "Solo encuestas (sin Kalshi)",
-   "margen": -2.308,
-   "P_D": 0.3228
+   "margen": -1.681,
+   "P_D": 0.3592
   },
   {
    "escenario": "Sin sesgo estatal GA",
-   "margen": -1.463,
-   "P_D": 0.3835
+   "margen": -0.836,
+   "P_D": 0.4281
   },
   {
    "escenario": "Distribución normal",
-   "margen": -1.211,
-   "P_D": 0.4091
+   "margen": -0.789,
+   "P_D": 0.4366
   },
   {
    "escenario": "Kalshi solo",
-   "margen": 1.523,
+   "margen": 1.437,
    "P_D": 0.618
   },
   {
    "escenario": "Ventana 30 días",
-   "margen": -2.389,
-   "P_D": 0.3079
+   "margen": -1.8,
+   "P_D": 0.3452
   },
   {
    "escenario": "Ventana 45 días",
-   "margen": -2.52,
-   "P_D": 0.2803
+   "margen": -1.981,
+   "P_D": 0.3186
   }
  ],
  "anticipado": {
   "fuente": "Civic Forge",
-  "fecha": "2026-10-25",
+  "fecha": "2026-10-26",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Boletas vs 2022 (mismo día)",
-    "valor": 111936.0,
+    "valor": 137433.0,
     "formato": "entero_signo"
    },
    {
     "etiqueta": "% votantes negros vs 2022",
-    "valor": 2.97,
+    "valor": 3.15,
     "formato": "pp"
    },
    {
     "etiqueta": "% 65+ vs 2022",
-    "valor": 2.15,
+    "valor": 2.1,
     "formato": "pp"
    }
   ]
@@ -333,7 +343,7 @@
   "pct_D": 53.42,
   "pct_R": 46.57,
   "margen": 6.86,
-  "nota": "Voto dividido (gobernador R + senado D): 50%"
+  "nota": "Voto dividido (gobernador R + senado D): 47%"
  },
  "fuentes": [
   {
