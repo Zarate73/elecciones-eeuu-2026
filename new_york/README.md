@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 12:54 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 21:36 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Kathy **Hochul** (D, gobernadora) | **55.2%** (51.6–58.9) | **97%** |
-| Bruce **Blakeman** (R) | **44.6%** (41.0–48.2) | **3%** |
+| Kathy **Hochul** (D, gobernadora) | **55.2%** (51.6–58.8) | **97%** |
+| Bruce **Blakeman** (R) | **44.6%** (41.0–48.3) | **3%** |
 | Otros (votos por escrito) | 0.2% (0.1–0.2) | — |
 
-Margen D−R +10.6 pp (σ 5.7) · solo encuestas: P(Hochul) 97% · Kalshi 95% · Polymarket 95% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 1.2% · 25 encuestas, 3 encuestadoras en la ventana
+Margen D−R +10.6 pp (σ 5.7) · solo encuestas: P(Hochul) 97% · Kalshi 94% · Polymarket 95% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 1.2% · 25 encuestas, 3 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +13.0 · sesgo estatal de Nueva York -1.8 · mercados -0.5
+Cómo se llega: promedio de encuestas +13.0 · sesgo estatal de Nueva York -1.8 · mercados -0.6
 
 **Encuesta más reciente:** ActiVote, terminó el 2026-10-23 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 2, al 2026-10-25): 165,143 en persona · Manhattan 46,314 · Bronx 17,595 · Brooklyn 47,177 · Queens 40,281 · Staten Island 13,776. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
+**Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 3, al 2026-10-26): 224,894 en persona · Manhattan 63,195 · Bronx 23,685 · Brooklyn 64,556 · Queens 54,595 · Staten Island 18,863. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
