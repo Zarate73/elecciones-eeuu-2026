@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presidenta de la Cámara estatal)** y **Bobby Charles (R)**, con **Rick Bennett (independiente)**. Elección abierta: Janet Mills no puede reelegirse. Gana la mayoría simple: la general de gobernador no usa voto preferencial.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 12:51 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 21:32 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -19,7 +19,7 @@ Cómo se llega: promedio de encuestas +10.3 · sesgo estatal de Maine -3.6 · me
 
 **Encuesta más reciente:** Beacon Research (D)/Shaw & Co. Research (R), terminó el 2026-10-20 (**6 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ausente ya emitido** (civicAPI, diagnóstico, al 2026-10-23): 179,532 (87,036 por correo, 92,496 en persona) · registrados D 50.3% · R 21.2% · no inscritos y otros 28.5%. Es registro de partido, no intención de voto, y el voto ausente es más demócrata que el electorado: no entra al pronóstico.
+**Voto ausente ya emitido** (civicAPI, diagnóstico, al 2026-10-26): 197,103 (96,001 por correo, 101,102 en persona) · registrados D 49.7% · R 21.4% · no inscritos y otros 28.9%. Es registro de partido, no intención de voto, y el voto ausente es más demócrata que el electorado: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
