@@ -7,62 +7,62 @@
   "D": "Josh Shapiro",
   "R": "Stacy Garrity"
  },
- "corte": "2026-10-26",
- "dias_a_eleccion": 8,
+ "corte": "2026-10-27",
+ "dias_a_eleccion": 7,
  "pronostico": {
-  "P_D": 0.9968,
-  "pct_D": 58.41,
+  "P_D": 0.997,
+  "pct_D": 58.49,
   "pct_D_IC80": [
-   54.14,
-   62.66
+   54.23,
+   62.74
   ],
-  "pct_R": 39.49,
+  "pct_R": 39.44,
   "pct_R_IC80": [
-   35.22,
-   43.76
+   35.18,
+   43.69
   ],
-  "pct_terceros": 2.1,
+  "pct_terceros": 2.07,
   "pct_terceros_IC80": [
    0.1,
-   4.48
+   4.41
   ],
-  "margen": 18.923,
+  "margen": 19.052,
   "margen_IC80": [
-   10.67,
-   27.14
+   10.81,
+   27.25
   ],
   "margen_IC95": [
-   5.94,
-   31.87
+   6.12,
+   31.95
   ],
-  "sd": 6.552,
-  "nu": 20.0,
-  "P_D_encuestas": 0.9987,
+  "sd": 6.53,
+  "nu": 20.7,
+  "P_D_encuestas": 0.9989,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0012
+    "valor": 0.0011
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9675,
+   "P_D": 0.9687,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.976,
+   "P_D": 0.9766,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "ActiVote",
   "fin": "2026-10-21",
-  "dias_desde_fin": 5,
+  "dias_desde_fin": 6,
   "dias_antes_eleccion": 13,
   "origen": "wikipedia"
  },
@@ -285,18 +285,27 @@
    "P_polymarket": 0.976,
    "pct_D": 58.4136,
    "margen": 18.9232
+  },
+  {
+   "corte": "2026-10-27",
+   "P_D": 0.997,
+   "P_D_encuestas": 0.9989,
+   "P_kalshi": 0.9687,
+   "P_polymarket": 0.9766,
+   "pct_D": 58.4919,
+   "margen": 19.0516
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 18.923,
-   "P_D": 0.9968
+   "margen": 19.052,
+   "P_D": 0.997
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": 21.468,
-   "P_D": 0.9987
+   "margen": 21.595,
+   "P_D": 0.9989
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados",
@@ -305,177 +314,177 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 19.698,
+   "margen": 19.616,
    "P_D": 0.9977
   },
   {
-   "escenario": "Sesgo estatal sin contraer (-1.17 pp)",
-   "margen": 21.225,
-   "P_D": 0.9986
+   "escenario": "Sesgo estatal sin contraer (-1.09 pp)",
+   "margen": 21.314,
+   "P_D": 0.9987
   },
   {
-   "escenario": "Sesgo estatal a la mitad (-0.45 pp)",
-   "margen": 21.948,
-   "P_D": 0.9988
+   "escenario": "Sesgo estatal a la mitad (-0.39 pp)",
+   "margen": 22.013,
+   "P_D": 0.9989
   },
   {
-   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.58 pp)",
-   "margen": 21.803,
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.78 pp)",
+   "margen": 21.6,
    "P_D": 0.999
   },
   {
    "escenario": "Distribución normal",
-   "margen": 21.492,
+   "margen": 21.621,
    "P_D": 0.9996
   },
   {
    "escenario": "Sin terceros",
-   "margen": 21.48,
-   "P_D": 0.9987
-  },
-  {
-   "escenario": "Sin deriva por encuestas viejas",
-   "margen": 21.49,
+   "margen": 21.609,
    "P_D": 0.9989
   },
   {
-   "escenario": "Deriva al doble (0.50 pp/día, 5 días)",
-   "margen": 21.502,
-   "P_D": 0.9986
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 21.619,
+   "P_D": 0.9989
+  },
+  {
+   "escenario": "Deriva al doble (0.50 pp/día, 6 días)",
+   "margen": 21.631,
+   "P_D": 0.9987
   },
   {
    "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
-   "margen": 21.518,
-   "P_D": 0.9988
+   "margen": 21.646,
+   "P_D": 0.9989
   },
   {
    "escenario": "Ventana 45 días (7 encuestadoras)",
-   "margen": 22.085,
+   "margen": 22.213,
    "P_D": 1.0
   },
   {
    "escenario": "Ventana 60 días (7 encuestadoras)",
-   "margen": 22.072,
-   "P_D": 0.9999
+   "margen": 22.199,
+   "P_D": 1.0
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": 22.077,
-   "P_D": 0.999
+   "margen": 22.208,
+   "P_D": 0.9991
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 21.364,
-   "P_D": 0.9987
-  },
-  {
-   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 21.626,
+   "margen": 21.492,
    "P_D": 0.9988
   },
   {
+   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
+   "margen": 21.756,
+   "P_D": 0.9989
+  },
+  {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 22.08,
-   "P_D": 0.999
+   "margen": 22.209,
+   "P_D": 0.9991
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 21.486,
-   "P_D": 0.9986
+   "margen": 21.617,
+   "P_D": 0.9988
   },
   {
    "escenario": "Sin ActiVote (pesa 53%) → ventana desde 2026-09-27: Susquehanna Polling & Research, Z to A Research, Quinnipiac University, PennLive, Franklin & Marshall College",
-   "margen": 22.943,
+   "margen": 23.071,
    "P_D": 0.9999
   },
   {
    "escenario": "Sin Franklin & Marshall College (pesa 47%) → ventana desde 2026-09-30: Susquehanna Polling & Research, Z to A Research, Quinnipiac University, PennLive, ActiVote",
-   "margen": 23.489,
+   "margen": 23.616,
    "P_D": 0.9999
   },
   {
    "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Franklin & Marshall College, ActiVote",
-   "margen": 21.482,
-   "P_D": 0.9989
+   "margen": 21.615,
+   "P_D": 0.999
   },
   {
    "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 1.1 %)",
-   "margen": 21.486,
-   "P_D": 0.9988
+   "margen": 21.614,
+   "P_D": 0.9989
   },
   {
    "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 0.6 %)",
-   "margen": 21.477,
-   "P_D": 0.9988
+   "margen": 21.605,
+   "P_D": 0.9989
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 20.234,
-   "P_D": 0.998
+   "margen": 20.351,
+   "P_D": 0.9981
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 17.221,
-   "P_D": 0.994
+   "margen": 17.318,
+   "P_D": 0.9943
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 12.137,
-   "P_D": 0.9675
+   "margen": 12.209,
+   "P_D": 0.9687
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 13.097,
-   "P_D": 0.976
+   "margen": 13.116,
+   "P_D": 0.9766
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 23.26,
-   "P_D": 0.9871
+   "margen": 23.065,
+   "P_D": 0.9868
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-26",
+  "fecha": "2026-10-27",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Boletas por correo devueltas",
-    "valor": 829477.0,
+    "valor": 890346.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Emitidos por demócratas registrados",
-    "valor": 66.36,
+    "valor": 65.77,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por republicanos registrados",
-    "valor": 24.49,
+    "valor": 24.83,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por otros y no partidistas",
-    "valor": 9.16,
+    "valor": 9.39,
     "formato": "pct"
    },
    {
     "etiqueta": "Margen D−R por correo",
-    "valor": 41.87,
+    "valor": 40.94,
     "formato": "pp"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9871,
-  "margen": 23.26
+  "P_D": 0.9868,
+  "margen": 23.07
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",
   "P_D": null,
-  "margen": -0.9,
+  "margen": -0.78,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.9 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +23.3 pp."
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.8 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +23.1 pp."
  },
  "fuentes": [
   {
