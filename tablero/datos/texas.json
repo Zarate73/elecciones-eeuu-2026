@@ -7,66 +7,86 @@
   "D": "Gina Hinojosa",
   "R": "Greg Abbott"
  },
- "corte": "2026-10-26",
- "dias_a_eleccion": 8,
+ "corte": "2026-10-27",
+ "dias_a_eleccion": 7,
  "pronostico": {
-  "P_D": 0.1341,
-  "pct_D": 46.5,
+  "P_D": 0.1468,
+  "pct_D": 46.78,
   "pct_D_IC80": [
-   43.54,
-   49.46
+   43.95,
+   49.61
   ],
-  "pct_R": 51.3,
+  "pct_R": 51.11,
   "pct_R_IC80": [
-   48.34,
-   54.26
+   48.27,
+   53.94
   ],
-  "pct_terceros": 2.2,
+  "pct_terceros": 2.1,
   "pct_terceros_IC80": [
    0.1,
-   4.27
+   4.14
   ],
-  "margen": -4.803,
+  "margen": -4.328,
   "margen_IC80": [
-   -10.39,
-   0.8
+   -9.64,
+   1.0
   ],
   "margen_IC95": [
-   -13.59,
-   4.0
+   -12.68,
+   4.04
   ],
-  "sd": 4.446,
-  "nu": 20.0,
-  "P_D_encuestas": 0.0892,
+  "sd": 4.23,
+  "nu": 20.7,
+  "P_D_encuestas": 0.0977,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0476
+    "valor": 0.054
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.3081,
+   "P_D": 0.3283,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.3138,
+   "P_D": 0.345,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "ActiVote",
-  "fin": "2026-10-21",
-  "dias_desde_fin": 5,
-  "dias_antes_eleccion": 13,
-  "origen": "wikipedia"
+  "encuestadora": "N+ Univision",
+  "fin": "2026-10-27",
+  "dias_desde_fin": 0,
+  "dias_antes_eleccion": 7,
+  "origen": "270towin"
  },
  "encuestas": [
+  {
+   "fin": "2026-10-27",
+   "encuestadora": "N+ Univision",
+   "D": 46.0,
+   "R": 48.0,
+   "margen": -2.0,
+   "en_ventana": true,
+   "origen": "270towin",
+   "peso": 0.1424
+  },
+  {
+   "fin": "2026-10-21",
+   "encuestadora": "Univision/YouGov",
+   "D": 46.0,
+   "R": 48.0,
+   "margen": -2.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1058
+  },
   {
    "fin": "2026-10-21",
    "encuestadora": "ActiVote",
@@ -75,7 +95,7 @@
    "margen": -5.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0445
+   "peso": 0.0335
   },
   {
    "fin": "2026-10-20",
@@ -85,17 +105,7 @@
    "margen": -2.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0956
-  },
-  {
-   "fin": "2026-10-19",
-   "encuestadora": "Emerson College",
-   "D": 45.0,
-   "R": 49.0,
-   "margen": -4.0,
-   "en_ventana": true,
-   "origen": "wikipedia",
-   "peso": 0.1275
+   "peso": 0.0719
   },
   {
    "fin": "2026-10-19",
@@ -105,17 +115,17 @@
    "margen": -5.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1508
+   "peso": 0.1133
   },
   {
-   "fin": "2026-10-18",
-   "encuestadora": "Texas Public Opinion Research",
-   "D": 48.0,
-   "R": 51.0,
-   "margen": -3.0,
+   "fin": "2026-10-19",
+   "encuestadora": "Emerson College",
+   "D": 45.0,
+   "R": 49.0,
+   "margen": -4.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1195
+   "peso": 0.0959
   },
   {
    "fin": "2026-10-18",
@@ -125,7 +135,17 @@
    "margen": -1.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.064
+   "peso": 0.0481
+  },
+  {
+   "fin": "2026-10-18",
+   "encuestadora": "Texas Public Opinion Research",
+   "D": 48.0,
+   "R": 51.0,
+   "margen": -3.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.0898
   },
   {
    "fin": "2026-10-16",
@@ -135,7 +155,7 @@
    "margen": -4.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1343
+   "peso": 0.1009
   },
   {
    "fin": "2026-10-14",
@@ -145,7 +165,7 @@
    "margen": -3.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1408
+   "peso": 0.1058
   },
   {
    "fin": "2026-10-14",
@@ -155,7 +175,7 @@
    "margen": -1.8,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0315
+   "peso": 0.0237
   },
   {
    "fin": "2026-10-13",
@@ -165,7 +185,7 @@
    "margen": -2.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0916
+   "peso": 0.0688
   },
   {
    "fin": "2026-10-11",
@@ -173,16 +193,6 @@
    "D": 45.0,
    "R": 49.0,
    "margen": -4.0,
-   "en_ventana": false,
-   "origen": "wikipedia",
-   "peso": null
-  },
-  {
-   "fin": "2026-10-08",
-   "encuestadora": "ReconMR/Siena University",
-   "D": 47.0,
-   "R": 48.0,
-   "margen": -1.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -198,11 +208,11 @@
    "peso": null
   },
   {
-   "fin": "2026-10-05",
-   "encuestadora": "University of Texas/Texas Politics Project",
-   "D": 49.0,
+   "fin": "2026-10-08",
+   "encuestadora": "ReconMR/Siena University",
+   "D": 47.0,
    "R": 48.0,
-   "margen": 1.0,
+   "margen": -1.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -218,11 +228,31 @@
    "peso": null
   },
   {
+   "fin": "2026-10-05",
+   "encuestadora": "University of Texas/Texas Politics Project",
+   "D": 49.0,
+   "R": 48.0,
+   "margen": 1.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
    "fin": "2026-10-01",
    "encuestadora": "New York Times/Siena University",
    "D": 49.0,
    "R": 46.0,
    "margen": 3.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-28",
+   "encuestadora": "UMass Lowell/YouGov",
+   "D": 44.0,
+   "R": 48.0,
+   "margen": -4.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -243,16 +273,6 @@
    "D": 44.0,
    "R": 46.0,
    "margen": -2.0,
-   "en_ventana": false,
-   "origen": "wikipedia",
-   "peso": null
-  },
-  {
-   "fin": "2026-09-28",
-   "encuestadora": "UMass Lowell/YouGov",
-   "D": 44.0,
-   "R": 48.0,
-   "margen": -4.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -439,20 +459,20 @@
   },
   {
    "fin": "2026-07-30",
-   "encuestadora": "Texas A&M University/ReconMR/Siena University",
-   "D": 45.0,
-   "R": 46.0,
-   "margen": -1.0,
+   "encuestadora": "Texas Southern University",
+   "D": 43.0,
+   "R": 49.0,
+   "margen": -6.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
   },
   {
    "fin": "2026-07-30",
-   "encuestadora": "Texas Southern University",
-   "D": 43.0,
-   "R": 49.0,
-   "margen": -6.0,
+   "encuestadora": "Texas A&M University/ReconMR/Siena University",
+   "D": 45.0,
+   "R": 46.0,
+   "margen": -1.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -509,20 +529,20 @@
   },
   {
    "fin": "2026-06-04",
-   "encuestadora": "Quantus Insights (R)",
-   "D": 41.0,
+   "encuestadora": "Texas A&M University/ReconMR",
+   "D": 43.0,
    "R": 49.0,
-   "margen": -8.0,
+   "margen": -6.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
   },
   {
    "fin": "2026-06-04",
-   "encuestadora": "Texas A&M University/ReconMR",
-   "D": 43.0,
+   "encuestadora": "Quantus Insights (R)",
+   "D": 41.0,
    "R": 49.0,
-   "margen": -6.0,
+   "margen": -8.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -578,7 +598,7 @@
    "peso": null
   }
  ],
- "n_encuestas_ventana": 9,
+ "n_encuestas_ventana": 11,
  "historial": [
   {
    "corte": "2026-10-25",
@@ -597,213 +617,222 @@
    "P_polymarket": 0.3138,
    "pct_D": 46.4964,
    "margen": -4.8032
+  },
+  {
+   "corte": "2026-10-27",
+   "P_D": 0.1468,
+   "P_D_encuestas": 0.0977,
+   "P_kalshi": 0.3283,
+   "P_polymarket": 0.345,
+   "pct_D": 46.7844,
+   "margen": -4.3276
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": -4.803,
-   "P_D": 0.1341
+   "margen": -4.328,
+   "P_D": 0.1468
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": -5.883,
-   "P_D": 0.0892
+   "margen": -5.388,
+   "P_D": 0.0977
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": -3.236,
-   "P_D": 0.227
+   "margen": -2.932,
+   "P_D": 0.2383
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": -2.91,
-   "P_D": 0.2504
+   "margen": -2.578,
+   "P_D": 0.2656
   },
   {
-   "escenario": "Sesgo estatal sin contraer (-3.30 pp)",
-   "margen": -6.522,
-   "P_D": 0.0694
+   "escenario": "Sesgo estatal sin contraer (-3.16 pp)",
+   "margen": -6.086,
+   "P_D": 0.0733
   },
   {
-   "escenario": "Sesgo estatal a la mitad (-1.33 pp)",
-   "margen": -4.547,
-   "P_D": 0.1473
+   "escenario": "Sesgo estatal a la mitad (-1.24 pp)",
+   "margen": -4.146,
+   "P_D": 0.1576
   },
   {
-   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-3.17 pp)",
-   "margen": -6.399,
-   "P_D": 0.0723
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-2.51 pp)",
+   "margen": -5.431,
+   "P_D": 0.096
   },
   {
-   "escenario": "Sesgo estimado solo con contiendas de gobernador (-0.16 pp)",
-   "margen": -3.375,
-   "P_D": 0.2167
+   "escenario": "Sesgo estimado solo con contiendas de gobernador (-0.14 pp)",
+   "margen": -3.049,
+   "P_D": 0.2289
   },
   {
    "escenario": "Distribución normal",
-   "margen": -5.883,
-   "P_D": 0.0939
+   "margen": -5.388,
+   "P_D": 0.1023
   },
   {
-   "escenario": "Incertidumbre con k efectivo 8.4 (no 9 firmas) y deriva por antigüedad ponderada (9 días)",
-   "margen": -5.882,
-   "P_D": 0.0933
+   "escenario": "Incertidumbre con k efectivo 10.2 (no 11 firmas) y deriva por antigüedad ponderada (8 días)",
+   "margen": -5.385,
+   "P_D": 0.1043
   },
   {
    "escenario": "Sin terceros",
-   "margen": -5.887,
-   "P_D": 0.0903
+   "margen": -5.391,
+   "P_D": 0.0984
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": -5.891,
-   "P_D": 0.0881
+   "margen": -5.394,
+   "P_D": 0.0978
   },
   {
-   "escenario": "Deriva al doble (0.50 pp/día, 5 días)",
-   "margen": -5.879,
-   "P_D": 0.0931
+   "escenario": "Deriva al doble (0.50 pp/día, 0 días)",
+   "margen": -5.382,
+   "P_D": 0.0983
   },
   {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (9 encuestadoras)",
-   "margen": -5.892,
-   "P_D": 0.0904
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (11 encuestadoras)",
+   "margen": -5.397,
+   "P_D": 0.0986
   },
   {
-   "escenario": "Ventana 45 días (20 encuestadoras)",
-   "margen": -4.929,
-   "P_D": 0.1051
+   "escenario": "Ventana 45 días (22 encuestadoras)",
+   "margen": -4.686,
+   "P_D": 0.1098
   },
   {
-   "escenario": "Ventana 60 días (23 encuestadoras)",
-   "margen": -4.987,
-   "P_D": 0.1003
+   "escenario": "Ventana 60 días (24 encuestadoras)",
+   "margen": -4.753,
+   "P_D": 0.1055
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": -5.934,
-   "P_D": 0.0872
+   "margen": -5.421,
+   "P_D": 0.0964
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": -5.855,
-   "P_D": 0.0919
+   "margen": -5.367,
+   "P_D": 0.1001
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": -5.893,
-   "P_D": 0.0898
+   "margen": -5.394,
+   "P_D": 0.0981
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": -5.954,
-   "P_D": 0.0868
+   "margen": -5.439,
+   "P_D": 0.0957
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": -5.888,
-   "P_D": 0.0898
+   "margen": -5.392,
+   "P_D": 0.098
   },
   {
-   "escenario": "Sin Beacon Research (D)/ Shaw & Co. Research (R) (pesa 15%) → ventana desde 2026-10-13: GS Strategy Group, ActiVote, University of Houston, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Verasight/VoteHub",
-   "margen": -5.409,
-   "P_D": 0.1125
+   "escenario": "Sin N+ Univision (pesa 14%) → ventana desde 2026-10-13: GS Strategy Group, ActiVote, University of Houston, CBS News/YouGov, Texas Public Opinion Research, Pollfinity Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov",
+   "margen": -5.539,
+   "P_D": 0.0976
   },
   {
-   "escenario": "Sin University of Houston (pesa 14%) → ventana desde 2026-10-13: GS Strategy Group, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Beacon Research, Emerson College, Verasight/VoteHub",
-   "margen": -5.929,
-   "P_D": 0.0925
+   "escenario": "Sin Beacon Research (D)/ Shaw & Co. Research (R) (pesa 11%) → ventana desde 2026-10-13: GS Strategy Group, ActiVote, University of Houston, CBS News/YouGov, Texas Public Opinion Research, Pollfinity Research, Emerson College, Verasight/VoteHub, Univision/YouGov, N+ Univision",
+   "margen": -5.016,
+   "P_D": 0.1172
   },
   {
-   "escenario": "Sin CBS News/YouGov (pesa 13%) → ventana desde 2026-10-13: GS Strategy Group, ActiVote, University of Houston, Pollfinity Research, Texas Public Opinion Research, Beacon Research, Emerson College, Verasight/VoteHub",
-   "margen": -5.786,
-   "P_D": 0.0979
+   "escenario": "Sin University of Houston (pesa 11%) → ventana desde 2026-10-13: GS Strategy Group, ActiVote, CBS News/YouGov, Texas Public Opinion Research, Pollfinity Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, N+ Univision",
+   "margen": -5.4,
+   "P_D": 0.1011
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: GS Strategy Group, ActiVote, University of Houston, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Beacon Research, Emerson College, Verasight/VoteHub",
-   "margen": -5.89,
-   "P_D": 0.0893
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: GS Strategy Group, ActiVote, University of Houston, CBS News/YouGov, Texas Public Opinion Research, Pollfinity Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, N+ Univision",
+   "margen": -5.396,
+   "P_D": 0.0976
   },
   {
-   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 1.6 %)",
-   "margen": -5.874,
-   "P_D": 0.0898
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 1.5 %)",
+   "margen": -5.378,
+   "P_D": 0.0981
   },
   {
-   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 1.2 %)",
-   "margen": -5.89,
-   "P_D": 0.0898
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 1.1 %)",
+   "margen": -5.392,
+   "P_D": 0.0983
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": -5.36,
-   "P_D": 0.1097
+   "margen": -4.871,
+   "P_D": 0.1201
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": -4.059,
-   "P_D": 0.1737
+   "margen": -3.605,
+   "P_D": 0.1899
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": -2.153,
-   "P_D": 0.3081
+   "margen": -1.819,
+   "P_D": 0.3283
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": -2.083,
-   "P_D": 0.3138
+   "margen": -1.631,
+   "P_D": 0.345
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": -3.094,
-   "P_D": 0.3028
+   "margen": -3.024,
+   "P_D": 0.3257
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-26",
+  "fecha": "2026-10-27",
   "estado": "en_vivo",
   "nota": "Sin registro partidario: solo volumen, no indica el resultado",
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 4542522.0,
+    "valor": 4949614.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 4334054.0,
+    "valor": 4734516.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 208468.0,
+    "valor": 215098.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 56.1,
+    "valor": 61.1,
     "formato": "pct"
    },
    {
     "etiqueta": "Peso de Harris",
-    "valor": 13.8,
+    "valor": 12.7,
     "formato": "pct"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.3028,
-  "margen": -3.09
+  "P_D": 0.3257,
+  "margen": -3.02
  },
  "adicional": {
   "titulo": "Sesgo estatal de Texas",
   "P_D": null,
-  "margen": -2.66,
+  "margen": -2.47,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024); el sesgo contraído corrige -2.7 pp (promedio de encuestas -3.2). Polymarket por rangos: margen implícito -3.1 pp."
+  "nota": "En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024); el sesgo contraído corrige -2.5 pp (promedio de encuestas -2.9). Polymarket por rangos: margen implícito -3.0 pp."
  },
  "fuentes": [
   {
