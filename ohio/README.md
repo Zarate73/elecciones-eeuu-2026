@@ -36,7 +36,7 @@ Base: el modelo de Nueva York v1.1.0 e Illinois v1.1.0 (Texas / Maine / Pennsylv
 | Promedio de encuestas | V11: efecto de casa contraído (k = 8), √n, vida media de 14 días, cada firma pesa ~1; ventana de 21 días (hoy, 6 encuestadoras) | Mejor CRPS nacional (3.249) |
 | Identidad de las encuestas | Firma + periodo de campo; NYT/Siena, SSRS, Beacon/Shaw y BGSU con sus alias; cifras y n de la publicación original (Marist LV 50–43, ActiVote 48.6–51.4) | Conservan su efecto de casa y sus cifras |
 | Sesgo estatal | Contraído por Bayes empírico con todas las contiendas del estado: hoy **resta** ~4.0 pp | Las encuestas sobreestimaron al demócrata en todas las contiendas de OH desde 2014; LOYO 2.066 vs 2.478 sin sesgo; cronológico 1.802 vs 2.464 (P = 0.002) |
-| Terceros (Kissick) | `real = a + c·(otros en las encuestas que los reportan)` | Mejor regla en OH y a nivel nacional |
+| Terceros (Kissick) | `real = a + c·(otros en las encuestas que los reportan)`; Kissick = terceros − votos por escrito (~0.1 %), con P(≥ 3 %) (umbral para que el Partido Libertario conserve su registro) | Mejor regla en OH y a nivel nacional; no cambia el margen ni P(D) |
 | Indecisos | 50/50 | El reparto proporcional y la cuota R son peores |
 | Ventajas grandes | Sin ajuste de escala | b = 1.00 fuera de muestra |
 | σ | `√(τ² + s²/k + 0.25²·d)` calibrada a los días que faltan, t de Student; d = días que las encuestas son más viejas que el horizonte. La deriva es un paseo aleatorio: la sd adicional crece con √d (0.25 pp por √día) | Cobertura del 80 % correcta en el backtest |

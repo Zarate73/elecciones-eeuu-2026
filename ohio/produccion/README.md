@@ -24,6 +24,7 @@ Paquete de Python del modelo de Ohio: Amy Acton (D), exdirectora de Salud del es
   - Hoy **resta 4.04 pp** a Acton: en Ohio las encuestas sobreestimaron al demócrata en 16 de 24 contiendas, y en todas desde 2014 (+2.9 a +8.1 pp).
   - En el backtest el sesgo mejora con claridad: LOYO 2.066 frente a 2.478; cronológico 1.802 frente a 2.464 (P = 0.002).
   - «Sin sesgo», «k ≥ 2», «solo gobernador» y «sin cada contienda» quedan como escenarios.
+- **Kissick explícito:** Kissick = terceros simulados − votos por escrito (~0.1 %; Ohio 2018 0.00 %, 2022 0.22 %). Se reporta su % (IC80), P(≥ 3 %) —en Ohio un partido menor conserva su registro si su candidato a gobernador saca al menos 3 %— y P(gana). Se calcula después de la simulación, con su propio generador: no cambia el margen ni P(Acton).
 - **Terceros (Kissick y votos por escrito):** `real = a + c·(otros en las encuestas que los reportan)`, la regla T4. Es la mejor en Ohio y a nivel nacional.
 - **Indecisos:** 50/50.
 - **σ:** `√(τ² + s²/k + 0.25²·d)`, t de Student; d = días que las encuestas son más viejas que el horizonte calibrado. La deriva es un paseo aleatorio: la varianza crece linealmente con d y la desviación estándar adicional con √d (0.25 pp por √día; con 3 días, +0.43 pp en cuadratura), no 0.25 pp por día. El escenario «deriva al doble» usa σ_d = 0.50 (cuatro veces la varianza de la deriva).

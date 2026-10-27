@@ -317,7 +317,10 @@ def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesg
                        'margen_IC95': [_num(x, 2) for x in g['IC95']], 'sd': _num(g['sd'], 3),
                        'nu': _num(r['calibracion'].get('nu'), 2), 'P_D_encuestas': _num(g['P_D_encuestas']),
                        'peso_mercados': _num(g['peso_mercados_aplicado'], 2), 'mercado_en_distribucion': True,
-                       'extra': [{'etiqueta': 'Resultado muy estrecho (|margen| ≤ 0.5)', 'valor': _num(g['P_recuento'])}]},
+                       'extra': [{'etiqueta': 'Resultado muy estrecho (|margen| ≤ 0.5)', 'valor': _num(g['P_recuento'])}]
+                                + ([{'etiqueta': f"{g['tercero_principal']['nombre']} ≥ {g['tercero_principal']['umbral_pct']:g} % "
+                                                 f"(su partido conserva el registro)", 'valor': _num(g['tercero_principal']['P_umbral'])}]
+                                   if g.get('tercero_principal') else [])},
         'mercados': [{'nombre': 'Kalshi', 'P_D': _num(mk['kalshi'].get('p_D')), 'estado': mk['kalshi'].get('estado')},
                      {'nombre': 'Polymarket', 'P_D': _num(mk['polymarket'].get('p_D')), 'estado': mk['polymarket'].get('estado')}],
         'ultima_encuesta': r.get('ultima_encuesta'),

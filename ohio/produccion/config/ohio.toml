@@ -67,6 +67,12 @@ sesgo_estatal = true                   # backtest de OH: las encuestas sobreesti
                                        # todas desde 2014; LOYO 2.066 vs 2.478 sin sesgo; cronológico 1.802 vs 2.464 (P = 0.002)
 sesgo_regla = "todas"                  # «k2» empata (LOYO 2.048, cronológico 1.799; estimación −3.96 vs −4.04); «por cargo» peor (P = 0.010)
 peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+# Tercero principal (único otro nombre en la boleta): Kissick = terceros simulados − votos por escrito. No cambia el margen
+# ni P(D). Votos por escrito: Ohio 2018 0.00 %, 2022 0.22 % → media 0.1, sd 0.1. Umbral: un partido menor conserva su
+# reconocimiento en Ohio si su candidato a gobernador saca ≥ 3 % (el Partido Libertario busca recuperarlo en 2026).
+tercero_principal = "Don Kissick (Libertario)"
+votos_escritos = [0.1, 0.1]
+umbral_tercero_pct = 3.0
 sigma_dia_pp = 0.25                    # deriva (paseo aleatorio) si las encuestas son más viejas que el horizonte calibrado:
                                        # varianza 0.25²·d; la sd adicional crece con √d (0.25 pp por √día), no 0.25 pp/día
 n_simulaciones = 200000

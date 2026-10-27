@@ -86,13 +86,20 @@ def main() -> int:
         '|---|---|---|',
         f"| Amy **Acton** (D) | **{g['pct_D']:.1f}%** ({g['pct_D_IC80'][0]:.1f}–{g['pct_D_IC80'][1]:.1f}) | **{_p(g['P_D'])}** |",
         f"| Vivek **Ramaswamy** (R) | **{g['pct_R']:.1f}%** ({g['pct_R_IC80'][0]:.1f}–{g['pct_R_IC80'][1]:.1f}) | **{_p(1 - g['P_D'])}** |",
-        f"| Terceros (Don Kissick, L; otros) | {g['pct_terceros']:.1f}% ({g['pct_terceros_IC80'][0]:.1f}–{g['pct_terceros_IC80'][1]:.1f}) | — |",
+        (f"| Don **Kissick** (L) | {tp['pct']:.1f}% ({tp['pct_IC80'][0]:.1f}–{tp['pct_IC80'][1]:.1f}) | {_p(tp['P_gana'])} |"
+         if (tp := g.get('tercero_principal')) else
+         f"| Terceros (Don Kissick, L; otros) | {g['pct_terceros']:.1f}% ({g['pct_terceros_IC80'][0]:.1f}–{g['pct_terceros_IC80'][1]:.1f}) | — |"),
         '',
         f"Margen D−R {g['margen']:+.1f} pp (σ {g['sd']:.1f}) · solo encuestas: P(Acton) {_p(g['P_D_encuestas'])} · "
         f"Kalshi {_p(mk['kalshi'].get('p_D'))} · Polymarket {_p(mk['polymarket'].get('p_D'))} "
         f"(peso de mercados {g['peso_mercados_aplicado']}) · resultado muy estrecho (|margen| ≤ 0.5) {g['P_recuento']:.1%} · "
         f"{g['n_encuestas']} encuestas, {g['k']} encuestadoras en la ventana",
     ]
+    if g.get('tercero_principal'):
+        tp = g['tercero_principal']
+        lineas += ['', f"**{tp['nombre']}:** P(≥ {tp['umbral_pct']:g} %, el partido conserva su registro en Ohio) "
+                       f"**{_p(tp['P_umbral'])}** · votos por escrito ~{tp['votos_escritos_pct']:.1f} % · "
+                       f"terceros en total {g['pct_terceros']:.1f} %"]
     if g.get('sesgo_estatal_aplicado'):
         lineas += ['', f"Cómo se llega: promedio de encuestas {g['margen_encuestas']:+.1f} · sesgo estatal de Ohio "
                        f"{-g['sesgo_estatal_aplicado']:+.1f} · "

@@ -26,6 +26,12 @@ def texto_resumen(r: dict, cfg) -> str:
            f"  {e.nombre_r} (R): {f['pct_R']:.1f}%   [IC80 {f['pct_R_IC80'][0]:.1f}–{f['pct_R_IC80'][1]:.1f}]",
            f"  Terceros: {f['pct_terceros']:.1f}%   [IC80 {f['pct_terceros_IC80'][0]:.1f}–{f['pct_terceros_IC80'][1]:.1f}]"
            + (f"   ({f['terceros_regimen']})" if f.get('terceros_regimen') else ''),
+           *([f"    · {f['tercero_principal']['nombre']}: {f['tercero_principal']['pct']:.1f}%   "
+              f"[IC80 {f['tercero_principal']['pct_IC80'][0]:.1f}–{f['tercero_principal']['pct_IC80'][1]:.1f}]   "
+              f"P(≥ {f['tercero_principal']['umbral_pct']:g} %, conserva el registro del partido) = "
+              f"{f['tercero_principal']['P_umbral']:.0%}   P(gana) = {f['tercero_principal']['P_gana']:.1%} · "
+              f"votos por escrito {f['tercero_principal']['votos_escritos_pct']:.1f}%"]
+             if f.get('tercero_principal') else []),
            f"  Margen D−R: {f['margen']:+.1f} pp (σ {f['sd']:.1f}) · IC95 [{f['IC95'][0]:+.1f}, {f['IC95'][1]:+.1f}]",
            f"  P(gana {e.candidato_d}) = {f['P_D']:.1%}   P(gana {e.candidato_r}) = {1 - f['P_D']:.1%}   "
            f"P(recuento, |margen| ≤ {cfg.eleccion.recuento_pp} pp) = {f['P_recuento']:.1%}",
@@ -167,6 +173,8 @@ def escribir(r: dict, cfg) -> Path:
                    'margen': f['margen'], 'sd': f['sd'], 'P_D': f['P_D'], 'P_D_encuestas': f['P_D_encuestas'],
                    'P_D_kalshi': mk['kalshi'].get('p_D'), 'P_D_polymarket': mk['polymarket'].get('p_D'),
                    'peso_mercados': f['peso_mercados_aplicado'], 'P_recuento': f['P_recuento'],
+                   'pct_tercero_principal': (f.get('tercero_principal') or {}).get('pct'),
+                   'P_tercero_umbral': (f.get('tercero_principal') or {}).get('P_umbral'),
                    'n_encuestas': len(m['encuestas']), 'k_ventana': f['k'],
                    'ultima_encuesta_fin': r['ultima_encuesta']['fin'], 'dias_desde_ultima_encuesta': r['ultima_encuesta']['dias_desde_fin'],
                    'sesgo_estatal': f.get('sesgo_estatal_aplicado'), 'desplazamiento_mercados': f['desplazamiento_mercados_pp'],

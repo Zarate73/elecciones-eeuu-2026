@@ -63,6 +63,27 @@ def simular(mu, dist: Dist, t_media, t_sd, n, rng) -> pd.DataFrame:
     return pd.DataFrame({'D': (100 - T + M) / 2, 'R': (100 - T - M) / 2, 'T': T, 'M': M})
 
 
+def tercero_principal(s: pd.DataFrame, m) -> dict | None:
+    """Voto del único tercero en la boleta (Ohio: Don Kissick, Libertario) = terceros simulados − votos por escrito.
+
+    Es un cálculo POSTERIOR a la simulación, con su propio generador aleatorio: no cambia el margen, los porcentajes de
+    D y R ni P(D). Votos por escrito ~ N(votos_escritos) recortados a [0, T] (Ohio 2018: 0.00 %; 2022: 0.22 %).
+    `umbral_tercero_pct`: en Ohio un partido menor conserva su reconocimiento si su candidato a gobernador saca ≥ 3 %."""
+    nombre = m.get('tercero_principal')
+    if not nombre:
+        return None
+    w_m, w_sd = m.get('votos_escritos', [0.1, 0.1])
+    rng = np.random.default_rng(int(m.semilla) + 1)
+    T = s['T'].to_numpy()
+    W = np.clip(rng.normal(w_m, w_sd, len(T)), 0, T)
+    K = T - W
+    u = float(m.get('umbral_tercero_pct', 3.0))
+    return {'nombre': str(nombre), 'pct': float(K.mean()), 'pct_IC80': (float(np.quantile(K, .1)), float(np.quantile(K, .9))),
+            'umbral_pct': u, 'P_umbral': float((K >= u).mean()),
+            'P_gana': float((K > np.maximum(s.D.to_numpy(), s.R.to_numpy())).mean()),
+            'votos_escritos_pct': float(W.mean())}
+
+
 def resumen(s: pd.DataFrame, nombre: str, recuento: float) -> dict:
     """Todo sale de la misma simulación: P_D es siempre la fracción de simulaciones con margen > 0."""
     q = lambda c, x: float(s[c].quantile(x))
@@ -148,6 +169,9 @@ def pronosticar(p: pd.DataFrame, par: dict, mk: dict, cfg) -> dict:
                   'sesgo_estatal_aplicado': sesgo,
                   'sesgo_estatal_bruto': par['sesgo_bruto'], 'contraccion_sesgo': par.get('contraccion'),
                   'P_D_con_mercados': p_final, 'margen_con_mercados': float(sim_final.M.mean())})
+    tp = tercero_principal(sim_final, m)
+    if tp:
+        final['tercero_principal'] = tp
 
     def fila(s_: pd.DataFrame, nombre: str) -> dict:
         """Escenario sin mercados + la misma mezcla con mercados del final (columnas *_con_mercados)."""

@@ -241,6 +241,7 @@ def test_readme_bloque_automatico(cfg, red_simulada, tmp_path, monkeypatch):
     assert ar.main() == 0
     t = est.read_text(encoding='utf-8')
     assert 'Amy **Acton**' in t and 'Vivek **Ramaswamy**' in t and '1,084,305' in t
+    assert 'Don **Kissick** (L)' in t and 'conserva su registro en Ohio' in t
     assert '| Ohio |' in raiz.read_text(encoding='utf-8')
 
 
@@ -336,3 +337,29 @@ def test_csv_de_encuestas_trae_fechas_de_disponibilidad(cfg, red_simulada):
     e = pd.read_csv(cfg.dir_salidas / 'ultimo' / 'encuestas_gobernador.csv', encoding='utf-8-sig')
     assert {'publicacion', 'tipo_fecha', 'disponible_desde'} <= set(e.columns)
     assert e[e.pollster == 'Verasight/VoteHub'].disponible_desde.iloc[0].startswith('2026-10-22')
+
+
+# ----------------------------------------------------------------------------------- Kissick explícito (27-oct)
+def test_kissick_explicito_no_cambia_el_pronostico(cfg, red_simulada):
+    """Kissick = terceros simulados − votos por escrito, calculado DESPUÉS de la simulación con su propio generador:
+    margen, % de D y R y P(D) son los de referencia; reporta % (IC80), P(≥ 3 %) y P(gana)."""
+    cfg.modelo['n_simulaciones'] = 200_000
+    r = ejecutar(cfg)
+    f = r['modelo']['final']
+    assert f['margen'] == pytest.approx(MARGEN, abs=0.03) and f['P_D'] == pytest.approx(P_D, abs=0.002)
+    tp = f['tercero_principal']
+    assert tp['nombre'].startswith('Don Kissick') and tp['umbral_pct'] == 3.0
+    assert tp['pct'] == pytest.approx(f['pct_terceros'] - tp['votos_escritos_pct'], abs=1e-6)
+    assert 0.05 <= tp['votos_escritos_pct'] <= 0.2 and tp['pct_IC80'][0] < tp['pct'] < tp['pct_IC80'][1]
+    assert 0.2 < tp['P_umbral'] < 0.8 and tp['P_gana'] == 0
+    assert 'Don Kissick (Libertario): ' in r['resumen_texto'] and 'conserva el registro del partido' in r['resumen_texto']
+    rep = json.loads((cfg.dir_salidas / 'ultimo' / 'reporte.json').read_text(encoding='utf-8'))
+    assert rep['gobernador']['tercero_principal']['P_umbral'] == pytest.approx(tp['P_umbral'])
+    h = pd.read_csv(cfg.dir_salidas / 'historial_pronosticos.csv')
+    assert h.P_tercero_umbral.iloc[-1] == pytest.approx(tp['P_umbral'])
+
+
+def test_sin_tercero_principal_en_config_no_se_reporta(cfg, red_simulada):
+    cfg.modelo.pop('tercero_principal')
+    f = ejecutar(cfg, escribir_salidas=False)['modelo']['final']
+    assert 'tercero_principal' not in f
