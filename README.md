@@ -12,7 +12,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Estado | Carrera principal | Estado del modelo | Carpeta |
 |---|---|---|---|
 | Georgia | Gobernador: Bottoms 49.6% · Jackson 50.4% · P(Bottoms) 44% (corte 2026-10-27) | **Producción (V11)**, actualización automática | [`georgia/`](georgia/) |
-| California | Gobernador: Becerra 60.9% · Hilton 39.1% · P(Becerra) 99% (corte 2026-10-26) | **Producción (M5)**, actualización automática | [`california/`](california/) |
+| California | Gobernador: Becerra 60.9% · Hilton 39.1% · P(Becerra) 99% (corte 2026-10-27) | **Producción (M5)**, actualización automática | [`california/`](california/) |
 | Arizona | Gobernador: Hobbs 51.7% · Biggs 44.4% · P(Hobbs) 92% (corte 2026-10-26) | **Producción (general)**, actualización automática | [`arizona/`](arizona/) |
 | Florida | Gobernador: Jolly 44.6% · Donalds 52.4% · P(Donalds) 95% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`florida/`](florida/) |
 | Nevada | Gobernador: Ford 47.4% · Lombardo 46.0% · P(Ford) 59% (corte 2026-10-26) | **Producción (general)**, actualización automática | [`nevada/`](nevada/) |

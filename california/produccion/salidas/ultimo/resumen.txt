@@ -1,10 +1,10 @@
-California · Gobernador · corte 2026-10-26 (8 días)
+California · Gobernador · corte 2026-10-27 (7 días)
 
 PRONÓSTICO M5: Becerra 60.9%  ·  Hilton 39.1%   (margen +21.8 pp)
   IC 80% Becerra: 57.2–64.6%   IC 95%: 54.4–67.4%
   P(Becerra gana): modelo 0.996 · con Kalshi 0.992
-  Última encuesta: McLaughlin & Associates (R), terminó el 2026-10-20 (6 días antes del corte)
-  σ 6.53 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
+  Última encuesta: McLaughlin & Associates (R), terminó el 2026-10-20 (7 días antes del corte)
+  σ 6.52 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
 
 FUENTES
   encuestas_wikipedia: en_vivo
@@ -17,19 +17,19 @@ FUENTES
   encuestas: 15 (wikipedia 13, base 2) · margen legado +20.38 → M5 +21.81
 
 PARTICIPACIÓN (diagnóstico; w_m2 = 0.00)
-  devueltas D−R +21.25 · esperado por edad +17.33 → Δ +3.92 pp
-  mismo día (T−8): +21.3 vs 2022 General +20.8, 2024 General +18.6 → Δ +1.6
-  composición final proyectada +21.6 → margen implícito +24.1 pp (RMSE LOO 4.2)
+  devueltas D−R +21.14 · esperado por edad +17.34 → Δ +3.81 pp
+  mismo día (T−8): +21.1 vs 2022 General +20.8, 2024 General +18.6 → Δ +1.5
+  composición final proyectada +21.5 → margen implícito +23.9 pp (RMSE LOO 4.2)
   corr(Δ temprano, error de encuestas) = +0.78 (n=4)
 
 SENTIMIENTO: k candidato 1.07 · aplicado 1.00 · GDELT z=-0.18
-KALSHI: 0.961 (en_vivo) · en mezcla True
+KALSHI: 0.960 (en_vivo) · en mezcla True
 PDI (contraste, 2026-10-19): D−R +18.4 en 1,214,420 boletas
 
 MODELOS
                        modelo  mediana_margen_pp  ic95_inf_pp  ic95_sup_pp  de_pp  p_d_gana  p_final_con_kalshi
-                 M5 · híbrido             21.794        8.791       34.746  6.535     0.996               0.992
+                 M5 · híbrido             21.794        8.800       34.737  6.530     0.996               0.992
       M1 · encuestas (legado)             20.384       11.530       29.187  4.495     1.000                 NaN
-M2 · + participación (legado)             20.424       11.570       29.227  4.495     1.000                 NaN
-       M3 · + shocks (legado)             20.428       11.266       29.597  4.667     1.000                 NaN
-  M4 · + sentimiento (legado)             20.428       11.266       29.597  4.667     1.000                 NaN
+M2 · + participación (legado)             20.421       11.567       29.224  4.495     1.000                 NaN
+       M3 · + shocks (legado)             20.421       11.291       29.533  4.646     1.000                 NaN
+  M4 · + sentimiento (legado)             20.421       11.291       29.533  4.646     1.000                 NaN
