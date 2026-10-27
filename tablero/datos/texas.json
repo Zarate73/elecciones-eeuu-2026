@@ -10,30 +10,30 @@
  "corte": "2026-10-26",
  "dias_a_eleccion": 8,
  "pronostico": {
-  "P_D": 0.1364,
-  "pct_D": 46.52,
+  "P_D": 0.1341,
+  "pct_D": 46.5,
   "pct_D_IC80": [
-   43.56,
-   49.48
+   43.54,
+   49.46
   ],
-  "pct_R": 51.28,
+  "pct_R": 51.3,
   "pct_R_IC80": [
-   48.31,
-   54.24
+   48.34,
+   54.26
   ],
   "pct_terceros": 2.2,
   "pct_terceros_IC80": [
    0.1,
    4.27
   ],
-  "margen": -4.757,
+  "margen": -4.803,
   "margen_IC80": [
-   -10.34,
-   0.84
+   -10.39,
+   0.8
   ],
   "margen_IC95": [
-   -13.54,
-   4.05
+   -13.59,
+   4.0
   ],
   "sd": 4.446,
   "nu": 20.0,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0486
+    "valor": 0.0476
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.325,
+   "P_D": 0.3081,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.325,
+   "P_D": 0.3138,
    "estado": "en_vivo"
   }
  ],
@@ -591,19 +591,19 @@
   },
   {
    "corte": "2026-10-26",
-   "P_D": 0.1364,
+   "P_D": 0.1341,
    "P_D_encuestas": 0.0892,
-   "P_kalshi": 0.325,
-   "P_polymarket": 0.325,
-   "pct_D": 46.5196,
-   "margen": -4.7568
+   "P_kalshi": 0.3081,
+   "P_polymarket": 0.3138,
+   "pct_D": 46.4964,
+   "margen": -4.8032
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": -4.757,
-   "P_D": 0.1364
+   "margen": -4.803,
+   "P_D": 0.1341
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -617,8 +617,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": -2.86,
-   "P_D": 0.254
+   "margen": -2.91,
+   "P_D": 0.2504
   },
   {
    "escenario": "Sesgo estatal sin contraer (-3.30 pp)",
@@ -737,28 +737,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": -5.336,
-   "P_D": 0.1106
+   "margen": -5.36,
+   "P_D": 0.1097
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": -3.975,
-   "P_D": 0.1784
+   "margen": -4.059,
+   "P_D": 0.1737
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": -1.948,
-   "P_D": 0.325
+   "margen": -2.153,
+   "P_D": 0.3081
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": -1.948,
-   "P_D": 0.325
+   "margen": -2.083,
+   "P_D": 0.3138
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": -2.817,
-   "P_D": 0.3313
+   "margen": -3.094,
+   "P_D": 0.3028
   }
  ],
  "anticipado": {
@@ -769,41 +769,41 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 4394402.0,
+    "valor": 4542522.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 4192397.0,
+    "valor": 4334054.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 202005.0,
+    "valor": 208468.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 54.2,
+    "valor": 56.1,
     "formato": "pct"
    },
    {
     "etiqueta": "Peso de Harris",
-    "valor": 13.2,
+    "valor": 13.8,
     "formato": "pct"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.3313,
-  "margen": -2.82
+  "P_D": 0.3028,
+  "margen": -3.09
  },
  "adicional": {
   "titulo": "Sesgo estatal de Texas",
   "P_D": null,
   "margen": -2.66,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024); el sesgo contraído corrige -2.7 pp (promedio de encuestas -3.2). Polymarket por rangos: margen implícito -2.8 pp."
+  "nota": "En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024); el sesgo contraído corrige -2.7 pp (promedio de encuestas -3.2). Polymarket por rangos: margen implícito -3.1 pp."
  },
  "fuentes": [
   {
