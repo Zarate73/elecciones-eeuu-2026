@@ -363,3 +363,24 @@ def test_sin_tercero_principal_en_config_no_se_reporta(cfg, red_simulada):
     cfg.modelo.pop('tercero_principal')
     f = ejecutar(cfg, escribir_salidas=False)['modelo']['final']
     assert 'tercero_principal' not in f
+
+
+def test_reconstruccion_sin_red_usa_caches_al_corte(cfg, red_simulada):
+    """Notebook: reconstrucción sin red del corte del 26-oct con las cachés de esa corrida → mercados y rangos de caché."""
+    ejecutar(cfg)                                                          # corrida diaria del 26-oct (guarda cachés)
+    red_simulada.caidas.update({'kalshi', 'polymarket', 'civicapi'})
+    import oh_pronostico.config as C
+    class Manana(C.datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return cls(2026, 10, 27, 12, 0, tzinfo=tz)
+    import pytest as _pt
+    mp = _pt.MonkeyPatch(); mp.setattr('oh_pronostico.config.datetime', Manana)
+    try:
+        cfg.corte_manual = date(2026, 10, 26)
+        r = ejecutar(cfg, escribir_salidas=False)
+    finally:
+        mp.undo()
+    assert r['reconstruccion']['activa']
+    assert r['mercados']['kalshi']['estado'].startswith('cache') and r['mercados']['rangos']['estado'].startswith('cache')
+    assert 'margen_media' in r['mercados']['rangos'] and r['anticipado']['disponible']

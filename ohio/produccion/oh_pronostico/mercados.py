@@ -365,5 +365,11 @@ def _obtener_al_corte(cfg) -> dict:
         t = rangos_poly(evento_poly_al_corte(cfg, _evento_poly(cfg, f.polymarket_evento_margen)))
         res['rangos'] = {**resumen_rangos(t), 'estado': f'historico (cierre {cfg.corte})', 'tabla': t}
     except Exception as exc:        # noqa: BLE001 — diagnóstico: sin rangos no hay escenario, pero no es error
-        res['rangos'] = {'estado': f'no_disponible (reconstrucción: {type(exc).__name__}: {str(exc)[:100]})'}
+        err = f'{type(exc).__name__}: {str(exc)[:100]}'
+        ruta = cfg.dir_cache / 'polymarket_rangos.csv'           # consulta guardada en una corrida en vivo ≤ corte
+        t = pd.read_csv(ruta) if ruta.exists() else None
+        if t is not None and 'consulta' in t and str(t.consulta.iloc[0])[:10] <= str(cfg.corte):
+            res['rangos'] = {**resumen_rangos(t.drop(columns='consulta')), 'estado': f'cache ({err})', 'tabla': t}
+        else:
+            res['rangos'] = {'estado': f'no_disponible (reconstrucción: {err})'}
     return res
