@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presidenta de la Cámara estatal)** y **Bobby Charles (R)**, con **Rick Bennett (independiente)**. Elección abierta: Janet Mills no puede reelegirse. Gana la mayoría simple: la general de gobernador no usa voto preferencial.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-26** (8 días a la elección) · actualizado automáticamente 2026-10-26 21:32 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-27** (7 días a la elección) · actualizado automáticamente 2026-10-27 11:56 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Hannah **Pingree** (D) | **50.2%** (47.0–53.4) | **93%** |
-| Bobby **Charles** (R) | **43.0%** (39.8–46.2) | **7%** |
-| Terceros (Rick Bennett, I) | 6.8% (4.6–8.9) | — |
+| Hannah **Pingree** (D) | **48.0%** (43.8–52.3) | **72%** |
+| Bobby **Charles** (R) | **44.5%** (40.2–48.7) | **28%** |
+| Terceros (Rick Bennett, I) | 7.5% (5.3–9.6) | — |
 
-Margen D−R +7.2 pp (σ 4.8) · solo encuestas: P(Pingree) 92% · Kalshi 95% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 2.5% · 16 encuestas, 6 encuestadoras en la ventana
+Margen D−R +3.6 pp (σ 6.5) · solo encuestas: P(Pingree) 51% · Kalshi 95% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 5.4% · 17 encuestas, 2 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +10.3 · sesgo estatal de Maine -3.6 · mercados +0.5
+Cómo se llega: promedio de encuestas +3.5 · sesgo estatal de Maine -3.4 · mercados +3.5
 
-**Con independiente** (mayoría simple): P(Pingree gana) 93% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 2% y Polymarket 3%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
+**Con independiente** (mayoría simple): P(Pingree gana) 72% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 2% y Polymarket 3%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
 
-**Encuesta más reciente:** Beacon Research (D)/Shaw & Co. Research (R), terminó el 2026-10-20 (**6 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Marist Poll, terminó el 2026-10-27 (**0 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
 **Voto ausente ya emitido** (civicAPI, diagnóstico, al 2026-10-26): 197,103 (96,001 por correo, 101,102 en persona) · registrados D 49.7% · R 21.4% · no inscritos y otros 28.9%. Es registro de partido, no intención de voto, y el voto ausente es más demócrata que el electorado: no entra al pronóstico.
 

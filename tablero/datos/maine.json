@@ -7,66 +7,76 @@
   "D": "Hannah Pingree",
   "R": "Bobby Charles"
  },
- "corte": "2026-10-26",
- "dias_a_eleccion": 8,
+ "corte": "2026-10-27",
+ "dias_a_eleccion": 7,
  "pronostico": {
-  "P_D": 0.9337,
-  "pct_D": 50.19,
+  "P_D": 0.716,
+  "pct_D": 48.04,
   "pct_D_IC80": [
-   46.97,
-   53.39
+   43.82,
+   52.26
   ],
-  "pct_R": 43.03,
+  "pct_R": 44.47,
   "pct_R_IC80": [
-   39.82,
-   46.23
+   40.24,
+   48.69
   ],
-  "pct_terceros": 6.79,
+  "pct_terceros": 7.49,
   "pct_terceros_IC80": [
-   4.63,
-   8.94
+   5.35,
+   9.63
   ],
-  "margen": 7.156,
+  "margen": 3.571,
   "margen_IC80": [
-   1.12,
-   13.2
+   -4.58,
+   11.73
   ],
   "margen_IC95": [
-   -2.4,
-   16.69
+   -9.32,
+   16.42
   ],
-  "sd": 4.812,
-  "nu": 20.0,
-  "P_D_encuestas": 0.9199,
+  "sd": 6.491,
+  "nu": 20.7,
+  "P_D_encuestas": 0.5054,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0248
+    "valor": 0.0536
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9511,
+   "P_D": 0.9487,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9642,
+   "P_D": 0.9593,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "Beacon Research (D)/Shaw & Co. Research (R)",
-  "fin": "2026-10-20",
-  "dias_desde_fin": 6,
-  "dias_antes_eleccion": 14,
-  "origen": "wikipedia"
+  "encuestadora": "Marist Poll",
+  "fin": "2026-10-27",
+  "dias_desde_fin": 0,
+  "dias_antes_eleccion": 7,
+  "origen": "270towin"
  },
  "encuestas": [
+  {
+   "fin": "2026-10-27",
+   "encuestadora": "Marist Poll",
+   "D": 44.0,
+   "R": 44.0,
+   "margen": 0.0,
+   "en_ventana": true,
+   "origen": "270towin",
+   "peso": 0.5805
+  },
   {
    "fin": "2026-10-20",
    "encuestadora": "Beacon Research (D)/Shaw & Co. Research (R)",
@@ -75,7 +85,7 @@
    "margen": 10.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.3522
+   "peso": 0.4195
   },
   {
    "fin": "2026-10-11",
@@ -83,9 +93,9 @@
    "D": 49.0,
    "R": 38.0,
    "margen": 11.0,
-   "en_ventana": true,
+   "en_ventana": false,
    "origen": "wikipedia",
-   "peso": 0.1296
+   "peso": null
   },
   {
    "fin": "2026-10-05",
@@ -93,9 +103,9 @@
    "D": 49.0,
    "R": 36.0,
    "margen": 13.0,
-   "en_ventana": true,
+   "en_ventana": false,
    "origen": "wikipedia",
-   "peso": 0.1218
+   "peso": null
   },
   {
    "fin": "2026-10-04",
@@ -103,9 +113,9 @@
    "D": 52.0,
    "R": 40.0,
    "margen": 12.0,
-   "en_ventana": true,
+   "en_ventana": false,
    "origen": "wikipedia",
-   "peso": 0.159
+   "peso": null
   },
   {
    "fin": "2026-10-01",
@@ -113,9 +123,9 @@
    "D": 56.0,
    "R": 44.0,
    "margen": 12.0,
-   "en_ventana": true,
+   "en_ventana": false,
    "origen": "wikipedia",
-   "peso": 0.1189
+   "peso": null
   },
   {
    "fin": "2026-09-30",
@@ -123,16 +133,6 @@
    "D": 47.0,
    "R": 38.0,
    "margen": 9.0,
-   "en_ventana": true,
-   "origen": "wikipedia",
-   "peso": 0.1184
-  },
-  {
-   "fin": "2026-09-22",
-   "encuestadora": "Fabrizio Ward (R)/ Impact Research (D)",
-   "D": 52.0,
-   "R": 39.0,
-   "margen": 13.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -142,6 +142,16 @@
    "encuestadora": "New York Times/Portland Press Herald/ Siena University",
    "D": 47.0,
    "R": 34.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-22",
+   "encuestadora": "Fabrizio Ward (R)/ Impact Research (D)",
+   "D": 52.0,
+   "R": 39.0,
    "margen": 13.0,
    "en_ventana": false,
    "origen": "wikipedia",
@@ -228,7 +238,7 @@
    "peso": null
   }
  ],
- "n_encuestas_ventana": 6,
+ "n_encuestas_ventana": 2,
  "historial": [
   {
    "corte": "2026-10-24",
@@ -256,163 +266,167 @@
    "P_polymarket": 0.9642,
    "pct_D": 50.1853,
    "margen": 7.1563
+  },
+  {
+   "corte": "2026-10-27",
+   "P_D": 0.716,
+   "P_D_encuestas": 0.5054,
+   "P_kalshi": 0.9487,
+   "P_polymarket": 0.9593,
+   "pct_D": 48.0412,
+   "margen": 3.5705
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 7.156,
-   "P_D": 0.9337
+   "margen": 3.571,
+   "P_D": 0.716
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": 6.641,
-   "P_D": 0.9199
+   "margen": 0.087,
+   "P_D": 0.5054
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": 10.29,
-   "P_D": 0.982
+   "margen": 3.503,
+   "P_D": 0.7112
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 9.709,
-   "P_D": 0.9767
+   "margen": 5.874,
+   "P_D": 0.8235
   },
   {
-   "escenario": "Sesgo estatal sin contraer (-5.69 pp)",
-   "margen": 4.593,
-   "P_D": 0.8361
+   "escenario": "Sesgo estatal sin contraer (-5.62 pp)",
+   "margen": -2.125,
+   "P_D": 0.3683
   },
   {
-   "escenario": "Sesgo estatal a la mitad (-1.82 pp)",
-   "margen": 8.465,
-   "P_D": 0.9605
+   "escenario": "Sesgo estatal a la mitad (-1.71 pp)",
+   "margen": 1.795,
+   "P_D": 0.6133
   },
   {
-   "escenario": "Sesgo estimado con todas las contiendas, incluidas las de una sola encuestadora (-1.48 pp)",
-   "margen": 8.822,
-   "P_D": 0.9659
+   "escenario": "Sesgo estimado con todas las contiendas, incluidas las de una sola encuestadora (-1.18 pp)",
+   "margen": 2.344,
+   "P_D": 0.6458
   },
   {
    "escenario": "Distribución normal",
-   "margen": 6.67,
-   "P_D": 0.9176
+   "margen": 0.126,
+   "P_D": 0.5062
   },
   {
-   "escenario": "Incertidumbre con k efectivo 4.8 (no 6 firmas) y deriva por antigüedad ponderada (16 días)",
-   "margen": 6.655,
-   "P_D": 0.9068
+   "escenario": "Incertidumbre con k efectivo 1.9 (no 2 firmas) y deriva por antigüedad ponderada (3 días)",
+   "margen": 0.104,
+   "P_D": 0.5067
   },
   {
    "escenario": "Sin terceros",
-   "margen": 6.648,
-   "P_D": 0.9197
+   "margen": 0.097,
+   "P_D": 0.5056
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": 6.633,
-   "P_D": 0.9197
+   "margen": 0.075,
+   "P_D": 0.5057
   },
   {
-   "escenario": "Deriva al doble (0.50 pp/día, 6 días)",
-   "margen": 6.643,
-   "P_D": 0.9161
+   "escenario": "Deriva al doble (0.50 pp/día, 0 días)",
+   "margen": 0.093,
+   "P_D": 0.5047
   },
   {
    "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
-   "margen": 5.666,
-   "P_D": 0.8133
+   "margen": 0.127,
+   "P_D": 0.5074
   },
   {
    "escenario": "Ventana 45 días (9 encuestadoras)",
-   "margen": 6.691,
-   "P_D": 0.9346
+   "margen": 4.924,
+   "P_D": 0.8735
   },
   {
    "escenario": "Ventana 60 días (12 encuestadoras)",
-   "margen": 6.724,
-   "P_D": 0.9433
+   "margen": 5.101,
+   "P_D": 0.893
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": 7.288,
-   "P_D": 0.9365
+   "margen": 0.781,
+   "P_D": 0.55
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 6.59,
-   "P_D": 0.9181
+   "margen": 0.057,
+   "P_D": 0.5047
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 6.75,
-   "P_D": 0.9223
+   "margen": 0.19,
+   "P_D": 0.5125
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 7.586,
-   "P_D": 0.9443
+   "margen": 0.756,
+   "P_D": 0.5467
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 6.97,
-   "P_D": 0.9275
+   "margen": 0.105,
+   "P_D": 0.5069
   },
   {
-   "escenario": "Sin Beacon Research (D)/Shaw & Co. Research (R) (pesa 35%) → ventana desde 2026-09-20: University of New Hampshire, Fabrizio Ward, New York Times/Portland Press Herald/ Siena University, co/efficient, CBS/YouGov, Marist University, The Washington Post/SSPG, Suffolk University",
-   "margen": 7.194,
-   "P_D": 0.9425
+   "escenario": "Sin Marist Poll (pesa 58%) → ventana desde 2026-09-29: co/efficient, CBS/YouGov, The Washington Post/SSPG, Suffolk University, Beacon Research",
+   "margen": 6.657,
+   "P_D": 0.9132
   },
   {
-   "escenario": "Sin Marist University (pesa 16%) → ventana desde 2026-09-29: co/efficient, CBS/YouGov, The Washington Post/SSPG, Suffolk University, Beacon Research",
-   "margen": 6.411,
-   "P_D": 0.9023
+   "escenario": "Sin Beacon Research (D)/Shaw & Co. Research (R) (pesa 42%) → ventana desde 2026-10-06: Suffolk University, Marist Poll",
+   "margen": -1.804,
+   "P_D": 0.3875
   },
   {
-   "escenario": "Sin Suffolk University (pesa 13%) → ventana desde 2026-09-29: co/efficient, CBS/YouGov, Marist University, The Washington Post/SSPG, Beacon Research",
-   "margen": 6.734,
-   "P_D": 0.9134
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Beacon Research, Marist Poll",
+   "margen": 0.102,
+   "P_D": 0.506
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-09-29: CBS/YouGov, Marist University, The Washington Post/SSPG, Suffolk University, Beacon Research",
-   "margen": 6.806,
-   "P_D": 0.9152
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 4.8 %)",
+   "margen": 0.075,
+   "P_D": 0.5041
   },
   {
-   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 4.4 %)",
-   "margen": 6.667,
-   "P_D": 0.9203
-  },
-  {
-   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.6 %)",
-   "margen": 6.655,
-   "P_D": 0.9196
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.8 %)",
+   "margen": 0.125,
+   "P_D": 0.5075
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 6.904,
-   "P_D": 0.9271
+   "margen": 1.839,
+   "P_D": 0.6161
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 7.494,
-   "P_D": 0.9416
+   "margen": 5.804,
+   "P_D": 0.8215
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 7.94,
-   "P_D": 0.9511
+   "margen": 10.548,
+   "P_D": 0.9487
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 8.695,
-   "P_D": 0.9642
+   "margen": 11.318,
+   "P_D": 0.9593
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 15.445,
-   "P_D": 0.9467
+   "margen": 12.466,
+   "P_D": 0.937
   }
  ],
  "anticipado": {
@@ -453,15 +467,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9467,
-  "margen": 15.44
+  "P_D": 0.937,
+  "margen": 12.47
  },
  "adicional": {
   "titulo": "Sesgo estatal de Maine",
   "P_D": null,
-  "margen": -3.65,
+  "margen": -3.42,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En ME las encuestas sobreestimaron al demócrata en 8 de 13 contiendas (estimado sin contiendas de una sola encuestadora); el sesgo contraído corrige -3.6 pp (promedio de encuestas +10.3). Polymarket por rangos: margen implícito +15.4 pp."
+  "nota": "En ME las encuestas sobreestimaron al demócrata en 8 de 13 contiendas (estimado sin contiendas de una sola encuestadora); el sesgo contraído corrige -3.4 pp (promedio de encuestas +3.5). Polymarket por rangos: margen implícito +12.5 pp."
  },
  "fuentes": [
   {
