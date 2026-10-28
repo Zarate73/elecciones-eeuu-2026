@@ -20,7 +20,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Maine | Gobernador: Pingree 49.0% · Charles 44.3% · P(Pingree) 80% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`maine/`](maine/) |
 | Texas | Gobernador: Hinojosa 46.8% · Abbott 51.1% · P(Hinojosa) 15% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`texas/`](texas/) |
 | Illinois | Gobernador: Pritzker 55.8% · Bailey 38.9% · P(Pritzker) 99% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`illinois/`](illinois/) |
-| Nueva York | Gobernador: Hochul 55.8% · Blakeman 44.1% · P(Hochul) 98% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`new_york/`](new_york/) |
+| Nueva York | Gobernador: Hochul 55.4% · Blakeman 44.5% · P(Hochul) 98% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`new_york/`](new_york/) |
 | Ohio | Gobernador: Acton 48.6% · Ramaswamy 48.4% · P(Acton) 51% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`ohio/`](ohio/) |
 | North Carolina | Senado: Cooper 53.1% · Whatley 43.7% · P(Cooper) 95% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`north_carolina/`](north_carolina/) |
 | … | | pendiente | |
