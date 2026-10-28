@@ -293,13 +293,15 @@ def _nyc_checkins(a: dict) -> dict:
                            for c in a.get('condados_lista', [])]}
 
 
-def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesgo: str, solo_correo: bool = False) -> dict | None:
+def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesgo: str, solo_correo: bool = False,
+             cargo: str = 'Gobernador', etiqueta_recuento: str = 'Resultado muy estrecho (|margen| ≤ 0.5)') -> dict | None:
     s = RAIZ / f'{carpeta}/produccion/salidas'
     if not (s / 'ultimo/reporte.json').exists():
         return None
     r = json.loads((s / 'ultimo/reporte.json').read_text(encoding='utf-8'))
-    g, mk, a = r['gobernador'], r['mercados'], r.get('anticipado') or {}
-    enc = pd.read_csv(s / 'ultimo/encuestas_gobernador.csv', encoding='utf-8-sig')
+    clave = cargo.lower()                                # North Carolina (Senado): reporte['senado'], encuestas_senado.csv
+    g, mk, a = r[clave], r['mercados'], r.get('anticipado') or {}
+    enc = pd.read_csv(s / f'ultimo/encuestas_{clave}.csv', encoding='utf-8-sig')
     pesos = s / 'ultimo/encuestas_ventana_pesos.csv'
     if pesos.exists():
         w = pd.read_csv(pesos, encoding='utf-8-sig')[['fin', 'pollster', 'peso']]
@@ -307,7 +309,7 @@ def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesg
     rg = mk.get('rangos') or {}
     sesgo = g.get('sesgo_estatal_aplicado')
     return {
-        'clave': carpeta, 'estado': estado, 'cargo': 'Gobernador', 'modelo': 'General (V11, sesgo estatal contraído)',
+        'clave': carpeta, 'estado': estado, 'cargo': cargo, 'modelo': 'General (V11, sesgo estatal contraído)',
         'candidatos': cand, 'corte': r['corte'], 'dias_a_eleccion': r['dias_a_eleccion'],
         'pronostico': {'P_D': _num(g['P_D']), 'pct_D': _num(g['pct_D'], 2), 'pct_D_IC80': [_num(x, 2) for x in g['pct_D_IC80']],
                        'pct_R': _num(g['pct_R'], 2), 'pct_R_IC80': [_num(x, 2) for x in g['pct_R_IC80']],
@@ -317,7 +319,7 @@ def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesg
                        'margen_IC95': [_num(x, 2) for x in g['IC95']], 'sd': _num(g['sd'], 3),
                        'nu': _num(r['calibracion'].get('nu'), 2), 'P_D_encuestas': _num(g['P_D_encuestas']),
                        'peso_mercados': _num(g['peso_mercados_aplicado'], 2), 'mercado_en_distribucion': True,
-                       'extra': [{'etiqueta': 'Resultado muy estrecho (|margen| ≤ 0.5)', 'valor': _num(g['P_recuento'])}]
+                       'extra': [{'etiqueta': etiqueta_recuento, 'valor': _num(g['P_recuento'])}]
                                 + ([{'etiqueta': f"{g['tercero_principal']['nombre']} ≥ {g['tercero_principal']['umbral_pct']:g} % "
                                                  f"(su partido conserva el registro)", 'valor': _num(g['tercero_principal']['P_umbral'])}]
                                    if g.get('tercero_principal') else [])},
@@ -399,10 +401,19 @@ def ohio() -> dict | None:
                     'En OH las encuestas sobreestimaron al demócrata en todas las contiendas desde 2014 (+2.9 a +8.1 pp)')
 
 
+# ------------------------------------------------------------------------------------ North Carolina (Senado)
+def north_carolina() -> dict | None:
+    return _general('north_carolina', 'North Carolina', {'D': 'Roy Cooper', 'R': 'Michael Whatley'},
+                    'Sesgo estatal de North Carolina',
+                    'En NC las encuestas sobreestimaron al demócrata en las 10 contiendas desde 2014 (+0.3 a +6.2 pp)',
+                    cargo='Senado', etiqueta_recuento='Recuento a petición (|margen| ≤ 0.26 pp, ≤ 10,000 votos)')
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
-    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york, ohio):
+    for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york, ohio,
+              north_carolina):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás

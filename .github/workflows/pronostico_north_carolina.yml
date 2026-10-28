@@ -1,0 +1,43 @@
+name: Pronóstico North Carolina (Senado)
+
+on:
+  schedule:
+    - cron: '46 10 * * *'   # 06:46 ET (05:46 desde el 1-nov, fin del horario de verano)
+    - cron: '46 22 * * *'   # 18:46 ET
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pronostico-north-carolina            # uno por estado: con un grupo compartido, GitHub cancela las corridas en espera
+                                   # (solo admite una pendiente por grupo); publicar.sh ya resuelve los choques al publicar
+  cancel-in-progress: false
+
+jobs:
+  pronostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: north_carolina/produccion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: north_carolina/produccion/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Pruebas (sin red)
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Correr pronóstico (fuentes en vivo)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python -m nc_pronostico correr
+      - name: Actualizar README
+        run: python scripts/actualizar_readme.py
+      - name: Publicar resultados (README, tablero y salidas)
+        working-directory: .
+        run: bash scripts/publicar.sh ohio "Pronóstico North Carolina (Senado) $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET"

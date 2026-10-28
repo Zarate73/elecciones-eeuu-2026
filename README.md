@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml/badge.svg)](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml)
 
-**Sistema de pronósticos electorales para 14 estados: 11 implementados y automatizados (Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York y Ohio), 3 pendientes.**
+**Sistema de pronósticos electorales para 14 estados: 12 implementados y automatizados (Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio y North Carolina), 2 pendientes.**
 
 **Tablero:** [zarate73.github.io/elecciones-eeuu-2026](https://zarate73.github.io/elecciones-eeuu-2026/) · se actualiza solo con cada corrida.
 
@@ -22,7 +22,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Illinois | Gobernador: Pritzker 55.8% · Bailey 38.9% · P(Pritzker) 99% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`illinois/`](illinois/) |
 | Nueva York | Gobernador: Hochul 55.8% · Blakeman 44.1% · P(Hochul) 98% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`new_york/`](new_york/) |
 | Ohio | Gobernador: Acton 48.6% · Ramaswamy 48.4% · P(Acton) 51% (corte 2026-10-27) | **Producción (general)**, actualización automática | [`ohio/`](ohio/) |
-| North Carolina | Senado: Cooper 53.0% · Whatley 43.8% · P(Cooper) 95% (referencia 2026-10-27) | **Modelo general validado**; flujo automático pendiente | [`north_carolina/`](north_carolina/) |
+| North Carolina | Senado: Cooper 53.0% · Whatley 43.8% · P(Cooper) 95% (referencia 2026-10-27) | **Producción (general)**, actualización automática | [`north_carolina/`](north_carolina/) |
 | … | | pendiente | |
 
 ## Estructura por estado
@@ -35,15 +35,15 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 ```
 `tablero/` es la página pública (GitHub Pages); `scripts/exportar_tablero.py` lleva los resultados de cada estado a `tablero/datos/`.
 
-## Estándares comunes (aprendidos en Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York y Ohio)
+## Estándares comunes (aprendidos en Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio y North Carolina)
 - **Validación:** *leave-one-year-out* sobre el histórico de FiveThirtyEight (980 contiendas 1998–2024); métrica principal CRPS, más la cobertura de los intervalos del 80% y 95%.
 - **Incertidumbre:** σ empírica `√(τ² + s²/k)` calibrada a la distancia de la elección; nada de pisos fijos sin calibrar.
 - **Componentes:** se agregan solo si mejoran el CRPS fuera de muestra; lo no validable queda como diagnóstico.
 - **Sesgo estatal:** se decide por estado con el backtest y siempre se reporta el escenario contrario. Georgia y Florida lo usan (en FL las encuestas sobreestimaron al demócrata en 18 de 23 contiendas); Arizona no (su error cambia de signo entre ciclos); en Nevada y Pennsylvania la evidencia estatal es nula (P ≈ 0.5) y se usa la regla nacional (sesgo contraído); en Maine el sesgo ayuda (cronológico P = 0.014) y se estima sin contiendas de una sola encuestadora; en Texas (14 de 20 contiendas pro-D) e Illinois (error que cambia de signo) el estado no es concluyente y se usa la regla nacional con todas las contiendas; en Nueva York es donde más ayuda en el estado (LOYO 2.929 vs 3.419); en Ohio las encuestas sobreestimaron al demócrata en todas las contiendas desde 2014 y el sesgo (−4.0 pp) gana en LOYO y en el cronológico (P = 0.002). En North Carolina (primer estado de Senado) las encuestas sobreestimaron al demócrata en las 10 contiendas desde 2014 y se usa la regla «todas» (−2.1 pp); ninguna variante propia del Senado (σ o sesgo por cargo, fundamentales, escala) mejora al modelo en las 383 contiendas de Senado. Los valores P son por contienda: con bootstrap por año la mejora nacional del sesgo (ΔCRPS −0.134, IC95 [−0.320, +0.051]) no es concluyente al 95 %.
 - **Alcance de la validación:** el backtest histórico valida el componente de encuestas y su error, no la mezcla con mercados (`w = 0.30`, estudiada con 40 contiendas de 2024). Ver «Qué valida y qué no valida el backtest» en cada estado y [`docs/auditoria_2026-10-26.md`](docs/auditoria_2026-10-26.md).
-- **Identidad de encuestas:** módulo común `identidad.py` en los diez paquetes (firma + periodo de campo; la fecha puntual de 270toWin es publicación). Dos olas de una firma con periodos distintos nunca se funden, aunque tengan las mismas cifras; cada fusión o caso ambiguo queda en el log.
+- **Identidad de encuestas:** módulo común `identidad.py` en todos los paquetes (firma + periodo de campo; la fecha puntual de 270toWin es publicación). Dos olas de una firma con periodos distintos nunca se funden, aunque tengan las mismas cifras; cada fusión o caso ambiguo queda en el log.
 - **Producción:** todas las fuentes en vivo, con caché y degradación explícita (`--estricto` → código 2). Que las fuentes estén en vivo no significa que las encuestas sean recientes: cada reporte trae la fecha y la antigüedad de la encuesta más reciente (`ultima_encuesta`).
-- **Mercados:** en Georgia, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York y Ohio la mezcla con mercados desplaza la distribución del margen, así que la probabilidad publicada es la fracción de simulaciones con margen > 0 (en AZ 2024 esto bajó el error del margen en las dos contiendas con historia de mercados). En California Kalshi ajusta solo la probabilidad publicada: margen, intervalos y % de voto son los del modelo.
+- **Mercados:** en Georgia, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio y North Carolina la mezcla con mercados desplaza la distribución del margen, así que la probabilidad publicada es la fracción de simulaciones con margen > 0 (en AZ 2024 esto bajó el error del margen en las dos contiendas con historia de mercados). En California Kalshi ajusta solo la probabilidad publicada: margen, intervalos y % de voto son los del modelo.
 - **Salidas para tableros:** `salidas/ultimo/reporte.json` es JSON estricto (RFC 8259, sin `NaN` ni `Infinity`; los valores faltantes son `null`).
 - **Pruebas:** sin red, con fixtures que reproducen el formato de cada fuente; el flujo [CI](.github/workflows/ci.yml) las corre en cada push y pull request.
 

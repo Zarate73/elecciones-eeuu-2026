@@ -3,8 +3,10 @@
 Elección general del 3 de noviembre de 2026 por el escaño que deja Thom Tillis (R): **Roy Cooper (D, exgobernador)** contra **Michael Whatley (R, expresidente del RNC)**, con Shannon Bray (Libertario) y Michael Dublin (Verde). Gana la mayoría simple. Es el primer estado de **Senado** del proyecto.
 
 <!-- PRONOSTICO:INICIO -->
-Sin corrida automática todavía: el modelo está validado y empaquetado, pero el flujo de GitHub Actions no está activo. Pronóstico de referencia con las fuentes del 27-oct-2026 (pruebas sin red): **Cooper 53.0 % · Whatley 43.8 % · P(Cooper) 94.8 %** (margen +9.2, σ 5.7; solo encuestas 93.5 %; Kalshi 96.5 % y Polymarket 97.5 %).
+Se llena con la primera corrida automática.
 <!-- PRONOSTICO:FIN -->
+
+GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_north_carolina.yml)).
 
 ## Modelo general (elegido por backtest)
 Base: el modelo de Ohio v1.2.0 (Nueva York / Illinois / Texas / Maine / Pennsylvania / Nevada / Florida / Georgia V11). Se validó con un backtest *leave-one-year-out* de 992 contiendas (1998–2024: 383 de Senado, 23 de North Carolina) a 7 días de la elección, con la misma ventana que producción, más una validación estrictamente cronológica.
