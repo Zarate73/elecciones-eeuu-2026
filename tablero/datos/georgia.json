@@ -7,33 +7,33 @@
   "D": "Keisha Lance Bottoms",
   "R": "Rick Jackson"
  },
- "corte": "2026-10-27",
- "dias_a_eleccion": 7,
+ "corte": "2026-10-28",
+ "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.4358,
-  "pct_D": 49.62,
+  "P_D": 0.4415,
+  "pct_D": 49.66,
   "pct_D_IC80": [
-   46.5,
-   52.75
+   46.57,
+   52.76
   ],
-  "pct_R": 50.37,
+  "pct_R": 50.33,
   "pct_R_IC80": [
-   47.24,
-   53.49
+   47.23,
+   53.42
   ],
   "pct_terceros": null,
-  "margen": -0.755,
+  "margen": -0.678,
   "margen_IC80": [
-   -7.0,
-   5.52
+   -6.85,
+   5.53
   ],
   "margen_IC95": [
-   -10.58,
-   9.09
+   -10.46,
+   9.1
   ],
-  "sd": 4.976,
-  "nu": 19.9,
-  "P_D_encuestas": 0.3598,
+  "sd": 4.941,
+  "nu": 17.0,
+  "P_D_encuestas": 0.3672,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
@@ -53,7 +53,7 @@
  "ultima_encuesta": {
   "encuestadora": "Echelon Insights (R)",
   "fin": "2026-10-23",
-  "dias_desde_fin": 4,
+  "dias_desde_fin": 5,
   "dias_antes_eleccion": 11,
   "origen": "wikipedia"
  },
@@ -276,43 +276,51 @@
    "P_kalshi": 0.615,
    "pct_D": 49.6174,
    "margen": -0.7547
+  },
+  {
+   "corte": "2026-10-28",
+   "P_D": 0.4415,
+   "P_D_encuestas": 0.3672,
+   "P_kalshi": 0.615,
+   "pct_D": 49.6557,
+   "margen": -0.6782
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL",
-   "margen": -0.755,
-   "P_D": 0.4358
+   "margen": -0.678,
+   "P_D": 0.4415
   },
   {
    "escenario": "Solo encuestas (sin Kalshi)",
-   "margen": -1.681,
-   "P_D": 0.3592
+   "margen": -1.567,
+   "P_D": 0.3664
   },
   {
    "escenario": "Sin sesgo estatal GA",
-   "margen": -0.836,
-   "P_D": 0.4281
+   "margen": -0.841,
+   "P_D": 0.4271
   },
   {
    "escenario": "Distribución normal",
-   "margen": -0.789,
-   "P_D": 0.4366
+   "margen": -0.708,
+   "P_D": 0.4423
   },
   {
    "escenario": "Kalshi solo",
-   "margen": 1.437,
-   "P_D": 0.618
+   "margen": 1.411,
+   "P_D": 0.6172
   },
   {
    "escenario": "Ventana 30 días",
-   "margen": -1.8,
-   "P_D": 0.3452
+   "margen": -1.687,
+   "P_D": 0.3516
   },
   {
    "escenario": "Ventana 45 días",
-   "margen": -1.981,
-   "P_D": 0.3186
+   "margen": -1.867,
+   "P_D": 0.3245
   }
  ],
  "anticipado": {
@@ -322,28 +330,28 @@
   "metricas": [
    {
     "etiqueta": "Boletas vs 2022 (mismo día)",
-    "valor": 137433.0,
+    "valor": 137380.0,
     "formato": "entero_signo"
    },
    {
     "etiqueta": "% votantes negros vs 2022",
-    "valor": 3.15,
+    "valor": 3.04,
     "formato": "pp"
    },
    {
     "etiqueta": "% 65+ vs 2022",
-    "valor": 2.1,
+    "valor": 2.03,
     "formato": "pp"
    }
   ]
  },
  "adicional": {
   "titulo": "Senado (Ossoff vs Collins)",
-  "P_D": 0.8889,
-  "pct_D": 53.42,
-  "pct_R": 46.57,
-  "margen": 6.86,
-  "nota": "Voto dividido (gobernador R + senado D): 47%"
+  "P_D": 0.9586,
+  "pct_D": 54.53,
+  "pct_R": 45.46,
+  "margen": 9.06,
+  "nota": "Voto dividido (gobernador R + senado D): 52%"
  },
  "fuentes": [
   {
