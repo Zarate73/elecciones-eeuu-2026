@@ -114,8 +114,8 @@
    "P_D_encuestas": 0.9968,
    "P_kalshi": 0.9616,
    "P_polymarket": 0.9739,
-   "pct_D": 55.8298,
-   "margen": 16.907
+   "pct_D": 55.8297,
+   "margen": 16.9067
   }
  ],
  "escenarios": [
@@ -136,7 +136,7 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 16.487,
+   "margen": 16.485,
    "P_D": 0.9927
   },
   {
@@ -266,23 +266,23 @@
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 15.532,
+   "margen": 15.531,
    "P_D": 0.9898
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 11.549,
+   "margen": 11.546,
    "P_D": 0.9616
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 12.777,
+   "margen": 12.774,
    "P_D": 0.9739
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 20.534,
-   "P_D": 0.976
+   "margen": 20.892,
+   "P_D": 0.9735
   }
  ],
  "anticipado": {
@@ -293,41 +293,41 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 796599.0,
+    "valor": 803161.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 349838.0,
+    "valor": 354107.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 446761.0,
+    "valor": 449054.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 19.4,
+    "valor": 19.6,
     "formato": "pct"
    },
    {
     "etiqueta": "Peso de Cook",
-    "valor": 17.3,
+    "valor": 17.1,
     "formato": "pct"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.976,
-  "margen": 20.53
+  "P_D": 0.9735,
+  "margen": 20.89
  },
  "adicional": {
   "titulo": "Sesgo estatal de Illinois",
   "P_D": null,
   "margen": 0.71,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +0.7 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.5 pp."
+  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +0.7 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.9 pp."
  },
  "fuentes": [
   {
