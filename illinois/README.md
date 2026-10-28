@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **JB Pritzker (D, gobernador en funciones)** y **Darren Bailey (R)**, revancha de 2022, con Collin Corbett (independiente). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-27** (7 días a la elección) · actualizado automáticamente 2026-10-27 21:37 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-28** (6 días a la elección) · actualizado automáticamente 2026-10-28 12:25 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| JB **Pritzker** (D, gobernador) | **55.8%** (51.6–60.1) | **99%** |
-| Darren **Bailey** (R) | **38.9%** (34.7–43.2) | **1%** |
-| Terceros (Collin Corbett, I; otros) | 5.2% (3.1–7.4) | — |
+| JB **Pritzker** (D, gobernador) | **55.8%** (51.5–60.0) | **99%** |
+| Darren **Bailey** (R) | **39.0%** (34.7–43.2) | **1%** |
+| Terceros (Collin Corbett, I; otros) | 5.2% (3.1–7.3) | — |
 
-Margen D−R +16.9 pp (σ 6.5) · solo encuestas: P(Pritzker) >99% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.2% · 2 encuestas, 2 encuestadoras en la ventana
+Margen D−R +16.8 pp (σ 6.5) · solo encuestas: P(Pritzker) >99% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.2% · 2 encuestas, 2 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +18.2 · sesgo estatal de Illinois +0.7 · mercados -2.0
+Cómo se llega: promedio de encuestas +18.2 · sesgo estatal de Illinois +0.7 · mercados -2.1
 
-**Encuesta más reciente:** ActiVote, terminó el 2026-10-22 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** ActiVote, terminó el 2026-10-22 (**6 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-27): 803,161 (354,107 en persona, 449,054 por correo) · 20 % del total de votos de 2022. Illinois no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-28): 804,552 (355,053 en persona, 449,499 por correo) · 20 % del total de votos de 2022. Illinois no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 

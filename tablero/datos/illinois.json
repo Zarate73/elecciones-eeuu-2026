@@ -7,62 +7,62 @@
   "D": "JB Pritzker",
   "R": "Darren Bailey"
  },
- "corte": "2026-10-27",
- "dias_a_eleccion": 7,
+ "corte": "2026-10-28",
+ "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.9936,
-  "pct_D": 55.83,
+  "P_D": 0.9932,
+  "pct_D": 55.79,
   "pct_D_IC80": [
-   51.58,
-   60.08
+   51.55,
+   60.03
   ],
-  "pct_R": 38.92,
+  "pct_R": 38.98,
   "pct_R_IC80": [
-   34.67,
-   43.18
+   34.75,
+   43.23
   ],
-  "pct_terceros": 5.25,
+  "pct_terceros": 5.23,
   "pct_terceros_IC80": [
-   3.11,
-   7.39
+   3.12,
+   7.35
   ],
-  "margen": 16.907,
+  "margen": 16.8,
   "margen_IC80": [
-   8.71,
-   25.12
+   8.6,
+   25.01
   ],
   "margen_IC95": [
-   4.01,
-   29.86
+   3.84,
+   29.8
   ],
-  "sd": 6.533,
-  "nu": 20.7,
-  "P_D_encuestas": 0.9968,
+  "sd": 6.547,
+  "nu": 17.8,
+  "P_D_encuestas": 0.9966,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0022
+    "valor": 0.0023
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9616,
+   "P_D": 0.9621,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9739,
+   "P_D": 0.9715,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "ActiVote",
   "fin": "2026-10-22",
-  "dias_desde_fin": 5,
+  "dias_desde_fin": 6,
   "dias_antes_eleccion": 12,
   "origen": "wikipedia"
  },
@@ -116,194 +116,203 @@
    "P_polymarket": 0.9739,
    "pct_D": 55.8297,
    "margen": 16.9067
+  },
+  {
+   "corte": "2026-10-28",
+   "P_D": 0.9932,
+   "P_D_encuestas": 0.9966,
+   "P_kalshi": 0.9621,
+   "P_polymarket": 0.9715,
+   "pct_D": 55.785,
+   "margen": 16.8002
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 16.907,
-   "P_D": 0.9936
+   "margen": 16.8,
+   "P_D": 0.9932
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": 18.933,
-   "P_D": 0.9968
-  },
-  {
-   "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": 18.22,
-   "P_D": 0.9961
-  },
-  {
-   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 16.485,
-   "P_D": 0.9927
-  },
-  {
-   "escenario": "Sesgo estatal sin contraer (+1.02 pp)",
-   "margen": 19.259,
-   "P_D": 0.9972
-  },
-  {
-   "escenario": "Sesgo estatal a la mitad (+0.36 pp)",
-   "margen": 18.576,
+   "margen": 18.899,
    "P_D": 0.9966
   },
   {
-   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (+0.68 pp)",
-   "margen": 18.923,
-   "P_D": 0.997
-  },
-  {
-   "escenario": "Sesgo sin la contienda 2014_Gov-G_IL (+1.03 pp; rango al quitar una de 20: +0.42 a +1.03)",
-   "margen": 19.273,
-   "P_D": 0.9973
-  },
-  {
-   "escenario": "Sesgo sin la contienda 2022_Sen-G_IL (+0.42 pp; rango al quitar una de 20: +0.42 a +1.03)",
-   "margen": 18.667,
-   "P_D": 0.9968
-  },
-  {
-   "escenario": "Sesgo estimado solo con contiendas de gobernador (-0.21 pp)",
-   "margen": 18.037,
+   "escenario": "Sin sesgo estatal, sin mercados",
+   "margen": 18.216,
    "P_D": 0.9958
   },
   {
-   "escenario": "Distribución normal",
-   "margen": 18.952,
-   "P_D": 0.9983
+   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
+   "margen": 16.465,
+   "P_D": 0.9922
   },
   {
-   "escenario": "Incertidumbre con k efectivo 1.7 (no 2 firmas) y deriva por antigüedad ponderada (11 días)",
-   "margen": 18.975,
-   "P_D": 0.9955
-  },
-  {
-   "escenario": "Sin terceros",
-   "margen": 18.933,
-   "P_D": 0.9969
-  },
-  {
-   "escenario": "Sin deriva por encuestas viejas",
-   "margen": 18.956,
+   "escenario": "Sesgo estatal sin contraer (+0.99 pp)",
+   "margen": 19.227,
    "P_D": 0.997
   },
   {
-   "escenario": "Deriva al doble (0.50 pp/día, 5 días)",
-   "margen": 18.945,
+   "escenario": "Sesgo estatal a la mitad (+0.34 pp)",
+   "margen": 18.558,
+   "P_D": 0.9964
+  },
+  {
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (+0.65 pp)",
+   "margen": 18.894,
+   "P_D": 0.9968
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2014_Gov-G_IL (+0.99 pp; rango al quitar una de 20: +0.38 a +0.99)",
+   "margen": 19.235,
+   "P_D": 0.997
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2022_Sen-G_IL (+0.38 pp; rango al quitar una de 20: +0.38 a +0.99)",
+   "margen": 18.631,
    "P_D": 0.9965
   },
   {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
-   "margen": 18.93,
-   "P_D": 0.9971
-  },
-  {
-   "escenario": "Ventana 45 días (2 encuestadoras)",
-   "margen": 18.944,
-   "P_D": 0.9971
-  },
-  {
-   "escenario": "Ventana 60 días (2 encuestadoras)",
-   "margen": 18.942,
-   "P_D": 0.9969
-  },
-  {
-   "escenario": "Sin efectos de casa",
-   "margen": 18.864,
-   "P_D": 0.997
-  },
-  {
-   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 18.986,
-   "P_D": 0.9971
-  },
-  {
-   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 18.916,
-   "P_D": 0.9969
-  },
-  {
-   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 18.899,
-   "P_D": 0.997
-  },
-  {
-   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 18.93,
-   "P_D": 0.997
-  },
-  {
-   "escenario": "Sin ActiVote (pesa 70%) → ventana desde 2026-09-10: Public Policy Polling",
-   "margen": 19.833,
-   "P_D": 0.9876
-  },
-  {
-   "escenario": "Sin Public Policy Polling (D) (pesa 30%) → ventana desde 2026-10-01: ActiVote",
-   "margen": 18.574,
-   "P_D": 0.9841
-  },
-  {
-   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-09-21: Public Policy Polling, ActiVote",
-   "margen": 19.07,
-   "P_D": 0.997
-  },
-  {
-   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 3.4 %)",
-   "margen": 18.951,
-   "P_D": 0.9969
-  },
-  {
-   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.1 %)",
-   "margen": 18.962,
-   "P_D": 0.9971
-  },
-  {
-   "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 17.901,
+   "escenario": "Sesgo estimado solo con contiendas de gobernador (-0.22 pp)",
+   "margen": 18.03,
    "P_D": 0.9955
   },
   {
+   "escenario": "Distribución normal",
+   "margen": 18.919,
+   "P_D": 0.9983
+  },
+  {
+   "escenario": "Incertidumbre con k efectivo 1.7 (no 2 firmas) y deriva por antigüedad ponderada (12 días)",
+   "margen": 18.941,
+   "P_D": 0.9953
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": 18.893,
+   "P_D": 0.9966
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 18.925,
+   "P_D": 0.9968
+  },
+  {
+   "escenario": "Deriva al doble (0.50 pp/día, 6 días)",
+   "margen": 18.913,
+   "P_D": 0.9962
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
+   "margen": 18.898,
+   "P_D": 0.9967
+  },
+  {
+   "escenario": "Ventana 45 días (2 encuestadoras)",
+   "margen": 18.909,
+   "P_D": 0.9968
+  },
+  {
+   "escenario": "Ventana 60 días (2 encuestadoras)",
+   "margen": 18.908,
+   "P_D": 0.9966
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": 18.835,
+   "P_D": 0.9966
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
+   "margen": 18.95,
+   "P_D": 0.9967
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
+   "margen": 18.879,
+   "P_D": 0.9967
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
+   "margen": 18.863,
+   "P_D": 0.9966
+  },
+  {
+   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
+   "margen": 18.895,
+   "P_D": 0.9967
+  },
+  {
+   "escenario": "Sin ActiVote (pesa 70%) → ventana desde 2026-09-10: Public Policy Polling",
+   "margen": 19.801,
+   "P_D": 0.9868
+  },
+  {
+   "escenario": "Sin Public Policy Polling (D) (pesa 30%) → ventana desde 2026-10-01: ActiVote",
+   "margen": 18.536,
+   "P_D": 0.9831
+  },
+  {
+   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-09-21: Public Policy Polling, ActiVote",
+   "margen": 19.036,
+   "P_D": 0.9967
+  },
+  {
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 3.4 %)",
+   "margen": 18.924,
+   "P_D": 0.9966
+  },
+  {
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 2.1 %)",
+   "margen": 18.923,
+   "P_D": 0.9968
+  },
+  {
+   "escenario": "Peso de mercados 0.15 (base 0.30)",
+   "margen": 17.841,
+   "P_D": 0.9952
+  },
+  {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 15.531,
-   "P_D": 0.9898
+   "margen": 15.478,
+   "P_D": 0.9892
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 11.546,
-   "P_D": 0.9616
+   "margen": 11.609,
+   "P_D": 0.9621
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 12.774,
-   "P_D": 0.9739
+   "margen": 12.531,
+   "P_D": 0.9715
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 20.892,
-   "P_D": 0.9735
+   "margen": 20.895,
+   "P_D": 0.975
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-27",
+  "fecha": "2026-10-28",
   "estado": "en_vivo",
   "nota": "Sin registro partidario: solo volumen, no indica el resultado",
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 803161.0,
+    "valor": 804552.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 354107.0,
+    "valor": 355053.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 449054.0,
+    "valor": 449499.0,
     "formato": "entero"
    },
    {
@@ -319,13 +328,13 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9735,
-  "margen": 20.89
+  "P_D": 0.975,
+  "margen": 20.9
  },
  "adicional": {
   "titulo": "Sesgo estatal de Illinois",
   "P_D": null,
-  "margen": 0.71,
+  "margen": 0.68,
   "etiqueta_margen": "corrección al margen D−R",
   "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +0.7 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.9 pp."
  },
