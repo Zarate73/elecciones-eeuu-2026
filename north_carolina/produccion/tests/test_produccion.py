@@ -370,3 +370,38 @@ def test_reconstruccion_sin_red_usa_caches_al_corte(cfg, red_simulada):
     assert r['reconstruccion']['activa']
     assert r['mercados']['kalshi']['estado'].startswith('cache') and r['mercados']['rangos']['estado'].startswith('cache')
     assert 'margen_media' in r['mercados']['rangos'] and r['anticipado']['disponible']
+
+
+# ----------------------------------------------------------------------------------- cliente HTTP (27-oct, límite de Wikimedia)
+def test_wikimedia_ua_propio_y_respeta_retry_after(monkeypatch):
+    """A Wikipedia se le envía el UA identificado (política de Wikimedia), no el de navegador; ante 503 con Retry-After
+    se espera lo que pide (+1 s) y se reintenta hasta 5 veces. A 270toWin se le sigue enviando el UA de navegador."""
+    import requests
+    from nc_pronostico import red
+
+    class Resp:
+        def __init__(self, code, ra=None):
+            self.status_code, self.headers = code, ({'Retry-After': ra} if ra else {})
+            self.text, self.encoding = 'ok', 'utf-8'
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {'ok': 1}
+
+    llamadas, esperas = [], []
+    seq = iter([Resp(503, '12'), Resp(503, '14'), Resp(429, '200'), Resp(200)])
+    monkeypatch.setattr(requests, 'get', lambda url, **kw: (llamadas.append((url, kw['headers']['User-Agent'])), next(seq))[1])
+    monkeypatch.setattr(red.time, 'sleep', esperas.append)
+    assert red.get_json('https://en.wikipedia.org/w/api.php', params={'a': 1}) == {'ok': 1}
+    assert esperas == [13.0, 15.0, 60.0] and len(llamadas) == 4
+    assert all(ua == red.UA_WIKIMEDIA and 'Mozilla' not in ua for _, ua in llamadas)
+    llamadas.clear()
+    monkeypatch.setattr(requests, 'get', lambda url, **kw: (llamadas.append((url, kw['headers']['User-Agent'])), Resp(200))[1])
+    red.get_text('https://www.270towin.com/2026-senate-polls/north-carolina')
+    assert llamadas[0][1] == red.UA
+    seq2 = iter([Resp(503, '1')] * 5)
+    monkeypatch.setattr(requests, 'get', lambda url, **kw: next(seq2))
+    with pytest.raises(RuntimeError, match='tras 5 intentos'):
+        red.get_json('https://en.wikipedia.org/w/api.php')
