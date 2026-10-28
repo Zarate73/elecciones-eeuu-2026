@@ -3,7 +3,27 @@
 Elección general del 3 de noviembre de 2026 por el escaño que deja Thom Tillis (R): **Roy Cooper (D, exgobernador)** contra **Michael Whatley (R, expresidente del RNC)**, con Shannon Bray (Libertario) y Michael Dublin (Verde). Gana la mayoría simple. Es el primer estado de **Senado** del proyecto.
 
 <!-- PRONOSTICO:INICIO -->
-Se llena con la primera corrida automática.
+**Pronóstico al 2026-10-28** (6 días a la elección) · actualizado automáticamente 2026-10-28 01:07 ET · fuentes en vivo 9/9
+
+| Senado | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Roy **Cooper** (D) | **53.1%** (49.4–56.8) | **95%** |
+| Michael **Whatley** (R) | **43.7%** (40.0–47.4) | **5%** |
+| Terceros (Shannon Bray, L; Michael Dublin, Verde) | 3.2% (1.1–5.3) | — |
+
+Margen D−R +9.4 pp (σ 5.7) · solo encuestas: P(Cooper) 94% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 0.26 pp) 0.9% · 47 encuestas, 3 encuestadoras en la ventana
+
+Cómo se llega: promedio de encuestas +10.7 · sesgo estatal de North Carolina -1.8 · mercados +0.6
+
+**Encuesta más reciente:** Quantus Insights (R), terminó el 2026-10-25 (**3 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-28): 1,773,889 (1,708,048 en persona, 65,841 por correo) · por registro: D 41.0 %, sin afiliación 34.5 %, R 24.2 % (margen D−R +16.7). Es registro partidario, no intención de voto (los sin afiliación son un tercio): no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_senado.csv) · [escenarios](produccion/salidas/ultimo/escenarios_senado.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_north_carolina.yml)).
