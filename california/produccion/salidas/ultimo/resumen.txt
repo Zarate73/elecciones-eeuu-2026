@@ -1,35 +1,35 @@
-California · Gobernador · corte 2026-10-27 (7 días)
+California · Gobernador · corte 2026-10-28 (6 días)
 
 PRONÓSTICO M5: Becerra 61.2%  ·  Hilton 38.8%   (margen +22.4 pp)
   IC 80% Becerra: 57.5–64.8%   IC 95%: 54.8–67.6%
-  P(Becerra gana): modelo 0.997 · con Kalshi 0.993
-  Última encuesta: SurveyUSA, terminó el 2026-10-24 (3 días antes del corte)
-  σ 6.44 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
+  P(Becerra gana): modelo 0.997 · con Kalshi 0.994
+  Última encuesta: SurveyUSA, terminó el 2026-10-24 (4 días antes del corte)
+  σ 6.43 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
 
 FUENTES
   encuestas_wikipedia: en_vivo
   encuestas_270towin: en_vivo
-  civiq: Datos de Civiq vía api, validados (2026-10-27)
+  civiq: Datos de Civiq vía api, validados (2026-10-28)
   civiq_historia: api_en_vivo (197 filas)
   civiq_condados: api_en_vivo (58 condados)
-  gdelt: en_vivo
+  gdelt: parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429
   kalshi: en_vivo
   encuestas: 17 (wikipedia 15, base 2) · margen legado +21.37 → M5 +22.38
 
 PARTICIPACIÓN (diagnóstico; w_m2 = 0.00)
-  devueltas D−R +21.28 · esperado por edad +17.37 → Δ +3.92 pp
-  mismo día (T−7): +21.3 vs 2022 General +21.1, 2024 General +18.4 → Δ +1.5
-  composición final proyectada +21.6 → margen implícito +24.0 pp (RMSE LOO 4.2)
-  corr(Δ temprano, error de encuestas) = +0.79 (n=4)
+  devueltas D−R +21.92 · esperado por edad +17.47 → Δ +4.46 pp
+  mismo día (T−6): +21.9 vs 2022 General +21.3, 2024 General +18.6 → Δ +2.0
+  composición final proyectada +22.0 → margen implícito +25.0 pp (RMSE LOO 4.2)
+  corr(Δ temprano, error de encuestas) = +0.80 (n=4)
 
 SENTIMIENTO: k candidato 1.05 · aplicado 1.00 · GDELT z=-0.13
-KALSHI: 0.961 (en_vivo) · en mezcla True
+KALSHI: 0.964 (en_vivo) · en mezcla True
 PDI (contraste, 2026-10-19): D−R +18.4 en 1,214,420 boletas
 
 MODELOS
                        modelo  mediana_margen_pp  ic95_inf_pp  ic95_sup_pp  de_pp  p_d_gana  p_final_con_kalshi
-                 M5 · híbrido             22.365        9.546       35.134  6.442     0.997               0.993
+                 M5 · híbrido             22.365        9.556       35.125  6.437     0.997               0.994
       M1 · encuestas (legado)             21.371       12.518       30.174  4.495     1.000                 NaN
-M2 · + participación (legado)             21.414       12.560       30.217  4.495     1.000                 NaN
-       M3 · + shocks (legado)             21.414       12.284       30.526  4.646     1.000                 NaN
-  M4 · + sentimiento (legado)             21.414       12.284       30.526  4.646     1.000                 NaN
+M2 · + participación (legado)             21.432       12.578       30.235  4.495     1.000                 NaN
+       M3 · + shocks (legado)             21.434       12.319       30.517  4.627     1.000                 NaN
+  M4 · + sentimiento (legado)             21.434       12.319       30.517  4.627     1.000                 NaN

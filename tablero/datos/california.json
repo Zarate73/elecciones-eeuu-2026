@@ -7,10 +7,10 @@
   "D": "Xavier Becerra",
   "R": "Steve Hilton"
  },
- "corte": "2026-10-27",
- "dias_a_eleccion": 7,
+ "corte": "2026-10-28",
+ "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.9934,
+  "P_D": 0.9935,
   "pct_D": 61.18,
   "pct_D_IC80": [
    57.5,
@@ -24,14 +24,14 @@
   "pct_terceros": null,
   "margen": 22.365,
   "margen_IC80": [
-   15.0,
-   29.67
+   15.01,
+   29.66
   ],
   "margen_IC95": [
-   9.55,
-   35.13
+   9.56,
+   35.12
   ],
-  "sd": 6.436,
+  "sd": 6.431,
   "nu": 5.0,
   "P_D_encuestas": 0.9969,
   "peso_mercados": 0.3,
@@ -41,14 +41,14 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9615,
+   "P_D": 0.9641,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "SurveyUSA",
   "fin": "2026-10-24",
-  "dias_desde_fin": 3,
+  "dias_desde_fin": 4,
   "dias_antes_eleccion": 10,
   "origen": "wikipedia"
  },
@@ -289,32 +289,40 @@
    "P_kalshi": 0.9615,
    "pct_D": 61.18,
    "margen": 22.37
+  },
+  {
+   "corte": "2026-10-28",
+   "P_D": 0.9935,
+   "P_D_encuestas": 0.9969,
+   "P_kalshi": 0.9641,
+   "pct_D": 61.18,
+   "margen": 22.37
   }
  ],
  "escenarios": [],
  "anticipado": {
   "fuente": "Civiq",
-  "fecha": "2026-10-27",
+  "fecha": "2026-10-28",
   "estado": "diagnóstico",
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 3556979.0,
+    "valor": 3769798.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Margen D−R de devueltas",
-    "valor": 21.28,
+    "valor": 21.92,
     "formato": "pp"
    },
    {
     "etiqueta": "2022 General al mismo día",
-    "valor": 21.09,
+    "valor": 21.25,
     "formato": "pp"
    },
    {
     "etiqueta": "2024 General al mismo día",
-    "valor": 18.45,
+    "valor": 18.59,
     "formato": "pp"
    }
   ]
@@ -333,7 +341,7 @@
   },
   {
    "nombre": "civiq",
-   "estado": "Datos de Civiq vía api, validados (2026-10-27)",
+   "estado": "Datos de Civiq vía api, validados (2026-10-28)",
    "en_vivo": true
   },
   {
@@ -348,8 +356,8 @@
   },
   {
    "nombre": "gdelt",
-   "estado": "en_vivo",
-   "en_vivo": true
+   "estado": "parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 42",
+   "en_vivo": false
   },
   {
    "nombre": "kalshi",
