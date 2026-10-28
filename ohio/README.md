@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Amy Acton (D, exdirectora de Salud del estado)** y **Vivek Ramaswamy (R)**, con Don Kissick (Libertario). El gobernador Mike DeWine (R) deja el cargo por límite de mandatos. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-27** (7 días a la elección) · actualizado automáticamente 2026-10-27 16:10 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-10-27** (7 días a la elección) · actualizado automáticamente 2026-10-27 21:40 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -11,11 +11,11 @@ Elección general del 3 de noviembre de 2026 entre **Amy Acton (D, exdirectora d
 | Vivek **Ramaswamy** (R) | **48.4%** (45.3–51.5) | **49%** |
 | Don **Kissick** (L) | 2.9% (0.7–5.0) | 0% |
 
-Margen D−R +0.1 pp (σ 4.6) · solo encuestas: P(Acton) 38% · Kalshi 78% · Polymarket 79% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 4.4% · 29 encuestas, 7 encuestadoras en la ventana
+Margen D−R +0.1 pp (σ 4.6) · solo encuestas: P(Acton) 38% · Kalshi 77% · Polymarket 79% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 4.4% · 29 encuestas, 7 encuestadoras en la ventana
 
 **Don Kissick (Libertario):** P(≥ 3 %, el partido conserva su registro en Ohio) **47%** · votos por escrito ~0.1 % · terceros en total 3.0 %
 
-Cómo se llega: promedio de encuestas +2.5 · sesgo estatal de Ohio -3.8 · mercados +1.5
+Cómo se llega: promedio de encuestas +2.5 · sesgo estatal de Ohio -3.8 · mercados +1.4
 
 **Encuesta más reciente:** RedBox Research (D), terminó el 2026-10-23 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
