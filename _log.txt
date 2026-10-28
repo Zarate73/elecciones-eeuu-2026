@@ -1,0 +1,12 @@
+politica parse #0: HTTP 200 len=699734
+politica parse #1: HTTP 200 len=699734
+politica parse #2: HTTP 503 0.2s retry-after=15 len=1468 b'<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<title>Wikimedia Error</'
+politica parse #3: HTTP 503 0.2s retry-after=12 len=1468 b'<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<title>Wikimedia Error</'
+politica parse #4: HTTP 200 len=699734
+politica rest_v1: HTTP 503 len=1468 b'<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<title>Wikimedia Error</'
+navegador parse #0: HTTP 503 0.2s retry-after=44 len=1468 b'<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<title>Wikimedia Error</'
+navegador parse #1: HTTP 503 0.2s retry-after=41 len=1468 b'<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<title>Wikimedia Error</'
+navegador parse #2: HTTP 503 0.2s retry-after=38 len=1468 b'<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<title>Wikimedia Error</'
+navegador parse #3: HTTP 503 0.2s retry-after=35 len=1468 b'<!DOCTYPE html>\n<html lang="en" dir="ltr">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1" />\n<title>Wikimedia Error</'
+navegador parse #4: HTTP 503 0.2s retry-after=32 len=274 b'You are making too many requests to the API.\nPlease follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.\nIf you are unsure ho'
+navegador rest_v1: HTTP 429 len=274 b'You are making too many requests to the API.\nPlease follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.\nIf you are unsure ho'
