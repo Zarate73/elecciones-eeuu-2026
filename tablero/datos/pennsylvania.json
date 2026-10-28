@@ -19,17 +19,17 @@
   "pct_R": 39.44,
   "pct_R_IC80": [
    35.18,
-   43.69
+   43.7
   ],
   "pct_terceros": 2.07,
   "pct_terceros_IC80": [
    0.1,
    4.41
   ],
-  "margen": 19.052,
+  "margen": 19.05,
   "margen_IC80": [
    10.81,
-   27.25
+   27.24
   ],
   "margen_IC95": [
    6.12,
@@ -50,12 +50,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9687,
+   "P_D": 0.9676,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9766,
+   "P_D": 0.9775,
    "estado": "en_vivo"
   }
  ],
@@ -70,8 +70,8 @@
   {
    "fin": "2026-10-21",
    "encuestadora": "ActiVote",
-   "D": 62.0,
-   "R": 39.0,
+   "D": 61.5,
+   "R": 38.5,
    "margen": 23.0,
    "en_ventana": true,
    "origen": "wikipedia",
@@ -290,16 +290,16 @@
    "corte": "2026-10-27",
    "P_D": 0.997,
    "P_D_encuestas": 0.9989,
-   "P_kalshi": 0.9687,
-   "P_polymarket": 0.9766,
-   "pct_D": 58.4919,
-   "margen": 19.0516
+   "P_kalshi": 0.9676,
+   "P_polymarket": 0.9775,
+   "pct_D": 58.4912,
+   "margen": 19.0502
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 19.052,
+   "margen": 19.05,
    "P_D": 0.997
   },
   {
@@ -314,7 +314,7 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 19.616,
+   "margen": 19.614,
    "P_D": 0.9977
   },
   {
@@ -419,28 +419,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 20.351,
+   "margen": 20.35,
    "P_D": 0.9981
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 17.318,
+   "margen": 17.316,
    "P_D": 0.9943
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 12.209,
-   "P_D": 0.9687
+   "margen": 12.099,
+   "P_D": 0.9676
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 13.116,
-   "P_D": 0.9766
+   "margen": 13.24,
+   "P_D": 0.9775
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 23.065,
-   "P_D": 0.9868
+   "margen": 22.618,
+   "P_D": 0.9849
   }
  ],
  "anticipado": {
@@ -476,15 +476,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9868,
-  "margen": 23.07
+  "P_D": 0.9849,
+  "margen": 22.62
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",
   "P_D": null,
   "margen": -0.78,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.8 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +23.1 pp."
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.8 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +22.6 pp."
  },
  "fuentes": [
   {
