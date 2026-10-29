@@ -10,8 +10,8 @@
  "corte": "2026-10-28",
  "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.6806,
-  "pct_D": 47.92,
+  "P_D": 0.6804,
+  "pct_D": 47.91,
   "pct_D_IC80": [
    44.2,
    51.62
@@ -26,14 +26,14 @@
    4.61,
    8.83
   ],
-  "margen": 2.546,
+  "margen": 2.542,
   "margen_IC80": [
    -4.56,
-   9.66
+   9.65
   ],
   "margen_IC95": [
    -8.69,
-   13.8
+   13.79
   ],
   "sd": 5.671,
   "nu": 17.8,
@@ -55,7 +55,7 @@
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.796,
+   "P_D": 0.795,
    "estado": "en_vivo"
   }
  ],
@@ -236,19 +236,19 @@
   },
   {
    "corte": "2026-10-28",
-   "P_D": 0.6806,
+   "P_D": 0.6804,
    "P_D_encuestas": 0.6281,
    "P_kalshi": 0.775,
-   "P_polymarket": 0.796,
-   "pct_D": 47.9153,
-   "margen": 2.546
+   "P_polymarket": 0.795,
+   "pct_D": 47.9134,
+   "margen": 2.5422
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 2.546,
-   "P_D": 0.6806
+   "margen": 2.542,
+   "P_D": 0.6804
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -262,8 +262,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 3.001,
-   "P_D": 0.7087
+   "margen": 2.998,
+   "P_D": 0.7085
   },
   {
    "escenario": "Sesgo estatal sin contraer (-0.91 pp)",
@@ -372,13 +372,13 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 2.159,
-   "P_D": 0.6548
+   "margen": 2.158,
+   "P_D": 0.6547
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 3.058,
-   "P_D": 0.7132
+   "margen": 3.053,
+   "P_D": 0.7129
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
@@ -387,13 +387,13 @@
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 4.543,
-   "P_D": 0.796
+   "margen": 4.523,
+   "P_D": 0.795
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 3.759,
-   "P_D": 0.7772
+   "margen": 6.35,
+   "P_D": 0.8196
   }
  ],
  "anticipado": {
@@ -403,46 +403,46 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (correo + en persona)",
-    "valor": 493378.0,
+    "valor": 532650.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Emitidos por demócratas registrados",
-    "valor": 40.24,
+    "valor": 40.02,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por republicanos registrados",
-    "valor": 34.37,
+    "valor": 34.41,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por otros y no partidistas",
-    "valor": 25.39,
+    "valor": 25.57,
     "formato": "pct"
    },
    {
     "etiqueta": "Margen D−R por correo",
-    "valor": 12.02,
+    "valor": 11.71,
     "formato": "pp"
    },
    {
     "etiqueta": "Margen D−R en persona",
-    "valor": -3.38,
+    "valor": -3.2,
     "formato": "pp"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.7772,
-  "margen": 3.76
+  "P_D": 0.8196,
+  "margen": 6.35
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nevada (pequeño)",
   "P_D": null,
   "margen": -0.6,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.6 pp (promedio de encuestas +2.4). Polymarket por rangos: margen implícito +3.8 pp."
+  "nota": "El error de las encuestas en NV cambia de signo entre ciclos; el sesgo contraído corrige -0.6 pp (promedio de encuestas +2.4). Polymarket por rangos: margen implícito +6.4 pp."
  },
  "fuentes": [
   {
