@@ -409,11 +409,19 @@ def north_carolina() -> dict | None:
                     cargo='Senado', etiqueta_recuento='Recuento a petición (|margen| ≤ 0.26 pp, ≤ 10,000 votos)')
 
 
+# ------------------------------------------------------------------------------------ Wisconsin
+def wisconsin() -> dict | None:
+    return _general('wisconsin', 'Wisconsin', {'D': 'David Crowley', 'R': 'Tom Tiffany'},
+                    'Sesgo estatal de Wisconsin (no se aplica)',
+                    'En WI el error de las encuestas cambia de signo (presidente 2016/2020 pro-D, gobernador 2022 pro-R)',
+                    etiqueta_recuento='Recuento a petición (|margen| ≤ 1 pp)')
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
     for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york, ohio,
-              north_carolina):
+              north_carolina, wisconsin):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás

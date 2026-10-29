@@ -3,8 +3,10 @@
 Elección general del 3 de noviembre de 2026 entre **David Crowley (D, ejecutivo del condado de Milwaukee)** y **Tom Tiffany (R, congresista del distrito 7)**. Solo ellos dos están en la boleta (más votos por escrito). El gobernador Tony Evers (D) no busca un tercer periodo. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Sin corrida automática todavía: el modelo está validado y empaquetado, pero el flujo de GitHub Actions no está activo. Pronóstico de referencia con las fuentes del 28-oct-2026 (pruebas sin red): **Crowley 52.8 % · Tiffany 47.1 % · P(Crowley) 81.9 %** (margen +5.8, σ 6.5; solo encuestas 80.8 %; Kalshi 83.5 % y Polymarket 85.3 %).
+Se llena con la primera corrida automática.
 <!-- PRONOSTICO:FIN -->
+
+GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_wisconsin.yml)).
 
 ## Modelo general (elegido por backtest)
 Base: el modelo de North Carolina v1.0.0 / Ohio v1.2.0 (Georgia V11) con la **regla de Arizona: sin sesgo estatal**. Se validó con un backtest *leave-one-year-out* de 1003 contiendas (1998–2024, 25 de Wisconsin) a 6 días de la elección, con la misma ventana que producción, más una validación estrictamente cronológica.

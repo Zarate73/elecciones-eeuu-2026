@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml/badge.svg)](https://github.com/Zarate73/elecciones-eeuu-2026/actions/workflows/ci.yml)
 
-**Sistema de pronósticos electorales para 14 estados: 12 implementados y automatizados (Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio y North Carolina), 2 pendientes.**
+**Sistema de pronósticos electorales para 14 estados: 13 implementados y automatizados (Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio, North Carolina y Wisconsin), 1 pendiente.**
 
 **Tablero:** [zarate73.github.io/elecciones-eeuu-2026](https://zarate73.github.io/elecciones-eeuu-2026/) · se actualiza solo con cada corrida.
 
@@ -23,7 +23,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Nueva York | Gobernador: Hochul 55.4% · Blakeman 44.5% · P(Hochul) 98% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`new_york/`](new_york/) |
 | Ohio | Gobernador: Acton 48.9% · Ramaswamy 48.1% · P(Acton) 58% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`ohio/`](ohio/) |
 | North Carolina | Senado: Cooper 53.4% · Whatley 43.5% · P(Cooper) 97% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`north_carolina/`](north_carolina/) |
-| Wisconsin | Gobernador: Crowley 52.8% · Tiffany 47.1% · P(Crowley) 82% (referencia 2026-10-28) | **Modelo general validado**; flujo automático pendiente | [`wisconsin/`](wisconsin/) |
+| Wisconsin | Gobernador: Crowley 52.8% · Tiffany 47.1% · P(Crowley) 82% (referencia 2026-10-28) | **Producción (general)**, actualización automática | [`wisconsin/`](wisconsin/) |
 | … | | pendiente | |
 
 ## Estructura por estado
@@ -36,7 +36,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 ```
 `tablero/` es la página pública (GitHub Pages); `scripts/exportar_tablero.py` lleva los resultados de cada estado a `tablero/datos/`.
 
-## Estándares comunes (aprendidos en Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio y North Carolina)
+## Estándares comunes (aprendidos en Georgia, California, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio, North Carolina y Wisconsin)
 - **Validación:** *leave-one-year-out* sobre el histórico de FiveThirtyEight (980 contiendas 1998–2024); métrica principal CRPS, más la cobertura de los intervalos del 80% y 95%.
 - **Incertidumbre:** σ empírica `√(τ² + s²/k)` calibrada a la distancia de la elección; nada de pisos fijos sin calibrar.
 - **Componentes:** se agregan solo si mejoran el CRPS fuera de muestra; lo no validable queda como diagnóstico.
@@ -44,7 +44,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 - **Alcance de la validación:** el backtest histórico valida el componente de encuestas y su error, no la mezcla con mercados (`w = 0.30`, estudiada con 40 contiendas de 2024). Ver «Qué valida y qué no valida el backtest» en cada estado y [`docs/auditoria_2026-10-26.md`](docs/auditoria_2026-10-26.md).
 - **Identidad de encuestas:** módulo común `identidad.py` en todos los paquetes (firma + periodo de campo; la fecha puntual de 270toWin es publicación). Dos olas de una firma con periodos distintos nunca se funden, aunque tengan las mismas cifras; cada fusión o caso ambiguo queda en el log.
 - **Producción:** todas las fuentes en vivo, con caché y degradación explícita (`--estricto` → código 2). Que las fuentes estén en vivo no significa que las encuestas sean recientes: cada reporte trae la fecha y la antigüedad de la encuesta más reciente (`ultima_encuesta`).
-- **Mercados:** en Georgia, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio y North Carolina la mezcla con mercados desplaza la distribución del margen, así que la probabilidad publicada es la fracción de simulaciones con margen > 0 (en AZ 2024 esto bajó el error del margen en las dos contiendas con historia de mercados). En California Kalshi ajusta solo la probabilidad publicada: margen, intervalos y % de voto son los del modelo.
+- **Mercados:** en Georgia, Arizona, Florida, Nevada, Pennsylvania, Maine, Texas, Illinois, Nueva York, Ohio, North Carolina y Wisconsin la mezcla con mercados desplaza la distribución del margen, así que la probabilidad publicada es la fracción de simulaciones con margen > 0 (en AZ 2024 esto bajó el error del margen en las dos contiendas con historia de mercados). En California Kalshi ajusta solo la probabilidad publicada: margen, intervalos y % de voto son los del modelo.
 - **Salidas para tableros:** `salidas/ultimo/reporte.json` es JSON estricto (RFC 8259, sin `NaN` ni `Infinity`; los valores faltantes son `null`).
 - **Pruebas:** sin red, con fixtures que reproducen el formato de cada fuente; el flujo [CI](.github/workflows/ci.yml) las corre en cada push y pull request.
 
