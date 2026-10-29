@@ -1,5 +1,6 @@
 """Pruebas sin red del paquete dc_pronostico (respuestas reales del 28-oct-2026 en fixtures/)."""
 import json
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -164,3 +165,22 @@ def test_offline_usa_caches(cfg):
     e = r['estados_fuentes']
     assert e['wikipedia_historico'] == 'cache' and e['wikipedia_2026'] == 'cache' and e['dcboe_registro'] == 'cache'
     assert r['modelo']['final']['P_D'] > 0.99
+
+
+@pytest.mark.parametrize('patron', ['rcv_15_*', 'rcv_17_*', 'rcv_18_*'])
+def test_conteo_reproduce_la_tabulacion_certificada_de_la_primaria(patron):
+    """rcv.py, con las transferencias publicadas, reproduce ronda por ronda la tabulación certificada del 16-jun-2026
+    (alcaldía 1 ronda, at-large 8, Ward 1 4; informes RCTab de la DCBOE)."""
+    import importlib.util
+    from conftest import FIX, PROD
+    spec = importlib.util.spec_from_file_location('vp', PROD.parent / 'backtest' / 'validacion_primaria_2026.py')
+    if spec is None or not Path(spec.origin).exists():
+        pytest.skip('backtest no incluido en esta copia')
+    vp = importlib.util.module_from_spec(spec); spec.loader.exec_module(vp)
+    t = vp.leer_rctab(next(FIX.glob(patron + '.csv')))
+    r = rcv.contar_rcv({c: x[0][0] for c, x in t['cand'].items()}, vp.matriz_publicada(t))
+    assert r['ganador'] == t['ganador'] and len(r['rondas']) == t['rondas']
+    for k, ronda in enumerate(r['rondas']):
+        tot = sum(x[0][k] for x in t['cand'].values())
+        for c, cuota in ronda.items():
+            assert cuota * tot == pytest.approx(t['cand'][c][0][k], abs=1e-6)

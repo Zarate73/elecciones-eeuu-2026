@@ -35,7 +35,7 @@ D.C. es el único estado del proyecto **sin encuestas ni mercados de la general*
 | % del demócrata (1.ª ronda) | `logit(%D) = a + b·opositor_fuerte` (M1), t de Student con la incertidumbre de los coeficientes | LOYO 13 elecciones: CRPS 4.49 pp; titular, % en la primaria, tendencia, σ por grupo y ponderación temporal no mejoran |
 | Opositor fuerte | Concejal o alcalde (actual o anterior). Hamilton y Gross no lo son | Criterio fijado antes de ver resultados; separa 80.6 % de 62 % |
 | Hamilton / Gross / por escrito | Gross ~ lognormal (mediana 1.3 %), por escrito ~ lognormal (mediana 3 %), Hamilton el resto (≥ 30 % del voto no demócrata) | Statehood Green no principal 1986–2014; por escrito 2014–2022 |
-| RCV | Conteo de `run_rcv` del modelo de la primaria, vectorizado (`rcv.py`) | Solo cambia algo si Lewis George < 50 % (≈ 0.3 %) |
+| RCV | Conteo de `run_rcv` del modelo de la primaria, vectorizado (`rcv.py`); agotamiento calibrado con la primaria certificada (escrito 54 %, candidatos 23 %) | Reproduce exacto las 7 tabulaciones certificadas del 16-jun; solo cambia algo si Lewis George < 50 % (≈ 0.3 %) |
 | Encuestas de la general | Si aparecen: combinación por precisión en logit (sd 7 pp), indecisos proporcionales | Hoy no hay; lección de la primaria |
 | Mercados | Si aparecen: mezcla logit, peso 0.30 | Igual que los demás estados; hoy no hay |
 | Registro DCBOE | Diagnóstico | D.C. no publica voto anticipado por partido |

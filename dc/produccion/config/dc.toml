@@ -64,8 +64,10 @@ escrito_mediana_pct = 3.0              # votos por escrito sin campaña organiza
 escrito_sd_log = 0.5
 opositor_min_frac = 0.30               # el opositor principal se lleva ≥ 30 % del voto no demócrata (mínimo histórico 36 %)
 # RCV (Iniciativa 83): solo importa si Lewis George queda < 50 % de las boletas activas en la primera ronda.
-# Transferencias supuestas (sin datos de la general; insensibles: P(< 50 %) ≈ 0.3 %).
-transferencias = { escrito = { "Lewis George" = 0.35, "Hamilton" = 0.25, "Gross" = 0.05, agotada = 0.35 }, "Gross" = { "Lewis George" = 0.45, "Hamilton" = 0.20, agotada = 0.35 } }
+# Agotamiento calibrado con la primaria certificada del 16-jun-2026 (backtest/validacion_primaria_2026.py): al eliminar
+# los votos por escrito se agotó el 54 % (at-large y Ward 1); al eliminar a un candidato, el 23 % (8 eliminaciones).
+# El reparto del resto entre candidatos es supuesto (no hay datos de la general); es insensible: P(< 50 %) ≈ 0.3 %.
+transferencias = { escrito = { "Lewis George" = 0.248, "Hamilton" = 0.177, "Gross" = 0.035, agotada = 0.54 }, "Gross" = { "Lewis George" = 0.533, "Hamilton" = 0.237, agotada = 0.23 } }
 # Encuestas de la general (hoy no hay): promedio √n con vida media de 14 días e indecisos proporcionales; se combinan
 # con los fundamentales por precisión en escala logit. sd de error de una encuesta de alcaldía: 7 pp en el % demócrata.
 encuesta_sd_pp = 7.0

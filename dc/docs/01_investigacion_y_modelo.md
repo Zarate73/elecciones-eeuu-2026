@@ -52,27 +52,32 @@ Corte: 28-oct-2026, a 6 días de la elección del 3 de noviembre. Este es el est
 - **Respaldo:** si Wikipedia falla, cada año usa su caché o el respaldo versionado.
 
 ## 4. El modelo de la primaria (base en GitHub) y qué se reutiliza
-El repo [`dc2026-rcv-forecast`](https://github.com/Zarate73/dc2026-rcv-forecast) pronosticó la primaria con un Monte Carlo RCV que combinaba encuestas, endorsements, financiamiento y patrones por ward. Acertó a la ganadora (P = 85.3 %), pero su primera ronda falló por mucho:
+El repo [`dc2026-rcv-forecast`](https://github.com/Zarate73/dc2026-rcv-forecast) pronosticó la primaria con un Monte Carlo RCV que combinaba encuestas, endorsements, financiamiento y patrones por ward. Acertó a la ganadora (P = 85.3 %).
 
-| | Modelo | Real | Error |
+**Tabulación certificada** (DCBOE, RCTab, 17-jul-2026): la alcaldía se decidió en **1 sola ronda**. Lewis George sacó 76,318 de 141,008 boletas activas (54.12 %) y McDuffie 35.06 %. No hubo ronda 6: las contiendas con más rondas fueron la de at-large (8 rondas) y la del Ward 1 (4).
+
+| | Modelo, 1.ª ronda | Modelo, ronda final | Certificado (1 ronda) |
 |---|---|---|---|
-| Lewis George | 42.2 | 54.1 | −11.9 |
-| McDuffie | 31.6 | 35.1 | −3.5 |
-| Los 6 menores + otros | 26.2 | 10.8 | +15.4 |
+| Lewis George | 42.2 | 51.85 | 54.12 |
+| McDuffie | 31.6 | 42.06 | 35.06 |
+| Los 6 menores + votos por escrito | 26.2 | 6.1 | 10.8 |
 
-- **Causas del error:**
-  - Los indecisos se repartían 55 % a candidatos, 30 % agotados y 15 % abstención. Solo con repartirlos en proporción, la WaPo/GMU ya da 48–33.
+- **La ronda final del modelo tampoco quedó cerca.** Su «final» es un cara a cara simulado, después de eliminar a los menores.
+  - El cara a cara real no existe, pero tiene límites: Lewis George quedaría entre 54.1 % (si todos los menores fueran a McDuffie) y 64.9 % (si todos fueran a ella).
+  - El 51.85 % del modelo queda **por debajo del mínimo posible** (error ≥ 2.3 pp).
+  - El 42.06 % de McDuffie solo sería correcto si casi todos los votos de los menores se hubieran ido a él. Según FairVote, la mayoría de los votantes de Sampath prefería a Lewis George.
+- **Por qué su README da 0.94 pp.** Compara el 51.85 % con 52.79 %, que era el conteo **no oficial de la noche electoral** (≈ 95,000 boletas) y además de primera ronda. Contra el certificado, el error de la ganadora es −2.3 pp en la final y −11.9 pp en la primera ronda.
+- **Causas del error en la primera ronda:**
+  - Los indecisos se repartían 55 % a candidatos, 30 % agotados y 15 % abstención. Con un reparto proporcional, la WaPo/GMU ya da 48–33.
   - Los candidatos menores salían con 1.2 a 4.4 veces su resultado real (24 veces la categoría «otros»).
-- **Error de la comparación en su README:** contrasta la cuota final simulada (51.85 %) con la primera ronda real (52.79 %). No son la misma cantidad.
-
-Más detalle en [`backtest/revision_modelo_primaria.py`](../backtest/revision_modelo_primaria.py).
 
 **Qué se reutiliza:**
-- El conteo RCV de `run_rcv`: eliminar al último, transferir con fracción agotada y, con dos candidatos activos, gana el primero. Se reprodujo en `rcv.py` en versión vectorizada y las pruebas comparan las dos versiones en 2,000 casos.
-- El concepto de agotamiento.
+- El conteo RCV de `run_rcv`: eliminar al último, transferir con fracción agotada y, con dos candidatos activos, gana el primero. Se reprodujo en `rcv.py` en versión vectorizada, y las pruebas comparan las dos versiones en 2,000 casos.
+- El concepto de agotamiento, ahora calibrado con la primaria certificada (sección 5b).
 
 **Qué no se reutiliza:**
-- La capa de encuestas, endorsements y financiamiento: para la general no hay encuestas, y los endorsements y el dinero de una contienda tan dispareja no se pueden calibrar.
+- La capa de encuestas, endorsements y financiamiento: para la general no hay encuestas, y no se pueden calibrar.
+- Su resultado no entra como dato: es de otra elección (primaria), y su precisión en la primera ronda (−12 pp) y en la final (≥ 2.3 pp) no justifica usarlo como prior.
 
 **Lecciones aplicadas:**
 - Los indecisos se reparten en proporción.
@@ -105,6 +110,17 @@ Más detalle en [`backtest/revision_modelo_primaria.py`](../backtest/revision_mo
 - **No valida la cola de derrota.** El demócrata ganó las 13 elecciones; P(pierde) ≈ 0.2 % sale de la forma t, no de casos observados.
 - No valida el reparto entre Hamilton, Gross y los votos por escrito (calibrado, no evaluado fuera de muestra), ni las transferencias RCV. Para estas no hay datos, pero solo importan si Lewis George queda por debajo de 50 %.
 - La mezcla con mercados no aplica: no hay mercados.
+
+## 5b. Validación con la primaria certificada (16-jun-2026)
+El núcleo de M1 (% del demócrata contra un opositor fuerte o débil) no se puede probar con una primaria: no hay nominado ni opositor de otro partido. Lo que sí se valida, con [`backtest/validacion_primaria_2026.py`](../backtest/validacion_primaria_2026.py) y los 7 informes RCTab de la DCBOE, es lo que el modelo comparte con una elección RCV de D.C.:
+
+| Pieza | Prueba | Resultado |
+|---|---|---|
+| Conteo RCV (`rcv.py`) | Con las transferencias publicadas, ¿reproduce cada ronda? | **Exacto** en las 7 contiendas: alcaldía (1 ronda), at-large (8), Ward 1 (4), Ward 5, Ward 6, Delegado y at-large especial. Mismo ganador, mismo número de rondas y mismos votos (diferencia < 1e-11). Quedó como prueba automática |
+| Agotamiento | ¿Qué fracción de las boletas de un eliminado se agotó? | Votos por escrito: **54 %** (2 eliminaciones). Candidatos: **23 %** (8 eliminaciones, rango 14–28 %). El supuesto anterior (35 % para ambos) se **corrigió**: escrito 0.54, Gross 0.23 |
+| Indecisos | Reparto proporcional contra 55/30/15 | WaPo/GMU proporcional: Lewis George 48.0, McDuffie 33.3. Modelo de la primaria: 42.2 / 31.6. Real: 54.1 / 35.1. El proporcional reduce el error de la ganadora de −11.9 a −6.1 pp; el resto es error de la encuesta |
+
+Con la corrección del agotamiento, el pronóstico no cambia (79.6 %, P 99.8 %): las transferencias solo cuentan si Lewis George queda por debajo de 50 %.
 
 ## 6. Pronóstico al 28-oct (corrida sin red con las respuestas reales)
 | Primera ronda | % (IC80) |
