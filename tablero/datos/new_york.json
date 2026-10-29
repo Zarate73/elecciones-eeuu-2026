@@ -10,30 +10,30 @@
  "corte": "2026-10-28",
  "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.9845,
-  "pct_D": 55.36,
+  "P_D": 0.9848,
+  "pct_D": 55.38,
   "pct_D_IC80": [
-   52.26,
-   58.45
+   52.28,
+   58.47
   ],
-  "pct_R": 44.49,
+  "pct_R": 44.47,
   "pct_R_IC80": [
-   41.4,
-   47.58
+   41.38,
+   47.57
   ],
   "pct_terceros": 0.15,
   "pct_terceros_IC80": [
    0.1,
    0.21
   ],
-  "margen": 10.87,
+  "margen": 10.909,
   "margen_IC80": [
-   4.68,
-   17.05
+   4.72,
+   17.09
   ],
   "margen_IC95": [
-   1.12,
-   20.64
+   1.16,
+   20.68
   ],
   "sd": 4.934,
   "nu": 17.8,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0067
+    "valor": 0.0066
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.953,
+   "P_D": 0.9526,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9605,
+   "P_D": 0.9665,
    "estado": "en_vivo"
   }
  ],
@@ -360,19 +360,19 @@
   },
   {
    "corte": "2026-10-28",
-   "P_D": 0.9845,
+   "P_D": 0.9848,
    "P_D_encuestas": 0.9901,
-   "P_kalshi": 0.953,
-   "P_polymarket": 0.9605,
-   "pct_D": 55.358,
-   "margen": 10.8701
+   "P_kalshi": 0.9526,
+   "P_polymarket": 0.9665,
+   "pct_D": 55.3776,
+   "margen": 10.9094
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 10.87,
-   "P_D": 0.9845
+   "margen": 10.909,
+   "P_D": 0.9848
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -386,8 +386,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 11.071,
-   "P_D": 0.9859
+   "margen": 11.117,
+   "P_D": 0.9862
   },
   {
    "escenario": "Sesgo estatal sin contraer (-0.42 pp)",
@@ -521,71 +521,71 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 11.391,
-   "P_D": 0.9876
+   "margen": 11.421,
+   "P_D": 0.9877
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 10.179,
-   "P_D": 0.9792
+   "margen": 10.261,
+   "P_D": 0.9799
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 8.208,
-   "P_D": 0.953
+   "margen": 8.186,
+   "P_D": 0.9526
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 8.646,
-   "P_D": 0.9605
+   "margen": 9.052,
+   "P_D": 0.9665
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 16.194,
-   "P_D": 0.968
+   "margen": 16.238,
+   "P_D": 0.9668
   }
  ],
  "anticipado": {
   "fuente": "Junta Electoral de NYC",
-  "fecha": "2026-10-27",
+  "fecha": "2026-10-28",
   "estado": "en_vivo",
-  "nota": "Solo la Ciudad de Nueva York, solo en persona y sin partido (día 4 del voto anticipado): mide participación, no indica el resultado",
+  "nota": "Solo la Ciudad de Nueva York, solo en persona y sin partido (día 5 del voto anticipado): mide participación, no indica el resultado",
   "metricas": [
    {
     "etiqueta": "Check-ins acumulados en la ciudad",
-    "valor": 294604.0,
+    "valor": 357027.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Manhattan",
-    "valor": 82438.0,
+    "valor": 99121.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Bronx",
-    "valor": 30848.0,
+    "valor": 37212.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Brooklyn",
-    "valor": 85849.0,
+    "valor": 105516.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Queens",
-    "valor": 71106.0,
+    "valor": 85995.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Staten Island",
-    "valor": 24363.0,
+    "valor": 29183.0,
     "formato": "entero"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.968,
-  "margen": 16.19
+  "P_D": 0.9668,
+  "margen": 16.24
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nueva York",
