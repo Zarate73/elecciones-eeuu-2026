@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 por el escaño que deja Thom Tillis (R): **Roy Cooper (D, exgobernador)** contra **Michael Whatley (R, expresidente del RNC)**, con Shannon Bray (Libertario) y Michael Dublin (Verde). Gana la mayoría simple. Es el primer estado de **Senado** del proyecto.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-28** (6 días a la elección) · actualizado automáticamente 2026-10-28 21:59 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-10-29** (5 días a la elección) · actualizado automáticamente 2026-10-29 13:08 ET · fuentes en vivo 9/9
 
 | Senado | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Roy **Cooper** (D) | **53.4%** (49.9–56.8) | **97%** |
-| Michael **Whatley** (R) | **43.5%** (40.0–46.9) | **3%** |
-| Terceros (Shannon Bray, L; Michael Dublin, Verde) | 3.2% (1.1–5.3) | — |
+| Roy **Cooper** (D) | **53.4%** (50.2–56.7) | **98%** |
+| Michael **Whatley** (R) | **43.4%** (40.2–46.7) | **2%** |
+| Terceros (Shannon Bray, L; Michael Dublin, Verde) | 3.1% (1.0–5.2) | — |
 
-Margen D−R +9.9 pp (σ 5.2) · solo encuestas: P(Cooper) 97% · Kalshi 96% · Polymarket 98% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 0.26 pp) 0.6% · 48 encuestas, 4 encuestadoras en la ventana
+Margen D−R +10.0 pp (σ 4.9) · solo encuestas: P(Cooper) 98% · Kalshi 96% · Polymarket 98% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 0.26 pp) 0.5% · 49 encuestas, 5 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +11.7 · sesgo estatal de North Carolina -1.8 · mercados -0.0
+Cómo se llega: promedio de encuestas +12.1 · sesgo estatal de North Carolina -1.8 · mercados -0.3
 
-**Encuesta más reciente:** High Point Univ., terminó el 2026-10-28 (**0 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** High Point Univ., terminó el 2026-10-28 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-28): 1,961,167 (1,890,391 en persona, 70,776 por correo) · por registro: D 40.4 %, sin afiliación 34.5 %, R 24.8 % (margen D−R +15.6). Es registro partidario, no intención de voto (los sin afiliación son un tercio): no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-29): 2,150,024 (2,073,467 en persona, 76,557 por correo) · por registro: D 39.8 %, sin afiliación 34.6 %, R 25.3 % (margen D−R +14.6). Es registro partidario, no intención de voto (los sin afiliación son un tercio): no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 

@@ -7,43 +7,43 @@
   "D": "Roy Cooper",
   "R": "Michael Whatley"
  },
- "corte": "2026-10-28",
- "dias_a_eleccion": 6,
+ "corte": "2026-10-29",
+ "dias_a_eleccion": 5,
  "pronostico": {
-  "P_D": 0.9704,
-  "pct_D": 53.35,
+  "P_D": 0.9784,
+  "pct_D": 53.43,
   "pct_D_IC80": [
-   49.92,
-   56.79
+   50.18,
+   56.66
   ],
-  "pct_R": 43.46,
+  "pct_R": 43.44,
   "pct_R_IC80": [
-   40.03,
-   46.89
+   40.2,
+   46.67
   ],
-  "pct_terceros": 3.19,
+  "pct_terceros": 3.13,
   "pct_terceros_IC80": [
-   1.06,
-   5.28
+   1.01,
+   5.21
   ],
-  "margen": 9.897,
+  "margen": 9.992,
   "margen_IC80": [
-   3.36,
-   16.43
+   3.86,
+   16.12
   ],
   "margen_IC95": [
-   -0.42,
-   20.22
+   0.33,
+   19.65
   ],
-  "sd": 5.206,
-  "nu": 17.8,
-  "P_D_encuestas": 0.9707,
+  "sd": 4.876,
+  "nu": 18.8,
+  "P_D_encuestas": 0.981,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Recuento a petición (|margen| ≤ 0.26 pp, ≤ 10,000 votos)",
-    "valor": 0.0062
+    "valor": 0.0049
    }
   ]
  },
@@ -55,14 +55,14 @@
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.975,
+   "P_D": 0.977,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "High Point Univ.",
   "fin": "2026-10-28",
-  "dias_desde_fin": 0,
+  "dias_desde_fin": 1,
   "dias_antes_eleccion": 6,
   "origen": "270towin"
  },
@@ -75,7 +75,7 @@
    "margen": 14.0,
    "en_ventana": true,
    "origen": "270towin",
-   "peso": 0.3192
+   "peso": 0.2628
   },
   {
    "fin": "2026-10-25",
@@ -85,7 +85,7 @@
    "margen": 8.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.2969
+   "peso": 0.2444
   },
   {
    "fin": "2026-10-20",
@@ -95,7 +95,17 @@
    "margen": 10.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.2113
+   "peso": 0.174
+  },
+  {
+   "fin": "2026-10-20",
+   "encuestadora": "High Point University/YouGov",
+   "D": 54.0,
+   "R": 40.0,
+   "margen": 14.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1768
   },
   {
    "fin": "2026-10-20",
@@ -105,7 +115,7 @@
    "margen": 13.8,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1725
+   "peso": 0.142
   },
   {
    "fin": "2026-10-11",
@@ -229,20 +239,20 @@
   },
   {
    "fin": "2026-09-15",
-   "encuestadora": "Harper Polling (R)",
-   "D": 49.0,
-   "R": 34.0,
-   "margen": 15.0,
+   "encuestadora": "Catawba College/YouGov",
+   "D": 47.0,
+   "R": 35.0,
+   "margen": 12.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
   },
   {
    "fin": "2026-09-15",
-   "encuestadora": "Catawba College/YouGov",
-   "D": 47.0,
-   "R": 35.0,
-   "margen": 12.0,
+   "encuestadora": "Harper Polling (R)",
+   "D": 49.0,
+   "R": 34.0,
+   "margen": 15.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -529,16 +539,6 @@
   },
   {
    "fin": "2025-07-30",
-   "encuestadora": "Emerson College",
-   "D": 47.0,
-   "R": 41.0,
-   "margen": 6.0,
-   "en_ventana": false,
-   "origen": "wikipedia",
-   "peso": null
-  },
-  {
-   "fin": "2025-07-30",
    "encuestadora": "Victory Insights (R)",
    "D": 43.0,
    "R": 40.0,
@@ -546,9 +546,19 @@
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
+  },
+  {
+   "fin": "2025-07-30",
+   "encuestadora": "Emerson College",
+   "D": 47.0,
+   "R": 41.0,
+   "margen": 6.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
   }
  ],
- "n_encuestas_ventana": 4,
+ "n_encuestas_ventana": 5,
  "historial": [
   {
    "corte": "2026-10-28",
@@ -558,232 +568,241 @@
    "P_polymarket": 0.975,
    "pct_D": 53.3526,
    "margen": 9.897
+  },
+  {
+   "corte": "2026-10-29",
+   "P_D": 0.9784,
+   "P_D_encuestas": 0.981,
+   "P_kalshi": 0.9645,
+   "P_polymarket": 0.977,
+   "pct_D": 53.4305,
+   "margen": 9.9924
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 9.897,
-   "P_D": 0.9704
+   "margen": 9.992,
+   "P_D": 0.9784
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": 9.925,
-   "P_D": 0.9707
+   "margen": 10.277,
+   "P_D": 0.981
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": 11.738,
-   "P_D": 0.9857
+   "margen": 12.082,
+   "P_D": 0.9916
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 11.154,
-   "P_D": 0.982
+   "margen": 11.328,
+   "P_D": 0.9877
   },
   {
-   "escenario": "Sesgo estatal sin contraer (-1.99 pp)",
-   "margen": 9.748,
-   "P_D": 0.9683
+   "escenario": "Sesgo estatal sin contraer (-1.98 pp)",
+   "margen": 10.093,
+   "P_D": 0.9789
   },
   {
-   "escenario": "Sesgo estatal a la mitad (-0.91 pp)",
-   "margen": 10.812,
-   "P_D": 0.9796
+   "escenario": "Sesgo estatal a la mitad (-0.90 pp)",
+   "margen": 11.159,
+   "P_D": 0.9871
   },
   {
    "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-1.82 pp)",
-   "margen": 9.94,
-   "P_D": 0.9707
+   "margen": 10.283,
+   "P_D": 0.9809
   },
   {
-   "escenario": "Sesgo sin la contienda 2020_Gov-G_NC (-1.51 pp; rango al quitar una de 23: -2.17 a -1.51)",
-   "margen": 10.223,
-   "P_D": 0.9742
+   "escenario": "Sesgo sin la contienda 2020_Gov-G_NC (-1.51 pp; rango al quitar una de 23: -2.14 a -1.51)",
+   "margen": 10.572,
+   "P_D": 0.9833
   },
   {
-   "escenario": "Sesgo sin la contienda 2024_Gov-G_NC (-2.17 pp; rango al quitar una de 23: -2.17 a -1.51)",
-   "margen": 9.585,
-   "P_D": 0.9668
+   "escenario": "Sesgo sin la contienda 2024_Gov-G_NC (-2.14 pp; rango al quitar una de 23: -2.14 a -1.51)",
+   "margen": 9.954,
+   "P_D": 0.9782
   },
   {
-   "escenario": "Sesgo estimado solo con contiendas de Senado (-1.39 pp)",
-   "margen": 10.345,
-   "P_D": 0.9751
+   "escenario": "Sesgo estimado solo con contiendas de Senado (-1.38 pp)",
+   "margen": 10.697,
+   "P_D": 0.9845
   },
   {
    "escenario": "Distribución normal",
-   "margen": 9.908,
-   "P_D": 0.9715
+   "margen": 10.262,
+   "P_D": 0.9823
   },
   {
-   "escenario": "Incertidumbre con k efectivo 3.8 (no 4 firmas) y deriva por antigüedad ponderada (4 días)",
-   "margen": 9.924,
-   "P_D": 0.968
+   "escenario": "Incertidumbre con k efectivo 4.8 (no 5 firmas) y deriva por antigüedad ponderada (6 días)",
+   "margen": 10.279,
+   "P_D": 0.9791
   },
   {
    "escenario": "Sin terceros",
-   "margen": 9.911,
-   "P_D": 0.9709
+   "margen": 10.265,
+   "P_D": 0.9811
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": 9.925,
-   "P_D": 0.9712
+   "margen": 10.279,
+   "P_D": 0.9812
   },
   {
-   "escenario": "Deriva al doble (σ_d = 0.50 pp por √día, 0 días)",
-   "margen": 9.919,
-   "P_D": 0.9711
+   "escenario": "Deriva al doble (σ_d = 0.50 pp por √día, 1 días)",
+   "margen": 10.269,
+   "P_D": 0.9806
   },
   {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (4 encuestadoras)",
-   "margen": 9.925,
-   "P_D": 0.9711
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (5 encuestadoras)",
+   "margen": 10.279,
+   "P_D": 0.9812
   },
   {
-   "escenario": "Ventana 45 días (12 encuestadoras)",
-   "margen": 9.784,
-   "P_D": 0.99
+   "escenario": "Ventana 45 días (13 encuestadoras)",
+   "margen": 10.02,
+   "P_D": 0.9922
   },
   {
    "escenario": "Ventana 60 días (16 encuestadoras)",
-   "margen": 9.652,
-   "P_D": 0.9903
+   "margen": 9.826,
+   "P_D": 0.9917
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": 9.535,
-   "P_D": 0.9663
+   "margen": 10.016,
+   "P_D": 0.9788
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 10.073,
-   "P_D": 0.9726
+   "margen": 10.363,
+   "P_D": 0.9816
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 9.791,
-   "P_D": 0.9698
+   "margen": 10.19,
+   "P_D": 0.9806
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 10.868,
-   "P_D": 0.9801
+   "margen": 11.108,
+   "P_D": 0.987
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 9.931,
-   "P_D": 0.9707
+   "margen": 10.279,
+   "P_D": 0.9811
   },
   {
-   "escenario": "Sin High Point Univ. (pesa 32%) → ventana desde 2026-10-13: ActiVote, Harper Polling, Quantus Insights",
-   "margen": 8.874,
-   "P_D": 0.9427
+   "escenario": "Sin High Point Univ. (pesa 26%) → ventana desde 2026-10-13: ActiVote, High Point University/YouGov, Harper Polling, Quantus Insights",
+   "margen": 9.6,
+   "P_D": 0.9675
   },
   {
-   "escenario": "Sin Quantus Insights (R) (pesa 30%) → ventana desde 2026-10-13: ActiVote, Harper Polling, High Point Univ.",
-   "margen": 11.223,
-   "P_D": 0.9746
+   "escenario": "Sin Quantus Insights (R) (pesa 24%) → ventana desde 2026-10-13: ActiVote, High Point University/YouGov, Harper Polling, High Point Univ.",
+   "margen": 11.382,
+   "P_D": 0.9841
   },
   {
-   "escenario": "Sin Harper Polling (R) (pesa 21%) → ventana desde 2026-10-13: ActiVote, Quantus Insights, High Point Univ.",
-   "margen": 10.264,
-   "P_D": 0.9643
+   "escenario": "Sin High Point University/YouGov (pesa 18%) → ventana desde 2026-10-13: ActiVote, Harper Polling, Quantus Insights, High Point Univ.",
+   "margen": 9.953,
+   "P_D": 0.9715
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: ActiVote, High Point Univ.",
-   "margen": 12.307,
-   "P_D": 0.9701
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: ActiVote, High Point University/YouGov, High Point Univ.",
+   "margen": 12.186,
+   "P_D": 0.9829
   },
   {
    "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-10-13: ActiVote, Harper Polling, Quantus Insights, High Point Univ.",
-   "margen": 9.855,
-   "P_D": 0.9698
-  },
-  {
-   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 2.2 %)",
-   "margen": 9.918,
-   "P_D": 0.9707
-  },
-  {
-   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 1.5 %)",
-   "margen": 9.927,
-   "P_D": 0.9707
-  },
-  {
-   "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 9.912,
+   "margen": 9.864,
    "P_D": 0.9706
   },
   {
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 2.2 %)",
+   "margen": 10.271,
+   "P_D": 0.9809
+  },
+  {
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 1.5 %)",
+   "margen": 10.277,
+   "P_D": 0.9812
+  },
+  {
+   "escenario": "Peso de mercados 0.15 (base 0.30)",
+   "margen": 10.137,
+   "P_D": 0.9797
+  },
+  {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 9.883,
-   "P_D": 0.9702
+   "margen": 9.791,
+   "P_D": 0.9764
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 9.42,
+   "margen": 8.826,
    "P_D": 0.9645
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 10.317,
-   "P_D": 0.975
+   "margen": 9.851,
+   "P_D": 0.977
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 13.616,
-   "P_D": 0.9919
+   "margen": 13.321,
+   "P_D": 0.9922
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-28",
+  "fecha": "2026-10-29",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (correo + en persona)",
-    "valor": 1961167.0,
+    "valor": 2150024.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Emitidos por demócratas registrados",
-    "valor": 40.39,
+    "valor": 39.83,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por republicanos registrados",
-    "valor": 24.81,
+    "valor": 25.26,
     "formato": "pct"
    },
    {
     "etiqueta": "Emitidos por otros y no partidistas",
-    "valor": 34.81,
+    "valor": 34.91,
     "formato": "pct"
    },
    {
     "etiqueta": "Margen D−R por correo",
-    "valor": 23.19,
+    "valor": 22.46,
     "formato": "pp"
    },
    {
     "etiqueta": "Margen D−R en persona",
-    "valor": 15.29,
+    "valor": 14.27,
     "formato": "pp"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9919,
-  "margen": 13.62
+  "P_D": 0.9922,
+  "margen": 13.32
  },
  "adicional": {
   "titulo": "Sesgo estatal de North Carolina",
   "P_D": null,
-  "margen": -1.81,
+  "margen": -1.8,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En NC las encuestas sobreestimaron al demócrata en las 10 contiendas desde 2014 (+0.3 a +6.2 pp); el sesgo contraído corrige -1.8 pp (promedio de encuestas +11.7). Polymarket por rangos: margen implícito +13.6 pp."
+  "nota": "En NC las encuestas sobreestimaron al demócrata en las 10 contiendas desde 2014 (+0.3 a +6.2 pp); el sesgo contraído corrige -1.8 pp (promedio de encuestas +12.1). Polymarket por rangos: margen implícito +13.3 pp."
  },
  "fuentes": [
   {
