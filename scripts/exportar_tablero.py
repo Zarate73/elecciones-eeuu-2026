@@ -294,7 +294,8 @@ def _nyc_checkins(a: dict) -> dict:
 
 
 def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesgo: str, solo_correo: bool = False,
-             cargo: str = 'Gobernador', etiqueta_recuento: str = 'Resultado muy estrecho (|margen| ≤ 0.5)') -> dict | None:
+             cargo: str = 'Gobernador', etiqueta_recuento: str = 'Resultado muy estrecho (|margen| ≤ 0.5)',
+             modelo: str = 'General (V11, sesgo estatal contraído)') -> dict | None:
     s = RAIZ / f'{carpeta}/produccion/salidas'
     if not (s / 'ultimo/reporte.json').exists():
         return None
@@ -309,7 +310,7 @@ def _general(carpeta: str, estado: str, cand: dict, titulo_sesgo: str, nota_sesg
     rg = mk.get('rangos') or {}
     sesgo = g.get('sesgo_estatal_aplicado')
     return {
-        'clave': carpeta, 'estado': estado, 'cargo': cargo, 'modelo': 'General (V11, sesgo estatal contraído)',
+        'clave': carpeta, 'estado': estado, 'cargo': cargo, 'modelo': modelo,
         'candidatos': cand, 'corte': r['corte'], 'dias_a_eleccion': r['dias_a_eleccion'],
         'pronostico': {'P_D': _num(g['P_D']), 'pct_D': _num(g['pct_D'], 2), 'pct_D_IC80': [_num(x, 2) for x in g['pct_D_IC80']],
                        'pct_R': _num(g['pct_R'], 2), 'pct_R_IC80': [_num(x, 2) for x in g['pct_R_IC80']],
@@ -414,7 +415,7 @@ def wisconsin() -> dict | None:
     return _general('wisconsin', 'Wisconsin', {'D': 'David Crowley', 'R': 'Tom Tiffany'},
                     'Sesgo estatal de Wisconsin (no se aplica)',
                     'En WI el error de las encuestas cambia de signo (presidente 2016/2020 pro-D, gobernador 2022 pro-R)',
-                    etiqueta_recuento='Recuento a petición (|margen| ≤ 1 pp)')
+                    etiqueta_recuento='Recuento a petición (|margen| ≤ 1 pp)', modelo='General (V11 sin sesgo estatal)')
 
 
 def main() -> int:

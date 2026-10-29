@@ -122,7 +122,7 @@ function tarjetas(activo) {
     nav.append(b);
   }
   const p = el('div', { class: 'tarjeta-estado pendiente' },
-    el('div', { class: 'nombre', text: `${(indice.estados_totales || 14) - indice.estados.length} estados más` }),
+    el('div', { class: 'nombre', text: (n => `${n} ${n === 1 ? 'estado' : 'estados'} más`)((indice.estados_totales || 14) - indice.estados.length) }),
     el('div', { class: 'detalle', text: 'En preparación. Se agregan con el mismo estándar de backtest y producción.' }));
   nav.append(p);
 }
