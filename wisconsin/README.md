@@ -3,7 +3,25 @@
 Elección general del 3 de noviembre de 2026 entre **David Crowley (D, ejecutivo del condado de Milwaukee)** y **Tom Tiffany (R, congresista del distrito 7)**. Solo ellos dos están en la boleta (más votos por escrito). El gobernador Tony Evers (D) no busca un tercer periodo. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-Se llena con la primera corrida automática.
+**Pronóstico al 2026-10-28** (6 días a la elección) · actualizado automáticamente 2026-10-28 23:02 CT · fuentes en vivo 9/9
+
+| Gobernador | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| David **Crowley** (D) | **52.8%** (48.7–56.9) | **82%** |
+| Tom **Tiffany** (R) | **47.1%** (43.0–51.1) | **18%** |
+| Votos por escrito | 0.1% (0.1–0.2) | — |
+
+Margen D−R +5.8 pp (σ 6.5) · solo encuestas: P(Crowley) 81% · Kalshi 84% · Polymarket 86% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 1 pp) 8.2% · 11 encuestas, 2 encuestadoras en la ventana
+
+**Encuesta más reciente:** Wick (R), terminó el 2026-10-23 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-28): 873,458 (299,025 en persona, 574,433 por correo) · 33 % del total de votos de gobernador 2022. Wisconsin no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [encuestas usadas](produccion/salidas/ultimo/encuestas_gobernador.csv) · [escenarios](produccion/salidas/ultimo/escenarios_gobernador.csv) · [voto anticipado por condado](produccion/salidas/ultimo/voto_anticipado_condados.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_wisconsin.yml)).
