@@ -1,0 +1,80 @@
+# =====================================================================================
+# Washington D.C. 2026 · Alcaldía · configuración (modelo general: fundamentales históricos + RCV)
+# No hay encuestas de la general ni mercados de la general al 28-oct-2026: el pronóstico sale de las 13 elecciones
+# generales de alcaldía 1974–2022 (Wikipedia, en vivo). Si aparecen encuestas o mercados, entran solos (ver [modelo]).
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "Washington D.C."
+abrev = "DC"
+cargo = "Alcaldía"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2026-06-16"        # primaria demócrata (RCV): Lewis George 54.1 % en primera ronda
+zona_horaria = "America/New_York"
+# Boleta oficial (DCBOE, «General Election Candidates in Ballot Order», 15-jul-2026) + votos por escrito.
+# clave = como aparece en Wikipedia (apellido); se valida en cada corrida contra la tabla de la general.
+candidato_d = "Lewis George"
+nombre_d = "Janeese Lewis George"
+partido_d = "D"
+opositor = "Hamilton"                  # opositor principal: única alternativa en la boleta fuera de la izquierda
+nombre_opositor = "Rhonda Hamilton"
+partido_opositor = "I"
+verde = "Gross"
+nombre_verde = "Robert L. Gross"
+partido_verde = "Verde (Statehood Green)"
+# Opositor principal FUERTE = concejal o alcalde, actual o anterior (criterio fijado antes de ver resultados; ver
+# docs). Hamilton (asesora de seguros/bienes raíces, defensora de salud mental) y Gross no lo son; la lista oficial
+# de 10 candidatos por escrito tampoco incluye a ningún concejal ni alcalde. Si eso cambia, poner true.
+opositor_fuerte = false
+titular_compite = false                # Bowser no se presenta
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+contexto_historico = "data/contexto_alcaldias.csv"    # criterio fuerte/titular por año (codificado a mano, con fuente)
+historico_respaldo = "data/historico_alcaldias_respaldo.csv"  # resultados 1974–2022 si Wikipedia y la caché fallan
+encuestas_complementarias = "data/encuestas_complementarias_dc.csv"  # encuestas de la general que falten en Wikipedia
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_Washington,_D.C.,_mayoral_election"
+wikipedia_historico = "{anio}_Washington,_D.C.,_mayoral_election"
+anios_historicos = [1974, 1978, 1982, 1986, 1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022]
+pausa_wikipedia_s = 1.0                # entre páginas (límite de ritmo de Wikimedia)
+dcboe_registro = "https://www.dcboe.org/data,-maps,-forms/voter-registration-statistics"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+# Kalshi no tiene mercado de la alcaldía de D.C. (28-oct: 0 de ~15,300 eventos abiertos). Se prueban estas series y
+# se busca en la lista de series de Elecciones; si aparece un mercado, entra a la mezcla.
+kalshi_series = ["KXMAYORDC", "KXDCMAYOR", "KXMAYORWASHINGTONDC", "MAYORDC", "DCMAYOR"]
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_busquedas = ["DC mayor", "Washington DC mayor", "Lewis George"]
+mercado_max_dias_antiguedad = 3
+
+[modelo]
+# M1 (elegido por backtest LOYO, 13 elecciones 1974–2022): logit(% demócrata) = a + b·opositor_fuerte, t de Student.
+# Las alternativas (titular, % en la primaria, tendencia, σ por grupo) no mejoran (docs/01).
+variables = ["fuerte"]
+# Reparto del voto no demócrata (lognormales; mediana, sd del log):
+verde_mediana_pct = 1.3                # Statehood Green cuando no es el opositor principal (8 elecciones 1986–2014): media geométrica 1.28 %
+verde_sd_log = 0.75                    # sd del log en esas 8 elecciones: 0.76
+escrito_mediana_pct = 3.0              # votos por escrito sin campaña organizada: 2018 4.0 %, 2022 3.3 %, 2014 0.9 %
+escrito_sd_log = 0.5
+opositor_min_frac = 0.30               # el opositor principal se lleva ≥ 30 % del voto no demócrata (mínimo histórico 36 %)
+# RCV (Iniciativa 83): solo importa si Lewis George queda < 50 % de las boletas activas en la primera ronda.
+# Transferencias supuestas (sin datos de la general; insensibles: P(< 50 %) ≈ 0.3 %).
+transferencias = { escrito = { "Lewis George" = 0.35, "Hamilton" = 0.25, "Gross" = 0.05, agotada = 0.35 }, "Gross" = { "Lewis George" = 0.45, "Hamilton" = 0.20, agotada = 0.35 } }
+# Encuestas de la general (hoy no hay): promedio √n con vida media de 14 días e indecisos proporcionales; se combinan
+# con los fundamentales por precisión en escala logit. sd de error de una encuesta de alcaldía: 7 pp en el % demócrata.
+encuesta_sd_pp = 7.0
+vida_media_dias = 14.0
+peso_mercados = 0.30                   # igual que los demás estados; 0 = sin mercados
+n_simulaciones = 200000
+semilla = 20261103
+umbrales_pct = [50, 60, 70, 80]        # P(Lewis George ≥ x % en la primera ronda)
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60

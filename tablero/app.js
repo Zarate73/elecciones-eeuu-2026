@@ -63,7 +63,8 @@ const pct = (p, dec = 0) => {
 const pp = (x, dec = 1) => (x == null ? '—' : (x > 0 ? '+' : x < 0 ? '−' : '') + Math.abs(x).toFixed(dec));
 const num = (x, dec = 1) => (x == null ? '—' : x.toFixed(dec));
 const entero = x => (x == null ? '—' : Math.round(x).toLocaleString('es-MX'));
-const apellido = n => n.split(' ').slice(-1)[0];
+const APELLIDOS_COMPUESTOS = ['Lewis George'];          // apellidos de dos palabras (D.C.)
+const apellido = n => APELLIDOS_COMPUESTOS.find(a => n.endsWith(' ' + a)) || n.split(' ').slice(-1)[0];
 const fecha = s => {
   if (!s) return '—';
   const d = new Date(s + 'T12:00:00');
@@ -121,10 +122,10 @@ function tarjetas(activo) {
     b.addEventListener('click', () => { location.hash = e.clave; });
     nav.append(b);
   }
-  const p = el('div', { class: 'tarjeta-estado pendiente' },
-    el('div', { class: 'nombre', text: (n => `${n} ${n === 1 ? 'estado' : 'estados'} más`)((indice.estados_totales || 14) - indice.estados.length) }),
-    el('div', { class: 'detalle', text: 'En preparación. Se agregan con el mismo estándar de backtest y producción.' }));
-  nav.append(p);
+  const faltan = (indice.estados_totales || 14) - indice.estados.length;
+  if (faltan > 0) nav.append(el('div', { class: 'tarjeta-estado pendiente' },
+    el('div', { class: 'nombre', text: `${faltan} ${faltan === 1 ? 'estado' : 'estados'} más` }),
+    el('div', { class: 'detalle', text: 'En preparación. Se agregan con el mismo estándar de backtest y producción.' })));
 }
 
 /* ---------------------------------------------------------------- gráficas */
@@ -226,7 +227,7 @@ function comparacion(d) {
   const p = d.pronostico;
   const filas = [
     { n: 'Pronóstico final', v: p.P_D, c: 'var(--s-final)', fuerte: true },
-    { n: 'Solo encuestas', v: p.P_D_encuestas, c: 'var(--s-encuestas)' },
+    { n: p.etiqueta_base || 'Solo encuestas', v: p.P_D_encuestas, c: 'var(--s-encuestas)' },
   ];
   const col = { Kalshi: 'var(--s-kalshi)', Polymarket: 'var(--s-poly)' };
   for (const m of d.mercados) if (m.P_D != null) filas.push({ n: m.nombre, v: m.P_D, c: col[m.nombre] || 'var(--otros)' });
@@ -253,7 +254,7 @@ function lineas(d) {
   const h = d.historial.filter(r => r.P_D != null);
   const series = [
     { k: 'P_D', n: 'Final', c: 'var(--s-final)', w: 2.5 },
-    { k: 'P_D_encuestas', n: 'Solo encuestas', c: 'var(--s-encuestas)', w: 2 },
+    { k: 'P_D_encuestas', n: d.pronostico.etiqueta_base || 'Solo encuestas', c: 'var(--s-encuestas)', w: 2 },
     { k: 'P_kalshi', n: 'Kalshi', c: 'var(--s-kalshi)', w: 2 },
     { k: 'P_polymarket', n: 'Polymarket', c: 'var(--s-poly)', w: 2 },
   ].filter(s_ => h.some(r => r[s_.k] != null));
@@ -390,6 +391,20 @@ function escenarios(d) {
   return s;
 }
 
+function tablaSimple(t) {
+  const tabla = el('table');
+  const cab = el('tr'); t.columnas.forEach((h, i) => cab.append(el('th', { class: t.numericas && t.numericas[i] ? 'num' : '', text: h })));
+  tabla.append(el('thead', {}, cab));
+  const cuerpo = el('tbody');
+  for (const f of t.filas) {
+    const tr = el('tr');
+    f.forEach((v, i) => tr.append(el('td', { class: t.numericas && t.numericas[i] ? 'num' : '', text: v == null ? '—' : String(v) })));
+    cuerpo.append(tr);
+  }
+  tabla.append(cuerpo);
+  return el('div', { class: 'tabla-envoltura' }, tabla);
+}
+
 /* ---------------------------------------------------------------- vista de un estado */
 function panel(titulo, nota, ...contenido) {
   return el('section', { class: 'panel' }, el('h2', { text: titulo }), nota ? el('p', { class: 'nota', text: nota }) : null, ...contenido);
@@ -397,6 +412,7 @@ function panel(titulo, nota, ...contenido) {
 
 function vista(d) {
   const p = d.pronostico, D = d.candidatos.D, R = d.candidatos.R;
+  const par = d.partidos || { D: 'D', R: 'R' };            // D.C.: el opositor principal es independiente
   const raiz = el('div');
   // hero
   const barra = el('div', { class: 'barra-prob', role: 'img', 'aria-label': `${D} ${pct(p.P_D)}, ${R} ${pct(1 - p.P_D)}` }, el('span'), el('span'));
@@ -405,14 +421,14 @@ function vista(d) {
   const pR = el('div', { class: 'punto' }); pR.style.background = 'var(--rep)';
   const hechos = el('div', { class: 'hechos' },
     el('span', {}, 'Margen ', el('b', { text: `${pp(p.margen)} pp` }), ` (80 %: ${pp(p.margen_IC80[0])} a ${pp(p.margen_IC80[1])})`),
-    el('span', {}, 'Solo encuestas ', el('b', { text: pct(p.P_D_encuestas) })),
+    el('span', {}, (p.etiqueta_base || 'Solo encuestas') + ' ', el('b', { text: pct(p.P_D_encuestas) })),
     el('span', {}, 'Peso de mercados ', el('b', { text: num(p.peso_mercados, 2) })),
     ...p.extra.map(x => el('span', {}, x.etiqueta + ' ', el('b', { text: pct(x.valor, 1) }))));
   const hero = panel(`${d.estado} · ${d.cargo}`, null,
     el('div', { class: 'etiqueta-modelo', text: `Modelo ${d.modelo} · corte ${fecha(d.corte)} · faltan ${d.dias_a_eleccion} días` }),
     el('div', { class: 'probabilidades' },
-      el('div', { class: 'prob' }, el('div', { class: 'cand' }, pD, `${D} (D)`), el('div', { class: 'valor', text: pct(p.P_D) })),
-      el('div', { class: 'prob r' }, el('div', { class: 'cand' }, `${R} (R)`, pR), el('div', { class: 'valor', text: pct(1 - p.P_D) }))),
+      el('div', { class: 'prob' }, el('div', { class: 'cand' }, pD, `${D} (${par.D})`), el('div', { class: 'valor', text: pct(p.P_D) })),
+      el('div', { class: 'prob r' }, el('div', { class: 'cand' }, `${R} (${par.R})`, pR), el('div', { class: 'valor', text: pct(1 - p.P_D) }))),
     barra, el('p', { class: 'nota', style: 'margin-top:8px', text: 'Probabilidad de ganar' }), hechos);
   const voto = panel('Porcentaje de voto', 'Estimado e intervalo del 80 %', rangosVoto(d));
   raiz.append(el('div', { class: 'rejilla r-hero' }, hero, voto));
@@ -431,15 +447,21 @@ function vista(d) {
     ? 'Margen D−R simulado. La zona azul es la probabilidad de que gane el demócrata, coherente con la probabilidad publicada.'
     : 'Margen D−R de las encuestas. Aquí los mercados ajustan solo la probabilidad publicada, no esta distribución.';
   raiz.append(el('div', { class: 'rejilla r-2' },
-    panel('Distribución del margen', notaMerc, distribucion(d)),
-    panel(`Probabilidad de que gane ${apellido(D)}`, 'Según cada fuente. El final mezcla encuestas (70 %) y mercados (30 %) en escala logit.', comparacion(d))));
+    panel('Distribución del margen', d.nota_distribucion || notaMerc, distribucion(d)),
+    panel(`Probabilidad de que gane ${apellido(D)}`, d.nota_comparacion || 'Según cada fuente. El final mezcla encuestas (70 %) y mercados (30 %) en escala logit.', comparacion(d))));
   // evolución
   raiz.append(el('div', { class: 'rejilla' }, panel('Evolución', 'Última corrida de cada día.', lineas(d))));
   // encuestas
-  const enc = encuestas(d);
-  const pe = panel('Encuestas', `Margen D−R de cada encuesta desde la nominación. Rellenas: las que entran al promedio actual (${d.n_encuestas_ventana || '—'} encuestadoras).`, enc.contenido);
-  pe.querySelector('h2').append(enc.boton);
-  raiz.append(el('div', { class: 'rejilla' }, pe));
+  if (d.encuestas.some(r => r.fin && r.margen != null)) {
+    const enc = encuestas(d);
+    const pe = panel('Encuestas', `Margen D−R de cada encuesta desde la nominación. Rellenas: las que entran al promedio actual (${d.n_encuestas_ventana || '—'} encuestadoras).`, enc.contenido);
+    pe.querySelector('h2').append(enc.boton);
+    raiz.append(el('div', { class: 'rejilla' }, pe));
+  } else if (d.sin_encuestas) {
+    raiz.append(el('div', { class: 'aviso atencion' }, el('span', { class: 'icono', 'aria-hidden': 'true', text: '!' }),
+      el('p', {}, el('b', { text: 'Sin encuestas de la general. ' }), d.sin_encuestas)));
+  }
+  if (d.tabla_extra) raiz.append(el('div', { class: 'rejilla' }, panel(d.tabla_extra.titulo, d.tabla_extra.nota, tablaSimple(d.tabla_extra))));
   // escenarios + voto anticipado / adicional
   const fila = [];
   const esc = escenarios(d);
@@ -462,7 +484,7 @@ function vista(d) {
     lado.push(panel(a.titulo, a.nota, m));
   }
   if (lado.length) fila.push(el('div', { style: 'display:grid;gap:14px;align-content:start' }, ...lado));
-  if (fila.length) raiz.append(el('div', { class: 'rejilla ' + (fila.length > 1 ? 'r-2' : '') }, ...fila));
+  if (fila.length) raiz.append(el('div', { class: 'rejilla r-2' }, ...fila));   // un panel solo ocupa media fila (escala legible)
   // fuentes
   const f = el('div', { class: 'fuentes' });
   for (const x of d.fuentes) f.append(el('span', { class: 'fuente', title: x.estado },

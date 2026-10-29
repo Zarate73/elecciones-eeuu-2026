@@ -37,7 +37,7 @@ def _limpio(o):
 
 
 def _vivo(v) -> bool:
-    return str(v).startswith(('en_vivo', 'archivo', 'api_en_vivo', 'Datos de Civiq'))
+    return str(v).startswith(('en_vivo', 'archivo', 'api_en_vivo', 'Datos de Civiq', 'no_aplica'))
 
 
 def _fuentes(est: dict) -> list:
@@ -418,11 +418,58 @@ def wisconsin() -> dict | None:
                     etiqueta_recuento='Recuento a petición (|margen| ≤ 1 pp)', modelo='General (V11 sin sesgo estatal)')
 
 
+# ------------------------------------------------------------------------------------ Washington D.C.
+def dc() -> dict | None:
+    """Alcaldía de D.C.: sin encuestas ni mercados de la general; el «R» del tablero es la independiente Hamilton."""
+    s = RAIZ / 'dc/produccion/salidas'
+    if not (s / 'ultimo/reporte.json').exists():
+        return None
+    r = json.loads((s / 'ultimo/reporte.json').read_text(encoding='utf-8'))
+    g, mk = r['alcaldia'], r['mercados']
+    h = pd.read_csv(s / 'ultimo/historico_alcaldias.csv', encoding='utf-8-sig')
+    filas = [[int(x.anio), x.nominado, f'{x.pct_d:.1f}', x.opositor, f'{x.pct_op:.1f}', 'fuerte' if x.fuerte else 'débil']
+             for x in h.sort_values('anio', ascending=False).itertuples()]
+    return {
+        'clave': 'dc', 'estado': 'Washington D.C.', 'cargo': 'Alcaldía', 'modelo': 'General (fundamentales + RCV)',
+        'candidatos': {'D': 'Janeese Lewis George', 'R': 'Rhonda Hamilton'}, 'partidos': {'D': 'D', 'R': 'I'},
+        'corte': r['corte'], 'dias_a_eleccion': r['dias_a_eleccion'],
+        'pronostico': {'P_D': _num(g['P_D']), 'pct_D': _num(g['pct_D'], 2), 'pct_D_IC80': [_num(x, 2) for x in g['pct_D_IC80']],
+                       'pct_R': _num(g['pct_opositor'], 2), 'pct_R_IC80': [_num(x, 2) for x in g['pct_opositor_IC80']],
+                       'pct_terceros': _num(g['pct_terceros'], 2), 'pct_terceros_IC80': [_num(x, 2) for x in g['pct_terceros_IC80']],
+                       'margen': _num(g['margen'], 3), 'margen_IC80': [_num(x, 2) for x in g['IC80']],
+                       'margen_IC95': [_num(x, 2) for x in g['IC95']], 'sd': _num(g['sd'], 3), 'nu': _num(g['gl'], 2),
+                       'P_D_encuestas': _num(g['P_D_fundamentales']), 'etiqueta_base': 'Solo fundamentales',
+                       'peso_mercados': _num(g['peso_mercados_aplicado'], 2), 'mercado_en_distribucion': False,
+                       'extra': [{'etiqueta': 'Gana en la 1.ª ronda (> 50 %)', 'valor': _num(g['P_primera_ronda'])},
+                                 {'etiqueta': 'Lewis George ≥ 70 %', 'valor': _num(g['P_umbral'].get('70'))}]},
+        'mercados': [{'nombre': 'Kalshi', 'P_D': _num(mk['kalshi'].get('p_D')), 'estado': mk['kalshi'].get('estado')},
+                     {'nombre': 'Polymarket', 'P_D': _num(mk['polymarket'].get('p_D')), 'estado': mk['polymarket'].get('estado')}],
+        'ultima_encuesta': None, 'encuestas': [], 'n_encuestas_ventana': 0,
+        'sin_encuestas': ('No hay ninguna encuesta Lewis George–Hamilton ni mercado de esta elección. El pronóstico sale de las '
+                          f"{g['n_elecciones']} generales de alcaldía 1974–2022: el demócrata promedia ~80 % cuando el opositor "
+                          'principal no es concejal ni alcalde (Hamilton no lo es). Encuestas y mercados se buscan en cada corrida.'),
+        'nota_distribucion': 'Margen Lewis George − Hamilton en la primera ronda (aproximación t de la simulación). RCV: si nadie pasa '
+                             'del 50 %, se eliminan los últimos y se transfieren sus votos.',
+        'nota_comparacion': 'Sin encuestas ni mercados de la general: la probabilidad final es la de los fundamentales con el conteo RCV.',
+        'tabla_extra': {'titulo': 'Generales de alcaldía de D.C. 1974–2022', 'nota': 'Wikipedia en vivo; % sobre votos válidos. '
+                        'Opositor fuerte = concejal o alcalde (actual o anterior).',
+                        'columnas': ['Año', 'Demócrata', '%', 'Opositor principal', '%', 'Opositor'],
+                        'numericas': [False, False, True, False, True, False], 'filas': filas},
+        'historial': _historial(s / 'historial_pronosticos.csv', 'corte',
+                                {'P_D': 'P_D', 'P_D_encuestas': 'P_D_fundamentales', 'P_kalshi': 'P_D_kalshi',
+                                 'P_polymarket': 'P_D_polymarket', 'pct_D': 'pct_D', 'margen': 'margen'}),
+        'escenarios': _escenarios(r.get('escenarios', [])),
+        'anticipado': None, 'adicional': None,
+        'fuentes': _fuentes(r['estados_fuentes']), 'avisos': r.get('avisos', []),
+        'carpeta': 'dc',
+    }
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     indice = []
     for f in (georgia, california, arizona, florida, nevada, pennsylvania, maine, texas, illinois, new_york, ohio,
-              north_carolina, wisconsin):
+              north_carolina, wisconsin, dc):
         try:
             d = f()
         except Exception as exc:                       # un estado roto no tumba a los demás
