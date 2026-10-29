@@ -10,30 +10,30 @@
  "corte": "2026-10-28",
  "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.9932,
-  "pct_D": 55.79,
+  "P_D": 0.9938,
+  "pct_D": 55.96,
   "pct_D_IC80": [
-   51.55,
-   60.03
+   51.73,
+   60.2
   ],
-  "pct_R": 38.98,
+  "pct_R": 38.81,
   "pct_R_IC80": [
-   34.75,
-   43.23
+   34.57,
+   43.05
   ],
   "pct_terceros": 5.23,
   "pct_terceros_IC80": [
    3.12,
    7.35
   ],
-  "margen": 16.8,
+  "margen": 17.155,
   "margen_IC80": [
-   8.6,
-   25.01
+   8.96,
+   25.36
   ],
   "margen_IC95": [
-   3.84,
-   29.8
+   4.2,
+   30.15
   ],
   "sd": 6.547,
   "nu": 17.8,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0023
+    "valor": 0.0021
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9621,
+   "P_D": 0.9735,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9715,
+   "P_D": 0.9785,
    "estado": "en_vivo"
   }
  ],
@@ -119,19 +119,19 @@
   },
   {
    "corte": "2026-10-28",
-   "P_D": 0.9932,
+   "P_D": 0.9938,
    "P_D_encuestas": 0.9966,
-   "P_kalshi": 0.9621,
-   "P_polymarket": 0.9715,
-   "pct_D": 55.785,
-   "margen": 16.8002
+   "P_kalshi": 0.9735,
+   "P_polymarket": 0.9785,
+   "pct_D": 55.9626,
+   "margen": 17.1554
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 16.8,
-   "P_D": 0.9932
+   "margen": 17.155,
+   "P_D": 0.9938
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -145,8 +145,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 16.465,
-   "P_D": 0.9922
+   "margen": 16.76,
+   "P_D": 0.9929
   },
   {
    "escenario": "Sesgo estatal sin contraer (+0.99 pp)",
@@ -270,28 +270,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 17.841,
-   "P_D": 0.9952
+   "margen": 17.984,
+   "P_D": 0.9954
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 15.478,
-   "P_D": 0.9892
+   "margen": 15.946,
+   "P_D": 0.9909
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 11.609,
-   "P_D": 0.9621
+   "margen": 12.762,
+   "P_D": 0.9735
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 12.531,
-   "P_D": 0.9715
+   "margen": 13.421,
+   "P_D": 0.9785
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 20.895,
-   "P_D": 0.975
+   "margen": 20.768,
+   "P_D": 0.9778
   }
  ],
  "anticipado": {
@@ -302,41 +302,41 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 804552.0,
+    "valor": 1166920.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 355053.0,
+    "valor": 608888.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 449499.0,
+    "valor": 558032.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 19.6,
+    "valor": 28.4,
     "formato": "pct"
    },
    {
     "etiqueta": "Peso de Cook",
-    "valor": 17.1,
+    "valor": 19.8,
     "formato": "pct"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.975,
-  "margen": 20.9
+  "P_D": 0.9778,
+  "margen": 20.77
  },
  "adicional": {
   "titulo": "Sesgo estatal de Illinois",
   "P_D": null,
   "margen": 0.68,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +0.7 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.9 pp."
+  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +0.7 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.8 pp."
  },
  "fuentes": [
   {
