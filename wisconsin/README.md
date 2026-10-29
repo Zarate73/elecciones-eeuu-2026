@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **David Crowley (D, ejecutivo del condado de Milwaukee)** y **Tom Tiffany (R, congresista del distrito 7)**. Solo ellos dos están en la boleta (más votos por escrito). El gobernador Tony Evers (D) no busca un tercer periodo. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-28** (6 días a la elección) · actualizado automáticamente 2026-10-28 23:02 CT · fuentes en vivo 9/9
+**Pronóstico al 2026-10-29** (5 días a la elección) · actualizado automáticamente 2026-10-29 12:19 CT · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -13,9 +13,9 @@ Elección general del 3 de noviembre de 2026 entre **David Crowley (D, ejecutivo
 
 Margen D−R +5.8 pp (σ 6.5) · solo encuestas: P(Crowley) 81% · Kalshi 84% · Polymarket 86% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 1 pp) 8.2% · 11 encuestas, 2 encuestadoras en la ventana
 
-**Encuesta más reciente:** Wick (R), terminó el 2026-10-23 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Wick (R), terminó el 2026-10-23 (**6 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-28): 873,458 (299,025 en persona, 574,433 por correo) · 33 % del total de votos de gobernador 2022. Wisconsin no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-29): 977,255 (344,182 en persona, 633,073 por correo) · 37 % del total de votos de gobernador 2022. Wisconsin no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
