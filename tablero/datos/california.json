@@ -10,30 +10,30 @@
  "corte": "2026-10-28",
  "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.9935,
-  "pct_D": 61.18,
+  "P_D": 0.9938,
+  "pct_D": 61.25,
   "pct_D_IC80": [
-   57.5,
-   64.83
+   57.59,
+   64.88
   ],
-  "pct_R": 38.82,
+  "pct_R": 38.75,
   "pct_R_IC80": [
-   35.17,
-   42.5
+   35.12,
+   42.41
   ],
   "pct_terceros": null,
-  "margen": 22.365,
+  "margen": 22.501,
   "margen_IC80": [
-   15.01,
-   29.66
+   15.18,
+   29.76
   ],
   "margen_IC95": [
-   9.56,
-   35.12
+   9.77,
+   35.19
   ],
-  "sd": 6.431,
+  "sd": 6.394,
   "nu": 5.0,
-  "P_D_encuestas": 0.9969,
+  "P_D_encuestas": 0.9971,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": false,
   "extra": []
@@ -41,7 +41,7 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9641,
+   "P_D": 0.9651,
    "estado": "en_vivo"
   }
  ],
@@ -61,7 +61,17 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1105
+   "peso": 0.1024
+  },
+  {
+   "fin": "2026-10-23",
+   "encuestadora": "M3 Strategies (R)",
+   "D": 59.0,
+   "R": 36.0,
+   "margen": 23.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.0741
   },
   {
    "fin": "2026-10-22",
@@ -71,7 +81,7 @@
    "margen": 24.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0862
+   "peso": 0.0798
   },
   {
    "fin": "2026-10-20",
@@ -81,7 +91,7 @@
    "margen": 16.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0729
+   "peso": 0.0675
   },
   {
    "fin": "2026-10-19",
@@ -91,7 +101,7 @@
    "margen": 27.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1459
+   "peso": 0.1351
   },
   {
    "fin": "2026-10-16",
@@ -101,7 +111,7 @@
    "margen": 26.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.108
+   "peso": 0.1
   },
   {
    "fin": "2026-10-14",
@@ -111,7 +121,7 @@
    "margen": 20.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0877
+   "peso": 0.0812
   },
   {
    "fin": "2026-10-01",
@@ -121,7 +131,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0449
+   "peso": 0.0416
   },
   {
    "fin": "2026-09-28",
@@ -131,7 +141,7 @@
    "margen": 10.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0857
+   "peso": 0.0794
   },
   {
    "fin": "2026-09-20",
@@ -141,7 +151,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0504
+   "peso": 0.0467
   },
   {
    "fin": "2026-09-20",
@@ -151,7 +161,7 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0504
+   "peso": 0.0467
   },
   {
    "fin": "2026-09-14",
@@ -161,7 +171,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0439
+   "peso": 0.0406
   },
   {
    "fin": "2026-09-10",
@@ -171,7 +181,7 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0327
+   "peso": 0.0302
   },
   {
    "fin": "2026-08-09",
@@ -181,7 +191,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0191
+   "peso": 0.0177
   },
   {
    "fin": "2026-07-06",
@@ -191,7 +201,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0069
+   "peso": 0.0064
   },
   {
    "fin": "2026-06-17",
@@ -201,7 +211,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0081
+   "peso": 0.0075
   },
   {
    "fin": null,
@@ -211,7 +221,7 @@
    "margen": 5.6,
    "en_ventana": true,
    "origen": "base",
-   "peso": 0.0348
+   "peso": 0.0322
   },
   {
    "fin": null,
@@ -221,10 +231,10 @@
    "margen": 8.2,
    "en_ventana": true,
    "origen": "base",
-   "peso": 0.0118
+   "peso": 0.0109
   }
  ],
- "n_encuestas_ventana": 17,
+ "n_encuestas_ventana": 18,
  "historial": [
   {
    "corte": "2026-10-19",
@@ -292,11 +302,11 @@
   },
   {
    "corte": "2026-10-28",
-   "P_D": 0.9935,
-   "P_D_encuestas": 0.9969,
-   "P_kalshi": 0.9641,
-   "pct_D": 61.18,
-   "margen": 22.37
+   "P_D": 0.9938,
+   "P_D_encuestas": 0.9971,
+   "P_kalshi": 0.9651,
+   "pct_D": 61.25,
+   "margen": 22.5
   }
  ],
  "escenarios": [],
@@ -307,12 +317,12 @@
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 3769798.0,
+    "valor": 4131932.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Margen D−R de devueltas",
-    "valor": 21.92,
+    "valor": 22.14,
     "formato": "pp"
    },
    {
@@ -356,7 +366,7 @@
   },
   {
    "nombre": "gdelt",
-   "estado": "parcial: HILTON: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 42",
+   "estado": "cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
    "en_vivo": false
   },
   {
