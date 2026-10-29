@@ -16,7 +16,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Arizona | Gobernador: Hobbs 51.5% · Biggs 44.3% · P(Hobbs) 90% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`arizona/`](arizona/) |
 | Florida | Gobernador: Jolly 45.2% · Donalds 52.5% · P(Donalds) 96% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`florida/`](florida/) |
 | Nevada | Gobernador: Ford 47.9% · Lombardo 45.4% · P(Ford) 68% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`nevada/`](nevada/) |
-| Pennsylvania | Gobernador: Shapiro 58.6% · Garrity 39.4% · P(Shapiro) >99% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`pennsylvania/`](pennsylvania/) |
+| Pennsylvania | Gobernador: Shapiro 58.7% · Garrity 39.3% · P(Shapiro) >99% (corte 2026-10-29) | **Producción (general)**, actualización automática | [`pennsylvania/`](pennsylvania/) |
 | Maine | Gobernador: Pingree 49.4% · Charles 44.0% · P(Pingree) 86% (corte 2026-10-29) | **Producción (general)**, actualización automática | [`maine/`](maine/) |
 | Texas | Gobernador: Hinojosa 47.1% · Abbott 50.8% · P(Hinojosa) 18% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`texas/`](texas/) |
 | Illinois | Gobernador: Pritzker 56.0% · Bailey 38.8% · P(Pritzker) 99% (corte 2026-10-28) | **Producción (general)**, actualización automática | [`illinois/`](illinois/) |
