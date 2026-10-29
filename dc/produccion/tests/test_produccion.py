@@ -173,7 +173,10 @@ def test_conteo_reproduce_la_tabulacion_certificada_de_la_primaria(patron):
     (alcaldía 1 ronda, at-large 8, Ward 1 4; informes RCTab de la DCBOE)."""
     import importlib.util
     from conftest import FIX, PROD
-    spec = importlib.util.spec_from_file_location('vp', PROD.parent / 'backtest' / 'validacion_primaria_2026.py')
+    ruta = next((q for q in (PROD.parent / 'backtest', PROD.parent / 'BACKTEST_DC') if (q / 'validacion_primaria_2026.py').exists()), None)
+    if ruta is None:
+        pytest.skip('backtest no incluido en esta copia')
+    spec = importlib.util.spec_from_file_location('vp', ruta / 'validacion_primaria_2026.py')
     if spec is None or not Path(spec.origin).exists():
         pytest.skip('backtest no incluido en esta copia')
     vp = importlib.util.module_from_spec(spec); spec.loader.exec_module(vp)
