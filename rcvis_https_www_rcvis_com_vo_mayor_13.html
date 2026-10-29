@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5NJQESB1W&amp;cx=c&amp;gtm=4e6ar1"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-151309356-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-151309356-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Armin Samii">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/static/visualizer/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/visualizer/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/visualizer/favicons/favicon-16x16.png">
+<link rel="manifest" href="/static/visualizer/favicons/site.webmanifest">
+<link rel="mask-icon" href="/static/visualizer/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/static/visualizer/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/static/visualizer/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="/static/CACHE/css/output.0a14119fb5f4.css" type="text/css">
+
+
+
+
+
+<!-- This needs to be the first bit of js loaded to get the correct configs throughout -->
+<script>
+  var getUrlParameter = function getUrlParameter(sParam)
+  {
+      // Courtesy of https://stackoverflow.com/a/21903119/1057105
+      var sPageURL = window.location.search.substring(1),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
+  
+      for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+  
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+          }
+      }
+  };
+
+  var config = {};
+
+  // 1. Load from django (happens once on baking)
+  config.onlyShowWinnersTabular =  true ;
+  config.hideSankey =  false ;
+  config.hidePie =  false ;
+  config.showRoundNumbersOnSankey =  true ;
+  config.hideTabular =  false ;
+  config.doDimPrevRoundColors =  true ;
+  config.forceFirstRoundDeterminesPercentages =  false ;
+  config.colorTheme = 1;
+  config.eliminationBarColor = 0;
+
+  // 2. Load any overrides (not supported in Internet Explorer)
+  let searchParams = new URLSearchParams(window.location.search);
+  for (var key in config) {
+    if (searchParams.has(key))
+    {
+      // We use hidden fields to make sure all checkboxes get sent over GET when updating settings.
+      // There seems to be some protocol that claims the last one is the valid one...so grab the last.
+      allValues = searchParams.getAll(key)
+      lastValue = allValues[allValues.length - 1]
+      if (key != 'colorTheme' && key != 'eliminationBarColor') {
+        config[key] = lastValue == "on";
+      } else {
+        config[key] = lastValue;
+      }
+    }
+  }
+
+  // Data from python
+  var humanFriendlyEventsPerRound = [[{"summary": "Initial votes", "description": "The results of everybody's first-choice candidates. ", "verb": "initial"}, {"summary": "Janeese Lewis George  won", "description": "Janeese Lewis George was elected. ", "verb": " won"}]];
+  var humanFriendlySummary = "After 1 rounds of this Ranked Choice Voting election, Janeese Lewis George was elected.";
+  // Plain-English narration of the whole election, for screenreaders: {summary, rounds: [...]}
+  var narration = {"summary": "In this Ranked Choice Voting election, there was 1 rounds, after which Janeese Lewis George was elected. Here's what happened in each round.", "rounds": ["In the first round, Janeese Lewis George was elected."]};
+  var candidateSidecarData = null;
+</script>
+
+<style>
+  /* Want these to be invisible immediately, not wait for the nonblocking css to get to it */
+  #visualize-header-deferred-visibility {
+      opacity: 0.1;
+  }
+</style>
+
+<title>MAYOR: Ranked Choice Voting Visualization</title>
+<meta name="description" content="MAYOR on RCVis: Ranked-Choice Voting visualizations: sankey, interactive bar charts, and tabular formats for displaying the results of RCV Elections">
+
+<meta property="og:title" content="MAYOR">
+<meta property="og:description" content="Ranked Choice Voting Election Results for MAYOR">
+<meta property="og:site_name" content="rcvis">
+<meta property="og:url" content="https://www.rcvis.com/v/mayor-13">
+
+
+<meta property="og:type" content="website">
+  
+  <meta property="og:image" content="https://www.rcvis.com/static/visualizer/favicons/android-chrome-256x256.png">
+  
+
+
+
+<meta name="robots" content="noindex">
+
+
+</head>
+
+<body id="embedded-body"><a href="https://www.rcvis.com/cdn-cgi/content?id=0vtfX42YnfelTPdNPRQNZy77hp0txj5imKv0L6efxF4-1793254949.7975342-1.2.1.1-zCZzJnoAhjNe28KKSO2e.UAcy0AV.q6aJMTXZsQVNOedhj.eNydYfxvrdcg3LRpy" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+  <div id="embedded-wrapper">
+    <main id="embedded-content">
+      <h1 class="sr-only">MAYOR</h1>
+      
+          
+
+
+<link rel="stylesheet" href="/static/CACHE/css/output.a145ed893737.css" type="text/css">
+
+<div class="container-fluid">
+  <div class="row d-flex flex-column justify-content-left align-items-start">
+    <div class="round-description-container">
+      <div id="round-description-wrapper" class="round-description-wrapper" role="status" aria-live="polite" aria-atomic="true">
+        <div class="round-description-text">
+          <span id="bargraph-interactive-round-description" style="opacity: 0.99432;">After 1 rounds of this Ranked Choice Voting election, Janeese Lewis George was elected.</span>
+          <span id="bargraph-interactive-why-button" style="opacity: 0.99432;">
+            <button type="button" class="btn btn-link faq-link" onclick="showFaqs()">Read a detailed explanation</button>.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-wrapper col-md-12 col-xl-10" id="bargraph-interactive-body" style="min-width: 300px; max-width: 750px;">
+      <div id="bargraph-slider-container" class="ml-auto mr-auto">
+      <div class="round-player-container" role="group" aria-label="Round controls"><div class="round-player-wrapper"><button class="btn round-player-nav round-player-prev round-player-hidden" aria-label="Previous round"><span class="round-player-nav-label" aria-hidden="true">Back</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button><div class="round-player-select-wrapper"><select class="round-player-select" aria-label="Round"><option value="0">Round 1 of 1</option></select></div><button class="btn round-player-nav round-player-next round-player-hidden" aria-label="Next round"><span class="round-player-nav-label" aria-hidden="true">Next</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button></div><button class="btn round-player-play-btn">Play Animation</button></div></div>
+    <svg viewBox="0 0 750 350" role="img" aria-labelledby="bargraph-interactive-body-title bargraph-interactive-body-desc"><title id="bargraph-interactive-body-title">Bar chart of each candidate's votes in the selected round</title><desc id="bargraph-interactive-body-desc">Showing round 1 of 1. In the first round, Janeese Lewis George was elected. The same numbers are available in the table views.</desc><g transform="translate(5,10)"><defs><pattern id="diagonalHatchbargraph-interactive-body" patternUnits="userSpaceOnUse" width="4" height="4"><path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2" style="stroke: white; stroke-width: 1;"></path></pattern></defs><g><g><path class="eachBar" d="M5,14.411985018726568a4,-4 0 0 1 4,-4h712a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-712a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 76,318 votes (54.12%)"></path><path class="eachBar" d="M5,55.61048689138575a4,-4 0 0 1 4,-4h458a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-458a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 49,439 votes (35.06%)"></path><path class="eachBar" d="M5,96.80898876404493a4,-4 0 0 1 4,-4h35a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-35a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 4,550 votes (3.23%)"></path><path class="eachBar" d="M5,138.00749063670412a4,-4 0 0 1 4,-4h34a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-34a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 4,412 votes (3.13%)"></path><path class="eachBar" d="M5,179.20599250936328a4,-4 0 0 1 4,-4h26a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-26a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 3,601 votes (2.55%)"></path><path class="eachBar" d="M5,220.40449438202245a4,-4 0 0 1 4,-4h6a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-6a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 1,505 votes (1.07%)"></path><path class="eachBar" d="M5,261.10299625468167a3.5,-3.5 0 0 1 3.5,-3.5h0a3.5,3.5 0 0 1 3.5,3.5v29.70786516853933a3.5,3.5 0 0 1 -3.5,3.5h0a-3.5,-3.5 0 0 1 -3.5,-3.5z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 720 votes (0.51%)"></path><path class="eachBar" d="M5,300.80149812734084a2,-2 0 0 1 2,-2h0a2,2 0 0 1 2,2v32.70786516853933a2,2 0 0 1 -2,2h0a-2,-2 0 0 1 -2,-2z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 463 votes (0.33%)"></path><text class="dataLabel" y="30.805243445692863" x="715" text-anchor="end" fill="currentColor" dy=".32em">✔️ 76,318  (54.12%)</text><text class="dataLabel" y="72.00374531835205" x="715" text-anchor="end" fill="currentColor" dy=".32em">49,439  (35.06%)</text><text class="dataLabel" y="113.20224719101122" x="715" text-anchor="end" fill="currentColor" dy=".32em">4,550  (3.23%)</text><text class="dataLabel" y="154.40074906367042" x="715" text-anchor="end" fill="currentColor" dy=".32em">4,412  (3.13%)</text><text class="dataLabel" y="195.59925093632958" x="715" text-anchor="end" fill="currentColor" dy=".32em">3,601  (2.55%)</text><text class="dataLabel" y="236.79775280898875" x="715" text-anchor="end" fill="currentColor" dy=".32em">1,505  (1.07%)</text><text class="dataLabel" y="277.99625468164794" x="715" text-anchor="end" fill="currentColor" dy=".32em">720  (0.51%)</text><text class="dataLabel" y="319.1947565543071" x="715" text-anchor="end" fill="currentColor" dy=".32em">463  (0.33%)</text></g></g><g id="candidateNamesWrapper" transform="translate(20,0)" fill="none" font-size="10" font-family="sans-serif" text-anchor="end"><g class="tick" opacity="1" transform="translate(0,30.805243445692863)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start" style="font-weight: bold;">Janeese Lewis George</tspan></text></g><g class="tick" opacity="1" transform="translate(0,72.00374531835205)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Kenyan R. McDuffie</tspan></text></g><g class="tick" opacity="1" transform="translate(0,113.20224719101122)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Rini Sampath</tspan></text></g><g class="tick" opacity="1" transform="translate(0,154.40074906367042)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Gary Goodweather</tspan></text></g><g class="tick" opacity="1" transform="translate(0,195.59925093632958)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Vincent Orange ("VO")</tspan></text></g><g class="tick" opacity="1" transform="translate(0,236.79775280898875)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Hope Solomon</tspan></text></g><g class="tick" opacity="1" transform="translate(0,277.99625468164794)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Ernest E. Johnson</tspan></text></g><g class="tick" opacity="1" transform="translate(0,319.1947565543071)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Write-in</tspan></text></g></g></g></svg></div>
+    <div id="faq-text" style="display: block;"><h2 class="faq-description-header">Round 1 Explanation</h2> <p class="faq-q">What is happening?</p><p class="faq-a">These are results from a ranked choice election. Voters were asked to rank the candidates from most to least favorite. The ballots are then counted in rounds. In each round, the candidate with the fewest votes is eliminated, and their supporters' votes transfer to the next choice on their ballots. The rounds continue until one candidate wins by earning more than 50% of the votes.</p><p class="faq-q">Why was Janeese Lewis George elected this round?</p><p class="faq-a">Janeese Lewis George received more than 50% of the votes after 1 round(s). Only one candidate can have more than 50% of the votes, so Janeese Lewis George was the candidate most preferred by these voters.</p></div>
+  </div>
+</div>
+
+      
+    </main>
+    <footer id="embedded-footer">
+        Visualizations by
+          <a href="/v/mayor-13" target="_blank">
+            <img src="/static/visualizer/logo-white.png" width="100px" alt="RCVis">
+          </a>
+        <div class="popout">
+          <a href="/v/mayor-13" target="_blank" aria-label="Open the full visualization in a new tab">
+            <img src="/static/visualizer/icon_popout.png" width="15px" alt="">
+          </a>
+        </div>
+    </footer>
+  </div>
+
+  <!-- Common to just pages that show visualizations  -->
+
+
+
+<!-- Common to all pages, visualizer and otherwise -->
+
+
+
+<script src="/static/CACHE/js/output.38dc2b412770.js"></script>
+<link rel="stylesheet" href="/static/CACHE/css/output.c09a3668b327.css" type="text/css">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.8.0/d3.min.js" integrity="sha256-xsGohpJpfIm6CIdoMHLMIRTore3sDR5poFt7CeUxjGI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha256-jXCJJT3KKcnNjZ3rfsabCj1EX4j2omR4xxm+H5CtywE=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="/static/CACHE/css/output.ad730bac3bc7.css" type="text/css">
+
+<!-- Shared resources for multiple visualizations-->
+<script src="/static/CACHE/js/output.9ab726779849.js"></script>
+
+  
+      
+
+
+<script src="/static/CACHE/js/output.69927fc5039b.js"></script>
+
+<script type="text/javascript">
+const colorThemeGenerator = getColorGenerator(config.colorTheme);
+const colorsPerRound = Array.from(colorThemeGenerator(1));
+</script>
+
+<link rel="stylesheet" href="/static/CACHE/css/output.a145ed893737.css" type="text/css">
+
+      
+
+<script type="text/javascript">
+
+const idOfWhyButton = "#bargraph-interactive-why-button";
+// Raising the scope for other methods to access
+let barchartRoundPlayer = null;
+let scrollbarLocked = false;
+
+function showTextOnRoundDescriber(description, keepFAQButtonHidden) {
+  // While playing, don't update the description text for the round
+  if (barchartRoundPlayer.playing()) {
+    return;
+  }
+
+  const idOfLegendOrRoundDescriber = "#bargraph-interactive-round-description";
+
+  // Don't re-render and transition if text already matches
+  if (d3.select(idOfLegendOrRoundDescriber).text() === description) {
+    return;
+  }
+
+  d3.select(idOfLegendOrRoundDescriber)
+  .transition()
+    .duration(100)
+    .delay(0)
+    .style("opacity", "0");
+  d3.select(idOfWhyButton)
+  .transition()
+    .duration(100)
+    .delay(0)
+    .style("opacity", "0");
+
+  d3.select(idOfLegendOrRoundDescriber)
+  .transition()
+    .delay(350)
+    .style("opacity", "1")
+    .text(description);
+
+  if (!keepFAQButtonHidden) {
+    d3.select(idOfWhyButton)
+    .transition()
+      .delay(350)
+      .style("opacity", "1");
+  }
+};
+
+
+function descriptionOfCurrRound(round) {
+  const roundData = humanFriendlyEventsPerRound[round];
+
+  let roundText = roundData.map(function(event) {
+    return event.description;
+  }).reduce(function(totalString, currText) {
+    return totalString + "\n" + currText;
+  }, "");
+
+  const roundIdentifier = `Round ${round + 1}. `;
+  return roundIdentifier + roundText;
+}
+
+
+function lockScrollbarIfNeeded() {
+  // Don't allow the animation to shift horizontally when a scrollbar is added
+  // and removed -- if a scrollbar is ever visible, keep it there.
+  if (scrollbarLocked) return;
+
+  const hasVerticalScrollbar = document.documentElement.scrollHeight > window.innerHeight;
+
+  if (hasVerticalScrollbar) {
+    document.body.style.overflowY = 'scroll';
+    scrollbarLocked = true;
+  }
+}
+
+function updateFaqText(round) {
+  const faqsPerRound = [[{"question": "What is happening?", "answer": "These are results from a ranked choice election. Voters were asked to rank the candidates from most to least favorite. The ballots are then counted in rounds. In each round, the candidate with the fewest votes is eliminated, and their supporters' votes transfer to the next choice on their ballots. The rounds continue until one candidate wins by earning more than 50% of the votes."}, {"question": "Why was Janeese Lewis George elected this round?", "answer": "Janeese Lewis George received more than 50% of the votes after 1 round(s). Only one candidate can have more than 50% of the votes, so Janeese Lewis George was the candidate most preferred by these voters."}]];
+  const idOfFaqTextDiv = "faq-text";
+  const text = faqsPerRound[round]
+              .map(d => "<p class='faq-q'>" + d['question'] + "</p>" +
+                        "<p class='faq-a'>" + d['answer'] + "</p>")
+              .reduce((accum, val) => accum + val);
+  document.getElementById(idOfFaqTextDiv).innerHTML = `<h2 class="faq-description-header">Round ${round + 1} Explanation</h2> ${text}`;
+  setTimeout(lockScrollbarIfNeeded, 0); // Needs to run after the DOM is updated
+}
+
+function showFaqs() {
+  makeFaqSectionVisible();
+  document.getElementById("faq-text").scrollIntoView({ behavior: "smooth" })
+}
+
+function makeFaqSectionVisible() {
+  document.getElementById("faq-text").style.display = "block";
+}
+
+function makeInteractiveGraph() {
+  var candidateVoteCounts = [{'candidate': 'Janeese Lewis George', 'Round 1 (Janeese Lewis George won)': 76318.0}, {'candidate': 'Kenyan R. McDuffie', 'Round 1 (Janeese Lewis George won)': 49439.0}, {'candidate': 'Rini Sampath', 'Round 1 (Janeese Lewis George won)': 4550.0}, {'candidate': 'Gary Goodweather', 'Round 1 (Janeese Lewis George won)': 4412.0}, {'candidate': 'Vincent Orange ("VO")', 'Round 1 (Janeese Lewis George won)': 3601.0}, {'candidate': 'Hope Solomon', 'Round 1 (Janeese Lewis George won)': 1505.0}, {'candidate': 'Ernest E. Johnson', 'Round 1 (Janeese Lewis George won)': 720.0}, {'candidate': 'Write-in', 'Round 1 (Janeese Lewis George won)': 463.0}];
+var humanFriendlyRoundNames = ["Round 1 (Janeese Lewis George won)"];
+var threshold = null;
+var longestLabelApxWidth = 10.308;
+var totalVotesPerRound = [141008.0];
+var numRoundsTilWin = {"Janeese Lewis George": 0};
+
+  // For slider TODO sync with tabular-by-round-interactive.html
+  const numRounds = 1;
+
+  const numCandidates = candidateVoteCounts.length;
+  fixMaxWidthFor('bargraph-interactive-body', numCandidates);
+  // window.onresize = fixMaxWidth; TODO fix moving across monitors for interactive and static
+
+  const isInteractive = true;
+  transitionEachBarForRound = makeBarGraph({
+    idOfContainer: "bargraph-interactive-body",
+    idOfLegend: null,
+    candidateVoteCounts,
+    humanFriendlyRoundNames,
+    totalVotesPerRound,
+    numRoundsTilWin,
+    colors: colorsPerRound,
+    longestLabelApxWidth,
+    isInteractive,
+    threshold,
+    eliminationBarColor: config.eliminationBarColor,
+    isVertical: false,
+    textForWinner: "elected",
+    doDimPrevRoundColors: config.doDimPrevRoundColors,
+    candidateSidecarData: candidateSidecarData,
+    roundDescriptions: narration.rounds,
+    chartSummary: narration.summary
+  });
+
+  function sliderValueChangedCallback(round) {
+    transitionEachBarForRound(round);
+    showTextOnRoundDescriber(descriptionOfCurrRound(round), false);
+    updateFaqText(round);
+  }
+
+  barchartRoundPlayer = RoundPlayer({
+    container: document.getElementById("bargraph-slider-container"),
+    totalRounds: numRounds,
+    onChange: sliderValueChangedCallback,
+    onPlay: function() {
+      showTextOnRoundDescriber(humanFriendlySummary, false);
+    },
+    narration: narration,
+    // The round description above the chart is already a live region
+    announceRounds: false
+  });
+
+  // After creating the slider, make the default text the summary
+  // round summary, with the FAQ button showing.
+  showTextOnRoundDescriber(humanFriendlySummary, false);
+
+  // On load, show the FAQs if not in an iframe
+  if (window.self === window.top) {
+    makeFaqSectionVisible();
+  }
+
+  // Populate the FAQ with initial description for the last round
+  updateFaqText(numRounds - 1);
+}
+
+function showFaqButton() {
+  d3.select(idOfWhyButton)
+  .transition()
+    .delay(300)
+    .duration(300)
+    .style("opacity", "100%");
+}
+
+function showFaqButtonNow() {
+  // Just used for integration testing
+  d3.select(idOfWhyButton)
+    .style("opacity", "100%");
+}
+
+makeInteractiveGraph();
+
+</script>
+
+  
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;1c3db79928ae4724942a8b8282c922e9&quot;,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+</body></html>

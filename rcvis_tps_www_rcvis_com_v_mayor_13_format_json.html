@@ -1,0 +1,1591 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5NJQESB1W&amp;cx=c&amp;gtm=4e6ar1"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-151309356-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-151309356-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Armin Samii">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/static/visualizer/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/visualizer/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/visualizer/favicons/favicon-16x16.png">
+<link rel="manifest" href="/static/visualizer/favicons/site.webmanifest">
+<link rel="mask-icon" href="/static/visualizer/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/static/visualizer/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/static/visualizer/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="/static/CACHE/css/output.0a14119fb5f4.css" type="text/css">
+
+
+
+  
+
+
+
+<!-- This needs to be the first bit of js loaded to get the correct configs throughout -->
+<script>
+  var getUrlParameter = function getUrlParameter(sParam)
+  {
+      // Courtesy of https://stackoverflow.com/a/21903119/1057105
+      var sPageURL = window.location.search.substring(1),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
+  
+      for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+  
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+          }
+      }
+  };
+
+  var config = {};
+
+  // 1. Load from django (happens once on baking)
+  config.onlyShowWinnersTabular =  true ;
+  config.hideSankey =  false ;
+  config.hidePie =  false ;
+  config.showRoundNumbersOnSankey =  true ;
+  config.hideTabular =  false ;
+  config.doDimPrevRoundColors =  true ;
+  config.forceFirstRoundDeterminesPercentages =  false ;
+  config.colorTheme = 1;
+  config.eliminationBarColor = 0;
+
+  // 2. Load any overrides (not supported in Internet Explorer)
+  let searchParams = new URLSearchParams(window.location.search);
+  for (var key in config) {
+    if (searchParams.has(key))
+    {
+      // We use hidden fields to make sure all checkboxes get sent over GET when updating settings.
+      // There seems to be some protocol that claims the last one is the valid one...so grab the last.
+      allValues = searchParams.getAll(key)
+      lastValue = allValues[allValues.length - 1]
+      if (key != 'colorTheme' && key != 'eliminationBarColor') {
+        config[key] = lastValue == "on";
+      } else {
+        config[key] = lastValue;
+      }
+    }
+  }
+
+  // Data from python
+  var humanFriendlyEventsPerRound = [[{"summary": "Initial votes", "description": "The results of everybody's first-choice candidates. ", "verb": "initial"}, {"summary": "Janeese Lewis George  won", "description": "Janeese Lewis George was elected. ", "verb": " won"}]];
+  var humanFriendlySummary = "After 1 rounds of this Ranked Choice Voting election, Janeese Lewis George was elected.";
+  // Plain-English narration of the whole election, for screenreaders: {summary, rounds: [...]}
+  var narration = {"summary": "In this Ranked Choice Voting election, there was 1 rounds, after which Janeese Lewis George was elected. Here's what happened in each round.", "rounds": ["In the first round, Janeese Lewis George was elected."]};
+  var candidateSidecarData = null;
+</script>
+
+<style>
+  /* Want these to be invisible immediately, not wait for the nonblocking css to get to it */
+  #visualize-header-deferred-visibility {
+      opacity: 0.1;
+  }
+</style>
+
+<title>MAYOR: Ranked Choice Voting Visualization</title>
+<meta name="description" content="MAYOR on RCVis: Ranked-Choice Voting visualizations: sankey, interactive bar charts, and tabular formats for displaying the results of RCV Elections">
+
+<meta property="og:title" content="MAYOR">
+<meta property="og:description" content="Ranked Choice Voting Election Results for MAYOR">
+<meta property="og:site_name" content="rcvis">
+<meta property="og:url" content="https://www.rcvis.com/v/mayor-13">
+
+
+<meta property="og:type" content="website">
+  
+  <meta property="og:image" content="https://www.rcvis.com/static/visualizer/favicons/android-chrome-256x256.png">
+  
+
+
+
+<meta name="robots" content="noindex">
+
+
+  <link id="oembed" rel="alternate" type="application/json+oembed" href="https://www.rcvis.com/oembed?url=https%3A%2F%2Fwww.rcvis.com%2Fvo%2Fmayor-13%2Fbarchart-interactive" title="MAYOR">
+
+  <link rel="stylesheet" href="/static/CACHE/css/output.406c7018ed1e.css" type="text/css">
+
+	<script type="application/ld+json">
+		{
+      "@context" : "http://schema.org",
+      "@type" : "Dataset",
+      "name" : "MAYOR",
+      "description" : "RCVis is open-source Ranked-Choice Voting Visualization software",
+      "temporalCoverage" : "",
+      "license" : "open-source",
+      "creator" : {
+        "@type": "Organization",
+        "name": "RCVis"
+      }
+		}
+	</script>
+
+
+</head>
+
+<body id="page-top" class="vis-page" style="overflow-y: scroll;"><a href="https://www.rcvis.com/cdn-cgi/content?id=epjAherXrPHHNEwqafidEl3KXs8fEs6nDHJBkjsDVNg-1793254950.590672-1.2.1.1-s4hl2jQMmeFXOr9aO6DuW7sFu8_BRkZFix1BBQmTvouABDBqnqHJt65yjIvrWJqO" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+  <a class="skip-link" href="#maincontent">Skip to main content</a>
+  <!-- Site header / navigation -->
+  <header class="site-header" id="mainNav">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="navbar-brand" href="/index.html"><img src="/static/visualizer/logo-dark.png" width="120" height="28" alt="RCVis logo" id="logo"></a>
+
+      <ul class="navbar-nav ml-auto tabswitchnavbar" role="tablist" aria-label="Visualizations">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link btn selected-nav" id="barchart-tab" data-toggle="changeviz" href="#barchart" role="tab" aria-controls="id-barchart" aria-selected="true">
+              <img class="tabicon" src="/static/visualizer/tabicons/barchart.png" width="18" height="18" alt="Barchart icon">
+              <span class="tabtext">Bar</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation" name="li_hideable_tabular">
+            <a class="nav-link btn" id="single-table-summary-tab" data-toggle="changeviz" href="#single-table-summary" role="tab" aria-controls="id-single-table-summary" aria-selected="false" tabindex="-1">
+              <img class="tabicon" src="/static/visualizer/tabicons/singletable.png" width="18" height="18" alt="Single Table Summary icon. 'formulae table with row and column cells' by icon 54 from the Noun Project.">
+              <span class="tabtext">Table</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation" name="li_hideable_pie">
+            <a class="nav-link btn" id="pie-tab" data-toggle="changeviz" href="#pie" role="tab" aria-controls="id-pie" aria-selected="false" tabindex="-1">
+              <img class="tabicon" src="/static/visualizer/tabicons/pie.png" width="18" height="18" alt="Pie icon">
+              <span class="tabtext">Pie</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation" name="li_hideable_sankey">
+            <a class="nav-link btn" id="sankey-tab" data-toggle="changeviz" href="#sankey" role="tab" aria-controls="id-sankey" aria-selected="false" tabindex="-1">
+              <img class="tabicon" src="/static/visualizer/tabicons/sankey.png" width="18" height="18" alt="Sankey icon. 'sankey graph' by Product Pencil from the Noun Project.">
+              <span class="tabtext">Sankey</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation" name="li_hideable_tabular">
+            <a class="nav-link btn" id="round-by-round-tab" data-toggle="changeviz" href="#round-by-round" role="tab" aria-controls="id-round-by-round" aria-selected="false" tabindex="-1">
+              <img class="tabicon" src="/static/visualizer/tabicons/roundbyround.png" width="18" height="18" alt="Round-By-Round icon. 'move cells to another location for editing' by icon 54 from the Noun Project.">
+              <span class="tabtext">By round</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation" name="li_hideable_tabular">
+            <a class="nav-link btn" id="candidate-summary-tab" data-toggle="changeviz" href="#candidate-summary" role="tab" aria-controls="id-candidate-summary" aria-selected="false" tabindex="-1">
+              <img class="tabicon" src="/static/visualizer/tabicons/candidatesummary.png" width="18" height="18" alt="Candidate summary icon. 'data set' by H Alberto Gongora from the Noun Project.">
+              <span class="tabtext">By candidate</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link btn" id="settings-tab" data-toggle="changeviz" href="#settings" role="tab" aria-controls="id-settings" aria-selected="false" tabindex="-1">
+              <img class="tabicon" src="/static/visualizer/tabicons/settings.png" width="18" height="18" alt="Settings icon">
+              <span class="tabtext">Settings</span>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link btn" id="share-tab" data-toggle="changeviz" href="#share" role="tab" aria-controls="id-share" aria-selected="false" tabindex="-1">
+              <img class="tabicon" src="/static/visualizer/tabicons/share.png" width="18" height="18" alt="Share icon">
+              <span class="tabtext">Share</span>
+            </a>
+        </li>
+      </ul>
+
+    </nav>
+  </header>
+
+<main id="maincontent" tabindex="-1">
+
+<div id="visualize-header-deferred-visibility" style="opacity: 1;"> <!-- guess at the height to reduce Cumulative Layout Shift. removed in tabs-nonblocking.js once loaded. -->
+  <header class="masthead text-left pb-1 pt-1">
+  <div class="container px-0">
+      <h1 class="masthead-subheading font-weight-light electiontitleheading mt-1 mb-0 ml-3">MAYOR</h1>
+      <p class="font-weight-light mb-0 ml-3"></p>
+      <p class="font-weight-light mb-1 ml-3 masthead-details">
+        
+          The
+          
+          results of a ranked-choice voting election.
+        
+        | <a href="/raw/mayor-13">Download Raw Summary Data</a>
+        
+      </p>
+  </div>
+  </header>
+
+  <div class="px-0">
+    <div class="container vis-wrapper" id="id-barchart" data-anchor="barchart" role="tabpanel" aria-labelledby="barchart-tab" style="display: block;">
+      <div class="vis-fixed">
+          <div class="shadow-wrapper row d-flex justify-content-left">
+    <div id="bargraph-fixed-container" class="col-s-2 col-md-9 col-s-2" style="min-width: 300px; max-width: 750px;">
+        <div id="bargraph-fixed-body">
+        <svg viewBox="0 0 750 350" role="img" aria-labelledby="bargraph-fixed-body-title bargraph-fixed-body-desc"><title id="bargraph-fixed-body-title">Bar chart of each candidate's votes in every round</title><desc id="bargraph-fixed-body-desc">In this Ranked Choice Voting election, there was 1 rounds, after which Janeese Lewis George was elected. Here's what happened in each round. The same numbers are available in the table views.</desc><g transform="translate(5,10)"><defs><pattern id="diagonalHatchbargraph-fixed-body" patternUnits="userSpaceOnUse" width="4" height="4"><path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2" style="stroke: white; stroke-width: 1;"></path></pattern></defs><g><g><path class="eachBar" d="M5,14.411985018726568a4,-4 0 0 1 4,-4h712a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-712a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 76,318 votes (54.12%)"></path><path class="eachBar" d="M5,55.61048689138575a4,-4 0 0 1 4,-4h458a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-458a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 49,439 votes (35.06%)"></path><path class="eachBar" d="M5,96.80898876404493a4,-4 0 0 1 4,-4h35a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-35a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 4,550 votes (3.23%)"></path><path class="eachBar" d="M5,138.00749063670412a4,-4 0 0 1 4,-4h34a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-34a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 4,412 votes (3.13%)"></path><path class="eachBar" d="M5,179.20599250936328a4,-4 0 0 1 4,-4h26a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-26a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 3,601 votes (2.55%)"></path><path class="eachBar" d="M5,220.40449438202245a4,-4 0 0 1 4,-4h6a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-6a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 1,505 votes (1.07%)"></path><path class="eachBar" d="M5,261.10299625468167a3.5,-3.5 0 0 1 3.5,-3.5h0a3.5,3.5 0 0 1 3.5,3.5v29.70786516853933a3.5,3.5 0 0 1 -3.5,3.5h0a-3.5,-3.5 0 0 1 -3.5,-3.5z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 720 votes (0.51%)"></path><path class="eachBar" d="M5,300.80149812734084a2,-2 0 0 1 2,-2h0a2,2 0 0 1 2,2v32.70786516853933a2,2 0 0 1 -2,2h0a-2,-2 0 0 1 -2,-2z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 463 votes (0.33%)"></path><text class="dataLabel" y="30.805243445692863" x="715" text-anchor="end" fill="currentColor" dy=".32em">✔️ 76,318  (54.12%)</text><text class="dataLabel" y="72.00374531835205" x="715" text-anchor="end" fill="currentColor" dy=".32em">49,439  (35.06%)</text><text class="dataLabel" y="113.20224719101122" x="715" text-anchor="end" fill="currentColor" dy=".32em">4,550  (3.23%)</text><text class="dataLabel" y="154.40074906367042" x="715" text-anchor="end" fill="currentColor" dy=".32em">4,412  (3.13%)</text><text class="dataLabel" y="195.59925093632958" x="715" text-anchor="end" fill="currentColor" dy=".32em">3,601  (2.55%)</text><text class="dataLabel" y="236.79775280898875" x="715" text-anchor="end" fill="currentColor" dy=".32em">1,505  (1.07%)</text><text class="dataLabel" y="277.99625468164794" x="715" text-anchor="end" fill="currentColor" dy=".32em">720  (0.51%)</text><text class="dataLabel" y="319.1947565543071" x="715" text-anchor="end" fill="currentColor" dy=".32em">463  (0.33%)</text></g></g><g id="candidateNamesWrapper" transform="translate(20,0)" fill="none" font-size="10" font-family="sans-serif" text-anchor="end"><g class="tick" opacity="1" transform="translate(0,30.805243445692863)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start" style="font-weight: bold;">Janeese Lewis George</tspan></text></g><g class="tick" opacity="1" transform="translate(0,72.00374531835205)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Kenyan R. McDuffie</tspan></text></g><g class="tick" opacity="1" transform="translate(0,113.20224719101122)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Rini Sampath</tspan></text></g><g class="tick" opacity="1" transform="translate(0,154.40074906367042)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Gary Goodweather</tspan></text></g><g class="tick" opacity="1" transform="translate(0,195.59925093632958)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Vincent Orange ("VO")</tspan></text></g><g class="tick" opacity="1" transform="translate(0,236.79775280898875)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Hope Solomon</tspan></text></g><g class="tick" opacity="1" transform="translate(0,277.99625468164794)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Ernest E. Johnson</tspan></text></g><g class="tick" opacity="1" transform="translate(0,319.1947565543071)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Write-in</tspan></text></g></g></g></svg></div>
+    </div>
+    <div class="col" id="bargraph-fixed-legend">
+        Legend
+        <hr>
+    <g><li style="list-style-type: none;"><div style="padding: 10px; margin-right: 2px; float: left; background-color: rgb(199, 207, 255);"></div><div style="margin-top: 4px; font-size: 0.8em;">Round 1 (Janeese Lewis George won)</div></li></g></div>
+</div>
+
+      </div>
+      <div class="vis-interactive">
+          
+
+
+<link rel="stylesheet" href="/static/CACHE/css/output.a145ed893737.css" type="text/css">
+
+<div class="container-fluid">
+  <div class="row d-flex flex-column justify-content-left align-items-start">
+    <div class="round-description-container">
+      <div id="round-description-wrapper" class="round-description-wrapper" role="status" aria-live="polite" aria-atomic="true">
+        <div class="round-description-text">
+          <span id="bargraph-interactive-round-description" style="opacity: 0.995396;">After 1 rounds of this Ranked Choice Voting election, Janeese Lewis George was elected.</span>
+          <span id="bargraph-interactive-why-button" style="opacity: 0.995396;">
+            <button type="button" class="btn btn-link faq-link" onclick="showFaqs()">Read a detailed explanation</button>.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-wrapper col-md-12 col-xl-10" id="bargraph-interactive-body" style="min-width: 300px; max-width: 750px;">
+      <div id="bargraph-slider-container" class="ml-auto mr-auto">
+      <div class="round-player-container" role="group" aria-label="Round controls"><div class="round-player-wrapper"><button class="btn round-player-nav round-player-prev round-player-hidden" aria-label="Previous round"><span class="round-player-nav-label" aria-hidden="true">Back</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button><div class="round-player-select-wrapper"><select class="round-player-select" aria-label="Round"><option value="0">Round 1 of 1</option></select></div><button class="btn round-player-nav round-player-next round-player-hidden" aria-label="Next round"><span class="round-player-nav-label" aria-hidden="true">Next</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button></div><button class="btn round-player-play-btn">Play Animation</button></div></div>
+    <svg viewBox="0 0 750 350" role="img" aria-labelledby="bargraph-interactive-body-title bargraph-interactive-body-desc"><title id="bargraph-interactive-body-title">Bar chart of each candidate's votes in the selected round</title><desc id="bargraph-interactive-body-desc">Showing round 1 of 1. In the first round, Janeese Lewis George was elected. The same numbers are available in the table views.</desc><g transform="translate(5,10)"><defs><pattern id="diagonalHatchbargraph-interactive-body" patternUnits="userSpaceOnUse" width="4" height="4"><path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2" style="stroke: white; stroke-width: 1;"></path></pattern></defs><g><g><path class="eachBar" d="M5,14.411985018726568a4,-4 0 0 1 4,-4h712a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-712a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 76,318 votes (54.12%)"></path><path class="eachBar" d="M5,55.61048689138575a4,-4 0 0 1 4,-4h458a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-458a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 49,439 votes (35.06%)"></path><path class="eachBar" d="M5,96.80898876404493a4,-4 0 0 1 4,-4h35a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-35a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 4,550 votes (3.23%)"></path><path class="eachBar" d="M5,138.00749063670412a4,-4 0 0 1 4,-4h34a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-34a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 4,412 votes (3.13%)"></path><path class="eachBar" d="M5,179.20599250936328a4,-4 0 0 1 4,-4h26a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-26a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 3,601 votes (2.55%)"></path><path class="eachBar" d="M5,220.40449438202245a4,-4 0 0 1 4,-4h6a4,4 0 0 1 4,4v28.70786516853933a4,4 0 0 1 -4,4h-6a-4,-4 0 0 1 -4,-4z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 1,505 votes (1.07%)"></path><path class="eachBar" d="M5,261.10299625468167a3.5,-3.5 0 0 1 3.5,-3.5h0a3.5,3.5 0 0 1 3.5,3.5v29.70786516853933a3.5,3.5 0 0 1 -3.5,3.5h0a-3.5,-3.5 0 0 1 -3.5,-3.5z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 720 votes (0.51%)"></path><path class="eachBar" d="M5,300.80149812734084a2,-2 0 0 1 2,-2h0a2,2 0 0 1 2,2v32.70786516853933a2,2 0 0 1 -2,2h0a-2,-2 0 0 1 -2,-2z" fill="#c7cfff" data-toggle="tooltip" title="" data-original-title="On Round 1, had 463 votes (0.33%)"></path><text class="dataLabel" y="30.805243445692863" x="715" text-anchor="end" fill="currentColor" dy=".32em">✔️ 76,318  (54.12%)</text><text class="dataLabel" y="72.00374531835205" x="715" text-anchor="end" fill="currentColor" dy=".32em">49,439  (35.06%)</text><text class="dataLabel" y="113.20224719101122" x="715" text-anchor="end" fill="currentColor" dy=".32em">4,550  (3.23%)</text><text class="dataLabel" y="154.40074906367042" x="715" text-anchor="end" fill="currentColor" dy=".32em">4,412  (3.13%)</text><text class="dataLabel" y="195.59925093632958" x="715" text-anchor="end" fill="currentColor" dy=".32em">3,601  (2.55%)</text><text class="dataLabel" y="236.79775280898875" x="715" text-anchor="end" fill="currentColor" dy=".32em">1,505  (1.07%)</text><text class="dataLabel" y="277.99625468164794" x="715" text-anchor="end" fill="currentColor" dy=".32em">720  (0.51%)</text><text class="dataLabel" y="319.1947565543071" x="715" text-anchor="end" fill="currentColor" dy=".32em">463  (0.33%)</text></g></g><g id="candidateNamesWrapper" transform="translate(20,0)" fill="none" font-size="10" font-family="sans-serif" text-anchor="end"><g class="tick" opacity="1" transform="translate(0,30.805243445692863)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start" style="font-weight: bold;">Janeese Lewis George</tspan></text></g><g class="tick" opacity="1" transform="translate(0,72.00374531835205)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Kenyan R. McDuffie</tspan></text></g><g class="tick" opacity="1" transform="translate(0,113.20224719101122)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Rini Sampath</tspan></text></g><g class="tick" opacity="1" transform="translate(0,154.40074906367042)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Gary Goodweather</tspan></text></g><g class="tick" opacity="1" transform="translate(0,195.59925093632958)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Vincent Orange ("VO")</tspan></text></g><g class="tick" opacity="1" transform="translate(0,236.79775280898875)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Hope Solomon</tspan></text></g><g class="tick" opacity="1" transform="translate(0,277.99625468164794)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Ernest E. Johnson</tspan></text></g><g class="tick" opacity="1" transform="translate(0,319.1947565543071)"><line stroke="currentColor" x2="0"></line><text fill="currentColor" x="10" dy="0.32em" text-anchor="start"><tspan class="dataLabel" x="10" dy="0.32em" text-anchor="start">Write-in</tspan></text></g></g></g></svg></div>
+    <div id="faq-text" style="display: block;"><h2 class="faq-description-header">Round 1 Explanation</h2> <p class="faq-q">What is happening?</p><p class="faq-a">These are results from a ranked choice election. Voters were asked to rank the candidates from most to least favorite. The ballots are then counted in rounds. In each round, the candidate with the fewest votes is eliminated, and their supporters' votes transfer to the next choice on their ballots. The rounds continue until one candidate wins by earning more than 50% of the votes.</p><p class="faq-q">Why was Janeese Lewis George elected this round?</p><p class="faq-a">Janeese Lewis George received more than 50% of the votes after 1 round(s). Only one candidate can have more than 50% of the votes, so Janeese Lewis George was the candidate most preferred by these voters.</p></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="vis-wrapper" id="id-sankey" data-anchor="sankey" role="tabpanel" aria-labelledby="sankey-tab">
+        <div id="sankey-body" class="shadow-wrapper">
+    <div id="topbar"></div>
+    <div id="content"></div>
+<text style="margin-left: 50px;">Sankey diagrams show a flow from one round to the next. This single-round election cannot be displayed as a Sankey diagram.</text></div>
+
+    </div>
+
+    <div class="vis-wrapper" id="id-round-by-round" data-anchor="round-by-round" role="tabpanel" aria-labelledby="round-by-round-tab">
+      <div class="vis-fixed">
+          
+
+<div id="tabular-body">
+</div>
+
+<div class="responsive-table-wrapper">
+<div id="tabularByRoundInteractiveContainer" class="responsive-table">
+<table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Candidates eliminated and elected in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col">Eliminated</th>
+            <th scope="col">Winners</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td></td>
+            <td>Janeese Lewis George</td>
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+</div>
+
+      </div>
+      <div class="vis-interactive">
+          
+
+  <div id="tabular-by-round-slider-container" class="ml-auto mr-auto">
+  <div class="round-player-container" role="group" aria-label="Round controls"><div class="round-player-wrapper"><button class="btn round-player-nav round-player-prev round-player-hidden" aria-label="Previous round"><span class="round-player-nav-label" aria-hidden="true">Back</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button><div class="round-player-select-wrapper"><select class="round-player-select" aria-label="Round"><option value="0">Round 1 of 1</option></select></div><button class="btn round-player-nav round-player-next round-player-hidden" aria-label="Next round"><span class="round-player-nav-label" aria-hidden="true">Next</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button></div><button class="btn round-player-play-btn">Play Animation</button><div class="round-player-live sr-only" role="status" aria-live="polite" aria-atomic="true"></div></div></div>
+
+  <div id="tabularByRoundInteractiveContainer">
+    
+      <div id="tabular_round_container_0" style="display: block;">
+        <h2 class="mt-2 text-center round-heading">Round 1</h2>
+        <table class="shadow-wrapper table fixed-width-table">
+          <caption class="sr-only">Round 1: what changed for each candidate, and their total votes</caption>
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Candidate</th>
+              <th style="max-width: 200px" scope="col">What changed</th>
+              <th scope="col">Current total votes</th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            
+              
+              <tr style="background-color: #BFFFCC">
+              
+                  <th scope="row">Janeese Lewis George</th>
+                  <td>76,318 votes in the first round</td>
+                  <td><strong>54.12%</strong><br>
+                              76,318 votes</td>
+              </tr>
+            
+              
+              <tr style="background-color: #fff">
+              
+                  <th scope="row">Kenyan R. McDuffie</th>
+                  <td>49,439 votes in the first round</td>
+                  <td><strong>35.06%</strong><br>
+                              49,439 votes</td>
+              </tr>
+            
+              
+              <tr style="background-color: #fff">
+              
+                  <th scope="row">Rini Sampath</th>
+                  <td>4,550 votes in the first round</td>
+                  <td><strong>3.23%</strong><br>
+                              4,550 votes</td>
+              </tr>
+            
+              
+              <tr style="background-color: #fff">
+              
+                  <th scope="row">Gary Goodweather</th>
+                  <td>4,412 votes in the first round</td>
+                  <td><strong>3.13%</strong><br>
+                              4,412 votes</td>
+              </tr>
+            
+              
+              <tr style="background-color: #fff">
+              
+                  <th scope="row">Vincent Orange ("VO")</th>
+                  <td>3,601 votes in the first round</td>
+                  <td><strong>2.55%</strong><br>
+                              3,601 votes</td>
+              </tr>
+            
+              
+              <tr style="background-color: #fff">
+              
+                  <th scope="row">Hope Solomon</th>
+                  <td>1,505 votes in the first round</td>
+                  <td><strong>1.07%</strong><br>
+                              1,505 votes</td>
+              </tr>
+            
+              
+              <tr style="background-color: #fff">
+              
+                  <th scope="row">Ernest E. Johnson</th>
+                  <td>720 votes in the first round</td>
+                  <td><strong>0.51%</strong><br>
+                              720 votes</td>
+              </tr>
+            
+              
+              <tr style="background-color: #fff">
+              
+                  <th scope="row">Write-in</th>
+                  <td>463 votes in the first round</td>
+                  <td><strong>0.33%</strong><br>
+                              463 votes</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+  </div>
+
+      </div>
+    </div>
+
+    <div class="vis-wrapper" id="id-pie" data-anchor="pie" role="tabpanel" aria-labelledby="pie-tab">
+        
+<!-- Embed JSON Data -->
+<script id="rawDataId" type="application/json">{"config": {"contest": "MAYOR", "date": "", "generatedBy": "RCTab 2.0.1", "jurisdiction": "", "office": ""}, "jsonFormatVersion": "1", "results": [{"inactiveBallots": {"exhaustedChoices": "0", "overvotes": "590", "repeatedRankings": "0", "skippedRankings": "206"}, "round": 1, "tally": {"Ernest E. Johnson": 720.0, "Gary Goodweather": 4412.0, "Hope Solomon": 1505.0, "Janeese Lewis George": 76318.0, "Kenyan R. McDuffie": 49439.0, "Rini Sampath": 4550.0, "Vincent Orange (\"VO\")": 3601.0, "Write-in": 463.0}, "tallyResults": [{"elected": "Janeese Lewis George", "transfers": {}}], "threshold": "70505"}], "summary": {"finalThreshold": "70505", "numCandidates": 8, "numWinners": 1, "totalNumBallots": "142408", "undervotes": 604}}</script>
+
+
+<div id="pie-wrapper" class="shadow-wrapper">
+    <div id="pie-slider-container"><div class="round-player-container" role="group" aria-label="Round controls"><div class="round-player-wrapper"><button class="btn round-player-nav round-player-prev round-player-hidden" aria-label="Previous round"><span class="round-player-nav-label" aria-hidden="true">Back</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button><div class="round-player-select-wrapper"><select class="round-player-select" aria-label="Round"><option value="0">Round 1 of 1</option></select></div><button class="btn round-player-nav round-player-next round-player-hidden" aria-label="Next round"><span class="round-player-nav-label" aria-hidden="true">Next</span><svg viewBox="0 0 24 28" aria-hidden="true"><path fill="currentColor" d="M21.981 16.5981C23.981 15.4434 23.981 12.5566 21.981 11.4019L3.22017 0.570383C2.01129 -0.127565 0.500193 0.744867 0.500193 2.14076C0.500193 2.81278 0.871843 3.42969 1.46593 3.7438L15.7356 11.2887C17.8878 12.4266 17.8597 15.5191 15.6872 16.6179L1.59932 23.7428C0.925186 24.0837 0.500193 24.7749 0.500193 25.5304C0.500193 27.0724 2.16952 28.0362 3.50498 27.2652L21.981 16.5981Z"></path></svg></button></div><button class="btn round-player-play-btn">Play Animation</button><div class="round-player-live sr-only" role="status" aria-live="polite" aria-atomic="true"></div></div></div>
+    <p id="pie-description" class="sr-only">
+        Pie chart of each candidate's share of the votes in the selected round.
+        Use the round controls above to change rounds; the round is described as it changes.
+        The same numbers are available in the table views.
+    </p>
+    <div id="pie-body" style="width: 100%; max-width: 800px; aspect-ratio: 1; margin: 0 auto;" aria-describedby="pie-description"><pie-chart></pie-chart></div>
+</div>
+
+    </div>
+
+    <div class="vis-wrapper" id="id-candidate-summary" data-anchor="candidate-summary" role="tabpanel" aria-labelledby="candidate-summary-tab">
+        
+
+
+<div class="candidate-container" data-candidate-name="Janeese Lewis George" data-is-winner="true">
+    <h2 class="text-center round-heading"> Janeese Lewis George </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Janeese Lewis George: what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>76318.0 first-round votes. </td>
+            <td><strong>54.12%</strong><br>
+                        76,318 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<div class="candidate-container" data-candidate-name="Kenyan R. McDuffie" data-is-winner="false" style="display: none;">
+    <h2 class="text-center round-heading"> Kenyan R. McDuffie </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Kenyan R. McDuffie: what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>49439.0 first-round votes. </td>
+            <td><strong>35.06%</strong><br>
+                        49,439 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<div class="candidate-container" data-candidate-name="Rini Sampath" data-is-winner="false" style="display: none;">
+    <h2 class="text-center round-heading"> Rini Sampath </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Rini Sampath: what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>4550.0 first-round votes. </td>
+            <td><strong>3.23%</strong><br>
+                        4,550 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<div class="candidate-container" data-candidate-name="Gary Goodweather" data-is-winner="false" style="display: none;">
+    <h2 class="text-center round-heading"> Gary Goodweather </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Gary Goodweather: what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>4412.0 first-round votes. </td>
+            <td><strong>3.13%</strong><br>
+                        4,412 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<div class="candidate-container" data-candidate-name="Vincent Orange (&quot;VO&quot;)" data-is-winner="false" style="display: none;">
+    <h2 class="text-center round-heading"> Vincent Orange ("VO") </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Vincent Orange ("VO"): what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>3601.0 first-round votes. </td>
+            <td><strong>2.55%</strong><br>
+                        3,601 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<div class="candidate-container" data-candidate-name="Hope Solomon" data-is-winner="false" style="display: none;">
+    <h2 class="text-center round-heading"> Hope Solomon </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Hope Solomon: what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>1505.0 first-round votes. </td>
+            <td><strong>1.07%</strong><br>
+                        1,505 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<div class="candidate-container" data-candidate-name="Ernest E. Johnson" data-is-winner="false" style="display: none;">
+    <h2 class="text-center round-heading"> Ernest E. Johnson </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Ernest E. Johnson: what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>720.0 first-round votes. </td>
+            <td><strong>0.51%</strong><br>
+                        720 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<div class="candidate-container" data-candidate-name="Write-in" data-is-winner="false" style="display: none;">
+    <h2 class="text-center round-heading"> Write-in </h2>
+    <table class="shadow-wrapper table fixed-width-table">
+    <caption class="sr-only">Write-in: what changed and total votes in each round</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Round</th>
+            <th scope="col" style="max-width: 800px">What changed</th>
+            <th scope="col">Current total votes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Round 1</th>
+            <td>463.0 first-round votes. </td>
+            <td><strong>0.33%</strong><br>
+                        463 votes</td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (!config.onlyShowWinnersTabular) {
+        return;
+    }
+
+    const candidateContainers = document.querySelectorAll('.candidate-container');
+    candidateContainers.forEach(function(container) {
+        console.log(container.getAttribute('data-is-winner'));
+        if (container.getAttribute('data-is-winner') !== 'true') {
+            container.style.display = 'none';
+        }
+    });
+});
+</script>
+
+    </div>
+
+    <div class="vis-wrapper" id="id-single-table-summary" data-anchor="single-table-summary" role="tabpanel" aria-labelledby="single-table-summary-tab">
+        
+
+<link rel="stylesheet" type="text/css" href="/static/tabular/style.css">
+
+<div class="shadow-wrapper responsive-table-wrapper" id="single-table-summary-wrapper">
+<div class="responsive-table">
+<table class="table" id="single-table-summary-table">
+    <caption class="sr-only">Each candidate's votes in each round. Cells are shaded green once a candidate is elected and red once they are eliminated.</caption>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col" class="col-auto">Candidate name </th>
+            
+                <th scope="col" class="col-auto">Round 1</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr>
+            <th scope="row">Janeese Lewis George</th>
+            
+                
+                 <td style="background-color: #A0FFB5">
+                    
+                      <span class="primaryLabel">54.12%</span>
+                                              76,318 votes
+                    
+                    
+                      <span class="sr-only">Elected</span>
+                    
+                 </td>
+            
+        </tr>
+        
+        <tr>
+            <th scope="row">Kenyan R. McDuffie</th>
+            
+                
+                 <td style="background-color: rgba(0,0,0,0)">
+                    
+                      <span class="primaryLabel">35.06%</span>
+                                              49,439 votes
+                    
+                    
+                 </td>
+            
+        </tr>
+        
+        <tr>
+            <th scope="row">Rini Sampath</th>
+            
+                
+                 <td style="background-color: rgba(0,0,0,0)">
+                    
+                      <span class="primaryLabel">3.23%</span>
+                                              4,550 votes
+                    
+                    
+                 </td>
+            
+        </tr>
+        
+        <tr>
+            <th scope="row">Gary Goodweather</th>
+            
+                
+                 <td style="background-color: rgba(0,0,0,0)">
+                    
+                      <span class="primaryLabel">3.13%</span>
+                                              4,412 votes
+                    
+                    
+                 </td>
+            
+        </tr>
+        
+        <tr>
+            <th scope="row">Vincent Orange ("VO")</th>
+            
+                
+                 <td style="background-color: rgba(0,0,0,0)">
+                    
+                      <span class="primaryLabel">2.55%</span>
+                                              3,601 votes
+                    
+                    
+                 </td>
+            
+        </tr>
+        
+        <tr>
+            <th scope="row">Hope Solomon</th>
+            
+                
+                 <td style="background-color: rgba(0,0,0,0)">
+                    
+                      <span class="primaryLabel">1.07%</span>
+                                              1,505 votes
+                    
+                    
+                 </td>
+            
+        </tr>
+        
+        <tr>
+            <th scope="row">Ernest E. Johnson</th>
+            
+                
+                 <td style="background-color: rgba(0,0,0,0)">
+                    
+                      <span class="primaryLabel">0.51%</span>
+                                              720 votes
+                    
+                    
+                 </td>
+            
+        </tr>
+        
+        <tr>
+            <th scope="row">Write-in</th>
+            
+                
+                 <td style="background-color: rgba(0,0,0,0)">
+                    
+                      <span class="primaryLabel">0.33%</span>
+                                              463 votes
+                    
+                    
+                 </td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+</div>
+
+    </div>
+
+    <div class="vis-wrapper" id="id-settings" data-anchor="settings" role="tabpanel" aria-labelledby="settings-tab">
+        
+
+
+<link rel="stylesheet" href="/static/CACHE/css/output.60e2d1b64044.css" type="text/css">
+              
+
+  <form action="#barchart" enctype="multipart/form-data" method="get" id="update-settings-form">
+
+
+     <div class="container formArea">
+        
+        
+
+        <button class="collapsible" id="colorOptions">▶ Color theme</button>
+        <div class="optionscontent">
+            <p class="mt-3">
+              <label for="colorTheme">Color theme:</label>
+              <select id="colorTheme" name="colorTheme">
+                <option value="0">Full color spectrum</option>
+                <option value="1" selected="">Desaturated purple to orange spectrum</option>
+                <option value="2">Alternating colors</option>
+              </select>
+            </p>
+        </div>
+
+        <button class="collapsible" id="bargraphOptions">▶ Bargraph visualization options</button>
+        <div class="optionscontent">
+            <p class="mt-3">
+              <label for="eliminationBarColor">How do display elimination bars:</label>
+              <select id="eliminationBarColor" name="eliminationBarColor">
+                <option value="0" selected="">Gray them out</option>
+                <option value="1">Hide them altogether</option>
+                <option value="2">Show color matching the transfer</option>
+              </select>
+            </p>
+
+            <p>
+            <input type="hidden" name="doDimPrevRoundColors"><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="doDimPrevRoundColors" checked=""> Highlight the current round when interactive</label>
+            </p>
+
+            <p>
+            <input type="hidden" name="isPreferentialBlock"><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="isPreferentialBlock"> Is this election a <a href="https://en.wikipedia.org/wiki/Preferential_block_voting" target="_blank">Preferential Block Voting</a> election?</label>
+            <br>
+            <small>This changes the longform description FAQs to describe Preferential Block Voting</small>
+            </p>
+        </div>
+
+        <button class="collapsible" id="pieOptions">▶ Pie chart visualization options</button>
+        <div class="optionscontent">
+            <p class="mt-3">
+            <input type="hidden" name="hidePie" value=""><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="hidePie"> Hide the pie chart altogether</label>
+            </p>
+        </div>
+
+        <button class="collapsible" id="sankeyOptions">▶ Sankey visualization options</button>
+        <div class="optionscontent">
+            <p class="mt-3">
+            <input type="hidden" name="hideSankey" value=""><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="hideSankey"> Hide the sankey altogether</label>
+            </p>
+
+            <p>
+            <input type="hidden" name="rotateNames" value=""><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="rotateNames"> Rotate the names of candidates on the top bar</label>
+            </p>
+
+            <p>
+            <input type="hidden" name="showRoundNumbersOnSankey"><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="showRoundNumbersOnSankey" checked=""> Show round numbers on Sankey?</label>
+            </p>
+        </div>
+
+        <button class="collapsible" id="tabularOptions">▶ Tabular visualization options</button>
+        <div class="optionscontent">
+            <p class="mt-3">
+            <input type="hidden" name="hideTabular"><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="hideTabular"> Hide all tabular formats</label>
+            </p>
+            <p>
+            <input type="hidden" name="onlyShowWinnersTabular"><!-- To be sent in GET/POST if unchecked -->
+            <label><input type="checkbox" name="onlyShowWinnersTabular"> Only show winners, hiding eliminated candidates</label>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="container text-center" id="submitDiv">
+      <button id="updateSettings" type="submit" class="btn btn-primary btn-xl">Update Settings</button>
+    </div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;1c3db79928ae4724942a8b8282c922e9&quot;,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+</form>
+
+
+
+    </div>
+
+    <div class="vis-wrapper" id="id-share" data-anchor="share" role="tabpanel" aria-labelledby="share-tab">
+        
+
+
+
+<div class="container" id="sharecontainer">
+  <div class="row mb-4">
+    <h2>Share To</h2>
+  </div>
+
+  <div class="row" justify-content-md-center="">
+    <div class="col-sm">
+        
+        <div class="tweet-this">
+    <a href="https://twitter.com/intent/tweet?text=MAYOR%20Ranked%20Choice%20Voting%20Results%2C%20Visualized%20by%20%40rcvisdotcom%20https%3A//www.rcvis.com/v/mayor-13" class="meta-act-link meta-tweet " target="_blank"><div class="col-sm text-center">
+    <img src="/static/share/share_icons/twitter.png" width="128px"><br>
+    Twitter
+</div>
+</a>
+</div>
+
+    </div>
+    <div class="col-sm">
+        
+        <div class="facebook-this">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.rcvis.com/v/mayor-13" class="" target="_blank"><div class="col-sm text-center">
+    <img src="/static/share/share_icons/facebook.png" width="128px"><br>
+    Facebook
+</div>
+</a>
+</div>
+
+    </div>
+    <div class="col-sm">
+        
+        <div class="reddit-this">
+    <a href="https://www.reddit.com/submit?title=MAYOR%20Ranked%20Choice%20Voting%20Results%2C%20Visualized&amp;url=https%3A//www.rcvis.com/v/mayor-13" class="" target="_blank"><div class="col-sm text-center">
+    <img src="/static/share/share_icons/reddit.png" width="128px"><br>
+    Reddit
+</div>
+</a>
+</div>
+
+    </div>
+    <div class="col-sm">
+        
+        <div class="telegram-this">
+    <a href="https://t.me/share/url?text=MAYOR%20Ranked%20Choice%20Voting%20Results%2C%20Visualized&amp;url=https%3A//www.rcvis.com/v/mayor-13" class="" target="_blank"><div class="col-sm text-center">
+    <img src="/static/share/share_icons/telegram.png" width="128px"><br>
+    Telegram
+</div>
+</a>
+</div>
+
+    </div>
+    <div class="col-sm">
+        
+        <div class="whatsapp-this">
+    <a href="https://api.whatsapp.com/send?text=https%3A//www.rcvis.com/v/mayor-13" class="" target="_blank"><div class="col-sm text-center">
+    <img src="/static/share/share_icons/whatsapp.png" width="128px"><br>
+    WhatsApp
+</div>
+</a>
+</div>
+
+    </div>
+    <div class="col-sm">
+        
+        <div class="mail-this">
+    <a href="mailto:?subject=&amp;body=MAYOR%20Ranked%20Choice%20Voting%20Results%2C%20Visualized.%20https%3A//www.rcvis.com/v/mayor-13" class=""><div class="col-sm text-center">
+    <img src="/static/share/share_icons/email.png" width="128px"><br>
+    Email
+</div>
+</a>
+</div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-md-left mt-5">
+    <div class="col-sm"><label for="wikicode"><h3 class="px-0">WikiCode Export</h3></label></div>
+  </div>
+  <div class="row justify-content-md-left mt-0">
+    <div class="col-xl"><textarea id="wikicode" class="codeExport" cols="500" rows="3" data-original-title="Click to Copy" title="">            {| class="wikitable sortable"
+            ! colspan=" 3 " | MAYOR &lt;ref&gt;
+                {{cite web
+                |title=MAYOR Ranked Choice Voting Election Results Visualization
+                |url=https://www.rcvis.com/v/mayor-13#tabular-candidate-by-round
+                |website=rcvis.com
+                |publisher=RCVis
+                |date=October 29, 2026
+                }}
+            &lt;/ref&gt;
+            |- style="background:#eee; text-align:center;" 
+            ! rowspan=2 style="text-align:center;" | Candidate
+                ! colspan=2 style="text-align:center;" | Round 1
+            |-
+                ! Votes
+                ! %
+                |-
+                ! scope="row" style="text-align:left;" | {{sortname| Janeese|Lewis George}}
+                        | {{won|}} 76,318
+                        | {{won|}} 54.12%
+                |-
+                |-
+                ! scope="row" style="text-align:left;" | {{sortname| Kenyan|R. McDuffie}}
+                        |  49,439
+                        |  35.06%
+                |-
+                |-
+                ! scope="row" style="text-align:left;" | {{sortname| Rini|Sampath}}
+                        |  4,550
+                        |  3.23%
+                |-
+                |-
+                ! scope="row" style="text-align:left;" | {{sortname| Gary|Goodweather}}
+                        |  4,412
+                        |  3.13%
+                |-
+                |-
+                ! scope="row" style="text-align:left;" | {{sortname| Vincent|Orange ("VO")}}
+                        |  3,601
+                        |  2.55%
+                |-
+                |-
+                ! scope="row" style="text-align:left;" | {{sortname| Hope|Solomon}}
+                        |  1,505
+                        |  1.07%
+                |-
+                |-
+                ! scope="row" style="text-align:left;" | {{sortname| Ernest|E. Johnson}}
+                        |  720
+                        |  0.51%
+                |-
+                |-
+                ! scope="row" style="text-align:left;" | Write-in
+                        |  463
+                        |  0.33%
+                |-
+            |}</textarea></div>
+  </div>
+  <div class="row mt-0">
+    <div class="col-xl">
+      <i>Presents the Single Table Summary in a format readable by Wikipedia</i>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <div class="row justify-content-md-left mt-5">
+    <div class="col-sm">
+      <label for="htmlembedexport"><h3 class="px-0">HTML Export</h3></label>
+    </div>
+  </div>
+  <div class="row justify-content-md-left mt-1">
+    <div class="col-sm">
+      <label for="exportVistypeSelector">Visualization type: </label>
+      <select class="form-control" id="exportVistypeSelector" onchange="switchVisTypeHTML('https://www.rcvis.com/vo/mayor-13', this.value);">
+        <!-- Filled out by initializeOptions() -->
+      <option value="bar">Barchart (Interactive)</option><option value="bar-static">Barchart (Static)</option><option value="sankey">Sankey</option><option value="table">Single Table Summary</option><option value="table-by-round">Table, By Round (Interactive)</option><option value="table-by-round-static">Table, By Round (Static)</option><option value="table-by-candidate">Table, By Candidate</option><option value="pie">Pie Chart</option></select>
+    </div>
+  </div>
+  <div class="row justify-content-md-left mt-0">
+    <div class="col-xl"><textarea id="htmlembedexport" class="codeExport" cols="500" rows="3" data-original-title="Click to Copy" title=""></textarea></div>
+  </div>
+  <div class="row mt-0">
+    <div class="col-xl">
+      <i>Uses an iframe to embed the interactive Bar Chart</i>
+    </div>
+  </div>
+</div>
+
+
+<div class="alert alert-primary alert-dismissible fade show" role="alert" id="copiedInfo" style="display:none" tooltip="help">
+    <strong>Copied to clipboard!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+
+<div class="container mb-5">
+  <div class="row justify-content-md-left mt-5">
+    <div class="col-sm">
+      <label for="embedlyexport"><h3 class="px-0">Medium/Wordpress/Canva</h3></label>
+    </div>
+  </div>
+  <div class="row justify-content-md-left mt-1">
+    <div class="col-sm">
+      <label for="exportVistypeSelector">Visualization type: </label>
+      <select class="form-control" id="embedlyVistypeSelector" onchange="switchVisTypeEmbedly('https://www.rcvis.com/vo/mayor-13', this.value);">
+        <!-- Filled out by initializeOptions() -->
+      <option value="bar">Barchart (Interactive)</option><option value="bar-static">Barchart (Static)</option><option value="sankey">Sankey</option><option value="table">Single Table Summary</option><option value="table-by-round">Table, By Round (Interactive)</option><option value="table-by-round-static">Table, By Round (Static)</option><option value="table-by-candidate">Table, By Candidate</option><option value="pie">Pie Chart</option></select>
+    </div>
+  </div>
+  <div class="row justify-content-md-left mt-0">
+    <div class="col-xl"><textarea id="embedlyexport" class="codeExport" cols="500" rows="1" data-original-title="Click to Copy" title=""></textarea></div>
+  </div>
+  <div class="row mt-0">
+    <div class="col-xl">
+      <i>On sites that support embed.ly (including Medium, Wordpress, Canva, and more), you can just paste this URL</i>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <small id="toggle-dynamic" class="mt-0 text-muted text-center" style="display: block;">
+      <a id="make-print-friendly" href="#" class="vis-interactive">Showing interactive content. Show print-friendly instead?</a>
+      <a id="make-interactive" href="#" class="vis-fixed">Showing print-friendly content. Show interactive instead?</a>
+    </small>
+  </div>
+</div>
+
+</main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer-grid">
+        <div>
+          <h2>About RCVis</h2>
+          <p>RCVis is open-source Ranked-Choice Voting Visualization software.</p>
+          <p>Let's collaborate! To use these visualizations for your election, poll, or infographic, please get in touch: <a href="mailto:team@rcvis.com">team@rcvis.com</a>.</p>
+        </div>
+        <div>
+          <h2>Stay in touch</h2>
+          <ul class="site-footer-links">
+            <li>
+              <a href="/updates.html">Recent updates</a>
+            </li>
+            <li>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdwMw6xYNyxbZiEtuB0G9F7avQhkLY_jmlXjNOBPA01qR4y3g/viewform?usp=sf_link" target="_blank" rel="noopener">Send feedback</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/rcvisdotcom"><img src="/static/visualizer/icon_twitter.svg" alt="" width="16" height="16">Follow us on Twitter</a>
+            </li>
+            <li>
+              <a href="https://github.com/artoonie/rcvis"><img src="/static/visualizer/icon_github.svg" alt="" width="16" height="16">Source code on GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:team@rcvis.com"><img src="/static/visualizer/icon_email.svg" alt="" width="16" height="16">team@rcvis.com</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2>Newsletter</h2>
+          <p>Occasional updates about new features and elections.</p>
+<!-- Begin Mailchimp Signup Form -->
+<div id="mc_embed_signup">
+  <form action="https://rcvis.us20.list-manage.com/subscribe/post?u=ef3745fe023451adbc1053eb9&amp;id=35fe134379" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+    <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-5000px" aria-hidden="true">Email address</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required="">
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ef3745fe023451adbc1053eb9_35fe134379" tabindex="-1" value=""></div>
+      <input type="submit" value="Join our mailing list" name="subscribe" id="mc-embedded-subscribe" class="button">
+    </div>
+  </form>
+</div>
+<!--End mc_embed_signup-->
+        </div>
+      </div>
+
+      <div class="site-footer-bottom">
+        <p>Copyright © 2026 RCVis. Free, open-source, and nonpartisan.</p>
+        <p>Thank you to <a href="https://github.com/artoonie/rcvis/graphs/contributors">our contributors</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Common to all pages, visualizer and otherwise -->
+
+
+
+<script src="/static/CACHE/js/output.38dc2b412770.js"></script>
+<link rel="stylesheet" href="/static/CACHE/css/output.c09a3668b327.css" type="text/css">
+
+
+    <!-- Common to just pages that show visualizations  -->
+
+
+
+<!-- Common to all pages, visualizer and otherwise -->
+
+
+
+<script src="/static/CACHE/js/output.38dc2b412770.js"></script>
+<link rel="stylesheet" href="/static/CACHE/css/output.c09a3668b327.css" type="text/css">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.8.0/d3.min.js" integrity="sha256-xsGohpJpfIm6CIdoMHLMIRTore3sDR5poFt7CeUxjGI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha256-jXCJJT3KKcnNjZ3rfsabCj1EX4j2omR4xxm+H5CtywE=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="/static/CACHE/css/output.ad730bac3bc7.css" type="text/css">
+
+<!-- Shared resources for multiple visualizations-->
+<script src="/static/CACHE/js/output.9ab726779849.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/static/CACHE/css/output.276c818d0275.css" type="text/css">
+
+<script src="/static/CACHE/js/output.cb1fbb223390.js"></script>
+
+<script type="text/javascript">
+numRounds = 1;
+numCandidates = 8 ;
+numWinners = 1 ;
+longestLabelApxWidth = 10.308;
+totalVotesPerRound = [141008.0];
+charMap = {"a": "Write-in", "b": "Ernest E. Johnson", "c": "Hope Solomon", "d": "Vincent Orange (\"VO\")", "e": "Gary Goodweather", "f": "Rini Sampath", "g": "Kenyan R. McDuffie", "h": "Janeese Lewis George"};
+graphCompressed = {"nodes": [["h", 0, 76318.0, 1, 0], ["g", 0, 49439.0, 0, 0], ["f", 0, 4550.0, 0, 0], ["e", 0, 4412.0, 0, 0], ["d", 0, 3601.0, 0, 0], ["c", 0, 1505.0, 0, 0], ["b", 0, 720.0, 0, 0], ["a", 0, 463.0, 0, 0]], "links": []};
+  // lgtm [js/useless-expression]
+
+function renderSankey() {
+  const graph = decompressGraph(graphCompressed, charMap);
+  if (numRounds > 1)
+  {
+    loadFunctions();
+    makeSankey(graph, numRounds, numCandidates, numWinners, longestLabelApxWidth, totalVotesPerRound, config.colorTheme);
+  }
+  else
+  {
+    d3.select("#sankey-body").append("text")
+          .text("Sankey diagrams show a flow from one round to the next. This single-round election cannot be displayed as a Sankey diagram.")
+          .style("margin-left", "50px")
+  }
+}
+
+requestAnimationFrame(renderSankey);
+</script>
+
+    
+
+<!-- Previously wrapped in django-compressor block, but compressor 4.5.1
+     breaks ES module scripts. May need a different compression approach. -->
+<script type="module" src="/static/pie/pie-chart.es.js"></script>
+
+<script>
+
+    // const electionSummary = JSON.parse(document.getElementById("rawDataId").textContent);
+    //
+    // We might as well leave this as a string, because it has to be serialized to send to the
+    // client browser anyway, and the pie chart component can handle it in string form.
+    const electionSummary = document.getElementById("rawDataId").textContent;
+
+    // Generate candidate colors from the election's color theme,
+    // matching the palette used by the other visualizations.
+    const colorGenerator = getColorGenerator(config.colorTheme);
+    const candidateColors = Array.from(colorGenerator(8));
+
+    // Create the pie-chart element
+    const pieChart = document.createElement("pie-chart");
+
+    // Functions *must* be added as properties; anything added as an attribute must be a string.
+    // So we don't have to re-stringify the JSON object, which will be immediately parsed again,
+    // we can just bind it in object form here.
+    pieChart.requestRoundChange = updateRound;
+    pieChart.requestSkipToRound = skipToRound;
+    pieChart.electionSummary = electionSummary;
+    pieChart.candidateColors = candidateColors;
+    pieChart.textForWinner = "elected";
+    pieChart.excludeFinalWinnerAndEliminatedCandidate = false;
+    pieChart.firstRoundDeterminesPercentages = false;
+    pieChart.randomizeOrder = true;
+    pieChart.currentRound = 1;
+
+    // Append it to the div
+    document.getElementById("pie-body").appendChild(pieChart);
+
+    const pieRoundPlayer = RoundPlayer({
+      container: document.getElementById('pie-slider-container'),
+      totalRounds: 1,
+      onChange: updatePieChartRound,
+      timeBetweenStepsMs: 3000,
+      narration: narration,
+    });
+
+    function updatePieChartRound(sliderIndex) {
+        pieChart.currentRound = sliderIndex+1;
+    }
+
+    // When the pie chart is animating it knows it is advancing rounds, but to avoid reactive
+    // loops it requests to be told the new currentRound rather than using 2-way binding.
+    // And we also update the slider state while we're at it.
+    //
+    // During auto-play, skip the setStep() call — it stops playback.
+    // The round player's timer will catch up on its next tick.
+    function updateRound(roundNum) {
+        pieChart.currentRound = roundNum;
+        if (!pieRoundPlayer.playing()) {
+            pieRoundPlayer.setStep(roundNum - 1);
+        }
+    }
+
+    // Skip to a round immediately without stopping playback.
+    // Used to skip no-transfer rounds during animation.
+    function skipToRound(roundNum) {
+        pieChart.currentRound = roundNum;
+        pieRoundPlayer.skipToStep(roundNum - 1);
+    }
+
+</script>
+
+    
+
+
+<script src="/static/CACHE/js/output.69927fc5039b.js"></script>
+
+<script type="text/javascript">
+const colorThemeGenerator = getColorGenerator(config.colorTheme);
+const colorsPerRound = Array.from(colorThemeGenerator(1));
+</script>
+
+<link rel="stylesheet" href="/static/CACHE/css/output.a145ed893737.css" type="text/css">
+
+    <script type="text/javascript">
+function makeFixedGraph() {
+  var candidateVoteCounts = [{'candidate': 'Janeese Lewis George', 'Round 1 (Janeese Lewis George won)': 76318.0}, {'candidate': 'Kenyan R. McDuffie', 'Round 1 (Janeese Lewis George won)': 49439.0}, {'candidate': 'Rini Sampath', 'Round 1 (Janeese Lewis George won)': 4550.0}, {'candidate': 'Gary Goodweather', 'Round 1 (Janeese Lewis George won)': 4412.0}, {'candidate': 'Vincent Orange ("VO")', 'Round 1 (Janeese Lewis George won)': 3601.0}, {'candidate': 'Hope Solomon', 'Round 1 (Janeese Lewis George won)': 1505.0}, {'candidate': 'Ernest E. Johnson', 'Round 1 (Janeese Lewis George won)': 720.0}, {'candidate': 'Write-in', 'Round 1 (Janeese Lewis George won)': 463.0}];
+var humanFriendlyRoundNames = ["Round 1 (Janeese Lewis George won)"];
+var threshold = null;
+var longestLabelApxWidth = 10.308;
+var totalVotesPerRound = [141008.0];
+var numRoundsTilWin = {"Janeese Lewis George": 0};  // lgtm [js/useless-expression]
+
+  const numCandidates = candidateVoteCounts.length;
+  fixMaxWidthFor('bargraph-fixed-container', numCandidates);
+
+  const isInteractive = false;
+  makeBarGraph({
+    idOfContainer: "bargraph-fixed-body",
+    idOfLegend: "bargraph-fixed-legend",
+    candidateVoteCounts,
+    humanFriendlyRoundNames,
+    totalVotesPerRound,
+    numRoundsTilWin,
+    colors: colorsPerRound,
+    longestLabelApxWidth,
+    isInteractive,
+    threshold,
+    eliminationBarColor: config.eliminationBarColor,
+    isVertical: false,
+    textForWinner: "elected",
+    doDimPrevRoundColors: config.doDimPrevRoundColors,
+    candidateSidecarData: candidateSidecarData,
+    roundDescriptions: narration.rounds,
+    chartSummary: narration.summary
+  });
+}
+makeFixedGraph();
+</script>
+
+    
+
+<script type="text/javascript">
+
+const idOfWhyButton = "#bargraph-interactive-why-button";
+// Raising the scope for other methods to access
+let barchartRoundPlayer = null;
+let scrollbarLocked = false;
+
+function showTextOnRoundDescriber(description, keepFAQButtonHidden) {
+  // While playing, don't update the description text for the round
+  if (barchartRoundPlayer.playing()) {
+    return;
+  }
+
+  const idOfLegendOrRoundDescriber = "#bargraph-interactive-round-description";
+
+  // Don't re-render and transition if text already matches
+  if (d3.select(idOfLegendOrRoundDescriber).text() === description) {
+    return;
+  }
+
+  d3.select(idOfLegendOrRoundDescriber)
+  .transition()
+    .duration(100)
+    .delay(0)
+    .style("opacity", "0");
+  d3.select(idOfWhyButton)
+  .transition()
+    .duration(100)
+    .delay(0)
+    .style("opacity", "0");
+
+  d3.select(idOfLegendOrRoundDescriber)
+  .transition()
+    .delay(350)
+    .style("opacity", "1")
+    .text(description);
+
+  if (!keepFAQButtonHidden) {
+    d3.select(idOfWhyButton)
+    .transition()
+      .delay(350)
+      .style("opacity", "1");
+  }
+};
+
+
+function descriptionOfCurrRound(round) {
+  const roundData = humanFriendlyEventsPerRound[round];
+
+  let roundText = roundData.map(function(event) {
+    return event.description;
+  }).reduce(function(totalString, currText) {
+    return totalString + "\n" + currText;
+  }, "");
+
+  const roundIdentifier = `Round ${round + 1}. `;
+  return roundIdentifier + roundText;
+}
+
+
+function lockScrollbarIfNeeded() {
+  // Don't allow the animation to shift horizontally when a scrollbar is added
+  // and removed -- if a scrollbar is ever visible, keep it there.
+  if (scrollbarLocked) return;
+
+  const hasVerticalScrollbar = document.documentElement.scrollHeight > window.innerHeight;
+
+  if (hasVerticalScrollbar) {
+    document.body.style.overflowY = 'scroll';
+    scrollbarLocked = true;
+  }
+}
+
+function updateFaqText(round) {
+  const faqsPerRound = [[{"question": "What is happening?", "answer": "These are results from a ranked choice election. Voters were asked to rank the candidates from most to least favorite. The ballots are then counted in rounds. In each round, the candidate with the fewest votes is eliminated, and their supporters' votes transfer to the next choice on their ballots. The rounds continue until one candidate wins by earning more than 50% of the votes."}, {"question": "Why was Janeese Lewis George elected this round?", "answer": "Janeese Lewis George received more than 50% of the votes after 1 round(s). Only one candidate can have more than 50% of the votes, so Janeese Lewis George was the candidate most preferred by these voters."}]];
+  const idOfFaqTextDiv = "faq-text";
+  const text = faqsPerRound[round]
+              .map(d => "<p class='faq-q'>" + d['question'] + "</p>" +
+                        "<p class='faq-a'>" + d['answer'] + "</p>")
+              .reduce((accum, val) => accum + val);
+  document.getElementById(idOfFaqTextDiv).innerHTML = `<h2 class="faq-description-header">Round ${round + 1} Explanation</h2> ${text}`;
+  setTimeout(lockScrollbarIfNeeded, 0); // Needs to run after the DOM is updated
+}
+
+function showFaqs() {
+  makeFaqSectionVisible();
+  document.getElementById("faq-text").scrollIntoView({ behavior: "smooth" })
+}
+
+function makeFaqSectionVisible() {
+  document.getElementById("faq-text").style.display = "block";
+}
+
+function makeInteractiveGraph() {
+  var candidateVoteCounts = [{'candidate': 'Janeese Lewis George', 'Round 1 (Janeese Lewis George won)': 76318.0}, {'candidate': 'Kenyan R. McDuffie', 'Round 1 (Janeese Lewis George won)': 49439.0}, {'candidate': 'Rini Sampath', 'Round 1 (Janeese Lewis George won)': 4550.0}, {'candidate': 'Gary Goodweather', 'Round 1 (Janeese Lewis George won)': 4412.0}, {'candidate': 'Vincent Orange ("VO")', 'Round 1 (Janeese Lewis George won)': 3601.0}, {'candidate': 'Hope Solomon', 'Round 1 (Janeese Lewis George won)': 1505.0}, {'candidate': 'Ernest E. Johnson', 'Round 1 (Janeese Lewis George won)': 720.0}, {'candidate': 'Write-in', 'Round 1 (Janeese Lewis George won)': 463.0}];
+var humanFriendlyRoundNames = ["Round 1 (Janeese Lewis George won)"];
+var threshold = null;
+var longestLabelApxWidth = 10.308;
+var totalVotesPerRound = [141008.0];
+var numRoundsTilWin = {"Janeese Lewis George": 0};
+
+  // For slider TODO sync with tabular-by-round-interactive.html
+  const numRounds = 1;
+
+  const numCandidates = candidateVoteCounts.length;
+  fixMaxWidthFor('bargraph-interactive-body', numCandidates);
+  // window.onresize = fixMaxWidth; TODO fix moving across monitors for interactive and static
+
+  const isInteractive = true;
+  transitionEachBarForRound = makeBarGraph({
+    idOfContainer: "bargraph-interactive-body",
+    idOfLegend: null,
+    candidateVoteCounts,
+    humanFriendlyRoundNames,
+    totalVotesPerRound,
+    numRoundsTilWin,
+    colors: colorsPerRound,
+    longestLabelApxWidth,
+    isInteractive,
+    threshold,
+    eliminationBarColor: config.eliminationBarColor,
+    isVertical: false,
+    textForWinner: "elected",
+    doDimPrevRoundColors: config.doDimPrevRoundColors,
+    candidateSidecarData: candidateSidecarData,
+    roundDescriptions: narration.rounds,
+    chartSummary: narration.summary
+  });
+
+  function sliderValueChangedCallback(round) {
+    transitionEachBarForRound(round);
+    showTextOnRoundDescriber(descriptionOfCurrRound(round), false);
+    updateFaqText(round);
+  }
+
+  barchartRoundPlayer = RoundPlayer({
+    container: document.getElementById("bargraph-slider-container"),
+    totalRounds: numRounds,
+    onChange: sliderValueChangedCallback,
+    onPlay: function() {
+      showTextOnRoundDescriber(humanFriendlySummary, false);
+    },
+    narration: narration,
+    // The round description above the chart is already a live region
+    announceRounds: false
+  });
+
+  // After creating the slider, make the default text the summary
+  // round summary, with the FAQ button showing.
+  showTextOnRoundDescriber(humanFriendlySummary, false);
+
+  // On load, show the FAQs if not in an iframe
+  if (window.self === window.top) {
+    makeFaqSectionVisible();
+  }
+
+  // Populate the FAQ with initial description for the last round
+  updateFaqText(numRounds - 1);
+}
+
+function showFaqButton() {
+  d3.select(idOfWhyButton)
+  .transition()
+    .delay(300)
+    .duration(300)
+    .style("opacity", "100%");
+}
+
+function showFaqButtonNow() {
+  // Just used for integration testing
+  d3.select(idOfWhyButton)
+    .style("opacity", "100%");
+}
+
+makeInteractiveGraph();
+
+</script>
+
+    
+
+<script type="text/javascript">
+var candidateVoteCounts = [{'candidate': 'Janeese Lewis George', 'Round 1 (Janeese Lewis George won)': 76318.0}, {'candidate': 'Kenyan R. McDuffie', 'Round 1 (Janeese Lewis George won)': 49439.0}, {'candidate': 'Rini Sampath', 'Round 1 (Janeese Lewis George won)': 4550.0}, {'candidate': 'Gary Goodweather', 'Round 1 (Janeese Lewis George won)': 4412.0}, {'candidate': 'Vincent Orange ("VO")', 'Round 1 (Janeese Lewis George won)': 3601.0}, {'candidate': 'Hope Solomon', 'Round 1 (Janeese Lewis George won)': 1505.0}, {'candidate': 'Ernest E. Johnson', 'Round 1 (Janeese Lewis George won)': 720.0}, {'candidate': 'Write-in', 'Round 1 (Janeese Lewis George won)': 463.0}];
+var humanFriendlyRoundNames = ["Round 1 (Janeese Lewis George won)"];
+var threshold = null;
+var longestLabelApxWidth = 10.308;
+var totalVotesPerRound = [141008.0];
+var numRoundsTilWin = {"Janeese Lewis George": 0};
+
+// For slider TODO sync with barchart-interactive.html
+var numRounds = 1;
+
+function showRound(round) {
+    for (let i = 0; i < numRounds; i++) { 
+      document.getElementById("tabular_round_container_"+i).style.display = "none";
+    }
+    document.getElementById("tabular_round_container_"+round).style.display = "block";
+}
+
+showRound(numRounds-1)
+
+const roundPlayer = RoundPlayer({
+  container: document.getElementById("tabular-by-round-slider-container"),
+  totalRounds: numRounds,
+  onChange: showRound,
+  narration: narration,
+});
+
+</script>
+
+    
+
+
+<script src="/static/CACHE/js/output.4ab31f20f46e.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <script>
+  for (let key in config) {
+    if (key != 'colorTheme' && key != 'eliminationBarColor') {
+      $("input[name='"+key+"']").prop('checked', config[key]);
+    } else {
+      $("select[name='"+key+"']").prop('value', config[key]);
+    }
+  }
+</script>
+
+    
+
+
+<script src="/static/CACHE/js/output.a2426b62ae2e.js"></script>
+
+<link rel="stylesheet" href="/static/CACHE/css/output.8eb69056a3af.css" type="text/css">
+
+
+  <script src="/static/CACHE/js/output.f2b00ffc4af6.js"></script>
+
+
+
+
+
+</body></html>
