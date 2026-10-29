@@ -47,4 +47,4 @@ Base: el modelo de North Carolina v1.0.0 / Ohio v1.2.0 (Georgia V11) con la **re
 |---|---|
 | [`produccion/`](produccion/) | Paquete `wi_pronostico`. Fuentes en vivo: Wikipedia, 270toWin, Kalshi, Polymarket, civicAPI y FiveThirtyEight. Incluye CLI, pruebas sin red y tarea programada de Windows |
 | [`backtest/`](backtest/) | Backtest de variantes (sesgo estatal, indecisos, encuestas partidistas, terceros), variantes por cargo, validación cronológica del sesgo y escala de ventajas grandes |
-| [`docs/`](docs/) | Investigación del electorado (independientes, participación, voto anticipado), indecisos, contexto, fuentes y decisiones del modelo |
+| [`docs/`](docs/) | Investigación del electorado (independientes, participación, voto anticipado), indecisos, contexto, fuentes y decisiones del modelo; [revisión externa del 28-oct](docs/02_revision_externa_2026-10-28.md) |

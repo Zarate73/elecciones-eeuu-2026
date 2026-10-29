@@ -395,3 +395,21 @@ def test_wikimedia_ua_propio_y_respeta_retry_after(monkeypatch):
     monkeypatch.setattr(requests, 'get', lambda url, **kw: next(seq2))
     with pytest.raises(RuntimeError, match='tras 5 intentos'):
         red.get_json('https://en.wikipedia.org/w/api.php')
+
+
+# ----------------------------------------------------------------------------------- revisión externa WI-03 (28-oct)
+@pytest.mark.parametrize('corte, entran, no_publicadas', [
+    ('2026-10-25', {'marquetteunive', 'ztoaresearch', 'yougov'}, ['Marquette University', 'Wick (R)']),
+    ('2026-10-27', {'wick', 'yougov'}, ['Marquette University']),       # solo Wick en 21 días → ventana ampliada desde el 2-oct
+])
+def test_reconstruccion_excluye_marquette_antes_de_su_publicacion(cfg, red_simulada, corte, entran, no_publicadas):
+    """WI-03: Marquette (campo 14–22 oct) se publicó el 28-oct, así que ninguna reconstrucción anterior al 28 la usa, aunque
+    su campo cerrara antes. Wick (sin fecha de publicación conocida) entra desde fin + 3 días = 26-oct. Si queda menos de
+    2 encuestadoras, la ventana se amplía y la única Marquette posible es la de septiembre (publicada el 30-sep)."""
+    cfg.corte_manual = date.fromisoformat(corte)
+    r = ejecutar(cfg, escribir_salidas=False)
+    v, e = r['modelo']['ventana'], r['modelo']['encuestas']
+    assert set(v.pollster_key) == entran
+    assert not ((e.pollster_key == 'marquetteunive') & (e.fin == '2026-10-22')).any()
+    assert (v[v.pollster_key == 'marquetteunive'].fin < '2026-10-01').all()
+    assert [x['encuestadora'] for x in r['reconstruccion']['no_disponibles_al_corte']] == no_publicadas
