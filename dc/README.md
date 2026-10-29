@@ -3,7 +3,26 @@
 Elección general del 3 de noviembre de 2026 para suceder a Muriel Bowser (D), que no se presenta: **Janeese Lewis George (D)**, concejal del Ward 4, contra **Rhonda Hamilton (independiente)** y **Robert L. Gross (Statehood Green)**, más votos por escrito. Es la primera general de alcaldía con **voto preferencial (RCV, Iniciativa 83)**: si nadie pasa del 50 % de las boletas activas, se elimina al último y se transfieren sus votos.
 
 <!-- PRONOSTICO:INICIO -->
-(se llena con la primera corrida de GitHub Actions)
+**Pronóstico al 2026-10-29** (5 días a la elección) · actualizado automáticamente 2026-10-29 02:12 ET · fuentes en vivo 6/6
+
+| Alcaldía (1.ª ronda RCV) | % de voto (IC80) | Probabilidad de ganar |
+|---|---|---|
+| Janeese **Lewis George** (D) | **79.6%** (70.0–88.1) | **>99%** |
+| Rhonda **Hamilton** (I) | **15.4%** (6.3–25.3) | **<1%** |
+| Robert L. **Gross** (Statehood Green) | 1.7% (0.5–3.3) | — |
+| Votos por escrito | 3.3% (1.6–5.6) | — |
+
+P(Lewis George gana en la primera ronda, > 50 %) **>99%** · P(≥ 70 %) 90% · P(≥ 80 %) 53% · margen sobre Hamilton +64.3 pp · base: **fundamentales** (13 generales 1974–2022; LOYO CRPS 4.5 pp, cobertura IC80 77%)
+
+**Sin encuestas ni mercados de la general.** No hay ninguna encuesta Lewis George–Hamilton publicada y ni Kalshi (no_aplica) ni Polymarket (no_aplica) tienen mercado de esta elección; ambos se buscan en cada corrida y entran solos si aparecen (peso de mercados 0.0).
+
+**Registro** (DCBOE, September 30, 2026): 453,471 votantes · demócratas 76.3 %, sin partido 17.3 %, republicanos 5.0 %. Contexto: D.C. no publica voto anticipado por partido y el registro no entra al pronóstico.
+
+![Pronóstico](produccion/salidas/ultimo/pronostico.png)
+
+![Evolución](produccion/salidas/evolucion.png)
+
+Detalle: [`resumen.txt`](produccion/salidas/ultimo/resumen.txt) · [generales 1974–2022](produccion/salidas/ultimo/historico_alcaldias.csv) · [escenarios](produccion/salidas/ultimo/escenarios_alcaldia.csv) · [validación LOYO](produccion/salidas/ultimo/validacion_loyo.csv) · [historial](produccion/salidas/historial_pronosticos.csv)
 <!-- PRONOSTICO:FIN -->
 
 GitHub Actions actualiza el bloque anterior dos veces al día ([flujo](../.github/workflows/pronostico_dc.yml)).

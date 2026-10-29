@@ -1,0 +1,289 @@
+{
+ "clave": "dc",
+ "estado": "Washington D.C.",
+ "cargo": "Alcaldía",
+ "modelo": "General (fundamentales + RCV)",
+ "candidatos": {
+  "D": "Janeese Lewis George",
+  "R": "Rhonda Hamilton"
+ },
+ "partidos": {
+  "D": "D",
+  "R": "I"
+ },
+ "corte": "2026-10-29",
+ "dias_a_eleccion": 5,
+ "pronostico": {
+  "P_D": 0.9981,
+  "pct_D": 79.61,
+  "pct_D_IC80": [
+   69.99,
+   88.06
+  ],
+  "pct_R": 15.35,
+  "pct_R_IC80": [
+   6.32,
+   25.32
+  ],
+  "pct_terceros": 5.03,
+  "pct_terceros_IC80": [
+   2.68,
+   7.91
+  ],
+  "margen": 64.261,
+  "margen_IC80": [
+   44.83,
+   81.37
+  ],
+  "margen_IC95": [
+   29.14,
+   87.6
+  ],
+  "sd": 14.964,
+  "nu": 11.0,
+  "P_D_encuestas": 0.9981,
+  "etiqueta_base": "Solo fundamentales",
+  "peso_mercados": 0.0,
+  "mercado_en_distribucion": false,
+  "extra": [
+   {
+    "etiqueta": "Gana en la 1.ª ronda (> 50 %)",
+    "valor": 0.997
+   },
+   {
+    "etiqueta": "Lewis George ≥ 70 %",
+    "valor": 0.8998
+   }
+  ]
+ },
+ "mercados": [
+  {
+   "nombre": "Kalshi",
+   "P_D": null,
+   "estado": "no_aplica (sin mercado de la general)"
+  },
+  {
+   "nombre": "Polymarket",
+   "P_D": null,
+   "estado": "no_aplica (sin mercado de la general)"
+  }
+ ],
+ "ultima_encuesta": null,
+ "encuestas": [],
+ "n_encuestas_ventana": 0,
+ "sin_encuestas": "No hay ninguna encuesta Lewis George–Hamilton ni mercado de esta elección. El pronóstico sale de las 13 generales de alcaldía 1974–2022: el demócrata promedia ~80 % cuando el opositor principal no es concejal ni alcalde (Hamilton no lo es). Encuestas y mercados se buscan en cada corrida.",
+ "nota_distribucion": "Margen Lewis George − Hamilton en la primera ronda (aproximación t de la simulación). RCV: si nadie pasa del 50 %, se eliminan los últimos y se transfieren sus votos.",
+ "nota_comparacion": "Sin encuestas ni mercados de la general: la probabilidad final es la de los fundamentales con el conteo RCV.",
+ "tabla_extra": {
+  "titulo": "Generales de alcaldía de D.C. 1974–2022",
+  "nota": "Wikipedia en vivo; % sobre votos válidos. Opositor fuerte = concejal o alcalde (actual o anterior).",
+  "columnas": [
+   "Año",
+   "Demócrata",
+   "%",
+   "Opositor principal",
+   "%",
+   "Opositor"
+  ],
+  "numericas": [
+   false,
+   false,
+   true,
+   false,
+   true,
+   false
+  ],
+  "filas": [
+   [
+    2022,
+    "Muriel Bowser (incumbent)",
+    "74.6",
+    "Rodney Grant",
+    "14.9",
+    "débil"
+   ],
+   [
+    2018,
+    "Muriel Bowser",
+    "76.4",
+    "Ann Wilcox",
+    "9.3",
+    "débil"
+   ],
+   [
+    2014,
+    "Muriel Bowser",
+    "55.3",
+    "David Catania",
+    "35.1",
+    "fuerte"
+   ],
+   [
+    2010,
+    "Vincent C. Gray",
+    "74.2",
+    "Write-in",
+    "22.4",
+    "fuerte"
+   ],
+   [
+    2006,
+    "Adrian Fenty",
+    "89.7",
+    "David Kranich",
+    "6.1",
+    "débil"
+   ],
+   [
+    2002,
+    "Anthony A. Williams (incumbent)",
+    "60.6",
+    "Carol Schwartz",
+    "34.5",
+    "fuerte"
+   ],
+   [
+    1998,
+    "Anthony A. Williams",
+    "66.2",
+    "Carol Schwartz",
+    "30.2",
+    "fuerte"
+   ],
+   [
+    1994,
+    "Marion Barry",
+    "56.0",
+    "Carol Schwartz",
+    "41.9",
+    "fuerte"
+   ],
+   [
+    1990,
+    "Sharon Pratt Dixon",
+    "86.1",
+    "Maurice Turner",
+    "11.5",
+    "débil"
+   ],
+   [
+    1986,
+    "Marion Barry (incumbent)",
+    "61.4",
+    "Carol Schwartz",
+    "32.8",
+    "fuerte"
+   ],
+   [
+    1982,
+    "Marion Barry (incumbent)",
+    "81.0",
+    "E. Brooke Lee Jr.",
+    "14.1",
+    "débil"
+   ],
+   [
+    1978,
+    "Marion Barry",
+    "70.2",
+    "Arthur Fletcher",
+    "28.1",
+    "débil"
+   ],
+   [
+    1974,
+    "Walter Washington",
+    "80.5",
+    "Sam Harris",
+    "7.1",
+    "débil"
+   ]
+  ]
+ },
+ "historial": [
+  {
+   "corte": "2026-10-29",
+   "P_D": 0.9981,
+   "P_D_encuestas": 0.9981,
+   "P_kalshi": null,
+   "P_polymarket": null,
+   "pct_D": 79.6135,
+   "margen": 64.2606
+  }
+ ],
+ "escenarios": [
+  {
+   "escenario": "Base (M1: opositor débil, 13 elecciones)",
+   "margen": 64.325,
+   "P_D": 0.9981
+  },
+  {
+   "escenario": "Solo las 7 elecciones con opositor débil (σ propia)",
+   "margen": 63.238,
+   "P_D": 0.9908
+  },
+  {
+   "escenario": "Nivel reciente: 2018–2022 con opositor débil (75.5 %)",
+   "margen": 54.242,
+   "P_D": 0.9929
+  },
+  {
+   "escenario": "Protesta moderada: centro en el mínimo con opositor débil (1978, 70.2 %)",
+   "margen": 43.68,
+   "P_D": 0.9786
+  },
+  {
+   "escenario": "Si surgiera un opositor fuerte (concejal o alcalde, p. ej. por escrito)",
+   "margen": 29.249,
+   "P_D": 0.9156
+  },
+  {
+   "escenario": "Con el % de la primaria (54.1 %) como variable (M3)",
+   "margen": 64.271,
+   "P_D": 0.9971
+  },
+  {
+   "escenario": "Transferencias RCV desfavorables (verde y escrito → opositor 50–60 %)",
+   "margen": 64.334,
+   "P_D": 0.9979
+  }
+ ],
+ "anticipado": null,
+ "adicional": null,
+ "fuentes": [
+  {
+   "nombre": "wikipedia_historico",
+   "estado": "en_vivo (13/13 páginas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "wikipedia_2026",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "encuestas_general",
+   "estado": "no_aplica (no hay encuestas de la general)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "kalshi",
+   "estado": "no_aplica (sin mercado de la general)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket",
+   "estado": "no_aplica (sin mercado de la general)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "dcboe_registro",
+   "estado": "en_vivo",
+   "en_vivo": true
+  }
+ ],
+ "avisos": [
+  "sin encuestas de la general: pronóstico solo con fundamentales históricos"
+ ],
+ "carpeta": "dc"
+}

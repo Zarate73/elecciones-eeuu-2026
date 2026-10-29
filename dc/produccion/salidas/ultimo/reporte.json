@@ -1,0 +1,300 @@
+{
+  "version_modelo": "1.0.0",
+  "corte": "2026-10-29",
+  "dias_a_eleccion": 5,
+  "estados_fuentes": {
+    "wikipedia_historico": "en_vivo (13/13 páginas)",
+    "wikipedia_2026": "en_vivo",
+    "encuestas_general": "no_aplica (no hay encuestas de la general)",
+    "kalshi": "no_aplica (sin mercado de la general)",
+    "polymarket": "no_aplica (sin mercado de la general)",
+    "dcboe_registro": "en_vivo"
+  },
+  "avisos": [
+    "sin encuestas de la general: pronóstico solo con fundamentales históricos"
+  ],
+  "candidatos": {
+    "D": "Janeese Lewis George",
+    "opositor": "Rhonda Hamilton",
+    "verde": "Robert L. Gross"
+  },
+  "alcaldia": {
+    "pct_D": 79.61354609326605,
+    "pct_D_IC80": [
+      69.98968525493554,
+      88.05833515430629
+    ],
+    "pct_D_IC95": [
+      62.14989480284057,
+      91.32461397257093
+    ],
+    "pct_opositor": 15.352983054452679,
+    "pct_opositor_IC80": [
+      6.3228676513533095,
+      25.31575351646696
+    ],
+    "pct_verde": 1.6865648473571684,
+    "pct_verde_IC80": [
+      0.49374671858422836,
+      3.3460914290011248
+    ],
+    "pct_escrito": 3.346906004924112,
+    "pct_escrito_IC80": [
+      1.5744509660906694,
+      5.5917168098090455
+    ],
+    "pct_terceros": 5.03347085228128,
+    "pct_terceros_IC80": [
+      2.6788641980083048,
+      7.907327501187119
+    ],
+    "margen": 64.26056303881337,
+    "IC80": [
+      44.83061325737605,
+      81.36839436030995
+    ],
+    "IC95": [
+      29.144467571477996,
+      87.60305129584701
+    ],
+    "sd": 14.963816752808254,
+    "P_D_modelo": 0.99815,
+    "P_opositor": 0.00185,
+    "P_primera_ronda": 0.996965,
+    "P_umbral": {
+      "50": 0.996965,
+      "60": 0.98329,
+      "70": 0.899825,
+      "80": 0.534845
+    },
+    "rondas": {
+      "1": 0.9983,
+      "2": 0.00049,
+      "3": 0.00121,
+      "4": 0.0
+    },
+    "P_D_fundamentales": 0.99815,
+    "P_D": 0.99815,
+    "peso_mercados_aplicado": 0.0,
+    "base": "fundamentales",
+    "peso_fundamentales": 1.0,
+    "mu_logit": 1.4239955632484775,
+    "escala_logit": 0.4219045303392115,
+    "gl": 11,
+    "coeficientes": {
+      "const": 1.4239955632484775,
+      "fuerte": -0.9114300377590201
+    },
+    "sigma_logit": 0.39465555061427526,
+    "n_elecciones": 13,
+    "crps_loyo": 4.523579073267042,
+    "cobertura80_loyo": 0.7692307692307693,
+    "mae_loyo": 6.225104842497782,
+    "pct_D_fundamentales_centro": 80.5964030590666,
+    "encuestas": null
+  },
+  "escenarios": [
+    {
+      "escenario": "Base (M1: opositor débil, 13 elecciones)",
+      "pct_D": 79.64156269376448,
+      "pct_D_IC80_bajo": 69.98665830240091,
+      "pct_D_IC80_alto": 88.04418207483245,
+      "margen": 64.32509948327332,
+      "P_D": 0.99815,
+      "P_primera_ronda": 0.9971,
+      "nota": "pronóstico publicado (antes de mercados)"
+    },
+    {
+      "escenario": "Solo las 7 elecciones con opositor débil (σ propia)",
+      "pct_D": 79.12190361589761,
+      "pct_D_IC80_bajo": 67.51246410653445,
+      "pct_D_IC80_alto": 89.24530769155403,
+      "margen": 63.23820144936611,
+      "P_D": 0.990775,
+      "P_primera_ronda": 0.9877,
+      "nota": "M5 del backtest"
+    },
+    {
+      "escenario": "Nivel reciente: 2018–2022 con opositor débil (75.5 %)",
+      "pct_D": 74.56724151003237,
+      "pct_D_IC80_bajo": 63.57123721419255,
+      "pct_D_IC80_alto": 84.55552649914208,
+      "margen": 54.24223169222678,
+      "P_D": 0.992925,
+      "P_primera_ronda": 0.988975,
+      "nota": "Bowser 3.er y 2.º mandato; misma incertidumbre"
+    },
+    {
+      "escenario": "Protesta moderada: centro en el mínimo con opositor débil (1978, 70.2 %)",
+      "pct_D": 69.29019116182911,
+      "pct_D_IC80_bajo": 56.85986665528819,
+      "pct_D_IC80_alto": 80.7337340201515,
+      "margen": 43.67963303318042,
+      "P_D": 0.9786,
+      "P_primera_ronda": 0.96585,
+      "nota": "sin respaldo de Bowser; voto antisocialista hacia Hamilton"
+    },
+    {
+      "escenario": "Si surgiera un opositor fuerte (concejal o alcalde, p. ej. por escrito)",
+      "pct_D": 62.05964238025913,
+      "pct_D_IC80_bajo": 48.34571105010545,
+      "pct_D_IC80_alto": 75.04822972245195,
+      "margen": 29.24894585045055,
+      "P_D": 0.915625,
+      "P_primera_ronda": 0.8739,
+      "nota": "como 1986–2002, 2010 y 2014"
+    },
+    {
+      "escenario": "Con el % de la primaria (54.1 %) como variable (M3)",
+      "pct_D": 79.62537402540946,
+      "pct_D_IC80_bajo": 69.66202247708456,
+      "pct_D_IC80_alto": 88.39509455657759,
+      "margen": 64.27127514094504,
+      "P_D": 0.997075,
+      "P_primera_ronda": 0.9955,
+      "nota": "peor en el backtest"
+    },
+    {
+      "escenario": "Transferencias RCV desfavorables (verde y escrito → opositor 50–60 %)",
+      "pct_D": 79.65063103548073,
+      "pct_D_IC80_bajo": 70.05073918868405,
+      "pct_D_IC80_alto": 88.071358219663,
+      "margen": 64.33364799636348,
+      "P_D": 0.99785,
+      "P_primera_ronda": 0.9973,
+      "nota": "solo cambia algo si Lewis George < 50 % en la 1.ª ronda"
+    }
+  ],
+  "loyo": {
+    "crps": 4.523579073267042,
+    "cobertura80": 0.7692307692307693,
+    "mae": 6.225104842497782,
+    "por_eleccion": [
+      {
+        "anio": 1974,
+        "crps": 1.7186501360723785,
+        "error_mediana_pp": -0.06334195055666214
+      },
+      {
+        "anio": 1978,
+        "crps": 8.012458754958436,
+        "error_mediana_pp": 11.754933885125396
+      },
+      {
+        "anio": 1982,
+        "crps": 1.7781478608278274,
+        "error_mediana_pp": -0.3529517188461426
+      },
+      {
+        "anio": 1986,
+        "crps": 2.716078738279486,
+        "error_mediana_pp": 1.503251453866838
+      },
+      {
+        "anio": 1990,
+        "crps": 4.146866799492135,
+        "error_mediana_pp": -6.498689135357338
+      },
+      {
+        "anio": 1994,
+        "crps": 4.602878401537253,
+        "error_mediana_pp": 7.902282609017028
+      },
+      {
+        "anio": 1998,
+        "crps": 3.2817209716979514,
+        "error_mediana_pp": -4.581029228854341
+      },
+      {
+        "anio": 2002,
+        "crps": 2.861118799622636,
+        "error_mediana_pp": 2.5925146622734445
+      },
+      {
+        "anio": 2006,
+        "crps": 8.091902204432936,
+        "error_mediana_pp": -10.968014466314358
+      },
+      {
+        "anio": 2010,
+        "crps": 9.457193252990754,
+        "error_mediana_pp": -14.243030977145239
+      },
+      {
+        "anio": 2014,
+        "crps": 5.2242505102959855,
+        "error_mediana_pp": 8.836406567396573
+      },
+      {
+        "anio": 2018,
+        "crps": 2.877641158986888,
+        "error_mediana_pp": 4.8030124945338315
+      },
+      {
+        "anio": 2022,
+        "crps": 4.037620363276871,
+        "error_mediana_pp": 6.826903803183967
+      }
+    ]
+  },
+  "boleta": {
+    "ok": true,
+    "candidatos": [
+      {
+        "candidato": "Janeese Lewis George",
+        "partido": "Democratic",
+        "votos": null
+      },
+      {
+        "candidato": "Robert L. Gross",
+        "partido": "DC Statehood Green",
+        "votos": null
+      },
+      {
+        "candidato": "Rhonda Hamilton",
+        "partido": "Independent",
+        "votos": null
+      }
+    ],
+    "avisos": [],
+    "con_resultados": false
+  },
+  "primaria_pct_nominado": 54.13484740951029,
+  "mercados": {
+    "kalshi": {
+      "estado": "no_aplica (sin mercado de la general)",
+      "usable": false
+    },
+    "polymarket": {
+      "estado": "no_aplica (sin mercado de la general)",
+      "usable": false
+    },
+    "n_usables": 0,
+    "promedio_D": null
+  },
+  "registro": {
+    "fecha_informe": "September 30, 2026",
+    "total": 453471,
+    "por_partido": {
+      "D": 346060,
+      "R": 22482,
+      "Verde": 4170,
+      "Sin partido": 78279,
+      "Otros": 2480
+    },
+    "pct": {
+      "D": 76.31359006419375,
+      "R": 4.957759151081326,
+      "Verde": 0.9195736882843666,
+      "Sin partido": 17.26218435136977,
+      "Otros": 0.5468927450707983
+    },
+    "estado": "en_vivo",
+    "url": "https://www.dcboe.org/getContentAsset/a743f9d8-0f69-4f70-bb69-489990d81cce/5ebbd046-860b-4ee1-81c8-43d0e3bc446e/Data-Statistics-Report-9_2026.pdf?language=en"
+  },
+  "reconstruccion": {
+    "activa": false,
+    "corte": "2026-10-29",
+    "corrida": "2026-10-29"
+  }
+}
