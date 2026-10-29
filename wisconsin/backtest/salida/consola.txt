@@ -1,0 +1,200 @@
+Contiendas (H=6, ventana 12–21 días): 1003 · WI: 25
+
+== Nacional
+                                              modelo    n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+          G  V11 + sesgo estatal contraído (Florida) 1003 3.158 4.389  0.817  0.811  0.950  0.062     5.865
+P1 casa + patrocinador si la firma no tiene historia 1003 3.163 4.396  0.825  0.812  0.951  0.062     5.887
+             P3 encuestas partidistas pesan la mitad 1003 3.166 4.400  0.824  0.807  0.951  0.062     5.875
+              H3 V11 + cuota R de indecisos estimada 1003 3.191 4.424  0.519  0.806  0.945  0.063     5.839
+P2 sin encuestas partidistas (si hay no partidistas) 1003 3.195 4.440  0.837  0.810  0.952  0.062     5.932
+                 F1 V11 + sesgo estatal sin contraer 1003 3.250 4.486  0.805  0.803  0.939  0.066     5.865
+                  H8 V11 sin sesgo estatal (Arizona) 1003 3.278 4.544  0.989  0.791  0.942  0.061     5.865
+                            P2s P2 sin sesgo estatal 1003 3.303 4.588  1.005  0.795  0.947  0.061     5.932
+                   H2 V11 + indecisos proporcionales 1003 3.360 4.647  0.831  0.797  0.947  0.061     6.106
+
+== Nacional_Gob
+                                              modelo   n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                  H8 V11 sin sesgo estatal (Arizona) 307 3.290 4.556  1.158  0.792  0.945  0.079     5.984
+          G  V11 + sesgo estatal contraído (Florida) 307 3.317 4.602  0.916  0.792  0.941  0.083     5.984
+P1 casa + patrocinador si la firma no tiene historia 307 3.318 4.606  0.916  0.798  0.941  0.084     6.007
+                            P2s P2 sin sesgo estatal 307 3.326 4.632  1.163  0.798  0.945  0.081     6.043
+             P3 encuestas partidistas pesan la mitad 307 3.327 4.612  0.919  0.788  0.938  0.084     5.995
+              H3 V11 + cuota R de indecisos estimada 307 3.330 4.587  0.553  0.788  0.932  0.084     5.954
+P2 sin encuestas partidistas (si hay no partidistas) 307 3.360 4.648  0.929  0.798  0.935  0.084     6.043
+                 F1 V11 + sesgo estatal sin contraer 307 3.516 4.832  0.841  0.772  0.922  0.089     5.984
+                   H2 V11 + indecisos proporcionales 307 3.581 4.943  0.822  0.769  0.935  0.082     6.228
+
+== Nacional_Sen
+                                              modelo   n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+          G  V11 + sesgo estatal contraído (Florida) 387 3.317 4.635  0.571  0.791  0.935  0.052     5.834
+P1 casa + patrocinador si la firma no tiene historia 387 3.324 4.647  0.584  0.786  0.938  0.052     5.856
+             P3 encuestas partidistas pesan la mitad 387 3.325 4.648  0.574  0.786  0.941  0.051     5.843
+P2 sin encuestas partidistas (si hay no partidistas) 387 3.356 4.694  0.584  0.788  0.946  0.050     5.934
+              H3 V11 + cuota R de indecisos estimada 387 3.362 4.678  0.221  0.780  0.935  0.053     5.808
+                 F1 V11 + sesgo estatal sin contraer 387 3.375 4.662  0.609  0.783  0.925  0.056     5.834
+                  H8 V11 sin sesgo estatal (Arizona) 387 3.467 4.808  0.758  0.773  0.917  0.051     5.834
+                            P2s P2 sin sesgo estatal 387 3.484 4.846  0.765  0.778  0.930  0.050     5.934
+                   H2 V11 + indecisos proporcionales 387 3.647 5.066  0.606  0.767  0.925  0.050     6.065
+
+== WI_todas
+                                              modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                  H8 V11 sin sesgo estatal (Arizona) 25 2.630 3.557 -0.104   0.80   0.92  0.138     4.808
+                            P2s P2 sin sesgo estatal 25 2.730 3.791 -0.142   0.84   0.88  0.130     4.959
+          G  V11 + sesgo estatal contraído (Florida) 25 2.822 3.828  0.086   0.76   0.92  0.144     4.808
+P1 casa + patrocinador si la firma no tiene historia 25 2.839 3.890  0.129   0.76   0.92  0.145     4.828
+             P3 encuestas partidistas pesan la mitad 25 2.848 3.880  0.084   0.76   0.92  0.143     4.815
+              H3 V11 + cuota R de indecisos estimada 25 2.889 3.928 -0.153   0.76   0.92  0.152     4.792
+P2 sin encuestas partidistas (si hay no partidistas) 25 2.905 4.003  0.068   0.84   0.92  0.138     4.959
+                   H2 V11 + indecisos proporcionales 25 3.074 4.056  0.239   0.80   0.92  0.140     4.892
+                 F1 V11 + sesgo estatal sin contraer 25 3.322 4.334  0.671   0.72   0.88  0.150     4.808
+
+== WI_2016+
+                                              modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                  H8 V11 sin sesgo estatal (Arizona)  9 2.462 3.297  1.831  0.667  1.000  0.252     4.709
+                            P2s P2 sin sesgo estatal  9 2.493 3.465  1.835  0.778  0.889  0.236     4.865
+                   H2 V11 + indecisos proporcionales  9 2.676 3.561  1.418  0.667  1.000  0.275     4.806
+              H3 V11 + cuota R de indecisos estimada  9 2.691 3.650  1.233  0.556  1.000  0.283     4.723
+          G  V11 + sesgo estatal contraído (Florida)  9 2.693 3.626  1.194  0.556  1.000  0.283     4.709
+P1 casa + patrocinador si la firma no tiene historia  9 2.714 3.762  1.344  0.556  1.000  0.283     4.747
+             P3 encuestas partidistas pesan la mitad  9 2.739 3.734  1.261  0.556  1.000  0.280     4.718
+P2 sin encuestas partidistas (si hay no partidistas)  9 2.766 3.865  1.381  0.778  1.000  0.269     4.865
+                 F1 V11 + sesgo estatal sin contraer  9 2.840 3.791  1.035  0.556  1.000  0.298     4.709
+
+== WI_Gob
+                                              modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                  H8 V11 sin sesgo estatal (Arizona)  8 2.924 3.772 -2.186  0.875  0.875  0.072     5.090
+                            P2s P2 sin sesgo estatal  8 3.039 4.067 -2.661  0.875  0.875  0.071     5.246
+          G  V11 + sesgo estatal contraído (Florida)  8 3.147 4.061 -2.175  0.750  0.875  0.110     5.090
+             P3 encuestas partidistas pesan la mitad  8 3.149 4.028 -2.329  0.750  0.875  0.108     5.103
+P1 casa + patrocinador si la firma no tiene historia  8 3.151 4.064 -2.166  0.750  0.875  0.110     5.121
+P2 sin encuestas partidistas (si hay no partidistas)  8 3.213 4.174 -2.605  0.875  0.875  0.106     5.246
+              H3 V11 + cuota R de indecisos estimada  8 3.271 4.151 -2.454  0.750  0.875  0.111     5.066
+                 F1 V11 + sesgo estatal sin contraer  8 3.281 4.201 -2.081  0.750  0.875  0.127     5.090
+                   H2 V11 + indecisos proporcionales  8 3.439 4.390 -2.676  0.875  0.875  0.093     5.218
+
+== WI_Sen
+                                              modelo  n  CRPS   MAE  sesgo  Cob80  Cob95  Brier  sd_media
+                  H8 V11 sin sesgo estatal (Arizona) 10 2.616 3.578  0.663    0.8    0.9  0.115     4.955
+                            P2s P2 sin sesgo estatal 10 2.735 3.863  0.841    0.9    0.9  0.094     5.123
+          G  V11 + sesgo estatal contraído (Florida) 10 2.923 3.955  0.824    0.8    0.9  0.114     4.955
+P1 casa + patrocinador si la firma no tiene historia 10 2.954 4.064  0.883    0.8    0.9  0.111     4.964
+             P3 encuestas partidistas pesan la mitad 10 2.960 4.077  0.894    0.8    0.9  0.107     4.953
+              H3 V11 + cuota R de indecisos estimada 10 2.977 4.076  0.533    0.8    0.9  0.127     4.933
+P2 sin encuestas partidistas (si hay no partidistas) 10 3.017 4.218  1.010    0.9    0.9  0.094     5.123
+                   H2 V11 + indecisos proporcionales 10 3.276 4.207  1.532    0.8    0.9  0.115     5.058
+                 F1 V11 + sesgo estatal sin contraer 10 3.594 4.583  1.469    0.8    0.9  0.117     4.955
+
+== Bootstrap por año: P(variante con menor CRPS que G)
+ambito                                                Nacional  Nacional_Gob  WI_Gob  WI_todas
+variante                                                                                      
+F1 V11 + sesgo estatal sin contraer                      0.061         0.002   0.036     0.054
+H2 V11 + indecisos proporcionales                        0.008         0.006   0.252     0.077
+H3 V11 + cuota R de indecisos estimada                   0.106         0.436   0.123     0.166
+H8 V11 sin sesgo estatal (Arizona)                       0.081         0.548   0.926     0.884
+P1 casa + patrocinador si la firma no tiene historia     0.093         0.374   0.246     0.090
+P2 sin encuestas partidistas (si hay no partidistas)     0.000         0.012   0.122     0.104
+P2s P2 sin sesgo estatal                                 0.052         0.430   0.694     0.661
+P3 encuestas partidistas pesan la mitad                  0.034         0.083   0.424     0.181
+
+== Errores de las encuestas en WI (V11 sin sesgo; + = pro-D): 12 pro-D de 25
+          race  year   tipo  k     D     R  actual  error_pp
+ 1998_Gov-G_WI  1998  Gov-G  3 28.32 64.37  -21.00    -15.05
+ 1998_Sen-G_WI  1998  Sen-G  4 43.90 44.25    2.15     -2.50
+2000_Pres-G_WI  2000 Pres-G  6 43.63 42.71    0.22      0.69
+ 2000_Sen-G_WI  2000  Sen-G  4 63.56 27.35   24.51     11.69
+ 2002_Gov-G_WI  2002  Gov-G  4 40.59 36.05    3.71      0.84
+2004_Pres-G_WI  2004 Pres-G  8 46.34 47.76    0.38     -1.81
+ 2004_Sen-G_WI  2004  Sen-G  4 53.06 38.81   11.25      3.01
+ 2006_Gov-G_WI  2006  Gov-G  6 49.26 44.14    7.40     -2.28
+ 2006_Sen-G_WI  2006  Sen-G  3 61.91 27.57   37.86     -3.52
+2008_Pres-G_WI  2008 Pres-G  9 52.08 41.21   13.93     -3.06
+ 2010_Gov-G_WI  2010  Gov-G  6 42.15 50.33   -5.77     -2.41
+ 2010_Sen-G_WI  2010  Sen-G  7 44.79 51.26   -4.84     -1.62
+2012_Gov-GS_WI  2012  Gov-G  8 45.07 51.28   -6.80      0.58
+2012_Pres-G_WI  2012 Pres-G 11 49.73 45.37    6.85     -2.49
+ 2012_Sen-G_WI  2012  Sen-G 10 46.92 45.79    5.56     -4.42
+ 2014_Gov-G_WI  2014  Gov-G  5 45.30 47.70   -5.68      3.28
+2016_Pres-G_WI  2016 Pres-G  8 46.52 41.37   -0.77      5.92
+ 2016_Sen-G_WI  2016  Sen-G  8 47.69 45.18   -3.37      5.88
+ 2018_Gov-G_WI  2018  Gov-G  2 49.08 46.33    1.10      1.65
+ 2018_Sen-G_WI  2018  Sen-G  2 53.83 43.41   10.84     -0.42
+2020_Pres-G_WI  2020 Pres-G 17 51.59 43.57    0.63      7.39
+ 2022_Gov-G_WI  2022  Gov-G  7 47.14 47.83    3.40     -4.09
+ 2022_Sen-G_WI  2022  Sen-G  8 46.09 49.19   -1.01     -2.09
+2024_Pres-G_WI  2024 Pres-G 20 48.65 47.89   -0.86      1.61
+ 2024_Sen-G_WI  2024  Sen-G 17 48.55 47.08    0.85      0.62
+
+Error relativo WI por año (WI − nacional): {1998: -5.35, 2000: 7.45, 2002: -1.69, 2004: -0.73, 2006: -1.56, 2008: -2.25, 2010: -1.73, 2012: 0.3, 2014: 0.05, 2016: 1.35, 2018: 1.01, 2020: 2.4, 2022: -4.87, 2024: -2.02} · autocorrelación -0.36
+Peso de encuestas partidistas en la ventana: media nacional 0.08; contiendas con > 50 %: 30
+
+== Validación estrictamente cronológica (2004–2024)
+      ambito             modelo     n  CRPS  sesgo
+    Nacional        G con sesgo 800.0 3.016  1.047
+    Nacional       H8 sin sesgo 800.0 3.221  1.403
+    Nacional P(sin sesgo mejor)   NaN 0.006    NaN
+Nacional_Gob        G con sesgo 229.0 2.987  1.119
+Nacional_Gob       H8 sin sesgo 229.0 3.112  1.600
+Nacional_Gob P(sin sesgo mejor)   NaN 0.074    NaN
+          WI        G con sesgo  20.0 2.129  0.059
+          WI       H8 sin sesgo  20.0 2.049  0.104
+          WI P(sin sesgo mejor)   NaN 0.692    NaN
+      WI_Gob        G con sesgo   6.0 1.985 -0.477
+      WI_Gob       H8 sin sesgo   6.0 1.658 -0.466
+      WI_Gob P(sin sesgo mejor)   NaN 0.938    NaN
+    WI_2016+        G con sesgo   9.0 2.712  1.170
+    WI_2016+       H8 sin sesgo   9.0 2.477  1.832
+    WI_2016+ P(sin sesgo mejor)   NaN 0.785    NaN
+
+== Terceros
+                             ambito                                         regla    n  MAE_%D  MAE_%R  MAE_conjunto  MAE_terceros  sesgo_terceros
+                           Nacional                               T0 terceros = 0 1003   2.880   2.338         2.609         2.734          -2.734
+                           Nacional                      T2 actual (faltante = 0) 1003   2.333   2.286         2.309         1.386           0.009
+                           Nacional T4 faltante ≠ 0 (solo encuestas que reportan) 1003   2.321   2.272         2.297         1.334           0.002
+                                 WI                               T0 terceros = 0   25   2.333   2.199         2.266         2.165          -2.165
+                                 WI                      T2 actual (faltante = 0)   25   2.181   1.969         2.075         1.215           0.512
+                                 WI T4 faltante ≠ 0 (solo encuestas que reportan)   25   2.218   1.900         2.059         1.175           0.427
+Nacional, sin reporte en la ventana                               T0 terceros = 0  465   2.785   2.485         2.635         1.862          -1.862
+Nacional, sin reporte en la ventana                      T2 actual (faltante = 0)  465   2.647   2.414         2.530         1.455          -0.031
+Nacional, sin reporte en la ventana T4 faltante ≠ 0 (solo encuestas que reportan)  465   2.647   2.414         2.531         1.460           0.002
+
+== Independiente fuerte: contiendas con terceros ≥ 5 % reportados en la ventana: 134 (de 538 con terceros reportados)
+   Desinfle medio (real − encuestas): -0.96 pp (mediana -0.95); regla T4: sesgo de terceros -0.12 pp, MAE 1.83
+   Error del margen vs desinfle: pendiente +0.268 (ee 0.202); error medio del margen -2.33 (débil o nula ⇒ el voto que pierde el tercero se reparte parejo: indecisos/terceros 50/50)
+   IC90 por bootstrap de años de la pendiente: [-0.211, +0.792]
+   Nacional, terceros ≥ 5 % (n = 134): MAE terceros T4 1.83 · T5 por tramos 1.86 · sesgo T4 -0.12 · T5 +0.02
+   WI (n = 25): MAE terceros T4 1.18 · T5 por tramos 1.17 · sesgo T4 +0.43 · T5 +0.42
+   WI, terceros ≥ 5 % (n = 3): MAE terceros T4 3.08 · T5 por tramos 3.01 · sesgo T4 -2.07 · T5 -2.01
+   Pendiente media de T5 para terceros fuertes: 0.796 (T4 global: 0.743)
+   Contiendas de WI con terceros reportados:
+          race  O_rep  O_real  desinfle   Tp    mu  actual  err_margen
+2000_Pres-G_WI   4.97    4.48     -0.49 4.36  3.41    0.22       -3.19
+ 2002_Gov-G_WI   7.89   13.41      5.52 6.49  4.55    3.71       -0.84
+2004_Pres-G_WI   1.70    0.88     -0.82 2.08 -1.47    0.38        1.85
+ 2006_Gov-G_WI   4.00    1.88     -2.12 3.71  5.03    7.40        2.37
+ 2006_Sen-G_WI   5.30    3.16     -2.14 4.68 34.26   37.86        3.60
+ 2010_Gov-G_WI   1.00    1.19      0.19 1.46 -7.53   -5.77        1.76
+ 2014_Gov-G_WI   0.00    1.10      1.10 0.69 -1.23   -5.68       -4.45
+2016_Pres-G_WI   5.45    5.59      0.14 4.80  5.71   -0.77       -6.48
+ 2016_Sen-G_WI   2.53    2.97      0.44 2.59  3.08   -3.37       -6.45
+ 2018_Gov-G_WI   3.00    1.98     -1.02 3.00  1.75    1.10       -0.65
+2020_Pres-G_WI   2.50    1.53     -0.97 2.63  7.16    0.63       -6.53
+ 2022_Gov-G_WI   1.68    1.02     -0.66 2.04 -2.37    3.40        5.77
+2024_Pres-G_WI   3.26    1.66     -1.60 3.29  0.43   -0.86       -1.29
+ 2024_Sen-G_WI   2.04    2.19      0.15 2.36  1.14    0.85       -0.29
+   Las 12 contiendas con más terceros en las encuestas (nacional):
+          race  O_rep  O_real  desinfle    Tp     mu  actual  err_margen
+ 2002_Gov-G_OK  19.40   14.12     -5.28 14.81  -0.10    0.66        0.76
+ 2020_Gov-G_IN  14.36   11.44     -2.92 11.55 -24.15  -24.46       -0.31
+2016_Pres-G_NM  13.07   11.70     -1.37 10.56   8.53    8.22       -0.31
+ 2016_Gov-G_WV  13.00    8.61     -4.39 10.50  -0.70    6.79        7.49
+ 2014_Gov-G_ME  12.86    8.43     -4.43 10.45  -0.43   -4.81       -4.38
+ 2009_Gov-G_NJ  12.12    6.66     -5.46  9.86   1.44   -3.58       -5.02
+ 2010_Gov-G_MN  12.08   13.08      1.00  9.69   5.77    0.42       -5.35
+2016_Pres-G_ND  12.00    8.11     -3.89  9.75 -23.64  -36.41      -12.77
+ 2006_Gov-G_IL  11.85   10.94     -0.91  9.55  12.52   10.54       -1.98
+2016_Pres-G_MT  11.00    8.08     -2.92  8.99 -11.61  -20.42       -8.81
+2016_Pres-G_ID  10.77   13.25      2.48  8.82 -20.23  -31.77      -11.54
+ 2022_Gov-G_OR  10.51    9.40     -1.11  8.63   1.09    3.42        2.33
+   Sesgo estatal WI, todas (n = 25): CRPS con sesgo 2.822 · sin sesgo 2.630
+   Sesgo estatal WI, k ≥ 2 (n = 25): CRPS con sesgo 2.822 · sin sesgo 2.630
+   Sesgo estatal WI, k = 1 (n = 0): CRPS con sesgo nan · sin sesgo nan

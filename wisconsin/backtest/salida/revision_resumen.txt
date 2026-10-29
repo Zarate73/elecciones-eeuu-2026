@@ -1,0 +1,32 @@
+[1] Validación estrictamente cronológica (2004–2024) de la regla del sesgo estatal
+      ambito    modelo   n  CRPS   MAE  Cob80  P(mejor que G todas)
+    Nacional     G k≥2 800 3.002 4.165  0.818                 0.768
+    Nacional   G todas 800 3.016 4.194  0.805                   NaN
+    Nacional sin sesgo 800 3.221 4.469  0.784                 0.008
+Nacional_Gob     G k≥2 229 3.000 4.193  0.821                 0.348
+Nacional_Gob   G todas 229 2.987 4.182  0.808                   NaN
+Nacional_Gob sin sesgo 229 3.112 4.331  0.799                 0.068
+          WI     G k≥2  20 2.142 3.024  0.800                 0.089
+          WI   G todas  20 2.129 2.997  0.800                   NaN
+          WI sin sesgo  20 2.049 2.893  0.850                 0.685
+      WI_Gob     G k≥2   6 1.998 2.813  0.833                 0.178
+      WI_Gob   G todas   6 1.985 2.772  0.833                   NaN
+      WI_Gob sin sesgo   6 1.658 2.370  1.000                 0.947
+
+[2] Régimen de ventana ampliada (emulación a escala 9/21: nominal 3–9 días; ampliada ≤ 18 días). 274 contiendas ampliadas de 1023; en ellas k medio 2.13 (k efectivo por firma 2.03; por encuesta 2.12), antigüedad de la más reciente 7.4 d y ponderada 9.3 d sobre el horizonte
+                                                  ambito                                               modelo   n  CRPS   MAE  Cob80  Cob95  sd_media  k_medio  P(mejor que A1)
+Contiendas con ventana ampliada (y con encuesta nominal)                              A0 solo ventana nominal 113 3.670 5.024  0.832  0.973     7.272    1.000            0.150
+Contiendas con ventana ampliada (y con encuesta nominal) A1 producción: k = firmas, deriva de la más reciente 113 3.397 4.786  0.761  0.947     5.628    2.611              NaN
+Contiendas con ventana ampliada (y con encuesta nominal)                     A2 k efectivo por firma 1/Σ W_f² 113 3.394 4.786  0.770  0.947     5.693    2.450            0.680
+Contiendas con ventana ampliada (y con encuesta nominal)                   A3 deriva por antigüedad ponderada 113 3.397 4.786  0.761  0.956     5.647    2.611            0.684
+Contiendas con ventana ampliada (y con encuesta nominal)                     A4 k efectivo + deriva ponderada 113 3.394 4.786  0.770  0.947     5.711    2.450            0.686
+                                  Contiendas sin ampliar                              A0 solo ventana nominal 749 2.938 4.126  0.796  0.943     5.130    4.072            0.092
+                                  Contiendas sin ampliar A1 producción: k = firmas, deriva de la más reciente 749 2.888 4.047  0.822  0.955     5.510    4.072              NaN
+                                  Contiendas sin ampliar                     A2 k efectivo por firma 1/Σ W_f² 749 2.888 4.047  0.821  0.956     5.514    3.868            0.533
+                                  Contiendas sin ampliar                   A3 deriva por antigüedad ponderada 749 2.888 4.047  0.822  0.955     5.520    4.072            0.466
+                                  Contiendas sin ampliar                     A4 k efectivo + deriva ponderada 749 2.888 4.047  0.824  0.956     5.523    3.868            0.534
+                                                   Todas                              A0 solo ventana nominal 862 3.034 4.243  0.800  0.947     5.411    3.669            0.038
+                                                   Todas A1 producción: k = firmas, deriva de la más reciente 862 2.955 4.144  0.814  0.954     5.525    3.881              NaN
+                                                   Todas                     A2 k efectivo por firma 1/Σ W_f² 862 2.954 4.144  0.814  0.955     5.537    3.682            0.605
+                                                   Todas                   A3 deriva por antigüedad ponderada 862 2.955 4.144  0.814  0.955     5.536    3.881            0.500
+                                                   Todas                     A4 k efectivo + deriva ponderada 862 2.954 4.144  0.817  0.955     5.548    3.682            0.605

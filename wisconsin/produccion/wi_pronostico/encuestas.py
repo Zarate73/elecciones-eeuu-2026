@@ -1,0 +1,456 @@
+"""Encuestas 2026: Wikipedia (API MediaWiki) y 270toWin en vivo + base verificada (Excel o CSV), sin duplicados.
+
+Prioridad al combinar: Wikipedia > base verificada > 270toWin (Wikipedia trae n, población y terceros).
+Identidad de cada encuesta: firma (con ALIAS) + periodo de campo; ver identidad.py (auditoría T3, 26-oct).
+Wisconsin: Marquette con tres nombres («Marquette University», «Marquette Law School»); «TIPP» = TIPP Insights; Badger
+Battleground = Platform Communications; RMG/Napolitan y YouGov/City Forward (Excel). North Carolina: Harper/Carolina
+Journal, Trafalgar. Encuestas aisladas desde data/encuestas_excluidas.csv (Wisconsin: ninguna). Las marcas «(D)»/«(R)»
+de Wikipedia definen el patrocinio partidista (TIPP, Platform, Wick, GBAO, Z to A, YouGov/City Forward). Si una fuente trae la versión LV y otra la RV de la misma encuesta, se
+conserva la LV.
+"""
+from __future__ import annotations
+
+import logging
+import re
+from datetime import date
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+from . import encuestas_web as W
+from . import identidad
+from .red import get_json, get_text
+
+log = logging.getLogger(__name__)
+
+COLS = ['pollster', 'clave', 'inicio', 'fin', 'n', 'pop', 'D', 'R', 'otros', 'indecisos', 'origen']
+MESES = {'ene': 1, 'jan': 1, 'feb': 2, 'mar': 3, 'abr': 4, 'apr': 4, 'may': 5, 'jun': 6, 'jul': 7, 'ago': 8, 'aug': 8,
+         'sep': 9, 'oct': 10, 'nov': 11, 'dic': 12, 'dec': 12}
+# misma encuestadora con nombres distintos entre fuentes → clave de 14 letras del histórico de FiveThirtyEight
+# (así conserva su efecto de casa): Excel · Wikipedia · 270toWin
+# North Carolina: Harper Polling hace la encuesta de Carolina Journal; «The Trafalgar Group» = Trafalgar Group.
+# Ohio: «Siena College» de 270toWin es NYT/Siena (en Ohio no encuesta el Siena Research Institute); «CNN / SSRS» = SSRS;
+# «Fox News» = Beacon/Shaw; «New River / GSG» = GS Strategy Group/New River (encargada por Cook); «Bowling Green Univ.»
+# = BGSU/YouGov; «Hart Research (D)» = Hart Research Associates
+ALIAS = {'nyt': 'thenewyorktime', 'newyorktimes': 'thenewyorktime', 'sienacollege': 'thenewyorktime', 'siena': 'thenewyorktime',
+         'sienauniversit': 'thenewyorktime',
+         'beacon': 'beaconresearch', 'foxnews': 'beaconresearch', 'foxnewsbeacon': 'beaconresearch',
+         'fabriziolee': 'fabrizioleeass', 'fabrizioward': 'fabrizioleeass', 'aarp': 'fabrizioleeass',
+         'cbs': 'cbsnews',
+         'maristuniversi': 'maristcollege', 'maristpoll': 'maristcollege', 'nprmarist': 'maristcollege',
+         'newriver': 'gsstrategygrou', 'newrivergsg': 'gsstrategygrou', 'cookpoliticalr': 'gsstrategygrou',  # Cook encarga a GS/New River
+         'publicpolicypol': 'publicpolicypo', 'ppp': 'publicpolicypo', 'emersoncollegew': 'emersoncollege',
+         'bowlinggreenun': 'bowlinggreenst', 'bowlinggreen': 'bowlinggreenst', 'bgsu': 'bowlinggreenst', 'bgsuyougov': 'bowlinggreenst',
+         'cnn': 'ssrs', 'cnnssrs': 'ssrs',
+         'hartresearch': 'hartresearchas',
+         'votehub': 'verasight', 'votehubverasig': 'verasight', 'verasightvoteh': 'verasight',
+         'suffolkunivers': 'suffolkunivers', 'suffolk': 'suffolkunivers',
+         'mclaughlinasso': 'mclaughlinasso', 'mclaughlin': 'mclaughlinasso', 'quinnipiac': 'quinnipiacuniv',
+         'coefficient': 'co', 'onmessage': 'onmessageinc',
+         # North Carolina: el Excel nombra «Harper Polling (R) — Carolina Journal» y Wikipedia «The Trafalgar Group (R)»
+         'harperpollingc': 'harperpolling', 'thetrafalgargr': 'trafalgargroup',
+         # Wisconsin: Marquette con tres nombres; «TIPP» (270toWin) = TIPP Insights; Badger Battleground = Platform
+         # Communications (Wikipedia); RMG/Napolitan y YouGov/City Forward (Excel)
+         'marquettelawsc': 'marquetteunive', 'marquettelaw': 'marquetteunive', 'marquette': 'marquetteunive',
+         'tipp': 'tippinsights', 'badgerbattlegr': 'platformcommun', 'rmgresearchnap': 'rmgresearch',
+         'yougovcityforw': 'yougov'}
+# claves que dependen del nombre completo (el Excel nombra «Public Policy Polling — Chicago News Weekly»)
+POR_NOMBRE = (('new york times', 'thenewyorktime'), ('public policy polling', 'publicpolicypo'))
+HOJA_EXCEL = 'Histórico encuestas'                   # WISCONSIN_GOBERNADOR.xlsx (bloque 1: elección general)
+ANIO_DEFECTO = 2026                                    # fechas del Excel sin año
+# columnas del Excel que no son encuestas generales de los dos candidatos
+EXCLUIR_EXCEL = ('PROME', 'PRIMARIA', ' VS.', 'MISMA ENCUESTA')
+
+
+def clave(nombre: str) -> str:
+    n = str(nombre).lower()
+    for sub, k in POR_NOMBRE:
+        if sub in n:
+            return k
+    k = W.clave_firma(nombre)
+    return ALIAS.get(k, k)
+
+
+# ----------------------------------------------------------------------------------- base verificada
+def _fechas_es(txt: str, anio_defecto: int = ANIO_DEFECTO) -> tuple[date, date]:
+    """Fechas del Excel, en inglés o español, con o sin año:
+    'Sep 22–26' · 'Nov 16–18, 2025' · 'Dic 11–18, 2025' · 'Jun 27–Jul 2' · '30 sep–05 oct 2026'."""
+    s = str(txt).strip().lower().replace('—', '–').replace('-', '–').replace('.', '')
+    m_anio = re.search(r'(\d{4})', s)
+    anio = int(m_anio.group(1)) if m_anio else anio_defecto
+    s = re.sub(r',?\s*\d{4}\s*$', '', s).strip()
+    ini, fin = [x.strip() for x in s.split('–', 1)] if '–' in s else (s, s)
+
+    def parte(x: str, mes_previo: int | None):
+        x = x.strip()
+        m = re.match(r'([a-z]{3})[a-z]*\s+(\d{1,2})$', x)           # 'sep 22'
+        if m:
+            return int(m.group(2)), MESES[m.group(1)]
+        m = re.match(r'(\d{1,2})\s+([a-z]{3})', x)                  # '22 sep'
+        if m:
+            return int(m.group(1)), MESES[m.group(2)]
+        return int(re.match(r'(\d{1,2})', x).group(1)), mes_previo  # '26' (mismo mes)
+
+    di, mi = parte(ini, None)
+    df_, mf = parte(fin, mi)
+    if mi is None:                                                   # '05–07 oct': el mes viene al final
+        mi = mf
+    return date(anio - (mi > mf), mi, di), date(anio, mf, df_)
+
+
+def encuestas_excel(ruta: Path) -> pd.DataFrame:
+    """Bloque 1 (elección general) de la hoja «Histórico encuestas»: encuestadoras en columnas, con fechas de inicio y
+    fin, población, candidato (D), candidato (R) e «Indecisos / Otros» (en proporciones; «n.d.» = no reportado). Las filas
+    de los candidatos se reconocen por la etiqueta «(D)» / «(R)». El Excel no separa a los terceros de los indecisos, así
+    que «otros» queda como no reportado (≠ 0)."""
+    m = pd.read_excel(ruta, sheet_name=HOJA_EXCEL, header=None, dtype=object).values.tolist()
+    ini_bloque = next(i for i, r in enumerate(m) if str(r[0]).strip().lower() == 'encuestadora')
+    fin_bloque = next((i for i in range(ini_bloque + 1, len(m)) if str(m[i][0]).strip().lower() == 'encuestadora'), len(m))
+    b = m[ini_bloque:fin_bloque]
+    fila = lambda pref: next(r for r in b if str(r[0]).strip().lower().startswith(pref))
+    f_n, f_i, f_f, f_p = fila('encuestadora'), fila('inicio'), fila('fin de'), fila('población')
+    f_d = next(r for r in b if str(r[0]).strip().lower().endswith('(d)'))
+    f_r = next(r for r in b if str(r[0]).strip().lower().endswith('(r)'))
+    f_u = fila('indecisos')
+    f_b = next((r for r in b if str(r[0]).strip().lower().startswith(('terceros', 'otros candidatos'))), [None] * len(f_n))
+    num = lambda x: pd.to_numeric(x, errors='coerce')
+    out = []
+    for j in range(1, len(f_n)):
+        nombre = f_n[j]
+        if pd.isna(nombre) or not str(nombre).strip() or pd.isna(f_f[j]):
+            continue
+        D, R = num(f_d[j]), num(f_r[j])
+        if not (np.isfinite(D) and np.isfinite(R)):
+            continue
+        esc = 100.0 if D <= 1 and R <= 1 else 1.0                         # proporciones → %
+        pop = {'votantes probables': 'LV', 'registrados': 'RV', 'adultos': 'A'}.get(str(f_p[j]).strip().lower())
+        B, U = num(f_b[j]), num(f_u[j])
+        out.append({'pollster': str(nombre).strip(), 'inicio': pd.Timestamp(f_i[j]).date(), 'fin': pd.Timestamp(f_f[j]).date(),
+                    'n': np.nan, 'pop': pop, 'D': round(esc * float(D), 2), 'R': round(esc * float(R), 2),
+                    'otros': round(esc * float(B), 2) if np.isfinite(B) else np.nan,
+                    'indecisos': round(esc * float(U), 2) if np.isfinite(U) else np.nan})
+    return pd.DataFrame(out)
+
+
+def cargar_base(ruta: Path) -> pd.DataFrame:
+    if ruta.suffix.lower() in ('.xlsx', '.xlsm', '.xls'):
+        df = encuestas_excel(ruta)
+    else:
+        df = pd.read_csv(ruta)
+        faltan = {'pollster', 'inicio', 'fin', 'D', 'R'} - set(df.columns)
+        if faltan:
+            raise ValueError(f'{ruta.name}: faltan columnas {sorted(faltan)}')
+        for c in ('n', 'pop', 'otros', 'indecisos'):
+            if c not in df:
+                df[c] = np.nan
+    df['origen'] = 'base'
+    return df
+
+
+def exportar_base_csv(ruta_excel: Path, ruta_csv: Path) -> pd.DataFrame:
+    """Convierte el Excel verificado a CSV (la versión que se publica en el repositorio)."""
+    df = encuestas_excel(ruta_excel)
+    df[['pollster', 'inicio', 'fin', 'D', 'R', 'n', 'pop', 'otros', 'indecisos']].to_csv(ruta_csv, index=False)
+    return df
+
+
+# ----------------------------------------------------------------------------------- combinar
+def _normalizar(f: pd.DataFrame, origen: str | None = None) -> pd.DataFrame:
+    f = f.copy()
+    if origen:
+        f['origen'] = origen
+    f['clave'] = f.pollster.map(clave)
+    for c in ('inicio', 'fin'):
+        f[c] = pd.to_datetime(f[c]).dt.date
+    f['inicio'] = f.inicio.fillna(f.fin)
+    for c in COLS:
+        if c not in f:
+            f[c] = np.nan
+    return f[COLS]
+
+
+def _intervalo(r: dict) -> tuple[pd.Timestamp, pd.Timestamp, bool]:
+    """(inicio, fin, puntual). «Puntual» = la fuente solo da una fecha (270toWin): suele ser la de PUBLICACIÓN, no el
+    cierre de campo (Verasight/VoteHub: campo 1–20 oct, publicada el 23-oct)."""
+    fin = pd.Timestamp(r['fin'])
+    ini = pd.Timestamp(r['inicio']) if pd.notna(r.get('inicio')) else fin
+    return ini, fin, ini == fin
+
+
+def _distancia(a: tuple, b: tuple) -> int:
+    """Días entre dos periodos de campo (0 si se solapan o se tocan)."""
+    return max((a[0] - b[1]).days, (b[0] - a[1]).days, 0)
+
+
+VERIFICADAS = ('base', 'complementaria')          # orígenes verificados a mano: sus decimales mandan sobre los redondeos
+
+
+def cargar_complementarias(ruta: Path) -> pd.DataFrame:
+    """Encuestas verificadas en la publicación original que no están en Wikipedia, 270toWin ni el Excel (revisión externa
+    del 26-oct: OnMessage 12–14 oct, Pollfinity 8–12 oct). Columnas de la base más `fuente` (URL) y `nota`."""
+    df = pd.read_csv(ruta, comment='#')
+    faltan = {'pollster', 'inicio', 'fin', 'D', 'R', 'fuente'} - set(df.columns)
+    if faltan:
+        raise ValueError(f'{ruta.name}: faltan columnas {sorted(faltan)}')
+    for c in ('n', 'pop', 'otros', 'indecisos', 'publicacion'):
+        if c not in df:
+            df[c] = np.nan
+    df['origen'] = 'complementaria'
+    return df
+
+
+# ----------------------------------------------------------------------------------- disponibilidad (revisión OH-05)
+def fechas_disponibilidad(p: pd.DataFrame, t270: pd.DataFrame, comp: pd.DataFrame, retraso: int) -> pd.DataFrame:
+    """Agrega publicacion, tipo_fecha y disponible_desde a cada encuesta combinada.
+
+    - 270toWin fecha cada encuesta por su PUBLICACIÓN: si su fila coincide con la encuesta (identidad.relacion; la más
+      cercana en el calendario), esa fecha es la publicación (nunca antes del cierre de campo).
+    - Archivo complementario: columna opcional `publicacion` (verificada en la fuente original).
+    - Sin fecha de publicación conocida: cierre de campo + `retraso` días (supuesto; en Ohio 270toWin publica 0–8 días
+      después del cierre, mediana 2–3).
+    Wikipedia y el Excel solo traen el periodo de campo."""
+    p = p.copy()
+    p['publicacion'], p['tipo_fecha'] = pd.NaT, ''
+    filas = p.to_dict('records')
+    for r in (t270.to_dict('records') if len(t270) else []):
+        mejor, md = None, None
+        for i, b in enumerate(filas):
+            if b.get('origen') == '270towin' and b is not None and pd.Timestamp(b['fin']) == pd.Timestamp(r['fin']) \
+                    and b.get('clave') == r.get('clave'):
+                mejor, md = i, -1                          # la propia fila de 270toWin (solo está en 270toWin)
+                break
+            misma, _ = identidad.relacion(r, b)
+            if misma:
+                d = identidad.calendario(r, b)[1]
+                if md is None or d < md:
+                    mejor, md = i, d
+        if mejor is not None:
+            f_pub = max(pd.Timestamp(r['fin']), pd.Timestamp(filas[mejor]['fin']))
+            act = p.iloc[mejor]['publicacion']
+            if pd.isna(act) or f_pub < act:
+                p.iat[mejor, p.columns.get_loc('publicacion')] = f_pub
+                p.iat[mejor, p.columns.get_loc('tipo_fecha')] = 'publicacion (270toWin)'
+    if len(comp) and 'publicacion' in comp:
+        for r in comp[comp.publicacion.notna()].itertuples():
+            m = (p.clave == r.clave) & (pd.to_datetime(p.fin) == pd.Timestamp(r.fin))
+            p.loc[m, 'publicacion'] = pd.Timestamp(r.publicacion)
+            p.loc[m, 'tipo_fecha'] = 'publicacion (fuente verificada)'
+    sin = p.publicacion.isna()
+    p.loc[sin, 'tipo_fecha'] = f'estimada: fin + {retraso} días'
+    p['disponible_desde'] = p.publicacion.where(~sin, pd.to_datetime(p.fin) + pd.Timedelta(days=retraso))
+    return p
+
+
+def combinar(*fuentes: pd.DataFrame) -> pd.DataFrame:
+    """Une las fuentes sin contar dos veces la misma encuesta ni fundir olas distintas: identidad por periodo de campo
+    (identidad.py, común a los diez paquetes; auditoría T3 del 26-oct). Las decisiones quedan en .attrs['decisiones']."""
+    return identidad.combinar_df(*fuentes, cols=COLS)
+
+
+def aplicar_correcciones_cifras(p: pd.DataFrame, cfg) -> tuple[pd.DataFrame, list[str]]:
+    """Reemplaza D y R con las cifras de la publicación original (data/correcciones_cifras.csv: clave, fin, pop, D, R,
+    fuente). Wikipedia redondea a enteros por separado: ActiVote 47.5–52.5 aparece como 48–53 (suma 101). El margen D−R
+    no cambia en ese caso, pero las cifras deben ser las publicadas."""
+    txt = str(cfg.rutas.get('correcciones_cifras', '') or '').strip()
+    if not txt or not cfg.ruta('correcciones_cifras').exists():
+        return p, []
+    c = pd.read_csv(cfg.ruta('correcciones_cifras'), comment='#')
+    hechas = []
+    for _, r in c.iterrows():
+        m = ((p.clave == str(r.clave)) & (pd.to_datetime(p.fin) == pd.Timestamp(r.fin))
+             & (p['pop'].astype(str).str.upper() == str(r['pop']).upper()))
+        if m.any():
+            antes = f"{p.loc[m, 'D'].iloc[0]:g}–{p.loc[m, 'R'].iloc[0]:g}"
+            p.loc[m, 'D'], p.loc[m, 'R'] = float(r.D), float(r.R)
+            extra = ''
+            for col in ('otros', 'indecisos'):                  # opcionales: clasificación de la publicación original
+                if col in c and pd.notna(r.get(col)):
+                    p.loc[m, col] = float(r[col])
+                    extra += f' {col} {float(r[col]):g}'
+            hechas.append(f"{r.clave} {r.fin} {r['pop']}: {antes} → {r.D:g}–{r.R:g}{extra} ({r.fuente})")
+    return p, hechas
+
+
+# ----------------------------------------------------------------------------------- en vivo con caché
+def _con_cache(cfg, nombre: str, funcion):
+    """Ejecuta funcion(); si falla o viene vacía, usa la caché. Devuelve (df, estado)."""
+    ruta = cfg.dir_cache / f'encuestas_{nombre}.csv'
+    try:
+        df = funcion()
+        if df is None or df.empty:
+            raise ValueError('sin encuestas reconocibles (¿cambió el formato de la página?)')
+        df.to_csv(ruta, index=False, encoding='utf-8')
+        return df, 'en_vivo'
+    except Exception as exc:
+        err = f'{type(exc).__name__}: {str(exc)[:160]}'
+        if ruta.exists():
+            df = pd.read_csv(ruta)
+            df = df[df.pollster.notna() & (df.pollster.astype(str).str.strip() != '')].reset_index(drop=True)
+            log.warning('Encuestas %s: uso caché (%s)', nombre, err)
+            return df, f'cache ({err})'
+        log.warning('Encuestas %s: sin datos ni caché (%s)', nombre, err)
+        return pd.DataFrame(columns=COLS), f'no_disponible ({err})'
+
+
+def aislar_excluidas(df: pd.DataFrame, nombre: str, cfg) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Separa las filas de una fuente web listadas en data/encuestas_excluidas.csv (coincidencia exacta: origen, clave_538,
+    fin, D, R; si la fuente cambia las cifras, la exclusión deja de aplicar). Viene de California (primaria registrada como
+    general); en North Carolina aísla la versión «YouGov» de 270toWin de la encuesta Elon/YouGov, que con otro nombre de
+    firma no se reconoce como la misma encuesta."""
+    txt = str(cfg.rutas.get('encuestas_excluidas', '') or '').strip()
+    vacio = df.iloc[0:0].assign(razon='')
+    if not txt or df.empty or not cfg.ruta('encuestas_excluidas').exists():
+        return df, vacio
+    x = pd.read_csv(cfg.ruta('encuestas_excluidas'), comment='#')
+    x = x[x.origen == nombre]
+    if x.empty:
+        return df, vacio
+    fin = pd.to_datetime(df.fin).dt.date
+    m = pd.Series(False, index=df.index)
+    razon = pd.Series('', index=df.index, dtype=object)
+    for r in x.itertuples():
+        k = ((df.clave_538 == r.clave_538) & (fin == pd.Timestamp(r.fin).date())
+             & ((df.D - float(r.D)).abs() < 0.01) & ((df.R - float(r.R)).abs() < 0.01))
+        m |= k
+        razon[k] = r.razon
+    for r in df[m].itertuples():
+        log.warning('Encuesta aislada (%s): %s %s %g–%g · %s', nombre, r.pollster, r.fin, r.D, r.R, razon[r.Index])
+    return df[~m].reset_index(drop=True), df[m].assign(razon=razon[m]).reset_index(drop=True)
+
+
+def aplicar_correcciones_n(p: pd.DataFrame, cfg) -> tuple[pd.DataFrame, list[str]]:
+    """Reemplaza n con el tamaño verificado de data/correcciones_tamano_muestra.csv (clave, fin, pop, n, fuente).
+
+    La coincidencia es por clave de encuestadora, fecha de fin y población (LV/RV): una corrección de la versión LV no
+    toca la RV de la misma encuesta. Se usa cuando la fuente web no publica el n de esa versión (p. ej. Wikipedia da el
+    n de la muestra RV completa en una celda compartida con la fila LV).
+    """
+    txt = str(cfg.rutas.get('correcciones_n', '') or '').strip()
+    if not txt:
+        return p, []
+    ruta = cfg.ruta('correcciones_n')
+    if not ruta.exists():
+        return p, []
+    c = pd.read_csv(ruta, comment='#')
+    hechas = []
+    for _, r in c.iterrows():
+        m = ((p.clave == str(r.clave)) & (pd.to_datetime(p.fin) == pd.Timestamp(r.fin))
+             & (p['pop'].astype(str).str.upper() == str(r['pop']).upper()))
+        if m.any():
+            antes = p.loc[m, 'n'].iloc[0]
+            p.loc[m, 'n'] = float(r.n)
+            p.loc[m, 'n_fuente'] = f'corregido ({r.fuente})'
+            hechas.append(f"{r.clave} {r.fin} {r['pop']}: {('sin n' if pd.isna(antes) else int(antes))} → {int(r.n)}")
+    return p, hechas
+
+
+def obtener_encuestas(cfg) -> dict:
+    f, e = cfg.fuentes, cfg.eleccion
+    anio = cfg.dia_eleccion.year
+
+    def _wiki():
+        js = get_json(f.wikipedia_api, params={'action': 'parse', 'page': f.wikipedia_pagina, 'prop': 'text',
+                                               'format': 'json', 'formatversion': 2, 'redirects': 1},
+                      offline=cfg.offline, timeout=f.timeout_http_s)
+        # atributos «rowspan="2;"» mal formados (aparecen en páginas de Wikipedia) rompen el parser: se normalizan
+        html = re.sub(r'(rowspan|colspan)="\s*(\d+)[^"]*"', r'\1="\2"', js['parse']['text'])
+        return W.elegir_versiones(W.parse_tabla_wikipedia(html, e.candidato_d, e.candidato_r, anio))
+
+    def _t270():
+        html = get_text(f.t270_url, offline=cfg.offline, timeout=f.timeout_http_s)
+        t = W.parse_tabla_270(html, e.candidato_d, e.candidato_r, anio)
+        if t.empty:                                    # 270toWin rotula solo con el apellido
+            t = W.parse_tabla_270(html, e.candidato_d.split()[-1], e.candidato_r.split()[-1], anio)
+        return W.elegir_versiones(t)
+
+    estados, avisos = {}, []
+    wiki, estados['wikipedia'] = _con_cache(cfg, 'wikipedia', _wiki)
+    t270, estados['270towin'] = _con_cache(cfg, '270towin', _t270)
+    wiki, fuera_w = aislar_excluidas(wiki, 'wikipedia', cfg)
+    t270, fuera_t = aislar_excluidas(t270, '270towin', cfg)
+    aisladas = pd.concat([x for x in (fuera_w, fuera_t) if len(x)], ignore_index=True) if len(fuera_w) + len(fuera_t) else fuera_w
+    if len(aisladas):
+        avisos.append('encuestas aisladas de las fuentes web: ' + '; '.join(
+            f"{r.pollster} {pd.Timestamp(r.fin).date()} {r.D:g}–{r.R:g} ({r.origen})" for r in aisladas.itertuples()))
+    base = pd.DataFrame(columns=COLS)
+    rb = cfg.ruta_encuestas_base
+    if rb is not None:
+        if rb.exists():
+            try:
+                base = cargar_base(rb)
+                base, fuera_b = aislar_excluidas(base.assign(clave_538=base.pollster.map(clave)), 'base', cfg)
+                base = base.drop(columns='clave_538')
+                if len(fuera_b):
+                    avisos.append('filas de la base verificada aisladas: ' + '; '.join(
+                        f"{r.pollster} {pd.Timestamp(r.fin).date()} {r.D:g}–{r.R:g}" for r in fuera_b.itertuples()))
+                estados['base_verificada'] = f'archivo ({rb.name}, {len(base)} encuestas)'
+            except Exception as exc:
+                estados['base_verificada'] = f'error ({type(exc).__name__}: {exc})'
+                avisos.append(f'no se pudo leer {rb.name}: {exc}')
+        else:
+            estados['base_verificada'] = f'no_encontrado ({rb})'
+            avisos.append(f'no existe la base verificada {rb}')
+    comp = pd.DataFrame(columns=COLS)
+    txt = str(cfg.rutas.get('encuestas_complementarias', '') or '').strip()
+    if txt:
+        rc = cfg.ruta('encuestas_complementarias')
+        try:
+            comp = cargar_complementarias(rc)
+            estados['complementarias'] = f'archivo ({rc.name}, {len(comp)} encuestas)'
+        except Exception as exc:
+            estados['complementarias'] = f'error ({type(exc).__name__}: {str(exc)[:80]})'
+            avisos.append(f'no se pudo leer {rc.name}: {exc}')
+    if wiki.empty and t270.empty and base.empty:
+        raise ValueError('ninguna fuente de encuestas disponible (ni en vivo, ni caché, ni base verificada)')
+    fuentes = [_normalizar(x, o) for x, o in ((wiki, 'wikipedia'), (base, 'base'), (comp, 'complementaria'),
+                                              (t270, '270towin')) if len(x)]
+    p = combinar(*fuentes)
+    for d_ in p.attrs.get('decisiones', []):
+        log.info('Identidad %s (%s): %s | %s', d_['decision'], d_['razon'], d_['conservada'], d_['nueva'])
+    retraso = int(f.get('retraso_publicacion_dias', 3))
+    comp_n = _normalizar(comp, 'complementaria').assign(publicacion=comp.get('publicacion')) if len(comp) else comp
+    t270_n = _normalizar(t270, '270towin') if len(t270) else t270
+    p = fechas_disponibilidad(p, t270_n, comp_n, retraso)
+    p = p[(pd.to_datetime(p.fin) > pd.Timestamp(cfg.fecha_nominacion)) &
+          (pd.to_datetime(p.fin) <= pd.Timestamp(cfg.corte))].copy()          # nunca una encuesta con campo posterior al corte
+    no_disp = p.iloc[0:0]
+    if cfg.es_reconstruccion:      # revisión OH-05: solo lo ya publicado al corte (en vivo, todo lo descargado ya está publicado)
+        fuera = p.disponible_desde > pd.Timestamp(cfg.corte)
+        no_disp = p[fuera].copy()
+        p = p[~fuera].copy()
+        if len(no_disp):
+            avisos.append(f'reconstrucción del {cfg.corte}: {len(no_disp)} encuesta(s) con campo cerrado pero aún no '
+                          f'publicadas al corte: ' + ', '.join(f"{r.pollster} ({r.tipo_fecha}: {r.disponible_desde.date()})"
+                                                             for r in no_disp.itertuples()))
+    p['partidista'] = p.pollster.map(lambda x: len(set(re.findall(r'\((D|R)\)', str(x)))) == 1)   # bipartidista ≠ partidista
+    # Wikipedia marca «(D)» a firmas de inclinación partidista aunque la encuesta la pague un medio (PPP para Chicago
+    # News Weekly). Para el ajuste partidista cuenta el PATROCINIO (como la columna partisan de FiveThirtyEight)
+    sin_pat = set(cfg.eleccion.get('firmas_sin_patrocinio_partidista', []) or [])
+    p.loc[p.clave.isin(sin_pat), 'partidista'] = False
+    p['n'] = pd.to_numeric(p.n, errors='coerce')
+    p['n_fuente'] = np.where(p.n.notna(), 'reportado', '')
+    p, aplicadas = aplicar_correcciones_n(p, cfg)
+    if aplicadas:
+        log.info('Tamaños de muestra corregidos: %s', '; '.join(aplicadas))
+    p, cifras = aplicar_correcciones_cifras(p, cfg)
+    if cifras:
+        log.info('Cifras corregidas con la publicación original: %s', '; '.join(cifras))
+    p['n_imputado'] = p.n.isna()
+    p.loc[p.n_imputado, 'n_fuente'] = 'imputado (600)'
+    p['n'] = p.n.fillna(600).clip(100, 3000)
+    p['fin'] = pd.to_datetime(p.fin)
+    p['days'] = (pd.Timestamp(cfg.dia_eleccion) - p.fin).dt.days
+    p['margin_poll'] = p.D - p.R
+    p['pollster_key'] = p.clave
+    p['otros'] = pd.to_numeric(p.otros, errors='coerce')
+    if p.duplicated(['pollster_key', 'inicio', 'fin']).any():
+        raise ValueError('encuestas duplicadas tras combinar: '
+                         + str(p[p.duplicated(['pollster_key', 'inicio', 'fin'], keep=False)].pollster.tolist()))
+    vivas = int((p.origen.isin(['wikipedia', '270towin']) | p.tambien_en.str.contains('wikipedia|270towin')).sum())
+    if vivas < f.min_encuestas_vivas:
+        avisos.append(f'solo {vivas} encuestas aparecen en fuentes web (< {f.min_encuestas_vivas})')
+    log.info('Encuestas: %d combinadas (wiki %d, base %d, 270 %d)', len(p), len(wiki), len(base), len(t270))
+    return {'encuestas': p.sort_values('fin').reset_index(drop=True), 'estados': estados, 'avisos': avisos,
+            'conteos': {'wikipedia': len(wiki), 'base': len(base), 'complementarias': len(comp), '270towin': len(t270)},
+            'no_disponibles_al_corte': no_disp, 'aisladas': aisladas}

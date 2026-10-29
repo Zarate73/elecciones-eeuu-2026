@@ -1,0 +1,85 @@
+# =====================================================================================
+# Wisconsin 2026 · Gobernador · configuración (modelo general: V11 + sesgo estatal contraído + votos por escrito + mercados)
+# Rutas relativas = relativas a la carpeta de producción.
+# =====================================================================================
+
+[eleccion]
+estado = "Wisconsin"
+abrev = "WI"
+cargo = "Gobernador"
+dia_eleccion = "2026-11-03"
+fecha_nominacion = "2026-03-01"        # Tiffany fue el candidato republicano de hecho desde 2025 (95 % en la primaria); Crowley ganó la primaria demócrata del 11-ago por 0.46 pp. Se conservan las encuestas Crowley–Tiffany previas (TIPP mar, RMG jul, GBAO jul–ago): cuentan solo fuera de la ventana
+candidato_d = "Crowley"
+candidato_r = "Tiffany"
+nombre_d = "David Crowley"
+nombre_r = "Tom Tiffany"
+terceros = "Otros (solo votos por escrito, como Jamie Jo Carothers: no hay terceros en la boleta)"
+condado_principal = "Milwaukee"
+# Firmas que Wikipedia marca «(D)»/«(R)» por su inclinación, pero cuya encuesta la pagó un medio, no un partido ni una
+# campaña: no cuentan como patrocinio partidista. Vacío en Wisconsin (se revisa con cada encuesta nueva).
+firmas_sin_patrocinio_partidista = []
+zona_horaria = "America/Chicago"
+recuento_pp = 1.0                      # Wisconsin (Wis. Stat. 9.01): un candidato puede pedir recuento si pierde por ≤ 1 % del total; si es ≤ 0.25 %, gratis. Se reporta P(|margen| ≤ 1 pp)
+
+[rutas]
+datos = "data"
+salidas = "salidas"
+logs = "logs"
+# Encuestas verificadas a mano (opcional). Excel con la hoja «Histórico encuestas» (WISCONSIN_GOBERNADOR.xlsx) o CSV
+# con columnas pollster, inicio, fin, D, R (n, pop, otros, indecisos opcionales). Vacío = solo fuentes web.
+encuestas_base = "data/encuestas_verificadas_wi.csv"   # exportación CSV de la hoja «Histórico encuestas» del Excel (el Excel no se publica)
+# Encuestas verificadas en la publicación original que no traen Wikipedia, 270toWin ni el Excel (columnas de la base más
+# fuente = URL y nota).
+encuestas_complementarias = "data/encuestas_complementarias_wi.csv"
+# Tamaños de muestra verificados que las fuentes web no traen o traen mal (columnas clave, fin, pop, n, fuente).
+# Sin corrección, un n faltante se imputa en 600 (mismo valor que la calibración) y queda marcado en n_imputado.
+correcciones_n = "data/correcciones_tamano_muestra.csv"
+# Cifras de la publicación original cuando la fuente web las redondea (columnas clave, fin, pop, D, R, fuente).
+correcciones_cifras = "data/correcciones_cifras.csv"
+# Filas de las fuentes web que son otra versión de una encuesta ya contada (o no son de la general): se aíslan antes de combinar
+encuestas_excluidas = "data/encuestas_excluidas.csv"
+
+[fuentes]
+timeout_http_s = 30
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+wikipedia_pagina = "2026_Wisconsin_gubernatorial_election"
+t270_url = "https://www.270towin.com/2026-governor-polls/wisconsin"
+kalshi_api = "https://api.elections.kalshi.com/trade-api/v2"
+kalshi_evento = "GOVPARTYWI-26"
+kalshi_ticker_d = "GOVPARTYWI-26-D"
+kalshi_ticker_r = "GOVPARTYWI-26-R"
+polymarket_api = "https://gamma-api.polymarket.com"
+polymarket_evento_ganador = "wisconsin-governor-winner-2026"
+polymarket_evento_margen = "wisconsin-governor-margin-of-victory-2026"
+mercado_max_dias_antiguedad = 3        # un precio más viejo no entra a la mezcla
+retraso_publicacion_dias = 3           # reconstrucciones: publicación supuesta = cierre de campo + 3 días si no se conoce
+civicapi = "https://civicapi.org/api/v2/early-vote"
+civicapi_estado = "WI"
+civicapi_por_partido = false           # Wisconsin no tiene registro partidario: civicAPI publica solo volumen por condado (72)
+votos_totales_eleccion_previa = 2656490 # gobernador 2022 (resultados certificados de la WEC): referencia de volumen
+fte_raw_polls_url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/pollster-ratings/2023/raw-polls.csv"
+min_encuestas_vivas = 5                # menos encuestas web que esto => fuente degradada
+
+[modelo]
+ventana_dias_eleccion = 21             # encuestas que terminan en los últimos 21 días (igual que el backtest)
+min_encuestadoras = 2                  # si hay menos: los 21 días previos a la encuesta más reciente
+vida_media_dias = 14.0
+contraccion_casa = 8.0
+sesgo_estatal = false                  # backtest de WI (regla de Arizona): el error de las encuestas en WI cambia de signo
+                                       # (presidente 2016 +5.9 y 2020 +7.4 pro-D; gobernador 2022 −4.1 pro-R; autocorrelación del error
+                                       # relativo −0.36). LOYO WI: sin sesgo 2.630 vs con sesgo 2.822 (P = 0.88); gobernador WI 2.924 vs
+                                       # 3.147 (P = 0.93); cronológico WI 2.049 vs 2.129, gobernador WI 1.658 vs 1.985 (P = 0.95).
+                                       # A nivel nacional el sesgo sí ayuda: «con sesgo» queda como escenario (hoy −0.50 pp)
+sesgo_regla = "todas"                  # solo para el escenario con sesgo
+peso_mercados = 0.30                   # promedio Kalshi + Polymarket en mezcla logit; 0 = solo encuestas
+# Solo Crowley y Tiffany en la boleta: el «otro» de las encuestas no tiene a quién ir; terceros = votos por escrito
+# (2022: 0.07 % con una independiente retirada en la boleta que sacó 1.02 %). Media 0.10, sd 0.05 (como Nueva York).
+terceros_fijos = [0.10, 0.05]
+sigma_dia_pp = 0.25                    # deriva (paseo aleatorio) si las encuestas son más viejas que el horizonte calibrado:
+                                       # varianza 0.25²·d; la sd adicional crece con √d (0.25 pp por √día), no 0.25 pp/día
+n_simulaciones = 200000
+semilla = 20261104
+
+[ejecucion]
+graficas = true
+conservar_corridas = 60
