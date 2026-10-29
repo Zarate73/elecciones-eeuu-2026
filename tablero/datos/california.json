@@ -7,10 +7,10 @@
   "D": "Xavier Becerra",
   "R": "Steve Hilton"
  },
- "corte": "2026-10-28",
- "dias_a_eleccion": 6,
+ "corte": "2026-10-29",
+ "dias_a_eleccion": 5,
  "pronostico": {
-  "P_D": 0.9938,
+  "P_D": 0.9941,
   "pct_D": 61.25,
   "pct_D_IC80": [
    57.59,
@@ -24,14 +24,14 @@
   "pct_terceros": null,
   "margen": 22.501,
   "margen_IC80": [
-   15.18,
-   29.76
+   15.19,
+   29.75
   ],
   "margen_IC95": [
-   9.77,
-   35.19
+   9.78,
+   35.18
   ],
-  "sd": 6.394,
+  "sd": 6.389,
   "nu": 5.0,
   "P_D_encuestas": 0.9971,
   "peso_mercados": 0.3,
@@ -41,14 +41,14 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9651,
+   "P_D": 0.9705,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "SurveyUSA",
   "fin": "2026-10-24",
-  "dias_desde_fin": 4,
+  "dias_desde_fin": 5,
   "dias_antes_eleccion": 10,
   "origen": "wikipedia"
  },
@@ -307,6 +307,14 @@
    "P_kalshi": 0.9651,
    "pct_D": 61.25,
    "margen": 22.5
+  },
+  {
+   "corte": "2026-10-29",
+   "P_D": 0.9941,
+   "P_D_encuestas": 0.9971,
+   "P_kalshi": 0.9705,
+   "pct_D": 61.25,
+   "margen": 22.5
   }
  ],
  "escenarios": [],
@@ -317,12 +325,12 @@
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 4131932.0,
+    "valor": 4310256.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Margen D−R de devueltas",
-    "valor": 22.14,
+    "valor": 21.82,
     "formato": "pp"
    },
    {
