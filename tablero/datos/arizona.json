@@ -7,62 +7,62 @@
   "D": "Katie Hobbs",
   "R": "Andy Biggs"
  },
- "corte": "2026-10-28",
- "dias_a_eleccion": 6,
+ "corte": "2026-10-29",
+ "dias_a_eleccion": 5,
  "pronostico": {
-  "P_D": 0.8998,
-  "pct_D": 51.5,
+  "P_D": 0.9013,
+  "pct_D": 51.51,
   "pct_D_IC80": [
    47.73,
-   55.3
+   55.29
   ],
-  "pct_R": 44.34,
+  "pct_R": 44.32,
   "pct_R_IC80": [
    40.55,
-   48.11
+   48.08
   ],
-  "pct_terceros": 4.16,
+  "pct_terceros": 4.17,
   "pct_terceros_IC80": [
-   1.78,
-   6.51
+   1.81,
+   6.52
   ],
-  "margen": 7.164,
+  "margen": 7.186,
   "margen_IC80": [
-   -0.01,
+   0.04,
    14.36
   ],
   "margen_IC95": [
-   -4.2,
-   18.54
+   -4.12,
+   18.51
   ],
-  "sd": 5.739,
-  "nu": 17.3,
-  "P_D_encuestas": 0.8962,
+  "sd": 5.716,
+  "nu": 17.8,
+  "P_D_encuestas": 0.897,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Recuento automático (|margen| ≤ 0.5)",
-    "valor": 0.0302
+    "valor": 0.0301
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9006,
+   "P_D": 0.9013,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.915,
+   "P_D": 0.92,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "HighGround, Inc.",
   "fin": "2026-10-25",
-  "dias_desde_fin": 3,
+  "dias_desde_fin": 4,
   "dias_antes_eleccion": 9,
   "origen": "wikipedia"
  },
@@ -321,122 +321,131 @@
    "P_polymarket": 0.915,
    "pct_D": 51.5036,
    "margen": 7.1638
+  },
+  {
+   "corte": "2026-10-29",
+   "P_D": 0.9013,
+   "P_D_encuestas": 0.897,
+   "P_kalshi": 0.9013,
+   "P_polymarket": 0.92,
+   "pct_D": 51.5064,
+   "margen": 7.1864
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 7.164,
-   "P_D": 0.8998
+   "margen": 7.186,
+   "P_D": 0.9013
   },
   {
    "escenario": "Solo encuestas (sin mercados)",
-   "margen": 7.052,
-   "P_D": 0.8962
+   "margen": 7.055,
+   "P_D": 0.897
   },
   {
-   "escenario": "Con sesgo estatal AZ (V11, +1.45 pp)",
-   "margen": 5.612,
-   "P_D": 0.8431
+   "escenario": "Con sesgo estatal AZ (V11, +1.32 pp)",
+   "margen": 5.746,
+   "P_D": 0.8492
   },
   {
    "escenario": "Distribución normal",
    "margen": 7.044,
-   "P_D": 0.8918
+   "P_D": 0.8929
   },
   {
    "escenario": "Sin terceros",
-   "margen": 7.049,
-   "P_D": 0.8958
+   "margen": 7.05,
+   "P_D": 0.8967
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
    "margen": 7.054,
-   "P_D": 0.8956
+   "P_D": 0.8967
   },
   {
    "escenario": "Regla literal V11 (última encuesta de cada firma) (3 encuestadoras)",
-   "margen": 7.068,
-   "P_D": 0.8969
+   "margen": 7.069,
+   "P_D": 0.8975
   },
   {
    "escenario": "Ventana 45 días (5 encuestadoras)",
-   "margen": 6.546,
-   "P_D": 0.9115
+   "margen": 6.545,
+   "P_D": 0.9125
   },
   {
    "escenario": "Ventana 60 días (7 encuestadoras)",
-   "margen": 6.647,
-   "P_D": 0.9297
+   "margen": 6.645,
+   "P_D": 0.9308
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": 7.104,
-   "P_D": 0.8971
+   "margen": 7.102,
+   "P_D": 0.8979
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -3.1]",
    "margen": 6.347,
-   "P_D": 0.8724
+   "P_D": 0.8731
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -3.1]",
-   "margen": 6.288,
-   "P_D": 0.8709
+   "margen": 6.29,
+   "P_D": 0.8718
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 7.208,
-   "P_D": 0.9006
+   "margen": 7.206,
+   "P_D": 0.9013
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 7.723,
-   "P_D": 0.915
+   "margen": 7.89,
+   "P_D": 0.92
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 8.64,
-   "P_D": 0.9032
+   "margen": 7.006,
+   "P_D": 0.7704
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-28",
+  "fecha": "2026-10-29",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 1295955.0,
+    "valor": 1441186.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Devueltas por demócratas registrados",
-    "valor": 37.54,
+    "valor": 37.37,
     "formato": "pct"
    },
    {
     "etiqueta": "Devueltas por republicanos registrados",
-    "valor": 38.63,
+    "valor": 38.31,
     "formato": "pct"
    },
    {
     "etiqueta": "Devueltas por otros e independientes",
-    "valor": 23.84,
+    "valor": 24.32,
     "formato": "pct"
    },
    {
     "etiqueta": "Maricopa, % del total",
-    "valor": 58.32,
+    "valor": 60.73,
     "formato": "pct"
    }
   ]
  },
  "adicional": {
   "titulo": "Polymarket por rangos de margen",
-  "P_D": 0.9032,
-  "margen": 8.64,
-  "nota": "Margen implícito +8.6 pp (σ 7.3)"
+  "P_D": 0.7704,
+  "margen": 7.01,
+  "nota": "Margen implícito +7.0 pp (σ 8.3)"
  },
  "fuentes": [
   {
