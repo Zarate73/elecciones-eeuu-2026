@@ -10,30 +10,30 @@
  "corte": "2026-10-28",
  "dias_a_eleccion": 6,
  "pronostico": {
-  "P_D": 0.9971,
-  "pct_D": 58.62,
+  "P_D": 0.997,
+  "pct_D": 58.58,
   "pct_D_IC80": [
-   54.37,
-   62.85
+   54.34,
+   62.81
   ],
-  "pct_R": 39.32,
+  "pct_R": 39.36,
   "pct_R_IC80": [
-   35.08,
-   43.57
+   35.11,
+   43.6
   ],
   "pct_terceros": 2.06,
   "pct_terceros_IC80": [
    0.1,
    4.41
   ],
-  "margen": 19.296,
+  "margen": 19.22,
   "margen_IC80": [
-   11.08,
-   27.47
+   11.0,
+   27.4
   ],
   "margen_IC95": [
-   6.33,
-   32.23
+   6.25,
+   32.15
   ],
   "sd": 6.54,
   "nu": 17.8,
@@ -43,14 +43,14 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.001
+    "valor": 0.0011
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9761,
+   "P_D": 0.9725,
    "estado": "en_vivo"
   },
   {
@@ -297,19 +297,19 @@
   },
   {
    "corte": "2026-10-28",
-   "P_D": 0.9971,
+   "P_D": 0.997,
    "P_D_encuestas": 0.9988,
-   "P_kalshi": 0.9761,
+   "P_kalshi": 0.9725,
    "P_polymarket": 0.978,
-   "pct_D": 58.6161,
-   "margen": 19.2962
+   "pct_D": 58.578,
+   "margen": 19.2201
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 19.296,
-   "P_D": 0.9971
+   "margen": 19.22,
+   "P_D": 0.997
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -323,7 +323,7 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 19.692,
+   "margen": 19.639,
    "P_D": 0.9976
   },
   {
@@ -428,28 +428,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 20.571,
+   "margen": 20.528,
    "P_D": 0.9981
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 17.702,
-   "P_D": 0.9947
+   "margen": 17.565,
+   "P_D": 0.9945
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 13.093,
-   "P_D": 0.9761
+   "margen": 12.657,
+   "P_D": 0.9725
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 13.357,
+   "margen": 13.359,
    "P_D": 0.978
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 22.372,
-   "P_D": 0.9859
+   "margen": 22.334,
+   "P_D": 0.9838
   }
  ],
  "anticipado": {
@@ -485,15 +485,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9859,
-  "margen": 22.37
+  "P_D": 0.9838,
+  "margen": 22.33
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",
   "P_D": null,
   "margen": -0.6,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.6 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +22.4 pp."
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.6 pp (promedio de encuestas +22.4). Polymarket por rangos: margen implícito +22.3 pp."
  },
  "fuentes": [
   {
