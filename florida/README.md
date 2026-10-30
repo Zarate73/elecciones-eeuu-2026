@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **David Jolly (D)** y **Byron Donalds (R)**, con candidatos de terceros en la boleta. El gobernador Ron DeSantis no puede reelegirse.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-29** (5 días a la elección) · actualizado automáticamente 2026-10-29 22:09 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 12:49 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| David **Jolly** (D) | **45.2%** (42.4–48.0) | **4%** |
-| Byron **Donalds** (R) | **52.5%** (49.6–55.3) | **96%** |
-| Terceros | 2.3% (0.2–4.4) | — |
+| David **Jolly** (D) | **45.4%** (42.6–48.2) | **5%** |
+| Byron **Donalds** (R) | **52.3%** (49.5–55.0) | **95%** |
+| Terceros | 2.3% (0.2–4.3) | — |
 
-Margen D−R -7.3 pp (σ 4.2) · solo encuestas: P(Jolly) 2% · Kalshi 30% · Polymarket 30% (peso de mercados 0.3) · recuento por máquina 2.0% · 22 encuestas, 10 encuestadoras en la ventana
+Margen D−R -6.9 pp (σ 4.1) · solo encuestas: P(Jolly) 2% · Kalshi 32% · Polymarket 33% (peso de mercados 0.3) · recuento por máquina 2.3% · 23 encuestas, 11 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas -4.3 · sesgo estatal de Florida -4.9 (las encuestas de FL han sobreestimado al demócrata) · mercados +2.0
+Cómo se llega: promedio de encuestas -3.8 · sesgo estatal de Florida -4.9 (las encuestas de FL han sobreestimado al demócrata) · mercados +1.8
 
-**Encuesta más reciente:** Siena College, terminó el 2026-10-28 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Siena College, terminó el 2026-10-28 (**2 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-29): 4,265,855 (1,760,737 por correo, 2,505,118 en persona) · registrados D 38.5% · R 40.4% · NPA 18.6% (correo D+7.7, en persona R+8.6). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-30): 4,462,340 (1,814,640 por correo, 2,647,700 en persona) · registrados D 38.3% · R 40.5% · NPA 18.7% (correo D+7.7, en persona R+8.9). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
