@@ -13,8 +13,8 @@
   "P_D": 0.9784,
   "pct_D": 53.43,
   "pct_D_IC80": [
-   50.18,
-   56.66
+   50.19,
+   56.67
   ],
   "pct_R": 43.44,
   "pct_R_IC80": [
@@ -26,14 +26,14 @@
    1.01,
    5.21
   ],
-  "margen": 9.992,
+  "margen": 9.997,
   "margen_IC80": [
-   3.86,
+   3.87,
    16.12
   ],
   "margen_IC95": [
-   0.33,
-   19.65
+   0.34,
+   19.66
   ],
   "sd": 4.876,
   "nu": 18.8,
@@ -50,12 +50,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9645,
+   "P_D": 0.9636,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.977,
+   "P_D": 0.9784,
    "estado": "en_vivo"
   }
  ],
@@ -573,16 +573,16 @@
    "corte": "2026-10-29",
    "P_D": 0.9784,
    "P_D_encuestas": 0.981,
-   "P_kalshi": 0.9645,
-   "P_polymarket": 0.977,
-   "pct_D": 53.4305,
-   "margen": 9.9924
+   "P_kalshi": 0.9636,
+   "P_polymarket": 0.9784,
+   "pct_D": 53.4329,
+   "margen": 9.9972
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 9.992,
+   "margen": 9.997,
    "P_D": 0.9784
   },
   {
@@ -597,8 +597,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 11.328,
-   "P_D": 0.9877
+   "margen": 11.334,
+   "P_D": 0.9878
   },
   {
    "escenario": "Sesgo estatal sin contraer (-1.98 pp)",
@@ -732,28 +732,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 10.137,
-   "P_D": 0.9797
+   "margen": 10.138,
+   "P_D": 0.9798
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 9.791,
-   "P_D": 0.9764
+   "margen": 9.8,
+   "P_D": 0.9765
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 8.826,
-   "P_D": 0.9645
+   "margen": 8.764,
+   "P_D": 0.9636
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 9.851,
-   "P_D": 0.977
+   "margen": 10.002,
+   "P_D": 0.9784
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 13.321,
-   "P_D": 0.9922
+   "margen": 13.393,
+   "P_D": 0.9924
   }
  ],
  "anticipado": {
@@ -794,15 +794,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9922,
-  "margen": 13.32
+  "P_D": 0.9924,
+  "margen": 13.39
  },
  "adicional": {
   "titulo": "Sesgo estatal de North Carolina",
   "P_D": null,
   "margen": -1.8,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En NC las encuestas sobreestimaron al demócrata en las 10 contiendas desde 2014 (+0.3 a +6.2 pp); el sesgo contraído corrige -1.8 pp (promedio de encuestas +12.1). Polymarket por rangos: margen implícito +13.3 pp."
+  "nota": "En NC las encuestas sobreestimaron al demócrata en las 10 contiendas desde 2014 (+0.3 a +6.2 pp); el sesgo contraído corrige -1.8 pp (promedio de encuestas +12.1). Polymarket por rangos: margen implícito +13.4 pp."
  },
  "fuentes": [
   {
