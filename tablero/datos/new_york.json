@@ -7,62 +7,62 @@
   "D": "Kathy Hochul",
   "R": "Bruce Blakeman"
  },
- "corte": "2026-10-29",
- "dias_a_eleccion": 5,
+ "corte": "2026-10-30",
+ "dias_a_eleccion": 4,
  "pronostico": {
-  "P_D": 0.9858,
-  "pct_D": 55.41,
+  "P_D": 0.986,
+  "pct_D": 55.39,
   "pct_D_IC80": [
-   52.33,
-   58.49
+   52.29,
+   58.48
   ],
-  "pct_R": 44.43,
+  "pct_R": 44.45,
   "pct_R_IC80": [
    41.36,
-   47.52
+   47.55
   ],
   "pct_terceros": 0.15,
   "pct_terceros_IC80": [
    0.1,
    0.21
   ],
-  "margen": 10.979,
+  "margen": 10.937,
   "margen_IC80": [
-   4.81,
-   17.13
+   4.74,
+   17.12
   ],
   "margen_IC95": [
    1.28,
-   20.69
+   20.63
   ],
-  "sd": 4.905,
-  "nu": 18.8,
-  "P_D_encuestas": 0.9906,
+  "sd": 4.904,
+  "nu": 25.5,
+  "P_D_encuestas": 0.9905,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0063
+    "valor": 0.0066
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9521,
+   "P_D": 0.957,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.975,
+   "P_D": 0.9735,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "Marist University",
   "fin": "2026-10-25",
-  "dias_desde_fin": 4,
+  "dias_desde_fin": 5,
   "dias_antes_eleccion": 9,
   "origen": "wikipedia"
  },
@@ -375,183 +375,192 @@
    "P_polymarket": 0.975,
    "pct_D": 55.4126,
    "margen": 10.9794
+  },
+  {
+   "corte": "2026-10-30",
+   "P_D": 0.986,
+   "P_D_encuestas": 0.9905,
+   "P_kalshi": 0.957,
+   "P_polymarket": 0.9735,
+   "pct_D": 55.3913,
+   "margen": 10.9368
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 10.979,
-   "P_D": 0.9858
+   "margen": 10.937,
+   "P_D": 0.986
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
-   "margen": 11.902,
-   "P_D": 0.9906
-  },
-  {
-   "escenario": "Sin sesgo estatal, sin mercados",
-   "margen": 12.172,
-   "P_D": 0.9917
-  },
-  {
-   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 11.186,
-   "P_D": 0.987
-  },
-  {
-   "escenario": "Sesgo estatal sin contraer (-0.40 pp)",
-   "margen": 11.786,
-   "P_D": 0.9899
-  },
-  {
-   "escenario": "Sesgo estatal a la mitad (-0.14 pp)",
-   "margen": 12.049,
-   "P_D": 0.9912
-  },
-  {
-   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-1.60 pp)",
-   "margen": 10.584,
-   "P_D": 0.983
-  },
-  {
-   "escenario": "Sesgo sin la contienda 2024_Pres-G_NY (+0.27 pp; rango al quitar una de 24: -0.84 a +0.27)",
-   "margen": 12.459,
-   "P_D": 0.9929
-  },
-  {
-   "escenario": "Sesgo sin la contienda 2018_Sen-G_NY (-0.84 pp; rango al quitar una de 24: -0.84 a +0.27)",
-   "margen": 11.342,
-   "P_D": 0.9882
-  },
-  {
-   "escenario": "Sesgo estimado solo con contiendas de gobernador (+0.37 pp)",
-   "margen": 12.561,
-   "P_D": 0.9932
-  },
-  {
-   "escenario": "Distribución normal",
-   "margen": 11.883,
-   "P_D": 0.9928
-  },
-  {
-   "escenario": "Incertidumbre con k efectivo 4.6 (no 5 firmas) y deriva por antigüedad ponderada (8 días)",
-   "margen": 11.899,
-   "P_D": 0.9892
-  },
-  {
-   "escenario": "Sin terceros",
-   "margen": 11.884,
+   "margen": 11.757,
    "P_D": 0.9905
   },
   {
-   "escenario": "Sin deriva por encuestas viejas",
-   "margen": 11.92,
-   "P_D": 0.9908
+   "escenario": "Sin sesgo estatal, sin mercados",
+   "margen": 12.169,
+   "P_D": 0.9922
   },
   {
-   "escenario": "Deriva al doble (0.50 pp/día, 4 días)",
-   "margen": 11.921,
-   "P_D": 0.9903
+   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
+   "margen": 11.271,
+   "P_D": 0.9878
   },
   {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (5 encuestadoras)",
-   "margen": 11.909,
+   "escenario": "Sesgo estatal sin contraer (-0.58 pp)",
+   "margen": 11.595,
+   "P_D": 0.9894
+  },
+  {
+   "escenario": "Sesgo estatal a la mitad (-0.21 pp)",
+   "margen": 11.976,
+   "P_D": 0.9913
+  },
+  {
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.41 pp)",
+   "margen": 11.78,
    "P_D": 0.9907
   },
   {
+   "escenario": "Sesgo sin la contienda 2024_Pres-G_NY (+0.11 pp; rango al quitar una de 24: -0.86 a +0.11)",
+   "margen": 12.303,
+   "P_D": 0.9928
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2018_Sen-G_NY (-0.86 pp; rango al quitar una de 24: -0.86 a +0.11)",
+   "margen": 11.325,
+   "P_D": 0.9886
+  },
+  {
+   "escenario": "Sesgo estimado solo con contiendas de gobernador (+0.33 pp)",
+   "margen": 12.515,
+   "P_D": 0.9935
+  },
+  {
+   "escenario": "Distribución normal",
+   "margen": 11.738,
+   "P_D": 0.9921
+  },
+  {
+   "escenario": "Incertidumbre con k efectivo 4.6 (no 5 firmas) y deriva por antigüedad ponderada (9 días)",
+   "margen": 11.756,
+   "P_D": 0.9889
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": 11.74,
+   "P_D": 0.9902
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 11.777,
+   "P_D": 0.9907
+  },
+  {
+   "escenario": "Deriva al doble (0.50 pp/día, 5 días)",
+   "margen": 11.774,
+   "P_D": 0.9899
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (5 encuestadoras)",
+   "margen": 11.766,
+   "P_D": 0.9906
+  },
+  {
    "escenario": "Ventana 45 días (9 encuestadoras)",
-   "margen": 11.949,
-   "P_D": 0.9957
+   "margen": 11.809,
+   "P_D": 0.9959
   },
   {
    "escenario": "Ventana 60 días (9 encuestadoras)",
-   "margen": 11.814,
-   "P_D": 0.9954
+   "margen": 11.665,
+   "P_D": 0.9956
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": 11.972,
-   "P_D": 0.991
+   "margen": 11.827,
+   "P_D": 0.9909
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 12.017,
-   "P_D": 0.9915
+   "margen": 11.871,
+   "P_D": 0.9912
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 11.828,
-   "P_D": 0.9901
+   "margen": 11.68,
+   "P_D": 0.99
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 12.37,
-   "P_D": 0.9923
+   "margen": 12.222,
+   "P_D": 0.9921
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 11.903,
-   "P_D": 0.9906
+   "margen": 11.761,
+   "P_D": 0.9904
   },
   {
    "escenario": "Sin Marist University (pesa 31%) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena College, ActiVote",
-   "margen": 12.657,
-   "P_D": 0.9904
+   "margen": 12.516,
+   "P_D": 0.9902
   },
   {
    "escenario": "Sin Quinnipiac University (pesa 20%) → ventana desde 2026-10-13: OnMessage Inc., Siena College, ActiVote, Marist University",
-   "margen": 11.552,
-   "P_D": 0.9853
+   "margen": 11.409,
+   "P_D": 0.9845
   },
   {
    "escenario": "Sin Siena College (pesa 20%) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, ActiVote, Marist University",
-   "margen": 11.767,
-   "P_D": 0.9859
+   "margen": 11.621,
+   "P_D": 0.9852
   },
   {
    "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Quinnipiac University, Siena College, ActiVote, Marist University",
-   "margen": 12.804,
-   "P_D": 0.9915
+   "margen": 12.663,
+   "P_D": 0.9912
   },
   {
    "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena College, Marist University",
-   "margen": 10.797,
-   "P_D": 0.9793
+   "margen": 10.65,
+   "P_D": 0.978
   },
   {
    "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 0.1 %)",
-   "margen": 11.898,
-   "P_D": 0.9904
+   "margen": 11.749,
+   "P_D": 0.9902
   },
   {
    "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 0.1 %)",
-   "margen": 11.895,
-   "P_D": 0.9906
+   "margen": 11.753,
+   "P_D": 0.9903
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 11.453,
-   "P_D": 0.9884
+   "margen": 11.366,
+   "P_D": 0.9885
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 10.371,
-   "P_D": 0.9814
+   "margen": 10.367,
+   "P_D": 0.9818
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 8.118,
-   "P_D": 0.9521
+   "margen": 8.401,
+   "P_D": 0.957
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 9.693,
-   "P_D": 0.975
+   "margen": 9.545,
+   "P_D": 0.9735
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 17.192,
-   "P_D": 0.9761
+   "margen": 15.345,
+   "P_D": 0.9733
   }
  ],
  "anticipado": {
@@ -593,15 +602,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9761,
-  "margen": 17.19
+  "P_D": 0.9733,
+  "margen": 15.35
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nueva York",
   "P_D": null,
-  "margen": -0.28,
+  "margen": -0.42,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3); el sesgo contraído corrige -0.3 pp (promedio de encuestas +12.2). Polymarket por rangos: margen implícito +17.2 pp."
+  "nota": "Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3); el sesgo contraído corrige -0.4 pp (promedio de encuestas +12.2). Polymarket por rangos: margen implícito +15.3 pp."
  },
  "fuentes": [
   {

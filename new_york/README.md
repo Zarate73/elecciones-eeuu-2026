@@ -3,19 +3,19 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-29** (5 días a la elección) · actualizado automáticamente 2026-10-29 22:06 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 12:48 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
 | Kathy **Hochul** (D, gobernadora) | **55.4%** (52.3–58.5) | **99%** |
-| Bruce **Blakeman** (R) | **44.4%** (41.4–47.5) | **1%** |
+| Bruce **Blakeman** (R) | **44.5%** (41.4–47.6) | **1%** |
 | Otros (votos por escrito) | 0.2% (0.1–0.2) | — |
 
-Margen D−R +11.0 pp (σ 4.9) · solo encuestas: P(Hochul) 99% · Kalshi 95% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.6% · 27 encuestas, 5 encuestadoras en la ventana
+Margen D−R +10.9 pp (σ 4.9) · solo encuestas: P(Hochul) 99% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.7% · 27 encuestas, 5 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +12.2 · sesgo estatal de Nueva York -0.3 · mercados -0.9
+Cómo se llega: promedio de encuestas +12.2 · sesgo estatal de Nueva York -0.4 · mercados -0.8
 
-**Encuesta más reciente:** Marist University, terminó el 2026-10-25 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Marist University, terminó el 2026-10-25 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
 **Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 6, al 2026-10-29): 400,137 en persona · Manhattan 110,908 · Bronx 41,629 · Brooklyn 119,215 · Queens 95,982 · Staten Island 32,403. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
 
