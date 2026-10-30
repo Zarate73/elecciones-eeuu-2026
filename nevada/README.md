@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Aaron Ford (D, fiscal general)** y **Joe Lombardo (R, gobernador en funciones)**. En la boleta también aparecen Danielle Ford (independiente) y la opción «None of these candidates».
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-29** (5 días a la elección) · actualizado automáticamente 2026-10-29 11:42 PT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-29** (5 días a la elección) · actualizado automáticamente 2026-10-29 23:32 PT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -11,13 +11,13 @@ Elección general del 3 de noviembre de 2026 entre **Aaron Ford (D, fiscal gener
 | Joe **Lombardo** (R, gobernador) | **45.3%** (41.6–49.0) | **31%** |
 | Terceros | 6.7% (4.6–8.8) | — |
 
-Margen D−R +2.6 pp (σ 5.6) · solo encuestas: P(Ford) 64% · Kalshi 78% · Polymarket 79% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 6.5% · 11 encuestas, 3 encuestadoras en la ventana
+Margen D−R +2.7 pp (σ 5.6) · solo encuestas: P(Ford) 64% · Kalshi 78% · Polymarket 80% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 6.5% · 11 encuestas, 3 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +2.4 · sesgo estatal de Nevada -0.5 · mercados +0.7
+Cómo se llega: promedio de encuestas +2.4 · sesgo estatal de Nevada -0.5 · mercados +0.8
 
 **Encuesta más reciente:** Hart Research (D), terminó el 2026-10-25 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-29): 548,919 (331,054 por correo, 217,865 en persona) · registrados D 40.2% · R 34.1% · otros e independientes 25.7% (correo D+12.1, en persona R+3.2). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-10-29): 600,776 (348,483 por correo, 252,293 en persona) · registrados D 39.8% · R 34.3% · otros e independientes 25.9% (correo D+11.8, en persona R+3.1). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
