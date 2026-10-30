@@ -1,26 +1,26 @@
 {
   "version": "1.0.0",
-  "generado": "2026-10-29T22:59:27-07:00",
-  "fecha_corte": "2026-10-29",
-  "dias_a_eleccion": 5,
+  "generado": "2026-10-30T11:04:52-07:00",
+  "fecha_corte": "2026-10-30",
+  "dias_a_eleccion": 4,
   "offline": false,
   "config": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/config/california.toml",
   "pronostico": {
     "candidato_d": "Becerra",
     "candidato_r": "Hilton",
-    "pct_d": 61.250499976918235,
-    "pct_r": 38.749500023081765,
-    "margen_pp": 22.500999953836477,
+    "pct_d": 61.470510059733215,
+    "pct_r": 38.529489940266785,
+    "margen_pp": 22.941020119466437,
     "ic80_pct_d": [
-      57.59474489656737,
-      64.87564462769829
+      57.82533663286763,
+      65.08516165950591
     ],
     "ic95_pct_d": [
-      54.88767479471533,
-      67.58843169189228
+      55.126102197560144,
+      67.79009650929775
     ],
-    "p_d_gana_modelo": 0.997095,
-    "p_d_gana_final": 0.9937011506385552
+    "p_d_gana_modelo": 0.9974,
+    "p_d_gana_final": 0.994475899693361
   },
   "estados_fuentes": {
     "encuestas_wikipedia": "en_vivo",
@@ -28,89 +28,89 @@
     "civiq": "Datos de Civiq vía api, validados (2026-10-29)",
     "civiq_historia": "api_en_vivo (197 filas)",
     "civiq_condados": "api_en_vivo (58 condados)",
-    "gdelt": "cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
+    "gdelt": "en_vivo",
     "kalshi": "en_vivo"
   },
   "ultima_encuesta": {
-    "encuestadora": "SurveyUSA",
-    "fin": "2026-10-24",
+    "encuestadora": "Berkeley IGS",
+    "fin": "2026-10-25",
     "dias_desde_fin": 5,
-    "dias_antes_eleccion": 10,
+    "dias_antes_eleccion": 9,
     "origen": "wikipedia"
   },
   "encuestas": {
-    "n": 18,
+    "n": 19,
     "por_origen": {
-      "wikipedia": 16,
+      "wikipedia": 17,
       "base": 2
     },
-    "margen_legado_pp": 21.65076427676739,
-    "margen_m5_pp": 22.512892940289834,
-    "dispersion_pp": 5.963890027669074,
-    "n_efectivo": 12.77807196351609
+    "margen_legado_pp": 22.264466882693252,
+    "margen_m5_pp": 22.95287868144146,
+    "dispersion_pp": 5.9588660880431945,
+    "n_efectivo": 13.604199358248959
   },
   "voto_temprano": {
     "fecha_datos": "2026-10-29",
     "estado": "actualizado",
     "origen": "api",
     "registrados": 23211464,
-    "devueltas": 4736234,
-    "tasa_devolucion_total_pct": 20.404718978518545,
+    "devueltas": 4740569,
+    "tasa_devolucion_total_pct": 20.42339509476869,
     "partidos": {
       "Democratas": {
         "registrados": 10427642,
-        "devueltas": 2400404,
+        "devueltas": 2403171,
         "cuota_registro_pct": 44.92453384241511,
-        "cuota_devoluciones_pct": 50.68170195982715,
-        "tasa_devolucion_pct": 23.019624187328258
+        "cuota_devoluciones_pct": 50.69372474063768,
+        "tasa_devolucion_pct": 23.04615942894856
       },
       "Republicanos": {
         "registrados": 5746617,
-        "devueltas": 1341565,
+        "devueltas": 1342166,
         "cuota_registro_pct": 24.75766715964146,
-        "cuota_devoluciones_pct": 28.325564150757753,
-        "tasa_devolucion_pct": 23.345300374115762
+        "cuota_devoluciones_pct": 28.312339721244435,
+        "tasa_devolucion_pct": 23.355758701162788
       },
       "Otros/NPP": {
         "registrados": 7037205,
-        "devueltas": 994265,
+        "devueltas": 995232,
         "cuota_registro_pct": 30.31779899794343,
-        "cuota_devoluciones_pct": 20.992733889415092,
-        "tasa_devolucion_pct": 14.128691717805578
+        "cuota_devoluciones_pct": 20.993935538117892,
+        "tasa_devolucion_pct": 14.142432968770983
       }
     },
-    "margen_dr_devueltas_pp": 22.3561378090694,
+    "margen_dr_devueltas_pp": 22.381385019393242,
     "margen_dr_registro_pp": 20.16686668277365,
     "edades": {
       "18-29": {
         "registrados": 4421461,
-        "devueltas": 346638,
-        "porcentaje_de_devoluciones": 7.318852911405982
+        "devueltas": 347063,
+        "porcentaje_de_devoluciones": 7.321125375455984
       },
       "30-45": {
         "registrados": 6479806,
-        "devueltas": 653946,
-        "porcentaje_de_devoluciones": 13.807299217057265
+        "devueltas": 654551,
+        "porcentaje_de_devoluciones": 13.80743535216975
       },
       "46-64": {
         "registrados": 6469018,
-        "devueltas": 1339385,
-        "porcentaje_de_devoluciones": 28.27953601954633
+        "devueltas": 1340767,
+        "porcentaje_de_devoluciones": 28.282828495904184
       },
       "65+": {
         "registrados": 5841179,
-        "devueltas": 2396265,
-        "porcentaje_de_devoluciones": 50.59431185199042
+        "devueltas": 2398188,
+        "porcentaje_de_devoluciones": 50.588610776470084
       }
     }
   },
   "participacion_m2": {
     "por_edad": {
       "disponible": true,
-      "margen_dr_devueltas_pp": 22.3561378090694,
+      "margen_dr_devueltas_pp": 22.381385019393242,
       "margen_dr_registro_pp": 20.16686668277365,
-      "margen_dr_esperado_por_edad_pp": 17.589020083596672,
-      "delta_m2_pp": 4.767117725472726
+      "margen_dr_esperado_por_edad_pp": 17.589298297701923,
+      "delta_m2_pp": 4.792086721691319
     },
     "historico": {
       "disponible": true,
@@ -119,17 +119,17 @@
         "2022 General",
         "2024 General"
       ],
-      "margen_actual_pp": 22.3561378090694,
+      "margen_actual_pp": 22.381385019393242,
       "margen_referencias_mismo_dia_pp": {
         "2022 General": 21.355602768923692,
         "2024 General": 18.784172336331334
       },
-      "delta_vs_referencias_pp": 2.2862502564418854,
+      "delta_vs_referencias_pp": 2.3114974667657293,
       "corrimiento_dia_a_final_pp": {
         "2022 General": -1.177367621611154,
         "2024 General": 1.1223247765955051
       },
-      "composicion_final_proyectada_pp": 22.328616386561574,
+      "composicion_final_proyectada_pp": 22.353863596885418,
       "composicion_a_resultado": {
         "disponible": true,
         "pendiente": 2.1024469820554668,
@@ -137,7 +137,7 @@
         "n": 4,
         "rmse_loo_pp": 4.223595885799315,
         "error_primaria_2026_pp": 4.307928221859708,
-        "margen_resultado_implicito_pp": 25.575661988581658
+        "margen_resultado_implicito_pp": 25.628742909732345
       },
       "diagnostico_retrospectivo": [
         {
@@ -177,7 +177,7 @@
   "sentimiento": {
     "propio": {
       "activa": false,
-      "corte": "2026-10-29",
+      "corte": "2026-10-30",
       "ruta": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/data/sentimiento/serie_sentimiento_diaria.csv",
       "fecha_ultima_senal": null,
       "brechas_7d": {
@@ -221,11 +221,11 @@
     "validado": false
   },
   "kalshi": {
-    "p_d": 0.9644999999999999,
-    "p_r": 0.0375,
-    "p_d_normalizada": 0.9625748502994012,
+    "p_d": 0.9704999999999999,
+    "p_r": 0.0315,
+    "p_d_normalizada": 0.9685628742514969,
     "overround": 0.0020000000000000018,
-    "fecha": "2026-10-29",
+    "fecha": "2026-10-30",
     "antiguedad_dias": 0,
     "estado": "en_vivo",
     "usable_en_mezcla": true
@@ -244,31 +244,31 @@
     }
   },
   "m5": {
-    "media_pp": 22.512892940289834,
-    "media_final_pp": 22.512892940289834,
+    "media_pp": 22.95287868144146,
+    "media_final_pp": 22.95287868144146,
     "desplazamiento_kalshi_pp": 0.0,
-    "p_mezcla_objetivo": 0.9937011506385552,
-    "sigma_pp": 6.388620769482485,
+    "p_mezcla_objetivo": 0.994475899693361,
+    "sigma_pp": 6.370128783628487,
     "k_sent_aplicado": 1.0,
     "delta_m2_aplicado_pp": 0.0,
-    "p_modelo": 0.997095,
-    "p_final": 0.9937011506385552,
-    "p_kalshi_usada": 0.9625748502994012,
+    "p_modelo": 0.9974,
+    "p_final": 0.994475899693361,
+    "p_kalshi_usada": 0.9685628742514969,
     "w_kalshi": 0.3,
     "cuantiles_margen_pp": {
-      "2.5": 9.775349589430665,
-      "10": 15.189489793134749,
-      "50": 22.500999953836477,
-      "90": 29.751289255396593,
-      "97.5": 35.17686338378458
+      "2.5": 10.252204395120279,
+      "10": 15.65067326573527,
+      "50": 22.941020119466437,
+      "90": 30.17032331901181,
+      "97.5": 35.58019301859551
     },
     "componentes_varianza_pp2": {
       "sistematico": 37.7184580447902,
-      "muestreo_encuestas": 2.783517291472784,
-      "deriva_hasta_eleccion": 0.3125,
+      "muestreo_encuestas": 2.610082675221952,
+      "deriva_hasta_eleccion": 0.25,
       "participacion_m2": 0.0
     }
   },
   "avisos": [],
-  "duracion_s": 89.2
+  "duracion_s": 100.1
 }
