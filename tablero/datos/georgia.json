@@ -7,53 +7,53 @@
   "D": "Keisha Lance Bottoms",
   "R": "Rick Jackson"
  },
- "corte": "2026-10-29",
- "dias_a_eleccion": 5,
+ "corte": "2026-10-30",
+ "dias_a_eleccion": 4,
  "pronostico": {
-  "P_D": 0.4962,
-  "pct_D": 49.98,
+  "P_D": 0.5032,
+  "pct_D": 50.02,
   "pct_D_IC80": [
-   47.05,
-   52.92
+   47.1,
+   52.95
   ],
-  "pct_R": 50.01,
+  "pct_R": 49.97,
   "pct_R_IC80": [
-   47.07,
-   52.94
+   47.04,
+   52.89
   ],
   "pct_terceros": null,
-  "margen": -0.032,
+  "margen": 0.052,
   "margen_IC80": [
-   -5.89,
-   5.86
+   -5.79,
+   5.91
   ],
   "margen_IC95": [
-   -9.31,
-   9.25
+   -9.07,
+   9.23
   ],
-  "sd": 4.689,
-  "nu": 17.5,
-  "P_D_encuestas": 0.442,
+  "sd": 4.637,
+  "nu": 23.9,
+  "P_D_encuestas": 0.4483,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Segunda vuelta (ninguno > 50 %)",
-    "valor": 0.002
+    "valor": 0.0021
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.615,
+   "P_D": 0.625,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "State Navigate",
   "fin": "2026-10-27",
-  "dias_desde_fin": 2,
+  "dias_desde_fin": 3,
   "dias_antes_eleccion": 7,
   "origen": "wikipedia"
  },
@@ -302,43 +302,51 @@
    "P_kalshi": 0.615,
    "pct_D": 49.979,
    "margen": -0.0316
+  },
+  {
+   "corte": "2026-10-30",
+   "P_D": 0.5032,
+   "P_D_encuestas": 0.4483,
+   "P_kalshi": 0.625,
+   "pct_D": 50.0207,
+   "margen": 0.0519
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL",
-   "margen": -0.032,
-   "P_D": 0.4962
+   "margen": 0.052,
+   "P_D": 0.5032
   },
   {
    "escenario": "Solo encuestas (sin Kalshi)",
-   "margen": -0.616,
-   "P_D": 0.4426
+   "margen": -0.547,
+   "P_D": 0.448
   },
   {
    "escenario": "Sin sesgo estatal GA",
-   "margen": 0.105,
-   "P_D": 0.5074
+   "margen": 0.106,
+   "P_D": 0.5073
   },
   {
    "escenario": "Distribución normal",
-   "margen": -0.061,
-   "P_D": 0.4939
+   "margen": 0.02,
+   "P_D": 0.5004
   },
   {
    "escenario": "Kalshi solo",
-   "margen": 1.346,
-   "P_D": 0.6179
+   "margen": 1.469,
+   "P_D": 0.6295
   },
   {
    "escenario": "Ventana 30 días",
-   "margen": -0.774,
-   "P_D": 0.4266
+   "margen": -0.547,
+   "P_D": 0.448
   },
   {
    "escenario": "Ventana 45 días",
-   "margen": -1.008,
-   "P_D": 0.3984
+   "margen": -0.889,
+   "P_D": 0.4112
   }
  ],
  "anticipado": {
@@ -365,10 +373,10 @@
  },
  "adicional": {
   "titulo": "Senado (Ossoff vs Collins)",
-  "P_D": 0.9596,
-  "pct_D": 54.53,
-  "pct_R": 45.46,
-  "margen": 9.07,
+  "P_D": 0.9615,
+  "pct_D": 54.56,
+  "pct_R": 45.43,
+  "margen": 9.14,
   "nota": "Voto dividido (gobernador R + senado D): 47%"
  },
  "fuentes": [
