@@ -13,10 +13,10 @@
   "P_D": 0.9858,
   "pct_D": 55.41,
   "pct_D_IC80": [
-   52.32,
-   58.48
+   52.33,
+   58.49
   ],
-  "pct_R": 44.44,
+  "pct_R": 44.43,
   "pct_R_IC80": [
    41.36,
    47.52
@@ -26,14 +26,14 @@
    0.1,
    0.21
   ],
-  "margen": 10.965,
+  "margen": 10.979,
   "margen_IC80": [
-   4.8,
-   17.11
+   4.81,
+   17.13
   ],
   "margen_IC95": [
-   1.27,
-   20.67
+   1.28,
+   20.69
   ],
   "sd": 4.905,
   "nu": 18.8,
@@ -50,12 +50,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9541,
+   "P_D": 0.9521,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.972,
+   "P_D": 0.975,
    "estado": "en_vivo"
   }
  ],
@@ -371,16 +371,16 @@
    "corte": "2026-10-29",
    "P_D": 0.9858,
    "P_D_encuestas": 0.9906,
-   "P_kalshi": 0.9541,
-   "P_polymarket": 0.972,
-   "pct_D": 55.4053,
-   "margen": 10.9648
+   "P_kalshi": 0.9521,
+   "P_polymarket": 0.975,
+   "pct_D": 55.4126,
+   "margen": 10.9794
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 10.965,
+   "margen": 10.979,
    "P_D": 0.9858
   },
   {
@@ -395,8 +395,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 11.18,
-   "P_D": 0.9869
+   "margen": 11.186,
+   "P_D": 0.987
   },
   {
    "escenario": "Sesgo estatal sin contraer (-0.40 pp)",
@@ -530,78 +530,78 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 11.448,
+   "margen": 11.453,
    "P_D": 0.9884
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 10.355,
-   "P_D": 0.9813
+   "margen": 10.371,
+   "P_D": 0.9814
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 8.224,
-   "P_D": 0.9541
+   "margen": 8.118,
+   "P_D": 0.9521
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 9.431,
-   "P_D": 0.972
+   "margen": 9.693,
+   "P_D": 0.975
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 16.803,
-   "P_D": 0.9634
+   "margen": 17.192,
+   "P_D": 0.9761
   }
  ],
  "anticipado": {
   "fuente": "Junta Electoral de NYC",
-  "fecha": "2026-10-28",
+  "fecha": "2026-10-29",
   "estado": "en_vivo",
-  "nota": "Solo la Ciudad de Nueva York, solo en persona y sin partido (día 5 del voto anticipado): mide participación, no indica el resultado",
+  "nota": "Solo la Ciudad de Nueva York, solo en persona y sin partido (día 6 del voto anticipado): mide participación, no indica el resultado",
   "metricas": [
    {
     "etiqueta": "Check-ins acumulados en la ciudad",
-    "valor": 357027.0,
+    "valor": 400137.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Manhattan",
-    "valor": 99121.0,
+    "valor": 110908.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Bronx",
-    "valor": 37212.0,
+    "valor": 41629.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Brooklyn",
-    "valor": 105516.0,
+    "valor": 119215.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Queens",
-    "valor": 85995.0,
+    "valor": 95982.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Staten Island",
-    "valor": 29183.0,
+    "valor": 32403.0,
     "formato": "entero"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9634,
-  "margen": 16.8
+  "P_D": 0.9761,
+  "margen": 17.19
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nueva York",
   "P_D": null,
   "margen": -0.28,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3); el sesgo contraído corrige -0.3 pp (promedio de encuestas +12.2). Polymarket por rangos: margen implícito +16.8 pp."
+  "nota": "Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3); el sesgo contraído corrige -0.3 pp (promedio de encuestas +12.2). Polymarket por rangos: margen implícito +17.2 pp."
  },
  "fuentes": [
   {
