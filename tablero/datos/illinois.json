@@ -10,30 +10,30 @@
  "corte": "2026-10-29",
  "dias_a_eleccion": 5,
  "pronostico": {
-  "P_D": 0.9941,
-  "pct_D": 55.97,
+  "P_D": 0.9943,
+  "pct_D": 56.01,
   "pct_D_IC80": [
-   51.74,
-   60.2
+   51.78,
+   60.24
   ],
-  "pct_R": 38.81,
+  "pct_R": 38.77,
   "pct_R_IC80": [
-   34.59,
-   43.04
+   34.55,
+   43.0
   ],
   "pct_terceros": 5.22,
   "pct_terceros_IC80": [
    3.13,
    7.33
   ],
-  "margen": 17.163,
+  "margen": 17.242,
   "margen_IC80": [
-   8.99,
-   25.35
+   9.07,
+   25.43
   ],
   "margen_IC95": [
-   4.26,
-   30.11
+   4.34,
+   30.19
   ],
   "sd": 6.522,
   "nu": 18.8,
@@ -50,12 +50,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9687,
+   "P_D": 0.9736,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9875,
+   "P_D": 0.987,
    "estado": "en_vivo"
   }
  ],
@@ -128,19 +128,19 @@
   },
   {
    "corte": "2026-10-29",
-   "P_D": 0.9941,
+   "P_D": 0.9943,
    "P_D_encuestas": 0.9967,
-   "P_kalshi": 0.9687,
-   "P_polymarket": 0.9875,
-   "pct_D": 55.9689,
-   "margen": 17.1626
+   "P_kalshi": 0.9736,
+   "P_polymarket": 0.987,
+   "pct_D": 56.0086,
+   "margen": 17.242
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 17.163,
-   "P_D": 0.9941
+   "margen": 17.242,
+   "P_D": 0.9943
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -154,8 +154,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 16.845,
-   "P_D": 0.9934
+   "margen": 16.949,
+   "P_D": 0.9936
   },
   {
    "escenario": "Sesgo estatal sin contraer (+0.93 pp)",
@@ -279,28 +279,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 18.002,
+   "margen": 18.06,
    "P_D": 0.9956
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 16.066,
-   "P_D": 0.9914
+   "margen": 16.23,
+   "P_D": 0.9919
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 12.182,
-   "P_D": 0.9687
+   "margen": 12.726,
+   "P_D": 0.9736
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 14.994,
-   "P_D": 0.9875
+   "margen": 14.881,
+   "P_D": 0.987
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 20.723,
-   "P_D": 0.9826
+   "margen": 21.095,
+   "P_D": 0.9863
   }
  ],
  "anticipado": {
@@ -311,22 +311,22 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 1263109.0,
+    "valor": 1267574.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 679094.0,
+    "valor": 683169.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 584015.0,
+    "valor": 584405.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 30.8,
+    "valor": 30.9,
     "formato": "pct"
    },
    {
@@ -337,15 +337,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9826,
-  "margen": 20.72
+  "P_D": 0.9863,
+  "margen": 21.1
  },
  "adicional": {
   "titulo": "Sesgo estatal de Illinois",
   "P_D": null,
   "margen": 0.65,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +0.7 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +20.7 pp."
+  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige +0.7 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +21.1 pp."
  },
  "fuentes": [
   {
