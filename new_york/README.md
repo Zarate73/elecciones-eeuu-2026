@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 21:45 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-10-31** (3 días a la elección) · actualizado automáticamente 2026-10-31 11:52 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -11,11 +11,11 @@ Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernador
 | Bruce **Blakeman** (R) | **44.4%** (41.3–47.5) | **1%** |
 | Otros (votos por escrito) | 0.2% (0.1–0.2) | — |
 
-Margen D−R +11.0 pp (σ 4.9) · solo encuestas: P(Hochul) 99% · Kalshi 96% · Polymarket 98% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.6% · 27 encuestas, 5 encuestadoras en la ventana
+Margen D−R +11.0 pp (σ 4.9) · solo encuestas: P(Hochul) 99% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.7% · 27 encuestas, 5 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +12.2 · sesgo estatal de Nueva York -0.4 · mercados -0.7
+Cómo se llega: promedio de encuestas +12.2 · sesgo estatal de Nueva York -0.5 · mercados -0.7
 
-**Encuesta más reciente:** Marist University, terminó el 2026-10-25 (**5 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Marist University, terminó el 2026-10-25 (**6 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
 **Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 7, al 2026-10-30): 468,103 en persona · Manhattan 130,047 · Bronx 47,875 · Brooklyn 142,117 · Queens 111,059 · Staten Island 37,005. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
 
