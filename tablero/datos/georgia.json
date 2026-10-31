@@ -10,26 +10,26 @@
  "corte": "2026-10-31",
  "dias_a_eleccion": 3,
  "pronostico": {
-  "P_D": 0.5158,
-  "pct_D": 50.09,
+  "P_D": 0.5231,
+  "pct_D": 50.13,
   "pct_D_IC80": [
-   47.15,
-   53.04
+   47.19,
+   53.08
   ],
-  "pct_R": 49.9,
+  "pct_R": 49.86,
   "pct_R_IC80": [
-   46.95,
-   52.84
+   46.91,
+   52.8
   ],
   "pct_terceros": null,
-  "margen": 0.191,
+  "margen": 0.269,
   "margen_IC80": [
-   -5.7,
-   6.1
+   -5.62,
+   6.18
   ],
   "margen_IC95": [
-   -9.02,
-   9.45
+   -8.94,
+   9.53
   ],
   "sd": 4.679,
   "nu": 22.1,
@@ -39,14 +39,14 @@
   "extra": [
    {
     "etiqueta": "Segunda vuelta (ninguno > 50 %)",
-    "valor": 0.0018
+    "valor": 0.002
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.6616,
+   "P_D": 0.6818,
    "estado": "en_vivo"
   }
  ],
@@ -313,18 +313,18 @@
   },
   {
    "corte": "2026-10-31",
-   "P_D": 0.5158,
+   "P_D": 0.5231,
    "P_D_encuestas": 0.4484,
-   "P_kalshi": 0.6616,
-   "pct_D": 50.0905,
-   "margen": 0.1915
+   "P_kalshi": 0.6818,
+   "pct_D": 50.1294,
+   "margen": 0.2692
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL",
-   "margen": 0.191,
-   "P_D": 0.5158
+   "margen": 0.269,
+   "P_D": 0.5231
   },
   {
    "escenario": "Solo encuestas (sin Kalshi)",
@@ -338,13 +338,13 @@
   },
   {
    "escenario": "Distribución normal",
-   "margen": 0.163,
-   "P_D": 0.5126
+   "margen": 0.243,
+   "P_D": 0.5198
   },
   {
    "escenario": "Kalshi solo",
-   "margen": 1.926,
-   "P_D": 0.6654
+   "margen": 2.18,
+   "P_D": 0.6848
   },
   {
    "escenario": "Ventana 30 días",
@@ -359,12 +359,12 @@
  ],
  "anticipado": {
   "fuente": "Civic Forge",
-  "fecha": "2026-10-29",
+  "fecha": "2026-10-30",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Boletas vs 2022 (mismo día)",
-    "valor": 247517.0,
+    "valor": 314614.0,
     "formato": "entero_signo"
    },
    {
@@ -374,7 +374,7 @@
    },
    {
     "etiqueta": "% 65+ vs 2022",
-    "valor": 1.74,
+    "valor": 1.4,
     "formato": "pp"
    }
   ]
