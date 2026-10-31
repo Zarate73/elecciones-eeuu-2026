@@ -10,7 +10,7 @@
  "corte": "2026-10-30",
  "dias_a_eleccion": 4,
  "pronostico": {
-  "P_D": 0.9945,
+  "P_D": 0.9949,
   "pct_D": 61.47,
   "pct_D_IC80": [
    57.83,
@@ -41,7 +41,7 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9686,
+   "P_D": 0.9755,
    "estado": "en_vivo"
   }
  ],
@@ -328,9 +328,9 @@
   },
   {
    "corte": "2026-10-30",
-   "P_D": 0.9945,
+   "P_D": 0.9949,
    "P_D_encuestas": 0.9974,
-   "P_kalshi": 0.9686,
+   "P_kalshi": 0.9755,
    "pct_D": 61.47,
    "margen": 22.94
   }
@@ -338,27 +338,27 @@
  "escenarios": [],
  "anticipado": {
   "fuente": "Civiq",
-  "fecha": "2026-10-29",
+  "fecha": "2026-10-30",
   "estado": "diagnóstico",
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 4740569.0,
+    "valor": 5223196.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Margen D−R de devueltas",
-    "valor": 22.38,
+    "valor": 22.41,
     "formato": "pp"
    },
    {
     "etiqueta": "2022 General al mismo día",
-    "valor": 21.36,
+    "valor": 21.58,
     "formato": "pp"
    },
    {
     "etiqueta": "2024 General al mismo día",
-    "valor": 18.78,
+    "valor": 18.9,
     "formato": "pp"
    }
   ]
@@ -377,7 +377,7 @@
   },
   {
    "nombre": "civiq",
-   "estado": "Datos de Civiq vía api, validados (2026-10-29)",
+   "estado": "Datos de Civiq vía api, validados (2026-10-30)",
    "en_vivo": true
   },
   {
@@ -392,8 +392,8 @@
   },
   {
    "nombre": "gdelt",
-   "estado": "en_vivo",
-   "en_vivo": true
+   "estado": "cache (< 12 h)",
+   "en_vivo": false
   },
   {
    "nombre": "kalshi",
