@@ -10,30 +10,30 @@
  "corte": "2026-10-30",
  "dias_a_eleccion": 4,
  "pronostico": {
-  "P_D": 0.5686,
-  "pct_D": 48.88,
+  "P_D": 0.5642,
+  "pct_D": 48.86,
   "pct_D_IC80": [
-   45.93,
-   51.81
+   45.91,
+   51.79
   ],
-  "pct_R": 48.14,
+  "pct_R": 48.16,
   "pct_R_IC80": [
-   45.2,
-   51.09
+   45.22,
+   51.11
   ],
   "pct_terceros": 2.98,
   "pct_terceros_IC80": [
    0.92,
    5.01
   ],
-  "margen": 0.739,
+  "margen": 0.693,
   "margen_IC80": [
-   -4.8,
-   6.28
+   -4.84,
+   6.23
   ],
   "margen_IC95": [
-   -7.9,
-   9.38
+   -7.94,
+   9.33
   ],
   "sd": 4.377,
   "nu": 25.5,
@@ -43,7 +43,7 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0468
+    "valor": 0.0466
    },
    {
     "etiqueta": "Don Kissick (Libertario) ≥ 3 % (su partido conserva el registro)",
@@ -54,12 +54,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.805,
+   "P_D": 0.797,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.8159,
+   "P_D": 0.805,
    "estado": "en_vivo"
   }
  ],
@@ -422,19 +422,19 @@
   },
   {
    "corte": "2026-10-30",
-   "P_D": 0.5686,
+   "P_D": 0.5642,
    "P_D_encuestas": 0.4432,
-   "P_kalshi": 0.805,
-   "P_polymarket": 0.8159,
-   "pct_D": 48.8791,
-   "margen": 0.7392
+   "P_kalshi": 0.797,
+   "P_polymarket": 0.805,
+   "pct_D": 48.856,
+   "margen": 0.6931
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 0.739,
-   "P_D": 0.5686
+   "margen": 0.693,
+   "P_D": 0.5642
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -448,8 +448,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 2.895,
-   "P_D": 0.7517
+   "margen": 2.852,
+   "P_D": 0.7483
   },
   {
    "escenario": "Sesgo estatal sin contraer (-3.55 pp)",
@@ -583,28 +583,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 0.057,
-   "P_D": 0.506
+   "margen": 0.034,
+   "P_D": 0.5037
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 1.618,
-   "P_D": 0.6485
+   "margen": 1.539,
+   "P_D": 0.6416
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
+   "margen": 3.549,
+   "P_D": 0.797
+  },
+  {
+   "escenario": "Solo Polymarket (probabilidad)",
    "margen": 3.673,
    "P_D": 0.805
   },
   {
-   "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 3.848,
-   "P_D": 0.8159
-  },
-  {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 4.384,
-   "P_D": 0.8178
+   "margen": 3.945,
+   "P_D": 0.8063
   }
  ],
  "anticipado": {
@@ -641,15 +641,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.8178,
-  "margen": 4.38
+  "P_D": 0.8063,
+  "margen": 3.94
  },
  "adicional": {
   "titulo": "Sesgo estatal de Ohio",
   "P_D": null,
   "margen": -3.12,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En OH las encuestas sobreestimaron al demócrata en todas las contiendas desde 2014 (+2.9 a +8.1 pp); el sesgo contraído corrige -3.1 pp (promedio de encuestas +2.5). Polymarket por rangos: margen implícito +4.4 pp."
+  "nota": "En OH las encuestas sobreestimaron al demócrata en todas las contiendas desde 2014 (+2.9 a +8.1 pp); el sesgo contraído corrige -3.1 pp (promedio de encuestas +2.5). Polymarket por rangos: margen implícito +3.9 pp."
  },
  "fuentes": [
   {
