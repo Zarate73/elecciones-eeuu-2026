@@ -1,9 +1,9 @@
-California · Gobernador · corte 2026-10-30 (4 días)
+California · Gobernador · corte 2026-10-31 (3 días)
 
 PRONÓSTICO M5: Becerra 61.5%  ·  Hilton 38.5%   (margen +22.9 pp)
   IC 80% Becerra: 57.8–65.1%   IC 95%: 55.1–67.8%
   P(Becerra gana): modelo 0.997 · con Kalshi 0.995
-  Última encuesta: Berkeley IGS, terminó el 2026-10-25 (5 días antes del corte)
+  Última encuesta: Berkeley IGS, terminó el 2026-10-25 (6 días antes del corte)
   σ 6.37 pp (sistemático calibrado 6.14; RMSE histórico 6.44, n=4)
 
 FUENTES
@@ -12,7 +12,7 @@ FUENTES
   civiq: Datos de Civiq vía api, validados (2026-10-30)
   civiq_historia: api_en_vivo (197 filas)
   civiq_condados: api_en_vivo (58 condados)
-  gdelt: cache (< 12 h)
+  gdelt: cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429
   kalshi: en_vivo
   encuestas: 19 (wikipedia 17, base 2) · margen legado +22.26 → M5 +22.95
 
@@ -28,8 +28,8 @@ PDI (contraste, 2026-10-19): D−R +18.4 en 1,214,420 boletas
 
 MODELOS
                        modelo  mediana_margen_pp  ic95_inf_pp  ic95_sup_pp  de_pp  p_d_gana  p_final_con_kalshi
-                 M5 · híbrido             22.941       10.252       35.580  6.377     0.997               0.995
+                 M5 · híbrido             22.941       10.262       35.570  6.372     0.997               0.995
       M1 · encuestas (legado)             22.268       13.415       31.071  4.495     1.000                 NaN
 M2 · + participación (legado)             22.359       13.506       31.162  4.495     1.000                 NaN
-       M3 · + shocks (legado)             22.359       13.329       31.332  4.579     1.000                 NaN
-  M4 · + sentimiento (legado)             22.359       13.329       31.332  4.579     1.000                 NaN
+       M3 · + shocks (legado)             22.363       13.351       31.298  4.563     1.000                 NaN
+  M4 · + sentimiento (legado)             22.363       13.351       31.298  4.563     1.000                 NaN

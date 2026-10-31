@@ -1,26 +1,26 @@
 {
   "version": "1.0.0",
-  "generado": "2026-10-30T22:54:14-07:00",
-  "fecha_corte": "2026-10-30",
-  "dias_a_eleccion": 4,
+  "generado": "2026-10-31T10:17:54-07:00",
+  "fecha_corte": "2026-10-31",
+  "dias_a_eleccion": 3,
   "offline": false,
   "config": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/config/california.toml",
   "pronostico": {
     "candidato_d": "Becerra",
     "candidato_r": "Hilton",
-    "pct_d": 61.470510059733215,
-    "pct_r": 38.529489940266785,
-    "margen_pp": 22.941020119466437,
+    "pct_d": 61.47051462770017,
+    "pct_r": 38.52948537229983,
+    "margen_pp": 22.941029255400338,
     "ic80_pct_d": [
-      57.82533663286763,
-      65.08516165950591
+      57.82814947249052,
+      65.08238147008412
     ],
     "ic95_pct_d": [
-      55.126102197560144,
-      67.79009650929775
+      55.130994549642296,
+      67.78523241577037
     ],
-    "p_d_gana_modelo": 0.9974,
-    "p_d_gana_final": 0.9948828707625623
+    "p_d_gana_modelo": 0.997415,
+    "p_d_gana_final": 0.9949050603120537
   },
   "estados_fuentes": {
     "encuestas_wikipedia": "en_vivo",
@@ -28,13 +28,13 @@
     "civiq": "Datos de Civiq vía api, validados (2026-10-30)",
     "civiq_historia": "api_en_vivo (197 filas)",
     "civiq_condados": "api_en_vivo (58 condados)",
-    "gdelt": "cache (< 12 h)",
+    "gdelt": "cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
     "kalshi": "en_vivo"
   },
   "ultima_encuesta": {
     "encuestadora": "Berkeley IGS",
     "fin": "2026-10-25",
-    "dias_desde_fin": 5,
+    "dias_desde_fin": 6,
     "dias_antes_eleccion": 9,
     "origen": "wikipedia"
   },
@@ -177,7 +177,7 @@
   "sentimiento": {
     "propio": {
       "activa": false,
-      "corte": "2026-10-30",
+      "corte": "2026-10-31",
       "ruta": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/data/sentimiento/serie_sentimiento_diaria.csv",
       "fecha_ultima_senal": null,
       "brechas_7d": {
@@ -221,11 +221,11 @@
     "validado": false
   },
   "kalshi": {
-    "p_d": 0.9755,
+    "p_d": 0.9764999999999999,
     "p_r": 0.0245,
-    "p_d_normalizada": 0.9755,
-    "overround": 0.0,
-    "fecha": "2026-10-30",
+    "p_d_normalizada": 0.9755244755244755,
+    "overround": 0.0009999999999998899,
+    "fecha": "2026-10-31",
     "antiguedad_dias": 0,
     "estado": "en_vivo",
     "usable_en_mezcla": true
@@ -247,28 +247,28 @@
     "media_pp": 22.95287868144146,
     "media_final_pp": 22.95287868144146,
     "desplazamiento_kalshi_pp": 0.0,
-    "p_mezcla_objetivo": 0.9948828707625623,
-    "sigma_pp": 6.370128783628486,
+    "p_mezcla_objetivo": 0.9949050603120537,
+    "sigma_pp": 6.365221183903363,
     "k_sent_aplicado": 1.0,
     "delta_m2_aplicado_pp": 0.0,
-    "p_modelo": 0.9974,
-    "p_final": 0.9948828707625623,
-    "p_kalshi_usada": 0.9755,
+    "p_modelo": 0.997415,
+    "p_final": 0.9949050603120537,
+    "p_kalshi_usada": 0.9755244755244755,
     "w_kalshi": 0.3,
     "cuantiles_margen_pp": {
-      "2.5": 10.25220439512028,
-      "10": 15.650673265735271,
-      "50": 22.941020119466437,
-      "90": 30.17032331901181,
-      "97.5": 35.58019301859551
+      "2.5": 10.261989099284602,
+      "10": 15.656298944981037,
+      "50": 22.941029255400338,
+      "90": 30.16476294016822,
+      "97.5": 35.57046483154074
     },
     "componentes_varianza_pp2": {
       "sistematico": 37.718458044790175,
       "muestreo_encuestas": 2.610082675221952,
-      "deriva_hasta_eleccion": 0.25,
+      "deriva_hasta_eleccion": 0.1875,
       "participacion_m2": 0.0
     }
   },
   "avisos": [],
-  "duracion_s": 3.5
+  "duracion_s": 92.4
 }

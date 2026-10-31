@@ -7,31 +7,31 @@
   "D": "Xavier Becerra",
   "R": "Steve Hilton"
  },
- "corte": "2026-10-30",
- "dias_a_eleccion": 4,
+ "corte": "2026-10-31",
+ "dias_a_eleccion": 3,
  "pronostico": {
   "P_D": 0.9949,
   "pct_D": 61.47,
   "pct_D_IC80": [
    57.83,
-   65.09
+   65.08
   ],
   "pct_R": 38.53,
   "pct_R_IC80": [
-   34.91,
+   34.92,
    42.17
   ],
   "pct_terceros": null,
   "margen": 22.941,
   "margen_IC80": [
-   15.65,
-   30.17
+   15.66,
+   30.16
   ],
   "margen_IC95": [
-   10.25,
-   35.58
+   10.26,
+   35.57
   ],
-  "sd": 6.37,
+  "sd": 6.365,
   "nu": 5.0,
   "P_D_encuestas": 0.9974,
   "peso_mercados": 0.3,
@@ -48,7 +48,7 @@
  "ultima_encuesta": {
   "encuestadora": "Berkeley IGS",
   "fin": "2026-10-25",
-  "dias_desde_fin": 5,
+  "dias_desde_fin": 6,
   "dias_antes_eleccion": 9,
   "origen": "wikipedia"
  },
@@ -333,6 +333,14 @@
    "P_kalshi": 0.9755,
    "pct_D": 61.47,
    "margen": 22.94
+  },
+  {
+   "corte": "2026-10-31",
+   "P_D": 0.9949,
+   "P_D_encuestas": 0.9974,
+   "P_kalshi": 0.9755,
+   "pct_D": 61.47,
+   "margen": 22.94
   }
  ],
  "escenarios": [],
@@ -392,7 +400,7 @@
   },
   {
    "nombre": "gdelt",
-   "estado": "cache (< 12 h)",
+   "estado": "cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
    "en_vivo": false
   },
   {
