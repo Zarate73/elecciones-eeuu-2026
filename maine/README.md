@@ -3,23 +3,23 @@
 Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presidenta de la Cámara estatal)** y **Bobby Charles (R)**, con **Rick Bennett (independiente)**. Elección abierta: Janet Mills no puede reelegirse. Gana la mayoría simple: la general de gobernador no usa voto preferencial.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 12:45 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 21:39 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Hannah **Pingree** (D) | **50.0%** (46.6–53.5) | **91%** |
-| Bobby **Charles** (R) | **43.2%** (39.8–46.6) | **9%** |
+| Hannah **Pingree** (D) | **50.1%** (46.6–53.5) | **91%** |
+| Bobby **Charles** (R) | **43.2%** (39.7–46.6) | **9%** |
 | Terceros (Rick Bennett, I) | 6.8% (4.7–8.8) | — |
 
-Margen D−R +6.9 pp (σ 5.2) · solo encuestas: P(Pingree) 88% · Kalshi 95% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 3.0% · 19 encuestas, 4 encuestadoras en la ventana
+Margen D−R +6.9 pp (σ 5.2) · solo encuestas: P(Pingree) 88% · Kalshi 96% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 3.0% · 19 encuestas, 4 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas +7.5 · sesgo estatal de Maine -1.5 · mercados +0.9
 
-**Con independiente** (mayoría simple): P(Pingree gana) 91% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 1% y Polymarket 2%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
+**Con independiente** (mayoría simple): P(Pingree gana) 91% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 1% y Polymarket 1%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
 
 **Encuesta más reciente:** SSRS, terminó el 2026-10-26 (**4 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ausente ya emitido** (civicAPI, diagnóstico, al 2026-10-29): 275,559 (123,261 por correo, 152,298 en persona) · registrados D 47.5% · R 22.6% · no inscritos y otros 29.9%. Es registro de partido, no intención de voto, y el voto ausente es más demócrata que el electorado: no entra al pronóstico.
+**Voto ausente ya emitido** (civicAPI, diagnóstico, al 2026-10-30): 290,377 (129,528 por correo, 160,849 en persona) · registrados D 47.0% · R 22.8% · no inscritos y otros 30.1%. Es registro de partido, no intención de voto, y el voto ausente es más demócrata que el electorado: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
