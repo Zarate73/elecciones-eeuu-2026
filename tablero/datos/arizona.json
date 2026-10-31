@@ -7,62 +7,62 @@
   "D": "Katie Hobbs",
   "R": "Andy Biggs"
  },
- "corte": "2026-10-30",
- "dias_a_eleccion": 4,
+ "corte": "2026-10-31",
+ "dias_a_eleccion": 3,
  "pronostico": {
-  "P_D": 0.9079,
-  "pct_D": 51.59,
+  "P_D": 0.9096,
+  "pct_D": 51.63,
   "pct_D_IC80": [
-   48.12,
-   55.07
+   48.16,
+   55.12
   ],
-  "pct_R": 44.8,
+  "pct_R": 44.78,
   "pct_R_IC80": [
-   41.31,
-   48.27
+   41.3,
+   48.25
   ],
-  "pct_terceros": 3.62,
+  "pct_terceros": 3.59,
   "pct_terceros_IC80": [
-   1.26,
-   5.92
+   1.21,
+   5.91
   ],
-  "margen": 6.791,
+  "margen": 6.847,
   "margen_IC80": [
-   0.24,
-   13.36
+   0.29,
+   13.42
   ],
   "margen_IC95": [
-   -3.47,
-   17.06
+   -3.42,
+   17.13
   ],
-  "sd": 5.2,
-  "nu": 24.3,
-  "P_D_encuestas": 0.9033,
+  "sd": 5.205,
+  "nu": 23.3,
+  "P_D_encuestas": 0.9032,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Recuento automático (|margen| ≤ 0.5)",
-    "valor": 0.0313
+    "valor": 0.0309
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9063,
+   "P_D": 0.9115,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9296,
+   "P_D": 0.935,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "GrayHouse (R)",
   "fin": "2026-10-29",
-  "dias_desde_fin": 1,
+  "dias_desde_fin": 2,
   "dias_antes_eleccion": 5,
   "origen": "wikipedia"
  },
@@ -359,28 +359,37 @@
    "P_polymarket": 0.9296,
    "pct_D": 51.588,
    "margen": 6.7911
+  },
+  {
+   "corte": "2026-10-31",
+   "P_D": 0.9096,
+   "P_D_encuestas": 0.9032,
+   "P_kalshi": 0.9115,
+   "P_polymarket": 0.935,
+   "pct_D": 51.6301,
+   "margen": 6.8472
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 6.791,
-   "P_D": 0.9079
+   "margen": 6.847,
+   "P_D": 0.9096
   },
   {
    "escenario": "Solo encuestas (sin mercados)",
    "margen": 6.653,
-   "P_D": 0.9033
+   "P_D": 0.9032
   },
   {
-   "escenario": "Con sesgo estatal AZ (V11, +1.27 pp)",
-   "margen": 5.397,
-   "P_D": 0.8554
+   "escenario": "Con sesgo estatal AZ (V11, +1.18 pp)",
+   "margen": 5.484,
+   "P_D": 0.8591
   },
   {
    "escenario": "Distribución normal",
    "margen": 6.644,
-   "P_D": 0.9015
+   "P_D": 0.9012
   },
   {
    "escenario": "Sin terceros",
@@ -389,8 +398,8 @@
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": 6.65,
-   "P_D": 0.9028
+   "margen": 6.651,
+   "P_D": 0.9031
   },
   {
    "escenario": "Regla literal V11 (última encuesta de cada firma) (4 encuestadoras)",
@@ -400,47 +409,47 @@
   {
    "escenario": "Ventana 45 días (6 encuestadoras)",
    "margen": 6.346,
-   "P_D": 0.917
+   "P_D": 0.9168
   },
   {
    "escenario": "Ventana 60 días (8 encuestadoras)",
    "margen": 6.43,
-   "P_D": 0.9322
+   "P_D": 0.9318
   },
   {
    "escenario": "Sin efectos de casa",
    "margen": 6.697,
-   "P_D": 0.9041
+   "P_D": 0.904
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -3.1]",
-   "margen": 6.269,
-   "P_D": 0.8902
+   "margen": 6.267,
+   "P_D": 0.89
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -3.1]",
-   "margen": 6.213,
-   "P_D": 0.8887
+   "margen": 6.211,
+   "P_D": 0.8886
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 6.747,
-   "P_D": 0.9063
+   "margen": 6.919,
+   "P_D": 0.9115
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 7.574,
-   "P_D": 0.9296
+   "margen": 7.8,
+   "P_D": 0.935
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 8.052,
-   "P_D": 0.88
+   "margen": 8.354,
+   "P_D": 0.8942
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-30",
+  "fecha": "2026-10-31",
   "estado": "en_vivo",
   "metricas": [
    {
@@ -472,9 +481,9 @@
  },
  "adicional": {
   "titulo": "Polymarket por rangos de margen",
-  "P_D": 0.88,
-  "margen": 8.05,
-  "nota": "Margen implícito +8.1 pp (σ 7.6)"
+  "P_D": 0.8942,
+  "margen": 8.35,
+  "nota": "Margen implícito +8.4 pp (σ 7.5)"
  },
  "fuentes": [
   {
