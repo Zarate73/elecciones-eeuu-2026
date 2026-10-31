@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **Greg Abbott (R, gobernador en funciones)** y **Gina Hinojosa (D, representante estatal por Austin)**, con Pat Dixon (libertario). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 12:00 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 21:23 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Gina **Hinojosa** (D) | **46.8%** (44.2–49.5) | **15%** |
-| Greg **Abbott** (R, gobernador) | **50.8%** (48.1–53.4) | **85%** |
+| Gina **Hinojosa** (D) | **46.8%** (44.2–49.4) | **15%** |
+| Greg **Abbott** (R, gobernador) | **50.8%** (48.2–53.4) | **85%** |
 | Terceros (Pat Dixon, L; otros) | 2.4% (0.3–4.4) | — |
 
-Margen D−R -3.9 pp (σ 3.9) · solo encuestas: P(Hinojosa) 9% · Kalshi 38% · Polymarket 39% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 6.0% · 58 encuestas, 16 encuestadoras en la ventana
+Margen D−R -3.9 pp (σ 3.9) · solo encuestas: P(Hinojosa) 9% · Kalshi 36% · Polymarket 36% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 5.9% · 58 encuestas, 16 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas -2.6 · sesgo estatal de Texas -2.4 · mercados +1.1
 
 **Encuesta más reciente:** CNN / SSRS, terminó el 2026-10-29 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-30): 6,714,746 (6,465,910 en persona, 248,836 por correo) · 83 % del total de votos de 2022. Texas no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-30): 6,857,566 (6,602,045 en persona, 255,521 por correo) · 85 % del total de votos de 2022. Texas no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
