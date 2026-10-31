@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **JB Pritzker (D, gobernador en funciones)** y **Darren Bailey (R)**, revancha de 2022, con Collin Corbett (independiente). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 12:13 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 21:45 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -11,13 +11,13 @@ Elección general del 3 de noviembre de 2026 entre **JB Pritzker (D, gobernador 
 | Darren **Bailey** (R) | **38.7%** (34.4–43.0) | **1%** |
 | Terceros (Collin Corbett, I; otros) | 5.3% (3.2–7.3) | — |
 
-Margen D−R +17.3 pp (σ 6.6) · solo encuestas: P(Pritzker) >99% · Kalshi 97% · Polymarket 99% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.2% · 2 encuestas, 2 encuestadoras en la ventana
+Margen D−R +17.2 pp (σ 6.6) · solo encuestas: P(Pritzker) >99% · Kalshi 97% · Polymarket 99% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.2% · 2 encuestas, 2 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas +18.2 · sesgo estatal de Illinois +0.5 · mercados -1.5
 
 **Encuesta más reciente:** ActiVote, terminó el 2026-10-22 (**8 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-30): 1,377,457 (759,328 en persona, 618,129 por correo) · 34 % del total de votos de 2022. Illinois no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-30): 1,385,356 (765,731 en persona, 619,625 por correo) · 34 % del total de votos de 2022. Illinois no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
