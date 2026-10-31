@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Greg Abbott (R, gobernador en funciones)** y **Gina Hinojosa (D, representante estatal por Austin)**, con Pat Dixon (libertario). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 21:23 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-31** (3 días a la elección) · actualizado automáticamente 2026-10-31 11:05 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -11,11 +11,11 @@ Elección general del 3 de noviembre de 2026 entre **Greg Abbott (R, gobernador 
 | Greg **Abbott** (R, gobernador) | **50.8%** (48.2–53.4) | **85%** |
 | Terceros (Pat Dixon, L; otros) | 2.4% (0.3–4.4) | — |
 
-Margen D−R -3.9 pp (σ 3.9) · solo encuestas: P(Hinojosa) 9% · Kalshi 36% · Polymarket 36% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 5.9% · 58 encuestas, 16 encuestadoras en la ventana
+Margen D−R -3.9 pp (σ 3.8) · solo encuestas: P(Hinojosa) 10% · Kalshi 34% · Polymarket 32% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 5.9% · 60 encuestas, 18 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas -2.6 · sesgo estatal de Texas -2.4 · mercados +1.1
+Cómo se llega: promedio de encuestas -2.5 · sesgo estatal de Texas -2.4 · mercados +0.9
 
-**Encuesta más reciente:** CNN / SSRS, terminó el 2026-10-29 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Data for Progress, terminó el 2026-10-30 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
 **Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-30): 6,857,566 (6,602,045 en persona, 255,521 por correo) · 85 % del total de votos de 2022. Texas no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
