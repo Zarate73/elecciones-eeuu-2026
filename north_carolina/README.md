@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 por el escaño que deja Thom Tillis (R): **Roy Cooper (D, exgobernador)** contra **Michael Whatley (R, expresidente del RNC)**, con Shannon Bray (Libertario) y Michael Dublin (Verde). Gana la mayoría simple. Es el primer estado de **Senado** del proyecto.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 12:51 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-10-30** (4 días a la elección) · actualizado automáticamente 2026-10-30 21:53 ET · fuentes en vivo 9/9
 
 | Senado | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -11,7 +11,7 @@ Elección general del 3 de noviembre de 2026 por el escaño que deja Thom Tillis
 | Michael **Whatley** (R) | **43.5%** (40.2–46.7) | **2%** |
 | Terceros (Shannon Bray, L; Michael Dublin, Verde) | 3.1% (1.1–5.2) | — |
 
-Margen D−R +9.9 pp (σ 4.9) · solo encuestas: P(Cooper) 98% · Kalshi 97% · Polymarket 98% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 0.26 pp) 0.5% · 49 encuestas, 5 encuestadoras en la ventana
+Margen D−R +9.9 pp (σ 4.9) · solo encuestas: P(Cooper) 98% · Kalshi 97% · Polymarket 97% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 0.26 pp) 0.5% · 49 encuestas, 5 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas +12.1 · sesgo estatal de North Carolina -1.9 · mercados -0.3
 
