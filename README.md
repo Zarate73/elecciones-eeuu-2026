@@ -23,7 +23,7 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Nueva York | Gobernador: Hochul 55.4% · Blakeman 44.4% · P(Hochul) 99% (corte 2026-10-30) | **Producción (general)**, actualización automática | [`new_york/`](new_york/) |
 | Ohio | Gobernador: Acton 48.9% · Ramaswamy 48.2% · P(Acton) 56% (corte 2026-10-30) | **Producción (general)**, actualización automática | [`ohio/`](ohio/) |
 | North Carolina | Senado: Cooper 53.4% · Whatley 43.5% · P(Cooper) 98% (corte 2026-10-30) | **Producción (general)**, actualización automática | [`north_carolina/`](north_carolina/) |
-| Wisconsin | Gobernador: Crowley 52.8% · Tiffany 47.0% · P(Crowley) 82% (corte 2026-10-30) | **Producción (general)**, actualización automática | [`wisconsin/`](wisconsin/) |
+| Wisconsin | Gobernador: Crowley 52.8% · Tiffany 47.1% · P(Crowley) 81% (corte 2026-10-30) | **Producción (general)**, actualización automática | [`wisconsin/`](wisconsin/) |
 | Washington D.C. | Alcaldía: Lewis George 79.6% · Hamilton 15.4% · P(Lewis George) >99% (corte 2026-10-30) | **Producción (general)**, actualización automática | [`dc/`](dc/) |
 
 ## Estructura por estado
