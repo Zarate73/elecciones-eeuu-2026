@@ -10,30 +10,30 @@
  "corte": "2026-10-31",
  "dias_a_eleccion": 3,
  "pronostico": {
-  "P_D": 0.9096,
-  "pct_D": 51.63,
+  "P_D": 0.9077,
+  "pct_D": 51.6,
   "pct_D_IC80": [
-   48.16,
-   55.12
+   48.13,
+   55.09
   ],
-  "pct_R": 44.78,
+  "pct_R": 44.81,
   "pct_R_IC80": [
-   41.3,
-   48.25
+   41.33,
+   48.28
   ],
   "pct_terceros": 3.59,
   "pct_terceros_IC80": [
    1.21,
    5.91
   ],
-  "margen": 6.847,
+  "margen": 6.786,
   "margen_IC80": [
-   0.29,
-   13.42
+   0.23,
+   13.35
   ],
   "margen_IC95": [
-   -3.42,
-   17.13
+   -3.49,
+   17.07
   ],
   "sd": 5.205,
   "nu": 23.3,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Recuento automático (|margen| ≤ 0.5)",
-    "valor": 0.0309
+    "valor": 0.0315
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9115,
+   "P_D": 0.9049,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.935,
+   "P_D": 0.93,
    "estado": "en_vivo"
   }
  ],
@@ -362,19 +362,19 @@
   },
   {
    "corte": "2026-10-31",
-   "P_D": 0.9096,
+   "P_D": 0.9077,
    "P_D_encuestas": 0.9032,
-   "P_kalshi": 0.9115,
-   "P_polymarket": 0.935,
-   "pct_D": 51.6301,
-   "margen": 6.8472
+   "P_kalshi": 0.9049,
+   "P_polymarket": 0.93,
+   "pct_D": 51.5997,
+   "margen": 6.7865
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 6.847,
-   "P_D": 0.9096
+   "margen": 6.786,
+   "P_D": 0.9077
   },
   {
    "escenario": "Solo encuestas (sin mercados)",
@@ -433,18 +433,18 @@
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 6.919,
-   "P_D": 0.9115
+   "margen": 6.705,
+   "P_D": 0.9049
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 7.8,
-   "P_D": 0.935
+   "margen": 7.593,
+   "P_D": 0.93
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 8.354,
-   "P_D": 0.8942
+   "margen": 7.804,
+   "P_D": 0.8826
   }
  ],
  "anticipado": {
@@ -454,7 +454,7 @@
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 1563442.0,
+    "valor": 1595938.0,
     "formato": "entero"
    },
    {
@@ -464,26 +464,26 @@
    },
    {
     "etiqueta": "Devueltas por republicanos registrados",
-    "valor": 38.1,
+    "valor": 38.07,
     "formato": "pct"
    },
    {
     "etiqueta": "Devueltas por otros e independientes",
-    "valor": 24.69,
+    "valor": 24.72,
     "formato": "pct"
    },
    {
     "etiqueta": "Maricopa, % del total",
-    "valor": 59.54,
+    "valor": 58.32,
     "formato": "pct"
    }
   ]
  },
  "adicional": {
   "titulo": "Polymarket por rangos de margen",
-  "P_D": 0.8942,
-  "margen": 8.35,
-  "nota": "Margen implícito +8.4 pp (σ 7.5)"
+  "P_D": 0.8826,
+  "margen": 7.8,
+  "nota": "Margen implícito +7.8 pp (σ 7.7)"
  },
  "fuentes": [
   {
