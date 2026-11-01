@@ -15,8 +15,10 @@ from urllib.parse import urlsplit
 
 log = logging.getLogger(__name__)
 
-UA = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-      'Chrome/131.0 Safari/537.36 pronostico-elecciones/1.0')
+# Sitios oficiales de resultados (Florida DOS, DCBOE) rechazan con 403 un User-Agent con sufijo de programa: aquí va el
+# de un navegador, sin sufijo, con cabeceras de navegador (31-oct-2026).
+UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+CABECERAS = {'Accept': 'application/json, text/plain, */*', 'Accept-Language': 'en-US,en;q=0.9'}
 UA_WIKIMEDIA = 'pronostico-elecciones/1.1 (https://github.com/Zarate73/elecciones-eeuu-2026) python-requests'
 RETRY_WIKIMEDIA = 5
 
@@ -41,7 +43,7 @@ def _get(url, *, params=None, offline=False, timeout=30, reintentos=3, pausa_bas
     ultimo = None
     for intento in range(reintentos):
         try:
-            r = requests.get(url, params=params, timeout=timeout, headers={'User-Agent': ua})
+            r = requests.get(url, params=params, timeout=timeout, headers={'User-Agent': ua, **({} if wm else CABECERAS)})
         except requests.RequestException as exc:
             ultimo = exc
             if intento < reintentos - 1:

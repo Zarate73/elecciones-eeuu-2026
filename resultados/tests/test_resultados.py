@@ -149,3 +149,7 @@ def test_corrida_congela_y_escribe(tmp_path):
     assert r2['estados']['ohio']['pronostico']['margen'] != 99.0
     assert len(r2['estados']['ohio']['serie']) == 1                      # sin cambios en los votos: no se repite en el historial
     json.loads((tab / 'resultados.json').read_text())                     # JSON estricto
+
+
+def test_votos_vacios_no_son_nan():
+    assert F._n('nan') == 0 and F._n('') == 0 and F._n('1,234') == 1234

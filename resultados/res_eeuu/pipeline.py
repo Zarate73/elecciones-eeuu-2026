@@ -138,12 +138,24 @@ def ejecutar(cfg: dict | None = None, ahora: datetime | None = None, forzar_cong
     res = {'generado': ahora.isoformat(timespec='seconds'), 'dia_eleccion': cfg['general']['dia_eleccion'],
            'congelado': all(v == 'congelado' for v in fin.values()), 'estado_congelado': fin,
            'agregado': {'con_datos': agregado(filas), 'casi_completos': agregado(filas, True)}, 'estados': estados}
-    texto = json.dumps(res, ensure_ascii=False, indent=1, allow_nan=False, default=float)
+    texto = json.dumps(_limpio(res), ensure_ascii=False, indent=1, allow_nan=False, default=float)
     (dir_res / 'salidas').mkdir(parents=True, exist_ok=True)
     (dir_res / 'salidas' / 'ultimo.json').write_text(texto, encoding='utf-8')
     (dir_tablero / 'resultados.json').write_text(texto, encoding='utf-8')
     (dir_res / 'salidas' / 'resumen.txt').write_text(resumen(res), encoding='utf-8')
     return res
+
+
+def _limpio(o):
+    """JSON estricto: NaN/inf → null (una fuente rara no debe tumbar la corrida)."""
+    import math
+    if isinstance(o, dict):
+        return {k: _limpio(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [_limpio(x) for x in o]
+    if isinstance(o, float) and not math.isfinite(o):
+        return None
+    return o
 
 
 def _pp(x):

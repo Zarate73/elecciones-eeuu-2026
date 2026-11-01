@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 import re
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
@@ -48,10 +49,12 @@ class Conteo:
 
 
 def _n(x) -> float:
+    """Número de votos; vacío, «nan» o texto → 0 (Wikipedia deja las celdas de votos vacías antes de la elección)."""
     try:
-        return float(str(x).replace(',', '').strip() or 0)
+        v = float(str(x).replace(',', '').replace('%', '').strip() or 0)
     except ValueError:
         return 0.0
+    return v if math.isfinite(v) else 0.0
 
 
 def _coincide(patron: str, nombre: str) -> bool:
