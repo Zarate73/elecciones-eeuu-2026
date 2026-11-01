@@ -3,11 +3,11 @@
 Elección general del 3 de noviembre de 2026 entre **JB Pritzker (D, gobernador en funciones)** y **Darren Bailey (R)**, revancha de 2022, con Collin Corbett (independiente). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-31** (3 días a la elección) · actualizado automáticamente 2026-10-31 11:21 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-31** (3 días a la elección) · actualizado automáticamente 2026-10-31 21:39 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| JB **Pritzker** (D, gobernador) | **55.5%** (51.2–59.7) | **99%** |
+| JB **Pritzker** (D, gobernador) | **55.5%** (51.2–59.8) | **99%** |
 | Darren **Bailey** (R) | **39.3%** (35.0–43.5) | **1%** |
 | Terceros (Collin Corbett, I; otros) | 5.2% (3.2–7.3) | — |
 
@@ -17,7 +17,7 @@ Cómo se llega: promedio de encuestas +18.2 · sesgo estatal de Illinois -0.9 ·
 
 **Encuesta más reciente:** ActiVote, terminó el 2026-10-22 (**9 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-31): 1,387,928 (768,303 en persona, 619,625 por correo) · 34 % del total de votos de 2022. Illinois no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-31): 1,392,067 (772,442 en persona, 619,625 por correo) · 34 % del total de votos de 2022. Illinois no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
