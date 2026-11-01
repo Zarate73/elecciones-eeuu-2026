@@ -1,0 +1,43 @@
+OK  200    216378 text/plain                     https://er.ncsbe.gov/enr/20241105/data/results_0.txt
+OK  200    182090 text/plain                     https://er.ncsbe.gov/enr/20261103/data/results_0.txt
+OK  200    193594 text/plain                     https://er.ncsbe.gov/enr/20221108/data/results_0.txt
+OK  200    392733 application/octet-stream       https://flelectionfiles.floridados.gov/enightfilespublic/20241105_ElecResultsFL.txt
+OK  200    352661 application/octet-stream       https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL.txt
+OK  200    429081 application/octet-stream       https://flelectionfiles.floridados.gov/enightfilespublic/20221108_ElecResultsFL.txt
+OK  200       446 application/json; charset=UTF- https://api.sos.ca.gov/returns/governor
+ERR HTTP Error 500: Internal Server Error                        https://api.sos.ca.gov/returns/president
+OK  200     43114 application/json; charset=UTF- https://api.sos.ca.gov/returns/status
+ERR HTTP Error 403: Forbidden                                    https://api.sos.ca.gov/returns/
+OK  200     19679 text/plain; charset=utf-8      https://electionresults.dcboe.org/cityWide/getCityWide/2024-General-Election
+ERR HTTP Error 404: Not Found                                    https://electionresults.dcboe.org/cityWide/getCityWide/2026-General-Election
+OK  200      8092 text/plain; charset=utf-8      https://electionresults.dcboe.org/electionResults/getElectionResultsId
+ERR HTTP Error 500: Internal Server Error                        https://electionresults.dcboe.org/electionResults/getElectionInfo/2026-General-Election
+OK  200  33718327 application/octet-stream       https://results.sos.ga.gov/cdn/results/Georgia/export-2024NovGen.json
+OK  200   3891592 application/octet-stream       https://results.sos.ga.gov/cdn/results/Georgia/export-2022NovGen.json
+ERR HTTP Error 404: Not Found                                    https://results.sos.ga.gov/cdn/results/Georgia/export-2026NovGen.json
+ERR HTTP Error 404: Not Found                                    https://www.electionreturns.pa.gov/api/ElectionReturn/GetAllElections
+OK  200     67742 text/html; charset=utf-8       https://liveresults.ohiosos.gov/
+ERR HTTP Error 400: Bad Request                                  https://liveresults.ohiosos.gov/Api/v1/download?filename=Statewide&format=json
+PW  GA https://results.sos.ga.gov/ -> https://results.sos.ga.gov/results/public/Georgia
+PW  AZ https://results.arizona.vote/ -> https://results.arizona.vote/
+PW  TX https://results.texas-election.com/ -> https://results.texas-election.com/races
+PW  TX2 ERR Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://goelec
+PW  OH https://liveresults.ohiosos.gov/ -> https://liveresults.ohiosos.gov/
+PW  NV ERR Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://silver
+PW  PA https://www.electionreturns.pa.gov/ -> https://www.electionreturns.pa.gov/
+PW  NY https://nyenr.elections.ny.gov/ -> https://nyenr.elections.ny.gov/
+PW  CA https://electionresults.sos.ca.gov/ -> https://www.sos.ca.gov/elections/prior-elections
+PW  DC https://electionresults.dcboe.org/election_results/2026-General-Election -> https://electionresults.dcboe.org/election_results/2026-General-Election
+PW  FL ERR Page.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("bo
+PW  NC https://er.ncsbe.gov/ -> https://er.ncsbe.gov/
+PW  IL https://www.elections.il.gov/ -> https://www.elections.il.gov/
+PW  WI ERR Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "https://electi
+PW  ME https://www.maine.gov/sos/elections-voting/results -> https://www.maine.gov/sos/elections-voting/results
