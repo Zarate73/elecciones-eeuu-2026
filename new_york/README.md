@@ -3,19 +3,19 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-31** (3 días a la elección) · actualizado automáticamente 2026-10-31 21:23 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 11:54 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Kathy **Hochul** (D, gobernadora) | **55.4%** (52.3–58.5) | **99%** |
-| Bruce **Blakeman** (R) | **44.4%** (41.3–47.5) | **1%** |
+| Kathy **Hochul** (D, gobernadora) | **55.3%** (52.2–58.4) | **99%** |
+| Bruce **Blakeman** (R) | **44.5%** (41.4–47.6) | **1%** |
 | Otros (votos por escrito) | 0.2% (0.1–0.2) | — |
 
-Margen D−R +11.0 pp (σ 4.9) · solo encuestas: P(Hochul) 99% · Kalshi 96% · Polymarket 98% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.7% · 27 encuestas, 5 encuestadoras en la ventana
+Margen D−R +10.8 pp (σ 4.9) · solo encuestas: P(Hochul) 99% · Kalshi 96% · Polymarket 97% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 0.7% · 27 encuestas, 5 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +12.2 · sesgo estatal de Nueva York -0.5 · mercados -0.7
+Cómo se llega: promedio de encuestas +12.2 · sesgo estatal de Nueva York -0.6 · mercados -0.8
 
-**Encuesta más reciente:** Marist University, terminó el 2026-10-25 (**6 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Marist University, terminó el 2026-10-25 (**7 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
 **Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 8, al 2026-10-31): 572,786 en persona · Manhattan 160,045 · Bronx 57,167 · Brooklyn 177,271 · Queens 135,095 · Staten Island 43,208. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
 
