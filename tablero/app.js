@@ -11,6 +11,7 @@ let RAW_SHA = null;            // https://raw.githubusercontent.com/<repo>/<sha>
 const NS = 'http://www.w3.org/2000/svg';
 const tt = document.getElementById('tooltip');
 let indice = null;
+let resultados = null;        // tablero/datos/resultados.json (noche electoral); null si aún no existe
 let ANCHO = 1100;              // ancho útil del contenido; las gráficas se dibujan a su tamaño real
 const mitad = () => (ANCHO > 860 ? (ANCHO - 14) / 2 : ANCHO) - 42;
 const completo = () => ANCHO - 42;
@@ -119,6 +120,8 @@ function tarjetas(activo) {
       el('div', { class: 'detalle', text: `${e.candidatos.D} vs ${e.candidatos.R}` }), barra,
       el('div', { class: 'probs' }, el('span', { text: `${apellido(e.candidatos.D)} ${pct(pd)}` }),
         el('span', { text: `${apellido(e.candidatos.R)} ${pct(1 - pd)}` })));
+    const rc = conteo(e.clave);
+    if (rc) b.append(el('div', { class: 'conteo', text: `Conteo${rc.avance != null ? ' ' + avP(rc.avance) : ''}: ${pp(rc.margen)} · pron. ${pp(rc.pronostico.margen)}` }));
     b.addEventListener('click', () => { location.hash = e.clave; });
     nav.append(b);
   }
@@ -405,6 +408,114 @@ function tablaSimple(t) {
   return el('div', { class: 'tabla-envoltura' }, tabla);
 }
 
+/* ---------------------------------------------------------------- noche electoral: conteo preliminar vs pronóstico final */
+function conteo(clave) {
+  const r = resultados && resultados.estados && resultados.estados[clave];
+  return r && r.estado !== 'sin_datos' ? r : null;
+}
+function hayConteo() { return !!(resultados && Object.values(resultados.estados || {}).some(r => r.estado !== 'sin_datos')); }
+const avP = x => Math.round(100 * x) + '%';             // avance: 100 % es literal (no «>99 %»)
+const avanceTxt = r => r.avance != null ? avP(r.avance) + ' de precintos' : 'sin % de avance';
+
+function nocheElectoral(activo) {
+  const filas = Object.values(resultados.estados);
+  const tabla = el('table');
+  const cab = el('tr');
+  for (const h of ['Estado', 'Avance', 'Pronóstico final (IC80)', 'Conteo', 'Error', 'Percentil', 'En IC80', 'Líder', 'Fuente'])
+    cab.append(el('th', { class: ['Estado', 'Líder', 'Fuente', 'Pronóstico final (IC80)'].includes(h) ? '' : 'num', text: h }));
+  tabla.append(el('thead', {}, cab));
+  const cuerpo = el('tbody');
+  for (const r of filas) {
+    const p = r.pronostico, con = r.estado !== 'sin_datos';
+    const tr = el('tr', { class: con ? '' : 'fuera' });
+    tr.style.cursor = 'pointer';
+    tr.addEventListener('click', () => { location.hash = r.clave; });
+    const celdas = [
+      [`${r.estado_nombre}${r.clave === activo ? ' ◂' : ''}`, ''],
+      [con ? (r.avance != null ? avP(r.avance) : 's/d') : '—', 'num'],
+      [`${pp(p.margen)} (${pp(p.margen_IC80[0], 0)} a ${pp(p.margen_IC80[1], 0)})`, ''],
+      [con ? pp(r.margen) : 'sin votos', 'num'],
+      [con ? pp(r.error_margen) : '', 'num'],
+      [con ? pct(r.percentil) : '', 'num'],
+      [con ? (r.en_IC80 ? 'sí' : 'no') : '', 'num'],
+      [con ? `${apellido(r.lider === 'D' ? r.candidatos.D : r.candidatos.R)}${r.acierto_lider ? '' : ' ✗'}` : '', ''],
+      [con ? r.fuente.split(' (')[0] : '', ''],
+    ];
+    for (const [v, c] of celdas) tr.append(el('td', { class: c, text: v }));
+    cuerpo.append(tr);
+  }
+  tabla.append(cuerpo);
+  const m = el('div', { class: 'metricas', style: 'margin-top:12px' });
+  for (const [nom, a] of [['con conteo', resultados.agregado.con_datos], ['casi completos (≥ 95 %)', resultados.agregado.casi_completos]]) {
+    if (!a) continue;
+    m.append(el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: num(a.MAE_margen, 1) + ' pp' }), el('div', { class: 'm-e', text: `Error absoluto medio del margen, ${a.n} ${nom}` })),
+      el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: pp(a.sesgo_margen) + ' pp' }), el('div', { class: 'm-e', text: `Sesgo (> 0: mejor para D), ${nom}` })),
+      el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: pct(a.cobertura_IC80) }), el('div', { class: 'm-e', text: `Dentro del IC80, ${nom}` })),
+      el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: `${a.aciertos_lider}/${a.n}` }), el('div', { class: 'm-e', text: `Líder = favorito, ${nom}` })));
+  }
+  const g = new Date(resultados.generado);
+  return el('div', { class: 'rejilla' }, panel('Noche electoral: conteo preliminar vs pronóstico final',
+    `Conteo al ${g.toLocaleString('es-MX', { dateStyle: 'medium', timeStyle: 'short' })}. Margen D−R en pp; error = conteo − pronóstico (> 0: el demócrata va mejor de lo pronosticado). ` +
+    'El avance es de precintos, no de votos: con 100 % de precintos todavía faltan votos por correo y provisionales, así que el error es provisional hasta el escrutinio.' +
+    (resultados.congelado ? '' : ' Pronósticos aún NO congelados.'),
+    el('div', { class: 'tabla-envoltura' }, tabla), m));
+}
+
+function panelConteo(d, r) {
+  const p = r.pronostico, D = apellido(d.candidatos.D), R = apellido(d.candidatos.R);
+  // posición del conteo en la distribución del pronóstico
+  const W = Math.round(mitad()), H = 120, izq = 10, der = 10;
+  const xs = [p.margen_IC95[0], p.margen_IC95[1], r.margen, 0];
+  const lo = Math.min(...xs) - 3, hi = Math.max(...xs) + 3;
+  const X = v => izq + (v - lo) / (hi - lo) * (W - izq - der);
+  const s = sv('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Conteo frente al intervalo del pronóstico' });
+  const y = 52;
+  s.append(sv('line', { x1: X(p.margen_IC95[0]), x2: X(p.margen_IC95[1]), y1: y, y2: y, stroke: 'var(--texto-3)', 'stroke-width': 6, 'stroke-linecap': 'round', opacity: 0.35 }));
+  s.append(sv('line', { x1: X(p.margen_IC80[0]), x2: X(p.margen_IC80[1]), y1: y, y2: y, stroke: 'var(--s-final)', 'stroke-width': 10, 'stroke-linecap': 'round', opacity: 0.45 }));
+  s.append(sv('circle', { cx: X(p.margen), cy: y, r: 6, fill: 'var(--s-final)', stroke: 'var(--superficie)', 'stroke-width': 2 }));
+  s.append(sv('text', { x: X(p.margen), y: y - 14, 'text-anchor': 'middle', class: 't-2' }, `pronóstico ${pp(p.margen)}`));
+  const c = r.margen >= 0 ? 'var(--dem)' : 'var(--rep)';
+  s.append(sv('path', { d: `M${X(r.margen)},${y + 8} l7,12 l-14,0 Z`, fill: c }));
+  s.append(sv('text', { x: X(r.margen), y: y + 34, 'text-anchor': 'middle', class: 't-1' }, `conteo ${pp(r.margen)}`));
+  if (lo < 0 && hi > 0) s.append(sv('line', { x1: X(0), x2: X(0), y1: 20, y2: y + 20, class: 'cero' }));
+  s.append(sv('text', { x: izq, y: H - 4 }, `← ${R}`)); s.append(sv('text', { x: W - der, y: H - 4, 'text-anchor': 'end' }, `${D} →`));
+  const m = el('div', { class: 'metricas' });
+  for (const [v, e] of [[avanceTxt(r), 'avance'], [`${num(r.pct_D, 1)}–${num(r.pct_R, 1)}`, `${D}–${R} (%)`], [pp(r.error_margen) + ' pp', 'error del margen'],
+    [pct(r.percentil), 'percentil en el pronóstico'], [r.en_IC80 ? 'sí' : (r.en_IC95 ? 'solo IC95' : 'no'), 'dentro del IC80'], [num(r.crps, 2), 'CRPS (pp)']])
+    m.append(el('div', { class: 'metrica' }, el('div', { class: 'm-v', text: v }), el('div', { class: 'm-e', text: e })));
+  const fuente = el('p', { class: 'nota', style: 'margin-top:10px' }, `Fuente: ${r.fuente}${r.avance_txt ? ' · ' + r.avance_txt : ''}${r.actualizado ? ' · ' + r.actualizado : ''} · `,
+    r.url ? el('a', { href: r.url, text: 'origen' }) : '');
+  const izqP = panel('Conteo preliminar vs pronóstico final', `Pronóstico congelado del ${fecha(r.pronostico_corte)}. Banda: IC80 (oscura) e IC95. ` +
+    (r.estado === 'casi_completo' ? 'Casi completo (≥ 95 % de precintos).' : 'Conteo parcial: el error todavía puede cambiar mucho.'), s, m, fuente);
+  return el('div', { class: 'rejilla r-2' }, izqP, panel('Cómo avanza el conteo', 'Margen D−R de cada actualización frente a la banda IC80 del pronóstico.', serieConteo(r)));
+}
+
+function serieConteo(r) {
+  const h = r.serie || [], p = r.pronostico;
+  const W = Math.round(mitad()), H = 220, izq = 40, der = 14, arr = 10, ab = 26;
+  if (!h.length) return el('p', { class: 'nota', text: 'Sin actualizaciones todavía.' });
+  const usaAvance = h.every(x => x.avance != null);
+  const xv = h.map((x, i) => usaAvance ? x.avance : new Date(x.t).getTime());
+  const x0 = usaAvance ? 0 : Math.min(...xv) - 6e5, x1 = usaAvance ? 1 : Math.max(...xv) + 6e5;
+  const ys = h.map(x => x.margen).concat([p.margen_IC80[0], p.margen_IC80[1], 0]);
+  const lo = Math.floor((Math.min(...ys) - 2) / 5) * 5, hi = Math.ceil((Math.max(...ys) + 2) / 5) * 5;
+  const X = v => izq + (x1 === x0 ? 0.5 : (v - x0) / (x1 - x0)) * (W - izq - der);
+  const Y = v => arr + (hi - v) / (hi - lo) * (H - arr - ab);
+  const s = sv('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Evolución del margen del conteo' });
+  s.append(sv('rect', { x: izq, width: W - izq - der, y: Y(p.margen_IC80[1]), height: Y(p.margen_IC80[0]) - Y(p.margen_IC80[1]), fill: 'var(--s-final)', opacity: 0.12 }));
+  s.append(sv('line', { x1: izq, x2: W - der, y1: Y(p.margen), y2: Y(p.margen), stroke: 'var(--s-final)', 'stroke-dasharray': '6 4', 'stroke-width': 1.5 }));
+  for (let v = lo; v <= hi; v += (hi - lo > 30 ? 10 : 5)) {
+    s.append(sv('line', { x1: izq, x2: W - der, y1: Y(v), y2: Y(v), class: v === 0 ? 'cero' : 'rejilla-l' }));
+    s.append(sv('text', { x: izq - 6, y: Y(v) + 4, 'text-anchor': 'end' }, pp(v, 0)));
+  }
+  if (usaAvance) for (const t of [0, 0.25, 0.5, 0.75, 1]) s.append(sv('text', { x: X(t), y: H - 6, 'text-anchor': 'middle' }, avP(t)));
+  else s.append(sv('text', { x: X(xv[xv.length - 1]), y: H - 6, 'text-anchor': 'end' }, new Date(h[h.length - 1].t).toLocaleString('es-MX', { dateStyle: 'short', timeStyle: 'short' })));
+  s.append(sv('path', { d: h.map((x, i) => `${i ? 'L' : 'M'}${X(xv[i])},${Y(x.margen)}`).join(''), fill: 'none', stroke: 'var(--texto)', 'stroke-width': 2 }));
+  h.forEach((x, i) => s.append(sv('circle', { cx: X(xv[i]), cy: Y(x.margen), r: 3, fill: x.margen >= 0 ? 'var(--dem)' : 'var(--rep)' })));
+  return el('div', {}, el('div', { class: 'leyenda' }, el('span', {}, (i => { i.style.background = 'var(--s-final)'; return i; })(el('i')), 'pronóstico (IC80)'),
+    el('span', {}, (i => { i.style.background = 'var(--texto)'; return i; })(el('i')), usaAvance ? 'conteo por % de precintos' : 'conteo por hora')), s);
+}
+
 /* ---------------------------------------------------------------- vista de un estado */
 function panel(titulo, nota, ...contenido) {
   return el('section', { class: 'panel' }, el('h2', { text: titulo }), nota ? el('p', { class: 'nota', text: nota }) : null, ...contenido);
@@ -432,6 +543,8 @@ function vista(d) {
     barra, el('p', { class: 'nota', style: 'margin-top:8px', text: 'Probabilidad de ganar' }), hechos);
   const voto = panel('Porcentaje de voto', 'Estimado e intervalo del 80 %', rangosVoto(d));
   raiz.append(el('div', { class: 'rejilla r-hero' }, hero, voto));
+  const rc = conteo(d.clave);
+  if (rc) raiz.append(panelConteo(d, rc));
   // avisos
   const u = d.ultima_encuesta;
   if (u) {
@@ -503,7 +616,7 @@ async function mostrar(clave) {
   ANCHO = Math.min(main.clientWidth || 1100, 1148);
   try {
     cache[clave] = cache[clave] || await cargar(clave + '.json');
-    main.replaceChildren(vista(cache[clave]));
+    main.replaceChildren(...(hayConteo() ? [nocheElectoral(clave)] : []), vista(cache[clave]));
   } catch (e) {
     main.replaceChildren(el('p', { class: 'cargando', text: 'No se pudieron cargar los datos de este estado.' }));
   }
@@ -514,6 +627,7 @@ async function mostrar(clave) {
 async function iniciar() {
   try {
     indice = await cargar('indice.json');
+    try { resultados = await cargar('resultados.json'); } catch (e) { resultados = null; }
   } catch (e) {
     document.getElementById('contenido').replaceChildren(el('p', { class: 'cargando', text: 'No se pudieron cargar los datos.' }));
     return;

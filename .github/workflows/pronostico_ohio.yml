@@ -4,7 +4,12 @@ on:
   schedule:
     - cron: '38 10 * * *'   # 06:38 ET (05:38 desde el 1-nov, fin del horario de verano)
     - cron: '38 22 * * *'   # 18:38 ET
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      forzar:
+        description: 'Correr aunque el pronóstico ya esté congelado (después del 3-nov 10:00 ET)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -23,21 +28,33 @@ jobs:
         working-directory: ohio/produccion
     steps:
       - uses: actions/checkout@v4
+      - name: ¿Pronóstico congelado? (día de la elección)
+        id: ventana
+        working-directory: .
+        env:
+          FORZAR_PRONOSTICO: ${{ inputs.forzar }}
+        run: python3 scripts/ventana_pronostico.py
       - uses: actions/setup-python@v5
+        if: steps.ventana.outputs.correr == 'true'
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: ohio/produccion/requirements.txt
       - name: Instalar dependencias
+        if: steps.ventana.outputs.correr == 'true'
         run: python -m pip install -r requirements.txt
       - name: Pruebas (sin red)
+        if: steps.ventana.outputs.correr == 'true'
         run: python -m pytest -q -p no:cacheprovider
       - name: Correr pronóstico (fuentes en vivo)
+        if: steps.ventana.outputs.correr == 'true'
         env:
           PYTHONIOENCODING: utf-8
         run: python -m oh_pronostico correr
       - name: Actualizar README
+        if: steps.ventana.outputs.correr == 'true'
         run: python scripts/actualizar_readme.py
       - name: Publicar resultados (README, tablero y salidas)
+        if: steps.ventana.outputs.correr == 'true'
         working-directory: .
         run: bash scripts/publicar.sh ohio "Pronóstico Ohio $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET"

@@ -1,0 +1,51 @@
+name: Resultados preliminares (noche electoral)
+
+# Consulta los conteos preliminares (fuentes oficiales; Wikipedia de respaldo), los compara con el pronóstico final
+# congelado de cada estado y publica tablero/datos/resultados.json. Cada 15 minutos desde el 3-nov 18:00 ET hasta el
+# 5-nov 07:00 ET; luego cada hora hasta el 10-nov y una vez al día hasta el 30-nov (escrutinios y certificación).
+on:
+  schedule:
+    - cron: '*/15 23 3 11 *'
+    - cron: '*/15 * 4 11 *'
+    - cron: '*/15 0-12 5 11 *'
+    - cron: '5 * 5-10 11 *'
+    - cron: '35 14 11-30 11 *'
+  workflow_dispatch:
+    inputs:
+      forzar_congelado:
+        description: 'Congelar los pronósticos antes del corte (solo pruebas; no usar antes del 3-nov)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: resultados
+  cancel-in-progress: false
+
+jobs:
+  resultados:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: resultados
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: resultados/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Pruebas (sin red)
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Consultar conteos y comparar con el pronóstico final
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python -m res_eeuu ${{ inputs.forzar_congelado && '--forzar-congelado' || '' }}
+      - name: Publicar (tablero/datos/resultados.json y resultados/)
+        working-directory: .
+        run: bash scripts/publicar_resultados.sh "Resultados preliminares $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET"

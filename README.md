@@ -26,6 +26,12 @@ Cada estado tiene su modelo elegido por backtest, una versión de producción qu
 | Wisconsin | Gobernador: Crowley 52.8% · Tiffany 47.1% · P(Crowley) 81% (corte 2026-10-31) | **Producción (general)**, actualización automática | [`wisconsin/`](wisconsin/) |
 | Washington D.C. | Alcaldía: Lewis George 79.6% · Hamilton 15.4% · P(Lewis George) >99% (corte 2026-10-31) | **Producción (general)**, actualización automática | [`dc/`](dc/) |
 
+## Día de la elección: pronóstico final y resultados preliminares
+- **Congelado:** los pronósticos se congelan el **3-nov a las 10:00 ET**; la última corrida es la de esa mañana.
+- **Seguimiento:** desde las 18:00 ET, [`resultados/`](resultados/) descarga cada 15 minutos los conteos preliminares (fuentes oficiales y Wikipedia de respaldo) y los compara con el pronóstico final.
+- **Métricas:** error del margen, percentil, cobertura de los intervalos del 80 % y 95 %, Brier y CRPS.
+- **Tablero:** las muestra en el panel «Noche electoral».
+
 ## Estructura por estado
 ```
 <estado>/

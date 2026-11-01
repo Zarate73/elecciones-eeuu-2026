@@ -1,0 +1,125 @@
+# =====================================================================================
+# Resultados preliminares de la noche electoral (3-nov-2026) frente al pronóstico final de cada estado.
+# Cada carrera: clave del tablero (tablero/datos/<clave>.json), candidatos (apellido para buscar por nombre y código de
+# partido para las fuentes oficiales) y fuentes en orden de prioridad. La primera que traiga votos (> 0) es la que manda;
+# Wikipedia es el respaldo común (sin % de avance). data/manuales.csv, si tiene filas, va por encima de todo.
+# =====================================================================================
+
+[general]
+dia_eleccion = "2026-11-03"
+corte_congelado_utc = "2026-11-03T15:00:00Z"     # igual que scripts/ventana_pronostico.py
+avance_completo = 0.95                            # ≥ 95 % de precintos/distritos: «casi completo» (faltan correo y provisionales)
+wikipedia_api = "https://en.wikipedia.org/w/api.php"
+timeout_s = 40
+
+[carreras.georgia]
+estado = "Georgia"
+cargo = "Gobernador"
+d = { apellido = "Bottoms", partido = "DEM" }
+r = { apellido = "Jackson", partido = "REP" }
+wikipedia = "2026_Georgia_gubernatorial_election"
+fuentes = [{ tipo = "georgia_ev", contienda = "Governor" }, { tipo = "wikipedia" }]
+
+[carreras.california]
+estado = "California"
+cargo = "Gobernador"
+d = { apellido = "Becerra", partido = "Dem" }
+r = { apellido = "Hilton", partido = "Rep" }
+wikipedia = "2026_California_gubernatorial_election"
+fuentes = [{ tipo = "california_sos", url = "https://api.sos.ca.gov/returns/governor" }, { tipo = "wikipedia" }]
+
+[carreras.arizona]
+estado = "Arizona"
+cargo = "Gobernador"
+d = { apellido = "Hobbs", partido = "DEM" }
+r = { apellido = "Biggs", partido = "REP" }
+wikipedia = "2026_Arizona_gubernatorial_election"
+fuentes = [{ tipo = "wikipedia" }]                # results.arizona.vote bloquea las IP de GitHub (403)
+
+[carreras.florida]
+estado = "Florida"
+cargo = "Gobernador"
+d = { apellido = "Jolly", partido = "DEM" }
+r = { apellido = "Donalds", partido = "REP" }
+wikipedia = "2026_Florida_gubernatorial_election"
+fuentes = [{ tipo = "florida_dos", url = "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL.txt", carrera = "GOV" }, { tipo = "wikipedia" }]
+
+[carreras.nevada]
+estado = "Nevada"
+cargo = "Gobernador"
+d = { apellido = "Aaron.*Ford", partido = "DEM" }   # regex: hay otra candidata, Danielle Ford (I)
+r = { apellido = "Lombardo", partido = "REP" }
+wikipedia = "2026_Nevada_gubernatorial_election"
+fuentes = [{ tipo = "wikipedia" }]
+
+[carreras.pennsylvania]
+estado = "Pennsylvania"
+cargo = "Gobernador"
+d = { apellido = "Shapiro", partido = "DEM" }
+r = { apellido = "Garrity", partido = "REP" }
+wikipedia = "2026_Pennsylvania_gubernatorial_election"
+fuentes = [{ tipo = "pennsylvania_dos", oficina = "Governor" }, { tipo = "wikipedia" }]
+
+[carreras.maine]
+estado = "Maine"
+cargo = "Gobernador"
+d = { apellido = "Pingree", partido = "DEM" }
+r = { apellido = "Charles", partido = "REP" }
+wikipedia = "2026_Maine_gubernatorial_election"
+fuentes = [{ tipo = "wikipedia" }]                # Maine no publica resultados estatales en vivo
+
+[carreras.texas]
+estado = "Texas"
+cargo = "Gobernador"
+d = { apellido = "Hinojosa", partido = "DEM" }
+r = { apellido = "Abbott", partido = "REP" }
+wikipedia = "2026_Texas_gubernatorial_election"
+fuentes = [{ tipo = "texas_sos", anio = "2026", oficina = "GOVERNOR" }, { tipo = "wikipedia" }]
+
+[carreras.illinois]
+estado = "Illinois"
+cargo = "Gobernador"
+d = { apellido = "Pritzker", partido = "DEM" }
+r = { apellido = "Bailey", partido = "REP" }
+wikipedia = "2026_Illinois_gubernatorial_election"
+fuentes = [{ tipo = "wikipedia" }]                # Illinois no tiene un conteo estatal en vivo
+
+[carreras.new_york]
+estado = "Nueva York"
+cargo = "Gobernador"
+d = { apellido = "Hochul", partido = "DEM" }
+r = { apellido = "Blakeman", partido = "REP" }
+wikipedia = "2026_New_York_gubernatorial_election"
+fuentes = [{ tipo = "wikipedia" }]
+
+[carreras.ohio]
+estado = "Ohio"
+cargo = "Gobernador"
+d = { apellido = "Acton", partido = "DEM" }
+r = { apellido = "Ramaswamy", partido = "REP" }
+wikipedia = "2026_Ohio_gubernatorial_election"
+fuentes = [{ tipo = "wikipedia" }]
+
+[carreras.north_carolina]
+estado = "North Carolina"
+cargo = "Senado"
+d = { apellido = "Cooper", partido = "DEM" }
+r = { apellido = "Whatley", partido = "REP" }
+wikipedia = "2026_United_States_Senate_election_in_North_Carolina"
+fuentes = [{ tipo = "ncsbe", url = "https://er.ncsbe.gov/enr/20261103/data/results_0.txt", contienda = "US SENATE" }, { tipo = "wikipedia" }]
+
+[carreras.wisconsin]
+estado = "Wisconsin"
+cargo = "Gobernador"
+d = { apellido = "Crowley", partido = "DEM" }
+r = { apellido = "Tiffany", partido = "REP" }
+wikipedia = "2026_Wisconsin_gubernatorial_election"
+fuentes = [{ tipo = "wikipedia" }]                # Wisconsin no tiene un conteo estatal en vivo (lo publican los condados)
+
+[carreras.dc]
+estado = "Washington D.C."
+cargo = "Alcaldía"
+d = { apellido = "Lewis George", partido = "DEM" }
+r = { apellido = "Hamilton", partido = "IND" }   # opositor principal (independiente); el pronóstico usa la 1.ª ronda RCV
+wikipedia = "2026_Washington,_D.C.,_mayoral_election"
+fuentes = [{ tipo = "dcboe", eleccion = "2026-General-Election", contienda = "MAYOR" }, { tipo = "wikipedia" }]

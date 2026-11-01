@@ -43,3 +43,25 @@ jobs:
         working-directory: .
         run: |
           git ls-files --eol -- '*.bat' '*.ps1' | awk '$1 != "i/lf" {print; bad=1} END {exit bad}'
+
+  resultados:
+    name: Pruebas resultados
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: resultados
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: resultados/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Pruebas (sin red)
+        run: python -m pytest -q -p no:cacheprovider
+      - name: Ventana del pronóstico
+        working-directory: .
+        run: python3 -c "import sys; sys.path.insert(0, 'scripts'); from ventana_pronostico import toca_correr as t; from datetime import datetime as d, timezone as z; assert t(d(2026, 11, 3, 13, tzinfo=z.utc)) and not t(d(2026, 11, 3, 15, tzinfo=z.utc))"
