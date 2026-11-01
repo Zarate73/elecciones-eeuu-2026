@@ -3,17 +3,17 @@
 Elección general del 3 de noviembre de 2026 entre **Greg Abbott (R, gobernador en funciones)** y **Gina Hinojosa (D, representante estatal por Austin)**, con Pat Dixon (libertario). Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-10-31** (3 días a la elección) · actualizado automáticamente 2026-10-31 11:05 CT · fuentes en vivo 8/8
+**Pronóstico al 2026-10-31** (3 días a la elección) · actualizado automáticamente 2026-10-31 21:14 CT · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Gina **Hinojosa** (D) | **46.8%** (44.2–49.4) | **15%** |
-| Greg **Abbott** (R, gobernador) | **50.8%** (48.2–53.4) | **85%** |
+| Gina **Hinojosa** (D) | **46.9%** (44.3–49.5) | **15%** |
+| Greg **Abbott** (R, gobernador) | **50.7%** (48.1–53.3) | **85%** |
 | Terceros (Pat Dixon, L; otros) | 2.4% (0.3–4.4) | — |
 
-Margen D−R -3.9 pp (σ 3.8) · solo encuestas: P(Hinojosa) 10% · Kalshi 34% · Polymarket 32% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 5.9% · 60 encuestas, 18 encuestadoras en la ventana
+Margen D−R -3.9 pp (σ 3.8) · solo encuestas: P(Hinojosa) 10% · Kalshi 34% · Polymarket 34% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 6.0% · 60 encuestas, 18 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas -2.5 · sesgo estatal de Texas -2.4 · mercados +0.9
+Cómo se llega: promedio de encuestas -2.5 · sesgo estatal de Texas -2.4 · mercados +1.0
 
 **Encuesta más reciente:** Data for Progress, terminó el 2026-10-30 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 

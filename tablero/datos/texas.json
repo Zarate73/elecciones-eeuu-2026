@@ -10,30 +10,30 @@
  "corte": "2026-10-31",
  "dias_a_eleccion": 3,
  "pronostico": {
-  "P_D": 0.1468,
-  "pct_D": 46.84,
+  "P_D": 0.1498,
+  "pct_D": 46.87,
   "pct_D_IC80": [
-   44.24,
-   49.44
+   44.26,
+   49.47
   ],
-  "pct_R": 50.77,
+  "pct_R": 50.75,
   "pct_R_IC80": [
-   48.17,
-   53.36
+   48.14,
+   53.34
   ],
   "pct_terceros": 2.39,
   "pct_terceros_IC80": [
    0.27,
    4.39
   ],
-  "margen": -3.933,
+  "margen": -3.88,
   "margen_IC80": [
-   -8.76,
-   0.91
+   -8.71,
+   0.96
   ],
   "margen_IC95": [
-   -11.5,
-   3.63
+   -11.45,
+   3.68
   ],
   "sd": 3.831,
   "nu": 24.0,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0594
+    "valor": 0.0602
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.335,
+   "P_D": 0.3416,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.3152,
+   "P_D": 0.3443,
    "estado": "en_vivo"
   }
  ],
@@ -69,7 +69,7 @@
  "encuestas": [
   {
    "fin": "2026-10-30",
-   "encuestadora": "KStrat",
+   "encuestadora": "Kreate Strategies",
    "D": 47.0,
    "R": 49.0,
    "margen": -2.0,
@@ -726,19 +726,19 @@
   },
   {
    "corte": "2026-10-31",
-   "P_D": 0.1468,
+   "P_D": 0.1498,
    "P_D_encuestas": 0.0996,
-   "P_kalshi": 0.335,
-   "P_polymarket": 0.3152,
-   "pct_D": 46.84,
-   "margen": -3.9328
+   "P_kalshi": 0.3416,
+   "P_polymarket": 0.3443,
+   "pct_D": 46.8665,
+   "margen": -3.8796
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": -3.933,
-   "P_D": 0.1468
+   "margen": -3.88,
+   "P_D": 0.1498
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -752,8 +752,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": -2.239,
-   "P_D": 0.2752
+   "margen": -2.184,
+   "P_D": 0.28
   },
   {
    "escenario": "Sesgo estatal sin contraer (-2.97 pp)",
@@ -841,22 +841,22 @@
    "P_D": 0.0926
   },
   {
-   "escenario": "Sin Texas Southern University (pesa 9%) → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, YouGov Blue, SSRS, N+ Univision, Quantus Insights, CNN / SSRS, Data for Progress, KStrat",
+   "escenario": "Sin Texas Southern University (pesa 9%) → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, YouGov Blue, SSRS, N+ Univision, Quantus Insights, CNN / SSRS, Data for Progress, Kreate Strategies",
    "margen": -4.796,
    "P_D": 0.1039
   },
   {
-   "escenario": "Sin Quantus Insights (R) (pesa 8%) → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, Texas Southern University, YouGov Blue, SSRS, N+ Univision, CNN / SSRS, Data for Progress, KStrat",
+   "escenario": "Sin Quantus Insights (R) (pesa 8%) → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, Texas Southern University, YouGov Blue, SSRS, N+ Univision, CNN / SSRS, Data for Progress, Kreate Strategies",
    "margen": -4.701,
    "P_D": 0.1084
   },
   {
-   "escenario": "Sin KStrat (pesa 8%) → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, Texas Southern University, YouGov Blue, SSRS, N+ Univision, Quantus Insights, CNN / SSRS, Data for Progress",
+   "escenario": "Sin Kreate Strategies (pesa 8%) → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, Texas Southern University, YouGov Blue, SSRS, N+ Univision, Quantus Insights, CNN / SSRS, Data for Progress",
    "margen": -4.909,
    "P_D": 0.0992
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, Texas Southern University, SSRS, N+ Univision, CNN / SSRS, Data for Progress, KStrat",
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: GS Strategy Group, University of Houston, ActiVote, CBS News/YouGov, Pollfinity Research, Texas Public Opinion Research, Emerson College, Beacon Research, Verasight/VoteHub, Univision/YouGov, Texas Southern University, SSRS, N+ Univision, CNN / SSRS, Data for Progress, Kreate Strategies",
    "margen": -5.107,
    "P_D": 0.0915
   },
@@ -872,28 +872,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": -4.4,
-   "P_D": 0.1212
+   "margen": -4.376,
+   "P_D": 0.1225
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": -3.307,
-   "P_D": 0.1876
+   "margen": -3.224,
+   "P_D": 0.1938
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": -1.587,
-   "P_D": 0.335
+   "margen": -1.519,
+   "P_D": 0.3416
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": -1.793,
-   "P_D": 0.3152
+   "margen": -1.492,
+   "P_D": 0.3443
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": -3.585,
-   "P_D": 0.2914
+   "margen": -2.877,
+   "P_D": 0.3281
   }
  ],
  "anticipado": {
@@ -930,15 +930,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.2914,
-  "margen": -3.59
+  "P_D": 0.3281,
+  "margen": -2.88
  },
  "adicional": {
   "titulo": "Sesgo estatal de Texas",
   "P_D": null,
   "margen": -2.4,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024); el sesgo contraído corrige -2.4 pp (promedio de encuestas -2.5). Polymarket por rangos: margen implícito -3.6 pp."
+  "nota": "En TX las encuestas sobreestimaron al demócrata en 14 de 20 contiendas (+7.2 en 2024); el sesgo contraído corrige -2.4 pp (promedio de encuestas -2.5). Polymarket por rangos: margen implícito -2.9 pp."
  },
  "fuentes": [
   {
