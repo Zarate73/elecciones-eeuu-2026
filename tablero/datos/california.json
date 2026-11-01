@@ -10,30 +10,30 @@
  "corte": "2026-10-31",
  "dias_a_eleccion": 3,
  "pronostico": {
-  "P_D": 0.9949,
-  "pct_D": 61.47,
+  "P_D": 0.995,
+  "pct_D": 61.6,
   "pct_D_IC80": [
-   57.83,
-   65.08
+   57.97,
+   65.2
   ],
-  "pct_R": 38.53,
+  "pct_R": 38.4,
   "pct_R_IC80": [
-   34.92,
-   42.17
+   34.8,
+   42.03
   ],
   "pct_terceros": null,
-  "margen": 22.941,
+  "margen": 23.193,
   "margen_IC80": [
-   15.66,
-   30.16
+   15.93,
+   30.39
   ],
   "margen_IC95": [
-   10.26,
-   35.57
+   10.56,
+   35.78
   ],
-  "sd": 6.365,
+  "sd": 6.342,
   "nu": 5.0,
-  "P_D_encuestas": 0.9974,
+  "P_D_encuestas": 0.9976,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": false,
   "extra": []
@@ -41,16 +41,16 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9755,
+   "P_D": 0.9715,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "Berkeley IGS",
-  "fin": "2026-10-25",
-  "dias_desde_fin": 6,
-  "dias_antes_eleccion": 9,
-  "origen": "wikipedia"
+  "encuestadora": "ActiVote",
+  "fin": "2026-10-31",
+  "dias_desde_fin": 0,
+  "dias_antes_eleccion": 3,
+  "origen": "270towin"
  },
  "encuestas": [
   {
@@ -61,7 +61,7 @@
    "margen": 27.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0797
+   "peso": 0.0731
   },
   {
    "fin": "2026-10-24",
@@ -71,7 +71,7 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0953
+   "peso": 0.0875
   },
   {
    "fin": "2026-10-23",
@@ -81,7 +81,7 @@
    "margen": 23.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.069
+   "peso": 0.0633
   },
   {
    "fin": "2026-10-22",
@@ -91,7 +91,7 @@
    "margen": 24.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0743
+   "peso": 0.0682
   },
   {
    "fin": "2026-10-20",
@@ -101,7 +101,7 @@
    "margen": 16.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0629
+   "peso": 0.0577
   },
   {
    "fin": "2026-10-19",
@@ -111,7 +111,7 @@
    "margen": 27.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.1258
+   "peso": 0.1154
   },
   {
    "fin": "2026-10-16",
@@ -121,7 +121,7 @@
    "margen": 26.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0932
+   "peso": 0.0604
   },
   {
    "fin": "2026-10-14",
@@ -131,7 +131,7 @@
    "margen": 20.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0757
+   "peso": 0.0694
   },
   {
    "fin": "2026-10-01",
@@ -141,7 +141,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0387
+   "peso": 0.0355
   },
   {
    "fin": "2026-09-28",
@@ -151,7 +151,7 @@
    "margen": 10.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0739
+   "peso": 0.0678
   },
   {
    "fin": "2026-09-20",
@@ -161,7 +161,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0355
+   "peso": 0.0326
   },
   {
    "fin": "2026-09-20",
@@ -171,7 +171,7 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0435
+   "peso": 0.0399
   },
   {
    "fin": "2026-09-14",
@@ -181,7 +181,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0378
+   "peso": 0.0347
   },
   {
    "fin": "2026-09-10",
@@ -191,7 +191,7 @@
    "margen": 22.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0282
+   "peso": 0.0258
   },
   {
    "fin": "2026-08-09",
@@ -201,7 +201,7 @@
    "margen": 18.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.0134
+   "peso": 0.0123
   },
   {
    "fin": "2026-07-06",
@@ -211,7 +211,7 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.006
+   "peso": 0.0055
   },
   {
    "fin": "2026-06-17",
@@ -221,7 +221,17 @@
    "margen": 25.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.007
+   "peso": 0.0064
+  },
+  {
+   "fin": null,
+   "encuestadora": "ActiVote",
+   "D": 63.0,
+   "R": 37.0,
+   "margen": 26.0,
+   "en_ventana": true,
+   "origen": "270towin",
+   "peso": 0.1077
   },
   {
    "fin": null,
@@ -231,7 +241,7 @@
    "margen": 5.6,
    "en_ventana": true,
    "origen": "base",
-   "peso": 0.03
+   "peso": 0.0275
   },
   {
    "fin": null,
@@ -241,10 +251,10 @@
    "margen": 8.2,
    "en_ventana": true,
    "origen": "base",
-   "peso": 0.0101
+   "peso": 0.0093
   }
  ],
- "n_encuestas_ventana": 19,
+ "n_encuestas_ventana": 20,
  "historial": [
   {
    "corte": "2026-10-19",
@@ -336,22 +346,22 @@
   },
   {
    "corte": "2026-10-31",
-   "P_D": 0.9949,
-   "P_D_encuestas": 0.9974,
-   "P_kalshi": 0.9755,
-   "pct_D": 61.47,
-   "margen": 22.94
+   "P_D": 0.995,
+   "P_D_encuestas": 0.9976,
+   "P_kalshi": 0.9715,
+   "pct_D": 61.6,
+   "margen": 23.19
   }
  ],
  "escenarios": [],
  "anticipado": {
   "fuente": "Civiq",
-  "fecha": "2026-10-30",
+  "fecha": "2026-10-31",
   "estado": "diagnóstico",
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 5223196.0,
+    "valor": 5258464.0,
     "formato": "entero"
    },
    {
@@ -361,12 +371,12 @@
    },
    {
     "etiqueta": "2022 General al mismo día",
-    "valor": 21.58,
+    "valor": 21.53,
     "formato": "pp"
    },
    {
     "etiqueta": "2024 General al mismo día",
-    "valor": 18.9,
+    "valor": 18.85,
     "formato": "pp"
    }
   ]
@@ -385,7 +395,7 @@
   },
   {
    "nombre": "civiq",
-   "estado": "Datos de Civiq vía api, validados (2026-10-30)",
+   "estado": "Datos de Civiq vía api, validados (2026-10-31)",
    "en_vivo": true
   },
   {
@@ -400,8 +410,8 @@
   },
   {
    "nombre": "gdelt",
-   "estado": "cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
-   "en_vivo": false
+   "estado": "en_vivo",
+   "en_vivo": true
   },
   {
    "nombre": "kalshi",
