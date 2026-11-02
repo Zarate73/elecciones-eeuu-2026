@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 para suceder a Muriel Bowser (D), que no se presenta: **Janeese Lewis George (D)**, concejal del Ward 4, contra **Rhonda Hamilton (independiente)** y **Robert L. Gross (Statehood Green)**, más votos por escrito. Es la primera general de alcaldía con **voto preferencial (RCV, Iniciativa 83)**: si nadie pasa del 50 % de las boletas activas, se elimina al último y se transfieren sus votos.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 12:07 ET · fuentes en vivo 6/6
+**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 21:33 ET · fuentes en vivo 6/6
 
 | Alcaldía (1.ª ronda RCV) | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
