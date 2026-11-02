@@ -10,30 +10,30 @@
  "corte": "2026-11-01",
  "dias_a_eleccion": 2,
  "pronostico": {
-  "P_D": 0.6495,
-  "pct_D": 48.54,
+  "P_D": 0.6534,
+  "pct_D": 48.57,
   "pct_D_IC80": [
-   45.11,
-   51.97
+   45.14,
+   51.99
   ],
-  "pct_R": 46.61,
+  "pct_R": 46.58,
   "pct_R_IC80": [
-   43.18,
-   50.04
+   43.15,
+   50.01
   ],
   "pct_terceros": 4.85,
   "pct_terceros_IC80": [
    2.82,
    6.88
   ],
-  "margen": 1.931,
+  "margen": 1.985,
   "margen_IC80": [
-   -4.62,
-   8.49
+   -4.56,
+   8.54
   ],
   "margen_IC95": [
-   -8.36,
-   12.19
+   -8.3,
+   12.24
   ],
   "sd": 5.192,
   "nu": 25.1,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.0727
+    "valor": 0.0721
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.745,
+   "P_D": 0.7475,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.775,
+   "P_D": 0.7929,
    "estado": "en_vivo"
   }
  ],
@@ -282,19 +282,19 @@
   },
   {
    "corte": "2026-11-01",
-   "P_D": 0.6495,
+   "P_D": 0.6534,
    "P_D_encuestas": 0.5956,
-   "P_kalshi": 0.745,
-   "P_polymarket": 0.775,
-   "pct_D": 48.5417,
-   "margen": 1.9313
+   "P_kalshi": 0.7475,
+   "P_polymarket": 0.7929,
+   "pct_D": 48.5687,
+   "margen": 1.9853
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 1.931,
-   "P_D": 0.6495
+   "margen": 1.985,
+   "P_D": 0.6534
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -308,8 +308,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 2.371,
-   "P_D": 0.681
+   "margen": 2.424,
+   "P_D": 0.6847
   },
   {
    "escenario": "Sesgo estatal sin contraer (-0.89 pp)",
@@ -418,28 +418,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 1.57,
-   "P_D": 0.6229
+   "margen": 1.598,
+   "P_D": 0.6249
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 2.407,
-   "P_D": 0.6835
+   "margen": 2.5,
+   "P_D": 0.6896
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 3.336,
-   "P_D": 0.745
+   "margen": 3.377,
+   "P_D": 0.7475
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 3.831,
-   "P_D": 0.775
+   "margen": 4.145,
+   "P_D": 0.7929
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 4.448,
-   "P_D": 0.7903
+   "margen": 4.377,
+   "P_D": 0.7891
   }
  ],
  "anticipado": {
@@ -480,8 +480,8 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.7903,
-  "margen": 4.45
+  "P_D": 0.7891,
+  "margen": 4.38
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nevada (pequeño)",
