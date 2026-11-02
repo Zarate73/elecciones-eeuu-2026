@@ -26,7 +26,7 @@
    0.1,
    4.4
   ],
-  "margen": 18.03,
+  "margen": 18.029,
   "margen_IC80": [
    7.21,
    28.87
@@ -50,12 +50,12 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.974,
+   "P_D": 0.976,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9905,
+   "P_D": 0.9885,
    "estado": "en_vivo"
   }
  ],
@@ -167,16 +167,16 @@
    "corte": "2026-11-01",
    "P_D": 0.9809,
    "P_D_encuestas": 0.9803,
-   "P_kalshi": 0.974,
-   "P_polymarket": 0.9905,
-   "pct_D": 57.9997,
-   "margen": 18.0298
+   "P_kalshi": 0.976,
+   "P_polymarket": 0.9885,
+   "pct_D": 57.9995,
+   "margen": 18.0294
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 18.03,
+   "margen": 18.029,
    "P_D": 0.9809
   },
   {
@@ -326,18 +326,18 @@
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 16.805,
-   "P_D": 0.974
+   "margen": 17.123,
+   "P_D": 0.976
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 20.641,
-   "P_D": 0.9905
+   "margen": 19.94,
+   "P_D": 0.9885
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 21.193,
-   "P_D": 0.9843
+   "margen": 21.146,
+   "P_D": 0.9847
   }
  ],
  "anticipado": {
@@ -348,12 +348,12 @@
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 1392508.0,
+    "valor": 1394420.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 772883.0,
+    "valor": 774795.0,
     "formato": "entero"
    },
    {
@@ -363,26 +363,26 @@
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 33.9,
+    "valor": 34.0,
     "formato": "pct"
    },
    {
     "etiqueta": "Peso de Cook",
-    "valor": 20.2,
+    "valor": 20.1,
     "formato": "pct"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9843,
-  "margen": 21.19
+  "P_D": 0.9847,
+  "margen": 21.15
  },
  "adicional": {
   "titulo": "Sesgo estatal de Illinois",
   "P_D": null,
   "margen": -0.31,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige -0.3 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +21.2 pp."
+  "nota": "En IL el error de las encuestas cambia de signo; hoy el sesgo contraído suma al demócrata; el sesgo contraído corrige -0.3 pp (promedio de encuestas +18.2). Polymarket por rangos: margen implícito +21.1 pp."
  },
  "fuentes": [
   {
