@@ -10,54 +10,64 @@
  "corte": "2026-11-02",
  "dias_a_eleccion": 1,
  "pronostico": {
-  "P_D": 0.513,
-  "pct_D": 50.07,
+  "P_D": 0.5279,
+  "pct_D": 50.15,
   "pct_D_IC80": [
-   47.15,
-   53.0
+   47.23,
+   53.08
   ],
-  "pct_R": 49.92,
+  "pct_R": 49.84,
   "pct_R_IC80": [
-   46.99,
-   52.84
+   46.91,
+   52.76
   ],
   "pct_terceros": null,
-  "margen": 0.157,
+  "margen": 0.317,
   "margen_IC80": [
-   -5.68,
-   6.01
+   -5.52,
+   6.17
   ],
   "margen_IC95": [
-   -8.97,
-   9.35
+   -8.81,
+   9.51
   ],
   "sd": 4.638,
   "nu": 22.9,
-  "P_D_encuestas": 0.4331,
+  "P_D_encuestas": 0.4517,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Segunda vuelta (ninguno > 50 %)",
-    "valor": 0.0021
+    "valor": 0.0018
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.685,
+   "P_D": 0.6881,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "State Navigate",
-  "fin": "2026-10-27",
-  "dias_desde_fin": 6,
-  "dias_antes_eleccion": 7,
+  "encuestadora": "InsiderAdvantage (R)",
+  "fin": "2026-11-02",
+  "dias_desde_fin": 0,
+  "dias_antes_eleccion": 1,
   "origen": "wikipedia"
  },
  "encuestas": [
+  {
+   "fin": "2026-11-02",
+   "encuestadora": "InsiderAdvantage (R)",
+   "D": 49.0,
+   "R": 49.0,
+   "margen": 0.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": null
+  },
   {
    "fin": "2026-10-27",
    "encuestadora": "State Navigate",
@@ -329,58 +339,58 @@
   },
   {
    "corte": "2026-11-02",
-   "P_D": 0.513,
-   "P_D_encuestas": 0.4331,
-   "P_kalshi": 0.685,
-   "pct_D": 50.0732,
-   "margen": 0.1569
+   "P_D": 0.5279,
+   "P_D_encuestas": 0.4517,
+   "P_kalshi": 0.6881,
+   "pct_D": 50.1533,
+   "margen": 0.3171
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL",
-   "margen": 0.157,
-   "P_D": 0.513
+   "margen": 0.317,
+   "P_D": 0.5279
   },
   {
    "escenario": "Solo encuestas (sin Kalshi)",
-   "margen": -0.717,
-   "P_D": 0.434
+   "margen": -0.506,
+   "P_D": 0.4518
   },
   {
    "escenario": "Sin sesgo estatal GA",
-   "margen": 0.108,
-   "P_D": 0.5077
+   "margen": 0.319,
+   "P_D": 0.5274
   },
   {
    "escenario": "Distribución normal",
-   "margen": 0.132,
-   "P_D": 0.5095
+   "margen": 0.293,
+   "P_D": 0.5238
   },
   {
    "escenario": "Kalshi solo",
-   "margen": 2.204,
-   "P_D": 0.6878
+   "margen": 2.244,
+   "P_D": 0.6907
   },
   {
    "escenario": "Ventana 30 días",
-   "margen": -0.717,
-   "P_D": 0.434
+   "margen": -0.506,
+   "P_D": 0.4518
   },
   {
    "escenario": "Ventana 45 días",
-   "margen": -1.059,
-   "P_D": 0.3956
+   "margen": -0.896,
+   "P_D": 0.4105
   }
  ],
  "anticipado": {
   "fuente": "Civic Forge",
-  "fecha": "2026-10-31",
+  "fecha": "2026-11-01",
   "estado": "en_vivo",
   "metricas": [
    {
     "etiqueta": "Boletas vs 2022 (mismo día)",
-    "valor": 314382.0,
+    "valor": 314317.0,
     "formato": "entero_signo"
    },
    {
@@ -390,18 +400,18 @@
    },
    {
     "etiqueta": "% 65+ vs 2022",
-    "valor": 1.4,
+    "valor": 1.39,
     "formato": "pp"
    }
   ]
  },
  "adicional": {
   "titulo": "Senado (Ossoff vs Collins)",
-  "P_D": 0.9582,
-  "pct_D": 54.48,
-  "pct_R": 45.51,
-  "margen": 8.96,
-  "nota": "Voto dividido (gobernador R + senado D): 45%"
+  "P_D": 0.9477,
+  "pct_D": 53.93,
+  "pct_R": 46.06,
+  "margen": 7.86,
+  "nota": "Voto dividido (gobernador R + senado D): 43%"
  },
  "fuentes": [
   {
