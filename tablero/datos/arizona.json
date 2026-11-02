@@ -10,30 +10,30 @@
  "corte": "2026-11-01",
  "dias_a_eleccion": 2,
  "pronostico": {
-  "P_D": 0.9061,
-  "pct_D": 51.57,
+  "P_D": 0.9091,
+  "pct_D": 51.61,
   "pct_D_IC80": [
-   48.09,
-   55.05
+   48.14,
+   55.1
   ],
-  "pct_R": 44.82,
+  "pct_R": 44.77,
   "pct_R_IC80": [
-   41.33,
-   48.28
+   41.29,
+   48.24
   ],
   "pct_terceros": 3.62,
   "pct_terceros_IC80": [
    1.26,
    5.93
   ],
-  "margen": 6.747,
+  "margen": 6.837,
   "margen_IC80": [
-   0.18,
-   13.32
+   0.27,
+   13.41
   ],
   "margen_IC95": [
-   -3.54,
-   17.04
+   -3.45,
+   17.13
   ],
   "sd": 5.21,
   "nu": 23.4,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Recuento automático (|margen| ≤ 0.5)",
-    "valor": 0.0318
+    "valor": 0.031
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9057,
+   "P_D": 0.9092,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9204,
+   "P_D": 0.935,
    "estado": "en_vivo"
   }
  ],
@@ -153,6 +153,16 @@
    "D": 49.0,
    "R": 45.0,
    "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-30",
+   "encuestadora": "Lake Research Partners (D)",
+   "D": 56.0,
+   "R": 33.0,
+   "margen": 23.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -371,19 +381,19 @@
   },
   {
    "corte": "2026-11-01",
-   "P_D": 0.9061,
+   "P_D": 0.9091,
    "P_D_encuestas": 0.903,
-   "P_kalshi": 0.9057,
-   "P_polymarket": 0.9204,
-   "pct_D": 51.5653,
-   "margen": 6.747
+   "P_kalshi": 0.9092,
+   "P_polymarket": 0.935,
+   "pct_D": 51.6104,
+   "margen": 6.8372
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 6.747,
-   "P_D": 0.9061
+   "margen": 6.837,
+   "P_D": 0.9091
   },
   {
    "escenario": "Solo encuestas (sin mercados)",
@@ -416,14 +426,14 @@
    "P_D": 0.904
   },
   {
-   "escenario": "Ventana 45 días (6 encuestadoras)",
-   "margen": 6.346,
-   "P_D": 0.9165
+   "escenario": "Ventana 45 días (7 encuestadoras)",
+   "margen": 7.147,
+   "P_D": 0.9455
   },
   {
-   "escenario": "Ventana 60 días (8 encuestadoras)",
-   "margen": 6.429,
-   "P_D": 0.9315
+   "escenario": "Ventana 60 días (9 encuestadoras)",
+   "margen": 7.19,
+   "P_D": 0.9549
   },
   {
    "escenario": "Sin efectos de casa",
@@ -442,18 +452,18 @@
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 6.739,
-   "P_D": 0.9057
+   "margen": 6.852,
+   "P_D": 0.9092
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 7.236,
-   "P_D": 0.9204
+   "margen": 7.809,
+   "P_D": 0.935
   },
   {
    "escenario": "Polymarket por rangos de margen",
-   "margen": 8.567,
-   "P_D": 0.9097
+   "margen": 8.248,
+   "P_D": 0.9096
   }
  ],
  "anticipado": {
@@ -463,7 +473,7 @@
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 1602707.0,
+    "valor": 1603227.0,
     "formato": "entero"
    },
    {
@@ -473,7 +483,7 @@
    },
    {
     "etiqueta": "Devueltas por republicanos registrados",
-    "valor": 38.02,
+    "valor": 38.01,
     "formato": "pct"
    },
    {
@@ -483,16 +493,16 @@
    },
    {
     "etiqueta": "Maricopa, % del total",
-    "valor": 58.08,
+    "valor": 58.06,
     "formato": "pct"
    }
   ]
  },
  "adicional": {
   "titulo": "Polymarket por rangos de margen",
-  "P_D": 0.9097,
-  "margen": 8.57,
-  "nota": "Margen implícito +8.6 pp (σ 7.2)"
+  "P_D": 0.9096,
+  "margen": 8.25,
+  "nota": "Margen implícito +8.2 pp (σ 7.3)"
  },
  "fuentes": [
   {
