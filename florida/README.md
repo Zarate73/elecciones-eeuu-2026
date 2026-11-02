@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **David Jolly (D)** y **Byron Donalds (R)**, con candidatos de terceros en la boleta. El gobernador Ron DeSantis no puede reelegirse.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 11:55 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 20:49 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| David **Jolly** (D) | **45.3%** (42.6–47.9) | **4%** |
-| Byron **Donalds** (R) | **51.9%** (49.2–54.6) | **96%** |
+| David **Jolly** (D) | **45.3%** (42.6–47.9) | **5%** |
+| Byron **Donalds** (R) | **51.9%** (49.2–54.5) | **95%** |
 | Terceros | 2.9% (0.8–4.9) | — |
 
-Margen D−R -6.6 pp (σ 3.9) · solo encuestas: P(Jolly) 2% · Kalshi 36% · Polymarket 35% (peso de mercados 0.3) · recuento por máquina 2.3% · 28 encuestas, 15 encuestadoras en la ventana
+Margen D−R -6.6 pp (σ 3.9) · solo encuestas: P(Jolly) 2% · Kalshi 38% · Polymarket 36% (peso de mercados 0.3) · recuento por máquina 2.3% · 28 encuestas, 15 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas -3.7 · sesgo estatal de Florida -4.8 (las encuestas de FL han sobreestimado al demócrata) · mercados +1.9
 
 **Encuesta más reciente:** ActiVote, terminó el 2026-10-31 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-11-01): 5,243,216 (1,926,279 por correo, 3,316,937 en persona) · registrados D 37.7% · R 40.6% · NPA 19.2% (correo D+7.8, en persona R+9.1). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-11-01): 5,401,055 (1,933,244 por correo, 3,467,811 en persona) · registrados D 37.8% · R 40.3% · NPA 19.4% (correo D+7.8, en persona R+8.3). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
