@@ -3,19 +3,19 @@
 Elección general del 3 de noviembre de 2026 entre **David Crowley (D, ejecutivo del condado de Milwaukee)** y **Tom Tiffany (R, congresista del distrito 7)**. Solo ellos dos están en la boleta (más votos por escrito). El gobernador Tony Evers (D) no busca un tercer periodo. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 19:57 CT · fuentes en vivo 9/9
+**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 14:38 CT · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| David **Crowley** (D) | **52.8%** (48.7–56.9) | **81%** |
-| Tom **Tiffany** (R) | **47.1%** (42.9–51.2) | **19%** |
+| David **Crowley** (D) | **52.6%** (49.0–56.1) | **83%** |
+| Tom **Tiffany** (R) | **47.3%** (43.7–50.8) | **17%** |
 | Votos por escrito | 0.1% (0.1–0.2) | — |
 
-Margen D−R +5.7 pp (σ 6.6) · solo encuestas: P(Crowley) 80% · Kalshi 82% · Polymarket 84% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 1 pp) 8.3% · 11 encuestas, 2 encuestadoras en la ventana
+Margen D−R +5.3 pp (σ 5.6) · solo encuestas: P(Crowley) 83% · Kalshi 84% · Polymarket 86% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 1 pp) 9.0% · 12 encuestas, 3 encuestadoras en la ventana
 
-**Encuesta más reciente:** Wick (R), terminó el 2026-10-23 (**9 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Research Co., terminó el 2026-11-01 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-10-31): 1,219,584 (454,384 en persona, 765,200 por correo) · 46 % del total de votos de gobernador 2022. Wisconsin no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
+**Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-11-02): 1,241,230 (463,491 en persona, 777,739 por correo) · 47 % del total de votos de gobernador 2022. Wisconsin no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 

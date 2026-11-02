@@ -7,66 +7,76 @@
   "D": "David Crowley",
   "R": "Tom Tiffany"
  },
- "corte": "2026-11-01",
- "dias_a_eleccion": 2,
+ "corte": "2026-11-02",
+ "dias_a_eleccion": 1,
  "pronostico": {
-  "P_D": 0.8143,
-  "pct_D": 52.8,
+  "P_D": 0.8324,
+  "pct_D": 52.6,
   "pct_D_IC80": [
-   48.67,
-   56.93
+   49.05,
+   56.14
   ],
-  "pct_R": 47.08,
+  "pct_R": 47.28,
   "pct_R_IC80": [
-   42.95,
-   51.21
+   43.73,
+   50.84
   ],
   "pct_terceros": 0.12,
   "pct_terceros_IC80": [
    0.1,
    0.16
   ],
-  "margen": 5.725,
+  "margen": 5.311,
   "margen_IC80": [
-   -2.54,
-   13.98
+   -1.79,
+   12.41
   ],
   "margen_IC95": [
-   -7.25,
-   18.71
+   -5.83,
+   16.47
   ],
-  "sd": 6.551,
-  "nu": 25.1,
-  "P_D_encuestas": 0.8049,
+  "sd": 5.63,
+  "nu": 25.3,
+  "P_D_encuestas": 0.8257,
   "peso_mercados": 0.3,
   "mercado_en_distribucion": true,
   "extra": [
    {
     "etiqueta": "Recuento a petición (|margen| ≤ 1 pp)",
-    "valor": 0.0825
+    "valor": 0.0901
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.825,
+   "P_D": 0.835,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.845,
+   "P_D": 0.8593,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
-  "encuestadora": "Wick (R)",
-  "fin": "2026-10-23",
-  "dias_desde_fin": 9,
-  "dias_antes_eleccion": 11,
+  "encuestadora": "Research Co.",
+  "fin": "2026-11-01",
+  "dias_desde_fin": 1,
+  "dias_antes_eleccion": 2,
   "origen": "wikipedia"
  },
  "encuestas": [
+  {
+   "fin": "2026-11-01",
+   "encuestadora": "Research Co.",
+   "D": 50.0,
+   "R": 45.0,
+   "margen": 5.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.3579
+  },
   {
    "fin": "2026-10-23",
    "encuestadora": "Wick (R)",
@@ -75,7 +85,7 @@
    "margen": 3.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.5861
+   "peso": 0.3763
   },
   {
    "fin": "2026-10-22",
@@ -85,7 +95,7 @@
    "margen": 7.0,
    "en_ventana": true,
    "origen": "wikipedia",
-   "peso": 0.4139
+   "peso": 0.2658
   },
   {
    "fin": "2026-10-09",
@@ -178,7 +188,7 @@
    "peso": null
   }
  ],
- "n_encuestas_ventana": 2,
+ "n_encuestas_ventana": 3,
  "historial": [
   {
    "corte": "2026-10-28",
@@ -224,216 +234,230 @@
    "P_polymarket": 0.845,
    "pct_D": 52.8024,
    "margen": 5.7247
+  },
+  {
+   "corte": "2026-11-02",
+   "P_D": 0.8324,
+   "P_D_encuestas": 0.8257,
+   "P_kalshi": 0.835,
+   "P_polymarket": 0.8593,
+   "pct_D": 52.5956,
+   "margen": 5.3112
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 5.725,
-   "P_D": 0.8143
+   "margen": 5.311,
+   "P_D": 0.8324
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados (solo encuestas)",
-   "margen": 5.492,
-   "P_D": 0.8049
+   "margen": 5.164,
+   "P_D": 0.8257
   },
   {
    "escenario": "Con sesgo estatal, sin mercados",
-   "margen": 4.813,
-   "P_D": 0.7742
+   "margen": 4.489,
+   "P_D": 0.7926
   },
   {
    "escenario": "Con sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 5.253,
-   "P_D": 0.794
+   "margen": 4.858,
+   "P_D": 0.8104
   },
   {
-   "escenario": "Sesgo estatal sin contraer (-0.82 pp)",
-   "margen": 4.683,
-   "P_D": 0.7677
+   "escenario": "Sesgo estatal sin contraer (-0.81 pp)",
+   "margen": 4.356,
+   "P_D": 0.7853
   },
   {
-   "escenario": "Sesgo estatal a la mitad (-0.34 pp)",
-   "margen": 5.126,
-   "P_D": 0.7891
+   "escenario": "Sesgo estatal a la mitad (-0.33 pp)",
+   "margen": 4.804,
+   "P_D": 0.809
   },
   {
    "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.67 pp)",
-   "margen": 4.827,
-   "P_D": 0.7741
+   "margen": 4.5,
+   "P_D": 0.7927
   },
   {
    "escenario": "Sesgo sin la contienda 2020_Pres-G_WI (-0.23 pp; rango al quitar una de 25: -1.11 a -0.23)",
-   "margen": 5.236,
-   "P_D": 0.7933
+   "margen": 4.912,
+   "P_D": 0.814
   },
   {
    "escenario": "Sesgo sin la contienda 2022_Gov-G_WI (-1.11 pp; rango al quitar una de 25: -1.11 a -0.23)",
-   "margen": 4.363,
-   "P_D": 0.7537
+   "margen": 4.04,
+   "P_D": 0.7699
   },
   {
    "escenario": "Sesgo estimado solo con contiendas de gobernador (+0.48 pp)",
-   "margen": 5.955,
-   "P_D": 0.8244
+   "margen": 5.629,
+   "P_D": 0.8469
   },
   {
    "escenario": "Distribución normal",
-   "margen": 5.513,
-   "P_D": 0.8
+   "margen": 5.182,
+   "P_D": 0.8207
   },
   {
-   "escenario": "Incertidumbre con k efectivo 1.9 (no 2 firmas) y deriva por antigüedad ponderada (9 días)",
-   "margen": 5.473,
-   "P_D": 0.8023
+   "escenario": "Incertidumbre con k efectivo 2.9 (no 3 firmas) y deriva por antigüedad ponderada (7 días)",
+   "margen": 5.148,
+   "P_D": 0.8229
   },
   {
    "escenario": "Sin terceros",
-   "margen": 5.496,
-   "P_D": 0.8045
+   "margen": 5.166,
+   "P_D": 0.8254
   },
   {
    "escenario": "Sin deriva por encuestas viejas",
-   "margen": 5.503,
-   "P_D": 0.8061
+   "margen": 5.174,
+   "P_D": 0.826
   },
   {
-   "escenario": "Deriva al doble (σ_d = 0.50 pp por √día, 9 días)",
-   "margen": 5.491,
-   "P_D": 0.8007
+   "escenario": "Deriva al doble (σ_d = 0.50 pp por √día, 1 días)",
+   "margen": 5.163,
+   "P_D": 0.8246
   },
   {
-   "escenario": "Regla literal V11 (última encuesta de cada firma) (2 encuestadoras)",
-   "margen": 5.463,
-   "P_D": 0.8029
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (3 encuestadoras)",
+   "margen": 5.139,
+   "P_D": 0.8243
   },
   {
-   "escenario": "Ventana 45 días (4 encuestadoras)",
-   "margen": 4.586,
-   "P_D": 0.8153
+   "escenario": "Ventana 45 días (5 encuestadoras)",
+   "margen": 4.578,
+   "P_D": 0.8335
   },
   {
-   "escenario": "Ventana 60 días (4 encuestadoras)",
-   "margen": 4.603,
-   "P_D": 0.8166
+   "escenario": "Ventana 60 días (5 encuestadoras)",
+   "margen": 4.594,
+   "P_D": 0.8346
   },
   {
    "escenario": "Sin efectos de casa",
-   "margen": 4.677,
-   "P_D": 0.7682
+   "margen": 4.798,
+   "P_D": 0.8089
   },
   {
    "escenario": "Efectos de casa con contracción k = 4 (base 8)",
-   "margen": 5.676,
-   "P_D": 0.8124
+   "margen": 5.275,
+   "P_D": 0.8308
   },
   {
    "escenario": "Efectos de casa con contracción k = 16 (base 8)",
-   "margen": 5.269,
-   "P_D": 0.7952
+   "margen": 5.033,
+   "P_D": 0.8197
   },
   {
    "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
-   "margen": 6.225,
-   "P_D": 0.8338
+   "margen": 5.788,
+   "P_D": 0.8523
   },
   {
    "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
-   "margen": 5.465,
-   "P_D": 0.8026
+   "margen": 5.14,
+   "P_D": 0.824
   },
   {
-   "escenario": "Sin Wick (R) (pesa 59%) → ventana desde 2026-10-01: Z to A Research, YouGov, Marquette University",
-   "margen": 5.35,
-   "P_D": 0.8306
+   "escenario": "Sin Wick (R) (pesa 38%) → ventana desde 2026-10-13: Marquette University, Research Co.",
+   "margen": 5.603,
+   "P_D": 0.811
   },
   {
-   "escenario": "Sin Marquette University (pesa 41%) → ventana desde 2026-10-02: YouGov, Wick",
-   "margen": 4.08,
-   "P_D": 0.738
+   "escenario": "Sin Research Co. (pesa 36%) → ventana desde 2026-10-13: Marquette University, Wick",
+   "margen": 5.467,
+   "P_D": 0.8038
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-01: Marquette University",
-   "margen": 6.972,
-   "P_D": 0.798
+   "escenario": "Sin Marquette University (pesa 27%) → ventana desde 2026-10-13: Wick, Research Co.",
+   "margen": 4.485,
+   "P_D": 0.7623
   },
   {
-   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-10-13: Marquette University, Wick",
-   "margen": 5.425,
-   "P_D": 0.8017
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Marquette University, Research Co.",
+   "margen": 5.599,
+   "P_D": 0.8113
+  },
+  {
+   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-10-13: Marquette University, Wick, Research Co.",
+   "margen": 5.104,
+   "P_D": 0.8216
   },
   {
    "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 0.1 %)",
-   "margen": 5.489,
-   "P_D": 0.8033
+   "margen": 5.165,
+   "P_D": 0.8264
   },
   {
    "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 0.1 %)",
-   "margen": 5.494,
-   "P_D": 0.8047
+   "margen": 5.155,
+   "P_D": 0.8247
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 5.61,
-   "P_D": 0.8097
+   "margen": 5.24,
+   "P_D": 0.829
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 5.875,
-   "P_D": 0.8204
+   "margen": 5.403,
+   "P_D": 0.8367
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 5.99,
-   "P_D": 0.825
+   "margen": 5.371,
+   "P_D": 0.835
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 6.518,
-   "P_D": 0.845
+   "margen": 5.952,
+   "P_D": 0.8593
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 5.067,
-   "P_D": 0.8834
+   "margen": 5.156,
+   "P_D": 0.8839
   }
  ],
  "anticipado": {
   "fuente": "civicAPI",
-  "fecha": "2026-10-31",
+  "fecha": "2026-11-02",
   "estado": "en_vivo",
   "nota": "Sin registro partidario: solo volumen, no indica el resultado",
   "metricas": [
    {
     "etiqueta": "Votos ya emitidos (en persona + correo)",
-    "valor": 1219584.0,
+    "valor": 1241230.0,
     "formato": "entero"
    },
    {
     "etiqueta": "En persona",
-    "valor": 454384.0,
+    "valor": 463491.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Por correo",
-    "valor": 765200.0,
+    "valor": 777739.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Del total de votos de la elección previa",
-    "valor": 45.9,
+    "valor": 46.7,
     "formato": "pct"
    },
    {
     "etiqueta": "Peso de Milwaukee",
-    "valor": 15.6,
+    "valor": 16.1,
     "formato": "pct"
    }
   ]
  },
  "rangos_poly": {
-  "P_D": 0.8834,
-  "margen": 5.07
+  "P_D": 0.8839,
+  "margen": 5.16
  },
  "adicional": null,
  "fuentes": [
@@ -483,8 +507,6 @@
    "en_vivo": true
   }
  ],
- "avisos": [
-  "la encuesta más reciente terminó hace 9 días (2026-10-23)"
- ],
+ "avisos": [],
  "carpeta": "wisconsin"
 }
