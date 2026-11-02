@@ -11,29 +11,29 @@
  "dias_a_eleccion": 2,
  "pronostico": {
   "P_D": 0.9978,
-  "pct_D": 58.93,
+  "pct_D": 58.89,
   "pct_D_IC80": [
-   54.64,
-   63.21
+   54.6,
+   63.17
   ],
-  "pct_R": 39.05,
+  "pct_R": 39.09,
   "pct_R_IC80": [
-   34.75,
-   43.34
+   34.79,
+   43.38
   ],
   "pct_terceros": 2.02,
   "pct_terceros_IC80": [
    0.1,
    4.38
   ],
-  "margen": 19.883,
+  "margen": 19.804,
   "margen_IC80": [
-   11.58,
-   28.16
+   11.5,
+   28.08
   ],
   "margen_IC95": [
-   6.91,
-   32.84
+   6.83,
+   32.76
   ],
   "sd": 6.569,
   "nu": 25.1,
@@ -55,7 +55,7 @@
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9874,
+   "P_D": 0.983,
    "estado": "en_vivo"
   }
  ],
@@ -336,15 +336,15 @@
    "P_D": 0.9978,
    "P_D_encuestas": 0.9991,
    "P_kalshi": 0.9781,
-   "P_polymarket": 0.9874,
-   "pct_D": 58.93,
-   "margen": 19.8834
+   "P_polymarket": 0.983,
+   "pct_D": 58.8901,
+   "margen": 19.8037
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 19.883,
+   "margen": 19.804,
    "P_D": 0.9978
   },
   {
@@ -359,7 +359,7 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 19.931,
+   "margen": 19.838,
    "P_D": 0.9981
   },
   {
@@ -464,28 +464,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 21.103,
+   "margen": 21.068,
    "P_D": 0.9986
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 18.302,
-   "P_D": 0.9961
+   "margen": 18.128,
+   "P_D": 0.9958
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 13.369,
+   "margen": 13.366,
    "P_D": 0.9781
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 15.003,
-   "P_D": 0.9874
+   "margen": 14.125,
+   "P_D": 0.983
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
-   "margen": 21.576,
-   "P_D": 0.9838
+   "margen": 21.609,
+   "P_D": 0.9808
   }
  ],
  "anticipado": {
@@ -521,8 +521,8 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9838,
-  "margen": 21.58
+  "P_D": 0.9808,
+  "margen": 21.61
  },
  "adicional": {
   "titulo": "Sesgo estatal de Pennsylvania",

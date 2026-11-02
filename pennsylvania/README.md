@@ -3,15 +3,15 @@
 Elección general del 3 de noviembre de 2026 entre **Josh Shapiro (D, gobernador en funciones)** y **Stacy Garrity (R, tesorera estatal)**. En la boleta también aparece Ken Krawchuk (libertario).
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 11:54 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 20:42 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
 | Josh **Shapiro** (D, gobernador) | **58.9%** (54.6–63.2) | **>99%** |
-| Stacy **Garrity** (R) | **39.0%** (34.7–43.3) | **<1%** |
+| Stacy **Garrity** (R) | **39.1%** (34.8–43.4) | **<1%** |
 | Terceros | 2.0% (0.1–4.4) | — |
 
-Margen D−R +19.9 pp (σ 6.6) · solo encuestas: P(Shapiro) >99% · Kalshi 98% · Polymarket 99% (peso de mercados 0.3) · recuento automático 0.1% · 18 encuestas, 2 encuestadoras en la ventana
+Margen D−R +19.8 pp (σ 6.6) · solo encuestas: P(Shapiro) >99% · Kalshi 98% · Polymarket 98% (peso de mercados 0.3) · recuento automático 0.1% · 18 encuestas, 2 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas +22.4 · sesgo estatal de Pennsylvania -0.1 · mercados -2.4
 
