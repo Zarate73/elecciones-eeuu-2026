@@ -3,7 +3,7 @@
 Elección general del 3 de noviembre de 2026 entre **Kathy Hochul (D, gobernadora en funciones)** y **Bruce Blakeman (R, ejecutivo del condado de Nassau)**. No hay terceros en la boleta. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 11:54 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-11-01** (2 días a la elección) · actualizado automáticamente 2026-11-01 20:42 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
@@ -17,7 +17,7 @@ Cómo se llega: promedio de encuestas +12.2 · sesgo estatal de Nueva York -0.6 
 
 **Encuesta más reciente:** Marist University, terminó el 2026-10-25 (**7 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 8, al 2026-10-31): 572,786 en persona · Manhattan 160,045 · Bronx 57,167 · Brooklyn 177,271 · Queens 135,095 · Staten Island 43,208. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
+**Voto anticipado en la Ciudad de Nueva York** (Junta Electoral de NYC, check-ins no oficiales, diagnóstico, día 9, al 2026-11-01): 690,526 en persona · Manhattan 188,434 · Bronx 67,630 · Brooklyn 219,536 · Queens 162,914 · Staten Island 52,012. Solo la ciudad, solo en persona y sin partido: no indica el resultado y no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
