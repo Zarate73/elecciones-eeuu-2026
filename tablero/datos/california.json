@@ -7,10 +7,10 @@
   "D": "Xavier Becerra",
   "R": "Steve Hilton"
  },
- "corte": "2026-11-01",
- "dias_a_eleccion": 2,
+ "corte": "2026-11-02",
+ "dias_a_eleccion": 1,
  "pronostico": {
-  "P_D": 0.9949,
+  "P_D": 0.9951,
   "pct_D": 61.58,
   "pct_D_IC80": [
    57.95,
@@ -24,14 +24,14 @@
   "pct_terceros": null,
   "margen": 23.153,
   "margen_IC80": [
-   15.9,
+   15.91,
    30.34
   ],
   "margen_IC95": [
-   10.53,
-   35.73
+   10.54,
+   35.72
   ],
-  "sd": 6.337,
+  "sd": 6.332,
   "nu": 5.0,
   "P_D_encuestas": 0.9976,
   "peso_mercados": 0.3,
@@ -41,14 +41,14 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9706,
+   "P_D": 0.9735,
    "estado": "en_vivo"
   }
  ],
  "ultima_encuesta": {
   "encuestadora": "ActiVote",
   "fin": "2026-10-31",
-  "dias_desde_fin": 1,
+  "dias_desde_fin": 2,
   "dias_antes_eleccion": 3,
   "origen": "wikipedia"
  },
@@ -359,6 +359,14 @@
    "P_kalshi": 0.9706,
    "pct_D": 61.58,
    "margen": 23.15
+  },
+  {
+   "corte": "2026-11-02",
+   "P_D": 0.9951,
+   "P_D_encuestas": 0.9976,
+   "P_kalshi": 0.9735,
+   "pct_D": 61.58,
+   "margen": 23.15
   }
  ],
  "escenarios": [],
@@ -403,23 +411,23 @@
   },
   {
    "nombre": "civiq",
-   "estado": "Datos de Civiq vía api, validados (2026-11-01)",
-   "en_vivo": true
+   "estado": "ATENCIÓN: caché de hace 1 días. Causa: API: RuntimeError: https://abev.civiq.vote/api/crosstabs/CALIFORNIA%20STATEWIDE s",
+   "en_vivo": false
   },
   {
    "nombre": "civiq_historia",
-   "estado": "api_en_vivo (197 filas)",
-   "en_vivo": true
+   "estado": "cache (RuntimeError: https://abev.civiq.vote/api/historical-elections/CALIFORNIA%20STATEWIDE sin respuesta válida tras 3",
+   "en_vivo": false
   },
   {
    "nombre": "civiq_condados",
-   "estado": "api_en_vivo (58 condados)",
-   "en_vivo": true
+   "estado": "cache (RuntimeError: https://abev.civiq.vote/api/geography-breakdown/CALIFORNIA%20STATEWIDE sin respuesta válida tras 3 ",
+   "en_vivo": false
   },
   {
    "nombre": "gdelt",
-   "estado": "cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
-   "en_vivo": false
+   "estado": "en_vivo",
+   "en_vivo": true
   },
   {
    "nombre": "kalshi",

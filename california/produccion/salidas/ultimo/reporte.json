@@ -1,40 +1,40 @@
 {
   "version": "1.0.0",
-  "generado": "2026-11-01T22:21:42-08:00",
-  "fecha_corte": "2026-11-01",
-  "dias_a_eleccion": 2,
+  "generado": "2026-11-02T13:52:41-08:00",
+  "fecha_corte": "2026-11-02",
+  "dias_a_eleccion": 1,
   "offline": false,
   "config": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/config/california.toml",
   "pronostico": {
     "candidato_d": "Becerra",
     "candidato_r": "Hilton",
-    "pct_d": 61.576691068527744,
-    "pct_r": 38.423308931472256,
-    "margen_pp": 23.153382137055488,
+    "pct_d": 61.576695660665514,
+    "pct_r": 38.423304339334486,
+    "margen_pp": 23.15339132133103,
     "ic80_pct_d": [
-      57.95068927257304,
-      65.17233156561008
+      57.953516995980976,
+      65.16953666516764
     ],
     "ic95_pct_d": [
-      55.26565134324088,
-      67.86303992834483
+      55.27056958258524,
+      67.85815009708185
     ],
-    "p_d_gana_modelo": 0.99762,
-    "p_d_gana_final": 0.9949103031357546
+    "p_d_gana_modelo": 0.997625,
+    "p_d_gana_final": 0.9950809073131701
   },
   "estados_fuentes": {
     "encuestas_wikipedia": "en_vivo",
     "encuestas_270towin": "en_vivo",
-    "civiq": "Datos de Civiq vía api, validados (2026-11-01)",
-    "civiq_historia": "api_en_vivo (197 filas)",
-    "civiq_condados": "api_en_vivo (58 condados)",
-    "gdelt": "cache: BECERRA: RuntimeError: https://api.gdeltproject.org/api/v2/doc/doc sin respuesta válida tras 3 intentos: HTTP 429",
+    "civiq": "ATENCIÓN: caché de hace 1 días. Causa: API: RuntimeError: https://abev.civiq.vote/api/crosstabs/CALIFORNIA%20STATEWIDE sin respuesta válida tras 3 intentos: HTTPSConnectionPool(host='abev.civiq.vote', port=443): Read timed out. (read timeout=30)",
+    "civiq_historia": "cache (RuntimeError: https://abev.civiq.vote/api/historical-elections/CALIFORNIA%20STATEWIDE sin respuesta válida tras 3 intentos: HTTPSConnectionPool(host='abev.civiq.vote', port=443): Read timed out. (read timeout=30))",
+    "civiq_condados": "cache (RuntimeError: https://abev.civiq.vote/api/geography-breakdown/CALIFORNIA%20STATEWIDE sin respuesta válida tras 3 intentos: HTTPSConnectionPool(host='abev.civiq.vote', port=443): Read timed out. (read timeout=30))",
+    "gdelt": "en_vivo",
     "kalshi": "en_vivo"
   },
   "ultima_encuesta": {
     "encuestadora": "ActiVote",
     "fin": "2026-10-31",
-    "dias_desde_fin": 1,
+    "dias_desde_fin": 2,
     "dias_antes_eleccion": 3,
     "origen": "wikipedia"
   },
@@ -44,15 +44,15 @@
       "wikipedia": 18,
       "base": 2
     },
-    "margen_legado_pp": 22.588347021946827,
-    "margen_m5_pp": 23.165178329440177,
-    "dispersion_pp": 5.789397275815427,
-    "n_efectivo": 14.51357822642064
+    "margen_legado_pp": 22.588347021946834,
+    "margen_m5_pp": 23.165178329440185,
+    "dispersion_pp": 5.7893972758154275,
+    "n_efectivo": 14.51357822642063
   },
   "voto_temprano": {
     "fecha_datos": "2026-11-01",
-    "estado": "actualizado",
-    "origen": "api",
+    "estado": "cache_desactualizado",
+    "origen": "cache",
     "registrados": 23211464,
     "devueltas": 5297318,
     "tasa_devolucion_total_pct": 22.821990030443576,
@@ -177,7 +177,7 @@
   "sentimiento": {
     "propio": {
       "activa": false,
-      "corte": "2026-11-01",
+      "corte": "2026-11-02",
       "ruta": "/home/runner/work/elecciones-eeuu-2026/elecciones-eeuu-2026/california/produccion/data/sentimiento/serie_sentimiento_diaria.csv",
       "fecha_ultima_senal": null,
       "brechas_7d": {
@@ -221,11 +221,11 @@
     "validado": false
   },
   "kalshi": {
-    "p_d": 0.9724999999999999,
-    "p_r": 0.0295,
-    "p_d_normalizada": 0.9705588822355289,
-    "overround": 0.0020000000000000018,
-    "fecha": "2026-11-01",
+    "p_d": 0.9744999999999999,
+    "p_r": 0.0265,
+    "p_d_normalizada": 0.9735264735264736,
+    "overround": 0.0009999999999998899,
+    "fecha": "2026-11-02",
     "antiguedad_dias": 0,
     "estado": "en_vivo",
     "usable_en_mezcla": true
@@ -244,31 +244,31 @@
     }
   },
   "m5": {
-    "media_pp": 23.165178329440177,
-    "media_final_pp": 23.165178329440177,
+    "media_pp": 23.165178329440185,
+    "media_final_pp": 23.165178329440185,
     "desplazamiento_kalshi_pp": 0.0,
-    "p_mezcla_objetivo": 0.9949103031357546,
-    "sigma_pp": 6.336625368675885,
+    "p_mezcla_objetivo": 0.9950809073131701,
+    "sigma_pp": 6.3316918010075955,
     "k_sent_aplicado": 1.0,
     "delta_m2_aplicado_pp": 0.0,
-    "p_modelo": 0.99762,
-    "p_final": 0.9949103031357546,
-    "p_kalshi_usada": 0.9705588822355289,
+    "p_modelo": 0.997625,
+    "p_final": 0.9950809073131701,
+    "p_kalshi_usada": 0.9735264735264736,
     "w_kalshi": 0.3,
     "cuantiles_margen_pp": {
-      "2.5": 10.531302686481757,
-      "10": 15.901378545146072,
-      "50": 23.153382137055488,
-      "90": 30.344663131220173,
-      "97.5": 35.72607985668967
+      "2.5": 10.541139165170467,
+      "10": 15.90703399196196,
+      "50": 23.15339132133103,
+      "90": 30.339073330335292,
+      "97.5": 35.71630019416367
     },
     "componentes_varianza_pp2": {
       "sistematico": 37.718458044790175,
-      "muestreo_encuestas": 2.3093630181566276,
-      "deriva_hasta_eleccion": 0.125,
+      "muestreo_encuestas": 2.30936301815663,
+      "deriva_hasta_eleccion": 0.0625,
       "participacion_m2": 0.0
     }
   },
   "avisos": [],
-  "duracion_s": 93.1
+  "duracion_s": 496.1
 }
