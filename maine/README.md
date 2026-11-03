@@ -3,19 +3,19 @@
 Elección general del 3 de noviembre de 2026 entre **Hannah Pingree (D, ex presidenta de la Cámara estatal)** y **Bobby Charles (R)**, con **Rick Bennett (independiente)**. Elección abierta: Janet Mills no puede reelegirse. Gana la mayoría simple: la general de gobernador no usa voto preferencial.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 15:25 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 22:30 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Hannah **Pingree** (D) | **50.7%** (47.8–53.6) | **96%** |
-| Bobby **Charles** (R) | **43.3%** (40.4–46.2) | **4%** |
-| Terceros (Rick Bennett, I) | 6.0% (3.9–8.0) | — |
+| Hannah **Pingree** (D) | **51.0%** (48.2–53.7) | **97%** |
+| Bobby **Charles** (R) | **43.3%** (40.5–46.0) | **3%** |
+| Terceros (Rick Bennett, I) | 5.8% (3.7–7.8) | — |
 
-Margen D−R +7.4 pp (σ 4.3) · solo encuestas: P(Pingree) 95% · Kalshi 97% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 2.0% · 23 encuestas, 8 encuestadoras en la ventana
+Margen D−R +7.7 pp (σ 4.1) · solo encuestas: P(Pingree) 97% · Kalshi 96% · Polymarket 96% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 1.6% · 26 encuestas, 11 encuestadoras en la ventana
 
-Cómo se llega: promedio de encuestas +8.8 · sesgo estatal de Maine -1.6 · mercados +0.2
+Cómo se llega: promedio de encuestas +9.4 · sesgo estatal de Maine -1.6 · mercados -0.1
 
-**Con independiente** (mayoría simple): P(Pingree gana) 96% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 1% y Polymarket <1%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
+**Con independiente** (mayoría simple): P(Pingree gana) 97% · P(Bennett u otro tercero gana) en el modelo 0% (cota: los terceros se simulan como un total) · en los mercados Kalshi 1% y Polymarket <1%. La probabilidad de los mercados que entra a la mezcla es D / (D + R), condicional a que gane un partido principal.
 
 **Encuesta más reciente:** New York Times/Siena University, terminó el 2026-11-01 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
