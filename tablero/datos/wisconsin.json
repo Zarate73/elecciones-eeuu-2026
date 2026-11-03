@@ -10,30 +10,30 @@
  "corte": "2026-11-02",
  "dias_a_eleccion": 1,
  "pronostico": {
-  "P_D": 0.8324,
-  "pct_D": 52.6,
+  "P_D": 0.8361,
+  "pct_D": 52.64,
   "pct_D_IC80": [
-   49.05,
-   56.14
+   49.09,
+   56.19
   ],
-  "pct_R": 47.28,
+  "pct_R": 47.24,
   "pct_R_IC80": [
-   43.73,
-   50.84
+   43.69,
+   50.79
   ],
   "pct_terceros": 0.12,
   "pct_terceros_IC80": [
    0.1,
    0.16
   ],
-  "margen": 5.311,
+  "margen": 5.392,
   "margen_IC80": [
-   -1.79,
-   12.41
+   -1.71,
+   12.49
   ],
   "margen_IC95": [
-   -5.83,
-   16.47
+   -5.75,
+   16.55
   ],
   "sd": 5.63,
   "nu": 25.3,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Recuento a petición (|margen| ≤ 1 pp)",
-    "valor": 0.0901
+    "valor": 0.0888
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.835,
+   "P_D": 0.8535,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.8593,
+   "P_D": 0.8636,
    "estado": "en_vivo"
   }
  ],
@@ -237,19 +237,19 @@
   },
   {
    "corte": "2026-11-02",
-   "P_D": 0.8324,
+   "P_D": 0.8361,
    "P_D_encuestas": 0.8257,
-   "P_kalshi": 0.835,
-   "P_polymarket": 0.8593,
-   "pct_D": 52.5956,
-   "margen": 5.3112
+   "P_kalshi": 0.8535,
+   "P_polymarket": 0.8636,
+   "pct_D": 52.6361,
+   "margen": 5.3921
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 5.311,
-   "P_D": 0.8324
+   "margen": 5.392,
+   "P_D": 0.8361
   },
   {
    "escenario": "Sin sesgo estatal, sin mercados (solo encuestas)",
@@ -263,8 +263,8 @@
   },
   {
    "escenario": "Con sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 4.858,
-   "P_D": 0.8104
+   "margen": 4.945,
+   "P_D": 0.8145
   },
   {
    "escenario": "Sesgo estatal sin contraer (-0.81 pp)",
@@ -398,28 +398,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 5.24,
-   "P_D": 0.829
+   "margen": 5.284,
+   "P_D": 0.831
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 5.403,
-   "P_D": 0.8367
+   "margen": 5.548,
+   "P_D": 0.8428
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 5.371,
-   "P_D": 0.835
+   "margen": 5.808,
+   "P_D": 0.8535
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 5.952,
-   "P_D": 0.8593
+   "margen": 6.063,
+   "P_D": 0.8636
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 5.156,
-   "P_D": 0.8839
+   "margen": 5.189,
+   "P_D": 0.8748
   }
  ],
  "anticipado": {
@@ -456,8 +456,8 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.8839,
-  "margen": 5.16
+  "P_D": 0.8748,
+  "margen": 5.19
  },
  "adicional": null,
  "fuentes": [

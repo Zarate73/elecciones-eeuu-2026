@@ -3,15 +3,15 @@
 Elección general del 3 de noviembre de 2026 entre **David Crowley (D, ejecutivo del condado de Milwaukee)** y **Tom Tiffany (R, congresista del distrito 7)**. Solo ellos dos están en la boleta (más votos por escrito). El gobernador Tony Evers (D) no busca un tercer periodo. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 14:38 CT · fuentes en vivo 9/9
+**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 21:46 CT · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| David **Crowley** (D) | **52.6%** (49.0–56.1) | **83%** |
-| Tom **Tiffany** (R) | **47.3%** (43.7–50.8) | **17%** |
+| David **Crowley** (D) | **52.6%** (49.1–56.2) | **84%** |
+| Tom **Tiffany** (R) | **47.2%** (43.7–50.8) | **16%** |
 | Votos por escrito | 0.1% (0.1–0.2) | — |
 
-Margen D−R +5.3 pp (σ 5.6) · solo encuestas: P(Crowley) 83% · Kalshi 84% · Polymarket 86% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 1 pp) 9.0% · 12 encuestas, 3 encuestadoras en la ventana
+Margen D−R +5.4 pp (σ 5.6) · solo encuestas: P(Crowley) 83% · Kalshi 85% · Polymarket 86% (peso de mercados 0.3) · recuento a petición (|margen| ≤ 1 pp) 8.9% · 12 encuestas, 3 encuestadoras en la ventana
 
 **Encuesta más reciente:** Research Co., terminó el 2026-11-01 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
