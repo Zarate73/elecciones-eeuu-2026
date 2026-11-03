@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **Amy Acton (D, exdirectora de Salud del estado)** y **Vivek Ramaswamy (R)**, con Don Kissick (Libertario). El gobernador Mike DeWine (R) deja el cargo por límite de mandatos. Gana la mayoría simple.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 15:31 ET · fuentes en vivo 9/9
+**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 22:43 ET · fuentes en vivo 9/9
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| Amy **Acton** (D) | **49.5%** (46.8–52.2) | **68%** |
-| Vivek **Ramaswamy** (R) | **47.7%** (45.0–50.4) | **32%** |
-| Don **Kissick** (L) | 2.6% (0.6–4.6) | 0% |
+| Amy **Acton** (D) | **49.6%** (47.0–52.2) | **72%** |
+| Vivek **Ramaswamy** (R) | **47.4%** (44.8–50.0) | **28%** |
+| Don **Kissick** (L) | 2.9% (0.8–4.9) | 0% |
 
-Margen D−R +1.8 pp (σ 4.0) · solo encuestas: P(Acton) 61% · Kalshi 82% · Polymarket 82% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 4.5% · 37 encuestas, 13 encuestadoras en la ventana
+Margen D−R +2.2 pp (σ 3.9) · solo encuestas: P(Acton) 66% · Kalshi 82% · Polymarket 84% (peso de mercados 0.3) · resultado muy estrecho (|margen| ≤ 0.5) 4.5% · 40 encuestas, 16 encuestadoras en la ventana
 
-**Don Kissick (Libertario):** P(≥ 3 %, el partido conserva su registro en Ohio) **40%** · votos por escrito ~0.1 % · terceros en total 2.7 %
+**Don Kissick (Libertario):** P(≥ 3 %, el partido conserva su registro en Ohio) **46%** · votos por escrito ~0.1 % · terceros en total 3.0 %
 
-Cómo se llega: promedio de encuestas +4.1 · sesgo estatal de Ohio -3.1 · mercados +0.8
+Cómo se llega: promedio de encuestas +4.6 · sesgo estatal de Ohio -3.1 · mercados +0.6
 
-**Encuesta más reciente:** New York Times/Siena University, terminó el 2026-11-01 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
+**Encuesta más reciente:** Research Co., terminó el 2026-11-01 (**1 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
 **Voto anticipado ya emitido** (civicAPI, diagnóstico, al 2026-11-02): 1,730,112 (1,097,857 en persona, 632,255 por correo) · 42 % del total de votos de 2022. Ohio no tiene registro partidario: es solo volumen, no indica el resultado y no entra al pronóstico.
 
