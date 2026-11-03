@@ -3,21 +3,21 @@
 Elección general del 3 de noviembre de 2026 entre **David Jolly (D)** y **Byron Donalds (R)**, con candidatos de terceros en la boleta. El gobernador Ron DeSantis no puede reelegirse.
 
 <!-- PRONOSTICO:INICIO -->
-**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 15:30 ET · fuentes en vivo 8/8
+**Pronóstico al 2026-11-02** (1 días a la elección) · actualizado automáticamente 2026-11-02 22:42 ET · fuentes en vivo 8/8
 
 | Gobernador | % de voto (IC80) | Probabilidad de ganar |
 |---|---|---|
-| David **Jolly** (D) | **45.2%** (42.5–47.8) | **4%** |
+| David **Jolly** (D) | **45.2%** (42.6–47.8) | **4%** |
 | Byron **Donalds** (R) | **52.0%** (49.4–54.6) | **96%** |
-| Terceros | 2.9% (0.8–4.9) | — |
+| Terceros | 2.8% (0.7–4.8) | — |
 
-Margen D−R -6.8 pp (σ 3.8) · solo encuestas: P(Jolly) 1% · Kalshi 36% · Polymarket 36% (peso de mercados 0.3) · recuento por máquina 2.0% · 29 encuestas, 16 encuestadoras en la ventana
+Margen D−R -6.8 pp (σ 3.8) · solo encuestas: P(Jolly) 1% · Kalshi 38% · Polymarket 36% (peso de mercados 0.3) · recuento por máquina 2.0% · 30 encuestas, 17 encuestadoras en la ventana
 
 Cómo se llega: promedio de encuestas -4.0 · sesgo estatal de Florida -4.8 (las encuestas de FL han sobreestimado al demócrata) · mercados +2.0
 
 **Encuesta más reciente:** Targoz Market Research, terminó el 2026-11-02 (**0 días** antes del corte). Las fuentes se consultan en vivo, pero el promedio solo puede ser tan reciente como la última encuesta publicada.
 
-**Voto ya emitido** (civicAPI, diagnóstico, al 2026-11-02): 5,450,902 (1,982,799 por correo, 3,468,103 en persona) · registrados D 37.8% · R 40.2% · NPA 19.5% (correo D+7.8, en persona R+8.3). Es registro de partido, no intención de voto: no entra al pronóstico.
+**Voto ya emitido** (civicAPI, diagnóstico, al 2026-11-02): 5,456,956 (1,988,852 por correo, 3,468,104 en persona) · registrados D 37.8% · R 40.2% · NPA 19.5% (correo D+7.8, en persona R+8.3). Es registro de partido, no intención de voto: no entra al pronóstico.
 
 ![Pronóstico](produccion/salidas/ultimo/pronostico.png)
 
