@@ -10,30 +10,30 @@
  "corte": "2026-11-02",
  "dias_a_eleccion": 1,
  "pronostico": {
-  "P_D": 0.9855,
-  "pct_D": 55.05,
+  "P_D": 0.9845,
+  "pct_D": 54.99,
   "pct_D_IC80": [
-   52.13,
-   57.97
+   52.07,
+   57.91
   ],
-  "pct_R": 44.8,
+  "pct_R": 44.85,
   "pct_R_IC80": [
-   41.88,
-   47.72
+   41.94,
+   47.78
   ],
   "pct_terceros": 0.15,
   "pct_terceros_IC80": [
    0.1,
    0.21
   ],
-  "margen": 10.253,
+  "margen": 10.138,
   "margen_IC80": [
-   4.41,
-   16.09
+   4.29,
+   15.97
   ],
   "margen_IC95": [
-   1.14,
-   19.39
+   1.03,
+   19.28
   ],
   "sd": 4.626,
   "nu": 25.3,
@@ -43,19 +43,19 @@
   "extra": [
    {
     "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
-    "valor": 0.007
+    "valor": 0.0074
    }
   ]
  },
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9656,
+   "P_D": 0.9586,
    "estado": "en_vivo"
   },
   {
    "nombre": "Polymarket",
-   "P_D": 0.9734,
+   "P_D": 0.966,
    "estado": "en_vivo"
   }
  ],
@@ -99,7 +99,7 @@
   },
   {
    "fin": "2026-10-22",
-   "encuestadora": "Siena College",
+   "encuestadora": "Siena University",
    "D": 54.0,
    "R": 40.0,
    "margen": 14.0,
@@ -269,7 +269,7 @@
   },
   {
    "fin": "2026-06-23",
-   "encuestadora": "Siena College",
+   "encuestadora": "Siena University",
    "D": 52.0,
    "R": 32.0,
    "margen": 20.0,
@@ -299,20 +299,20 @@
   },
   {
    "fin": "2026-03-26",
-   "encuestadora": "Siena College",
-   "D": 47.0,
-   "R": 34.0,
-   "margen": 13.0,
+   "encuestadora": "Echelon Insights/Tusk Strategies",
+   "D": 55.0,
+   "R": 40.0,
+   "margen": 15.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
   },
   {
    "fin": "2026-03-26",
-   "encuestadora": "Echelon Insights/Tusk Strategies",
-   "D": 55.0,
-   "R": 40.0,
-   "margen": 15.0,
+   "encuestadora": "Siena College",
+   "D": 47.0,
+   "R": 34.0,
+   "margen": 13.0,
    "en_ventana": false,
    "origen": "wikipedia",
    "peso": null
@@ -329,7 +329,7 @@
   },
   {
    "fin": "2026-02-26",
-   "encuestadora": "Siena College",
+   "encuestadora": "Siena University",
    "D": 51.0,
    "R": 31.0,
    "margen": 20.0,
@@ -415,19 +415,19 @@
   },
   {
    "corte": "2026-11-02",
-   "P_D": 0.9855,
+   "P_D": 0.9845,
    "P_D_encuestas": 0.9895,
-   "P_kalshi": 0.9656,
-   "P_polymarket": 0.9734,
-   "pct_D": 55.0496,
-   "margen": 10.2534
+   "P_kalshi": 0.9586,
+   "P_polymarket": 0.966,
+   "pct_D": 54.9917,
+   "margen": 10.1376
   }
  ],
  "escenarios": [
   {
    "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
-   "margen": 10.253,
-   "P_D": 0.9855
+   "margen": 10.138,
+   "P_D": 0.9845
   },
   {
    "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
@@ -441,8 +441,8 @@
   },
   {
    "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
-   "margen": 10.698,
-   "P_D": 0.9882
+   "margen": 10.566,
+   "P_D": 0.9874
   },
   {
    "escenario": "Sesgo estatal sin contraer (-0.81 pp)",
@@ -540,27 +540,27 @@
    "P_D": 0.9894
   },
   {
-   "escenario": "Sin Marist University (pesa 25%) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena College, ActiVote, Research Co.",
+   "escenario": "Sin Marist University (pesa 25%) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena University, ActiVote, Research Co.",
    "margen": 11.231,
    "P_D": 0.9882
   },
   {
-   "escenario": "Sin Research Co. (pesa 19%) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena College, ActiVote, Marist University",
+   "escenario": "Sin Research Co. (pesa 19%) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena University, ActiVote, Marist University",
    "margen": 11.579,
    "P_D": 0.9899
   },
   {
-   "escenario": "Sin Quinnipiac University (pesa 16%) → ventana desde 2026-10-13: OnMessage Inc., Siena College, ActiVote, Marist University, Research Co.",
+   "escenario": "Sin Quinnipiac University (pesa 16%) → ventana desde 2026-10-13: OnMessage Inc., Siena University, ActiVote, Marist University, Research Co.",
    "margen": 10.509,
    "P_D": 0.9832
   },
   {
-   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Quinnipiac University, Siena College, ActiVote, Marist University, Research Co.",
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Quinnipiac University, Siena University, ActiVote, Marist University, Research Co.",
    "margen": 11.511,
    "P_D": 0.9901
   },
   {
-   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena College, Marist University, Research Co.",
+   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-10-13: OnMessage Inc., Quinnipiac University, Siena University, Marist University, Research Co.",
    "margen": 9.922,
    "P_D": 0.9785
   },
@@ -576,28 +576,28 @@
   },
   {
    "escenario": "Peso de mercados 0.15 (base 0.30)",
-   "margen": 10.578,
-   "P_D": 0.9876
+   "margen": 10.512,
+   "P_D": 0.9872
   },
   {
    "escenario": "Peso de mercados 0.50 (base 0.30)",
-   "margen": 9.815,
-   "P_D": 0.982
+   "margen": 9.577,
+   "P_D": 0.98
   },
   {
    "escenario": "Solo Kalshi (probabilidad)",
-   "margen": 8.426,
-   "P_D": 0.9656
+   "margen": 8.009,
+   "P_D": 0.9586
   },
   {
    "escenario": "Solo Polymarket (probabilidad)",
-   "margen": 8.998,
-   "P_D": 0.9734
+   "margen": 8.454,
+   "P_D": 0.966
   },
   {
    "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
-   "margen": 14.044,
-   "P_D": 0.9751
+   "margen": 12.863,
+   "P_D": 0.9669
   }
  ],
  "anticipado": {
@@ -639,15 +639,15 @@
   ]
  },
  "rangos_poly": {
-  "P_D": 0.9751,
-  "margen": 14.04
+  "P_D": 0.9669,
+  "margen": 12.86
  },
  "adicional": {
   "titulo": "Sesgo estatal de Nueva York",
   "P_D": null,
   "margen": -0.58,
   "etiqueta_margen": "corrección al margen D−R",
-  "nota": "Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3); el sesgo contraído corrige -0.6 pp (promedio de encuestas +11.5). Polymarket por rangos: margen implícito +14.0 pp."
+  "nota": "Desde 2014 las encuestas en NY sobreestimaron sobre todo al demócrata (presidente 2020 +9.5, 2024 +4.3); el sesgo contraído corrige -0.6 pp (promedio de encuestas +11.5). Polymarket por rangos: margen implícito +12.9 pp."
  },
  "fuentes": [
   {
