@@ -10,7 +10,7 @@
  "corte": "2026-11-02",
  "dias_a_eleccion": 1,
  "pronostico": {
-  "P_D": 0.9951,
+  "P_D": 0.9948,
   "pct_D": 61.58,
   "pct_D_IC80": [
    57.95,
@@ -41,7 +41,7 @@
  "mercados": [
   {
    "nombre": "Kalshi",
-   "P_D": 0.9735,
+   "P_D": 0.9685,
    "estado": "en_vivo"
   }
  ],
@@ -362,9 +362,9 @@
   },
   {
    "corte": "2026-11-02",
-   "P_D": 0.9951,
+   "P_D": 0.9948,
    "P_D_encuestas": 0.9976,
-   "P_kalshi": 0.9735,
+   "P_kalshi": 0.9685,
    "pct_D": 61.58,
    "margen": 23.15
   }
@@ -372,27 +372,27 @@
  "escenarios": [],
  "anticipado": {
   "fuente": "Civiq",
-  "fecha": "2026-11-01",
+  "fecha": "2026-11-02",
   "estado": "diagnóstico",
   "metricas": [
    {
     "etiqueta": "Boletas devueltas",
-    "valor": 5297318.0,
+    "valor": 6452468.0,
     "formato": "entero"
    },
    {
     "etiqueta": "Margen D−R de devueltas",
-    "valor": 22.61,
+    "valor": 22.99,
     "formato": "pp"
    },
    {
     "etiqueta": "2022 General al mismo día",
-    "valor": 21.67,
+    "valor": 21.59,
     "formato": "pp"
    },
    {
     "etiqueta": "2024 General al mismo día",
-    "valor": 18.65,
+    "valor": 18.82,
     "formato": "pp"
    }
   ]
@@ -411,23 +411,23 @@
   },
   {
    "nombre": "civiq",
-   "estado": "ATENCIÓN: caché de hace 1 días. Causa: API: RuntimeError: https://abev.civiq.vote/api/crosstabs/CALIFORNIA%20STATEWIDE s",
-   "en_vivo": false
+   "estado": "Datos de Civiq vía api, validados (2026-11-02)",
+   "en_vivo": true
   },
   {
    "nombre": "civiq_historia",
-   "estado": "cache (RuntimeError: https://abev.civiq.vote/api/historical-elections/CALIFORNIA%20STATEWIDE sin respuesta válida tras 3",
-   "en_vivo": false
+   "estado": "api_en_vivo (197 filas)",
+   "en_vivo": true
   },
   {
    "nombre": "civiq_condados",
-   "estado": "cache (RuntimeError: https://abev.civiq.vote/api/geography-breakdown/CALIFORNIA%20STATEWIDE sin respuesta válida tras 3 ",
-   "en_vivo": false
+   "estado": "api_en_vivo (58 condados)",
+   "en_vivo": true
   },
   {
    "nombre": "gdelt",
-   "estado": "en_vivo",
-   "en_vivo": true
+   "estado": "cache (< 12 h)",
+   "en_vivo": false
   },
   {
    "nombre": "kalshi",
