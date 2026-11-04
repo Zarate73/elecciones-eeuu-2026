@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-04T04:48:18+00:00",
+ "generado": "2026-11-04T04:56:25+00:00",
  "dia_eleccion": "2026-11-03",
  "congelado": true,
  "estado_congelado": {
@@ -32,14 +32,14 @@
     "north_carolina",
     "dc"
    ],
-   "MAE_margen": 7.3153153840216,
-   "RMSE_margen": 8.941842721286319,
-   "sesgo_margen": 7.3153153840216,
+   "MAE_margen": 7.286394216762231,
+   "RMSE_margen": 8.932674433563665,
+   "sesgo_margen": 7.286394216762231,
    "cobertura_IC80": 0.5555555555555556,
    "cobertura_IC95": 0.7777777777777778,
    "aciertos_lider": 8,
    "brier": 0.10375457555555553,
-   "crps": 5.441444980288917
+   "crps": 5.428150990394719
   },
   "casi_completos": {
    "n": 2,
@@ -47,14 +47,14 @@
     "florida",
     "north_carolina"
    ],
-   "MAE_margen": 7.966520849213072,
-   "RMSE_margen": 8.347456826022947,
-   "sesgo_margen": 7.966520849213072,
+   "MAE_margen": 7.994538467390544,
+   "RMSE_margen": 8.378917652051436,
+   "sesgo_margen": 7.994538467390544,
    "cobertura_IC80": 0.0,
    "cobertura_IC95": 0.5,
    "aciertos_lider": 2,
    "brier": 0.0008192499999999992,
-   "crps": 5.859934861063304
+   "crps": 5.886710128581692
   }
  },
  "estados": {
@@ -89,7 +89,7 @@
    "fuente": "Georgia SOS (oficial)",
    "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
    "actualizado": "2026-11-04T04:45:05.9862944Z",
-   "consultado": "2026-11-04T04:48:19+00:00",
+   "consultado": "2026-11-04T04:56:26+00:00",
    "votos": {
     "D": 2251699.0,
     "R": 1893587.0,
@@ -218,33 +218,33 @@
     "nu": 5.0
    },
    "estado": "parcial",
-   "avance": 0.42619446772841574,
-   "avance_txt": "42.6% (10,169 of 23,860) precincts reporting",
+   "avance": 0.44308466051969825,
+   "avance_txt": "44.3% (10,572 of 23,860) precincts reporting",
    "fuente": "California SOS (oficial)",
    "url": "https://api.sos.ca.gov/returns/governor",
-   "actualizado": "November 3, 2026, 8:40 p.m.",
-   "consultado": "2026-11-04T04:48:20+00:00",
+   "actualizado": "November 3, 2026, 8:45 p.m.",
+   "consultado": "2026-11-04T04:56:27+00:00",
    "votos": {
-    "D": 3264084.0,
-    "R": 1863849.0,
+    "D": 3324487.0,
+    "R": 1911350.0,
     "otros": 0.0,
-    "total": 5127933.0
+    "total": 5235837.0
    },
-   "pct_D": 63.65301574728063,
-   "pct_R": 36.34698425271937,
+   "pct_D": 63.49485287643599,
+   "pct_R": 36.50514712356401,
    "pct_otros": 0.0,
-   "margen": 27.306031494561253,
-   "error_margen": 4.1530314945612545,
-   "error_pct_D": 2.0730157472806283,
-   "error_pct_R": -2.0730157472806283,
-   "percentil": 0.7821082667874937,
+   "margen": 26.989705752871984,
+   "error_margen": 3.8367057528719855,
+   "error_pct_D": 1.9148528764359938,
+   "error_pct_R": -1.9148528764359938,
+   "percentil": 0.7652611194453005,
    "en_IC80": true,
    "en_IC95": true,
    "lider": "D",
    "favorito": "D",
    "acierto_lider": true,
    "brier": 2.7039999999999816e-05,
-   "crps": 2.5095727482930914,
+   "crps": 2.336376304208532,
    "clave": "california",
    "estado_nombre": "California",
    "cargo": "Gobernador",
@@ -257,7 +257,7 @@
    "fuentes": [
     {
      "fuente": "california_sos",
-     "estado": "5,127,933 votos (usada)"
+     "estado": "5,235,837 votos (usada)"
     }
    ],
    "serie": [
@@ -295,6 +295,13 @@
      "margen": 27.306031494561253,
      "pct_D": 63.65301574728063,
      "pct_R": 36.34698425271937
+    },
+    {
+     "t": "2026-11-04T04:56:25+00:00",
+     "avance": 0.44308466051969825,
+     "margen": 26.989705752871984,
+     "pct_D": 63.49485287643599,
+     "pct_R": 36.50514712356401
     }
    ]
   },
@@ -372,28 +379,28 @@
    "fuente": "Florida DOS (oficial)",
    "url": "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL.txt",
    "actualizado": null,
-   "consultado": "2026-11-04T04:48:20+00:00",
+   "consultado": "2026-11-04T04:56:27+00:00",
    "votos": {
-    "D": 4012656.0,
-    "R": 4124944.0,
-    "otros": 104415.0,
-    "total": 8242015.0
+    "D": 4014736.0,
+    "R": 4126061.0,
+    "otros": 104464.0,
+    "total": 8245261.0
    },
-   "pct_D": 48.685376088250266,
-   "pct_R": 50.04776137874052,
-   "pct_otros": 1.266862533009217,
-   "margen": -1.362385290490252,
-   "error_margen": 5.473614709509748,
-   "error_pct_D": 3.495376088250268,
-   "error_pct_R": -1.9822386212594836,
-   "percentil": 0.9267230621293703,
+   "pct_D": 48.691436208023006,
+   "pct_R": 50.041605717514585,
+   "pct_otros": 1.2669580744624085,
+   "margen": -1.3501695094915789,
+   "error_margen": 5.485830490508421,
+   "error_pct_D": 3.5014362080230086,
+   "error_pct_R": -1.988394282485416,
+   "percentil": 0.9271540635475943,
    "en_IC80": false,
    "en_IC95": true,
    "lider": "R",
    "favorito": "R",
    "acierto_lider": true,
    "brier": 0.0013322499999999999,
-   "crps": 3.605665531349604,
+   "crps": 3.616096311515759,
    "clave": "florida",
    "estado_nombre": "Florida",
    "cargo": "Gobernador",
@@ -406,7 +413,7 @@
    "fuentes": [
     {
      "fuente": "florida_dos",
-     "estado": "8,242,015 votos (usada)"
+     "estado": "8,245,261 votos (usada)"
     }
    ],
    "serie": [
@@ -451,6 +458,13 @@
      "margen": -1.362385290490252,
      "pct_D": 48.685376088250266,
      "pct_R": 50.04776137874052
+    },
+    {
+     "t": "2026-11-04T04:56:25+00:00",
+     "avance": 0.9900462140063989,
+     "margen": -1.3501695094915789,
+     "pct_D": 48.691436208023006,
+     "pct_R": 50.041605717514585
     }
    ]
   },
@@ -528,7 +542,7 @@
    "fuente": "Pennsylvania DOS (oficial)",
    "url": "https://www.electionreturns.pa.gov/api/ElectionReturn/GET?methodName=GetSummaryData&electionid=undefined&electiontype=undefined&isactive=1",
    "actualizado": null,
-   "consultado": "2026-11-04T04:48:20+00:00",
+   "consultado": "2026-11-04T04:56:27+00:00",
    "votos": {
     "D": 2841651.0,
     "R": 1828225.0,
@@ -719,7 +733,7 @@
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_Texas_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-04T04:48:21+00:00",
+   "consultado": "2026-11-04T04:56:28+00:00",
    "votos": {
     "D": 3959786.0,
     "R": 2853887.0,
@@ -808,7 +822,7 @@
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_Illinois_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-04T04:48:21+00:00",
+   "consultado": "2026-11-04T04:56:28+00:00",
    "votos": {
     "D": 1981468.0,
     "R": 1228265.0,
@@ -929,7 +943,7 @@
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_Ohio_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-04T04:48:22+00:00",
+   "consultado": "2026-11-04T04:56:29+00:00",
    "votos": {
     "D": 2049907.0,
     "R": 1858779.0,
@@ -1002,33 +1016,33 @@
     "nu": 25.3
    },
    "estado": "casi_completo",
-   "avance": 0.9794364051789795,
-   "avance_txt": "2572 de 2626 precintos",
+   "avance": 0.9893373952779894,
+   "avance_txt": "2598 de 2626 precintos",
    "fuente": "NCSBE (oficial)",
    "url": "https://er.ncsbe.gov/enr/20261103/data/results_0.txt",
    "actualizado": null,
-   "consultado": "2026-11-04T04:48:22+00:00",
+   "consultado": "2026-11-04T04:56:29+00:00",
    "votos": {
-    "D": 2436477.0,
-    "R": 1626904.0,
-    "otros": 90954.0,
-    "total": 4154335.0
+    "D": 2449210.0,
+    "R": 1633858.0,
+    "otros": 91535.0,
+    "total": 4174603.0
    },
-   "pct_D": 58.64902565633248,
-   "pct_R": 39.16159866741609,
-   "pct_otros": 2.18937567625143,
-   "margen": 19.487426988916397,
-   "error_margen": 10.459426988916396,
-   "error_pct_D": 5.30902565633248,
-   "error_pct_R": -5.148401332583916,
-   "percentil": 0.9919174142224997,
+   "pct_D": 58.66929142723272,
+   "pct_R": 39.138044982960054,
+   "pct_otros": 2.192663589807225,
+   "margen": 19.531246444272668,
+   "error_margen": 10.503246444272667,
+   "error_pct_D": 5.329291427232718,
+   "error_pct_R": -5.171955017039949,
+   "percentil": 0.9921140298164631,
    "en_IC80": false,
    "en_IC95": false,
    "lider": "D",
    "favorito": "D",
    "acierto_lider": true,
    "brier": 0.0003062499999999986,
-   "crps": 8.114204190777004,
+   "crps": 8.157323945647624,
    "clave": "north_carolina",
    "estado_nombre": "North Carolina",
    "cargo": "Senado",
@@ -1041,7 +1055,7 @@
    "fuentes": [
     {
      "fuente": "ncsbe",
-     "estado": "4,154,335 votos (usada)"
+     "estado": "4,174,603 votos (usada)"
     }
    ],
    "serie": [
@@ -1114,6 +1128,13 @@
      "margen": 19.487426988916397,
      "pct_D": 58.64902565633248,
      "pct_R": 39.16159866741609
+    },
+    {
+     "t": "2026-11-04T04:56:25+00:00",
+     "avance": 0.9893373952779894,
+     "margen": 19.531246444272668,
+     "pct_D": 58.66929142723272,
+     "pct_R": 39.138044982960054
     }
    ]
   },
@@ -1191,7 +1212,7 @@
    "fuente": "DCBOE (oficial, 1.ª ronda RCV)",
    "url": "https://electionresults.dcboe.org/cityWide/getCityWide/2026-General-Election",
    "actualizado": null,
-   "consultado": "2026-11-04T04:48:22+00:00",
+   "consultado": "2026-11-04T04:56:29+00:00",
    "votos": {
     "D": 151539.0,
     "R": 18073.0,
