@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-04T01:20:33+00:00",
+ "generado": "2026-11-04T02:51:47+00:00",
  "dia_eleccion": "2026-11-03",
  "congelado": true,
  "estado_congelado": {
@@ -20,20 +20,21 @@
  },
  "agregado": {
   "con_datos": {
-   "n": 3,
+   "n": 4,
    "estados": [
     "georgia",
     "pennsylvania",
-    "north_carolina"
+    "north_carolina",
+    "dc"
    ],
-   "MAE_margen": 29.746639304216462,
-   "RMSE_margen": 31.13369229496475,
-   "sesgo_margen": 29.746639304216462,
-   "cobertura_IC80": 0.0,
-   "cobertura_IC95": 0.0,
-   "aciertos_lider": 3,
-   "brier": 0.07162024666666665,
-   "crps": 27.065843547806207
+   "MAE_margen": 8.845129914572986,
+   "RMSE_margen": 8.987186234523914,
+   "sesgo_margen": 8.845129914572986,
+   "cobertura_IC80": 0.5,
+   "cobertura_IC95": 0.5,
+   "aciertos_lider": 4,
+   "brier": 0.05371608749999999,
+   "crps": 6.127873203917387
   },
   "casi_completos": null
  },
@@ -68,29 +69,29 @@
    "avance_txt": "",
    "fuente": "Georgia SOS (oficial)",
    "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
-   "actualizado": "2026-11-04T01:16:05.151113Z",
-   "consultado": "2026-11-04T01:20:34+00:00",
+   "actualizado": "2026-11-04T02:50:34.7964512Z",
+   "consultado": "2026-11-04T02:51:48+00:00",
    "votos": {
-    "D": 1468520.0,
-    "R": 980248.0,
+    "D": 1927067.0,
+    "R": 1595118.0,
     "otros": 0.0,
-    "total": 2448768.0
+    "total": 3522185.0
    },
-   "pct_D": 59.96974805289844,
-   "pct_R": 40.03025194710156,
+   "pct_D": 54.71225957750658,
+   "pct_R": 45.28774042249342,
    "pct_otros": 0.0,
-   "margen": 19.939496105796877,
-   "error_margen": 19.534496105796876,
-   "error_pct_D": 9.769748052898436,
-   "error_pct_R": -9.759748052898438,
-   "percentil": 0.999931962015388,
+   "margen": 9.424519155013158,
+   "error_margen": 9.019519155013159,
+   "error_pct_D": 4.512259577506576,
+   "error_pct_R": -4.502259577506578,
+   "percentil": 0.9770810128760267,
    "en_IC80": false,
    "en_IC95": false,
    "lider": "D",
    "favorito": "D",
    "acierto_lider": true,
    "brier": 0.21455423999999995,
-   "crps": 17.027963530302525,
+   "crps": 6.6017573980498305,
    "clave": "georgia",
    "estado_nombre": "Georgia",
    "cargo": "Gobernador",
@@ -103,7 +104,7 @@
    "fuentes": [
     {
      "fuente": "georgia_ev",
-     "estado": "2,448,768 votos (usada)"
+     "estado": "3,522,185 votos (usada)"
     }
    ],
    "serie": [
@@ -113,6 +114,13 @@
      "margen": 19.939496105796877,
      "pct_D": 59.96974805289844,
      "pct_R": 40.03025194710156
+    },
+    {
+     "t": "2026-11-04T02:51:47+00:00",
+     "avance": null,
+     "margen": 9.424519155013158,
+     "pct_D": 54.71225957750658,
+     "pct_R": 45.28774042249342
     }
    ]
   },
@@ -322,33 +330,33 @@
     "nu": 25.3
    },
    "estado": "parcial",
-   "avance": 0.003639973527465255,
-   "avance_txt": "33 Out of 9,066 Districts (0.36%)  - IN PERSON BALLOT REPORTING ONLY",
+   "avance": 0.2617471872931833,
+   "avance_txt": "2,373 Out of 9,066 Districts (26.17%)  - IN PERSON BALLOT REPORTING ONLY",
    "fuente": "Pennsylvania DOS (oficial)",
    "url": "https://www.electionreturns.pa.gov/api/ElectionReturn/GET?methodName=GetSummaryData&electionid=undefined&electiontype=undefined&isactive=1",
    "actualizado": null,
-   "consultado": "2026-11-04T01:20:37+00:00",
+   "consultado": "2026-11-04T02:51:50+00:00",
    "votos": {
-    "D": 339053.0,
-    "R": 77558.0,
-    "otros": 3351.0,
-    "total": 419962.0
+    "D": 1555121.0,
+    "R": 892650.0,
+    "otros": 30651.0,
+    "total": 2478422.0
    },
-   "pct_D": 80.73420928560203,
-   "pct_R": 18.467861377934195,
-   "pct_otros": 0.7979293364637705,
-   "margen": 62.266347907667836,
-   "error_margen": 41.81334790766783,
-   "error_pct_D": 21.314209285602033,
-   "error_pct_R": -20.502138622065804,
-   "percentil": 0.9999999797671276,
-   "en_IC80": false,
-   "en_IC95": false,
+   "pct_D": 62.746416873316974,
+   "pct_R": 36.01686879796903,
+   "pct_otros": 1.236714328713994,
+   "margen": 26.729548075347942,
+   "error_margen": 6.276548075347943,
+   "error_pct_D": 3.3264168733169726,
+   "error_pct_R": -2.953131202030967,
+   "percentil": 0.8715712551004013,
+   "en_IC80": true,
+   "en_IC95": true,
    "lider": "D",
    "favorito": "D",
    "acierto_lider": true,
    "brier": 2.4999999999994493e-07,
-   "crps": 38.65016240560727,
+   "crps": 3.872265916482496,
    "clave": "pennsylvania",
    "estado_nombre": "Pennsylvania",
    "cargo": "Gobernador",
@@ -361,7 +369,7 @@
    "fuentes": [
     {
      "fuente": "pennsylvania_dos",
-     "estado": "419,962 votos (usada)"
+     "estado": "2,478,422 votos (usada)"
     }
    ],
    "serie": [
@@ -371,6 +379,13 @@
      "margen": 62.266347907667836,
      "pct_D": 80.73420928560203,
      "pct_R": 18.467861377934195
+    },
+    {
+     "t": "2026-11-04T02:51:47+00:00",
+     "avance": 0.2617471872931833,
+     "margen": 26.729548075347942,
+     "pct_D": 62.746416873316974,
+     "pct_R": 36.01686879796903
     }
    ]
   },
@@ -619,33 +634,33 @@
     "nu": 25.3
    },
    "estado": "parcial",
-   "avance": 0.011043412033511044,
-   "avance_txt": "29 de 2626 precintos",
+   "avance": 0.7265803503427266,
+   "avance_txt": "1908 de 2626 precintos",
    "fuente": "NCSBE (oficial)",
    "url": "https://er.ncsbe.gov/enr/20261103/data/results_0.txt",
    "actualizado": null,
-   "consultado": "2026-11-04T01:20:39+00:00",
+   "consultado": "2026-11-04T02:51:52+00:00",
    "votos": {
-    "D": 1443895.0,
-    "R": 655925.0,
-    "otros": 34439.0,
-    "total": 2134259.0
+    "D": 2147556.0,
+    "R": 1430129.0,
+    "otros": 76072.0,
+    "total": 3653757.0
    },
-   "pct_D": 67.65322296872122,
-   "pct_R": 30.733149069536548,
-   "pct_otros": 1.6136279617422282,
-   "margen": 36.92007389918467,
-   "error_margen": 27.892073899184673,
-   "error_pct_D": 14.31322296872122,
-   "error_pct_R": -13.576850930463454,
-   "percentil": 0.9999998437958505,
+   "pct_D": 58.77665099238948,
+   "pct_R": 39.14132767997434,
+   "pct_otros": 2.082021327636184,
+   "margen": 19.63532331241514,
+   "error_margen": 10.607323312415138,
+   "error_pct_D": 5.436650992389474,
+   "error_pct_R": -5.168672320025664,
+   "percentil": 0.9925632903847197,
    "en_IC80": false,
    "en_IC95": false,
    "lider": "D",
    "favorito": "D",
    "acierto_lider": true,
    "brier": 0.0003062499999999986,
-   "crps": 25.51940470750882,
+   "crps": 8.259806503569857,
    "clave": "north_carolina",
    "estado_nombre": "North Carolina",
    "cargo": "Senado",
@@ -658,7 +673,7 @@
    "fuentes": [
     {
      "fuente": "ncsbe",
-     "estado": "2,134,259 votos (usada)"
+     "estado": "3,653,757 votos (usada)"
     }
    ],
    "serie": [
@@ -668,6 +683,13 @@
      "margen": 36.92007389918467,
      "pct_D": 67.65322296872122,
      "pct_R": 30.733149069536548
+    },
+    {
+     "t": "2026-11-04T02:51:47+00:00",
+     "avance": 0.7265803503427266,
+     "margen": 19.63532331241514,
+     "pct_D": 58.77665099238948,
+     "pct_R": 39.14132767997434
     }
    ]
   },
@@ -739,7 +761,34 @@
     "sd": 14.964,
     "nu": 11.0
    },
-   "estado": "sin_datos",
+   "estado": "parcial",
+   "avance": null,
+   "avance_txt": null,
+   "fuente": "DCBOE (oficial, 1.ª ronda RCV)",
+   "url": "https://electionresults.dcboe.org/cityWide/getCityWide/2026-General-Election",
+   "actualizado": null,
+   "consultado": "2026-11-04T02:51:52+00:00",
+   "votos": {
+    "D": 126932.0,
+    "R": 15510.0,
+    "otros": 8663.0,
+    "total": 151105.0
+   },
+   "pct_D": 84.00251480758413,
+   "pct_R": 10.26438569206843,
+   "pct_otros": 5.733099500347436,
+   "margen": 73.7381291155157,
+   "error_margen": 9.477129115515709,
+   "error_pct_D": 4.392514807584135,
+   "error_pct_R": -5.08561430793157,
+   "percentil": 0.7508191397442893,
+   "en_IC80": true,
+   "en_IC95": true,
+   "lider": "D",
+   "favorito": "D",
+   "acierto_lider": true,
+   "brier": 3.6100000000000484e-06,
+   "crps": 5.777662997567364,
    "clave": "dc",
    "estado_nombre": "Washington D.C.",
    "cargo": "Alcaldía",
@@ -752,14 +801,18 @@
    "fuentes": [
     {
      "fuente": "dcboe",
-     "estado": "sin votos todavía"
-    },
-    {
-     "fuente": "wikipedia",
-     "estado": "sin votos todavía"
+     "estado": "151,105 votos (usada)"
     }
    ],
-   "serie": []
+   "serie": [
+    {
+     "t": "2026-11-04T02:51:47+00:00",
+     "avance": null,
+     "margen": 73.7381291155157,
+     "pct_D": 84.00251480758413,
+     "pct_R": 10.26438569206843
+    }
+   ]
   }
  }
 }
