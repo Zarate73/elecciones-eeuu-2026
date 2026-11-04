@@ -252,7 +252,8 @@ def wikipedia(carrera, f, cfg) -> Conteo | None:
     if 'error' in d:
         raise RuntimeError(d['error'].get('info'))
     try:
-        tablas = pd.read_html(StringIO(d['parse']['text']))
+        html = re.sub(r'(rowspan|colspan)\s*=\s*["\']?(\d+)[^\s>]*', r'\1="\2"', d['parse']['text'])   # «rowspan="2""» (Florida)
+        tablas = pd.read_html(StringIO(html))
     except ValueError:
         return None
     ap_d, ap_r = carrera['d']['apellido'].lower(), carrera['r']['apellido'].lower()
