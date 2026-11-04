@@ -153,3 +153,13 @@ def test_corrida_congela_y_escribe(tmp_path):
 
 def test_votos_vacios_no_son_nan():
     assert F._n('nan') == 0 and F._n('') == 0 and F._n('1,234') == 1234
+
+
+def test_wikipedia_infobox_noche_electoral(monkeypatch):
+    """3-nov 22:45 ET: la tabla de resultados de Ohio sigue vacía, pero el infobox ya trae el conteo parcial."""
+    texto = json.loads(gzip.open(FIX / 'wiki_ohio_noche_2026.json.gz').read())
+    monkeypatch.setattr(F, 'get_json', lambda *a, **k: texto)
+    c = F.wikipedia(car('Acton', 'Ramaswamy', wiki='x'), {}, G)
+    assert (c.votos_D, c.votos_R) == (1658024, 1519697)
+    assert 100 * c.votos_D / c.total == pytest.approx(50.4, abs=0.1) and c.votos_otros > 0
+    assert c.avance == pytest.approx(0.70) and 'as of 9:58 PM EST' in c.avance_txt

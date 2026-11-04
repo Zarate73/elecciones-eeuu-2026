@@ -82,8 +82,15 @@ def _repartir(filas, carrera, clave_partido, clave_nombre, clave_votos) -> tuple
 
 
 # ------------------------------------------------------------------------------------------ North Carolina
+def _sin_cache(url: str) -> str:
+    """Los archivos estáticos (Florida, NCSBE) quedan en caché de CDN: la noche electoral Florida servía el archivo en
+    cero desde caché mientras el original ya tenía 8 millones de votos. Un parámetro de tiempo evita la caché."""
+    import time
+    return url + ('&' if '?' in url else '?') + f'_t={int(time.time())}'
+
+
 def ncsbe(carrera, f, cfg) -> Conteo | None:
-    d = get_json(f['url'], timeout=cfg['timeout_s'])
+    d = get_json(_sin_cache(f['url']), timeout=cfg['timeout_s'])
     filas = [x for x in d if str(x.get('cnm', '')).upper().startswith(f['contienda'].upper())]
     if not filas:
         raise ValueError(f"NCSBE: sin la contienda {f['contienda']}")
@@ -96,7 +103,7 @@ def ncsbe(carrera, f, cfg) -> Conteo | None:
 
 # ------------------------------------------------------------------------------------------ Florida
 def florida_dos(carrera, f, cfg) -> Conteo | None:
-    txt = get_text(f['url'], timeout=cfg['timeout_s'])
+    txt = get_text(_sin_cache(f['url']), timeout=cfg['timeout_s'])
     import csv
     filas = [x for x in csv.DictReader(StringIO(txt), delimiter='\t') if (x.get('RaceCode') or '').strip() == f['carrera']]
     if not filas:
@@ -266,13 +273,42 @@ def wikipedia(carrera, f, cfg) -> Conteo | None:
             ok &= ~t[pc].astype(str).str.contains(EXCLUIR, case=False)
         filas = [{'n': n, 'v': v, 'p': ''} for n, v in zip(cand[ok], votos[ok])]
         mejor = filas                                       # la última tabla con ambos candidatos: la de la general
-    if not mejor:
-        return None
-    vd, vr, vo = _repartir(mejor, carrera, 'p', 'n', 'v')
-    if vd <= 0 or vr <= 0:
-        return None
     url = f"https://en.wikipedia.org/wiki/{carrera['wikipedia']}"
-    return Conteo('Wikipedia (respaldo, sin % de avance)', vd, vr, vo, None, '', None, url)
+    if mejor:
+        vd, vr, vo = _repartir(mejor, carrera, 'p', 'n', 'v')
+        if vd > 0 and vr > 0:
+            return Conteo('Wikipedia (respaldo, sin % de avance)', vd, vr, vo, None, '', None, url)
+    # Noche electoral: la tabla de resultados sigue vacía, pero el infobox («Popular vote», «Percentage») ya trae el
+    # conteo parcial de los dos principales. Los «otros» se deducen del porcentaje: total = votos / porcentaje.
+    for t in tablas:
+        t = t.copy()
+        filas = {str(r.iloc[0]).replace('\xa0', ' ').strip(): r for _, r in t.iterrows()}
+        if 'Nominee' not in filas or 'Popular vote' not in filas:
+            continue
+        nom, vot = filas['Nominee'], filas['Popular vote']
+        por = filas.get('Percentage')
+        cols = [c for c in t.columns[1:] if str(nom[c]) != 'nan']
+        lado = {}
+        for c in cols:
+            k = 'D' if _coincide(carrera['d']['apellido'], nom[c]) else 'R' if _coincide(carrera['r']['apellido'], nom[c]) else None
+            if k:
+                lado[k] = (_n(vot[c]), _n(por[c]) if por is not None else 0.0)
+        if 'D' in lado and 'R' in lado and lado['D'][0] > 0 and lado['R'][0] > 0:
+            vd, vr = lado['D'][0], lado['R'][0]
+            tot = [v / (p_ / 100) for v, p_ in lado.values() if p_ > 0]
+            vo = max(0.0, (sum(tot) / len(tot)) - vd - vr) if tot else 0.0
+            av, txt = None, ''
+            for t2 in tablas:                                  # fila «Reporting: 70% as of 9:58 PM EST» del infobox
+                for _, r2 in t2.iterrows():
+                    if str(r2.iloc[0]).strip().startswith('Reporting') and len(r2) > 1:
+                        m = re.search(r'([\d.]+)\s*%\s*(as of.*)?', str(r2.iloc[1]))
+                        if m:
+                            av, txt = float(m.group(1)) / 100, f"{m.group(1)}% {m.group(2) or ''}".strip()
+                            break
+                if av is not None:
+                    break
+            return Conteo('Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)', vd, vr, vo, av, txt, None, url)
+    return None
 
 
 ADAPTADORES = {'ncsbe': ncsbe, 'florida_dos': florida_dos, 'california_sos': california_sos,
