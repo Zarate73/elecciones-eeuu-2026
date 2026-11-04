@@ -1,0 +1,570 @@
+{
+ "clave": "arizona",
+ "estado": "Arizona",
+ "cargo": "Gobernador",
+ "modelo": "General (V11 sin sesgo estatal)",
+ "candidatos": {
+  "D": "Katie Hobbs",
+  "R": "Andy Biggs"
+ },
+ "corte": "2026-11-03",
+ "dias_a_eleccion": 0,
+ "pronostico": {
+  "P_D": 0.9111,
+  "pct_D": 51.65,
+  "pct_D_IC80": [
+   48.17,
+   55.15
+  ],
+  "pct_R": 44.73,
+  "pct_R_IC80": [
+   41.24,
+   48.21
+  ],
+  "pct_terceros": 3.62,
+  "pct_terceros_IC80": [
+   1.26,
+   5.93
+  ],
+  "margen": 6.917,
+  "margen_IC80": [
+   0.34,
+   13.51
+  ],
+  "margen_IC95": [
+   -3.39,
+   17.23
+  ],
+  "sd": 5.223,
+  "nu": 23.2,
+  "P_D_encuestas": 0.9023,
+  "peso_mercados": 0.3,
+  "mercado_en_distribucion": true,
+  "extra": [
+   {
+    "etiqueta": "Recuento automático (|margen| ≤ 0.5)",
+    "valor": 0.0303
+   }
+  ]
+ },
+ "mercados": [
+  {
+   "nombre": "Kalshi",
+   "P_D": 0.9227,
+   "estado": "en_vivo"
+  },
+  {
+   "nombre": "Polymarket",
+   "P_D": 0.935,
+   "estado": "en_vivo"
+  }
+ ],
+ "ultima_encuesta": {
+  "encuestadora": "GrayHouse (R)",
+  "fin": "2026-10-29",
+  "dias_desde_fin": 5,
+  "dias_antes_eleccion": 5,
+  "origen": "wikipedia"
+ },
+ "encuestas": [
+  {
+   "fin": "2026-10-29",
+   "encuestadora": "GrayHouse (R)",
+   "D": 50.0,
+   "R": 45.0,
+   "margen": 5.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1175
+  },
+  {
+   "fin": "2026-10-28",
+   "encuestadora": "Noble Predictive Insights",
+   "D": 51.0,
+   "R": 45.0,
+   "margen": 6.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.2262
+  },
+  {
+   "fin": "2026-10-25",
+   "encuestadora": "HighGround, Inc.",
+   "D": 52.0,
+   "R": 39.0,
+   "margen": 13.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.1725
+  },
+  {
+   "fin": "2026-10-23",
+   "encuestadora": "RedBox Research (D)",
+   "D": 47.0,
+   "R": 42.0,
+   "margen": 5.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.4048
+  },
+  {
+   "fin": "2026-10-20",
+   "encuestadora": "GrayHouse (R)",
+   "D": 51.0,
+   "R": 45.0,
+   "margen": 6.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.079
+  },
+  {
+   "fin": "2026-10-08",
+   "encuestadora": "GrayHouse (R)",
+   "D": 50.0,
+   "R": 44.0,
+   "margen": 6.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-08",
+   "encuestadora": "HighGround, Inc.",
+   "D": 51.0,
+   "R": 34.0,
+   "margen": 17.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-06",
+   "encuestadora": "Wick (R)",
+   "D": 49.0,
+   "R": 43.0,
+   "margen": 6.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-05",
+   "encuestadora": "GQR (D)",
+   "D": 49.0,
+   "R": 45.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-30",
+   "encuestadora": "Lake Research Partners (D)",
+   "D": 56.0,
+   "R": 33.0,
+   "margen": 23.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-09",
+   "encuestadora": "Equis Research",
+   "D": 49.0,
+   "R": 43.0,
+   "margen": 6.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-04",
+   "encuestadora": "Arizona State University",
+   "D": 47.0,
+   "R": 34.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-19",
+   "encuestadora": "NextGen Polling (R)",
+   "D": 39.0,
+   "R": 38.0,
+   "margen": 1.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-18",
+   "encuestadora": "HighGround",
+   "D": 49.5,
+   "R": 34.3,
+   "margen": 15.2,
+   "en_ventana": false,
+   "origen": "base",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-17",
+   "encuestadora": "Quantus Insights (R)",
+   "D": 49.1,
+   "R": 43.2,
+   "margen": 5.9,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-16",
+   "encuestadora": "Kreate Strategies (R)",
+   "D": 45.0,
+   "R": 40.0,
+   "margen": 5.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-13",
+   "encuestadora": "Noble Predictive Insights",
+   "D": 48.0,
+   "R": 35.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-13",
+   "encuestadora": "Stealth Analytics",
+   "D": 43.0,
+   "R": 38.0,
+   "margen": 5.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-11",
+   "encuestadora": "Grayhouse (R)",
+   "D": 49.0,
+   "R": 45.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-30",
+   "encuestadora": "The Tarrance Group (R)",
+   "D": 52.0,
+   "R": 48.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-28",
+   "encuestadora": "Fabrizio Ward (R)/ Impact Research (D)",
+   "D": 52.0,
+   "R": 44.0,
+   "margen": 8.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  }
+ ],
+ "n_encuestas_ventana": 4,
+ "historial": [
+  {
+   "corte": "2026-10-21",
+   "P_D": 0.9336,
+   "P_D_encuestas": 0.9407,
+   "P_kalshi": 0.9027,
+   "P_polymarket": 0.925,
+   "pct_D": 51.7144,
+   "margen": 7.5068
+  },
+  {
+   "corte": "2026-10-22",
+   "P_D": 0.9336,
+   "P_D_encuestas": 0.9381,
+   "P_kalshi": 0.9135,
+   "P_polymarket": 0.9303,
+   "pct_D": 51.7637,
+   "margen": 7.6305
+  },
+  {
+   "corte": "2026-10-23",
+   "P_D": 0.9236,
+   "P_D_encuestas": 0.9311,
+   "P_kalshi": 0.8955,
+   "P_polymarket": 0.9104,
+   "pct_D": 51.7336,
+   "margen": 7.377
+  },
+  {
+   "corte": "2026-10-24",
+   "P_D": 0.9212,
+   "P_D_encuestas": 0.9283,
+   "P_kalshi": 0.8956,
+   "P_polymarket": 0.9091,
+   "pct_D": 51.745,
+   "margen": 7.406
+  },
+  {
+   "corte": "2026-10-25",
+   "P_D": 0.9232,
+   "P_D_encuestas": 0.9278,
+   "P_kalshi": 0.9019,
+   "P_polymarket": 0.9204,
+   "pct_D": 51.7889,
+   "margen": 7.4888
+  },
+  {
+   "corte": "2026-10-26",
+   "P_D": 0.9206,
+   "P_D_encuestas": 0.9284,
+   "P_kalshi": 0.895,
+   "P_polymarket": 0.904,
+   "pct_D": 51.7286,
+   "margen": 7.3703
+  },
+  {
+   "corte": "2026-10-27",
+   "P_D": 0.898,
+   "P_D_encuestas": 0.8949,
+   "P_kalshi": 0.895,
+   "P_polymarket": 0.915,
+   "pct_D": 51.5094,
+   "margen": 7.1569
+  },
+  {
+   "corte": "2026-10-28",
+   "P_D": 0.8998,
+   "P_D_encuestas": 0.8962,
+   "P_kalshi": 0.9006,
+   "P_polymarket": 0.915,
+   "pct_D": 51.5036,
+   "margen": 7.1638
+  },
+  {
+   "corte": "2026-10-29",
+   "P_D": 0.9038,
+   "P_D_encuestas": 0.897,
+   "P_kalshi": 0.9062,
+   "P_polymarket": 0.93,
+   "pct_D": 51.5502,
+   "margen": 7.274
+  },
+  {
+   "corte": "2026-10-30",
+   "P_D": 0.9079,
+   "P_D_encuestas": 0.9033,
+   "P_kalshi": 0.9063,
+   "P_polymarket": 0.9296,
+   "pct_D": 51.588,
+   "margen": 6.7911
+  },
+  {
+   "corte": "2026-10-31",
+   "P_D": 0.9077,
+   "P_D_encuestas": 0.9032,
+   "P_kalshi": 0.9049,
+   "P_polymarket": 0.93,
+   "pct_D": 51.5997,
+   "margen": 6.7865
+  },
+  {
+   "corte": "2026-11-01",
+   "P_D": 0.9091,
+   "P_D_encuestas": 0.903,
+   "P_kalshi": 0.9092,
+   "P_polymarket": 0.935,
+   "pct_D": 51.6104,
+   "margen": 6.8372
+  },
+  {
+   "corte": "2026-11-02",
+   "P_D": 0.9134,
+   "P_D_encuestas": 0.9026,
+   "P_kalshi": 0.925,
+   "P_polymarket": 0.9444,
+   "pct_D": 51.6881,
+   "margen": 6.9929
+  },
+  {
+   "corte": "2026-11-03",
+   "P_D": 0.9111,
+   "P_D_encuestas": 0.9023,
+   "P_kalshi": 0.9227,
+   "P_polymarket": 0.935,
+   "pct_D": 51.6503,
+   "margen": 6.9173
+  }
+ ],
+ "escenarios": [
+  {
+   "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+   "margen": 6.917,
+   "P_D": 0.9111
+  },
+  {
+   "escenario": "Solo encuestas (sin mercados)",
+   "margen": 6.65,
+   "P_D": 0.9023
+  },
+  {
+   "escenario": "Con sesgo estatal AZ (V11, +1.17 pp)",
+   "margen": 5.497,
+   "P_D": 0.8589
+  },
+  {
+   "escenario": "Distribución normal",
+   "margen": 6.644,
+   "P_D": 0.9003
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": 6.651,
+   "P_D": 0.9021
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 6.651,
+   "P_D": 0.9031
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (4 encuestadoras)",
+   "margen": 6.668,
+   "P_D": 0.9035
+  },
+  {
+   "escenario": "Ventana 45 días (7 encuestadoras)",
+   "margen": 7.147,
+   "P_D": 0.9449
+  },
+  {
+   "escenario": "Ventana 60 días (9 encuestadoras)",
+   "margen": 7.19,
+   "P_D": 0.9544
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": 6.697,
+   "P_D": 0.9033
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -3.1]",
+   "margen": 6.266,
+   "P_D": 0.8893
+  },
+  {
+   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -3.1]",
+   "margen": 6.211,
+   "P_D": 0.8878
+  },
+  {
+   "escenario": "Solo Kalshi (probabilidad)",
+   "margen": 7.335,
+   "P_D": 0.9227
+  },
+  {
+   "escenario": "Solo Polymarket (probabilidad)",
+   "margen": 7.827,
+   "P_D": 0.935
+  },
+  {
+   "escenario": "Polymarket por rangos de margen",
+   "margen": 7.787,
+   "P_D": 0.9149
+  }
+ ],
+ "anticipado": {
+  "fuente": "civicAPI",
+  "fecha": "2026-11-02",
+  "estado": "en_vivo",
+  "metricas": [
+   {
+    "etiqueta": "Boletas devueltas",
+    "valor": 1655577.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Devueltas por demócratas registrados",
+    "valor": 37.15,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Devueltas por republicanos registrados",
+    "valor": 37.96,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Devueltas por otros e independientes",
+    "valor": 24.89,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Maricopa, % del total",
+    "valor": 58.78,
+    "formato": "pct"
+   }
+  ]
+ },
+ "adicional": {
+  "titulo": "Polymarket por rangos de margen",
+  "P_D": 0.9149,
+  "margen": 7.79,
+  "nota": "Margen implícito +7.8 pp (σ 7.1)"
+ },
+ "fuentes": [
+  {
+   "nombre": "historico_538",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "wikipedia",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "270towin",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "base_verificada",
+   "estado": "archivo (encuestas_verificadas_az.csv, 23 encuestas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "kalshi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket_rangos",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "civicapi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  }
+ ],
+ "avisos": [],
+ "carpeta": "arizona",
+ "congelado_utc": "2026-11-04T01:20:33+00:00"
+}

@@ -1,54 +1,96 @@
 {
- "generado": "2026-11-01T01:58:32+00:00",
+ "generado": "2026-11-04T01:20:33+00:00",
  "dia_eleccion": "2026-11-03",
- "congelado": false,
+ "congelado": true,
  "estado_congelado": {
-  "georgia": "provisional",
-  "california": "provisional",
-  "arizona": "provisional",
-  "florida": "provisional",
-  "nevada": "provisional",
-  "pennsylvania": "provisional",
-  "maine": "provisional",
-  "texas": "provisional",
-  "illinois": "provisional",
-  "new_york": "provisional",
-  "ohio": "provisional",
-  "north_carolina": "provisional",
-  "wisconsin": "provisional",
-  "dc": "provisional"
+  "georgia": "congelado",
+  "california": "congelado",
+  "arizona": "congelado",
+  "florida": "congelado",
+  "nevada": "congelado",
+  "pennsylvania": "congelado",
+  "maine": "congelado",
+  "texas": "congelado",
+  "illinois": "congelado",
+  "new_york": "congelado",
+  "ohio": "congelado",
+  "north_carolina": "congelado",
+  "wisconsin": "congelado",
+  "dc": "congelado"
  },
  "agregado": {
-  "con_datos": null,
+  "con_datos": {
+   "n": 3,
+   "estados": [
+    "georgia",
+    "pennsylvania",
+    "north_carolina"
+   ],
+   "MAE_margen": 29.746639304216462,
+   "RMSE_margen": 31.13369229496475,
+   "sesgo_margen": 29.746639304216462,
+   "cobertura_IC80": 0.0,
+   "cobertura_IC95": 0.0,
+   "aciertos_lider": 3,
+   "brier": 0.07162024666666665,
+   "crps": 27.065843547806207
+  },
   "casi_completos": null
  },
  "estados": {
   "georgia": {
    "pronostico": {
-    "P_D": 0.5231,
-    "pct_D": 50.13,
-    "pct_R": 49.86,
+    "P_D": 0.5368,
+    "pct_D": 50.2,
+    "pct_R": 49.79,
     "pct_D_IC80": [
-     47.19,
-     53.08
+     47.38,
+     53.02
     ],
     "pct_R_IC80": [
-     46.91,
-     52.8
+     46.97,
+     52.61
     ],
-    "margen": 0.269,
+    "margen": 0.405,
     "margen_IC80": [
-     -5.62,
-     6.18
+     -5.23,
+     6.05
     ],
     "margen_IC95": [
-     -8.94,
-     9.53
+     -8.4,
+     9.26
     ],
-    "sd": 4.679,
-    "nu": 22.1
+    "sd": 4.471,
+    "nu": 22.9
    },
-   "estado": "sin_datos",
+   "estado": "parcial",
+   "avance": null,
+   "avance_txt": "",
+   "fuente": "Georgia SOS (oficial)",
+   "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
+   "actualizado": "2026-11-04T01:16:05.151113Z",
+   "consultado": "2026-11-04T01:20:34+00:00",
+   "votos": {
+    "D": 1468520.0,
+    "R": 980248.0,
+    "otros": 0.0,
+    "total": 2448768.0
+   },
+   "pct_D": 59.96974805289844,
+   "pct_R": 40.03025194710156,
+   "pct_otros": 0.0,
+   "margen": 19.939496105796877,
+   "error_margen": 19.534496105796876,
+   "error_pct_D": 9.769748052898436,
+   "error_pct_R": -9.759748052898438,
+   "percentil": 0.999931962015388,
+   "en_IC80": false,
+   "en_IC95": false,
+   "lider": "D",
+   "favorito": "D",
+   "acierto_lider": true,
+   "brier": 0.21455423999999995,
+   "crps": 17.027963530302525,
    "clave": "georgia",
    "estado_nombre": "Georgia",
    "cargo": "Gobernador",
@@ -56,43 +98,47 @@
     "D": "Keisha Lance Bottoms",
     "R": "Rick Jackson"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-03",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "georgia_ev",
-     "estado": "sin votos todavía"
-    },
-    {
-     "fuente": "wikipedia",
-     "estado": "sin votos todavía"
+     "estado": "2,448,768 votos (usada)"
     }
    ],
-   "serie": []
+   "serie": [
+    {
+     "t": "2026-11-04T01:20:33+00:00",
+     "avance": null,
+     "margen": 19.939496105796877,
+     "pct_D": 59.96974805289844,
+     "pct_R": 40.03025194710156
+    }
+   ]
   },
   "california": {
    "pronostico": {
-    "P_D": 0.9949,
-    "pct_D": 61.47,
-    "pct_R": 38.53,
+    "P_D": 0.9948,
+    "pct_D": 61.58,
+    "pct_R": 38.42,
     "pct_D_IC80": [
-     57.83,
-     65.08
+     57.95,
+     65.17
     ],
     "pct_R_IC80": [
-     34.92,
-     42.17
+     34.83,
+     42.05
     ],
-    "margen": 22.941,
+    "margen": 23.153,
     "margen_IC80": [
-     15.66,
-     30.16
+     15.91,
+     30.34
     ],
     "margen_IC95": [
-     10.26,
-     35.57
+     10.54,
+     35.72
     ],
-    "sd": 6.365,
+    "sd": 6.332,
     "nu": 5.0
    },
    "estado": "sin_datos",
@@ -103,8 +149,8 @@
     "D": "Xavier Becerra",
     "R": "Steve Hilton"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "california_sos",
@@ -119,28 +165,28 @@
   },
   "arizona": {
    "pronostico": {
-    "P_D": 0.9096,
-    "pct_D": 51.63,
-    "pct_R": 44.78,
+    "P_D": 0.9111,
+    "pct_D": 51.65,
+    "pct_R": 44.73,
     "pct_D_IC80": [
-     48.16,
-     55.12
+     48.17,
+     55.15
     ],
     "pct_R_IC80": [
-     41.3,
-     48.25
+     41.24,
+     48.21
     ],
-    "margen": 6.847,
+    "margen": 6.917,
     "margen_IC80": [
-     0.29,
-     13.42
+     0.34,
+     13.51
     ],
     "margen_IC95": [
-     -3.42,
-     17.13
+     -3.39,
+     17.23
     ],
-    "sd": 5.205,
-    "nu": 23.3
+    "sd": 5.223,
+    "nu": 23.2
    },
    "estado": "sin_datos",
    "clave": "arizona",
@@ -150,8 +196,8 @@
     "D": "Katie Hobbs",
     "R": "Andy Biggs"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-03",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "wikipedia",
@@ -162,28 +208,28 @@
   },
   "florida": {
    "pronostico": {
-    "P_D": 0.0446,
-    "pct_D": 45.5,
-    "pct_R": 52.2,
+    "P_D": 0.0365,
+    "pct_D": 45.19,
+    "pct_R": 52.03,
     "pct_D_IC80": [
-     42.81,
-     48.16
+     42.6,
+     47.78
     ],
     "pct_R_IC80": [
-     49.52,
-     54.87
+     49.43,
+     54.63
     ],
-    "margen": -6.703,
+    "margen": -6.836,
     "margen_IC80": [
-     -11.7,
-     -1.71
+     -11.64,
+     -2.03
     ],
     "margen_IC95": [
-     -14.55,
-     1.12
+     -14.38,
+     0.69
     ],
-    "sd": 3.959,
-    "nu": 24.0
+    "sd": 3.808,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "florida",
@@ -193,8 +239,8 @@
     "D": "David Jolly",
     "R": "Byron Donalds"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "florida_dos",
@@ -209,28 +255,28 @@
   },
   "nevada": {
    "pronostico": {
-    "P_D": 0.6529,
-    "pct_D": 48.58,
-    "pct_R": 46.61,
+    "P_D": 0.6459,
+    "pct_D": 48.51,
+    "pct_R": 46.64,
     "pct_D_IC80": [
-     45.15,
-     52.01
+     45.09,
+     51.92
     ],
     "pct_R_IC80": [
-     43.18,
-     50.04
+     43.22,
+     50.06
     ],
-    "margen": 1.973,
+    "margen": 1.873,
     "margen_IC80": [
-     -4.57,
-     8.51
+     -4.65,
+     8.4
     ],
     "margen_IC95": [
-     -8.31,
-     12.22
+     -8.36,
+     12.08
     ],
-    "sd": 5.186,
-    "nu": 24.0
+    "sd": 5.167,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "nevada",
@@ -240,8 +286,8 @@
     "D": "Aaron Ford",
     "R": "Joe Lombardo"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "wikipedia",
@@ -252,30 +298,57 @@
   },
   "pennsylvania": {
    "pronostico": {
-    "P_D": 0.9977,
-    "pct_D": 58.86,
-    "pct_R": 39.12,
+    "P_D": 0.9995,
+    "pct_D": 59.42,
+    "pct_R": 38.97,
     "pct_D_IC80": [
-     54.57,
-     63.14
+     55.75,
+     63.07
     ],
     "pct_R_IC80": [
-     34.85,
-     43.41
+     35.31,
+     42.64
     ],
-    "margen": 19.734,
+    "margen": 20.453,
     "margen_IC80": [
-     11.43,
-     28.0
+     13.32,
+     27.56
     ],
     "margen_IC95": [
-     6.76,
-     32.68
+     9.32,
+     31.57
     ],
-    "sd": 6.566,
-    "nu": 24.0
+    "sd": 5.638,
+    "nu": 25.3
    },
-   "estado": "sin_datos",
+   "estado": "parcial",
+   "avance": 0.003639973527465255,
+   "avance_txt": "33 Out of 9,066 Districts (0.36%)  - IN PERSON BALLOT REPORTING ONLY",
+   "fuente": "Pennsylvania DOS (oficial)",
+   "url": "https://www.electionreturns.pa.gov/api/ElectionReturn/GET?methodName=GetSummaryData&electionid=undefined&electiontype=undefined&isactive=1",
+   "actualizado": null,
+   "consultado": "2026-11-04T01:20:37+00:00",
+   "votos": {
+    "D": 339053.0,
+    "R": 77558.0,
+    "otros": 3351.0,
+    "total": 419962.0
+   },
+   "pct_D": 80.73420928560203,
+   "pct_R": 18.467861377934195,
+   "pct_otros": 0.7979293364637705,
+   "margen": 62.266347907667836,
+   "error_margen": 41.81334790766783,
+   "error_pct_D": 21.314209285602033,
+   "error_pct_R": -20.502138622065804,
+   "percentil": 0.9999999797671276,
+   "en_IC80": false,
+   "en_IC95": false,
+   "lider": "D",
+   "favorito": "D",
+   "acierto_lider": true,
+   "brier": 2.4999999999994493e-07,
+   "crps": 38.65016240560727,
    "clave": "pennsylvania",
    "estado_nombre": "Pennsylvania",
    "cargo": "Gobernador",
@@ -283,44 +356,48 @@
     "D": "Josh Shapiro",
     "R": "Stacy Garrity"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "pennsylvania_dos",
-     "estado": "sin votos todavía"
-    },
-    {
-     "fuente": "wikipedia",
-     "estado": "sin votos todavía"
+     "estado": "419,962 votos (usada)"
     }
    ],
-   "serie": []
+   "serie": [
+    {
+     "t": "2026-11-04T01:20:33+00:00",
+     "avance": 0.003639973527465255,
+     "margen": 62.266347907667836,
+     "pct_D": 80.73420928560203,
+     "pct_R": 18.467861377934195
+    }
+   ]
   },
   "maine": {
    "pronostico": {
-    "P_D": 0.9337,
-    "pct_D": 50.36,
-    "pct_R": 43.07,
+    "P_D": 0.9695,
+    "pct_D": 50.96,
+    "pct_R": 43.28,
     "pct_D_IC80": [
-     47.11,
-     53.6
+     48.19,
+     53.73
     ],
     "pct_R_IC80": [
-     39.82,
-     46.31
+     40.51,
+     46.03
     ],
-    "margen": 7.291,
+    "margen": 7.684,
     "margen_IC80": [
-     1.14,
-     13.45
+     2.55,
+     12.83
     ],
     "margen_IC95": [
-     -2.4,
-     16.95
+     -0.38,
+     15.73
     ],
-    "sd": 4.885,
-    "nu": 24.0
+    "sd": 4.071,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "maine",
@@ -330,8 +407,8 @@
     "D": "Hannah Pingree",
     "R": "Bobby Charles"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "wikipedia",
@@ -342,28 +419,28 @@
   },
   "texas": {
    "pronostico": {
-    "P_D": 0.1468,
-    "pct_D": 46.84,
-    "pct_R": 50.77,
+    "P_D": 0.2012,
+    "pct_D": 47.39,
+    "pct_R": 50.41,
     "pct_D_IC80": [
-     44.24,
-     49.44
+     44.88,
+     49.9
     ],
     "pct_R_IC80": [
-     48.17,
-     53.36
+     47.89,
+     52.92
     ],
-    "margen": -3.933,
+    "margen": -3.018,
     "margen_IC80": [
-     -8.76,
-     0.91
+     -7.68,
+     1.65
     ],
     "margen_IC95": [
-     -11.5,
-     3.63
+     -10.31,
+     4.26
     ],
-    "sd": 3.831,
-    "nu": 24.0
+    "sd": 3.696,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "texas",
@@ -373,8 +450,8 @@
     "D": "Gina Hinojosa",
     "R": "Greg Abbott"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "texas_sos",
@@ -389,28 +466,28 @@
   },
   "illinois": {
    "pronostico": {
-    "P_D": 0.9918,
-    "pct_D": 55.48,
-    "pct_R": 39.27,
+    "P_D": 0.9957,
+    "pct_D": 58.07,
+    "pct_R": 40.31,
     "pct_D_IC80": [
-     51.21,
-     59.75
+     53.88,
+     62.27
     ],
     "pct_R_IC80": [
-     35.0,
-     43.54
+     36.12,
+     44.49
     ],
-    "margen": 16.205,
+    "margen": 17.767,
     "margen_IC80": [
-     7.95,
-     24.48
+     9.59,
+     25.97
     ],
     "margen_IC95": [
-     3.25,
-     29.22
+     4.95,
+     30.64
     ],
-    "sd": 6.564,
-    "nu": 24.0
+    "sd": 6.495,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "illinois",
@@ -420,8 +497,8 @@
     "D": "JB Pritzker",
     "R": "Darren Bailey"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "wikipedia",
@@ -432,28 +509,28 @@
   },
   "new_york": {
    "pronostico": {
-    "P_D": 0.9861,
-    "pct_D": 55.42,
-    "pct_R": 44.43,
+    "P_D": 0.9845,
+    "pct_D": 54.99,
+    "pct_R": 44.85,
     "pct_D_IC80": [
-     52.31,
-     58.51
+     52.07,
+     57.91
     ],
     "pct_R_IC80": [
-     41.33,
-     47.53
+     41.94,
+     47.78
     ],
-    "margen": 10.987,
+    "margen": 10.138,
     "margen_IC80": [
-     4.78,
-     17.18
+     4.29,
+     15.97
     ],
     "margen_IC95": [
-     1.29,
-     20.7
+     1.03,
+     19.28
     ],
-    "sd": 4.914,
-    "nu": 24.0
+    "sd": 4.626,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "new_york",
@@ -463,8 +540,8 @@
     "D": "Kathy Hochul",
     "R": "Bruce Blakeman"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "wikipedia",
@@ -475,28 +552,28 @@
   },
   "ohio": {
    "pronostico": {
-    "P_D": 0.5682,
-    "pct_D": 48.88,
-    "pct_R": 48.14,
+    "P_D": 0.7181,
+    "pct_D": 49.6,
+    "pct_R": 47.42,
     "pct_D_IC80": [
-     45.93,
-     51.84
+     46.96,
+     52.23
     ],
     "pct_R_IC80": [
-     45.19,
-     51.09
+     44.8,
+     50.04
     ],
-    "margen": 0.738,
+    "margen": 2.175,
     "margen_IC80": [
-     -4.82,
-     6.3
+     -2.7,
+     7.06
     ],
     "margen_IC95": [
-     -7.95,
-     9.43
+     -5.44,
+     9.79
     ],
-    "sd": 4.4,
-    "nu": 24.0
+    "sd": 3.856,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "ohio",
@@ -506,8 +583,8 @@
     "D": "Amy Acton",
     "R": "Vivek Ramaswamy"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "wikipedia",
@@ -518,30 +595,57 @@
   },
   "north_carolina": {
    "pronostico": {
-    "P_D": 0.9785,
-    "pct_D": 53.44,
-    "pct_R": 43.45,
+    "P_D": 0.9825,
+    "pct_D": 53.34,
+    "pct_R": 44.31,
     "pct_D_IC80": [
-     50.17,
-     56.67
+     50.5,
+     56.18
     ],
     "pct_R_IC80": [
-     40.19,
-     46.69
+     41.48,
+     47.16
     ],
-    "margen": 9.99,
+    "margen": 9.028,
     "margen_IC80": [
-     3.81,
-     16.16
+     3.67,
+     14.37
     ],
     "margen_IC95": [
-     0.33,
-     19.66
+     0.66,
+     17.39
     ],
-    "sd": 4.888,
-    "nu": 24.0
+    "sd": 4.229,
+    "nu": 25.3
    },
-   "estado": "sin_datos",
+   "estado": "parcial",
+   "avance": 0.011043412033511044,
+   "avance_txt": "29 de 2626 precintos",
+   "fuente": "NCSBE (oficial)",
+   "url": "https://er.ncsbe.gov/enr/20261103/data/results_0.txt",
+   "actualizado": null,
+   "consultado": "2026-11-04T01:20:39+00:00",
+   "votos": {
+    "D": 1443895.0,
+    "R": 655925.0,
+    "otros": 34439.0,
+    "total": 2134259.0
+   },
+   "pct_D": 67.65322296872122,
+   "pct_R": 30.733149069536548,
+   "pct_otros": 1.6136279617422282,
+   "margen": 36.92007389918467,
+   "error_margen": 27.892073899184673,
+   "error_pct_D": 14.31322296872122,
+   "error_pct_R": -13.576850930463454,
+   "percentil": 0.9999998437958505,
+   "en_IC80": false,
+   "en_IC95": false,
+   "lider": "D",
+   "favorito": "D",
+   "acierto_lider": true,
+   "brier": 0.0003062499999999986,
+   "crps": 25.51940470750882,
    "clave": "north_carolina",
    "estado_nombre": "North Carolina",
    "cargo": "Senado",
@@ -549,44 +653,48 @@
     "D": "Roy Cooper",
     "R": "Michael Whatley"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "ncsbe",
-     "estado": "sin votos todavía"
-    },
-    {
-     "fuente": "wikipedia",
-     "estado": "sin votos todavía"
+     "estado": "2,134,259 votos (usada)"
     }
    ],
-   "serie": []
+   "serie": [
+    {
+     "t": "2026-11-04T01:20:33+00:00",
+     "avance": 0.011043412033511044,
+     "margen": 36.92007389918467,
+     "pct_D": 67.65322296872122,
+     "pct_R": 30.733149069536548
+    }
+   ]
   },
   "wisconsin": {
    "pronostico": {
-    "P_D": 0.8147,
-    "pct_D": 52.8,
-    "pct_R": 47.08,
+    "P_D": 0.8361,
+    "pct_D": 52.64,
+    "pct_R": 47.24,
     "pct_D_IC80": [
-     48.68,
-     56.92
+     49.09,
+     56.19
     ],
     "pct_R_IC80": [
-     42.96,
-     51.2
+     43.69,
+     50.79
     ],
-    "margen": 5.725,
+    "margen": 5.392,
     "margen_IC80": [
-     -2.53,
-     13.97
+     -1.71,
+     12.49
     ],
     "margen_IC95": [
-     -7.25,
-     18.7
+     -5.75,
+     16.55
     ],
-    "sd": 6.547,
-    "nu": 24.0
+    "sd": 5.63,
+    "nu": 25.3
    },
    "estado": "sin_datos",
    "clave": "wisconsin",
@@ -596,8 +704,8 @@
     "D": "David Crowley",
     "R": "Tom Tiffany"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "wikipedia",
@@ -639,8 +747,8 @@
     "D": "Janeese Lewis George",
     "R": "Rhonda Hamilton"
    },
-   "pronostico_corte": "2026-10-31",
-   "pronostico_congelado": false,
+   "pronostico_corte": "2026-11-02",
+   "pronostico_congelado": true,
    "fuentes": [
     {
      "fuente": "dcboe",

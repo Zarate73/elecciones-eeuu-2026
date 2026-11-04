@@ -1,0 +1,513 @@
+{
+ "clave": "wisconsin",
+ "estado": "Wisconsin",
+ "cargo": "Gobernador",
+ "modelo": "General (V11 sin sesgo estatal)",
+ "candidatos": {
+  "D": "David Crowley",
+  "R": "Tom Tiffany"
+ },
+ "corte": "2026-11-02",
+ "dias_a_eleccion": 1,
+ "pronostico": {
+  "P_D": 0.8361,
+  "pct_D": 52.64,
+  "pct_D_IC80": [
+   49.09,
+   56.19
+  ],
+  "pct_R": 47.24,
+  "pct_R_IC80": [
+   43.69,
+   50.79
+  ],
+  "pct_terceros": 0.12,
+  "pct_terceros_IC80": [
+   0.1,
+   0.16
+  ],
+  "margen": 5.392,
+  "margen_IC80": [
+   -1.71,
+   12.49
+  ],
+  "margen_IC95": [
+   -5.75,
+   16.55
+  ],
+  "sd": 5.63,
+  "nu": 25.3,
+  "P_D_encuestas": 0.8257,
+  "peso_mercados": 0.3,
+  "mercado_en_distribucion": true,
+  "extra": [
+   {
+    "etiqueta": "Recuento a petición (|margen| ≤ 1 pp)",
+    "valor": 0.0888
+   }
+  ]
+ },
+ "mercados": [
+  {
+   "nombre": "Kalshi",
+   "P_D": 0.8535,
+   "estado": "en_vivo"
+  },
+  {
+   "nombre": "Polymarket",
+   "P_D": 0.8636,
+   "estado": "en_vivo"
+  }
+ ],
+ "ultima_encuesta": {
+  "encuestadora": "Research Co.",
+  "fin": "2026-11-01",
+  "dias_desde_fin": 1,
+  "dias_antes_eleccion": 2,
+  "origen": "wikipedia"
+ },
+ "encuestas": [
+  {
+   "fin": "2026-11-01",
+   "encuestadora": "Research Co.",
+   "D": 50.0,
+   "R": 45.0,
+   "margen": 5.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.3579
+  },
+  {
+   "fin": "2026-10-23",
+   "encuestadora": "Wick (R)",
+   "D": 48.0,
+   "R": 45.0,
+   "margen": 3.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.3763
+  },
+  {
+   "fin": "2026-10-22",
+   "encuestadora": "Marquette University",
+   "D": 51.0,
+   "R": 44.0,
+   "margen": 7.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.2658
+  },
+  {
+   "fin": "2026-10-09",
+   "encuestadora": "YouGov (D)",
+   "D": 46.0,
+   "R": 42.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-01",
+   "encuestadora": "Z to A Research (D)",
+   "D": 49.0,
+   "R": 44.0,
+   "margen": 5.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-23",
+   "encuestadora": "Marquette University",
+   "D": 49.0,
+   "R": 46.0,
+   "margen": 3.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-20",
+   "encuestadora": "Marquette University",
+   "D": 49.0,
+   "R": 44.0,
+   "margen": 5.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-18",
+   "encuestadora": "TIPP Insights (R)",
+   "D": 47.0,
+   "R": 43.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-13",
+   "encuestadora": "Platform Communications (R)",
+   "D": 48.0,
+   "R": 44.0,
+   "margen": 4.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-03",
+   "encuestadora": "GBAO (D)",
+   "D": 47.0,
+   "R": 44.0,
+   "margen": 3.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-24",
+   "encuestadora": "RMG Research",
+   "D": 46.0,
+   "R": 43.0,
+   "margen": 3.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-03-19",
+   "encuestadora": "TIPP Insights (R)",
+   "D": 42.0,
+   "R": 41.0,
+   "margen": 1.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  }
+ ],
+ "n_encuestas_ventana": 3,
+ "historial": [
+  {
+   "corte": "2026-10-28",
+   "P_D": 0.8197,
+   "P_D_encuestas": 0.808,
+   "P_kalshi": 0.835,
+   "P_polymarket": 0.855,
+   "pct_D": 52.8258,
+   "margen": 5.7715
+  },
+  {
+   "corte": "2026-10-29",
+   "P_D": 0.8199,
+   "P_D_encuestas": 0.8083,
+   "P_kalshi": 0.835,
+   "P_polymarket": 0.855,
+   "pct_D": 52.8247,
+   "margen": 5.7694
+  },
+  {
+   "corte": "2026-10-30",
+   "P_D": 0.812,
+   "P_D_encuestas": 0.8039,
+   "P_kalshi": 0.825,
+   "P_polymarket": 0.835,
+   "pct_D": 52.7849,
+   "margen": 5.6897
+  },
+  {
+   "corte": "2026-10-31",
+   "P_D": 0.8147,
+   "P_D_encuestas": 0.8052,
+   "P_kalshi": 0.825,
+   "P_polymarket": 0.8458,
+   "pct_D": 52.8024,
+   "margen": 5.7248
+  },
+  {
+   "corte": "2026-11-01",
+   "P_D": 0.8143,
+   "P_D_encuestas": 0.8049,
+   "P_kalshi": 0.825,
+   "P_polymarket": 0.845,
+   "pct_D": 52.8024,
+   "margen": 5.7247
+  },
+  {
+   "corte": "2026-11-02",
+   "P_D": 0.8361,
+   "P_D_encuestas": 0.8257,
+   "P_kalshi": 0.8535,
+   "P_polymarket": 0.8636,
+   "pct_D": 52.6361,
+   "margen": 5.3921
+  }
+ ],
+ "escenarios": [
+  {
+   "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+   "margen": 5.392,
+   "P_D": 0.8361
+  },
+  {
+   "escenario": "Sin sesgo estatal, sin mercados (solo encuestas)",
+   "margen": 5.164,
+   "P_D": 0.8257
+  },
+  {
+   "escenario": "Con sesgo estatal, sin mercados",
+   "margen": 4.489,
+   "P_D": 0.7926
+  },
+  {
+   "escenario": "Con sesgo estatal, con mercados (mismo ajuste que el final)",
+   "margen": 4.945,
+   "P_D": 0.8145
+  },
+  {
+   "escenario": "Sesgo estatal sin contraer (-0.81 pp)",
+   "margen": 4.356,
+   "P_D": 0.7853
+  },
+  {
+   "escenario": "Sesgo estatal a la mitad (-0.33 pp)",
+   "margen": 4.804,
+   "P_D": 0.809
+  },
+  {
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.67 pp)",
+   "margen": 4.5,
+   "P_D": 0.7927
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2020_Pres-G_WI (-0.23 pp; rango al quitar una de 25: -1.11 a -0.23)",
+   "margen": 4.912,
+   "P_D": 0.814
+  },
+  {
+   "escenario": "Sesgo sin la contienda 2022_Gov-G_WI (-1.11 pp; rango al quitar una de 25: -1.11 a -0.23)",
+   "margen": 4.04,
+   "P_D": 0.7699
+  },
+  {
+   "escenario": "Sesgo estimado solo con contiendas de gobernador (+0.48 pp)",
+   "margen": 5.629,
+   "P_D": 0.8469
+  },
+  {
+   "escenario": "Distribución normal",
+   "margen": 5.182,
+   "P_D": 0.8207
+  },
+  {
+   "escenario": "Incertidumbre con k efectivo 2.9 (no 3 firmas) y deriva por antigüedad ponderada (7 días)",
+   "margen": 5.148,
+   "P_D": 0.8229
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": 5.166,
+   "P_D": 0.8254
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 5.174,
+   "P_D": 0.826
+  },
+  {
+   "escenario": "Deriva al doble (σ_d = 0.50 pp por √día, 1 días)",
+   "margen": 5.163,
+   "P_D": 0.8246
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (3 encuestadoras)",
+   "margen": 5.139,
+   "P_D": 0.8243
+  },
+  {
+   "escenario": "Ventana 45 días (5 encuestadoras)",
+   "margen": 4.578,
+   "P_D": 0.8335
+  },
+  {
+   "escenario": "Ventana 60 días (5 encuestadoras)",
+   "margen": 4.594,
+   "P_D": 0.8346
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": 4.798,
+   "P_D": 0.8089
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
+   "margen": 5.275,
+   "P_D": 0.8308
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
+   "margen": 5.033,
+   "P_D": 0.8197
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
+   "margen": 5.788,
+   "P_D": 0.8523
+  },
+  {
+   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
+   "margen": 5.14,
+   "P_D": 0.824
+  },
+  {
+   "escenario": "Sin Wick (R) (pesa 38%) → ventana desde 2026-10-13: Marquette University, Research Co.",
+   "margen": 5.603,
+   "P_D": 0.811
+  },
+  {
+   "escenario": "Sin Research Co. (pesa 36%) → ventana desde 2026-10-13: Marquette University, Wick",
+   "margen": 5.467,
+   "P_D": 0.8038
+  },
+  {
+   "escenario": "Sin Marquette University (pesa 27%) → ventana desde 2026-10-13: Wick, Research Co.",
+   "margen": 4.485,
+   "P_D": 0.7623
+  },
+  {
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Marquette University, Research Co.",
+   "margen": 5.599,
+   "P_D": 0.8113
+  },
+  {
+   "escenario": "Fechas por el punto medio del campo (como el histórico de FiveThirtyEight) → ventana desde 2026-10-13: Marquette University, Wick, Research Co.",
+   "margen": 5.104,
+   "P_D": 0.8216
+  },
+  {
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 0.1 %)",
+   "margen": 5.165,
+   "P_D": 0.8264
+  },
+  {
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 0.1 %)",
+   "margen": 5.155,
+   "P_D": 0.8247
+  },
+  {
+   "escenario": "Peso de mercados 0.15 (base 0.30)",
+   "margen": 5.284,
+   "P_D": 0.831
+  },
+  {
+   "escenario": "Peso de mercados 0.50 (base 0.30)",
+   "margen": 5.548,
+   "P_D": 0.8428
+  },
+  {
+   "escenario": "Solo Kalshi (probabilidad)",
+   "margen": 5.808,
+   "P_D": 0.8535
+  },
+  {
+   "escenario": "Solo Polymarket (probabilidad)",
+   "margen": 6.063,
+   "P_D": 0.8636
+  },
+  {
+   "escenario": "Polymarket por rangos de margen (normal ajustada a los rangos D/R: condicional a que gane un partido principal; P de los contratos, con el independiente en el denominador)",
+   "margen": 5.189,
+   "P_D": 0.8748
+  }
+ ],
+ "anticipado": {
+  "fuente": "civicAPI",
+  "fecha": "2026-11-02",
+  "estado": "en_vivo",
+  "nota": "Sin registro partidario: solo volumen, no indica el resultado",
+  "metricas": [
+   {
+    "etiqueta": "Votos ya emitidos (en persona + correo)",
+    "valor": 1241230.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "En persona",
+    "valor": 463491.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Por correo",
+    "valor": 777739.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Del total de votos de la elección previa",
+    "valor": 46.7,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Peso de Milwaukee",
+    "valor": 16.1,
+    "formato": "pct"
+   }
+  ]
+ },
+ "rangos_poly": {
+  "P_D": 0.8748,
+  "margen": 5.19
+ },
+ "adicional": null,
+ "fuentes": [
+  {
+   "nombre": "historico_538",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "wikipedia",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "270towin",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "base_verificada",
+   "estado": "archivo (encuestas_verificadas_wi.csv, 9 encuestas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "complementarias",
+   "estado": "archivo (encuestas_complementarias_wi.csv, 0 encuestas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "kalshi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket_rangos",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "civicapi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  }
+ ],
+ "avisos": [],
+ "carpeta": "wisconsin",
+ "congelado_utc": "2026-11-04T01:20:33+00:00"
+}

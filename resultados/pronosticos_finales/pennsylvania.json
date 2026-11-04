@@ -1,0 +1,603 @@
+{
+ "clave": "pennsylvania",
+ "estado": "Pennsylvania",
+ "cargo": "Gobernador",
+ "modelo": "General (V11, sesgo estatal contraído)",
+ "candidatos": {
+  "D": "Josh Shapiro",
+  "R": "Stacy Garrity"
+ },
+ "corte": "2026-11-02",
+ "dias_a_eleccion": 1,
+ "pronostico": {
+  "P_D": 0.9995,
+  "pct_D": 59.42,
+  "pct_D_IC80": [
+   55.75,
+   63.07
+  ],
+  "pct_R": 38.97,
+  "pct_R_IC80": [
+   35.31,
+   42.64
+  ],
+  "pct_terceros": 1.61,
+  "pct_terceros_IC80": [
+   0.1,
+   3.46
+  ],
+  "margen": 20.453,
+  "margen_IC80": [
+   13.32,
+   27.56
+  ],
+  "margen_IC95": [
+   9.32,
+   31.57
+  ],
+  "sd": 5.638,
+  "nu": 25.3,
+  "P_D_encuestas": 0.9999,
+  "peso_mercados": 0.3,
+  "mercado_en_distribucion": true,
+  "extra": [
+   {
+    "etiqueta": "Resultado muy estrecho (|margen| ≤ 0.5)",
+    "valor": 0.0002
+   }
+  ]
+ },
+ "mercados": [
+  {
+   "nombre": "Kalshi",
+   "P_D": 0.984,
+   "estado": "en_vivo"
+  },
+  {
+   "nombre": "Polymarket",
+   "P_D": 0.9875,
+   "estado": "en_vivo"
+  }
+ ],
+ "ultima_encuesta": {
+  "encuestadora": "Research Co.",
+  "fin": "2026-11-01",
+  "dias_desde_fin": 1,
+  "dias_antes_eleccion": 2,
+  "origen": "wikipedia"
+ },
+ "encuestas": [
+  {
+   "fin": "2026-11-01",
+   "encuestadora": "Research Co.",
+   "D": 59.0,
+   "R": 34.0,
+   "margen": 25.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.4908
+  },
+  {
+   "fin": "2026-10-21",
+   "encuestadora": "ActiVote",
+   "D": 61.5,
+   "R": 38.5,
+   "margen": 23.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.2684
+  },
+  {
+   "fin": "2026-10-18",
+   "encuestadora": "Franklin & Marshall College",
+   "D": 59.0,
+   "R": 36.0,
+   "margen": 23.0,
+   "en_ventana": true,
+   "origen": "wikipedia",
+   "peso": 0.2407
+  },
+  {
+   "fin": "2026-10-11",
+   "encuestadora": "PennLive",
+   "D": 58.0,
+   "R": 28.0,
+   "margen": 30.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-05",
+   "encuestadora": "Quinnipiac University",
+   "D": 59.0,
+   "R": 34.0,
+   "margen": 25.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-10-01",
+   "encuestadora": "Z to A Research (D)",
+   "D": 53.0,
+   "R": 34.0,
+   "margen": 19.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-30",
+   "encuestadora": "Susquehanna Polling & Research (R)",
+   "D": 52.0,
+   "R": 31.0,
+   "margen": 21.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-22",
+   "encuestadora": "The New York Times/The Philadelphia Inquirer/Siena University",
+   "D": 58.0,
+   "R": 38.0,
+   "margen": 20.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-09-22",
+   "encuestadora": "PennLive",
+   "D": 55.0,
+   "R": 28.0,
+   "margen": 27.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-23",
+   "encuestadora": "Franklin & Marshall College",
+   "D": 50.0,
+   "R": 25.0,
+   "margen": 25.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-22",
+   "encuestadora": "PennLive",
+   "D": 56.0,
+   "R": 25.0,
+   "margen": 31.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-08-21",
+   "encuestadora": "The New York Times/The Philadelphia Inquirer/Siena University",
+   "D": 55.0,
+   "R": 39.0,
+   "margen": 16.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-30",
+   "encuestadora": "National Public Affairs (R)",
+   "D": 50.0,
+   "R": 43.0,
+   "margen": 7.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-24",
+   "encuestadora": "Bravo Group",
+   "D": 53.0,
+   "R": 28.0,
+   "margen": 25.0,
+   "en_ventana": false,
+   "origen": "base",
+   "peso": null
+  },
+  {
+   "fin": "2026-07-13",
+   "encuestadora": "Quinnipiac University",
+   "D": 53.0,
+   "R": 40.0,
+   "margen": 13.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-06-25",
+   "encuestadora": "PennLive",
+   "D": 54.0,
+   "R": 29.0,
+   "margen": 25.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-06-14",
+   "encuestadora": "Franklin & Marshall College",
+   "D": 50.0,
+   "R": 28.0,
+   "margen": 22.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-06-11",
+   "encuestadora": "MAD Global Strategy",
+   "D": 48.0,
+   "R": 31.0,
+   "margen": 17.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  },
+  {
+   "fin": "2026-05-24",
+   "encuestadora": "PennLive",
+   "D": 53.0,
+   "R": 29.0,
+   "margen": 24.0,
+   "en_ventana": false,
+   "origen": "wikipedia",
+   "peso": null
+  }
+ ],
+ "n_encuestas_ventana": 3,
+ "historial": [
+  {
+   "corte": "2026-10-23",
+   "P_D": 0.9967,
+   "P_D_encuestas": 0.9986,
+   "P_kalshi": 0.973,
+   "P_polymarket": 0.977,
+   "pct_D": 58.3501,
+   "margen": 18.8418
+  },
+  {
+   "corte": "2026-10-24",
+   "P_D": 0.997,
+   "P_D_encuestas": 0.9988,
+   "P_kalshi": 0.9745,
+   "P_polymarket": 0.9779,
+   "pct_D": 58.4454,
+   "margen": 18.9828
+  },
+  {
+   "corte": "2026-10-25",
+   "P_D": 0.9968,
+   "P_D_encuestas": 0.9987,
+   "P_kalshi": 0.9725,
+   "P_polymarket": 0.9775,
+   "pct_D": 58.4431,
+   "margen": 18.9863
+  },
+  {
+   "corte": "2026-10-26",
+   "P_D": 0.9968,
+   "P_D_encuestas": 0.9987,
+   "P_kalshi": 0.9675,
+   "P_polymarket": 0.976,
+   "pct_D": 58.4136,
+   "margen": 18.9232
+  },
+  {
+   "corte": "2026-10-27",
+   "P_D": 0.997,
+   "P_D_encuestas": 0.9989,
+   "P_kalshi": 0.9676,
+   "P_polymarket": 0.9775,
+   "pct_D": 58.4912,
+   "margen": 19.0502
+  },
+  {
+   "corte": "2026-10-28",
+   "P_D": 0.997,
+   "P_D_encuestas": 0.9988,
+   "P_kalshi": 0.9725,
+   "P_polymarket": 0.978,
+   "pct_D": 58.578,
+   "margen": 19.2201
+  },
+  {
+   "corte": "2026-10-29",
+   "P_D": 0.9973,
+   "P_D_encuestas": 0.9989,
+   "P_kalshi": 0.9726,
+   "P_polymarket": 0.984,
+   "pct_D": 58.662,
+   "margen": 19.3668
+  },
+  {
+   "corte": "2026-10-30",
+   "P_D": 0.9976,
+   "P_D_encuestas": 0.999,
+   "P_kalshi": 0.976,
+   "P_polymarket": 0.987,
+   "pct_D": 58.8388,
+   "margen": 19.7044
+  },
+  {
+   "corte": "2026-10-31",
+   "P_D": 0.9977,
+   "P_D_encuestas": 0.9991,
+   "P_kalshi": 0.9745,
+   "P_polymarket": 0.9811,
+   "pct_D": 58.8571,
+   "margen": 19.7337
+  },
+  {
+   "corte": "2026-11-01",
+   "P_D": 0.9978,
+   "P_D_encuestas": 0.9991,
+   "P_kalshi": 0.9781,
+   "P_polymarket": 0.983,
+   "pct_D": 58.8901,
+   "margen": 19.8037
+  },
+  {
+   "corte": "2026-11-02",
+   "P_D": 0.9995,
+   "P_D_encuestas": 0.9999,
+   "P_kalshi": 0.984,
+   "P_polymarket": 0.9875,
+   "pct_D": 59.4202,
+   "margen": 20.4525
+  }
+ ],
+ "escenarios": [
+  {
+   "escenario": "FINAL: encuestas + mercados (Kalshi y Polymarket)",
+   "margen": 20.453,
+   "P_D": 0.9995
+  },
+  {
+   "escenario": "Con sesgo estatal, sin mercados (solo encuestas)",
+   "margen": 23.293,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Sin sesgo estatal, sin mercados",
+   "margen": 23.468,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Sin sesgo estatal, con mercados (mismo ajuste que el final)",
+   "margen": 20.338,
+   "P_D": 0.9996
+  },
+  {
+   "escenario": "Sesgo estatal sin contraer (-0.21 pp)",
+   "margen": 23.261,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Sesgo estatal a la mitad (-0.08 pp)",
+   "margen": 23.389,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Sesgo estimado sin contiendas de una sola encuestadora (-0.15 pp)",
+   "margen": 23.299,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Distribución normal",
+   "margen": 23.311,
+   "P_D": 1.0
+  },
+  {
+   "escenario": "Sin terceros",
+   "margen": 23.302,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Sin deriva por encuestas viejas",
+   "margen": 23.311,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Deriva al doble (0.50 pp/día, 1 días)",
+   "margen": 23.314,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Regla literal V11 (última encuesta de cada firma) (3 encuestadoras)",
+   "margen": 23.326,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Ventana 45 días (8 encuestadoras)",
+   "margen": 23.302,
+   "P_D": 1.0
+  },
+  {
+   "escenario": "Ventana 60 días (8 encuestadoras)",
+   "margen": 23.29,
+   "P_D": 1.0
+  },
+  {
+   "escenario": "Sin efectos de casa",
+   "margen": 23.815,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 4 (base 8)",
+   "margen": 23.229,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Efectos de casa con contracción k = 16 (base 8)",
+   "margen": 23.388,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Ajuste partidista (patrocinador D/R) [D +2.6, R -2.7]",
+   "margen": 23.813,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Efecto de casa + partidista si la firma no tiene historia [D +2.6, R -2.7]",
+   "margen": 23.314,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Sin Research Co. (pesa 49%) → ventana desde 2026-10-13: Franklin & Marshall College, ActiVote",
+   "margen": 22.262,
+   "P_D": 0.9991
+  },
+  {
+   "escenario": "Sin ActiVote (pesa 27%) → ventana desde 2026-10-13: Franklin & Marshall College, Research Co.",
+   "margen": 23.299,
+   "P_D": 0.9995
+  },
+  {
+   "escenario": "Sin Franklin & Marshall College (pesa 24%) → ventana desde 2026-10-13: ActiVote, Research Co.",
+   "margen": 24.016,
+   "P_D": 0.9997
+  },
+  {
+   "escenario": "Sin encuestas de patrocinio partidista → ventana desde 2026-10-13: Franklin & Marshall College, ActiVote, Research Co.",
+   "margen": 23.306,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Terceros: reducción moderada (apoyo × 0.6; media 1.1 %)",
+   "margen": 23.301,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Terceros: reducción pronunciada (apoyo × 0.3; media 0.9 %)",
+   "margen": 23.332,
+   "P_D": 0.9999
+  },
+  {
+   "escenario": "Peso de mercados 0.15 (base 0.30)",
+   "margen": 22.329,
+   "P_D": 0.9998
+  },
+  {
+   "escenario": "Peso de mercados 0.50 (base 0.30)",
+   "margen": 18.318,
+   "P_D": 0.9988
+  },
+  {
+   "escenario": "Solo Kalshi (probabilidad)",
+   "margen": 12.273,
+   "P_D": 0.984
+  },
+  {
+   "escenario": "Solo Polymarket (probabilidad)",
+   "margen": 12.88,
+   "P_D": 0.9875
+  },
+  {
+   "escenario": "Polymarket por rangos de margen (normal ajustada a la partición completa; P de los contratos)",
+   "margen": 23.512,
+   "P_D": 0.9862
+  }
+ ],
+ "anticipado": {
+  "fuente": "civicAPI",
+  "fecha": "2026-11-02",
+  "estado": "en_vivo",
+  "metricas": [
+   {
+    "etiqueta": "Boletas por correo devueltas",
+    "valor": 1058917.0,
+    "formato": "entero"
+   },
+   {
+    "etiqueta": "Emitidos por demócratas registrados",
+    "valor": 64.75,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Emitidos por republicanos registrados",
+    "valor": 25.16,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Emitidos por otros y no partidistas",
+    "valor": 10.09,
+    "formato": "pct"
+   },
+   {
+    "etiqueta": "Margen D−R por correo",
+    "valor": 39.6,
+    "formato": "pp"
+   }
+  ]
+ },
+ "rangos_poly": {
+  "P_D": 0.9862,
+  "margen": 23.51
+ },
+ "adicional": {
+  "titulo": "Sesgo estatal de Pennsylvania",
+  "P_D": null,
+  "margen": -0.15,
+  "etiqueta_margen": "corrección al margen D−R",
+  "nota": "Desde 2016 las encuestas en PA sobreestimaron al demócrata (salvo 2022); el sesgo contraído corrige -0.2 pp (promedio de encuestas +23.5). Polymarket por rangos: margen implícito +23.5 pp."
+ },
+ "fuentes": [
+  {
+   "nombre": "historico_538",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "wikipedia",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "270towin",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "base_verificada",
+   "estado": "archivo (encuestas_verificadas_pa.csv, 20 encuestas)",
+   "en_vivo": true
+  },
+  {
+   "nombre": "kalshi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "polymarket_rangos",
+   "estado": "en_vivo",
+   "en_vivo": true
+  },
+  {
+   "nombre": "civicapi",
+   "estado": "en_vivo",
+   "en_vivo": true
+  }
+ ],
+ "avisos": [],
+ "carpeta": "pennsylvania",
+ "congelado_utc": "2026-11-04T01:20:33+00:00"
+}
