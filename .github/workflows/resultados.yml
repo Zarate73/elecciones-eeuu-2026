@@ -3,12 +3,13 @@ name: Resultados preliminares (noche electoral)
 # Consulta los conteos preliminares (fuentes oficiales; Wikipedia de respaldo), los compara con el pronóstico final
 # congelado de cada estado y publica tablero/datos/resultados.json. Cada 15 minutos desde el 3-nov 18:00 ET hasta el
 # 5-nov 07:00 ET; luego cada hora hasta el 10-nov y una vez al día hasta el 30-nov (escrutinios y certificación).
+# Noche electoral: GitHub retrasa o salta los cron frecuentes (el 3-nov solo corrió 1 de ~16 programados), así que la
+# corrida manual hace un BUCLE: consulta y publica cada 8 minutos durante ~5.5 h y, al terminar, se vuelve a lanzar
+# sola (workflow_dispatch) hasta el 6-nov 12:00 UTC. Los cron quedan como respaldo de una sola pasada.
 on:
   schedule:
-    - cron: '*/15 23 3 11 *'
-    - cron: '*/15 * 4 11 *'
-    - cron: '*/15 0-12 5 11 *'
-    - cron: '5 * 5-10 11 *'
+    - cron: '5 */2 4-5 11 *'
+    - cron: '5 * 6-10 11 *'
     - cron: '35 14 11-30 11 *'
   workflow_dispatch:
     inputs:
@@ -16,18 +17,22 @@ on:
         description: 'Congelar los pronósticos antes del corte (solo pruebas; no usar antes del 3-nov)'
         type: boolean
         default: false
+      vueltas:
+        description: 'Pasadas del bucle (cada 8 min; 40 ≈ 5.3 h). 1 = una sola pasada'
+        default: '40'
 
 permissions:
   contents: write
+  actions: write          # para relanzarse al terminar el bucle
 
 concurrency:
-  group: resultados
+  group: resultados-${{ github.event_name }}
   cancel-in-progress: false
 
 jobs:
   resultados:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 350
     defaults:
       run:
         working-directory: resultados
@@ -42,10 +47,28 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Pruebas (sin red)
         run: python -m pytest -q -p no:cacheprovider
-      - name: Consultar conteos y comparar con el pronóstico final
+      - name: Consultar, comparar y publicar (bucle)
+        working-directory: .
         env:
           PYTHONIOENCODING: utf-8
-        run: python -m res_eeuu ${{ inputs.forzar_congelado && '--forzar-congelado' || '' }}
-      - name: Publicar (tablero/datos/resultados.json y resultados/)
+          VUELTAS: ${{ github.event_name == 'workflow_dispatch' && inputs.vueltas || '1' }}
+          FORZAR: ${{ inputs.forzar_congelado && '--forzar-congelado' || '' }}
+        run: |
+          for i in $(seq 1 "$VUELTAS"); do
+            echo "::group::Pasada $i de $VUELTAS ($(date -u +%H:%M) UTC)"
+            (cd resultados && python -m res_eeuu $FORZAR) || echo "pasada $i falló; se sigue"
+            bash scripts/publicar_resultados.sh "Resultados preliminares $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET" || echo "publicación $i falló; se sigue"
+            echo "::endgroup::"
+            if [ "$i" -lt "$VUELTAS" ]; then sleep 480; fi
+          done
+      - name: Relanzar el bucle (hasta el 6-nov 12:00 UTC)
+        if: github.event_name == 'workflow_dispatch' && inputs.vueltas != '1'
         working-directory: .
-        run: bash scripts/publicar_resultados.sh "Resultados preliminares $(TZ=America/New_York date +'%Y-%m-%d %H:%M') ET"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(date -u +%Y%m%d%H)" -lt 2026110612 ]; then
+            gh workflow run resultados.yml -R "${{ github.repository }}" -f vueltas=40 && echo "relanzado"
+          else
+            echo "fin del seguimiento intensivo"
+          fi
