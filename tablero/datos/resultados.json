@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-08T21:06:16+00:00",
+ "generado": "2026-11-09T01:40:50+00:00",
  "dia_eleccion": "2026-11-03",
  "congelado": true,
  "estado_congelado": {
@@ -37,14 +37,14 @@
     "wisconsin",
     "dc"
    ],
-   "MAE_margen": 7.107322848986371,
-   "RMSE_margen": 7.611412864830378,
-   "sesgo_margen": 7.107322848986371,
+   "MAE_margen": 7.086511734613461,
+   "RMSE_margen": 7.580617628289961,
+   "sesgo_margen": 7.086511734613461,
    "cobertura_IC80": 0.42857142857142855,
    "cobertura_IC95": 0.7142857142857143,
    "aciertos_lider": 13,
    "brier": 0.07822249357142856,
-   "crps": 4.969671122789144
+   "crps": 4.946502089744142
   },
   "casi_completos": {
    "n": 6,
@@ -56,14 +56,14 @@
     "north_carolina",
     "wisconsin"
    ],
-   "MAE_margen": 5.764140462035896,
-   "RMSE_margen": 6.487575016286648,
-   "sesgo_margen": 5.764140462035896,
+   "MAE_margen": 5.808104286913379,
+   "RMSE_margen": 6.540812667827909,
+   "sesgo_margen": 5.808104286913379,
    "cobertura_IC80": 0.5,
    "cobertura_IC95": 0.8333333333333334,
    "aciertos_lider": 6,
    "brier": 0.006072035000000001,
-   "crps": 4.037635105653221
+   "crps": 4.074181586093171
   }
  },
  "estados": {
@@ -98,7 +98,7 @@
    "fuente": "Georgia SOS (oficial)",
    "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
    "actualizado": "2026-11-08T00:23:59.6239302Z",
-   "consultado": "2026-11-08T21:06:18+00:00",
+   "consultado": "2026-11-09T01:40:51+00:00",
    "votos": {
     "D": 2271816.0,
     "R": 1909727.0,
@@ -294,29 +294,29 @@
    "avance_txt": "100% (23,860 of 23,860) precincts reporting",
    "fuente": "California SOS (oficial)",
    "url": "https://api.sos.ca.gov/returns/governor",
-   "actualizado": "November 7, 2026, 5:48 p.m.",
-   "consultado": "2026-11-08T21:06:19+00:00",
+   "actualizado": "November 8, 2026, 4:21 p.m.",
+   "consultado": "2026-11-09T01:40:52+00:00",
    "votos": {
-    "D": 6773781.0,
-    "R": 3575025.0,
+    "D": 6850798.0,
+    "R": 3594625.0,
     "otros": 0.0,
-    "total": 10348806.0
+    "total": 10445423.0
    },
-   "pct_D": 65.45471042746381,
-   "pct_R": 34.54528957253619,
-   "pct_otros": 0.0,
-   "margen": 30.909420854927617,
-   "error_margen": 7.756420854927619,
-   "error_pct_D": 3.8747104274638104,
-   "error_pct_R": -3.8747104274638104,
-   "percentil": 0.9126867324048077,
+   "pct_D": 65.58660190209626,
+   "pct_R": 34.413398097903745,
+   "pct_otros": -7.105427357601002e-15,
+   "margen": 31.173203804192518,
+   "error_margen": 8.02020380419252,
+   "error_pct_D": 4.006601902096264,
+   "error_pct_R": -4.006601902096257,
+   "percentil": 0.9185319139534516,
    "en_IC80": false,
    "en_IC95": true,
    "lider": "D",
    "favorito": "D",
    "acierto_lider": true,
    "brier": 2.7039999999999816e-05,
-   "crps": 5.076176123564153,
+   "crps": 5.295455006203846,
    "clave": "california",
    "estado_nombre": "California",
    "cargo": "Gobernador",
@@ -329,7 +329,7 @@
    "fuentes": [
     {
      "fuente": "california_sos",
-     "estado": "10,348,806 votos (usada)"
+     "estado": "10,445,423 votos (usada)"
     }
    ],
    "serie": [
@@ -892,6 +892,13 @@
      "margen": 30.909420854927617,
      "pct_D": 65.45471042746381,
      "pct_R": 34.54528957253619
+    },
+    {
+     "t": "2026-11-09T01:40:50+00:00",
+     "avance": 1.0,
+     "margen": 31.173203804192518,
+     "pct_D": 65.58660190209626,
+     "pct_R": 34.413398097903745
     }
    ]
   },
@@ -926,7 +933,7 @@
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_Arizona_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:19+00:00",
+   "consultado": "2026-11-09T01:40:52+00:00",
    "votos": {
     "D": 1415725.0,
     "R": 1081317.0,
@@ -1025,7 +1032,7 @@
    "fuente": "Florida DOS (oficial)",
    "url": "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL.txt",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:19+00:00",
+   "consultado": "2026-11-09T01:40:52+00:00",
    "votos": {
     "D": 4029461.0,
     "R": 4135701.0,
@@ -1222,7 +1229,7 @@
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_Nevada_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:20+00:00",
+   "consultado": "2026-11-09T01:40:53+00:00",
    "votos": {
     "D": 530510.0,
     "R": 455302.0,
@@ -1314,7 +1321,7 @@
    "fuente": "Pennsylvania DOS (oficial)",
    "url": "https://www.electionreturns.pa.gov/api/ElectionReturn/GET?methodName=GetSummaryData&electionid=undefined&electiontype=undefined&isactive=1",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:20+00:00",
+   "consultado": "2026-11-09T01:40:53+00:00",
    "votos": {
     "D": 3012327.0,
     "R": 1908513.0,
@@ -1653,33 +1660,33 @@
     "nu": 25.3
    },
    "estado": "parcial",
-   "avance": 0.91,
-   "avance_txt": "91% as of 6:33 PM EST",
+   "avance": 0.94,
+   "avance_txt": "94% as of 4:55 PM EST",
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_Maine_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:20+00:00",
+   "consultado": "2026-11-09T01:40:53+00:00",
    "votos": {
-    "D": 379914.0,
-    "R": 257847.0,
-    "otros": 55444.40970096539,
-    "total": 693205.4097009654
+    "D": 387226.0,
+    "R": 265982.0,
+    "otros": 57736.72766093258,
+    "total": 710944.7276609326
    },
-   "pct_D": 54.80540034502719,
-   "pct_R": 37.19633407235381,
-   "pct_otros": 7.998265582619005,
-   "margen": 17.60906627267338,
-   "error_margen": 9.92506627267338,
-   "error_pct_D": 3.845400345027187,
-   "error_pct_R": -6.083665927646194,
-   "percentil": 0.9912134279934159,
+   "pct_D": 54.4664001200214,
+   "pct_R": 37.412472397833646,
+   "pct_otros": 8.121127482144956,
+   "margen": 17.05392772218775,
+   "error_margen": 9.36992772218775,
+   "error_pct_D": 3.5064001200213966,
+   "error_pct_R": -5.867527602166355,
+   "percentil": 0.9879223407944503,
    "en_IC80": false,
    "en_IC95": false,
    "lider": "D",
    "favorito": "D",
    "acierto_lider": true,
    "brier": 0.0009302499999999982,
-   "crps": 7.669884381001394,
+   "crps": 7.126239035731657,
    "clave": "maine",
    "estado_nombre": "Maine",
    "cargo": "Gobernador",
@@ -1692,7 +1699,7 @@
    "fuentes": [
     {
      "fuente": "wikipedia",
-     "estado": "693,205 votos (usada)"
+     "estado": "710,945 votos (usada)"
     }
    ],
    "serie": [
@@ -1723,6 +1730,13 @@
      "margen": 17.60906627267338,
      "pct_D": 54.80540034502719,
      "pct_R": 37.19633407235381
+    },
+    {
+     "t": "2026-11-09T01:40:50+00:00",
+     "avance": 0.94,
+     "margen": 17.05392772218775,
+     "pct_D": 54.4664001200214,
+     "pct_R": 37.412472397833646
     }
    ]
   },
@@ -1757,7 +1771,7 @@
    "fuente": "Wikipedia (respaldo, sin % de avance)",
    "url": "https://en.wikipedia.org/wiki/2026_Texas_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:21+00:00",
+   "consultado": "2026-11-09T01:40:54+00:00",
    "votos": {
     "D": 5230929.0,
     "R": 4524955.0,
@@ -1902,7 +1916,7 @@
    "fuente": "Wikipedia (respaldo, sin % de avance)",
    "url": "https://en.wikipedia.org/wiki/2026_Illinois_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:21+00:00",
+   "consultado": "2026-11-09T01:40:54+00:00",
    "votos": {
     "D": 2458101.0,
     "R": 1495629.0,
@@ -2015,7 +2029,7 @@
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_New_York_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:22+00:00",
+   "consultado": "2026-11-09T01:40:55+00:00",
    "votos": {
     "D": 3641811.0,
     "R": 2442748.0,
@@ -2121,7 +2135,7 @@
    "fuente": "Wikipedia (respaldo, sin % de avance)",
    "url": "https://en.wikipedia.org/wiki/2026_Ohio_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:22+00:00",
+   "consultado": "2026-11-09T01:40:55+00:00",
    "votos": {
     "D": 2404178.0,
     "R": 2039730.0,
@@ -2234,7 +2248,7 @@
    "fuente": "NCSBE (oficial)",
    "url": "https://er.ncsbe.gov/enr/20261103/data/results_0.txt",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:22+00:00",
+   "consultado": "2026-11-09T01:40:55+00:00",
    "votos": {
     "D": 2467972.0,
     "R": 1643114.0,
@@ -2424,7 +2438,7 @@
    "fuente": "Wikipedia, infobox (respaldo; avance = % reportado en Wikipedia)",
    "url": "https://en.wikipedia.org/wiki/2026_Wisconsin_gubernatorial_election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:23+00:00",
+   "consultado": "2026-11-09T01:40:55+00:00",
    "votos": {
     "D": 1438721.0,
     "R": 1221668.0,
@@ -2509,7 +2523,7 @@
    "fuente": "DCBOE (oficial, 1.ª ronda RCV)",
    "url": "https://electionresults.dcboe.org/cityWide/getCityWide/2026-General-Election",
    "actualizado": null,
-   "consultado": "2026-11-08T21:06:23+00:00",
+   "consultado": "2026-11-09T01:40:56+00:00",
    "votos": {
     "D": 161352.0,
     "R": 19149.0,
